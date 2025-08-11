@@ -70,6 +70,7 @@ ohos_cj_library("ohos.ark_interop") {
     "ark_interop/jsstring.cj",
     "ark_interop/slab.cj",
     "ark_interop/utf16_string.cj",
+    "ark_interop/js_map.cj",
   ]
 
   external_deps = [ "napi:ark_interop" ]
