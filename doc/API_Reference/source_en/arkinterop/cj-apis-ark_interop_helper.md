@@ -16,7 +16,7 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
 
 **Description:** Converts a JSValue type to an napi_value type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
+**System Capability:** SystemCapability.ArkCompiler.Cangjie
 
 **Parameters:**
 
@@ -39,7 +39,7 @@ public func getContextStageMode(env: napi_env, object: napi_value): StageContext
 
 **Description:** Retrieves the application context based on the napi environment and object information.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
+**System Capability:** SystemCapability.ArkCompiler.Cangjie
 
 **Parameters:**
 
@@ -62,7 +62,7 @@ public func getJSContext(runtime: JSRuntime, abilityContext: UIAbilityContext): 
 
 **Description:** Retrieves the ArkTS interoperation context based on runtime information.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
+**System Capability:** SystemCapability.ArkCompiler.Cangjie
 
 **Parameters:**
 
@@ -85,7 +85,7 @@ public func isStageMode(env: napi_env, context: napi_value): Bool
 
 **Description:** Determines whether the application is in stage mode.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
+**System Capability:** SystemCapability.ArkCompiler.Cangjie
 
 **Parameters:**
 
@@ -112,7 +112,7 @@ public func mapFromJSValue<T>(
 
 **Description:** Converts JSValue format data into a HashMap.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
+**System Capability:** SystemCapability.ArkCompiler.Cangjie
 
 **Parameters:**
 
@@ -140,7 +140,7 @@ public func mapToJSValue<T>(
 
 **Description:** Converts HashMap format data into JSValue.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
+**System Capability:** SystemCapability.ArkCompiler.Cangjie
 
 **Parameters:**
 
