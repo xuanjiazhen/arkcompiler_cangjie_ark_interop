@@ -17,7 +17,6 @@ package ohos.ark_interop
 
 import std.sync.*
 import std.collection.*
-import std.math.*
 
 @C
 struct JSHClassPrivate {}
@@ -33,8 +32,14 @@ type JSHClass = CPointer<JSHClassPrivate>
 
 type JSAsyncCallback = CFunc<(JSEnv, Int64) -> Unit>
 
+/**
+ * Alias for type which is `CPointer<Unit>`.
+ */
 public type napi_env = CPointer<Unit>
 
+/**
+ * Alias for type which is `CPointer<Unit>`.
+ */
 public type napi_value = CPointer<Unit>
 
 @FastNative
@@ -91,11 +96,14 @@ func disposeJSContext(env: JSEnv): Unit {
     }
 }
 
+/**
+ * A single-thread ArkTS interop context. JSContext has a one-to-one correspondence with the ArkTS runtime. 
+ * Its main purpose is to create JSValues and safe references and manage the lifecycle of Cangjie objects 
+ * referenced by ArkTS.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public class JSContext {
     static let allRuntimes_ = HashMap<JSEnv, JSContext>()
@@ -155,11 +163,12 @@ public class JSContext {
         }
     }
 
+    /**
+     * Check whether the current thread can execute interop interface.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isInBindThread(): Bool {
         bindTid_ == unsafe { ARKTS_GetPosixThreadId() }
@@ -177,11 +186,12 @@ public class JSContext {
         }
     }
 
+    /**
+     * ArkTS global environment variable.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public prop global: JSObject {
         get() {
@@ -196,11 +206,12 @@ public class JSContext {
         }
     }
 
+    /**
+     * ArkTS interop context.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public prop env: JSEnv {
         get() {
@@ -210,11 +221,12 @@ public class JSContext {
         }
     }
 
+    /**
+     * Get napi environment pointer.
+     */
     @!APILevel[
-        14,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func getNapiEnv(): napi_env {
         unsafe {
@@ -230,131 +242,144 @@ public class JSContext {
         }
     }
 
+    /**
+     * Create an ArkTS undefined.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func undefined(): JSUndefined {
         JSUndefined(void)
     }
 
+    /**
+     * Create an ArkTS null.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func null(): JSNull {
         JSNull(JSValue(this, unsafe { ARKTS_CreateNull() }))
     }
 
+    /**
+     * Create an ArkTS boolean.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func boolean(value: Bool): JSBoolean {
         JSBoolean(JSValue(this, unsafe { ARKTS_CreateBool(value) }))
     }
 
+    /**
+     * Create an ArkTS number.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func number(value: Float64): JSNumber {
         JSNumber(JSValue(this, unsafe { ARKTS_CreateF64(value) }))
     }
 
+    /**
+     * Create an ArkTS number.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func number(value: Int32): JSNumber {
         JSNumber(JSValue(this, unsafe { ARKTS_CreateI32(value) }))
     }
 
+    /**
+     * Create an ArkTS string.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func string(value: String): JSString {
         JSString(this, value)
     }
 
+    /**
+     * Create an ArkTS string.
+     */
     @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func string(value: Utf16String): JSString {
         JSString(this, value)
     }
 
+    /**
+     * Create an empty ArkTS object reference.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func object(): JSObject {
         JSObject(this)
     }
 
+    /**
+     * Create an ArkTS function.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func function(lambda: JSLambda): JSFunction {
         JSFunction(this, lambda)
     }
 
+    /**
+     * Create an ArkTS array.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func array(arr: Array<JSValue>): JSArray {
         JSArray(this, arr)
     }
 
+    /**
+     * Create an ArkTS class.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass {
         JSClass(this, ctor, superClass)
     }
 
+    /**
+     * Create an ArkTS reference to Cangjie object.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func external(data: SharedObject): JSExternal {
         JSExternal(this, data)
     }
 
+    /**
+     * Create an ArkTS Promise.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func promiseCapability(): JSPromiseCapability {
         JSPromiseCapability(this)
@@ -394,11 +419,14 @@ public class JSContext {
         unsafe { ARKTS_Throw(env, jstr) }
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+	 *
+     * @throws {JSArrayRangeMisMatch} - Length is thess than 0.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(length: Int32): JSArrayBuffer {
         if (length <= 0) {
@@ -407,111 +435,124 @@ public class JSContext {
         JSArrayBuffer(this, length)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<Byte>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<Int8>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<Int16>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<Int32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<Float32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<Int64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func arrayBuffer(data: Array<Float64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
     }
 
+    /**
+     * Create an ArkTS ArrayBuffer.
+	 *
+     * @throws {JSArrayRangeMisMatch} - Length is thess than 0.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer: JSBufferFinalizer): JSArrayBuffer {
         if (length <= 0) {
@@ -520,41 +561,45 @@ public class JSContext {
         JSArrayBuffer(this, rawData, length, finalizer)
     }
 
+    /**
+     * Create an ArkTS symbol.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func symbol(description!: String = ""): JSSymbol {
         JSSymbol(this, description)
     }
 
+    /**
+     * Create an ArkTS bigint.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func bigint(value: Int64): JSBigInt {
         JSBigInt(this, value)
     }
 
+    /**
+     * Create an ArkTS bigint.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func bigint(value: BigInt): JSBigInt {
         JSBigInt(this, value)
     }
 
+    /**
+     * Create a task to be executed in ArkTS thread.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func postJSTask(callback: () -> Unit): Unit {
         let id = asyncCallbacks_.append(callback)
@@ -563,27 +608,12 @@ public class JSContext {
         }
     }
 
+    /**
+     * Load the built-in ArkTS napi module of the system.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func requireJSModule(moduleName: String): JSValue {
-        unsafe {
-            let moduleNameC = LibC.mallocCString(moduleName)
-            let result = ARKTS_Require(env, moduleNameC, false, false, CString(CPointer<UInt8>()))
-            LibC.free(moduleNameC)
-            return JSValue(this, result)
-        }
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func requireSystemNativeModule(moduleName: String, prefix!: ?String = None): JSValue {
         unsafe {
@@ -597,24 +627,6 @@ public class JSContext {
                 ARKTS_Require(env, moduleNameC, true, false, CString(CPointer<UInt8>()))
             }
             LibC.free(moduleNameC)
-            return JSValue(this, result)
-        }
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func requireAppNativeModule(moduleName: String, modulePath: String): JSValue {
-        unsafe {
-            let moduleNameC = LibC.mallocCString(moduleName)
-            let modulePathC = LibC.mallocCString(modulePath)
-            let result = ARKTS_Require(env, moduleNameC, true, true, modulePathC)
-            LibC.free(moduleNameC)
-            LibC.free(modulePathC)
             return JSValue(this, result)
         }
     }

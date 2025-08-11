@@ -26,11 +26,12 @@ foreign func IsStageMode(context: napi_value, env: napi_env): Bool
 
 foreign func NapiValueToArkTsValue(value: CPointer<Unit>): JSValue_
 
+/**
+ * Determine whether in application mode. 
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public func isStageMode(env: napi_env, context: napi_value): Bool {
     unsafe {
@@ -38,11 +39,12 @@ public func isStageMode(env: napi_env, context: napi_value): Bool {
     }
 }
 
+/**
+ * Convert JSValue to napi_value.
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value {
     unsafe {
@@ -50,11 +52,12 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
     }
 }
 
+/**
+ * Convert HashMap to JSValue.
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public func mapToJSValue<T>(
     context: JSContext,
@@ -72,11 +75,12 @@ public func mapToJSValue<T>(
     }
 }
 
+/**
+ * Convert JSValue to HashMap.
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public func mapFromJSValue<T>(
     context: JSContext,

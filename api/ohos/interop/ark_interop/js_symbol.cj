@@ -24,11 +24,12 @@ foreign func ARKTS_IsSymbol(env: JSEnv, value: JSValue_): Bool
 @FastNative
 foreign func ARKTS_GetSymbolDesc(env: JSEnv, symbol: JSValue_): CString
 
+/**
+ * The JSSymbol object is used to represent a safe reference to the ArkTS symbol type.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public class JSSymbol <: JSHeapObject & JSKeyable {
     private var desc_: ?String = None
@@ -59,21 +60,23 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
         }
     }
 
+    /**
+     * Convert JSSymbol to JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toJSValue(_: JSContext): JSValue {
         JSValue(context, innerValue)
     }
 
+    /**
+     * The description of symbol.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public prop description: String {
         get() {
@@ -92,11 +95,12 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
         }
     }
 
+    /**
+     * Return a String that represents the JSSymbol.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toString(): String {
         let desc = description
