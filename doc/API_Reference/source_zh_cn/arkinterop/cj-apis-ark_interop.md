@@ -20,7 +20,7 @@ public interface JSInteropType<T> {
 
 **功能：** 该接口用于为可用于声明式互操作宏的类型实现扩展方法。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -38,7 +38,7 @@ static func fromJSValue(context: JSContext, input: JSValue): T
 
 **功能：** 将 JSValue 类型数据转换为相应的仓颉类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -63,7 +63,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -81,7 +81,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -107,7 +107,7 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 **功能：** 可用于作为 JSObject 键的接口。该接口为 String 类型实现了扩展方法。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -123,7 +123,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -149,7 +149,7 @@ interface ToJSValue {
 
 **功能：** 可用于实现ToJSValue的接口
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -161,7 +161,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -181,7 +181,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Int8 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -193,7 +193,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int8
 
 **功能：** 将 JSValue 类型数据转换为相应的 Int8 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -218,7 +218,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Int8 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -236,7 +236,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Int8 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -256,7 +256,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Int16 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -268,7 +268,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int16
 
 **功能：** 将 JSValue 类型数据转换为相应的 Int16 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -293,7 +293,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Int16 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -311,7 +311,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Int16 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -331,7 +331,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Int32 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -343,7 +343,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int32
 
 **功能：** 将 JSValue 类型数据转换为相应的 Int32 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -368,7 +368,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Int32 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -386,7 +386,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Int32 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -406,7 +406,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Int64 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -418,7 +418,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int64
 
 **功能：** 将 JSValue 类型数据转换为相应的 Int64 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -443,7 +443,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Int64 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -461,7 +461,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Int64 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -481,7 +481,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 UInt8 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -493,7 +493,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt8
 
 **功能：** 将 JSValue 类型数据转换为相应的 UInt8 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -518,7 +518,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 UInt8 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -536,7 +536,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 UInt8 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -556,7 +556,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 UInt16 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -568,7 +568,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt16
 
 **功能：** 将 JSValue 类型数据转换为相应的 UInt16 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -593,7 +593,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 UInt16 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -611,7 +611,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 UInt16 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -631,7 +631,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 UInt32 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -643,7 +643,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt32
 
 **功能：** 将 JSValue 类型数据转换为相应的 UInt32 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -668,7 +668,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 UInt32 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -686,7 +686,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 UInt32 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -706,7 +706,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 UInt64 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -718,7 +718,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt64
 
 **功能：** 将 JSValue 类型数据转换为相应的 UInt64 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -743,7 +743,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 UInt64 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -761,7 +761,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 UInt64 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -781,7 +781,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Float16 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -793,7 +793,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float16
 
 **功能：** 将 JSValue 类型数据转换为相应的 Float16 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -818,7 +818,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Float16 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -836,7 +836,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Float16 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -856,7 +856,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Float32 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -868,7 +868,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float32
 
 **功能：** 将 JSValue 类型数据转换为相应的 Float32 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -893,7 +893,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Float32 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -911,7 +911,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Float32 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -931,7 +931,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Float64 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -943,7 +943,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float64
 
 **功能：** 将 JSValue 类型数据转换为相应的 Float64 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -968,7 +968,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Float64 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -986,7 +986,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Float64 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1006,7 +1006,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Bool 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1018,7 +1018,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Bool
 
 **功能：** 将 JSValue 类型数据转换为相应的 Bool 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1043,7 +1043,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Bool 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1061,7 +1061,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Bool 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1081,19 +1081,19 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 String 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
-static func fromJSValue(context: JSContext, input: JSValue): String
+static func fromJSValue(_: JSContext, input: JSValue): String
 ```
 
 **功能：** 将 JSValue 类型数据转换为相应的 String 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1101,7 +1101,7 @@ static func fromJSValue(context: JSContext, input: JSValue): String
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
+|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 |input|[JSValue](#struct-jsvalue)|是|-|ArkTS 统一类型。|
 
 **返回值：**
@@ -1118,7 +1118,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 String 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1132,7 +1132,7 @@ static func toArkTsType(): String
 
 **功能：** 该接口可用为内置类型 String 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1144,7 +1144,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 String 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1164,7 +1164,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Unit 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1176,7 +1176,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Unit
 
 **功能：** 将 JSValue 类型数据转换为相应的 Bool 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1201,7 +1201,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Unit 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1219,7 +1219,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Unit 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1239,7 +1239,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为类型 Option<T> 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1251,7 +1251,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Option<T>
 
 **功能：** 将 JSValue 类型数据转换为相应的 Option<T> 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1276,7 +1276,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Option<T> 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1294,7 +1294,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Option<T> 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1314,19 +1314,19 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为类型 Array<T> 实现扩展方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
-static func fromJSValue(context: JSContext, input: JSValue): Array<T>
+static func fromJSValue(_: JSContext, input: JSValue): Array<T>
 ```
 
 **功能：** 将 JSValue 类型数据转换为相应的 Array<T> 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1334,7 +1334,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Array<T>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
+|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 |input|[JSValue](#struct-jsvalue)|是|-|ArkTS 统一类型。|
 
 **返回值：**
@@ -1351,7 +1351,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Array<T> 类型对应的ArkTS类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1369,7 +1369,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Array<T> 类型数据转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 12
 
@@ -1393,7 +1393,7 @@ public class JSArray <: JSHeapObject {}
 
 **功能：** 一个ArkTS数组的安全引用。支持获取长度，读写元素功能。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -1409,7 +1409,7 @@ public prop size: Int64
 
 **功能：** 获取元素数量。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -1425,7 +1425,7 @@ public operator func[](index: Int64): JSValue
 
 **功能：** 往 ArkTS 数组写入一个元素。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -1460,7 +1460,7 @@ public operator func[](index: Int64, value!: JSValue): Unit
 
 **功能：** 往 ArkTS 数组写入一个元素。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -1491,7 +1491,7 @@ public operator func[](index: Int64, value!: JSHeapObject): Unit
 
 **功能：** 往 ArkTS 数组写入一个元素。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -1522,7 +1522,7 @@ public class JSArrayBuffer <: JSHeapObject {}
 
 **功能：** JSArrayBuffer 对象用来表示通用的原始二进制数据缓冲区。通过创建 JS ArrayBuffer 对象，可以获取对象字节长度，转换为仓颉数组。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -1538,7 +1538,7 @@ public prop byteLength: Int32
 
 **功能：** ArrayBuffer 的字节数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -1554,7 +1554,7 @@ public func readBytes(): Array<Byte>
 
 **功能：** 读取二进制数据，转换为仓颉数组。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -1572,7 +1572,7 @@ public func toArrayBufferJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 ArrayBuffer 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1590,7 +1590,7 @@ public func toFloat32Array(): Array<Float32>
 
 **功能：** 转换为仓颉数组 Array\<Float32>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1608,7 +1608,7 @@ public func toFloat32ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Float32Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **返回值：**
 
@@ -1624,7 +1624,7 @@ public func toFloat64Array(): Array<Float64>
 
 **功能：** 转换为仓颉数组 Array\<Float64>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1642,7 +1642,7 @@ public func toFloat64ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Float64Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1660,7 +1660,7 @@ public func toInt16Array(): Array<Int16>
 
 **功能：** 转换为仓颉数组 Array\<Int16>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1678,7 +1678,7 @@ public func toInt16ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Int16Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1696,7 +1696,7 @@ public func toInt32Array(): Array<Int32>
 
 **功能：** 转换为仓颉数组 Array\<Int32>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1714,7 +1714,7 @@ public func toInt32ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Int32Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1732,7 +1732,7 @@ public func toInt64Array(): Array<Int64>
 
 **功能：** 转换为仓颉数组 Array\<Int64>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1750,7 +1750,7 @@ public func toInt64ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 BigInt64Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1768,7 +1768,7 @@ public func toInt8Array(): Array<Int8>
 
 **功能：** 转换为仓颉数组 Array\<Int8>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1786,7 +1786,7 @@ public func toInt8ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Int8Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1804,7 +1804,7 @@ public func toUInt16Array(): Array<UInt16>
 
 **功能：** 转换为仓颉数组 Array\<UInt16>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1822,7 +1822,7 @@ public func toUInt16ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Uint16Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1840,7 +1840,7 @@ public func toUInt32Array(): Array<UInt32>
 
 **功能：** 转换为仓颉数组 Array\<UInt32>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1858,7 +1858,7 @@ public func toUInt32ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Uint32Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1876,7 +1876,7 @@ public func toUInt64Array(): Array<UInt64>
 
 **功能：** 转换为仓颉数组 Array\<UInt64>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1894,7 +1894,7 @@ public func toUInt64ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 BigUint64Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1912,7 +1912,7 @@ public func toUInt8Array(): Array<UInt8>
 
 **功能：** 转换为仓颉数组 Array\<UInt8>。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1930,7 +1930,7 @@ public func toUInt8ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Uint8Array 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1948,7 +1948,7 @@ public func toUInt8ClampedArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Uint8ClampedArray 的 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 19
 
@@ -1968,7 +1968,7 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **功能：** 在声明式互操作宏中使用，对应ArkTS的 Array\<T> 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -1984,7 +1984,7 @@ public prop size: Int64
 
 **功能：** 获取元素数量。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2000,7 +2000,7 @@ public init(arr: Array<T>)
 
 **功能：** 给定 Array\<T>，构造对应的 JSArrayEx\<T> 实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2018,7 +2018,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSArrayEx<T>
 
 **功能：** 从 JSValue 转换为 JSArrayEx。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2043,7 +2043,7 @@ public static func toArkTsType(): String
 
 **功能：** 获取仓颉类型对应的ArkTS类型名称。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2061,7 +2061,7 @@ public func clone(): JSArrayEx<T>
 
 **功能：** 克隆 JSArrayEx，将对 JSArrayEx 数据进行深拷贝。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2079,7 +2079,7 @@ public func concat(other: JSArrayEx<T>): JSArrayEx<T>
 
 **功能：** 该函数将创建一个新的 JSArrayEx，内容是当前 JSArrayEx 后面串联 other 指向的 JSArrayEx。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2103,7 +2103,7 @@ public func get(index: Int64): Option<T>
 
 **功能：** 获取数组中下标 index 对应的元素。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2127,7 +2127,7 @@ public func isEmpty(): Bool
 
 **功能：** 判断数组是否为空。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2145,7 +2145,7 @@ public func set(index: Int64, element: T): Unit
 
 **功能：** 修改数组中下标 index 对应的值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2164,7 +2164,7 @@ public func toArray(): Array<T>
 
 **功能：** 转换为 Array。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2182,7 +2182,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **功能：** 转换为 JSValue。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2206,7 +2206,7 @@ public operator func[](index: Int64): T
 
 **功能：** 获取数组下标 index 对应的值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2230,7 +2230,7 @@ public operator func[](index: Int64, value!: T)
 
 **功能：** 修改数组中下标 index 对应的值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2251,7 +2251,7 @@ public class JSArrayRangeMisMatch <: JSInteropException {
 
 **功能：** 访问越界异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2267,7 +2267,7 @@ public init(min: Int64, max: Int64, given: Int64, message!: String = "js array r
 
 **功能：** 构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2286,7 +2286,7 @@ public init(min: Int64, max: Int64, given: Int64, message!: String = "js array r
 public class JSBigInt <: JSHeapObject {}
 ```
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2304,7 +2304,7 @@ public func toBigInt(): BigInt
 
 **功能：** 转换为仓颉 BigInt。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2322,7 +2322,7 @@ public class JSClass <: JSHeapObject {}
 
 **功能：** 一个ArkTS类（构造函数）的安全引用。可以为该类添加方法和accessor、创建该类的实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2338,7 +2338,7 @@ public prop prototype: JSObject
 
 **功能：** 类的原型对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2354,11 +2354,9 @@ public func addAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?J
 
 **功能：** 为当前 ArkTS 类定义一对 getter 和 setter。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
 
 **参数：**
 
@@ -2396,7 +2394,7 @@ public func addAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSL
 
 **功能：** 为当前 ArkTS 类定义一对 getter 和 setter。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2436,7 +2434,7 @@ public func addMethod(key: JSKeyable, method: JSFunction): Unit
 
 **功能：** 为当前 ArkTS 类定义一个方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2475,7 +2473,7 @@ public func addMethod(key: JSKeyable, method: JSLambda): Unit
 
 **功能：** 为当前 ArkTS 类定义一个方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2514,7 +2512,7 @@ public func addProperty(key: JSKeyable, value: JSValue): Unit
 
 **功能：** 为目标 ArkTS 类新增一个数据成员，一般用于定义不可变属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2550,7 +2548,7 @@ public func new(): JSValue
 
 **功能：** 通过 ArkTS 类实例化一个新对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2582,7 +2580,7 @@ public func new(arg: JSValue): JSValue
 
 **功能：** 通过 ArkTS 类实例化一个新对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2624,7 +2622,7 @@ public func new(args: Array<JSValue>): JSValue
 
 **功能：** 通过 ArkTS 类实例化一个新对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2674,7 +2672,7 @@ public class JSCodeError <: JSInteropException {
 
 **功能：** ArkTS 代码里的异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2690,7 +2688,7 @@ public let code:?Int32
 
 **功能：** 异常错误码。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2718,7 +2716,7 @@ public let jsStack: Array<String>
 
 **功能：** 异常栈。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2734,9 +2732,7 @@ public init(jsMessage: String, jsStack: Array<String>)
 
 **功能：** 构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2755,7 +2751,7 @@ public class JSContext {}
 
 **功能：** 一个单线程执行的 ArkTS 互操作上下文。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2771,7 +2767,7 @@ public prop env: JSEnv
 
 **功能：** ArkTS 互操作上下文。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2787,7 +2783,7 @@ public prop global: JSObject
 
 **功能：** js全局环境变量 globalThis。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2803,7 +2799,7 @@ public func array(arr: Array<JSValue>): JSArray
 
 **功能：** 创建一个 ArkTS 数组。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2837,7 +2833,7 @@ public func arrayBuffer(length: Int32): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2871,7 +2867,7 @@ public func arrayBuffer(data: Array<Byte>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -2906,7 +2902,7 @@ public func arrayBuffer(data: Array<Int8>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2930,7 +2926,7 @@ public func arrayBuffer(data: Array<Int16>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2954,7 +2950,7 @@ public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -2978,7 +2974,7 @@ public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -3002,7 +2998,7 @@ public func arrayBuffer(data: Array<Int32>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -3026,7 +3022,7 @@ public func arrayBuffer(data: Array<Float32>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -3050,7 +3046,7 @@ public func arrayBuffer(data: Array<Int64>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -3074,7 +3070,7 @@ public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -3098,7 +3094,7 @@ public func arrayBuffer(data: Array<Float64>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -3122,7 +3118,7 @@ public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3163,7 +3159,7 @@ public func bigint(value: Int64): JSBigInt
 
 **功能：** 通过仓颉 BigInt 创建一个等值的 ArkTS bigint。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3197,7 +3193,7 @@ public func bigint(value: BigInt): JSBigInt
 
 **功能：** 通过仓颉 BigInt 创建一个等值的 ArkTS bigint。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3233,7 +3229,7 @@ public func boolean(value: Bool): JSBoolean
 
 **功能：** 创建一个 ArkTS boolean。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3267,7 +3263,7 @@ public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass
 
 **功能：** 创建一个 ArkTS 类。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3306,7 +3302,7 @@ public func external(data: SharedObject): JSExternal
 
 **功能：** 创建一个 ArkTS 对仓颉对象的引用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3343,7 +3339,7 @@ public func function(lambda: JSLambda): JSFunction
 
 **功能：** 创建一个 ArkTS 函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3381,7 +3377,7 @@ public func getNapiEnv(): napi_env
 
 **功能：** 获取一个全局环境的指针。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 14
 
@@ -3399,7 +3395,7 @@ public func isInBindThread(): Bool
 
 **功能：** 多线程工具：检查当前线程是否可执行互操作接口。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3429,7 +3425,7 @@ public func null(): JSNull
 
 **功能：** 创建一个 ArkTS null。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3457,7 +3453,7 @@ public func number(value: Float64): JSNumber
 
 **功能：** 创建一个 ArkTS number。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3491,7 +3487,7 @@ public func number(value: Int32): JSNumber
 
 **功能：** 创建一个 ArkTS number。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3525,7 +3521,7 @@ public func object(): JSObject
 
 **功能：** 创建一个空的 ArkTS object 引用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3553,7 +3549,7 @@ public func postJSTask(callback: ()->Unit): Unit
 
 **功能：** 多线程工具：创建在 ArkTS 线程执行的任务。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3586,7 +3582,7 @@ public func promiseCapability(): JSPromiseCapability
 
 **功能：** 创建一个 ArkTS Promise。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3606,59 +3602,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func requireAppNativeModule(String, String) <sub>(deprecated)</sub>
-
-```cangjie
-public func requireAppNativeModule(moduleName: String, modulePath: String): JSValue
-```
-
-**功能：** 加载ArkTS原生app的指定模块。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**废弃版本：** 16
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|moduleName|String|是|-|要求加载的模块名。|
-|modulePath|String|是|-|模块加载路径。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSValue](#struct-jsvalue)|模块返回值，一般是一个对象，如果加载出错将会返回 undefined。|
-
-### func requireJSModule(String) <sub>(deprecated)</sub>
-
-```cangjie
-public func requireJSModule(moduleName: String): JSValue
-```
-
-**功能：** 加载指定的ArkTS模块。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**废弃版本：** 16
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|moduleName|String|是|-|要求加载的模块名。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSValue](#struct-jsvalue)|模块返回值，一般是一个对象，如果加载出错将会返回 undefined。|
-
 ### func requireSystemNativeModule(String, ?String)
 
 ```cangjie
@@ -3667,7 +3610,7 @@ public func requireSystemNativeModule(moduleName: String, prefix!: ?String = Non
 
 **功能：** 加载系统内置的 ArkTS napi 模块。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3702,7 +3645,7 @@ public func string(value: String): JSString
 
 **功能：** 创建一个 ArkTS string。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3736,7 +3679,7 @@ public func string(value: Utf16String): JSString
 
 **功能：** 从 Utf16String 创建 JSString。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -3760,7 +3703,7 @@ public func symbol(description!: String = ""): JSSymbol
 
 **功能：** 创建一个 ArkTS symbol 对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3795,7 +3738,7 @@ public func undefined(): JSUndefined
 
 **功能：** 创建一个 ArkTS undefined。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3815,58 +3758,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-## class JSCurrentJSContext
-
-```cangjie
-public class JSCurrentJSContext {}
-```
-
-**功能：** 用于保存单次互操作调用的 [JSContext](#class-jscontext)。声明式互操作宏框架场景使用，开发者不需要使用此API。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 15
-
-### static func get()
-
-```cangjie
-public static func get()
-```
-
-**功能：** 获取单次互操作调用的 [JSContext](#class-jscontext)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 15
-
-### static func set(?JSContext)
-
-```cangjie
-public static func set(input: ?JSContext)
-```
-
-**功能：** 设置单次互操作调用的 [JSContext](#class-jscontext)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|input|?[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-
-### static func unset()
-
-```cangjie
-public static func unset()
-```
-
-**功能：** 取消设置单次互操作调用的 [JSContext](#class-jscontext)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 15
-
 ## class JSExternal
 
 ```cangjie
@@ -3875,7 +3766,7 @@ public class JSExternal <: JSHeapObject {}
 
 **功能：** 一个可传递到ArkTS侧的仓颉对象引用。可以获取绑定的仓颉对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3893,7 +3784,7 @@ public func cast<T>(): Option<T> where T <: SharedObject
 
 **功能：** 获取绑定的 SharedObject 对象并转换为 T 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3930,7 +3821,7 @@ public func getData(): SharedObject
 
 **功能：** 获取绑定的 SharedObject 对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3968,7 +3859,7 @@ public class JSFunction <: JSHeapObject {}
 
 **功能：** 一个 ArkTS 函数的安全引用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -3984,7 +3875,7 @@ public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue
 
 **功能：** 进行一次 ArkTS 函数调用（多个参数）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4018,7 +3909,7 @@ public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue
 
 **功能：** 进行一次 ArkTS 函数调用（多个参数）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4054,7 +3945,7 @@ public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().t
 
 **功能：** 进行一次 ArkTS 函数调用（多个参数）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4094,7 +3985,7 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **功能：** 在声明式互操作宏中使用，对应ArkTS的 Map 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4110,7 +4001,7 @@ public prop size: Int64
 
 **功能：** 返回键值对的个数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4126,7 +4017,7 @@ public init(map: HashMap<K, V>)
 
 **功能：** 构造空的 JSHashMapEx\<K, V> 实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4144,7 +4035,7 @@ public init()
 
 **功能：** 构造空的 JSHashMapEx\<K, V> 实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4156,7 +4047,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSHashMapEx<
 
 **功能：** 从 JSValue 转换为 JSHashMapEx。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4181,7 +4072,7 @@ public static func toArkTsType(): String
 
 **功能：** 获取仓颉类型对应的ArkTS类型名称。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4199,7 +4090,7 @@ public func clear(): Unit
 
 **功能：** 从此 HashMapEx 中移除所有元素。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4211,37 +4102,13 @@ public func clone(): JSHashMapEx<K, V>
 
 **功能：** 克隆 JSHashMapEx，将对 JSHashMapEx 数据进行深拷贝。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[JSHashMapEx](#class-jshashmapex)\<K, V>|克隆得到的新 JSHashMapEx。|
-
-### func contiansAll(Collection\<K>)
-
-```cangjie
-public func contiansAll(keys: Collection<K>): Bool
-```
-
-**功能：** 判断是否包含指定集合中所有键的映射。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 15
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|keys|Collection\<K>|是|-|键传递待判断的 keys。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果都包含，则返回 true；否则，返回 false。|
 
 ### func containsAll(Collection\<K>)
 
@@ -4251,7 +4118,7 @@ public func containsAll(keys: Collection<K>): Bool
 
 **功能：** 判断是否包含指定集合中所有键的映射。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4275,7 +4142,7 @@ public func delete(key: K): Bool
 
 **功能：** 从此 JSHashMapEx 中删除指定键的映射（如果存在）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4299,7 +4166,7 @@ public func deleteAll(keys: Collection<K>): Unit
 
 **功能：** 从此 JSHashMapEx 中删除指定集合中键的映射（如果存在）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4319,7 +4186,7 @@ public func deleteIf(predicate: (K, V) -> Bool): Unit
 
 该函数会遍历整个 JSHashMapEx，所有满足 predicate(K, V) == true 的键值对都会被删除。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4337,7 +4204,7 @@ public func get(key: K): Option<V>
 
 **功能：** 返回指定键映射到的值，如果不包含指定键的映射，则返回 Option\<V>.None。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4361,7 +4228,7 @@ public func has(key: K) : Bool
 
 **功能：** 判断是否包含指定键的映射。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4385,7 +4252,7 @@ public func isEmpty(): Bool
 
 **功能：** 判断 JSHashMapEx 是否为空，如果是，则返回 true；否则，返回 false。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4403,7 +4270,7 @@ public func keys(): EquatableCollection<K>
 
 **功能：** 返回 JSHashMapEx 中所有的 key，并将所有 key 存储在一个 Keys 容器中。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4421,7 +4288,7 @@ public func set(key: K, value: V): Unit
 
 **功能：** 将键值对放入 JSHashMapEx 中。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4440,7 +4307,7 @@ public func setAll(elements: Collection<(K, V)>): Unit
 
 **功能：** 按照 elements 的迭代器顺序将新的键值对集合放入 JSHashMapEx 中。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4458,7 +4325,7 @@ public func setIfAbsent(key: K, value: V): Bool
 
 **功能：** 当此 JSHashMapEx 中不存在键 key 时，向 JSHashMapEx 中插入键值对(key, value)。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4483,7 +4350,7 @@ public func toHashMap(): HashMap<K, V>
 
 **功能：** 转换为 HashMap。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4496,12 +4363,12 @@ public func toHashMap(): HashMap<K, V>
 ### func toJSValue(JSContext)
 
 ```cangjie
-public func toJSValue(_: JSContext): JSValue
+public func toJSValue(c: JSContext): JSValue
 ```
 
 **功能：** 转换为 JSValue。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4509,7 +4376,7 @@ public func toJSValue(_: JSContext): JSValue
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
+|c|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -4525,7 +4392,7 @@ public func values(): Collection<V>
 
 **功能：** 返回 JSHashMapEx 中包含的值，并将所有的 value 存储在一个 Values 容器中。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4543,7 +4410,7 @@ public operator func [](key: K): V
 
 **功能：** 运算符重载 set 方法，如果键存在，新 value 覆盖旧 value，如果键不存在，添加此键值对。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4567,7 +4434,7 @@ public operator func [](key: K, value!: V): Unit
 
 **功能：** 运算符重载 set 方法，如果键存在，新 value 覆盖旧 value，如果键不存在，添加此键值对。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4586,7 +4453,7 @@ sealed abstract class JSHeapObject {}
 
 **功能：** 一个 ArkTS 运行时对象的强引用（但不会超过 ArkTS 运行时的生命周期，也不会阻止 ArkTS 运行时的销毁）。可以转换为JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -4600,7 +4467,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4618,7 +4485,7 @@ public abstract class JSInteropException <: Exception {}
 
 **功能：** 互操作异常基类。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4636,7 +4503,7 @@ public class JSInteropNativeError <: JSInteropException {
 
 **功能：** 互操作C接口异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4652,7 +4519,7 @@ public init(message: String)
 
 **功能：** 构造 JSInteropNativeError 对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4670,7 +4537,7 @@ public class JSModule {}
 
 **功能：** 一个提供导出符号注册接口的静态类。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4684,7 +4551,7 @@ public static func registerClass(name: String, register: ClassRegister): Unit
 
 **功能：** 注册一个要导出到 ArkTS 的 ArkTS 类（构造函数）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4718,7 +4585,7 @@ public static func registerFunc(name: String, register: FuncRegister): Unit
 
 **功能：** 注册一个要导出到 ArkTS 的函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4749,7 +4616,7 @@ public static func registerFunc(name: String, lambda: JSLambda): Unit
 
 **功能：** 注册一个要导出到 ArkTS 的函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4780,7 +4647,7 @@ public static func registerModule(register: ModuleRegister): Unit
 
 **功能：** 注册要导出到 ArkTS 接口。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4814,7 +4681,7 @@ public class JSObjUseAfterFree <: JSInteropException {
 
 **功能：** 生命周期异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4830,7 +4697,7 @@ public init(message!: String = "use after free")
 
 **功能：** 构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **参数：**
 
@@ -4846,7 +4713,7 @@ public class JSObject <: JSObjectBase {}
 
 **功能：** 一个ArkTS对象的安全引用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4862,7 +4729,7 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **功能：** 一个 ArkTS 对象的安全引用的基类。可以操作 ArkTS 对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4878,7 +4745,7 @@ public func attachCJObject(target: JSExternal): Unit
 
 **功能：** 为当前对象绑定一个仓颉对象在 ArkTS 的引用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4911,7 +4778,7 @@ public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue
 
 **功能：** 调用当前对象下的方法。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4949,7 +4816,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSFunction = None, sette
 
 **功能：** 为当前对象定义 accessors 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -4988,7 +4855,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 
 **功能：** 为当前对象定义 accessors 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5028,7 +4895,7 @@ public func defineOwnProperty(key: JSKeyable, setValue: JSValue,
 
 **功能：** 在当前对象上定义属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5061,7 +4928,7 @@ public func getAttachInfo(): ?JSExternal
 
 **功能：** 从当前对象上获取绑定的仓颉对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5096,7 +4963,7 @@ public func getProperty(key: JSKeyable): JSValue
 
 **功能：** 从当前对象获取目标属性值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5131,7 +4998,7 @@ public func hasProperty(key: JSKeyable): Bool
 
 **功能：** 判断当前对象是否存在目标属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5167,7 +5034,7 @@ public func instanceOf(clazz: JSClass): Bool
 
 **功能：** 判断当前的对象是否是目标 ArkTS 类的实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5207,7 +5074,7 @@ public func keys(): Array<String>
 
 **功能：** 枚举出当前对象所有可枚举的属性名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5236,7 +5103,7 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 
 **功能：** 对当前对象赋值一个属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5266,7 +5133,7 @@ public operator func [](key: JSKeyable): JSValue
 
 **功能：** 对当前对象赋值一个属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5301,7 +5168,7 @@ public operator func [](key: JSKeyable, value!: JSValue): Unit
 
 **功能：** 对当前对象赋值一个属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5335,7 +5202,7 @@ JSPromise的目标是为回调形式的一致性封装，配合 async、await �
 
 JSPromise的生命周期超过引用的 ArkTS 对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5351,7 +5218,7 @@ public func catchError(callback: JSFunction): Unit
 
 **功能：** 注册异常处理回调。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5383,7 +5250,7 @@ public func then(onFulfilled: JSFunction, onRejected!: ?JSFunction = None): Unit
 
 **功能：** 注册结果处理回调。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5418,7 +5285,7 @@ public class JSPromiseCapability {
 
 **功能：** JSPromiseCapability 对应一个 Promise 对象，可以通过它来 resolve 和 reject 该 Promise。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5432,7 +5299,7 @@ public init(context: JSContext)
 
 **功能：** 构造一个 JSPromiseCapability 对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5450,7 +5317,7 @@ public func reject(value: JSValue): Unit
 
 **功能：** 向 Promise 提交异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5481,7 +5348,7 @@ public func resolve(value: JSValue): Unit
 
 **功能：** 通知 Promise 正常结束并提交返回值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5514,7 +5381,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 ArkTS 统一类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5558,7 +5425,7 @@ public class JSRuntime {
 
 **功能：** 仓颉创建的 ArkTS 运行时。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5574,7 +5441,7 @@ public prop mainContext: JSContext
 
 **功能：** 互操作上下文。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5590,7 +5457,7 @@ public init()
 
 **功能：** 构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 ### func getNapiEnv()
 
@@ -5600,60 +5467,9 @@ public func getNapiEnv(): CPointer<Unit>
 
 **功能：** 获取环境指针。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-### func importFromEntry(String, String)
-
-```cangjie
-public func importFromEntry(entryPoint: String, importName: String): JSValue
-```
-
-**功能：** 从 ArkTS 文件里导入符号。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|entryPoint|String|是|-|ArkTS 文件的标签。|
-|importName|String|是|-|要导入的符号。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSValue](#struct-jsvalue)|ArkTS统一类型。|
-
-### func loadEntryFromAbc(String, String, Bool)
-
-```cangjie
-public func loadEntryFromAbc(abcPath: String, entryPoint: String, forceLoad!: Bool = false): Bool
-```
-
-**功能：** 加载一个 ArkTS 文件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|abcPath|String|是|-|abc文件的沙箱路径。|
-|entryPoint|String|是|-|一个abc文件可以是由多个源码文件合成的，entryPoint与文件是一一对应的关系。|
-|forceLoad|Bool|否|false| **命名参数。** 当一个abc被成功加载之后，重新加载时如果forceLoad为false，不会再次初始化其全局变量。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|是否成功。|
 
 ## class JSString
 
@@ -5663,7 +5479,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 
 **功能：** 一个ArkTS字符串的安全引用。可以转换为String。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5681,7 +5497,7 @@ public func toJSValue(_: JSContext): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5705,7 +5521,7 @@ public func toString(): String
 
 **功能：** 转换为仓颉字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5735,7 +5551,7 @@ public func toUtf16String(): Utf16String
 
 **功能：** 从 JSString 转换为 Utf16String。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -5755,7 +5571,7 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **功能：** 对 [JSString](#class-jsstring) 的功能及性能扩展，可在声明式互操作宏中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5773,7 +5589,7 @@ public prop size: Int64
 
 **功能：** 获取字符串 UTF-8 编码后的字节长度。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5791,7 +5607,7 @@ public init(str: String)
 
 **功能：** 给定 String，构造对应的 JSStringEx 实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5809,7 +5625,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSStringEx
 
 **功能：** 从 JSValue 转换为 JSStringEx。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5834,7 +5650,7 @@ public static func toArkTsType(): String
 
 **功能：** 获取仓颉类型对应的ArkTS类型名称。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5847,12 +5663,12 @@ public static func toArkTsType(): String
 ### func toJSValue(JSContext)
 
 ```cangjie
-public func toJSValue(_: JSContext): JSValue
+public func toJSValue(context: JSContext): JSValue
 ```
 
 **功能：** 转换为 JSValue。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5860,7 +5676,7 @@ public func toJSValue(_: JSContext): JSValue
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
+|context|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -5876,7 +5692,7 @@ public func toString(): String
 
 **功能：** 转换为 String。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5894,7 +5710,7 @@ public operator func !=(str: JSStringEx): Bool
 
 **功能：** 判断两个 JSStringEx 是否不相等。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5918,7 +5734,7 @@ public operator func ==(str: JSStringEx): Bool
 
 **功能：** 功能：判断两个 JSStringEx 是否相等。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 15
 
@@ -5942,7 +5758,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **功能：** 一个js symbol的安全引用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5959,7 +5775,7 @@ public prop description: String
 
 **功能：** symbol的描述。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5975,7 +5791,7 @@ public func toJSValue(_: JSContext): JSValue
 
 **功能：** 转换为 JSValue。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -5999,7 +5815,7 @@ public func toString(): String
 
 **功能：** 转换为 String。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6019,7 +5835,7 @@ public class JSThreadMisMatch <: JSInteropException {
 
 **功能：** 执行 ArkTS 接口的线程不匹配异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6035,7 +5851,7 @@ public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread misma
 
 **功能：** 构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6058,7 +5874,7 @@ public class JSTypeMisMatch <: JSInteropException {
 
 **功能：** ArkTS 操作和实际类型不匹配异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6074,7 +5890,7 @@ public init(acquireType: String, givenType: JSType, message!: String = "js type 
 
 **功能：** 构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6094,7 +5910,7 @@ public init(acquireType: JSType, givenType: JSType, message!: String = "js type 
 
 **功能：** 构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6116,7 +5932,7 @@ public open class SharedObject {
 
 **功能：** 可以被 ArkTS 引用的仓颉对象的基类。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6140,7 +5956,7 @@ public init()
 
 **功能：** 创建一个 SharedObject 对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6152,7 +5968,7 @@ public struct JSBoolean {}
 
 **功能：** ArkTS boolean。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6164,7 +5980,7 @@ public func toBool(): Bool
 
 **功能：** 转换为仓颉 Bool。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6194,7 +6010,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6214,7 +6030,7 @@ public struct JSCallInfo {}
 
 每次ArkTS函数调用会在ArkTS栈上保存参数列表和其他相关信息，JSCallInfo是一个指向这些信息的指针。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6228,7 +6044,7 @@ public prop count: Int64
 
 **功能：** 入参数量。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6244,7 +6060,7 @@ public prop thisArg: JSValue
 
 **功能：** this 指针。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6260,7 +6076,7 @@ public operator func[](index: Int64): JSValue
 
 **功能：** 通过索引获取对应的参数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6297,7 +6113,7 @@ public struct JSNull {}
 
 **功能：** ArkTS null。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6309,7 +6125,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转为为 ArkTS 统一类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6327,7 +6143,7 @@ public struct JSNumber {}
 
 **功能：** ArkTS number。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6339,7 +6155,7 @@ public func toFloat64(): Float64
 
 **功能：** 转换为 Float64 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6369,7 +6185,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6398,7 +6214,7 @@ public struct JSType {
 
 **功能：** ArkTS 数据类型枚举。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6412,7 +6228,7 @@ public static let BIGINT: JSType = JSType(4)
 
 **功能：** bigint 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6426,7 +6242,7 @@ public static let BOOLEAN: JSType = JSType(3)
 
 **功能：** bool 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6440,7 +6256,7 @@ public static let EXTERNAL: JSType = JSType(9)
 
 **功能：** external 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6454,7 +6270,7 @@ public static let FUNCTION: JSType = JSType(8)
 
 **功能：** function 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6468,7 +6284,7 @@ public static let NULL: JSType = JSType(1)
 
 **功能：** null 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6482,7 +6298,7 @@ public static let NUMBER: JSType = JSType(2)
 
 **功能：** number 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6496,7 +6312,7 @@ public static let OBJECT: JSType = JSType(7)
 
 **功能：** object 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6510,7 +6326,7 @@ public static let STRING: JSType = JSType(5)
 
 **功能：** string 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6524,7 +6340,7 @@ public static let SYMBOL: JSType = JSType(6)
 
 **功能：** symbol 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6538,7 +6354,7 @@ public static let UNDEFINED: JSType = JSType(0)
 
 **功能：** undefined 类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6552,7 +6368,7 @@ public func toString(): String
 
 **功能：** 获取 JSType 的字符串描述。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6570,7 +6386,7 @@ public operator func !=(target: JSType): Bool
 
 **功能：** 对两个 JSType 进行不等判断。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6594,7 +6410,7 @@ public operator func ==(target: JSType): Bool
 
 **功能：** 对两个 JSType 进行判等。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6618,7 +6434,7 @@ public struct JSUndefined {}
 
 **功能：** ArkTS null。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6630,7 +6446,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6648,7 +6464,7 @@ public struct JSValue {}
 
 **功能：** 一个ArkTS变量（弱类型，短生命周期）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6664,33 +6480,9 @@ public func asArray(): JSArray
 
 **功能：** 把一个 JSValue 转换为 JSArray 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSArray](#class-jsarray)|一个 ArkTS 数组的引用。|
-
-### func asArray(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asArray(_: JSContext): JSArray
-```
-
-**功能：** 把一个 JSValue 转换为 JSArray 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -6706,31 +6498,9 @@ public func asArrayBuffer(): JSArrayBuffer
 
 **功能：** 把一个 JSValue 转换为 JSArrayBuffer 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSArrayBuffer](#class-jsarraybuffer)|一个ArkTS ArrayBuffer的引用。|
-
-### func asArrayBuffer(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asArrayBuffer(_: JSContext): JSArrayBuffer
-```
-
-**功能：** 把一个 JSValue 转换为 JSArrayBuffer 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -6746,31 +6516,9 @@ public func asBigInt(): JSBigInt
 
 **功能：** 把一个 JSValue 转换为 JSBigInt 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSBigInt](#class-jsbigint)|ArkTS bigint的引用。|
-
-### func asBigInt(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asBigInt(_: JSContext): JSBigInt
-```
-
-**功能：** 把一个 JSValue 转换为 JSBigInt 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -6786,7 +6534,7 @@ public func asBoolean(): JSBoolean
 
 **功能：** 把一个 JSValue 转换为 JSBoolean 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6804,33 +6552,9 @@ public func asClass(): JSClass
 
 **功能：** 把一个 JSValue 转换为 JSClass 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSClass](#class-jsclass)|一个ArkTS 类的引用。|
-
-### func asClass(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asClass(_: JSContext): JSClass
-```
-
-**功能：** 把一个 JSValue 转换为 JSClass 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -6846,33 +6570,9 @@ public func asExternal(): JSExternal
 
 **功能：** 把一个 JSValue 转换为 JSExternal 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSExternal](#class-jsexternal)|一个 ArkTS 对仓颉对象引用的引用。|
-
-### func asExternal(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asExternal(_: JSContext): JSExternal
-```
-
-**功能：** 把一个 JSValue 转换为 JSExternal 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -6888,33 +6588,9 @@ public func asFunction(): JSFunction
 
 **功能：** 把一个 JSValue 转换为 JSFunction 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSFunction](#class-jsfunction)|一个 ArkTS 函数的引用。|
-
-### func asFunction(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asFunction(_: JSContext): JSFunction
-```
-
-**功能：** 把一个 JSValue 转换为 JSFunction 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -6930,7 +6606,7 @@ public func asNull(): JSNull
 
 **功能：** 把一个 JSValue 转换为 JSNull 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6948,7 +6624,7 @@ public func asNumber(): JSNumber
 
 **功能：** 把一个 JSValue 转换为 JSNumber 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -6966,37 +6642,9 @@ public func asObject(): JSObject
 
 **功能：** 把一个 JSValue 转换为 JSObject 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSObject](#class-jsobject)|一个 ArkTS object 引用。|
-
-> **注意：**
->
-> 当 JSValue 的类型不是 object 时，会抛出 JSTypeMisMatch 异常。比如在仓颉互操作ArkTS时，会把ArkTS的类型统一转换成 JSValue ，再通过 asObject 转换到仓颉类型，如果从ArkTS侧返回的类型不是实际类型，则会抛异常。
-
-### func asObject(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asObject(_: JSContext): JSObject
-```
-
-**功能：** 把一个 JSValue 转换为 JSObject 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -7016,33 +6664,9 @@ public func asPromise(): JSPromise
 
 **功能：** 把一个 JSValue 转换为 JSPromise 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSPromise](#class-jspromise)|ArkTS promise的引用。|
-
-### func asPromise(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asPromise(_: JSContext): JSPromise
-```
-
-**功能：** 把一个 JSValue 转换为 JSPromise 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -7055,36 +6679,11 @@ public func asPromise(_: JSContext): JSPromise
 ```cangjie
 public func asString(): JSString
 ```
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSString](#class-jsstring)|一个 ArkTS string的引用。|
-
-### func asString(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asString(_: JSContext): JSString
-```
-
 **功能：** 把一个 JSValue 转换为 JSString 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -7100,33 +6699,9 @@ public func asSymbol(): JSSymbol
 
 **功能：** 把一个 JSValue 转换为 JSSymbol 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSSymbol](#class-jssymbol)|一个 ArkTS symbol的引用。|
-
-### func asSymbol(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asSymbol(_: JSContext): JSSymbol
-```
-
-**功能：** 把一个 JSValue 转换为 JSSymbol 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 **返回值：**
 
@@ -7142,7 +6717,7 @@ public func asUndefined(): JSUndefined
 
 **功能：** 把一个 JSValue 转换为 JSUndefined 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7160,7 +6735,7 @@ public func bindObject(external: JSValue): Unit
 
 **功能：** 往 ArkTS 对象绑定一个仓颉对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7188,25 +6763,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
 >
 
-### func bindObject(JSContext, JSValue) <sub>(deprecated)</sub>
-
-```cangjie
-public func bindObject(_: JSContext, external: JSValue): Unit
-```
-
-**功能：** 往 ArkTS 对象绑定一个仓颉对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-|external|[JSValue](#struct-jsvalue)|是|-|仓颉对象的 ArkTS 引用。|
-
 ### func bindObject(SharedObject)
 
 ```cangjie
@@ -7215,7 +6771,7 @@ public func bindObject(data: SharedObject): Unit
 
 **功能：** 往 ArkTS 对象绑定一个仓颉对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7242,25 +6798,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
 >
 
-### func bindObject(JSContext, SharedObject) <sub>(deprecated)</sub>
-
-```cangjie
-public func bindObject(_: JSContext, data: SharedObject): Unit
-```
-
-**功能：** 往 ArkTS 对象绑定一个仓颉对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-|data|[SharedObject](#class-sharedobject)|是|-|仓颉对象。|
-
 ### func getBindingObject()
 
 ```cangjie
@@ -7269,7 +6806,7 @@ public func getBindingObject(): ?SharedObject
 
 **功能：** 获取 ArkTS 对象绑定的仓颉对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7298,30 +6835,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func getBindingObject(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func getBindingObject(_: JSContext): ?SharedObject
-```
-
-**功能：** 获取 ArkTS 对象绑定的仓颉对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|?[SharedObject](#class-sharedobject)|绑定的仓颉对象。|
-
 ### func getElement(Int64)
 
 ```cangjie
@@ -7330,7 +6843,7 @@ public func getElement(index: Int64): JSValue
 
 **功能：** 从 ArkTS 数组读取元素。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7357,31 +6870,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func getElement(JSContext, Int64) <sub>(deprecated)</sub>
-
-```cangjie
-public func getElement(_: JSContext, index: Int64): JSValue
-```
-
-**功能：** 从 ArkTS 数组读取元素。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-|index|Int64|是|-|数组元素索引。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSValue](#struct-jsvalue)|一个 ArkTS 值。|
-
 ### func getProperty(JSKeyable)
 
 ```cangjie
@@ -7390,7 +6878,7 @@ public func getProperty(key: JSKeyable): JSValue
 
 **功能：** 从 ArkTS 对象读取属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7421,55 +6909,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
 >
 
-### func getProperty(JSContext, JSKeyable) <sub>(deprecated)</sub>
-
-```cangjie
-public func getProperty(_: JSContext, key: JSKeyable): JSValue
-```
-
-**功能：** 从 ArkTS 对象读取属性。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-|key|[JSKeyable](#interface-jskeyable)|是|-|属性的键，可以是 String 、 JSString 或 JSSymbol。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSValue](#struct-jsvalue)|取到的值|
-
-### func isArray(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func isArray(_: JSContext): Bool
-```
-
-**功能：** 判断一个 JSValue 是否是 Array 类型 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|为 true 时代表类型为 Array。|
-
 ### func isArray()
 
 ```cangjie
@@ -7478,7 +6917,7 @@ public func isArray(): Bool
 
 **功能：** 判断一个 JSValue 是否是 Array 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7510,7 +6949,7 @@ public func isArrayBuffer(): Bool
 
 **功能：** 判断一个 JSValue 是否是 ArrayBuffer 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7542,7 +6981,7 @@ public func isBigInt(): Bool
 
 **功能：** 判断一个 JSValue 是否是 bigint 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7574,7 +7013,7 @@ public func isBoolean(): Bool
 
 **功能：** 判断一个 JSValue 是否是 boolean 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7606,7 +7045,7 @@ public func isClass(): Bool
 
 **功能：** 判断一个 JSValue 是否是一个 ArkTS 类（构造函数） 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7638,7 +7077,7 @@ public func isExternal(): Bool
 
 **功能：** 判断一个 JSValue 是否是一个外部对象（仓颉对象的 ArkTS 引用） 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7670,7 +7109,7 @@ public func isFunction(): Bool
 
 **功能：** 判断一个 JSValue 是否是 function 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7702,7 +7141,7 @@ public func isNull(): Bool
 
 **功能：** 判断一个 JSValue 是否是 null 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7734,7 +7173,7 @@ public func isNumber(): Bool
 
 **功能：** 判断一个 JSValue 是否是 number 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7766,7 +7205,7 @@ public func isObject(): Bool
 
 **功能：** 判断一个 JSValue 是否是 object 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7798,7 +7237,7 @@ public func isPromise(): Bool
 
 **功能：** 判断一个 JSValue 是否是 Promise 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7830,7 +7269,7 @@ public func isString(): Bool
 
 **功能：** 判断一个 JSValue 是否是 string 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7862,7 +7301,7 @@ public func isSymbol(): Bool
 
 **功能：** 判断一个 JSValue 是否是 Symbol 类型 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7894,7 +7333,7 @@ public func isUndefined(): Bool
 
 **功能：** 判断一个 JSValue 是否是 undefined 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7926,7 +7365,7 @@ public func setElement(index: Int64, value: JSValue): Unit
 
 **功能：** 从 ArkTS 数组写入元素。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -7950,26 +7389,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func setElement(JSContext, Int64, JSValue) <sub>(deprecated)</sub>
-
-```cangjie
-public func setElement(_: JSContext, index: Int64, value: JSValue): Unit
-```
-
-**功能：** 从 ArkTS 数组写入元素。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-|index|Int64|是|-|数组写入索引。|
-|value|[JSValue](#struct-jsvalue)|是|-|写入数组的值。|
-
 ### func setProperty(JSKeyable, JSValue)
 
 ```cangjie
@@ -7978,7 +7397,7 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 
 **功能：** 往 ArkTS 对象写入属性。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8001,26 +7420,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func setProperty(JSContext, JSKeyable, JSValue) <sub>(deprecated)</sub>
-
-```cangjie
-public func setProperty(_: JSContext, key: JSKeyable, setValue: JSValue): Unit
-```
-
-**功能：** 往 ArkTS 对象写入属性。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-|key|[JSKeyable](#interface-jskeyable)|是|-|属性的键。|
-|setValue|[JSValue](#struct-jsvalue)|是|-|属性的值。|
-
 ### func strictEqual(JSValue)
 
 ```cangjie
@@ -8029,7 +7428,7 @@ public func strictEqual(target: JSValue): Bool
 
 **功能：** 对两个 JSValue 做严格判等（类型一致 + 值相等）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8060,31 +7459,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func strictEqual(JSContext, JSValue) <sub>(deprecated)</sub>
-
-```cangjie
-public func strictEqual(_: JSContext, target: JSValue): Bool
-```
-
-**功能：** 对两个 JSValue 做严格判等（类型一致 + 值相等）。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-|target|[JSValue](#struct-jsvalue)|是|-|比较的目标值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|为 true 时代表两个值相同|
-
 ### func toBigInt()
 
 ```cangjie
@@ -8093,7 +7467,7 @@ public func toBigInt(): BigInt
 
 **功能：** 把一个 JSValue 转换为 BigInt 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8122,7 +7496,7 @@ public func toBoolean(): Bool
 
 **功能：** 把一个 JSValue 转换为 Bool 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8151,7 +7525,7 @@ public func toNumber(): Float64
 
 **功能：** 把一个 JSValue 转换为 Float64 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8180,7 +7554,7 @@ public func toString(): String
 
 **功能：** 把一个 JSValue 转换为 String 。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8210,30 +7584,6 @@ func checkIsNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func toString(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func toString(_: JSContext): String
-```
-
-**功能：** 把一个 JSValue 转换为 String 。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|仓颉字符串。|
-
 ### func toUtf16String()
 
 ```cangjie
@@ -8242,7 +7592,7 @@ public func toUtf16String(): Utf16String
 
 **功能：** 从 JSValue 转换为 Utf16String。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8260,7 +7610,7 @@ public func typeof(): JSType
 
 **功能：** 获取一个 JSValue 的类型，和 ArkTS 的 typeof 语法枚举出的类型基本一致。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8293,7 +7643,7 @@ public type ClassRegister =(JSContext) -> JSClass
 
 **功能：** ClassRegister 是 ([JSContext](#class-jscontext)) -> [JSClass](#class-jsclass) 类型的别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8305,7 +7655,7 @@ public type FuncRegister =(JSContext) -> JSFunction
 
 **功能：** FuncRegister 是 ([JSContext](#class-jscontext)) -> [JSFunction](#class-jsfunction) 类型的别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8317,7 +7667,7 @@ public type JSBufferFinalizer =(CPointer<Byte>) -> Unit
 
 **功能：** JSBufferFinalizer 是 (CPointer\<Byte>) -> Unit 类型的别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8329,7 +7679,7 @@ public type JSLambda =(JSContext, JSCallInfo) -> JSValue
 
 **功能：** JSLambda 是 ([JSContext](#class-jscontext), [JSCallInfo](#struct-jscallinfo)) -> [JSValue](#struct-jsvalue) 类型的别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8341,7 +7691,7 @@ public type ModuleRegister =(JSContext, JSObject) -> Unit
 
 **功能：** ModuleRegister 是 ([JSContext](#class-jscontext), [JSObject](#class-jsobject)) -> Unit 类型的别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8353,7 +7703,7 @@ public type napi_env = CPointer<Unit>
 
 **功能：** napi_env 是 CPointer\<Unit> 类型的别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8365,7 +7715,7 @@ public type napi_value = CPointer<Unit>
 
 **功能：** napi_value 是 CPointer\<Unit> 类型的别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 13
 
@@ -8379,7 +7729,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
 **功能：** 以 UTF-16 编码格式存储的字符串，在与 ArkTS 字符串相互转换时，相比 String 有更好的性能。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8399,7 +7749,7 @@ public prop accessible: Bool
 
 **功能：** 判断字符串内容是否可访问。该对象的字符串内容可以使用 dispose 手动释放，释放后继续访问会抛出异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8415,7 +7765,7 @@ public prop size: Int64
 
 **功能：** 表示该字符串（UTF-16 编码格式）中编码单元的总长度。其中，UTF-16 编码格式的编码单元占 2 个字节，每个字符有 1-2 个编码单元。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8431,7 +7781,7 @@ public prop totalChars: Int64
 
 **功能：** 该字符的总字符数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8447,7 +7797,7 @@ public static let empty: Utf16String
 
 **功能：** 空字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8463,7 +7813,7 @@ public init(src: String)
 
 **功能：** 从标准库 String 创建一个 Utf16String。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8481,7 +7831,7 @@ public static func fromJSValue(_: JSContext, value: JSValue): Utf16String
 
 **功能：** 将 JSValue 转换为 Utf16String 对象。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8506,7 +7856,7 @@ public static func toArkTsType(): String
 
 **功能：** 对应的 ArkTS 类型名称。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8524,7 +7874,7 @@ public func compare(target: Utf16String): Ordering
 
 **功能：** 按照字符 Unicode 的字典序比较大小。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8548,7 +7898,7 @@ public func contains(target: Utf16String): Bool
 
 **功能：** 是否包含字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8572,7 +7922,7 @@ public func count(src: Utf16String): Int64
 
 **功能：** 包含字符串次数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8596,7 +7946,7 @@ public func dispose(): Unit
 
 **功能：** 释放保存字符串内容的内存。在首次 dispose 之后继续访问该字符串的内容将导致异常。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8608,7 +7958,7 @@ public func endsWith(target: Utf16String): Bool
 
 **功能：** 字符串是否以目标字符串结束。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8632,7 +7982,7 @@ public func hashCode(): Int64
 
 **功能：** 字符串 hash 值。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8650,7 +8000,7 @@ public func indexOf(target: Utf16String): ?Int64
 
 **功能：** 向后查找字符串所在的位置（字符索引）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8674,7 +8024,7 @@ public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 **功能：** 向后查找字符串所在的位置（编码单元索引）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8699,7 +8049,7 @@ public func isEmpty(): Bool
 
 **功能：** 是否为空字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8717,7 +8067,7 @@ public func isCompressed(): Bool
 
 **功能：** 判断内容是否被压缩。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8735,7 +8085,7 @@ public func lastIndexOf(target: Utf16String): ?Int64
 
 **功能：** 向前查找字符所在的位置。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8759,7 +8109,7 @@ public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 **功能：** 向前查找字符所在的位置。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8784,7 +8134,7 @@ public func lazySplit(separator: Utf16String, remoteEmpty!: Bool = false): Itera
 
 **功能：** 懒分割字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8809,7 +8159,7 @@ public func lazySplit(separator: Utf16String, maxSplit: Int64, remoteEmpty!: Boo
 
 **功能：** 懒分割字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8835,7 +8185,7 @@ public func lines(): Iterator<Utf16String>
 
 **功能：** 获取行迭代器。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8853,7 +8203,7 @@ public func replace(old: Utf16String, new: Utf16String, count!: Int64 = 1): Utf1
 
 **功能：** 替换字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8879,7 +8229,7 @@ public func runes(): Iterator<Rune>
 
 **功能：** 获取字符迭代器。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8897,7 +8247,7 @@ public func split(seperator: Utf16String, remoteEmpty!: Bool = false): Array<Utf
 
 **功能：** 分割字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8922,7 +8272,7 @@ public func split(seperator: Utf16String, maxSplit: Int64, remoteEmpty!: Bool = 
 
 **功能：** 分割字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8948,7 +8298,7 @@ public func startsWith(target: Utf16String): Bool
 
 **功能：** 字符串是否以目标字符串开头。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8972,7 +8322,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **功能：** 将 Utf16String 对象转换成 JSValue。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -8996,7 +8346,7 @@ public func toString(): String
 
 **功能：** 转换为 String。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9014,7 +8364,7 @@ public operator func != (target: Utf16String): Bool
 
 **功能：** 判断与目标字符串是否不相等。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9038,7 +8388,7 @@ public operator func + (right: Utf16String): Utf16String
 
 **功能：** 往后拼接一个字符串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9062,7 +8412,7 @@ public operator func < (target: Utf16String): Bool
 
 **功能：** 判断是否小于目标字符串（按字符 Unicode 的字典序）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9086,7 +8436,7 @@ public operator func <= (target: Utf16String): Bool
 
 **功能：** 判断是否小于或等于目标字符串（按字符 Unicode 的字典序）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9110,7 +8460,7 @@ public operator func == (target: Utf16String): Bool
 
 **功能：** 判断与目标字符串是否相等。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9134,7 +8484,7 @@ public operator func > (target: Utf16String): Bool
 
 **功能：** 判断是否大于目标字符串（按字符 Unicode 的字典序）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9158,7 +8508,7 @@ public operator func >= (target: Utf16String): Bool
 
 **功能：** 判断是否大于或等于目标字符串（按字符 Unicode 的字典序）。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9182,7 +8532,7 @@ public operator func [](index: Int64): UInt16
 
 **功能：** 根据元素索引获取字符。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
@@ -9206,7 +8556,7 @@ public operator func [](range: Range<Int64>): Utf16String
 
 **功能：** 从字符串截取一段子串。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Napi
+**系统能力：** SystemCapability.ArkCompiler.Cangjie
 
 **起始版本：** 20
 
