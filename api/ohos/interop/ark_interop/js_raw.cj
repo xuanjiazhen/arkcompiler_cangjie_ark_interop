@@ -65,11 +65,12 @@ protected struct JSValue_ {
     JSValue_(let value: UInt64) {}
 }
 
+/**
+ * ArkTs null.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public struct JSNull {
     let value: JSValue
@@ -78,22 +79,24 @@ public struct JSNull {
         this.value = value
     }
 
+    /**
+     * Convert JSNull to JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         value
     }
 }
 
+/**
+ * ArkTs undefined.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public struct JSUndefined {
     let value: JSValue
@@ -102,22 +105,24 @@ public struct JSUndefined {
         this.value = value
     }
 
+    /**
+     * Convert JSUndefined to JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         value
     }
 }
 
+/**
+ * ArkTs boolean.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public struct JSBoolean {
     let value: JSValue
@@ -126,32 +131,35 @@ public struct JSBoolean {
         this.value = value
     }
 
+    /**
+     * Convert JSBoolean to JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         value
     }
 
+    /**
+     * Convert JSBoolean to Cangjie Bool.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toBool(): Bool {
         value.toBoolean()
     }
 }
 
+/**
+ * ArkTs number.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public struct JSNumber {
     let value: JSValue
@@ -160,32 +168,37 @@ public struct JSNumber {
         this.value = value
     }
 
+    /**
+     * Convert JSNumber to JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         value
     }
 
+    /**
+     * Convert JSNumber to Cangjie Float64.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toFloat64(): Float64 {
         value.toNumber()
     }
 }
 
+/**
+ * JSValue is unified type in the ArkTS runtime and alse the data type that directly interacts with the ArkTS runtime.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public struct JSValue {
     protected JSValue(
@@ -193,173 +206,166 @@ public struct JSValue {
         protected let value: JSValue_
     ) {}
 
+    /**
+     * Get the type of JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func typeof(): JSType {
         unsafe { ARKTS_GetValueType(context.env, value) }
     }
 
+    /**
+     * Perform a strict equality check (type consistency and value equality) on two JSValues.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func strictEqual(target: JSValue): Bool {
         unsafe { ARKTS_StrictEqual(context.env, value, target.value) }
     }
 
+    /**
+     * Check whether JSValue is null.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func strictEqual(_: JSContext, target: JSValue): Bool {
-        strictEqual(target)
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isNull(): Bool {
         unsafe { ARKTS_IsNull(value) }
     }
 
+    /**
+     * Check whether JSValue is undefined.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isUndefined(): Bool {
         unsafe { ARKTS_IsUndefined(value) }
     }
 
+    /**
+     * Check whether JSValue is boolean.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isBoolean(): Bool {
         unsafe { ARKTS_IsBool(value) }
     }
 
+    /**
+     * Check whether JSValue is number.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isNumber(): Bool {
         unsafe { ARKTS_IsNumber(value) }
     }
 
+    /**
+     * Check whether JSValue is string.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isString(): Bool {
         unsafe { ARKTS_IsString(context.env, value) }
     }
 
+    /**
+     * Check whether JSValue is function.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isFunction(): Bool {
         unsafe { ARKTS_IsCallable(context.env, value) }
     }
 
+    /**
+     * Check whether JSValue is object.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isObject(): Bool {
         unsafe { ARKTS_IsObject(context.env, value) }
     }
 
+    /**
+     * Check whether JSValue is array.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func isArray(_: JSContext): Bool {
-        isArray()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isArray(): Bool {
         unsafe { ARKTS_IsArray(context.env, value) }
     }
 
+    /**
+     * Check whether JSValue is Promise.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isPromise(): Bool {
         unsafe { ARKTS_IsPromise(context.env, value) }
     }
 
+    /**
+     * Check whether JSValue is ArkTS class.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isClass(): Bool {
         unsafe { ARKTS_IsClass(context.env, value) }
     }
 
+    /**
+     * Check whether JSValue is an external object (ArkTS reference of a Cangjie object).
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isExternal(): Bool {
         unsafe { ARKTS_IsExternal(context.env, value) }
     }
 
+    /**
+     * Check whether JSValue is symbol.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isSymbol(): Bool {
         unsafe { ARKTS_IsSymbol(context.env, value) }
     }
 
+    /**
+     * Check whether JSValue is ArrayBuffer.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isArrayBuffer(): Bool {
         unsafe { ARKTS_IsArrayBuffer(context.env, value) }
@@ -372,18 +378,28 @@ public struct JSValue {
         JSObject.instanceOfByValue(context.env, value, context.constants.errorFuncs.clazz.innerValue)
     }
 
-    /**
-     * @deprecated
-     */
-    func isError(_: JSContext): Bool {
-        isError()
+    func isMap(): Bool {
+        if (!isObject()) {
+            return false
+        }
+        JSObject.instanceOfByValue(context.env, value, context.constants.mapFuncs.clazz.innerValue)
     }
 
+    func asMap(): JSMap {
+        if (!isMap()) {
+            throw JSTypeMisMatch("Map", typeof())
+        }
+        JSMap(context, value)
+    }
+
+    /**
+     * Convert JSValue to JSNull. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSNull.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asNull(): JSNull {
         if (!isNull()) {
@@ -392,11 +408,14 @@ public struct JSValue {
         JSNull(this)
     }
 
+    /**
+     * Convert JSValue to JSUndefined. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSUndefined.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asUndefined(): JSUndefined {
         if (!isUndefined()) {
@@ -405,11 +424,14 @@ public struct JSValue {
         JSUndefined(this)
     }
 
+    /**
+     * Convert JSValue to JSBoolean. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSBoolean.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asBoolean(): JSBoolean {
         if (!isBoolean()) {
@@ -417,12 +439,15 @@ public struct JSValue {
         }
         JSBoolean(this)
     }
-
+    
+    /**
+     * Convert JSValue to JSNumber. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSNumber.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asNumber(): JSNumber {
         if (!isNumber()) {
@@ -430,12 +455,15 @@ public struct JSValue {
         }
         JSNumber(this)
     }
-
+    
+    /**
+     * Convert JSValue to Bool. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Bool.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toBoolean(): Bool {
         if (!isBoolean()) {
@@ -444,11 +472,14 @@ public struct JSValue {
         unsafe { ARKTS_GetValueBool(value) }
     }
 
+    /**
+     * Convert JSValue to Float64. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toNumber(): Float64 {
         if (!isNumber()) {
@@ -457,11 +488,14 @@ public struct JSValue {
         unsafe { ARKTS_GetValueNumber(value) }
     }
 
+    /**
+     * Convert JSValue to String. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to String.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toString(): String {
         if (!isString()) {
@@ -470,32 +504,25 @@ public struct JSValue {
         JSString.readString(context, value)
     }
 
+    /**
+     * Convert JSValue to Utf16String.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func toString(_: JSContext): String {
-        toString()
-    }
-
-    @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toUtf16String(): Utf16String {
         JSString.readUtf16String(context, value)
     }
 
+    /**
+     * Convert JSValue to JSString. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSString.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asString(): JSString {
         if (!isString()) {
@@ -504,22 +531,14 @@ public struct JSValue {
         JSString(context, value)
     }
 
+    /**
+     * Convert JSValue to JSObject. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSObject.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asString(_: JSContext): JSString {
-        asString()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asObject(): JSObject {
         if (!isObject()) {
@@ -528,22 +547,14 @@ public struct JSValue {
         JSObject(context, value)
     }
 
+    /**
+     * Convert JSValue to JSFunction. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSFunction.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asObject(_: JSContext): JSObject {
-        asObject()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asFunction(): JSFunction {
         if (!isFunction()) {
@@ -552,46 +563,30 @@ public struct JSValue {
         JSFunction(context, value)
     }
 
+    /**
+     * Conert JSValue to JSArray. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSArray.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asFunction(_: JSContext): JSFunction {
-        asFunction()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asArray(): JSArray {
-        if (!isArray(context)) {
+        if (!isArray()) {
             throw JSTypeMisMatch("Array", typeof())
         }
         JSArray(context, value)
     }
 
+    /**
+     * Convert JSValue to JSClass. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSClass.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asArray(_: JSContext): JSArray {
-        asArray()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asClass(): JSClass {
         if (!isClass()) {
@@ -600,22 +595,14 @@ public struct JSValue {
         JSClass(context, value)
     }
 
+    /**
+     * Convert JSValue to JSExternal. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSExternal.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asClass(_: JSContext): JSClass {
-        asClass()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asExternal(): JSExternal {
         if (!isExternal()) {
@@ -624,22 +611,14 @@ public struct JSValue {
         JSExternal(context, value)
     }
 
+    /**
+     * Convert JSValue to JSPromise. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSPromise.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asExternal(_: JSContext): JSExternal {
-        asExternal()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asPromise(): JSPromise {
         if (!isPromise()) {
@@ -648,22 +627,14 @@ public struct JSValue {
         JSPromise(context, value)
     }
 
+    /**
+     * Convert JSValue to JSSymbol. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSSymbol.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asPromise(_: JSContext): JSPromise {
-        asPromise()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asSymbol(): JSSymbol {
         if (!isSymbol()) {
@@ -672,22 +643,14 @@ public struct JSValue {
         JSSymbol(context, value)
     }
 
+    /**
+     * Convert JSValue to JSArrayBuffer. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSArrayBuffer.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asSymbol(_: JSContext): JSSymbol {
-        asSymbol()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asArrayBuffer(): JSArrayBuffer {
         if (!isArrayBuffer()) {
@@ -696,46 +659,37 @@ public struct JSValue {
         JSArrayBuffer(context, value)
     }
 
-    @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asArrayBuffer(_: JSContext): JSArrayBuffer {
-        asArrayBuffer()
-    }
-
+    /**
+     * Convert JSValue to JSError. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSError.
+     */
     func asError(): JSError {
-        if (!isError(context)) {
+        if (!isError()) {
             throw JSTypeMisMatch("Error", typeof())
         }
         JSError(context, value)
     }
 
     /**
-     * @deprecated
+     * Check whether JSValue is BigInt.
      */
-    func asError(_: JSContext): JSError {
-        asError()
-    }
-
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func isBigInt(): Bool {
         unsafe { ARKTS_IsBigInt(context.env, value) }
     }
 
+    /**
+     * Convert JSValue to JSBigInt. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSBigInt.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func asBigInt(): JSBigInt {
         if (!isBigInt()) {
@@ -744,22 +698,14 @@ public struct JSValue {
         JSBigInt(context, value)
     }
 
+    /**
+     * Convert JSValue to BigInt. If the failure occurs, Exception will be throwed.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to BigInt.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func asBigInt(_: JSContext): JSBigInt {
-        asBigInt()
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func toBigInt(): BigInt {
         if (!isBigInt()) {
@@ -769,11 +715,15 @@ public struct JSValue {
         JSBigInt.readAsBigInt(context.env, value)
     }
 
+    /**
+     * Get the element at index.
+     *
+     * @throws { JSArrayRangeMisMatch } - The index is out of range.
+     * @throws { JSTypeMisMatch } - JSValue is not an array.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func getElement(index: Int64): JSValue {
         if (!isArray()) {
@@ -787,22 +737,15 @@ public struct JSValue {
         JSValue(context, value)
     }
 
+    /**
+     * Set the element at index.
+     *
+     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
+     * @throws { JSTypeMisMatch } - JSValue is not an array.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func getElement(_: JSContext, index: Int64): JSValue {
-        getElement(index)
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func setElement(index: Int64, value: JSValue): Unit {
         if (!isArray()) {
@@ -815,22 +758,14 @@ public struct JSValue {
         unsafe { ARKTS_SetElement(context.env, this.value, UInt32(index), value.value) }
     }
 
+    /**
+     * Get the property corresponding to the key.
+     *
+     * @throws { JSTypeMisMatch } - JSValue is not JSObject.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func setElement(_: JSContext, index: Int64, value: JSValue): Unit {
-        setElement(index, value)
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func getProperty(key: JSKeyable): JSValue {
         if (!isObject()) {
@@ -841,22 +776,14 @@ public struct JSValue {
         JSValue(context, result)
     }
 
+    /**
+     * Set the property corresponding to the key.
+     *
+     * @throws { JSTypeMisMatch } - JSValue is not JSObject.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func getProperty(_: JSContext, key: JSKeyable): JSValue {
-        getProperty(key)
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
         if (!isObject()) {
@@ -866,21 +793,25 @@ public struct JSValue {
         unsafe { ARKTS_SetProperty(context.env, value, keyValue.value, setValue.value) }
     }
 
+    /**
+     * Set the property corresponding to the key.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func setProperty(_: JSContext, key: JSKeyable, setValue: JSValue): Unit {
         setProperty(key, setValue)
     }
 
+    /**
+     * Bind JSValue to an ArkTs external object.
+     *
+     * @throws { JSTypeMisMatch } - JSValue is not JSObject or external is not JSExternal.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func bindObject(external: JSValue): Unit {
         if (!isObject()) {
@@ -892,61 +823,30 @@ public struct JSValue {
         setProperty(context.constants.builtinText.__cj_object__, external)
     }
 
+    /**
+     * Bind JSValue to an ArkTs external object.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func bindObject(_: JSContext, external: JSValue): Unit {
-        bindObject(external)
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func bindObject(data: SharedObject): Unit {
         bindObject(JSValue(context, JSExternal.createExternal(context, data)))
     }
 
+    /**
+     * Get the Cangjie object bound to the ArkTs object.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func bindObject(_: JSContext, data: SharedObject): Unit {
-        bindObject(data)
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func getBindingObject(): ?SharedObject {
-        let external = getProperty(context, context.constants.builtinText.__cj_object__)
+        let external = getProperty(context.constants.builtinText.__cj_object__)
         if (!external.isExternal()) {
             return None
         }
         let id = unsafe { ARKTS_GetExternalData(context.env, external.value) }
         context.sharedObjects_.get(id)
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func getBindingObject(_: JSContext): ?SharedObject {
-        getBindingObject()
     }
 }

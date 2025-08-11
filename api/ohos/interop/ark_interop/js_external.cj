@@ -33,32 +33,32 @@ func cjExternalDestructor(id: Int64, env: JSEnv): Unit {
 }
 
 /**
- * base class of objects to share with arkts, it has an unique id, when shared to arkts, the object would be kept to
- *  a global table, the id used to index the object.
+ * Base class of objects shared with arkts. It has an unique id. When shared to arkts, the object would be kept to
+ *  a global table. The id used to index the object.
  */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public open class SharedObject {
     var nativeId_: Int64 = -1
     var shareCnt_: Int64 = 0
 
+    /**
+     * Init SharedObject.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public init() {}
 
+    /**
+     * Id of the SharedObject in global table.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public prop nativeId: Int64 {
         get() {
@@ -68,13 +68,11 @@ public open class SharedObject {
 }
 
 /**
- * the js presentation of an cj object, it holds the id of cj object, and affects the lifecycle of the cj object
+ * The js presentation of a cj object. It holds the id of cj object, and affects the lifecycle of the cj object.
  */
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    stagemodelonly: true
 ]
 public class JSExternal <: JSHeapObject {
     static func createExternal(context: JSContext, data: SharedObject): JSValue_ {
@@ -110,21 +108,23 @@ public class JSExternal <: JSHeapObject {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
+    /**
+     * Get sharedObject by id.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func getData(): SharedObject {
         context.sharedObjects_[id]
     }
 
+    /**
+     * Cast sharedObject to Option<T>.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        stagemodelonly: true
     ]
     public func cast<T>(): Option<T> where T <: SharedObject {
         getData() as T
