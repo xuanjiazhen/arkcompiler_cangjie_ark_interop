@@ -104,6 +104,16 @@
             "project": "ability_ability_runtime",
             "path": "foundation/ability/ability_runtime",
             "pr_url": "https://gitee.com/openharmony/ability_ability_runtime/pulls/15940"
+        },
+        {
+            "project": "build",
+            "path": "build",
+            "pr_url": "https://gitee.com/openharmony/build/pulls/5794"
+        },
+        {
+            "project": "xts_acts",
+            "path": "test/xts/acts",
+            "pr_url": "https://gitee.com/openharmony/xts_acts/pulls/28008"
         }
     ]
 }
