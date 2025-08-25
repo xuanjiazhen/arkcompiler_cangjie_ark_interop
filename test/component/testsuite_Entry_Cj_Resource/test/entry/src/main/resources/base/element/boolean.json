@@ -1,0 +1,12 @@
+{
+  "boolean": [
+    {
+      "name": "boolean_entry_1",
+      "value": false
+    },
+    {
+      "name": "boolean_entry_2",
+      "value": true
+    }
+  ]
+}

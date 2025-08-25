@@ -1,0 +1,30 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos_app_cangjie_entry
+
+let _ = testsuite()
+
+func testsuite(): Unit {
+    registerTestSuite("Test_Rawfile", {=> Test_Rawfile()})
+    registerTestSuite("Test_HarFromHybridHar_Rawfile", {=> Test_HarFromHybridHar_Rawfile()})
+    registerTestSuite("Test_Entry_App_Media", {=> Test_Entry_App_Media()})
+    registerTestSuite("Test_Entry_Sys", {=> Test_Entry_Sys()})
+    registerTestSuite("Test_HarFromHybridHar_Sys", {=> Test_HarFromHybridHar_Sys()})
+    registerTestSuite("Test_App_Media", {=> Test_App_Media()})
+    registerTestSuite("Test_Sys_Parameter", {=> Test_Sys_Parameter()})
+    registerTestSuite("Test_Entry_Rawfile", {=> Test_Entry_Rawfile()})
+    registerTestSuite("Test_HarFromHybridHar_Media", {=> Test_HarFromHybridHar_Media()})
+}

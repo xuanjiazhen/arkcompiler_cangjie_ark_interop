@@ -1,0 +1,119 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos_app_cangjie_entry
+
+import std.unittest.testmacro.*
+import std.unittest.testmacro.*
+import std.unittest.*
+import std.unittest.common.*
+internal import kit.LocalizationKit.{AppResource, __GenerateResource__}
+
+@Test
+class Test_Rawfile {
+    
+        protected override func beforeAll() {
+        enterPage(scrollerId: "scroller", buttonId: "View_Rawfile")
+    }
+
+        protected override func afterAll() {
+        pressBack()
+    }
+    
+/* 
+    * @tc.number    : Sub_Cangjie_UIKit_Rawfile_0100
+    * @tc.name      : Test_Rawfile_0100
+    * @tc.desc      : test UIKit Rawfile, content expect HelloWorld!!! and fontFamily expect Deyihei
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+        func Test_Rawfile_0100() {
+        logger.info("Test_Rawfile_01_ttf start")
+        sleepFor(1.second)
+        click(at: Screen.getTheOnlyUiComponentWhoseTextEqualsTo("ttf").centerPoint)
+        sleepFor(1.second)
+        let text_test = Screen.getTheOnlyUiComponentWhoseIdEqualsTo("text_test")
+        @Expect(text_test["content"], "\"HelloWorld!!!\"")
+        @Expect(text_test["fontFamily"], "\"Deyihei\"")
+    }
+    
+/* 
+    * @tc.number    : Sub_Cangjie_UIKit_Rawfile_0200
+    * @tc.name      : Test_Rawfile_0200
+    * @tc.desc      : test UIKit Rawfile, src expect bmp1.bmp
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+        func Test_Rawfile_0200() {
+        logger.info("Test_Rawfile_02_image start")
+        sleepFor(1.second)
+        click(at: Screen.getTheOnlyUiComponentWhoseTextEqualsTo("image").centerPoint)
+        sleepFor(1.second)
+        let starticon = Screen.getTheOnlyUiComponentWhoseIdEqualsTo("rawfile_bmp")
+        @Expect(starticon["height"], "\"100.00vp\"")
+        @Expect(starticon["width"], "\"110.00vp\"")
+        @Expect(starticon["src"].contains("bmp1.bmp"))
+    }
+    
+/* 
+    * @tc.number    : Sub_Cangjie_UIKit_Rawfile_0300
+    * @tc.name      : Test_Rawfile_0300
+    * @tc.desc      : test UIKit Rawfile, borderStyle expect BorderStyle.Dashed and src expect image_path/action_comment.svg
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+        func Test_Rawfile_0300() {
+        logger.info("Test_Rawfile_03_image start")
+        sleepFor(1.second)
+        click(at: Screen.getTheOnlyUiComponentWhoseTextEqualsTo("image").centerPoint)
+        sleepFor(1.second)
+        let starticon = Screen.getTheOnlyUiComponentWhoseIdEqualsTo("rawfile_svg")
+        @Expect(starticon["height"], "\"120.00vp\"")
+        @Expect(starticon["width"], "\"50.00vp\"")
+        @Expect(starticon["borderStyle"], "\"BorderStyle.Dashed\"")
+        @Expect(starticon["src"].contains("image_path/action_comment.svg"))
+    }
+    
+/* 
+    * @tc.number    : Sub_Cangjie_UIKit_Rawfile_0400
+    * @tc.name      : Test_Rawfile_0400
+    * @tc.desc      : test UIKit Rawfile, src expect background.png
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+        func Test_Rawfile_0400() {
+        logger.info("Test_Rawfile_04_image start")
+        sleepFor(1.second)
+        click(at: Screen.getTheOnlyUiComponentWhoseTextEqualsTo("image").centerPoint)
+        sleepFor(1.second)
+        let starticon = Screen.getTheOnlyUiComponentWhoseIdEqualsTo("rawfile_png")
+        @Expect(starticon["height"], "\"90.00vp\"")
+        @Expect(starticon["width"], "\"60.00vp\"")
+        @Expect(starticon["src"].contains("background.png"))
+    }
+
+}

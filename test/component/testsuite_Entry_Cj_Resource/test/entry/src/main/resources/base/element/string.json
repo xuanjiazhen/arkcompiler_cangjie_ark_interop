@@ -1,0 +1,40 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "replace",
+      "value": "str: %1$s, int: %2$d, float: %3$f"
+    },
+    {
+      "name": "textSize_entry",
+      "value": "16.vp"
+    },
+    {
+      "name":"string_hello_entry",
+      "value":"Hello Cangjie"
+    },
+    {
+      "name":"string_world_entry",
+      "value":"World"
+    },
+    {
+      "name":"message_arrive_entry",
+      "value":"We will arrive at %1$s."
+    },
+    {
+      "name":"message_notification_entry",
+      "value":"Hello, %1$s!,You have %2$d new messages."
+    }
+  ]
+}

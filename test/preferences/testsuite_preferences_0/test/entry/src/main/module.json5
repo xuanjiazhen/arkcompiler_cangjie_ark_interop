@@ -1,0 +1,69 @@
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "srcEntry": "ohos_app_cangjie_entry.MyAbilityStage",
+    "deviceTypes": [
+      "default"
+    ],
+    "metadata": [
+      {
+        "name": "profile0",
+        "value": "value0",
+        "resource": "$profile:main_pages"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "ohos_app_cangjie_entry.MainAbility",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "metadata": [
+          {
+            "name": "profile0",
+            "value": "value0",
+            "resource": "$profile:main_pages"
+          }
+        ],
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
+      }
+    ],
+    "extensionAbilities": [],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name": "ohos.permission.VIBRATE"
+      },
+      {
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+        "reason": "$string:EntryAbility_label",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
+      }
+    ]
+  }
+}
