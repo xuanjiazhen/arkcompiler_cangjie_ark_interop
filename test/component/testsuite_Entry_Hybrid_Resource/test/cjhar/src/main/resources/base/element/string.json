@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "page_show",
+      "value": "page from npm package"
+    },
+    {
+      "name": "test",
+      "value": "page01"
+    },
+    {
+      "name":"Font_name",
+      "value":"Deyihei"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "intarray": [
+    {
+      "name": "intarray_hybrid_1",
+      "value": [
+        101,
+        200
+      ]
+    },
+    {
+      "name": "radius_hybrid",
+      "value": [
+        40,
+        20
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos_app_cangjie_entry
+
+import std.unittest.testmacro.*
+import ohos.ui_test.*
+import ohos.base.{LengthProp, Length, AppLog, Color, nativeLog, BaseLog, LengthType}
+import ohos.component.*
+import ohos.state_manage.*
+import ohos.state_macro_manage.*
+import ohos.image.PixelMap
+import ohos.image.createPixelMap
+import ohos.image.InitializationOptions
+import ohos.image.Size
+import ohos.image.ScaleMode
+import std.collection.*
+
+@Entry
+@Component
+class View_TextPicker {
+    var fruits: Array<String> = ["apple1", "orange2", "peach3", "grape4"]
+    var select: UInt32 = 0
+    @State
+    var parameterValue: String = "orange2"
+    @State
+    var defaultPickerItemHeight: Int64 = 20
+    @State
+    var getValue: String = "value"
+    @State
+    var getIndex: UInt32 = 0
+
+    func build() {
+        Column(5) {
+            TextPicker(this.fruits, selected: this.select, value: this.parameterValue)
+                .id("textPicker")
+                .width(100.percent)
+                .height(30.percent)
+                .defaultPickerItemHeight(this.defaultPickerItemHeight)
+                .onChange(
+                    {
+                        ResData: TextPickerResData =>
+                        logger.info("Picker item changed, value: ${ResData.value} + index: ${ResData.index}")
+                        this.getValue = ResData.value
+                        this.getIndex = ResData.index
+                    }
+                )
+            Text(this.getValue + ": " + this.getIndex.toString()).fontSize(20).key("textContent")
+
+            TextPicker(this.fruits, selected: this.select, value: this.parameterValue)
+                .id("textPicker1")
+                .width(100.percent)
+                .height(30.percent)
+                .defaultPickerItemHeight(20.fp)
+
+            TextPicker(this.fruits, selected: this.select, value: this.parameterValue)
+                .id("textPicker2")
+                .width(100.percent)
+                .height(30.percent)
+                .defaultPickerItemHeight(20.00)
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+  "module": {
+    "name": "application",
+    "type": "feature",
+    "mainElement": "ApplicationAbility",
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "srcEntry": "ohos_app_cangjie_application.MyAbilityStage",
+    "deviceTypes": [
+      "phone"
+    ],
+    "metadata": [],
+    "abilities": [
+      {
+        "name": "ApplicationAbility",
+        "srcEntry": "ohos_app_cangjie_application.MainAbility",
+        "description": "$string:ApplicationAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:ApplicationAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "metadata": [
+          {
+            "name": "profile0",
+            "value": "profile0_value",
+            "resource": "$profile:main_pages"
+          }
+        ],
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
+      }
+    ],
+    "extensionAbilities": [],
+    "requestPermissions": []
+  }
+}

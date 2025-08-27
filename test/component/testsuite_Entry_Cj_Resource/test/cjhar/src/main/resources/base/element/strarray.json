@@ -1,0 +1,20 @@
+{
+  "strarray": [
+    {
+      "name": "size_entry",
+      "value": [
+        {
+          "value": "small"
+        }
+      ]
+    },
+    {
+      "name": "cjharsize_entry",
+      "value": [
+        {
+          "value": "big"
+        }
+      ]
+    }
+  ]
+}

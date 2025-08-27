@@ -1,0 +1,646 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos_app_cangjie_entry
+
+import std.unittest.testmacro.*
+import ohos.state_macro_manage.r
+import std.unittest.*
+import std.unittest.common.*
+import kit.BasicServicesKit.{Config, create, Progress, State, remove, Action as RequestAction, FileSpec, ConfigDataType, 
+    getTask, show, touch, search, Filter, Mode, FormItem, FormItemValueType}
+import ohos.file_fs.{FileFs, OpenMode}
+
+@Test
+class NewTestRuqestUPLOAD {
+    let fileURL = "https://img0.baidu.com/it/u=285032715,784861620&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=800"
+    let token = "correctToken"
+    let fileName = "test.txt"
+    let filePath = "/data/storage/el2/base/haps/entry/cache/"
+
+    public func afterEach():Unit {
+        sleepFor(2.second)
+    }
+
+    public func beforeAll():Unit {
+        try {
+            let file = FileFs.open(
+                filePath + fileName,
+                mode: (READ_WRITE.mode | OpenMode.CREATE.mode)
+            )
+            let str = "hello, world"
+            let writeLen = FileFs.write(file.fd, str)
+            logger.info("write data to file succeed and size is: ${writeLen}")
+            FileFs.close(file)
+        } catch (e: Exception) {
+            logger.info("beforeAll: ${e.message}")
+        }
+    }
+
+    let fileSpec = FileSpec(
+        path: fileName,
+        filename: fileName,
+        mimeType: "application/octet-stream"
+    )
+
+    let dataForm = ConfigDataType.FORMITEMS(
+        [
+            FormItem(
+                name: "createTest",
+                value: FormItemValueType.FILE(fileSpec)
+            )
+        ]
+    )
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0100
+    * @tc.name      : test_getTask01
+    * @tc.desc      : test Request test_getTask01
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel15, TestLevel0]
+    func test_getTask01() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(5.second)
+        let gettask = getTask(getStageContext(), task.tid, token: token)
+        @Expect(gettask.tid==task.tid)
+        logger.info("test_getTask01: ${gettask.tid}")
+        logger.info("test_getTask01: ${task.tid}")
+        remove(task.tid)
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0200
+    * @tc.name      : test_getTask02
+    * @tc.desc      : test Request test_getTask02
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel15, TestLevel0]
+    func test_getTask02() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_getTask02").assertThrows(RequestError.TaskNotFound) {
+            let _ = getTask(getStageContext(), "", token: token)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0300
+    * @tc.name      : test_getTask03
+    * @tc.desc      : test Request test_getTask03
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel15, TestLevel0]
+    func test_getTask03() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_getTask03").assertThrows(RequestError.TaskNotFound) {
+            let _ = getTask(getStageContext(), "$%^!@&*", token: token)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0400
+    * @tc.name      : test_getTask04
+    * @tc.desc      : test Request test_getTask04
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel15, TestLevel0]
+    func test_getTask04() {
+        let id = """
+            multiline
+                string
+            """
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_getTask04").assertThrows(RequestError.TaskNotFound) {
+            let _ = getTask(getStageContext(), id, token: token)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0500
+    * @tc.name      : test_getTask05
+    * @tc.desc      : test Request test_getTask05
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel15, TestLevel0]
+    func test_getTask05() {
+        let config = Config(action: RequestAction.UPLOAD, url: fileURL, overwrite: true, data: dataForm,
+            token: "123456789", mode: BACKGROUND)
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_getTask05").assertThrows(RequestError.TaskNotFound) {
+            let _ = getTask(getStageContext(), task.tid, token: "12345678910")
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0600
+    * @tc.name      : test_getTask07
+    * @tc.desc      : test Request test_getTask07
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel15, TestLevel0]
+    func test_getTask07() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_getTask07").assertThrows(RequestError.TaskNotFound) {
+            let gettask = getTask(getStageContext(), task.tid)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0700
+    * @tc.name      : test_show01
+    * @tc.desc      : test Request test_show01
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_show01() {
+        let config = Config(action: RequestAction.UPLOAD, url: fileURL, data: dataForm, overwrite: true,
+            mode: BACKGROUND)
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        let taskInfo = show(task.tid)
+        @Expect(taskInfo.tid==task.tid)
+        @Expect(taskInfo.url==fileURL)
+        @Expect(taskInfo.title,"upload")
+        @Expect(RequestAction.UPLOAD.toString(),"UPLOAD")
+        remove(task.tid)
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0800
+    * @tc.name      : test_show02
+    * @tc.desc      : test Request test_show02
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_show02() {
+        comment("test_show02").assertThrows(RequestError.TaskNotFound) {
+            show("")
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_0900
+    * @tc.name      : test_show03
+    * @tc.desc      : test Request test_show03
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_show03() {
+        comment("test_show03").assertThrows(RequestError.TaskNotFound) {
+            show("$%^!@&*")
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1000
+    * @tc.name      : test_show04
+    * @tc.desc      : test Request test_show04
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_show04() {
+        comment("test_show04").assertThrows(RequestError.TaskNotFound) {
+            show("""
+        multiline
+            string
+        """)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1100
+    * @tc.name      : test_show06
+    * @tc.desc      : test Request test_show06
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_show06() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_show06").assertThrows(RequestError.TaskNotFound) {
+            let taskInfo = show(task.tid)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1200
+    * @tc.name      : test_touch01
+    * @tc.desc      : test Request test_touch01
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_touch01() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        let taskInfo = touch(task.tid, token)
+        @Expect(taskInfo.tid==task.tid)
+        @Expect(taskInfo.url==fileURL)
+        @Expect(taskInfo.title=="upload")
+        @Expect(RequestAction.UPLOAD.toString(),"UPLOAD")
+        remove(task.tid)
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1300
+    * @tc.name      : test_touch03
+    * @tc.desc      : test Request test_touch03
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_touch03() {
+        let config = Config(action: RequestAction.UPLOAD, url: fileURL, data: dataForm, overwrite: true,
+            mode: BACKGROUND)
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_touch03").assertThrows(RequestError.TaskNotFound) {
+            let taskInfo = touch(task.tid, token)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1400
+    * @tc.name      : test_touch04
+    * @tc.desc      : test Request test_touch04
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_touch04() {
+        let token2 = ""
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_touch04").assertThrows(RequestError.ParameterError) {
+            let taskInfo = touch(task.tid, token2)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1500
+    * @tc.name      : test_touch05
+    * @tc.desc      : test Request test_touch05
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_touch05() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_touch05").assertThrows(RequestError.TaskNotFound) {
+            let taskInfo = touch("", token)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1600
+    * @tc.name      : test_touch06
+    * @tc.desc      : test Request test_touch06
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_touch06() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_touch06").assertThrows(RequestError.TaskNotFound) {
+            let taskInfo = touch("$%^!@&*", token)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1700
+    * @tc.name      : test_touch07
+    * @tc.desc      : test Request test_touch07
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_touch07() {
+        let id = """
+            multiline
+            string
+            """
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        comment("test_touch07").assertThrows(RequestError.TaskNotFound) {
+            let taskInfo = touch(id, token)
+            remove(task.tid)
+        }
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1800
+    * @tc.name      : test_search01
+    * @tc.desc      : test Request test_search01
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_search01() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: BACKGROUND
+        )
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        let arr = search()
+        @Expect(arr.contains(task.tid))
+        logger.info("test_search01: ${task.tid}")
+        remove(task.tid)
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_1900
+    * @tc.name      : test_search02
+    * @tc.desc      : test Request test_search02
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_search02() {
+        let config = Config(action: RequestAction.UPLOAD, url: fileURL, data: dataForm, overwrite: true,
+            mode: BACKGROUND)
+        let task = create(getStageContext(), config)
+        task.start()
+        sleepFor(0.5.second)
+        let arr = search()
+        @Expect(arr.contains(task.tid))
+        logger.info("test_search02: ${task.tid}")
+        remove(task.tid)
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_2000
+    * @tc.name      : test_search03
+    * @tc.desc      : test Request test_search03
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_search03() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            data: dataForm,
+            overwrite: true,
+            token: token,
+            mode: Mode.FOREGROUND
+        )
+        let task = create(getStageContext(), config)
+
+        let createOnCallback = ProgressCallback()
+
+        task.on("completed", createOnCallback)
+        task.start()
+        sleepFor(3.second)
+       
+        let filter = Filter(mode: Mode.FOREGROUND)
+        let arr = search(filter)
+        @Expect(arr.contains(task.tid))
+        remove(task.tid)
+    }
+
+    
+    /*
+    * @tc.number    : Sub_Cangjie_Request_NewTestRuqestUPLOAD_2100
+    * @tc.name      : test_search04
+    * @tc.desc      : test Request test_search04
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_search04() {
+        let config = Config(
+            action: RequestAction.UPLOAD,
+            url: fileURL,
+            overwrite: true,
+            data: dataForm,
+            token: token,
+            mode: Mode.FOREGROUND
+        )
+        let task = create(getStageContext(), config)
+        let createOnCallback = ProgressCallback()
+        task.on("completed", createOnCallback)
+        task.start()
+        sleepFor(3.second)
+    
+        let filter = Filter(action: RequestAction.DOWNLOAD)
+        let arr = search(filter)
+        @Expect(!arr.contains(task.tid))
+        remove(task.tid)
+    }
+}
