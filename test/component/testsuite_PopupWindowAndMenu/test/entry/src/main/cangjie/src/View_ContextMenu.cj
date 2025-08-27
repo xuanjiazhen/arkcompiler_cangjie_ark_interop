@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos_app_cangjie_entry
+
+import std.unittest.testmacro.*
+import ohos.ui_test.*
+import ohos.base.{LengthProp, Length, AppLog, Color, nativeLog, BaseLog, LengthType}
+import ohos.component.*
+import ohos.state_manage.*
+import ohos.state_macro_manage.*
+import std.collection.*
+import ohos.image.PixelMap
+import ohos.image.createPixelMap
+import ohos.image.InitializationOptions
+import ohos.image.Size
+import ohos.image.ScaleMode
+import std.collection.*
+
+@Entry
+@Component
+class View_ContextMenu {
+    @State
+    var text: String = "Test"
+    @Builder
+    func MenuBuilder() {
+        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)
+        ) {
+            Button("Test ContextMenu1")
+            Divider().strokeWidth(2).margin(5).color(Color.BLACK)
+            Button("Test ContextMenu2")
+            Divider().strokeWidth(2).margin(5).color(Color.BLACK)
+            Button("Test ContextMenu3")
+        }.width(200).height(160)
+    }
+
+    func build() {
+        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)
+        ) {
+            Column() {
+                Text("${this.text}")
+                    .fontSize(20)
+                    .width(100.percent)
+                    .height(500)
+                    .backgroundColor(0xAFEEEE)
+                    .textAlign(TextAlign.Center)
+            }
+                .bindContextMenu(builder: this.MenuBuilder, responseType: ResponseType.LongPress)
+                .onDragStart(
+                    {
+                        evt =>
+                        ContextMenu.close()
+                        this.text = "Close"
+                    }
+                )
+        }.width(100.percent).height(100.percent)
+    }
+}

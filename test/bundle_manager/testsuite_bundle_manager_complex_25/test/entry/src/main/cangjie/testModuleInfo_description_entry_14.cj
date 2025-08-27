@@ -1,0 +1,662 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos_app_cangjie_entry
+import std.unittest.*
+import std.unittest.common.*
+import std.unittest.testmacro.*
+import std.collection.*
+import ohos.base.*
+import stdx.encoding.json.*
+import ohos.hilog.Hilog
+import kit.AbilityKit.*
+import kit.AbilityKit.BundleManager
+import ohos.state_macro_manage.r
+import ohos.base.CJResource
+import kit.LocalizationKit.{AppResource, __GenerateResource__}
+import ohos.bundle_manager.{HapModuleInfo, AbilityInfo, LaunchType, SupportWindowMode}
+@Test
+class testModuleInfo_description_entry_14 {
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010000
+* @tc.name      : TestCase_391
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_SIGNATURE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_391(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_391 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_391 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010100
+* @tc.name      : TestCase_392
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_392(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_392 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_392 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010200
+* @tc.name      : TestCase_393
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_SIGNATURE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_393(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_393 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_393 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010300
+* @tc.name      : TestCase_394
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_SIGNATURE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_394(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_394 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_394 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010400
+* @tc.name      : TestCase_395
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_395(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_395 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_395 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010500
+* @tc.name      : TestCase_396
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_DISABLE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_396(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_396 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_396 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010600
+* @tc.name      : TestCase_397
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_SIGNATURE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_397(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_397 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_397 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010700
+* @tc.name      : TestCase_398
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_SIGNATURE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_398(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_398 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_398 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010800
+* @tc.name      : TestCase_399
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_399(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_399 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_399 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1010900
+* @tc.name      : TestCase_400
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_SIGNATURE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_400(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_400 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_400 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011000
+* @tc.name      : TestCase_401
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_SIGNATURE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_401(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_401 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_401 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011100
+* @tc.name      : TestCase_402
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_402(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_402 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_402 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011200
+* @tc.name      : TestCase_403
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_METADATA
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_403(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_403 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_403 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011300
+* @tc.name      : TestCase_404
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_DISABLE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_404(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_404 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_404 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011400
+* @tc.name      : TestCase_405
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_SIGNATURE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_405(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_405 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_405 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011500
+* @tc.name      : TestCase_406
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_SIGNATURE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_406(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_406 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_406 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011600
+* @tc.name      : TestCase_407
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_407(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_407 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_407 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011700
+* @tc.name      : TestCase_408
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_SIGNATURE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_408(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_408 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_408 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011800
+* @tc.name      : TestCase_409
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_SIGNATURE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_409(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_409 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_409 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1011900
+* @tc.name      : TestCase_410
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_410(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_410 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_410 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012000
+* @tc.name      : TestCase_411
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_DISABLE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_411(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_411 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_411 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012100
+* @tc.name      : TestCase_412
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_SIGNATURE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_412(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_412 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_412 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012200
+* @tc.name      : TestCase_413
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_SIGNATURE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_413(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_413 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_413 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012300
+* @tc.name      : TestCase_414
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_DISABLE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_414(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_414 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_414 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012400
+* @tc.name      : TestCase_415
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_SIGNATURE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_415(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_415 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_415 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012500
+* @tc.name      : TestCase_416
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_SIGNATURE, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_416(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_416 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_416 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012600
+* @tc.name      : TestCase_417
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY, GET_BUNDLE_INFO_WITH_MENU
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_417(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_417 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_MENU.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_417 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012700
+* @tc.name      : TestCase_418
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_418(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_418 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_418 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012800
+* @tc.name      : TestCase_419
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_METADATA
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_419(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_419 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_419 ends.")
+}
+
+/*
+* @tc.number    : Sub_Cangjie_bundleManager_ModuleInfo_1012900
+* @tc.name      : TestCase_420
+* @tc.desc      : check module info of module entry with bundle flags: GET_BUNDLE_INFO_WITH_ABILITY, GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, GET_BUNDLE_INFO_WITH_METADATA, GET_BUNDLE_INFO_WITH_DISABLE
+* @tc.size      : MediumTest
+* @tc.type      : Function
+* @tc.level     : Level 0
+*/
+
+@TestCase
+@Tag[APILevel12, TestLevel0]
+func TestCase_420(): Unit  {
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_420 begins.")
+Hilog.info(0u32, "CangjieTest", "define local variable bundleInfo")
+let bundleInfo = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_METADATA.getValue() | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE.getValue())
+Hilog.info(0u32, "CangjieTest", "define local variable resourceManager")
+let resourceManager = getResourceManager()
+@Expect(bundleInfo.hapModulesInfo.size, 0i64)
+Hilog.info(0u32, "CangjieTest", "testcase TestCase_420 ends.")
+}
+
+}

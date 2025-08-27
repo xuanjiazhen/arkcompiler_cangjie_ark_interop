@@ -1,0 +1,24 @@
+{
+  "float": [
+    {
+      "name": "float_1",
+      "value": "6.0"
+    },
+    {
+      "name": "float_entry_1",
+      "value": "30.6"
+    },
+    {
+      "name":"font_entry_hello",
+      "value":"28.0fp"
+    },
+    {
+      "name":"font_entry_world",
+      "value":"20.0fp"
+    },
+    {
+      "name":"width_entry",
+      "value":"175.50"
+    }
+  ]
+}

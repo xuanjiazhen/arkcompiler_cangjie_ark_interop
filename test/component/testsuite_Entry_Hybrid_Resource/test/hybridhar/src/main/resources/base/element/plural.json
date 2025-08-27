@@ -1,0 +1,17 @@
+{
+  "plural": [
+    {
+      "name": "eat_apple_hybrid",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d banana"
+        },
+        {
+          "quantity": "other",
+          "value": "%d banana"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "boolean": [
+    {
+      "name": "boolean_hybrid_1",
+      "value": false
+    },
+    {
+      "name": "boolean_hybrid_2",
+      "value": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "intarray": [
+    {
+      "name": "intarray_entry_1",
+      "value": [
+        100,
+        200
+      ]
+    },
+    {
+      "name": "radius_entry",
+      "value": [
+        40,
+        20
+      ]
+    }
+  ]
+}
