@@ -13,7 +13,7 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cj_library("ohos.labels") {
+ohos_cangjie_shared_library("ohos.labels") {
   sources = [ "src/api_level.cj" ]
 
   subsystem_name = "arkcompiler"
