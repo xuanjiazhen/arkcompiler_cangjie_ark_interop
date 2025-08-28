@@ -544,10 +544,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
 **起始版本：** 21
 
-**父类型：**
-
-- [ObservedPropertyAbstract](<font color="red" face="bold">please add link</font>)
-
 ### init(String, T)
 
 ```cangjie
