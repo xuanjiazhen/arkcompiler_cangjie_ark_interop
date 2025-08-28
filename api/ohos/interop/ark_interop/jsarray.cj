@@ -83,7 +83,7 @@ public class JSArray <: JSHeapObject {
     /**
      * Get the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is out of range.
+     * @throws { BusinessException } - The index is out of range.
      */
     @!APILevel[
         21,
@@ -100,7 +100,7 @@ public class JSArray <: JSHeapObject {
     /**
      * Set the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
+     * @throws { BusinessException } - The index is less than 0.
      */
     @!APILevel[
         21,
@@ -116,7 +116,7 @@ public class JSArray <: JSHeapObject {
     /**
      * Set the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
+     * @throws { BusinessException } - The index is less than 0.
      */
     @!APILevel[
         21,

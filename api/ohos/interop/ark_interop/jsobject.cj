@@ -144,7 +144,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
     /**
      * Call method corressponding to the key of the JSObject.
 	 *
-     * @throws {JSTypeMisMatch} - Object is not JSFunction.
+     * @throws {BusinessException} - Object is not JSFunction.
      */
     @!APILevel[
         21,
