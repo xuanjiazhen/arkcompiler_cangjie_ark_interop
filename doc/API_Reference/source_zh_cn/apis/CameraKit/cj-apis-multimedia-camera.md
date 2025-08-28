@@ -135,13 +135,13 @@ import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext
 //// end
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 
 let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let photoSession = session as PhotoSession
-Hilog.info(0, "AppLogCj", photoSession.getOrThrow().getExposureMode())
+Hilog.info(0, "AppLogCj", photoSession.getOrThrow().getExposureMode().toString())
 ```
 
 ### func getExposureValue()
@@ -188,7 +188,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let photoSession = session as PhotoSession
-Hilog.info(0, "AppLogCj", photoSession.getOrThrow().getExposureValue())
+Hilog.info(0, "AppLogCj", photoSession.getOrThrow().getExposureValue().toString())
 ```
 
 ### func getMeteringPoint()
@@ -282,7 +282,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let exposureBias: Float32 = 1.2
+let exposureBias = 1.2
 photoSession.setExposureBias(exposureBias)
 ```
 
@@ -369,6 +369,7 @@ func setMeteringPoint(point: Point): Unit
 // index.cj
 
 import kit.CameraKit.*
+import kit.CameraKit.Point as ImagePoint
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext
@@ -379,7 +380,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let point = Point(1.0, 1.0)
+let point = ImagePoint(1.0, 1.0)
 photoSession.setMeteringPoint(point)
 ```
 
@@ -497,7 +498,7 @@ let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let aeMode = ExposureMode.ExposureModeAuto
-Hilog.info(0, "AppLogCj", photoSession.isExposureModeSupported(aeMode))
+Hilog.info(0, "AppLogCj", photoSession.isExposureModeSupported(aeMode).toString())
 ```
 
 ## interface CameraOutput
@@ -941,7 +942,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-Hilog.info(0, "AppLogCj", photoSession.hasFlash())
+Hilog.info(0, "AppLogCj", photoSession.hasFlash().toString())
 ```
 
 ### func isFlashModeSupported(FlashMode)
@@ -1064,7 +1065,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-Hilog.info(0, "AppLogCj", photoSession.getFocalLength())
+Hilog.info(0, "AppLogCj", photoSession.getFocalLength().toString())
 ```
 
 ### func getFocusMode()
@@ -1112,7 +1113,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-Hilog.info(0, "AppLogCj", photoSession.getFocusMode())
+Hilog.info(0, "AppLogCj", photoSession.getFocusMode().toString())
 ```
 
 ### func getFocusPoint()
@@ -1248,6 +1249,7 @@ func setFocusPoint(point: Point): Unit
 // index.cj
 
 import kit.CameraKit.*
+import kit.CameraKit.Point as ImagePoint
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext
@@ -1258,7 +1260,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-photoSession.setFocusPoint(Point(0.5, 0.5))
+photoSession.setFocusPoint(ImagePoint(0.5, 0.5))
 ```
 
 ## interface FocusQuery
@@ -1327,7 +1329,7 @@ let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let afMode = FocusMode.FocusModeManual
-Hilog.info(0, "AppLogCj", photoSession.isFocusModeSupported(afMode))
+Hilog.info(0, "AppLogCj", photoSession.isFocusModeSupported(afMode).toString())
 ```
 
 ## interface Session
@@ -1539,7 +1541,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
-Hilog.info(0, "AppLogCj", session.canAddInput(cameraInput))
+Hilog.info(0, "AppLogCj", session.canAddInput(cameraInput).toString())
 ```
 
 ### func canAddOutput(CameraOutput)
@@ -1589,7 +1591,7 @@ let cameraDevice = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(cameraDevice)[0]
 let ability = cameraManager.getSupportedOutputCapability(cameraDevice, mode)
 let cameraOutput = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
-Hilog.info(0, "AppLogCj", session.canAddOutput(cameraOutput))
+Hilog.info(0, "AppLogCj", session.canAddOutput(cameraOutput).toString())
 ```
 
 ### func commitConfig()
@@ -1923,7 +1925,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalVideo)
 var videoSessionOption = session as VideoSession
 let videoSession = videoSessionOption.getOrThrow()
-Hilog.info(0, "AppLogCj", videoSession.getActiveVideoStabilizationMode())
+Hilog.info(0, "AppLogCj", videoSession.getActiveVideoStabilizationMode().toString())
 ```
 
 ### func setVideoStabilizationMode(VideoStabilizationMode)
@@ -2048,8 +2050,8 @@ videoSession.isVideoStabilizationModeSupported(vsMode)
 public interface Zoom <: ZoomQuery {
     func setZoomRatio(zoomRatio: Float64): Unit
     func getZoomRatio(): Float64
-    func setSmoothZoom(targetRatio: Float32, mode: SmoothZoomMode): Unit
-    func setSmoothZoom(targetRatio: Float32): Unit
+    func setSmoothZoom(targetRatio: Float64, mode: SmoothZoomMode): Unit
+    func setSmoothZoom(targetRatio: Float64): Unit
 }
 ```
 
@@ -2109,13 +2111,13 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-Hilog.info(0, "AppLogCj", photoSession.getZoomRatio())
+Hilog.info(0, "AppLogCj", photoSession.getZoomRatio().toString())
 ```
 
 ### func setSmoothZoom(Float32, SmoothZoomMode)
 
 ```cangjie
-func setSmoothZoom(targetRatio: Float32, mode: SmoothZoomMode): Unit
+func setSmoothZoom(targetRatio: Float64, mode: SmoothZoomMode): Unit
 ```
 
 **功能：** 触发平滑变焦。
@@ -2149,14 +2151,14 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let targetRatio: Float32 = 0.3
+let targetRatio: Float64 = 0.3
 photoSession.setSmoothZoom(targetRatio, SmoothZoomMode.Normal)
 ```
 
 ### func setSmoothZoom(Float32)
 
 ```cangjie
-func setSmoothZoom(targetRatio: Float32): Unit
+func setSmoothZoom(targetRatio: Float64): Unit
 ```
 
 **功能：** 触发平滑变焦。
@@ -2189,7 +2191,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let targetRatio: Float32 = 0.3
+let targetRatio: Float64 = 0.3
 photoSession.setSmoothZoom(targetRatio)
 ```
 
@@ -2237,7 +2239,7 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let zoomRatio: Float32 = 0.5
+let zoomRatio: Float64 = 0.5
 photoSession.setZoomRatio(zoomRatio)
 ```
 
@@ -2300,8 +2302,8 @@ let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let zoomRatio: Float32 = 0.5
-Hilog.info(0, "AppLogCj", photoSession.getZoomRatioRange())
+let zoomRatio: Float64 = 0.5
+Hilog.info(0, "AppLogCj", photoSession.getZoomRatioRange().toString())
 ```
 
 ## class CameraDevice
@@ -2593,7 +2595,7 @@ public func on(event: CameraEvents, camera: CameraDevice, callback: Callback0Arg
 
 import kit.CameraKit.*
 import ohos.base.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext
@@ -2603,7 +2605,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -3378,7 +3380,7 @@ import kit.AbilityKit.UIAbilityContext
 
 let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-Hilog.info(0, "AppLogCj", cameraManager.isCameraMuted())
+Hilog.info(0, "AppLogCj", cameraManager.isCameraMuted().toString())
 ```
 
 ### func isTorchModeSupported(TorchMode)
@@ -3422,8 +3424,8 @@ import kit.AbilityKit.UIAbilityContext
 let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let torchMode = cameraManager.getTorchMode()
-Hilog.info(0, "AppLogCj", cameraManager.isTorchModeSupported(torchMode))
-```
+Hilog.info(0, "AppLogCj", cameraManager.isTorchModeSupported(torchMode).toString())
+
 
 ### func isTorchSupported()
 
@@ -3459,7 +3461,7 @@ import kit.AbilityKit.UIAbilityContext
 
 let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-Hilog.info(0, "AppLogCj", cameraManager.isTorchSupported())
+Hilog.info(0, "AppLogCj", cameraManager.isTorchSupported().toString())
 ```
 
 ### func off(CameraEvents, Callback1Argument\<CameraStatusInfo>)
@@ -3685,7 +3687,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<CameraStatusInfo
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -3746,7 +3748,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>)
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -3807,7 +3809,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo>
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -4870,7 +4872,7 @@ let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
 let ability = cameraManager.getSupportedOutputCapability(device, mode)
 let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
-Hilog.info(0, "AppLogCj", output.isMirrorSupported())
+Hilog.info(0, "AppLogCj", output.isMirrorSupported().toString())
 ```
 
 ### func isMovingPhotoSupported()
@@ -4919,7 +4921,7 @@ let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
 let ability = cameraManager.getSupportedOutputCapability(device, mode)
 let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
-Hilog.info(0, "AppLogCj", output.isMovingPhotoSupported())
+Hilog.info(0, "AppLogCj", output.isMovingPhotoSupported().toString())
 ```
 
 ### func off(CameraEvents, Callback1Argument\<CaptureStartInfo>)
@@ -5361,7 +5363,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<CaptureStartInfo
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -5372,7 +5374,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -5426,7 +5428,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<FrameShutterInfo
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -5437,7 +5439,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -5491,7 +5493,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<CaptureEndInfo>)
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -5502,7 +5504,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -5556,7 +5558,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<FrameShutterEndI
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -5567,7 +5569,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -5621,7 +5623,7 @@ public func on(event: CameraEvents, callback: Callback0Argument): Unit
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -5632,7 +5634,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -5686,7 +5688,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<Float64>): Unit
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -5697,7 +5699,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -5751,7 +5753,7 @@ public func on(event: CameraEvents, callback: Callback0Argument): Unit
 // index.cj
 
 import kit.CameraKit.*
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -5762,7 +5764,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -5938,7 +5940,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
-Hilog.info(0, "AppLogCj", session.canPreconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9))
+Hilog.info(0, "AppLogCj", session.canPreconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9).toString())
 ```
 
 ### func off(CameraEvents, Callback0Argument)
@@ -6848,7 +6850,7 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -6859,7 +6861,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -6919,7 +6921,7 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -6930,7 +6932,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -7833,7 +7835,7 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -7844,7 +7846,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
@@ -7904,7 +7906,7 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import kit.PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.*
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -7915,7 +7917,7 @@ import kit.AbilityKit.UIAbilityContext
 class TestCallbackError <: Callback0Argument {
     public init() {}
     public open func invoke(res: ?BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}")
     }
 }
 
