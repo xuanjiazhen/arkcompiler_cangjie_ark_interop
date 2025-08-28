@@ -717,13 +717,13 @@ class EntryView {
                     Column() {
                         Button("切换成折叠模式")
                             .margin(5.vp)
-                            .onClick({=> this.isNeedAutoCollapse = true})
+                            .onClick{=> this.isNeedAutoCollapse = true}
                         Button("切换索引条高度到30%")
                             .margin(5.vp)
-                            .onClick({=> this.indexerHeight = 30.percent})
+                            .onClick{=> this.indexerHeight = 30.percent}
                         Button("切换索引条高度到70%")
                             .margin(5.vp)
-                            .onClick({=> this.indexerHeight = 70.percent})
+                            .onClick{=> this.indexerHeight = 70.percent}
                     }
                         .height(20.percent)
                 }
@@ -824,11 +824,11 @@ class EntryView {
                         Button("COMPONENT_REGULAR")
                             .margin(5.vp)
                             .width(200)
-                            .onClick({=>  this.customBlurStyle = BlurStyle.COMPONENT_REGULAR;})
+                            .onClick{=>  this.customBlurStyle = BlurStyle.COMPONENT_REGULAR;}
                          Button("BACKGROUND_THIN")
                             .margin(5.vp)
                             .width(200)
-                            .onClick({=>  this.customBlurStyle = BlurStyle.BACKGROUND_THIN;})
+                            .onClick{=>  this.customBlurStyle = BlurStyle.BACKGROUND_THIN;}
                     }
                         .height(20.percent)
                     Column() {

@@ -369,7 +369,7 @@ class EntryView {
                 .width(200)
 
             Text("Eclipse Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 10.0, `type`: ProgressType.Eclipse).width(100)
                 Progress(value: 20.0, total: 150.0, `type`: ProgressType.Eclipse)
                     .width(100)
@@ -378,7 +378,7 @@ class EntryView {
             }
 
             Text("ScaleRing Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 10.0, `type`: ProgressType.ScaleRing).width(100)
                 Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
                     .color(Color.Gray)
@@ -387,7 +387,7 @@ class EntryView {
                     .style(scaleStyle0)
             }
 
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
                     .color(Color.Gray)
                     .value(50.0)
@@ -401,7 +401,7 @@ class EntryView {
             }
 
             Text("Ring Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 10.0, `type`: ProgressType.Ring).width(100)
                 Progress(value: 20.0, total: 150.0, `type`: ProgressType.Ring)
                     .color(Color.Gray)
@@ -411,7 +411,7 @@ class EntryView {
             }
 
             Text("Capsule Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 10.0, `type`: ProgressType.Capsule).width(100).height(50)
                 Progress(value: 20.0, total: 150.0, `type`: ProgressType.Capsule)
                     .color(Color.Gray)
@@ -448,14 +448,14 @@ class EntryView {
     func build() {
         Column(15) {
             Text("Gradient Color").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 70.0, `type`: ProgressType.Ring)
                     .width(100)
                     .style(ringStyle0)
                     .color([colorStop0, colorStop1])
             }
             Text("Shadow").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 70.0, `type`: ProgressType.Ring).width(120).color(Color.Blue).style(ringStyle1)
             }
         }
@@ -488,11 +488,11 @@ class EntryView {
     func build() {
         Column(15) {
             Text("Loading Effect").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 0.0, `type`: ProgressType.Ring).width(100).style(ringStyle0).color(Color.Blue)
             }
             Text("Shadow").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
+            Row(space: 40) {
                 Progress(value: 30.0, `type`: ProgressType.Ring).width(100).color(0X02fd03).style(ringStyle1)
             }
         }
@@ -519,7 +519,7 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     func build() {
         Column(15) {
-          Row(40) {
+          Row(space: 40) {
             Progress(value: 100.0, total: 100.0, `type`: ProgressType.Capsule).width(100).height(50)
               .style(
                 CapsuleStyleOptions(

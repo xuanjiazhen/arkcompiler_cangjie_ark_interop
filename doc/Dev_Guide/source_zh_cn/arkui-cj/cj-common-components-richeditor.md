@@ -334,9 +334,9 @@ class EntryView {
                 .width(200)
                 .height(300)
                 .fontSize(13)
-                .onClick({=>
+                .onClick{ evt =>
                     this.controller.addTextSpan(value:"新添加一段文字。")
-                })
+                }
             RichEditor(this.controller)
                 .width(200)
                 .height(200)
@@ -376,14 +376,14 @@ class EntryView {
                     .width(200)
                     .height(300)
                     .fontSize(13)
-                    .onClick({=>
+                    .onClick{ evt =>
                         this.controller.addImageSpan(value: @r(app.media.startIcon),
                         options: RichEditorImageSpanOptions(
                             imageStyle: RichEditorImageSpanStyle(
                                 size: (24.vp, 24.vp)
                             )
                         ))
-                    })
+                    }
                 RichEditor(this.controller)
                     .onReady({=>
                         this.controller.addTextSpan(value:"对此处文本进行复制粘贴操作可触发对应回调。")}).width(200).height(200)

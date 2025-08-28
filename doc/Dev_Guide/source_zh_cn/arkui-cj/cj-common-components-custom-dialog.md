@@ -58,7 +58,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
             Column {
                 Button("click me")
                     .onClick({evt =>
-                        dialogController.`open`()
+                        dialogController.openDialog()
                     })
             }
         }
@@ -80,14 +80,14 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
         var controller: Option<CustomDialogController> = Option.None
         func build() {
 
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
                 Text("我是内容").fontSize(20)
 
                 Button("cancel").onClick { evt =>
-                    controller?.close()
+                    controller?.closeDialog()
                 }
                 Button("confirm").onClick { evt =>
-                    controller?.close()
+                    controller?.closeDialog()
                 }
             }.height(500.px)
         }
@@ -109,14 +109,14 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
         var controller: Option<CustomDialogController> = Option.None
         func build() {
 
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
                 Text("我是内容").fontSize(20)
 
                 Button("cancel").onClick { evt =>
-                    controller?.close()
+                    controller?.closeDialog()
                 }
                 Button("confirm").onClick { evt =>
-                    controller?.close()
+                    controller?.closeDialog()
                 }
             }.height(500.px)
         }
@@ -129,7 +129,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
         func build() {
             Column {
                 Button("click me").onClick({evt =>
-                    dialogController.`open`()
+                    dialogController.openDialog()
                 })
             }
         }
@@ -153,7 +153,7 @@ import ohos.arkui.state_macro_manage.*
 class MyDialog {
     var controller: Option<CustomDialogController> = Option.None
     func build() {
-        Row(40) {
+        Row(space: 40) {
             Text("我是内容").fontSize(20).margin(top: 4, right: 4, bottom: 4, left: 4)
         }.height(500.px)
     }
@@ -172,15 +172,15 @@ class EntryView {
     width: 120,
     height: 120,
     borderWidth: 1,
-    borderStyle: EdgeStyle.SOILD, // 使用borderStyle属性，需要和borderWidth属性一起使用
+    borderStyle: EdgeStyles() // 使用borderStyle属性，需要和borderWidth属性一起使用
     borderColor: Color.Blue, // 使用borderColor属性，需要和borderWidth属性一起使用
     shadow: Option<ShadowOptions>.None,
     ))
     func build() {
         Column {
-            Button("click me").onClick({evt =>
-                dialogController.`open`()
-            })
+            Button("click me").onClick{evt =>
+                dialogController.openDialog()
+            }
         }
     }
 }
@@ -216,15 +216,15 @@ class CustomDialogExampleTwo {
                 .fontSize(30)
                 .height(100)
             Button("Create Text")
-                .onClick({=>
+                .onClick{ evt =>
                     this.showIf = true
-                })
+                }
             Button("Close Second Dialog Box")
-                .onClick({=>
+                .onClick{ evt =>
                     if (let Some(v) <- this.controllerTwo) {
-                        v.close()
+                        v.closeDialog()
                     }
-                }).margin(20)
+                }.margin(20)
         }
     }
 }
@@ -234,12 +234,12 @@ class MyDialog {
     var openSecondBox: ()->Unit
     var controller: Option<CustomDialogController> = Option.None
     func build() {
-        Row(600) {
+        Row(space: 600) {
             Button ("Open Second Box")
-                .onClick({=>
-                    this.controller?.close()
+                .onClick{ evt =>
+                    this.controller?.closeDialog()
                     this.openSecondBox()
-                })
+                }
                 .margin(20)
         }.borderRadius(10)
     }
@@ -251,7 +251,7 @@ class EntryView {
     @State var inputValue: String = "Click Me"
     var dialogController: CustomDialogController = CustomDialogController(
         CustomDialogControllerOptions(
-            builder: MyDialog(openSecondBox:{=>this.dialogControllerTwo.open()}),
+            builder: MyDialog(openSecondBox:{=>this.dialogControllerTwo.openDialog()}),
             autoCancel: true,
             alignment: DialogAlignment.Bottom,
             offset: Offset(0, -20),
@@ -271,9 +271,9 @@ class EntryView {
     func build() {
         Column() {
             Button(this.inputValue)
-                .onClick({=>
-                    this.dialogController.`open`()
-                }).backgroundColor(0x317aff)
+                .onClick{ evt =>
+                    this.dialogController.openDialog()
+                }.backgroundColor(0x317aff)
         }.width(100.percent).margin(top:20)
     }
 }

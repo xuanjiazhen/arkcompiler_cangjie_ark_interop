@@ -1453,7 +1453,7 @@ class EntryView {
                     )
                 )
             Button("CustomPopupOptions")
-                .onClick({=> customPopup = !customPopup})
+                .onClick{=> customPopup = !customPopup}
                 .bindPopup(
                     show: customPopup,
                     popup: CustomPopupOptions(

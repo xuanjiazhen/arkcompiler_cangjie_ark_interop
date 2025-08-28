@@ -317,9 +317,9 @@ class EntryView {
               SymbolGlyph(@r(sys.symbol.ohos_wifi))
                   .fontSize(96)
                   .symbolEffect(HierarchicalSymbolEffect(fillStyle:EffectFillStyle.ITERATIVE), isActive:this.isActive)
-              Button((func1(this.isActive))).onClick({=>
+              Button((func1(this.isActive))).onClick{ evt =>
               this.isActive = !this.isActive;
-              })
+              }
           }
       }
       func func1(value: Bool): String {
@@ -356,9 +356,9 @@ class EntryView {
                   .fontSize(96)
                   .fontColor([Color.Gray])
                   .symbolEffect(BounceSymbolEffect(scope:EffectScope.WHOLE,direction:EffectDirection.UP), triggerValue: this.triggerValueReplace)
-              Button("trigger").onClick({=>
+              Button("trigger").onClick{ evt =>
                   this.triggerValueReplace = this.triggerValueReplace + 1;
-              })
+              }
           }
       }
   }

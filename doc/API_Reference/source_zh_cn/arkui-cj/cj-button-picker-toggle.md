@@ -245,7 +245,7 @@ class EntryView {
             .fontSize(12)
             .fontColor(0xcccccc)
             .width(90.percent)
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
                 Toggle(ToggleType.SwitchType, isOn: false)
                 .selectedColor(0xed6f21)
                 .switchPointColor(0xe5ffffff)
@@ -265,7 +265,7 @@ class EntryView {
             .fontSize(12)
             .fontColor(0xcccccc)
             .width(90.percent)
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
                 Toggle(ToggleType.CheckboxType, isOn: false)
                 .size(width: 28, height: 28)
                 .selectedColor(0xed6f21)
@@ -285,7 +285,7 @@ class EntryView {
             .fontSize(12)
             .fontColor(0xcccccc)
             .width(90.percent)
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
                 Toggle(ToggleType.ButtonType, false) {
                     Text("status")
                     .padding(left:12, right: 12)
