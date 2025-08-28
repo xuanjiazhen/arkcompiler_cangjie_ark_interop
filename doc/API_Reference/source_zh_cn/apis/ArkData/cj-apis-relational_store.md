@@ -480,7 +480,7 @@ public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
     cryptoPageSize!: UInt32 = 1024)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** CryptoParam类的构造函数。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3693,7 +3693,7 @@ public init(securityLevel: SecurityLevel, name!: String = "",
     enableSemanticIndex!: Bool = false)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** StoreConfig类的构造函数。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

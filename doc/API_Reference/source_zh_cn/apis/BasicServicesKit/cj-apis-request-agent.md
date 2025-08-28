@@ -2027,7 +2027,7 @@ public enum EventCallbackType <: Equatable<EventCallbackType> & Hashable & ToStr
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 订阅事件类型。
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -2045,7 +2045,7 @@ public enum EventCallbackType <: Equatable<EventCallbackType> & Hashable & ToStr
 Completed
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 表示任务完成的事件类型。
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -2057,7 +2057,7 @@ Completed
 Failed
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 表示任务失败的事件类型。
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -2069,7 +2069,7 @@ Failed
 Pause
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 表示任务暂停的事件类型。
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -2081,7 +2081,7 @@ Pause
 Progress
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 表示任务进度的事件类型。
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -2093,7 +2093,7 @@ Progress
 Remove
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 表示任务移除的事件类型。
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -2105,7 +2105,7 @@ Remove
 Response
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 表示任务接收到响应的事件类型。
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -2117,7 +2117,7 @@ Response
 Resume
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 表示任务恢复的事件类型。
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -2129,19 +2129,19 @@ Resume
 public operator func !=(other: EventCallbackType): Bool
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 判断两个枚举值是否不相等。
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[EventCallbackType](#enum-eventcallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|other|[EventCallbackType](#enum-eventcallbacktype)|是|-|回调事件|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|<font color="red" face="bold">please add description</font>|
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(EventCallbackType)
 
@@ -2149,19 +2149,19 @@ public operator func !=(other: EventCallbackType): Bool
 public operator func ==(other: EventCallbackType): Bool
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 判断两个枚举值是否相等。
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[EventCallbackType](#enum-eventcallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|other|[EventCallbackType](#enum-eventcallbacktype)|是|-|回调事件|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|<font color="red" face="bold">please add description</font>|
+|Bool|两个枚举值相等返回true，否则返回false。|
 
 ### func hashCode()
 
@@ -2169,13 +2169,13 @@ public operator func ==(other: EventCallbackType): Bool
 public func hashCode(): Int64
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 获取回调事件的哈希值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Int64|<font color="red" face="bold">please add description</font>|
+|Int64|回调事件的哈希值表示。|
 
 ### func toString()
 
@@ -2392,19 +2392,18 @@ Foreground
 public operator func !=(other: Mode): Bool
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
-
+**功能：** 判断两个枚举值是否不相等。
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[Mode](#enum-mode)|是|-|<font color="red" face="bold">please add description</font>|
+|other|[Mode](#enum-mode)|是|-|模式状态|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|<font color="red" face="bold">please add description</font>|
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(Mode)
 
@@ -2412,19 +2411,19 @@ public operator func !=(other: Mode): Bool
 public operator func ==(other: Mode): Bool
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 判断两个枚举值是否相等。
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[Mode](#enum-mode)|是|-|<font color="red" face="bold">please add description</font>|
+|other|[Mode](#enum-mode)|是|-|模式状态|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|<font color="red" face="bold">please add description</font>|
+|Bool|两个枚举值相等返回true，否则返回false。|
 
 ### func toString()
 
@@ -2504,19 +2503,19 @@ Wifi
 public operator func !=(other: Network): Bool
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 判断两个枚举值是否不相等。
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[Network](#enum-network)|是|-|<font color="red" face="bold">please add description</font>|
+|other|[Network](#enum-network)|是|-|网络状态|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|<font color="red" face="bold">please add description</font>|
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(Network)
 
@@ -2524,19 +2523,19 @@ public operator func !=(other: Network): Bool
 public operator func ==(other: Network): Bool
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 判断两个枚举值是否相等。
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[Network](#enum-network)|是|-|<font color="red" face="bold">please add description</font>|
+|other|[Network](#enum-network)|是|-|网络状态|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|<font color="red" face="bold">please add description</font>|
+|Bool|两个枚举值相等返回true，否则返回false。|
 
 ### func toString()
 

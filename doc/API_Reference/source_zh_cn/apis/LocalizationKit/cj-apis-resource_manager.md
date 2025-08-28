@@ -1878,7 +1878,7 @@ public enum ArgsValueType {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 格式化字符串资源参数枚举类型。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1890,7 +1890,7 @@ public enum ArgsValueType {
 Float32Value(Float32)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Float32类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1902,7 +1902,7 @@ Float32Value(Float32)
 Int32Value(Int32)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Int32类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1914,7 +1914,7 @@ Int32Value(Int32)
 StringValue(String)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** String类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
