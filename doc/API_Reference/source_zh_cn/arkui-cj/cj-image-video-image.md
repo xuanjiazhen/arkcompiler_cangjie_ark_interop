@@ -914,7 +914,7 @@ class EntryView {
     @State var DrawingColorFilterSecond: ColorFilter = colorFilter
 
     func build() {
-        Column(5){
+        Column(space: 5){
             Image(@r(app.media.startIcon))
             .width(100)
             .height(100)

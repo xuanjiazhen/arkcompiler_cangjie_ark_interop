@@ -45,7 +45,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(20) {
+        Column(space: 20) {
             Text('space: 20').fontSize(15).fontColor(Color.Gray).width(90.percent)
             Row().width(90.percent).height(50).backgroundColor(0xF5DEB3)
             Row().width(90.percent).height(50).backgroundColor(0xD2B48C)

@@ -114,7 +114,7 @@ class EntryView {
 
     func build() {
         Scroll() {
-            Column(5) {
+            Column(space: 5) {
                 Text("normal").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)
                 QRCode(this.value).width(140).height(140)
 

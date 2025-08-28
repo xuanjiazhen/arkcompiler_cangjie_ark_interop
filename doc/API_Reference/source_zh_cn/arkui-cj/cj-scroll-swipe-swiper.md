@@ -1101,7 +1101,7 @@ class EntryView {
     }
 
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Swiper(this.swiperController) {
                 LazyForEach(
                     this.data,
@@ -1236,7 +1236,7 @@ class EntryView {
     }
 
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Swiper(this.swiperController) {
                 LazyForEach(
                     this.data,
@@ -1338,7 +1338,7 @@ class EntryView {
     }
 
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Swiper(this.swiperController) {
                 LazyForEach(
                     this.data,
@@ -1438,7 +1438,7 @@ class EntryView {
     }
 
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Swiper(this.swiperController) {
                 LazyForEach(
                     this.data,

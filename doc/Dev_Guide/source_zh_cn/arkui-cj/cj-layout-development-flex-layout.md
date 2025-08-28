@@ -1196,7 +1196,7 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     func build() {
         Column() {
-            Column(5) {
+            Column(space: 5) {
                 Flex(
                     FlexParams(direction: FlexDirection.Row, wrap: FlexWrap.NoWrap,
                         justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center)) {

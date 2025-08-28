@@ -202,7 +202,7 @@ class EntryView {
     @State var animationModeStr: Bool = false
     @State var targetIndex: Int64 = 0
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Swiper(this.swiperController) {
                 ForEach(
                     this.swiperBackgroundColors,
@@ -314,7 +314,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(5) {
+        Column(space: 5) {
               Swiper() {
                   Text('0')
                     .width(250)

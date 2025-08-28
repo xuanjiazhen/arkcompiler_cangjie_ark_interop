@@ -139,7 +139,7 @@ class EntryView {
     @State var twoButtonColor: Color = Color.Gray
     @State var threeButtonColor: Color = Color.Gray
     func build() {
-        Column(20) {
+        Column(space: 20) {
         // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
         Button("First Button")
             .backgroundColor(oneButtonColor)
@@ -247,12 +247,12 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State var textFocusable: Bool = true
     @State var textEnabled: Bool = true
-    @State var color1: Color = Color.YELLOW
-    @State var color2: Color = Color.YELLOW
-    @State var color3: Color = Color.YELLOW
+    @State var color1: Color = Color(0xFFFF00)
+    @State var color2: Color = Color(0xFFFF00)
+    @State var color3: Color = Color(0xFFFF00)
 
     func build() {
-        Column(5) {
+        Column(space: 5) {
             // 第一个Text组件未设置focusable属性，默认不可获焦
             Text("Default Text")
                 .borderColor(color1)
@@ -263,7 +263,7 @@ class EntryView {
                     color1 = Color.Blue
                 })
                 .onBlur({ =>
-                    color1 = Color.YELLOW
+                    color1 = Color(0xFFFF00)
                 })
 
             Divider()
@@ -280,7 +280,7 @@ class EntryView {
                     color2 = Color.Blue
                 })
                 .onBlur({ =>
-                    color2 = Color.YELLOW
+                    color2 = Color(0xFFFF00)
                 })
 
             // 第三个Text设置了focusable为true，enabled初始为true
@@ -296,7 +296,7 @@ class EntryView {
                     color3 = Color.Blue
                 })
                 .onBlur({ =>
-                    color3 = Color.YELLOW
+                    color3 = Color(0xFFFF00)
                 })
 
             Divider()
@@ -318,11 +318,11 @@ class EntryView {
         .justifyContent(FlexAlign.Center)
         .onKeyEvent({ e =>
             // 绑定onKeyEvent，在该Column组件获焦时，按下'F'键，可将第二个Text的focusable置反
-            if (e.keyCode == 2022 && e.keyType.getValue()== KeyType.Down.getValue()) {
+            if (e.keyCode == 2022 && e.keyType == KeyType.Down) {
                 textFocusable = !textFocusable
             }
             // 绑定onKeyEvent，在该Column组件获焦时，按下'G'键，可将第三个Text的enabled置反
-            if (e.keyCode == 2023 && e.keyType.getValue()== KeyType.Down.getValue()) {
+            if (e.keyCode == 2023 && e.keyType == KeyType.Down) {
                 textEnabled = !textEnabled
             }
         })
@@ -366,7 +366,7 @@ class EntryView {
     @State var threeButtonColor: Color = Color.Gray
 
     func build() {
-        Column(20) {
+        Column(space: 20) {
             // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
             Button("First Button")
                 .width(260)
@@ -500,7 +500,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(30) {
+        Column(space: 30) {
             Button("small black focus box")
                 .focusBox(FocusBoxStyle(
                     margin: 0.px,
@@ -551,8 +551,8 @@ class EntryView {
     @State var btColor2: UInt32 = 0x2787d9
 
     func build() {
-        Column(20) {
-            Column(5) {
+        Column(space: 20) {
+            Column(space: 5) {
                 Button("Button")
                     .width(200)
                     .height(70)
@@ -636,8 +636,8 @@ class EntryView {
     func build() {
         Scroll {
             Row(20) { // 组件间距设为20
-                Column(20) {  // 标记为Column1
-                    Column(5) {
+                Column(space: 20) {  // 标记为Column1
+                    Column(space: 5) {
                         Button("Group1")
                             .width(165)
                             .height(40)
@@ -667,7 +667,7 @@ class EntryView {
                     .borderColor(Color.Red)
                     .borderStyle(BorderStyle.Dashed)
 
-                    Column(5) {
+                    Column(space: 5) {
                         Button("Group2")
                             .width(165)
                             .height(40)
@@ -700,7 +700,7 @@ class EntryView {
                 }
                 .focusScopeId('ColumnScope1')
 
-                Column(5) {  // 标记为Column2
+                Column(space: 5) {  // 标记为Column2
                     TextInput(placeholder: "input", text: inputValue)
                         .onChange({ value: String =>
                             inputValue = value

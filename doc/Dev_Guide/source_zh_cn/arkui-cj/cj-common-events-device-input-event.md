@@ -123,7 +123,7 @@ class EntryView {
     @State var color: Color = Color.Gray
 
     func build() {
-        Column(20) {
+        Column(space: 20) {
             Button(this.hoverText)
                 .width(200)
                 .height(100)

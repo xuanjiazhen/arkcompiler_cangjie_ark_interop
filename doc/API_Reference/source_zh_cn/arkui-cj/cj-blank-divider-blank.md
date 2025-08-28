@@ -111,7 +111,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(20) {
+        Column(space: 20) {
             Row() {
                 Text("Bluetooth").fontSize(18)
                 Blank().color(0xFFFF00)

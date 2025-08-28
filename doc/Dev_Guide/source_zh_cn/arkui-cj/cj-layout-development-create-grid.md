@@ -198,7 +198,7 @@ import ohos.resource_manager.*
 class EntryView {
     @State var services: Array<String> = ["直播", "进口"]
     func build() {
-            Column(5) {
+            Column(space: 5) {
                 Grid() {
                     ForEach(this.services, itemGeneratorFunc: {service: String, _: Int64 =>
                         GridItem() {

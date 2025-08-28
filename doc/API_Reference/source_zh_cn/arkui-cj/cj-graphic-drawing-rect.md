@@ -159,7 +159,7 @@ class EntryView {
         Column(10) {
             Text("normal").fontSize(11).fontColor(0xCCCCCC).width(90.percent)
             // 绘制90% * 50的矩形
-            Column(5) {
+            Column(space: 5) {
                 Text("normal").fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 // 绘制90% * 50矩形
                 Rect().width(90.percent).height(50).fill(Color.Green)

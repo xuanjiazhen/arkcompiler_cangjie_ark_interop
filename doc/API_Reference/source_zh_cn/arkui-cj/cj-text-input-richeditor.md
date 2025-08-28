@@ -1646,7 +1646,7 @@ class EntryView {
     }
 
     func build() {
-        Column(30) {
+        Column(space: 30) {
             Row {
                 Button("getCaretOffset")
                 .onClick {

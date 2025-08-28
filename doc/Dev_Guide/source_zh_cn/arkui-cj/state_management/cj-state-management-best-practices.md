@@ -34,7 +34,7 @@ class EntryView{
     }
 
     func build(){
-        Column(20){
+        Column(space: 20){
             ForEach(this.updateUIArr(this.realStateArr), {item: Int64, _: Int64 => Text("${item}")})
             Text("add item")
             .onClick({event =>
@@ -87,7 +87,7 @@ class EntryView{
     @State var realState: Color = Color.YELLOW
 
     func build(){
-        Column(20){
+        Column(space: 20){
             ForEach(this.realStateArr, {item: Int64, _: Int64 => Text("${item}")})
 
             Text("add item")

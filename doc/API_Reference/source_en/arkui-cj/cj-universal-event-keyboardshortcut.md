@@ -143,7 +143,7 @@ class EntryView {
 
   func build() {
     Row() {
-      Column(5) {
+      Column(space: 5) {
         Text('Ctrl+A is ' + this.message)
         Button("Test short cut").onClick({event =>
           this.message = "I clicked Button"

@@ -201,7 +201,7 @@ class EntryView {
         }
     }
     func build() {
-        Column(30) {
+        Column(space: 30) {
             Text("There are one Text elements here")
             .fontSize(12).fontColor(0xCCCCCC).width(90.percent)
             .textAlign(TextAlign.Start).margin(5)
