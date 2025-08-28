@@ -14,7 +14,9 @@
 
     ```cangjie
     import kit.CameraKit.*
-    import kit.BasicServicesKit.*
+    import ohos.hilog.Hilog
+    import ohos.callback_invoke.Callback0Argument
+    import ohos.business_exception.BusinessException
     ```
 
 2. 创建Surface。
@@ -44,14 +46,14 @@
     func startPreviewOutput(cameraManager: CameraManager, previewOutput: PreviewOutput): Unit {
         let cameraArray: Array<CameraDevice> = cameraManager.getSupportedCameras()
         if (cameraArray.size == 0) {
-            AppLog.error('no camera.')
+            Hilog.error(0,"",'no camera.')
             return
         }
         // 获取支持的模式类型。
         let sceneModes: Array<SceneMode> = cameraManager.getSupportedSceneModes(cameraArray[0])
         let isSupportPhotoMode: Bool = sceneModes.indexOf(SceneMode.NormalPhoto).isSome()
         if (!isSupportPhotoMode) {
-            AppLog.error('photo mode not support')
+            Hilog.error(0,"",'photo mode not support')
             return
         }
         let cameraInput: CameraInput = cameraManager.createCameraInput(cameraArray[0])
@@ -76,8 +78,8 @@
 
     ```cangjie
     class FrameStartCallBack <: Callback0Argument {
-        public open func invoke(): Unit {
-            AppLog.info("Preview frame started")
+        public open func invoke(error:?BusinessException): Unit {
+            Hilog.info(0,"","Preview frame started")
         }
     }
 
@@ -92,8 +94,8 @@
 
     ```cangjie
     class FrameEndCallBack <: Callback0Argument {
-        public open func invoke(): Unit {
-            AppLog.info("Preview frame ended")
+        public open func invoke(error:?BusinessException): Unit {
+            Hilog.info(0,"","Preview frame ended")
         }
     }
 
@@ -107,9 +109,11 @@
     <!-- compile -->
 
     ```cangjie
-    class ErrorCallBack <: Callback1Argument<BusinessException> {
-        public open func invoke(error: BusinessException): Unit {
-            AppLog.error("Preview output error code: ${error.code}")
+    class ErrorCallBack <: Callback0Argument {
+        public open func invoke(error:?BusinessException): Unit {
+            if (let Some(e) <- error) {
+                Hilog.error(0,"","Preview output error code: ${e.code}","")
+            }
         }
     }
 
