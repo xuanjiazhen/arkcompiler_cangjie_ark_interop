@@ -182,7 +182,7 @@ public struct JSNumber {
     /**
      * Convert JSNumber to Cangjie Float64.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -395,7 +395,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSNull. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSNull.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSNull.
      */
     @!APILevel[
         21,
@@ -411,7 +411,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSUndefined. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSUndefined.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSUndefined.
      */
     @!APILevel[
         21,
@@ -427,7 +427,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSBoolean. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSBoolean.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSBoolean.
      */
     @!APILevel[
         21,
@@ -443,7 +443,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSNumber. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSNumber.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSNumber.
      */
     @!APILevel[
         21,
@@ -459,7 +459,7 @@ public struct JSValue {
     /**
      * Convert JSValue to Bool. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Bool.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Bool.
      */
     @!APILevel[
         21,
@@ -475,7 +475,7 @@ public struct JSValue {
     /**
      * Convert JSValue to Float64. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -491,7 +491,7 @@ public struct JSValue {
     /**
      * Convert JSValue to String. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to String.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to String.
      */
     @!APILevel[
         21,
@@ -518,7 +518,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSString. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSString.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSString.
      */
     @!APILevel[
         21,
@@ -534,7 +534,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSObject. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSObject.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSObject.
      */
     @!APILevel[
         21,
@@ -550,7 +550,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSFunction. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSFunction.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSFunction.
      */
     @!APILevel[
         21,
@@ -566,7 +566,7 @@ public struct JSValue {
     /**
      * Conert JSValue to JSArray. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSArray.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArray.
      */
     @!APILevel[
         21,
@@ -582,7 +582,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSClass. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSClass.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSClass.
      */
     @!APILevel[
         21,
@@ -598,7 +598,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSExternal. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSExternal.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSExternal.
      */
     @!APILevel[
         21,
@@ -614,7 +614,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSPromise. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSPromise.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSPromise.
      */
     @!APILevel[
         21,
@@ -630,7 +630,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSSymbol. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSSymbol.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSSymbol.
      */
     @!APILevel[
         21,
@@ -646,7 +646,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSArrayBuffer. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSArrayBuffer.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArrayBuffer.
      */
     @!APILevel[
         21,
@@ -662,7 +662,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSError. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSError.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSError.
      */
     func asError(): JSError {
         if (!isError()) {
@@ -685,7 +685,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSBigInt. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSBigInt.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSBigInt.
      */
     @!APILevel[
         21,
@@ -701,7 +701,7 @@ public struct JSValue {
     /**
      * Convert JSValue to BigInt. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to BigInt.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to BigInt.
      */
     @!APILevel[
         21,
@@ -718,8 +718,8 @@ public struct JSValue {
     /**
      * Get the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is out of range.
-     * @throws { JSTypeMisMatch } - JSValue is not an array.
+     * @throws { BusinessException } 34300001 - The index is out of range.
+     * @throws { BusinessException } 34300005 - JSValue is not an array.
      */
     @!APILevel[
         21,
@@ -740,8 +740,8 @@ public struct JSValue {
     /**
      * Set the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
-     * @throws { JSTypeMisMatch } - JSValue is not an array.
+     * @throws { BusinessException } 34300001 - The index is less than 0.
+     * @throws { BusinessException } 34300005 - JSValue is not an array.
      */
     @!APILevel[
         21,
@@ -761,7 +761,7 @@ public struct JSValue {
     /**
      * Get the property corresponding to the key.
      *
-     * @throws { JSTypeMisMatch } - JSValue is not JSObject.
+     * @throws { BusinessException } 34300005 - JSValue is not JSObject.
      */
     @!APILevel[
         21,
@@ -779,7 +779,7 @@ public struct JSValue {
     /**
      * Set the property corresponding to the key.
      *
-     * @throws { JSTypeMisMatch } - JSValue is not JSObject.
+     * @throws { BusinessException } 34300005 - JSValue is not JSObject.
      */
     @!APILevel[
         21,
@@ -807,7 +807,7 @@ public struct JSValue {
     /**
      * Bind JSValue to an ArkTs external object.
      *
-     * @throws { JSTypeMisMatch } - JSValue is not JSObject or external is not JSExternal.
+     * @throws { BusinessException } 34300005 - JSValue is not JSObject or external is not JSExternal.
      */
     @!APILevel[
         21,
