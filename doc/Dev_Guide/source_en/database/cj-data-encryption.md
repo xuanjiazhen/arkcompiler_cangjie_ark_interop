@@ -1,29 +1,27 @@
-# Database Encryption
+# 数据库加密
 
-## Scenario Description
+## 场景介绍
 
-To enhance database security, the database provides a secure and applicable encryption capability that effectively protects stored content. Through security methods like database encryption, the confidentiality and integrity requirements of database storage are achieved, enabling the database to store data in ciphertext and operate in an encrypted state, ensuring data security.
+为了增强数据库的安全性，数据库提供了一个安全适用的数据库加密能力，从而对数据库存储的内容实施有效保护。通过数据库加密等安全方法实现了数据库数据存储的保密性和完整性要求，使得数据库以密文方式存储并在密态方式下工作，确保了数据安全。
 
-An encrypted database can only be accessed through interfaces; the database files cannot be opened by other means. The encryption attribute of the database is determined during creation and cannot be modified.
+加密后的数据库只能通过接口进行访问，无法通过其它方式打开数据库文件。数据库的加密属性在创建数据库时确认，无法变更。
 
-Both key-value databases and relational databases support encryption operations.
+键值型数据库和关系型数据库均支持数据库加密操作。
 
-## Key-Value Database Encryption
+## 键值型数据库加密
 
-For key-value databases, encryption is configured via the `encrypt` parameter in `options`, which defaults to `false` (no encryption). Setting `encrypt` to `true` enables encryption.
+键值型数据库，通过options中encrypt参数来设置是否加密，默认为false，表示不加密。encrypt参数为true时表示加密。
 
-For specific interfaces and functionalities, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-distributed_kv_store.md).
+具体接口及功能，请参见[分布式键值数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-distributed_kv_store.md)。
 
-1. Obtain the context.
+1. 获取context。
 
     <!-- compile -->
 
     ```cangjie
     // main_ability.cj
-    internal import ohos.base.AppLog
-    internal import ohos.ability.AbilityStage
-    internal import ohos.ability.LaunchReason
-    import kit.AbilityKit.{UIAbility,UIAbilityContext,LaunchParam,Want}
+    import import kit.performanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -34,69 +32,67 @@ For specific interfaces and functionalities, refer to [Distributed Key-Value Dat
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
-            // Obtain the context
+            // 获取context
             globalAbilityContext = this.context
 
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
         // ...
     }
     ```
 
-2. Configure key-value database encryption.
+2. 键值型数据库加密设置。
 
     <!-- compile -->
 
     ```cangjie
-    // index.cj
-    import kit.ArkData.*
-    import kit.UIKit.BusinessException
+    // xxx.cj
+    import kit.ArkData.{DistributedKVStore, KVManagerConfig}
+    import ohos.business_exception.BusinessException
     import kit.AbilityKit.getStageContext
+    import ohos.data.distributed_kv_store.Options as KVOptions
+    import ohos.data.distributed_kv_store.SecurityLevel as KVSecurityLevel
 
     try {
-        // globalAbilityContext is obtained during Ability onCreate
         let context = globalAbilityContext.getOrThrow()
-        let kvManagerConfig = KVManagerConfig(getStageContext(context), "com.example.datamanagertest")
-        // Create a KVManager instance
+        let kvManagerConfig = KVManagerConfig(globalAbilityContext.getOrThrow(), "com.example.datamanagertest")
+        // 创建KVManager实例
         let kvManager = DistributedKVStore.createKVManager(kvManagerConfig)
-        AppLog.info("Succeeded in creating KVManager.")
+        Hilog.info(0, "cangjie", "Succeeded in creating KVManager.")
 
         let options = KVOptions(
-            KVSecurityLevel.S3,
+            KVSecurityLevel.S3, // 设置安全等级为S3
             createIfMissing: true,
-            encrypt: true, // Enable database encryption
+            encrypt: true,
             backup: false,
             autoSync: false,
         )
-        let kvStore = kvManager.getSingleKVStore("storeId", options)
-        AppLog.info("getSingleKVStore success")
+        let kvStore = kvManager.getKVStore("storeId", options)
+        Hilog.info(0, "cangjie", "getSingleKVStore success")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code}, Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
-    // Perform other database-related operations
+    // 进行其它数据库相关的操作
     // ...
     ```
 
-## Relational Database Encryption
+## 关系型数据库加密
 
-For relational databases, encryption is configured via the `encrypt` property in `StoreConfig`, which defaults to `false` (no encryption). Setting `encrypt` to `true` enables encryption.
+关系型数据库，通过StoreConfig中encrypt属性来设置是否加密，默认为false，表示不加密。encrypt参数为true时表示加密。
 
-For specific interfaces and functionalities, refer to [Relational Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md).
+具体接口及功能，请参见[关系型数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md)。
 
-1. Obtain the context.
+1. 获取context。
 
     <!-- compile -->
 
     ```cangjie
     // main_ability.cj
-    internal import ohos.base.AppLog
-    internal import ohos.ability.AbilityStage
-    internal import ohos.ability.LaunchReason
-    import kit.AbilityKit.UIAbilityContext
+    import import kit.performanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -107,42 +103,39 @@ For specific interfaces and functionalities, refer to [Relational Database](../.
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
-            // Obtain the context
+            // 获取context
             globalAbilityContext = this.context
 
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
         // ...
     }
     ```
 
-2. Configure relational database encryption.
+2. 关系型数据库加密设置。
 
     <!-- compile -->
 
     ```cangjie
-    // index.cj
     import kit.ArkData.{ getRdbStore, StoreConfig, RelationalStoreSecurityLevel }
-    import kit.UIKit.BusinessException
-    import kit.AbilityKit.getStageContext
+    import ohos.business_exception.BusinessException
 
     try {
-        // globalAbilityContext is obtained during Ability onCreate
+        // globalAbilityContext 在Ability onCreate时获取
         let context = globalAbilityContext.getOrThrow()
         let storeConfig = StoreConfig(
-            "RdbTest.db", // Database filename
-            RelationalStoreSecurityLevel.S3, // Database security level
-            encrypt: true, // Enable database encryption
+            RelationalStoreSecurityLevel.S3, // 数据库安全级别
+            name: "RdbTest.db", // 数据库文件名
+            encrypt: true, // 设置数据库加密
         )
-        let rdbStore = getRdbStore(getStageContext(context), storeConfig)
-        AppLog.info("getRdbStore success")
+        let rdbStore = getRdbStore(context, storeConfig)
+        Hilog.info(0, "cangjie", "getRdbStore success")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code}, Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
-    // Perform other database-related operations
+    // 进行其它数据库相关的操作
     // ...
     ```
