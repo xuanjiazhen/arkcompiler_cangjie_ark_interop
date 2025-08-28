@@ -10,10 +10,9 @@ Web组件支持对前端页面进行深色模式配置。
 
     ```cangjie
     // index.cj
-    import kit.ArkWeb.WebviewController
+    import ohos.web.webview.WebviewController
     import kit.ArkUI.{Web, WebDarkMode}
     import ohos.arkui.state_macro_manage.rawfile
-    import kit.LocalizationKit.{__GenerateResource__}
 
     @Entry
     @Component
@@ -37,10 +36,9 @@ Web组件支持对前端页面进行深色模式配置。
 
     ```cangjie
     // index.cj
-    import kit.ArkWeb.WebviewController
+    import ohos.web.webview.WebviewController
     import kit.ArkUI.{Web, WebDarkMode}
     import ohos.arkui.state_macro_manage.rawfile
-    import kit.LocalizationKit.{__GenerateResource__}
 
     @Entry
     @Component

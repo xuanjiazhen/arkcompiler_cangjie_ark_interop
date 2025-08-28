@@ -21,7 +21,7 @@ Web组件提供了利用W3C CSS进行安全区域计算并避让适配的能力�
 ```cangjie
 // index.cj
 import ohos.arkui.state_macro_manage.*
-import kit.ArkWeb.WebviewController
+import ohos.web.webview.WebviewController
 import kit.ArkUI.{ Web, SafeAreaType, SafeAreaEdge }
 
 @Entry
@@ -34,7 +34,7 @@ class EntryView {
             Web(src: 'www.example.com', controller: this.webController)
                 .width(100.percent)
                 .height(100.percent)
-                .expandSafeArea(types: [SafeAreaType.SYSTEM], edges: [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+                .expandSafeArea(types: [SafeAreaType.System], edges: [SafeAreaEdge.Top, SafeAreaEdge.Bottom])
         }
     }
 }
