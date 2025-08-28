@@ -1144,7 +1144,7 @@ class EntryView {
                 )
                 .curve(Curve.Linear)
 
-            Row(12) {
+            Row(space: 12) {
                 Button("showNext").onClick({
                     _ => this
                         .swiperController
@@ -1158,7 +1158,7 @@ class EntryView {
                 })
             }.margin(5)
 
-            Row(5) {
+            Row(space: 5) {
                 Button("FAST 0").onClick({
                     _ => this
                         .swiperController
@@ -1266,7 +1266,7 @@ class EntryView {
                 .itemSpace(0)
                 .displayArrow(true)
 
-            Row(12) {
+            Row(space: 12) {
                 Button("showNext").onClick({
                     _ => this
                         .swiperController
@@ -1366,7 +1366,7 @@ class EntryView {
                 .loop(true)
                 .duration(1000)
 
-            Row(12) {
+            Row(space: 12) {
                 Button("showNext").onClick({
                     _ => this
                         .swiperController
@@ -1473,7 +1473,7 @@ class EntryView {
                         backgroundColor: Color.White, arrowSize: 18, arrowColor: Color.Blue))
                 .curve(Curve.Linear)
 
-            Row(12) {
+            Row(space: 12) {
                 Button("showNext").onClick({
                     _ => this
                         .swiperController

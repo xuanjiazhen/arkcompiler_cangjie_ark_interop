@@ -171,7 +171,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Row(10) {
+        Row(space: 10) {
             // 当LineCapStyle值为Butt时
             Line()
                 .width(100)

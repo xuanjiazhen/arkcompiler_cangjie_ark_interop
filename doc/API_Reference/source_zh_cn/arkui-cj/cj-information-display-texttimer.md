@@ -303,15 +303,15 @@ class EntryView {
                     Hilog.info(0, "AppLogCj", "time has been changed")
                 })
             Row() {
-                Button("start").onClick({=>
+                Button("start").onClick{=>
                   this.textTimerController.start()
-                })
-                Button("pause").onClick({=>
+                }
+                Button("pause").onClick{=>
                   this.textTimerController.pause()
-                })
-                Button("reset").onClick({=>
+                }
+                Button("reset").onClick{=>
                     this.textTimerController.reset()
-                })
+                }
             }
         }
     }
