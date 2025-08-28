@@ -104,10 +104,6 @@ public class DataChangeListener <: RemoteData {
 
 **起始版本：** 21
 
-**父类型：**
-
-- [RemoteData](<font color="red" face="bold">please add link</font>)
-
 ### DataChangeListener(Int64)
 
 ```cangjie
@@ -232,10 +228,6 @@ public class LazyForEach <: UINodeBase {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
 
 ### func create\<T>(Int64, CustomView, IDataSource\<T>, ItemGenFuncType\<T>, KeyGenFuncType\<T>)
 

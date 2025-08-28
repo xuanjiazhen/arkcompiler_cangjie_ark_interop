@@ -517,10 +517,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
 
 **起始版本：** 21
 
-**父类型：**
-
-- [RichEditorSpanResult](<font color="red" face="bold">please add link</font>)
-
 #### var imageStyle
 
 ```cangjie
@@ -957,10 +953,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- [RichEditorSpanResult](<font color="red" face="bold">please add link</font>)
 
 #### var offsetInSpan
 

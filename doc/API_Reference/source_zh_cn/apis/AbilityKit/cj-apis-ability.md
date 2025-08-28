@@ -203,10 +203,6 @@ public open class AbilityStage <: FFIData {}
 
 **起始版本：** 21
 
-**父类型：**
-
-- [FFIData](<font color="red" face="bold">please add link</font>)
-
 ### prop context
 
 ```cangjie

@@ -364,7 +364,7 @@ public static func configCookie(url: String, value: String, incognito!: Bool = f
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Webview错误码](<font color="red" face="bold">please add link</font>)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
