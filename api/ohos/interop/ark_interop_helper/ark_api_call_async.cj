@@ -152,7 +152,7 @@ protected func jsGlobalApiCall<T>(moduleName: String, modulePrefix: ?String, fun
             let jsModule = getJSModule(context, moduleName, modulePrefix)
             let jsRet = jsModule.callMethod(funcName, args(context))
             onResolve(context, jsRet)
-        } catch (e: JSCodeError) {
+        } catch (e: jsCodeError) {
             throw BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
         }
     }
@@ -165,7 +165,7 @@ protected func jsObjApiCall<T>(obj: JSObject, funcName: String, args: (JSContext
         try {
             let jsRet = obj.callMethod(funcName, args(context))
             onResolve(context, jsRet)
-        } catch (e: JSCodeError) {
+        } catch (e: jsCodeError) {
             throw BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
         }
     }
@@ -222,7 +222,7 @@ protected func jsGlobalApiCallPromise<T>(moduleName: String, modulePrefix: ?Stri
                 }
             )
             promise.then(onResolved, onRejected: onRejected)
-        } catch (e: JSCodeError) {
+        } catch (e: jsCodeError) {
             throw BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
         }
     }
@@ -284,7 +284,7 @@ protected func jsObjApiCallPromise<T>(obj: JSObject, funcName: String, callback:
                 }
             )
             promise.then(onResolved, onRejected: onRejected)
-        } catch (e: JSCodeError) {
+        } catch (e: jsCodeError) {
             throw BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
         }
     }
