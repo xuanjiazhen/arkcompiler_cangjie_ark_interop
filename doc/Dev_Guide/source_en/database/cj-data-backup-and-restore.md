@@ -1,273 +1,261 @@
-# Database Backup and Recovery
+# 数据库备份与恢复
 
-## Scenario Description  
+## 场景介绍
 
-When an application is performing a critical operation that must not be interrupted, such as writing a transaction involving multiple related tables, each table write is performed individually, but the transactional consistency between tables cannot be split.  
+当应用在处理一项重要的操作时不能被打断，例如：写入多个表关联的事务。此时，每个表的写入都是单独的，但是表与表之间的事务关联性不能被分割。
 
-If an issue arises during the operation, developers can use the recovery feature to restore the database to its previous state and retry the operation.  
+如果操作的过程中出现问题，开发者可以使用恢复功能，将数据库恢复到之前的状态，重新对数据库进行操作。
 
-In scenarios where the database is tampered with, deleted, or the device loses power, the database may become unusable due to data loss, corruption, or dirty data. The database's backup and recovery capabilities can restore it to a usable state.  
+在数据库被篡改、删除、或者设备断电场景下，数据库可能会因为数据丢失、数据损坏、脏数据等而不可用，可以通过数据库的备份恢复能力将数据库恢复至可用状态。
 
-Both key-value databases and relational databases support backup and recovery. Additionally, key-value databases support deleting backups to free up local storage space.  
+键值型数据库和关系型数据库均支持对数据库的备份和恢复。另外，键值型数据库还支持删除数据库备份，以释放本地存储空间。
 
-## Key-Value Database Backup, Recovery, and Deletion  
+## 键值型数据库备份、恢复与删除
 
-For key-value databases, backups are performed using the `backup` interface, recovery is performed using the `restore` interface, and backup deletion is performed using the `deletebackup` interface. For specific interfaces and functionalities, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-distributed_kv_store.md).  
+键值型数据库，通过backup接口实现数据库备份，通过restore接口实现数据库恢复，通过deletebackup接口删除数据库备份。具体接口及功能，请参见[分布式键值数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-distributed_kv_store.md)。
 
-1. **Create a database**.  
+1. 创建数据库。
 
-    a. Obtain the context.  
+    a. 获取context。
 
-    <!-- compile -->  
+    <!-- compile -->
 
-    ```cangjie  
-    // main_ability.cj  
-    import kit.AbilityKit.UIAbilityContext  
+    ```cangjie
+    // main_ability.cj
+    import import kit.performanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
-    var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None  
+    var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
-    class MainAbility <: UIAbility {  
-        public init() {  
-            super()  
-            registerSelf()  
-        }  
+    class MainAbility <: UIAbility {
+        public init() {
+            super()
+            registerSelf()
+        }
 
-        public override func onCreate(want: Want, launchParam: LaunchParam): Unit {  
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")  
-            // Obtain the context  
-            globalAbilityContext = this.context  
-            match (launchParam.launchReason) {  
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")  
-                case _ => ()  
-            }  
-        }  
-        // ...  
-    }  
-    ```  
+        public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+            // 获取context
+            globalAbilityContext = this.context
 
-    b. Create a `kvStore`.  
+            match (launchParam.launchReason) {
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
+                case _ => ()
+            }
+        } 
+        // ...
+    }
+    ```
 
-    <!-- compile -->  
+    b. 创建kvStore。
 
-    ```cangjie  
-    // index.cj  
-    import kit.ArkData.*  
-    import kit.UIKit.BusinessException  
-    import kit.AbilityKit.getStageContext  
+    <!-- compile -->
 
-    var kvManager: Option<KVManager> = Option<KVManager>.None  
-    var kvStore: Option<SingleKVStore> = Option<SingleKVStore>.None  
+    ```cangjie
+    // xxx.cj
+    import kit.ArkData.*
+    import ohos.business_exception.BusinessException
+    import ohos.data.distributed_kv_store.KVManager
+    import ohos.data.distributed_kv_store.SingleKVStore
+    import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
 
-    try {  
-        // 1. Create kvManager  
-        let kvManagerConfig = KVManagerConfig(getStageContext(globalAbilityContext.getOrThrow()), "com.example.datamanagertest")  
-        kvManager = DistributedKVStore.createKVManager(kvManagerConfig)  
-        // 2. Configure database parameters  
-        let options = KVOptions(  
-            KVSecurityLevel.S3,  
-            createIfMissing: true,  
-            encrypt: true,  
-            backup: false,  
-            autoSync: false,  
-        )  
-        // 3. Create kvStore  
-        kvStore = kvManager.getOrThrow().getSingleKVStore("storeId", options)  
-    } catch (e: BusinessException) {  
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-    }  
-   ```  
+    var kvManager: Option<KVManager> = Option<KVManager>.None
+    var kvStore: Option<SingleKVStore> = Option<SingleKVStore>.None
 
-2. **Insert data using the `put()` method**.  
+    try {
+        // 1. 创建kvManager
+        let kvManagerConfig = KVManagerConfig(globalAbilityContext.getOrThrow(), "com.example.datamanagertest")
+        kvManager = DistributedKVStore.createKVManager(kvManagerConfig)
+        // 2. 配置数据库参数
+        let options = KVOptions(
+            KVSecurityLevel.S3,
+            createIfMissing: true,
+            encrypt: true,
+            backup: false,
+            autoSync: false,
+        )
+        // 3. 创建kvStore
+        kvStore = kvManager.getOrThrow().getKVStore("storeId", options)
+    } catch (e: BusinessException) {
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+    }
+   ```
 
-    <!-- compile -->  
+2. 使用put()方法插入数据。
 
-    ```cangjie  
-    // index.cj  
-    const KEY_TEST_STRING_ELEMENT: String = "key_test_string"  
-    const VALUE_TEST_STRING_ELEMENT: String = "value_test_string"  
+    <!-- compile -->
 
-    try {  
-        kvStore.getOrThrow().put(KEY_TEST_STRING_ELEMENT, KVValueType.STRING(VALUE_TEST_STRING_ELEMENT))  
-    } catch (e: BusinessException) {  
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-    }  
-    ```  
+    ```cangjie
+    import ohos.data.distributed_kv_store.ValueType as KVValueType
 
-3. **Back up data using the `backup()` method**.  
+    const KEY_TEST_STRING_ELEMENT: String = "key_test_string"
+    const VALUE_TEST_STRING_ELEMENT: String = "value_test_string"
 
-    <!-- compile -->  
+    try {
+        kvStore.getOrThrow().put(KEY_TEST_STRING_ELEMENT, KVValueType.StringValue(VALUE_TEST_STRING_ELEMENT))
+    } catch (e: BusinessException) {
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+    }
+    ```
 
-    ```cangjie  
-    // index.cj  
-    try {  
-        kvStore.getOrThrow().backup("BK001")  
-    } catch (e: BusinessException) {  
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-    }  
-    ```  
+3. 使用backup()方法备份数据。
 
-4. **Delete data using the `delete()` method (simulating accidental deletion or tampering scenarios)**.  
+    <!-- compile -->
 
-    <!-- compile -->  
+    ```cangjie
+    try {
+        kvStore.getOrThrow().backup("BK001")
+    } catch (e: BusinessException) {
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+    }
+    ```
 
-    ```cangjie  
-    // index.cj  
-    try {  
-        kvStore.getOrThrow().delete(KEY_TEST_STRING_ELEMENT)  
-    } catch (e: BusinessException) {  
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-    }  
-    ```  
+4. 使用delete()方法删除数据（模拟意外删除、篡改场景）。
 
-5. **Restore data using the `restore()` method**.  
+    <!-- compile -->
 
-    <!-- compile -->  
+    ```cangjie
+    try {
+        kvStore.getOrThrow().delete(KEY_TEST_STRING_ELEMENT)
+    } catch (e: BusinessException) {
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+    }
+    ```
 
-    ```cangjie  
-    // index.cj  
-    try {  
-        kvStore.getOrThrow().restore("BK001")  
-    } catch (e: BusinessException) {  
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-    }  
-    ```  
+5. 使用restore()方法恢复数据。
 
-6. **Delete backups using the `deleteBackup()` method to free up storage space when local storage is limited or re-backup is needed**.  
+    <!-- compile -->
 
-    <!-- compile -->  
+    ```cangjie
+    try {
+        kvStore.getOrThrow().restore("BK001")
+    } catch (e: BusinessException) {
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+    }
+    ```
 
-    ```cangjie  
-    // index.cj  
-    import std.collection.ArrayList  
-    try {  
-        kvStore.getOrThrow().deleteBackup(ArrayList<String>(["BK001"]))  
-    } catch (e: BusinessException) {  
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-    }  
-    ```  
+## 关系型数据库备份
 
-## Relational Database Backup  
+数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常的情况，可以根据需要使用关系型数据库的备份能力，以便在数据库异常时，可靠高效地恢复数据保证业务数据正常使用。
 
-During database operations or storage processes, unexpected database exceptions may occur due to various reasons. The relational database's backup capability can be used to reliably and efficiently restore data to ensure normal business operations in case of database anomalies.  
+关系型数据库支持两种手动备份和自动备份（仅系统应用可用）两种方式。
 
-Relational databases support two backup methods: manual backup and automatic backup (available only to system applications).  
+### 手动备份
 
-### Manual Backup  
+手动备份：通过调用[backup](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md#func-backupstring)接口实现数据库手动备份。示例如下：
 
-Manual backup is performed by calling the [`backup`](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md#func-backupstring) interface. Example:  
+<!-- compile -->
 
-<!-- compile -->  
+```cangjie
+import kit.ArkData.*
+import ohos.business_exception.BusinessException
+import ohos.data.relational_store.RdbStore
+import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
 
-```cangjie  
-// index.cj  
-import kit.ArkData.*  
-import kit.UIKit.BusinessException  
-import kit.AbilityKit.getStageContext  
+var rdbStore_: Option<RdbStore> = Option<RdbStore>.None
+let storeConfig_ = StoreConfig(
+    RelationalStoreSecurityLevel.S3,// 数据库安全级别
+    name: "RdbTest.db", // 数据库文件名
+    encrypt: false, // 可选参数，指定数据库是否加密，默认不加密
+)
 
-var rdbStore_: Option<RdbStore> = Option<RdbStore>.None  
-let storeConfig_ = StoreConfig(  
-    "RdbTest.db", // Database filename  
-    RelationalStoreSecurityLevel.S3, // Database security level  
-    encrypt: false, // Optional parameter, specifies whether the database is encrypted (default: false)  
-)  
+try {
+    let store = getRdbStore(globalAbilityContext.getOrThrow(), storeConfig_)
+    store.executeSql("CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))")
+    /**
+     * "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。
+     * 也可指定绝对路径："/data/storage/el2/database/Backup.db"，文件路径需要存在，不会自动创建目录。
+     */
+    store.backup("Backup.db")
+    rdbStore_ = store
+} catch (e: BusinessException) {
+    Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+}
+```
 
-try {  
-    let store = getRdbStore(getStageContext(globalAbilityContext.getOrThrow()), storeConfig_)  
-    store.executeSql("CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))")  
-    /**  
-     * "Backup.db" is the backup database filename, which is backed up in the same directory as RdbStore by default.  
-     * An absolute path can also be specified: "/data/storage/el2/database/Backup.db". The file path must exist; directories are not created automatically.  
-     */  
-    store.backup("Backup.db")  
-    rdbStore_ = store  
-} catch (e: BusinessException) {  
-    AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-}  
-```  
+## 关系型数据库数据恢复
 
-## Relational Database Data Recovery  
+针对数据库出现异常的情况，在数据库重建成功后，需要用提前备份好的数据进行数据恢复。
 
-In case of database anomalies, after rebuilding the database, pre-backed-up data can be used for recovery.  
+### 恢复手动备份数据
 
-### Recovering Manually Backed-Up Data  
+关系型数据库通过调用backup接口可以实现[手动备份数据库](#手动备份)，通过restore接口可以实现手动恢复数据库。
 
-Relational databases support manual backup via the `backup` interface and manual recovery via the `restore` interface.  
+具体恢复过程和关键示例代码片段如下，完整示例代码请结合关系型数据库的备份、重建等上下文进行实现。
 
-The recovery process and key code snippets are as follows. For the complete example, combine it with the context of relational database backup and rebuilding.  
+1. 抛出数据库异常错误码。
 
-1. **Throw a database exception error code**.  
+    <!-- compile -->
 
-    <!-- compile -->  
+    ```cangjie
+    import ohos.data.relational_store.RdbPredicates
+    import ohos.data.relational_store.RdbStore
 
-    ```cangjie  
-    // index.cj  
-    try {  
-        let predicates = RdbPredicates("EMPLOYEE")  
-        let columns = ["ID", "NAME", "AGE", "SALARY", "CODES"]  
-        let resultSet = rdbStore.getOrThrow().query(predicates, columns)  
-        /*  
-         * Business logic for insert/update/delete  
-         * ...  
-         */  
-        // Throw an exception  
-        if (resultSet.rowCount == -1) {  
-            resultSet.isColumnNull(0)  
-        }  
-        // Other interfaces like resultSet.goToFirstRow(), resultSet.count may also throw exceptions  
-        while (resultSet.goToNextRow()) {  
-            AppLog.info("${resultSet.getRow().size}")  
-        }  
-        resultSet.close()  
-    } catch (e: BusinessException) {  
-        if (e.code == 14800011) {  
-            // Proceed to the steps below (i.e., close the result set and perform recovery)  
-        }  
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-    }  
-    ```  
+    try {
+        let predicates = RdbPredicates("EMPLOYEE")
+        let columns = ["ID", "NAME", "AGE", "SALARY", "CODES"]
+        let resultSet = rdbStore.getOrThrow().query(predicates, columns)
+        /*
+         * 业务的增删改逻辑
+         * ...
+         */
+        // 抛出异常
+        if (resultSet.rowCount == -1) {
+            resultSet.isColumnNull(0)
+        }
+        // resultSet.goToFirstRow(), resultSet.count等其它接口也会抛异常
+        while (resultSet.goToNextRow()) {
+            AppLog.info("${resultSet.getRow().size}")
+        }
+        resultSet.close()
+    } catch (e: BusinessException) {
+        if (e.code == 14800011) {
+            // 执行下文的步骤，即关闭结果集之后进行数据的恢复
+        }
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+    }
+    ```
 
-2. **Close all open result sets**.  
+2. 关闭所有打开着的结果集。
 
-    <!-- compile -->  
+    <!-- compile -->
 
-    ```cangjie  
-    // index.cj  
-    try {  
-        // All open result sets  
-        var resultSets: Array<ResultSet> = Array<ResultSet>()  
-        // Add result sets to resultSets  
-        // ...  
-        // Close all open result sets using resultSet.close()  
-        for (i in (0..resultSets.size)) {  
-            resultSets[i].close()  
-        }  
-    } catch (e: BusinessException) {  
-        if (e.code != 14800014) {  
-            AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-        }  
-    }  
-   ```  
+    ```cangjie
+    import ohos.data.relational_store.ResultSet
+    try {
+        // 所有打开着的结果集
+        var resultSets: Array<ResultSet> = Array<ResultSet>()
+        // 结果集添加到resultSets中
+        // ...
+        // 使用resultSet.close()方法关闭所有打开着的结果集
+        for (i in (0..resultSets.size)) {
+            resultSets[i].close()
+        }
+    } catch (e: BusinessException) {
+        if (e.code != 14800014) {
+            Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+        }
+    }
+   ```
 
-3. **Call the `restore` interface to recover data**.  
+3. 调用restore接口恢复数据。
 
-    <!-- compile -->  
+    <!-- compile -->
 
-    ```cangjie  
-    // index.cj  
-    import kit.CoreFileKit.FileFs  
-    try {  
-        /**  
-         * "Backup.db" is the backup database filename, which is searched for in the same directory as the current store by default.  
-         * If an absolute path was specified during backup (e.g., "/data/storage/el2/database/Backup.db"), the absolute path must be provided here.  
-         */  
-        let backup = globalAbilityContext.getOrThrow().databaseDir + '/entry/rdb/Backup.db'  
-        if (!FileFs.access(backup)) {  
-            AppLog.info("no backup file")  
-        }  
-        // Call the restore interface to recover data  
-        rdbStore.getOrThrow().restore("Backup.db")  
-        AppLog.info("Succeeded in backup data.")  
-    } catch (e: BusinessException) {  
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")  
-    }  
+    ```cangjie
+    import kit.CoreFileKit.FileFs
+    try {
+        /**
+         * "Backup.db"为备份数据库文件名，默认在当前 store 所在路径下查找备份文件 Backup.db。
+         * 如在备份时指定了绝对路径："/data/storage/el2/database/Backup.db", 需要传入绝对路径。
+         */
+        let backup = '/data/storage/el2/database/Backup.db' + '/entry/rdb/Backup.db'
+        if (!FileFs.access(backup)) {
+            AppLog.info("no backup file")
+        }
+        // 调用restore接口恢复数据
+        rdbStore.getOrThrow().restore("Backup.db")
+        AppLog.info("Succeeded in backup data.")
+    } catch (e: BusinessException) {
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
+    }
     ```

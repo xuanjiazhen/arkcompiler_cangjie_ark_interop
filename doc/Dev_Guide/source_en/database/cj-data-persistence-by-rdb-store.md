@@ -1,78 +1,91 @@
-# Implementing Data Persistence with Relational Databases
+# 通过关系型数据库实现数据持久化
 
-## Scenario Description
+## 场景介绍
 
-Relational databases, based on the SQLite component, are suitable for scenarios involving complex relational data storage. Examples include student information for a class (containing names, student IDs, subject grades, etc.) or employee information for a company (including names, employee IDs, positions, etc.). When data exhibits strong correlations and higher complexity compared to key-value data, relational databases should be used for persistent storage.
+关系型数据库基于SQLite组件，适用于存储包含复杂关系数据的场景，比如一个班级的学生信息，需要包括姓名、学号、各科成绩等，又或者公司的雇员信息，需要包括姓名、工号、职位等。由于数据之间有较强的对应关系，复杂程度比键值型数据更高，此时需要使用关系型数据库来持久化保存数据。
 
-For large-scale data queries that may cause prolonged delays or application unresponsiveness, the following recommendations apply:
+大数据量场景下查询数据可能会导致耗时长甚至应用无响应，对于此类情况建议如下：
 
-- Limit single queries to no more than 5,000 records.
-- Keep SQL statement concatenation as concise as possible.
-- Implement reasonable batch querying.
+- 单次查询数据量不超过5000条。
+- 拼接SQL语句尽量简洁。
+- 合理地分批次查询。
 
-## Basic Concepts
+## 基本概念
 
-- **Predicate:** A term in databases representing properties, characteristics of data entities, or relationships between them, primarily used to define database operation conditions.
-- **Result Set:** The collection of results returned after a user query, enabling data access. Result sets provide flexible data access methods for easier retrieval of desired information.
+- **谓词：** 数据库中用来代表数据实体的性质、特征或者数据实体之间关系的词项，主要用来定义数据库的操作条件。
+- **结果集：** 指用户查询之后的结果集合，可以对数据进行访问。结果集提供了灵活的数据访问方式，可以更方便地拿到用户想要的数据。
 
-## Operation Mechanism
+## 运作机制
 
-Relational databases offer universal operation interfaces to applications, with SQLite serving as the underlying persistent storage engine. They support all SQLite database features including but not limited to transactions, indexes, views, triggers, foreign keys, parameterized queries, and prepared SQL statements.
+关系型数据库对应用提供通用的操作接口，底层使用SQLite作为持久化存储引擎，支持SQLite具有的数据库特性，包括但不限于事务、索引、视图、触发器、外键、参数化查询和预编译SQL语句。
 
-**Figure 1** Relational Database Operation Mechanism
+**图1** 关系型数据库运作机制
 
 ![relationStore_local](figures/relationStore_local.png)
 
-## Constraints
+## 约束限制
 
-- The system defaults to WAL (Write Ahead Log) mode for logging and FULL mode for disk flushing.
-- Databases maintain 4 read connections and 1 write connection. Threads can perform read operations when idle read connections are available. If no read connections are available but a write connection is idle, it will be used as a read connection.
-- To ensure data accuracy, only one write operation is supported at any given time.
-- When an application is uninstalled, all related database files and temporary files on the device are automatically removed.
-- Supported basic data types in Cangjie: Int64, Float64, String, binary data, Bool.
-- To ensure successful data insertion and retrieval, it is recommended that a single record does not exceed 2MB. Larger records may insert successfully but fail to read.
+- 系统默认日志方式是WAL（Write Ahead Log）模式，系统默认落盘方式是FULL模式。
+- 数据库中有4个读连接和1个写连接，线程获取到空闲读连接时，即可进行读取操作。当没有空闲读连接且有空闲写连接时，会将写连接当做读连接来使用。
+- 为保证数据的准确性，数据库同一时间只能支持一个写操作。
+- 当应用被卸载完成后，设备上的相关数据库文件及临时文件会被自动清除。
+- 仓颉侧支持的基本数据类型：Int64、Float64、String、二进制类型数据、Bool。
+- 为保证插入并读取数据成功，建议一条数据不要超过2M。超出该大小，插入成功，读取失败。
 
-## API Description
+## 接口说明
 
-Below are key interfaces for relational database persistence. For more interfaces and usage details, refer to [Relational Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md).
+以下是关系型数据库持久化功能的相关接口，更多接口及使用方式请参见[关系型数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md)。
 
-| Interface Name | Description |
+| 接口名称 | 描述 |
 | -------- | -------- |
-| getRdbStore(context: StageContext, config: StoreConfig): RdbStore | Obtains an RdbStore instance for relational database operations. Developers can configure RdbStore parameters according to their needs and perform data operations through RdbStore. |
-| executeSql(sql: String, bindArgs: Array\<RelationalStoreValueType>): Unit | Executes an SQL statement with specified parameters that does not return values. |
-| insert(table: String, values: Map\<String, RelationalStoreValueType>): Int64 | Inserts a row of data into the target table. |
-| update(values: Map\<String, RelationalStoreValueType>, predicates: RdbPredicates): Int64 | Updates data in the database based on specified predicate conditions. |
-| delete(predicates: RdbPredicates): Int64 | Deletes data from the database based on specified predicate conditions. |
-| query(predicates: RdbPredicates, columns: Array\<String>): ResultSet| Queries database data based on specified conditions. |
-| deleteRdbStore(context: StageContext, name: String): Unit | Deletes a database. |
+| getRdbStore(context: StageContext, config: StoreConfig): RdbStore | 获得一个RdbStore，操作关系型数据库，开发者可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作。 |
+| executeSql(sql: String, bindArgs: Array\<RelationalStoreValueType>): Unit | 执行包含指定参数但不返回值的SQL语句。 |
+| insert(table: String, values: Map\<String, RelationalStoreValueType>): Int64 | 向目标表中插入一行数据。 |
+| update(values: Map\<String, RelationalStoreValueType>, predicates: RdbPredicates): Int64 | 根据predicates的指定实例对象更新数据库中的数据。 |
+| delete(predicates: RdbPredicates): Int64 | 根据predicates的指定实例对象从数据库中删除数据。 |
+| query(predicates: RdbPredicates, columns: Array\<String>): ResultSet| 根据指定条件查询数据库中的数据。 |
+| deleteRdbStore(context: StageContext, name: String): Unit | 删除数据库。 |
 
-## Development Procedure
+## 开发步骤
 
-During relational database operations or storage processes, unexpected database exceptions (error code 14800011) may occur due to various reasons. In such cases, the database should be rebuilt and data restored to ensure normal application development. For details, refer to [Relational Database Exception Recovery](cj-data-backup-and-restore.md#关系型数据库异常重建).
+关系库数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发。
 
-1. To implement data persistence using relational databases, obtain an RdbStore instance, which includes operations like database creation, table creation, and version upgrades/downgrades. Example code:
+1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
-    import kit.UIKit.BusinessException
+    import ohos.business_exception.BusinessException
     import kit.ArkData.*
     import kit.AbilityKit.getStageContext
     import std.collection.HashMap
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
+    import ohos.data.relational_store.RdbStore
+    import kit.ArkData.{StoreConfig, getRdbStore, RdbPredicates, deleteRdbStore}
+    import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
+    import kit.ArkUI.{WindowStage}
 
-    let storeConfig = StoreConfig(
-        "RdbTest.db", // Database filename
-        RelationalStoreSecurityLevel.S3, // Database security level
-        encrypt: false, // Optional parameter, specifies whether the database is encrypted (default: false)
-        customDir: "customDir/subCustomDir", // Optional parameter, custom database path. The database will be created in: context.databaseDir + '/rdb/' + customDir, where context.databaseDir is the application sandbox path, '/rdb/' indicates a relational database, and customDir is the custom path. If omitted, the RdbStore instance is created in the application sandbox directory.
+
+    let storeConfig_ = StoreConfig(
+    RelationalStoreSecurityLevel.S3,// 数据库安全级别
+    name: "RdbTest.db", // 数据库文件名
+    encrypt: false, // 可选参数，指定数据库是否加密，默认不加密
+    customDir: "customDir/subCustomDir", // 可选参数，数据库自定义路径。数据库将在如下的目录结构中被创建：context.databaseDir + '/rdb/' + customDir，其中context.databaseDir是应用沙箱对应的路径，'/rdb/'表示创建的是关系型数据库，customDir表示自定义的路径。当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。
     )
 
-    // Check database version and perform upgrades/downgrades if needed
-    // Assume current database version is 3 with table structure: EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
+    let storeConfig = StoreConfig(
+        "RdbTest.db", // 数据库文件名
+        RelationalStoreSecurityLevel.S3, // 数据库安全级别
+        encrypt: false, // 可选参数，指定数据库是否加密，默认不加密
+        customDir: "customDir/subCustomDir", // 可选参数，数据库自定义路径。数据库将在如下的目录结构中被创建：context.databaseDir + '/rdb/' + customDir，其中context.databaseDir是应用沙箱对应的路径，'/rdb/'表示创建的是关系型数据库，customDir表示自定义的路径。当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。
+    )
+
+    // 判断数据库版本，如果不匹配则需进行升降级操作
+    // 假设当前数据库版本为3，表结构：EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
     const SQL_CREATE_TABLE = "CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))"
     var rdbStore: Option<RdbStore> = Option<RdbStore>.None
 
-    // This example is implemented in an Ability, but can be used in other appropriate scenarios
+    // 此处示例在Ability中实现，使用者也可以在其他合理场景中使用
     class MainAbility <: UIAbility {
         public init() {
             super()
@@ -80,179 +93,159 @@ During relational database operations or storage processes, unexpected database 
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
         }
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-            AppLog.info("MainAbility onWindowStageCreate.")
+            Hilog.info(0, "cangjie", "MainAbility onWindowStageCreate.")
             windowStage.loadContent("EntryView")
-            let store = getRdbStore(getStageContext(this.context), storeConfig)
-            // When a database is created, its default version is 0
-            if (store.version == 0) {
-                store.executeSql(SQL_CREATE_TABLE) // Create table
-                // Set database version (must be >0)
-                store.version = 3
-            } else if (store.version == 1) {
-                // If database version is not 0 and doesn't match current version, perform upgrade/downgrade
-                // When database exists at version 1, upgrade to version 2:
-                // version 1: EMPLOYEE (ID, NAME, SALARY, CODES) => version 2: EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
-                store.executeSql('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER')
-                store.version = 2
-            } else if (store.version == 2) {
-                // When database exists at version 2, upgrade to version 3:
-                // version 2: EMPLOYEE (ID, NAME, AGE, SALARY, CODES, ADDRESS) => version 3: EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
-                store.executeSql('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS TEXT')
-                store.version = 3
-            }
+            let store = getRdbStore(this.context, storeConfig)
+            store.executeSql(SQL_CREATE_TABLE) // 创建数据表
+            store.executeSql('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER')
+            store.executeSql('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS TEXT')
             rdbStore = store
-            // Perform CRUD operations...
+            // 进行数据库的增、删、改、查等操作
+            // ...
         }
         // ...
     }
     ```
 
-    > **Note:**
+    > **说明：**
     >
-    > - Databases created by applications are context-dependent. Even with the same database name, different application contexts will create separate databases (e.g., each Ability has its own context).
-    > - When an application first accesses a database (via getRdbStore), corresponding database files are created in the application sandbox. Temporary files with -wal and -shm extensions may appear in the same directory during database operations. To move database files for inspection elsewhere, these temporary files must also be moved. Uninstalling the application removes all associated database and temporary files from the device.
-    > - For detailed error codes, see [Universal Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-data-rdb.md).
+    > - 应用创建的数据库与其上下文（Context）有关，即使使用同样的数据库名称，但不同的应用上下文，会产生多个数据库，例如每个Ability都有各自的上下文。
+    > - 当应用首次获取数据库（调用getRdbStore）后，在应用沙箱内会产生对应的数据库文件。使用数据库的过程中，在与数据库文件相同的目录下可能会产生以-wal和-shm结尾的临时文件。此时若开发者希望移动数据库文件到其它地方使用查看，则需要同时移动这些临时文件，当应用被卸载完成后，其在设备上产生的数据库文件及临时文件也会被移除。
+    > - 错误码的详细介绍请参见[通用错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-data-rdb.md)。
 
-2. After obtaining RdbStore, use insert() to add data. Example:
+2. 获取到RdbStore后，调用insert()接口插入数据。示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
+    import ohos.data.relational_store.ValueType as RelationalStoreValueType 
+
     var values = HashMap<String, RelationalStoreValueType>()
-    values.add("ID", RelationalStoreValueType.integer(1))
-    values.add("NAME", RelationalStoreValueType.string("Lisa"))
-    values.add("AGE", RelationalStoreValueType.integer(18))
-    values.add("SALARY", RelationalStoreValueType.double(100.5))
-    values.add("CODES", RelationalStoreValueType.boolean(true))
+    values.add("ID", RelationalStoreValueType.Integer(1))
+    values.add("NAME", RelationalStoreValueType.StringValue("Lisa"))
+    values.add("AGE", RelationalStoreValueType.Integer(18))
+    values.add("SALARY", RelationalStoreValueType.Double(100.5))
+    values.add("CODES", RelationalStoreValueType.Boolean(true))
     rdbStore.getOrThrow().insert("EMPLOYEE", values)
     ```
 
-    > **Note:**
+    > **说明：**
     >
-    > Relational databases don't require explicit flush operations for persistence—data is saved to persistent files upon insertion.
+    > 关系型数据库没有显式的flush操作实现持久化，数据插入即保存在持久化文件。
 
-3. Modify or delete data using predicate conditions.
+3. 根据谓词指定的实例对象，对数据进行修改或删除。
 
-    Use update() to modify data and delete() to remove data. Example:
+    调用update()方法修改数据，调用delete()方法删除数据。示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
-    // Update data
+    // 修改数据
     try {
-        let predicates1 = RdbPredicates('EMPLOYEE')  // Create predicates for 'EMPLOYEE' table
-        predicates1.equalTo("NAME", RelationalStoreValueType.string("Lisa")) // Match records where "NAME" equals "Lisa"
+        let predicates1 = RdbPredicates('EMPLOYEE')  // 创建表'EMPLOYEE'的predicates
+        predicates1.equalTo("NAME", RelationalStoreValueType.StringValue("Lisa")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
 
         var values = HashMap<String, RelationalStoreValueType>()
-        values.add("NAME", RelationalStoreValueType.string("TOM"))
-        values.add("AGE", RelationalStoreValueType.integer(88))
-        values.add("SALARY", RelationalStoreValueType.double(9999.513))
+        values.add("NAME", RelationalStoreValueType.StringValue("TOM"))
+        values.add("AGE", RelationalStoreValueType.Integer(88))
+        values.add("SALARY", RelationalStoreValueType.Double(9999.513))
         let rowsCnt = rdbStore.getOrThrow().update(values, predicates1)
-        AppLog.info("Succeeded in updating data. row count: ${rowsCnt}")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
 
-    // Delete data
+    // 删除数据
     try {
-        let predicates1 = RdbPredicates('EMPLOYEE')  // Create predicates for 'EMPLOYEE' table
-        predicates1.equalTo("NAME", RelationalStoreValueType.string("Lisa")) // Match records where "NAME" equals "Lisa"
+        let predicates1 = RdbPredicates('EMPLOYEE')  // 创建表'EMPLOYEE'的predicates
+        predicates1.equalTo("NAME", RelationalStoreValueType.StringValue("Lisa")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
 
         let rowsCnt = rdbStore.getOrThrow().delete(predicates1)
-        AppLog.info("Succeeded in delete data. row count: ${rowsCnt}")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
-4. Query data based on predicate conditions.
+4. 根据谓词指定的查询条件查找数据。
 
-    Use query() to retrieve data, returning a ResultSet. Example:
+    调用query()方法查找数据，返回一个ResultSet结果集。示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
     try {
-        let predicates2 = RdbPredicates('EMPLOYEE')  // Create predicates for 'EMPLOYEE' table
-        predicates2.equalTo("NAME", RelationalStoreValueType.string("Rose")) // Match records where "NAME" equals "Rose"
+        let predicates2 = RdbPredicates('EMPLOYEE')  // 创建表'EMPLOYEE'的predicates
+        predicates2.equalTo("NAME", RelationalStoreValueType.StringValue("Rose")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
 
         let columns = ["ID", "NAME", "AGE", "SALARY", "CODES"]
-        let resultSet = rdbStore.getOrThrow().query(predicates2, columns)
-        AppLog.info("ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}")
-        // ResultSet is a cursor over the data collection, initially positioned before the first record (index -1). Valid data starts at index 0.
+        let resultSet = rdbStore.getOrThrow().query(predicates2, columns:columns)
+        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
 
         while (resultSet.goToNextRow()) {
             let id = resultSet.getLong(resultSet.getColumnIndex('ID'))
             let name = resultSet.getString(resultSet.getColumnIndex('NAME'))
             let age = resultSet.getLong(resultSet.getColumnIndex('AGE'))
             let salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'))
-            AppLog.info("id=${id}, name=${name}, age=${age}, salary=${salary}")
         }
-        // Release memory allocated for the result set
+        // 释放数据集的内存
         resultSet.close()
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
-    > **Note:**
+    > **说明：**
     >
-    > When a ResultSet is no longer needed after query operations, always call close() to release allocated memory.
+    > 当应用完成查询数据操作，不再使用结果集（ResultSet）时，请及时调用close方法关闭结果集，释放系统为其分配的内存。
 
-5. Back up the database in the same directory. Relational databases support both manual backup and automatic backup (system apps only). For details, see [Relational Database Backup](cj-data-backup-and-restore.md#relational-database-backup).
+5. 在同路径下备份数据库。关系型数据库支持两种手动备份和自动备份（仅系统应用可用）两种方式，详情请参见[关系型数据库备份](cj-data-backup-and-restore.md#关系型数据库备份)。
 
-    Manual backup example:
+    此处以手动备份为例：
 
     <!-- compile -->
 
     ```cangjie
     try {
-        // "Backup.db" is the backup filename, created in the same directory as RdbStore by default. Custom paths can be specified: customDir + "backup.db"
+        // "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。也可指定路径：customDir + "backup.db"
         rdbStore.getOrThrow().backup("Backup.db")
-        AppLog.info("Succeeded in backup data.")
+        Hilog.info(0, "cangjie", "Succeeded in backup data.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
-6. Restore data from a backup. Relational databases support restoring both manual and automatic backups (system apps only). For details, see [Relational Database Data Recovery](cj-data-backup-and-restore.md#relational-database-data-recovery).
+6. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），详情请参见[关系型数据库数据恢复](cj-data-backup-and-restore.md#关系型数据库数据恢复)。
 
-    Example using [restore](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md#func-restorestring) for manual backups:
+    此处以调用[restore](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md#func-restorestring)接口恢复手动备份数据为例：
 
     <!-- compile -->
 
     ```cangjie
     try {
         rdbStore.getOrThrow().restore("Backup.db")
-        AppLog.info("Succeeded in backup data.")
+        Hilog.info(0, "cangjie", "Succeeded in backup data.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
-7. Delete a database.
+7. 删除数据库。
 
-    Use deleteRdbStore() to remove a database and related files. Example:
+    调用deleteRdbStore()方法，删除数据库及数据库相关文件。示例代码如下：
 
     <!-- compile -->
 
     ```cangjie
     try {
-        deleteRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S3)) // Requires application context (see usage notes)
-        AppLog.info("Succeeded in delete RdbStore.")
+        deleteRdbStore(this.context, StoreConfig(RelationalStoreSecurityLevel.S3, name: "RdbTest.db", ))
+        Hilog.info(0, "cangjie", "Succeeded in delete RdbStore.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
-
-    > **Note:**
-    >
-    >  For Global definition, see [Usage Notes](../../../API_Reference/source_en/cj-development-intro.md)

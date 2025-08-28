@@ -1,64 +1,67 @@
-# Implementing Data Persistence Through User Preferences
+# 通过用户首选项实现数据持久化
 
-## Scenario Introduction
+## 场景介绍
 
-User Preferences provide applications with Key-Value pair data processing capabilities, supporting lightweight data persistence, modification, and querying. When users need a globally unique storage location, User Preferences can be utilized. Preferences cache this data in memory. When users read data, it can be quickly retrieved from memory. For persistence, the `flush` interface can be used to write memory data to a persistent file. As the volume of stored data increases, the memory usage of the application will also grow. Therefore, Preferences are not suitable for storing excessive amounts of data and do not support configuration-based encryption. Typical use cases include saving user personalization settings (e.g., font size, night mode activation).
+用户首选项为应用提供Key-Value键值型的数据处理能力，支持应用持久化轻量级数据，并对其修改和查询。当用户希望有一个全局唯一存储的地方，可以采用用户首选项来进行存储。Preferences会将该数据缓存在内存中。当用户读取时，能够快速从内存中获取数据。当需要持久化时，可以使用flush接口将内存中的数据写入持久化文件中。Preferences会随着存放的数据量越多而导致应用占用的内存越大。因此，Preferences不适合存放过多的数据，也不支持通过配置加密，适用的场景一般为应用保存用户的个性化设置（字体大小，是否开启夜间模式）等。
 
-## Operation Mechanism
+## 运作机制
 
-As illustrated below, user programs read and write corresponding data files through the Cangjie interface. Developers can load the contents of User Preferences persistent files into a Preferences instance. Each file uniquely corresponds to one Preferences instance, which is stored in memory via a static container until actively removed from memory or the file is deleted.
+如图所示，用户程序通过仓颉接口调用用户首选项读写对应的数据文件。开发者可以将用户首选项持久化文件的内容加载到Preferences实例，每个文件唯一对应到一个Preferences实例，系统会通过静态容器将该实例存储在内存中，直到主动从内存中移除该实例或者删除该文件。
 
-**Figure 1** User Preferences Operation Mechanism
+应用首选项的持久化文件保存在应用沙箱内部，可以通过context获取其路径。
+
+**图1** 用户首选项运作机制
 
 ![preferences](figures/preferences.png) <!-- ToBeReviewd -->
 
-## Constraints
+## 约束限制
 
-- Preferences do not guarantee process concurrency safety, posing risks of file corruption and data loss. They are not suitable for multi-process scenarios.
-- Keys must be of string type, non-empty, and no longer than 1024 bytes.
-- If the value is of string type, UTF-8 encoding must be used. It can be empty but must not exceed 16MB in length when non-empty.
-- When storing data containing non-UTF-8 strings, use the `Uint8Array` type to avoid persistent file format errors and corruption.
-- After calling `removePreferencesFromCache` or `deletePreferences`, data change subscriptions will be automatically canceled. Re-subscription is required after reacquiring Preferences via `getPreferences`.
-- Concurrent calls to `deletePreferences` with other interfaces across threads or processes are prohibited, as they may lead to undefined behavior.
-- Memory usage increases with the volume of stored data. Thus, stored data should be lightweight, ideally not exceeding 10,000 entries to avoid significant memory overhead.
+- 首选项无法保证进程并发安全，会有文件损坏和数据丢失的风险，不支持在多进程场景下使用。
+- Key键为string类型，要求非空且长度不超过1024个字节。
+- 如果Value值为string类型，请使用UTF-8编码格式，可以为空，不为空时长度不超过16MB。
+- 当存储的数据中包含非UTF-8格式的字符串时，请使用Uint8Array类型存储，否则会造成持久化文件出现格式错误造成文件损坏。
+- 当调用removePreferencesFromCache或者deletePreferences后，订阅的数据变更会主动取消订阅，重新getPreferences后需要重新订阅数据变更。
+- 不允许deletePreferences与其他接口多线程、多进程并发调用，否则会发生不可预期行为。
+- 内存会随着存储数据量的增大而增大，所以存储的数据量应该是轻量级的，建议存储的数据不超过一万条，否则会在内存方面产生较大的开销。
 
-## Interface Description
+## 接口说明
 
-Below are the key interfaces for User Preferences persistence. For more interfaces and usage details, refer to [User Preferences](../../../API_Reference/source_en/apis/ArkData/cj-apis-preferences.md).
+以下是用户首选项持久化功能的相关接口，更多接口及使用方式请参见[用户首选项](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-preferences.md)。
 
-| Interface Name                                             | Description                                         |
+| 接口名称                                             | 描述                                         |
 | --------------------------------------------------- | ----------------------------------------------|
-| `getPreferences(context: StageContext, options: PreferencesOptions): Preferences` | Obtains a Preferences instance. |
-| `put(key: String, value: PreferencesValueType): Unit`   | Writes data to a Preferences instance. Persistence can be achieved via `flush`. |
-| `has(key: String): Bool`  | Checks if the Preferences instance contains a key-value pair with the given key. The key must not be empty. |
-| `get(key: String, defValue: PreferencesValueType): PreferencesValueType`   | Retrieves the value associated with the key. Returns `defValue` if the value is null or of an incompatible type. |
-| `delete(key: String): Unit`  | Deletes the key-value pair with the specified key from the Preferences instance. |
-| `flush(): Unit`   | Asynchronously persists the current Preferences instance data to a User Preferences file. |
-| `on(tp: String, callback: Callback1Argument\<String>): Unit` | Subscribes to data changes. The callback is triggered after `flush` when subscribed data changes. |
-| `off(tp: String, callback: Callback1Argument\<String>): Unit` | Unsubscribes from data changes.  |
-| `deletePreferences(context: StageContext, options: PreferencesOptions): Unit` | Removes the specified Preferences instance from memory. If a persistent file exists, it is also deleted. |
+| getPreferences(context: StageContext, options: PreferencesOptions): Preferences | 获取Preferences实例。|
+| put(key: String, value: PreferencesValueType): Unit   | 将数据写入Preferences实例，可通过flush将Preferences实例持久化。 |
+| has(key: String): Bool  | 检查Preferences实例是否包含名为给定Key的存储键值对。给定的Key值不能为空。 |
+| get(key: String, defValue: PreferencesValueType): PreferencesValueType   | 获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue。 |
+| delete(key: String): Unit  | 从Preferences实例中删除名为给定Key的存储键值对。 |
+| flush(): Unit   | 将当前Preferences实例的数据异步存储到用户首选项持久化文件中。 |
+| on(tp: String, callback: Callback1Argument\<String>): Unit | 订阅数据变更，订阅的数据发生变更后，在执行flush方法后，触发callback回调。 |
+| off(tp: String, callback: Callback1Argument\<String>): Unit | 取消订阅数据变更。  |
+| deletePreferences(context: StageContext, options: PreferencesOptions): Unit | 从内存中移除指定的Preferences实例。若Preferences实例有对应的持久化文件，则同时删除其持久化文件。 |
 
-## Development Steps
+## 开发步骤
 
-1. Import modules.
+1. 导入模块。
 
     <!-- compile -->
 
-    ```cangjie
+     ```cangjie
     // xxx.cj
     import kit.ArkData.{ Preferences, PreferencesValueType }
-    import kit.AbilityKit.getStageContext
-    import kit.UIKit.Callback1Argument
+    import kit.ArkUI.Callback1Argument
     ```
 
-2. Obtain a Preferences instance.
+2. 获取Preferences实例。
 
     <!-- compile -->
 
     ```cangjie
     // main_ability.cj
-    import kit.AbilityKit.{ getStageContext, UIAbilityContext }
-    import kit.ArkData.{ Preferences, PreferencesOptions }
+    import import kit.performanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
+    import kit.ArkData.{ Preferences}
+    import ohos.data.preferences.Option as PreferencesOptions
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
     var dataPreferences: Option<Preferences> = Option<Preferences>.None
@@ -70,71 +73,72 @@ Below are the key interfaces for User Preferences persistence. For more interfac
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
-            // Obtain context
+            // 获取context
             globalAbilityContext = this.context
 
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-            AppLog.info("MainAbility onWindowStageCreate.")
+            Hilog.info(0, "cangjie", "MainAbility onWindowStageCreate.")
             windowStage.loadContent("EntryView")
 
             let options = PreferencesOptions("myStore")
-            // Obtain Preferences instance
+            // 获取Preferences实例
             dataPreferences = Preferences.getPreferences(getStageContext(this.context), options)
         }
         // ...
     }
     ```
 
-3. Write data.
+3. 写入数据。
 
-    Use `put()` to save data to the cached Preferences instance. After writing, call `flush()` to persist the data to a file if needed.
+    使用put()方法保存数据到缓存的Preferences实例中。在写入数据后，如有需要，可使用flush()方法将Preferences实例的数据存储到持久化文件。
 
-    > **Note:**
+    > **说明：**
     >
-    > If the key already exists, `put()` will overwrite its value. Use `has()` to check for existing key-value pairs.
+    > 当对应的键已经存在时，put()方法会覆盖其值。可以使用has()方法检查是否存在对应键值对。
 
-    Example code:
+    示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
     // xxx.cj
+    import ohos.data.preferences.ValueType as PreferencesValueType
+
     if (dataPreferences.getOrThrow().has("startup")) {
-        AppLog.info("The key 'startup' is contained.")
+        Hilog.info(0, "cangjie", "The key 'startup' is contained.")
     } else {
-        AppLog.info("The key 'startup' does not contain.")
-        // Example: Write data when the key-value pair does not exist
-        dataPreferences.getOrThrow().put("startup", PreferencesValueType.string("auto"))
+        Hilog.info(0, "cangjie", "The key 'startup' does not contain.")
+        // 此处以此键值对不存在时写入数据为例
+        dataPreferences.getOrThrow().put("startup", PreferencesValueType.StringData("auto"))
     }
     ```
 
-4. Read data.
+4. 读取数据。
 
-    Use `get()` to retrieve the value associated with a key. Returns the default value if the value is null or of an incompatible type.
+    使用get()方法获取数据，即指定键对应的值。如果值为null或者非默认值类型，则返回默认数据。
 
-    Example code:
+    示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
     // xxx.cj
-    let val = dataPreferences.getOrThrow().get("startup", PreferencesValueType.string("default"))
+    let val = dataPreferences.getOrThrow().get("startup", PreferencesValueType.StringData("default"))
     match(val) {
-        case PreferencesValueType.string(n) => AppLog.info("The startup's value: ${n}")
-        case _ => AppLog.info("error, value not string")
+        case PreferencesValueType.StringData(n) => Hilog.info(0, "cangjie", "The startup's value")
+        case _ => Hilog.info(0, "cangjie", "error, value not string")
     }
     ```
 
-5. Delete data.
+5. 删除数据。
 
-    Use `delete()` to remove a key-value pair. Example code:
+    使用delete()方法删除指定键值对，示例代码如下所示：
 
     <!-- compile -->
 
@@ -143,26 +147,26 @@ Below are the key interfaces for User Preferences persistence. For more interfac
     dataPreferences.getOrThrow().delete("startup")
     ```
 
-6. Data persistence.
+6. 数据持久化。
 
-    After storing data in a Preferences instance, use `flush()` for persistence. Example code:
+    应用存入数据到Preferences实例后，可以使用flush()方法实现数据持久化。示例代码如下所示：
 
     <!-- compile -->
 
-    ```cangjie
+   ```cangjie
     // xxx.cj
     dataPreferences.getOrThrow().flush()
     ```
 
-7. Subscribe to data changes.
+7. 订阅数据变更。
 
-    Define a custom `Callback` to handle data change events. The callback is triggered after `flush()` when subscribed keys change. Example code:
+    应用订阅数据变更需要自定义Callback作为回调方法。订阅的Key值发生变更后，当执行flush()方法时，Callback被触发回调。示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
     // xxx.cj
-    // Custom callback
+    // 自定义回调函数
     class Callback <: Callback1Argument<String> {
         public func invoke(arg: String): Unit {
             AppLog.info("callback： ${arg.toString()}")
@@ -171,31 +175,31 @@ Below are the key interfaces for User Preferences persistence. For more interfac
 
     let preferenceCallback = Callback()
     dataPreferences.getOrThrow().on("change", preferenceCallback)
-    // Data change: "auto" → "manual"
-    dataPreferences.getOrThrow().put("startup", PreferencesValueType.string("manual"))
-    AppLog.info("Succeeded in putting the value of 'startup'.")
+    // 数据产生变更，由“auto”变为“manual”
+    dataPreferences.getOrThrow().put("startup", PreferencesValueType.StringData("manual"))
+    Hilog.info(0, "cangjie", "Succeeded in putting the value of 'startup'.")
     dataPreferences.getOrThrow().flush()
     ```
 
-8. Delete a specified file.
+8. 删除指定文件。
 
-    Use `deletePreferences()` to remove a Preferences instance from memory, including its data. If a persistent file exists, it and its backups/corrupted files will also be deleted.
+    使用deletePreferences()方法从内存中移除指定文件对应的Preferences实例，包括内存中的数据。若该Preference存在对应的持久化文件，则同时删除该持久化文件，包括指定文件及其备份文件、损坏文件。
 
-    > **Note:**
+    > **说明：**
     >
-    > - After calling this interface, the application must not perform further operations on the deleted Preferences instance to avoid data consistency issues.
-    > - Deleted data and files cannot be recovered.
+    > - 调用该接口后，应用不允许再使用该Preferences实例进行数据操作，否则会出现数据一致性问题。
+    > - 成功删除后，数据及文件将不可恢复。
 
-    Example code:
+    示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
     // xxx.cj
     try {
-        // Delete Preferences instance
+        // 删除 Preferences 实例
         Preferences.deletePreferences(getStageContext(globalAbilityContext.getOrThrow()), "myStore")
     } catch (e: Exception) {
-        AppLog.info("delete Preferences failed")
+        Hilog.info(0, "cangjie", "delete Preferences failed")
     }
     ```

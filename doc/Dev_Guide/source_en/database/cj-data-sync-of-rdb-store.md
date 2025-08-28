@@ -1,74 +1,84 @@
-# Cross-Device Data Synchronization for Relational Databases
+# 关系型数据库跨设备数据同步
 
-## Scenario Description
+## 场景介绍
 
-When an application's locally stored relational data requires synchronization across devices, you can migrate the table data that needs synchronization to new tables that support cross-device functionality. Alternatively, you can configure tables to support cross-device synchronization immediately after their creation.
+当应用程序本地存储的关系型数据存在跨设备同步的需求时，可以将需要同步的表数据迁移到新的支持跨设备的表中，也可以在刚完成表创建时设置其支持跨设备。
 
-## Basic Concepts
+## 基本概念
 
-Cross-device data synchronization for relational databases enables applications to synchronize stored relational data across multiple devices.
+关系型数据库跨设备数据同步，支持应用在多设备间同步存储的关系型数据。
 
-- After creating a new table in the database, an application can designate it as a distributed table. When querying a remote device's database, the distributed table name on the specified remote device can be obtained using the local table name.
-- Data synchronization between devices can be achieved in two ways: pushing data from the local device to remote devices or pulling data from remote devices to the local device.
+- 应用在数据库中新创建表后，可以设置其为分布式表。在查询远程设备数据库时，根据本地表名可以获取指定远程设备的分布式表名。
+- 设备之间同步数据，数据同步有两种方式，将数据从本地设备推送到远程设备或将数据从远程设备拉至本地设备。
 
-## Operation Mechanism
+## 运作机制
 
-The underlying communication component handles device discovery and authentication, notifying the upper-layer application when devices come online. Upon receiving a device online notification, the data management service can establish an encrypted data transmission channel between the two devices, enabling data synchronization.
+底层通信组件完成设备发现和认证，会通知上层应用程序设备上线。收到设备上线的消息后，数据管理服务可以在两个设备之间建立加密的数据传输通道，利用该通道在两个设备之间进行数据同步。
 
-### Cross-Device Data Synchronization Mechanism
+### 数据跨设备同步机制
 
 ![relationalStore_sync](figures/relational-store-sync.png)   <!-- ToBeReviewd -->
 
-After writing data to the relational database, the business logic initiates a synchronization request to the data management service.
+业务将数据写入关系型数据库后，向数据管理服务发起同步请求。
 
-The data management service reads the data to be synchronized from the application sandbox and sends it to the data management service of other devices based on their deviceId. The remote data management service then writes the data into the same application's database.
+数据管理服务从应用沙箱内读取待同步数据，根据对端设备的deviceId将数据发送到其他设备的数据管理服务。再由数据管理服务将数据写入同应用的数据库内。
 
-### Data Change Notification Mechanism
+### 数据变化通知机制
 
-When data is inserted, deleted, or modified in the database, subscribers receive notifications of these changes. Notifications are primarily categorized into local data change notifications and distributed data change notifications.
+增、删、改数据库时，订阅者会收到数据变化的通知。主要分为本地数据变化通知和分布式数据变化通知。
 
-- **Local Data Change Notification:** Applications on the local device subscribe to data change notifications and receive them when data is inserted, deleted, or modified in the database.
-- **Distributed Data Change Notification:** Applications subscribe to notifications for data changes on other devices within the network. When data is inserted, deleted, or modified on other devices, the local device receives a notification.
+- **本地数据变化通知：** 本地设备的应用内订阅数据变化通知，数据库增删改数据时，会收到通知。
+- **分布式数据变化通知：** 同一应用订阅组网内其他设备数据变化的通知，其他设备增删改数据时，本设备会收到通知。
 
-## Constraints
+## 约束限制
 
-- Each application can open a maximum of 16 relational distributed databases simultaneously.
-- A single database supports registering up to 8 callbacks for data change subscriptions.
-- Tables with composite keys cannot be designated as distributed tables.
+- 每个应用程序最多支持同时打开16个关系型分布式数据库。
+- 单个数据库最多支持注册8个订阅数据变化的回调。
+- 不支持将含有复合键的表设置为分布式表。
 
-## API Description
+## 接口说明
 
-The following are the APIs related to cross-device data synchronization for relational distributed databases. For more APIs and usage details, refer to [Relational Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md).
+以下是关系型设备协同分布式数据库跨设备数据同步功能的相关接口，更多接口及使用方式请参见[关系型数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md)。
 
-## Development Procedure
+| 接口名称 | 描述 |
+| -------- | -------- |
+| setDistributedTables(tables: Array\<String>): Unit | 设置分布式同步表。 |
+| sync(mode: SyncMode, predicates: RdbPredicates): Array\<(String, Int32)> | 分布式数据同步。 |
+| onDataChange(`type`: SubscribeType, callback: Callback1Argument\<Array\<String>>): Unit | 订阅分布式数据变化。 |
+| offDataChange(`type`: SubscribeType, callback: Callback1Argument\<Array\<String>>): Unit | 取消订阅分布式数据变化。 |
 
-> **Note:**
+## 开发步骤
+
+> **说明：**
 >
-> Data can only be synchronized to devices whose data security labels are not higher than the security level of the target device. For specific rules, refer to [Cross-Device Synchronization Access Control Mechanism](cj-access-control-by-device-and-data-level.md#cross-device-synchronization-access-control-mechanism).
+> 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则请参见[跨设备同步访问控制机制](cj-access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
 
-1. Import the module.
+1. 导入模块。
 
     <!-- compile -->
 
     ```cangjie
-    import kit.ArkData.RelationalStoreSecurityLevel
-    import ohos.relational_store.*
-    import kit.AbilityKit.getStageContext
-    import kit.UIKit.{BusinessException, Callback1Argument}
+    import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
+    import ohos.business_exception.BusinessException
     ```
 
-2. Request permissions.
+2. 请求权限。
 
-   (1) The `ohos.permission.DISTRIBUTED_DATASYNC` permission must be requested. For configuration details, refer to [Declaring Permissions](../security/AccessToken/cj-declare-permissions.md).
+   (1) 需要申请ohos.permission.DISTRIBUTED_DATASYNC权限，配置方式请参见[声明权限](../security/AccessToken/cj-declare-permissions.md)。
 
-   (2) Additionally, user authorization must be requested via a pop-up during the application's first launch. For usage details, refer to [Requesting User Authorization](../security/AccessToken/cj-request-user-authorization.md).
+   (2) 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/cj-request-user-authorization.md)。
 
-3. Create a relational database and designate tables for distributed synchronization.
+3. 创建关系型数据库，设置将需要进行分布式同步的表。
 
     <!-- compile -->
 
     ```cangjie
     // main_ability.cj
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
+    import ohos.data.relational_store.RdbStore
+    import kit.ArkData.{StoreConfig, getRdbStore, RdbPredicates}
+    import kit.ArkUI.{WindowStage}
+
     var rdbStore: Option<RdbStore> = Option<RdbStore>.None
 
     class MainAbility <: UIAbility {
@@ -78,78 +88,32 @@ The following are the APIs related to cross-device data synchronization for rela
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
         }
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-            AppLog.info("MainAbility onWindowStageCreate.")
+            Hilog.info(0, "cangjie", "MainAbility onWindowStageCreate.")
             windowStage.loadContent("EntryView")
 
             let storeConfig = StoreConfig(
-                "RdbTest.db", // Database filename
-                RelationalStoreSecurityLevel.S3, // Database security level
+                RelationalStoreSecurityLevel.S3, // 数据库安全级别
+                name: "RdbTest.db", // 数据库文件名
+                
             )
 
             try {
-                let store = getRdbStore(getStageContext(this.context), storeConfig)
+                let store = getRdbStore(this.context, storeConfig)
                 store.executeSql("CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))")
                 store.setDistributedTables(['EMPLOYEE'])
                 rdbStore = store
-                // Subsequent data operations can be performed here
+                // 后续可进行数据的相关操作
             } catch (e: BusinessException) {
-                AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+                Hilog.error(0, "ErrorCode: ${e.code}", e.message)
             }
             // ...
         }
-    }
-    ```
-
-4. Distributed data synchronization. Using `SYNC_MODE_PUSH` triggers synchronization, which pushes data from the local device to all other devices in the network.
-
-    <!-- compile -->
-
-    ```cangjie
-    // Construct a predicate object for synchronizing distributed tables
-    let predicates = RdbPredicates('EMPLOYEE')
-    try {
-        // Call the data synchronization interface
-        let result = rdbStore.getOrThrow().sync(SYNC_MODE_PUSH, predicates)
-        for (i in (0..result.size)) {
-            AppLog.info("device:${result[i][0]}, status:${result[i][1]}")
-        }
-    } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
-    }
-    ```
-
-5. Distributed data subscription. Data synchronization changes trigger the subscription callback method, with the callback parameter being the device ID where the changes occurred.
-
-    <!-- compile -->
-
-    ```cangjie
-    // Custom callback function
-    class TestCallback <: Callback1Argument<Array<ChangeInfo>> {
-        public init() {}
-        public open func invoke(arr: Array<ChangeInfo>): Unit {
-            AppLog.info("Call invoke.")
-        }
-    }
-    // Call the distributed data subscription interface to register a database observer
-    // The callback is invoked when data in the distributed database changes
-    try {
-        rdbStore.getOrThrow().onDataChange(SubscribeType.SUBSCRIBE_TYPE_REMOTE, TestCallback())
-    } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
-    }
-
-    // Unsubscribe from data changes when no longer needed
-    try {
-        rdbStore.getOrThrow().offDataChange(SubscribeType.SUBSCRIBE_TYPE_REMOTE, TestCallback())
-    } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
     }
     ```
