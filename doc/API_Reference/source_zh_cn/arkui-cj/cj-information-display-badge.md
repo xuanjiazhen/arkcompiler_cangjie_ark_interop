@@ -342,7 +342,7 @@ class EntryView {
     func build() {
         Column() {
             Text("numberBadge").width(80.percent)
-            Row(10) {
+            Row(space: 10) {
                 // 数字上标，maxCount默认99,超过99展示99+
                 Badge(
                     BadgeParams(
@@ -380,7 +380,7 @@ class EntryView {
                 }.width(100).height(50)
             }.margin(10)
             Text("stringBadge").width(80.percent)
-            Row(30) {
+            Row(space: 30) {
                 Badge(
                     BadgeParams(
                         value: "new",
@@ -453,9 +453,9 @@ class EntryView {
                 .width(100)
                 .height(50)
             Button("count 0")
-                .onClick({=>  this.badgeCount =0;})
+                .onClick{=>  this.badgeCount =0;}
             Button("count 1")
-                .onClick({=>  this.badgeCount =1;})
+                .onClick{=>  this.badgeCount =1;}
         }.margin(10)
     }
 }

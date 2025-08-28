@@ -43,6 +43,8 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import ohos.arkui.ui_context.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -70,7 +72,7 @@ class EntryView {
                                 cornerRadius: BorderRadiuses(topLeft: 20.vp, topRight: 20.vp, bottomLeft: 20.vp,
                                     bottomRight: 20.vp),
                                 borderWidth: 1.vp,
-                                borderStyle: EdgeStyle.SOILD,
+                                borderStyle: EdgeStyles(),
                                 borderColor: Color.White,
                                 cancel: {=> Hilog.info(0, "AppLogCj", "actionSheet canceled")},
                                 onWillDismiss: {

@@ -205,7 +205,7 @@ import ohos.state_macro_manage.*
 class EntryView {
     public func build() {
         Column() {
-            Row(30) {
+            Row(space: 30) {
                 // Dashed line
                 Text('DASHED')
                     .backgroundColor(Color.PINK)

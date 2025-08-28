@@ -31,7 +31,7 @@
 
     ```cangjie
     // 创建动画的初始参数
-    this.backAnimator = AnimatorResult(AnimatorOptions(
+    this.backAnimator = getUIContext.createAnimator(AnimatorOptions(
       duration: 1500,
       easing: "friction",
       delay: 0,
@@ -43,10 +43,9 @@
       // 动画onFrame 插值尾帧值
       end: 400.0
     ))
-    var animatorOptions: AnimatorResult = AnimatorResult(AnimatorOptions(duration: 0))
     // 设置接收到帧时回调，动画播放过程中每帧会调用onFrame回调
     this.backAnimator?.onFrame =  {  progress: Float64 =>
-      AppLog.info("current value is :" + progress.toString())
+      Hilog.info(0,"",current value is :" + progress.toString())
     }
     ```
 
@@ -92,7 +91,7 @@
     ```cangjie
     // 创建animatorResult对象
     protected override func onPageShow() {
-      this.backAnimator = AnimatorResult(AnimatorOptions(
+      this.backAnimator = getUIContext.createAnimator(AnimatorOptions(
         duration: 4000,
         easing: "ease",
         delay: 0,
@@ -118,7 +117,7 @@
       }
       // 动画重复播放时执行方法
       this.backAnimator?.onRepeat = { =>
-          AppLog.info("动画重复播放")
+          Hilog.info(0,"","动画重复播放")
       }
     }
     ```
@@ -160,6 +159,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import std.math.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -174,10 +174,8 @@ class EntryView {
     var translateX: Int64 = 0
     @State
     var translateY: Int64 = 0
-    @State
-    var animatorOptions: AnimatorResult = AnimatorResult(AnimatorOptions(duration: 0))
     protected override func onPageShow() {
-        this.backAnimator = AnimatorResult(AnimatorOptions(
+        this.backAnimator = getUIContext.createAnimator(AnimatorOptions(
           duration: 4000,
           easing: "ease",
           delay: 0,
@@ -200,7 +198,7 @@ class EntryView {
           this.animatorStatus = '完成'
         }
         this.backAnimator?.onRepeat = { =>
-            AppLog.info("动画重复播放")
+            Hilog.info(0,"","动画重复播放")
         }
     }
     protected override func onPageHide() {
@@ -208,16 +206,16 @@ class EntryView {
     }
     func build() {
         Column() {
-          Column(30) {
-            Button('播放').onClick({ =>
+          Column(space:30) {
+            Button('播放').onClick({ evt=>
               this.backAnimator?.play()
               this.animatorStatus = '播放中'
             }).width(80).height(35)
-            Button("重置").onClick({ =>
+            Button("重置").onClick({ evt=>
               this.translateX = 0
               this.translateY = 0
             }).width(80).height(35)
-            Button("暂停").onClick({ =>
+            Button("暂停").onClick({ evt=>
               this.backAnimator?.pause()
               this.animatorStatus = '暂停'
             }).width(80).height(35)

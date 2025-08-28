@@ -408,9 +408,9 @@ class EntryView {
             Button() {
                 Text('在第1项后插入新项').fontSize(30)
             }
-            .onClick({=>
+            .onClick{ evt =>
                 this.simpleList.insert(1,'new item')
-            })
+            }
             ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>ChildItem(item: item)
             },keyGeneratorFunc: {item: String, index: Int64 => index.toString()}
             )
@@ -472,8 +472,8 @@ class EntryView {
             Button() {
             Text('在第1项后插入新项').fontSize(30)
             }
-            .onClick({=>this.simpleList.insert(1,'new item')
-            })
+            .onClick{ evt =>this.simpleList.insert(1,'new item')
+            }
             ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>
             ChildItem(item: item)}
             )

@@ -429,7 +429,7 @@ public func takeNext(): Option<AppEventPackage>
 
 |类型|说明|
 |:----|:----|
-|[Option](<font color="red" face="bold">please add link</font>)\<[AppEventPackage](#class-appeventpackage)>|取出的事件包对象，订阅事件数据被全部取出后会返回None。|
+|[Option][AppEventPackage](#class-appeventpackage)|取出的事件包对象，订阅事件数据被全部取出后会返回None。|
 
 **示例：**
 
@@ -812,7 +812,7 @@ public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 
 |类型|说明|
 |:----|:----|
-|[Option](<font color="red" face="bold">please add link</font>)\<[AppEventPackageHolder](#class-appeventpackageholder)>|订阅数据持有者，订阅失败时返回None。|
+|[Option][AppEventPackageHolder](#class-appeventpackageholder)|订阅数据持有者，订阅失败时返回None。|
 
 **异常：**
 
@@ -1633,7 +1633,7 @@ public var onReceive: Option <(String, Array<AppEventGroup>) -> Unit>
 
 **功能：** 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调。回调函数的第一个参数表示回调事件的领域名称，回调函数的第二个参数表示回调事件集合。
 
-**类型：** [Option](<font color="red" face="bold">please add link</font>)\<(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit>
+**类型：** [AppEventGroup](#class-appeventgroup)->Unit
 
 **读写能力：** 可读写
 
@@ -1649,7 +1649,7 @@ public var onTrigger: Option <(Int32, Int32, AppEventPackageHolder) -> Unit>
 
 **功能：** 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效。回调函数的第一个参数表示在本次回调触发时的订阅事件总数量。回调函数的第二个参数表示在本次回调触发时的订阅事件总大小，单位为byte。回调函数的第三个参数表示订阅数据持有者对象，可以通过其对订阅事件进行处理。
 
-**类型：** [Option](<font color="red" face="bold">please add link</font>)\<(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit>
+**类型：** (Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit
 
 **读写能力：** 可读写
 
@@ -1695,8 +1695,8 @@ public init(name: String, triggerCondition!: TriggerCondition = TriggerCondition
 |name|String|是|-|观察者名称，用于唯一标识观察者。|
 |triggerCondition|[TriggerCondition](#class-triggercondition)|否|TriggerCondition()|**命名参数。** 订阅回调触发条件，需要与回调函数onTrigger一同传入才会生效。|
 |appEventFilters|Array\<[AppEventFilter](#class-appeventfilter)>|否|[]|**命名参数。** 订阅过滤条件，在需要对订阅事件进行过滤时传入。|
-|onTrigger|[Option](<font color="red" face="bold">please add link</font>)\<(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit>|否|None|**命名参数。** 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；<br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。|
-|onReceive|[Option](<font color="red" face="bold">please add link</font>)\<(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit>|否|None|**命名参数。** 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称；<br>appEventGroups：回调事件集合。|
+|onTrigger|(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit|否|None|**命名参数。** 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；<br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。|
+|onReceive|(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit|否|None|**命名参数。** 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称；<br>appEventGroups：回调事件集合。|
 
 ## enum EventType
 

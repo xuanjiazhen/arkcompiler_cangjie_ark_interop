@@ -551,7 +551,7 @@ public func clear(): Unit
 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
-import kit.ArkData.ValueType as PreferencesValueType
+import ohos.data.preferences.ValueType as PreferencesValueType
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext
@@ -637,7 +637,7 @@ public func flush(): Unit
 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
-import kit.ArkData.ValueType as PreferencesValueType
+import ohos.data.preferences.ValueType as PreferencesValueType
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext
@@ -691,7 +691,7 @@ public func get(key: String, defValue: ValueType): ValueType
 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
-import kit.ArkData.ValueType as PreferencesValueType
+import ohos.data.preferences.ValueType as PreferencesValueType
 import ohos.base.*
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
@@ -700,9 +700,9 @@ import kit.AbilityKit.UIAbilityContext
 import kit.PerformanceAnalysisKit.Hilog
 
 let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
-var value = preferences.get("key", PreferencesValueType.integer(0))
+var value = preferences.get("key", PreferencesValueType.Integer(0))
 match (value) {
-    case PreferencesValueType.integer(n) => Hilog.info(0, "AppLogCj", "获取到的值为${n}")
+    case PreferencesValueType.Integer(n) => Hilog.info(0, "AppLogCj", "获取到的值为${n}")
     case _ => Hilog.info(0, "AppLogCj", "获取到的值并不是 Int")
 }
 ```
@@ -859,7 +859,7 @@ import kit.ArkData.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import kit.ArkData.ValueType as PValueType
+import ohos.data.preferences.ValueType as PValueType
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext
@@ -913,7 +913,7 @@ import kit.ArkData.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import kit.ArkData.ValueType as PValueType
+import ohos.data.preferences.ValueType as PValueType
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext
@@ -972,7 +972,7 @@ public func put(key: String, value: ValueType): Unit
 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
-import kit.ArkData.ValueType as PreferencesValueType
+import ohos.data.preferences.ValueType as PreferencesValueType
 import ohos.arkui.state_management.AppStorage
 //// check redundant import
 import kit.AbilityKit.UIAbilityContext

@@ -1,4 +1,4 @@
-# ohos.app.ability
+# ohos.app.ability (Ability)
 
 AbilityConstant提供Ability相关的枚举，包括应用启动原因LaunchReason、上次退出原因LastExitReason、迁移结果OnContinueResult等。
 
@@ -202,10 +202,6 @@ public open class AbilityStage <: FFIData {}
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- [FFIData](<font color="red" face="bold">please add link</font>)
 
 ### prop context
 
@@ -2375,7 +2371,7 @@ public enum WantValueType {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 提供不同的want parameters参数的值类型。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -2387,7 +2383,7 @@ public enum WantValueType {
 ArrayValue(Array<WantValueType>)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 数组类型的want parameters的值类型。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -2399,7 +2395,7 @@ ArrayValue(Array<WantValueType>)
 BoolValue(Bool)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 布尔类型的want parameters的值类型。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -2411,7 +2407,7 @@ BoolValue(Bool)
 Float64Value(Float64)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Float64类型的want parameters的值类型。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -2423,7 +2419,7 @@ Float64Value(Float64)
 HashMapValue(HashMap<String, WantValueType>)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Hashmap类型的want parameters的值类型。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -2435,7 +2431,7 @@ HashMapValue(HashMap<String, WantValueType>)
 Int64Value(Int64)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Int64类型的want parameters的值类型。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -2447,7 +2443,7 @@ Int64Value(Int64)
 StringValue(String)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** String类型的want parameters的值类型。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 

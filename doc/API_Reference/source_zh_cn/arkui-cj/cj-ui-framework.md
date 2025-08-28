@@ -326,11 +326,6 @@ public abstract class CustomView <: RemoteView & Observer {
 
 **起始版本：** 21
 
-**父类型：**
-
-- [RemoteView](<font color="red" face="bold">please add link</font>)
-- [Observer](<font color="red" face="bold">please add link</font>)
-
 ### var isReusable
 
 ```cangjie
@@ -930,10 +925,6 @@ public class ForEach <: UINodeBase {
 
 **起始版本：** 21
 
-**父类型：**
-
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
-
 ### init(() -> Unit)
 
 ```cangjie
@@ -1072,10 +1063,6 @@ public class If <: UINodeBase {
 
 **起始版本：** 21
 
-**父类型：**
-
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
-
 ### init(() -> Unit)
 
 ```cangjie
@@ -1165,10 +1152,6 @@ abstract sealed class InteractableView <: RemoteData {}
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- [RemoteData](<font color="red" face="bold">please add link</font>)
 
 ### func onAppear(() -> Unit)
 
@@ -2877,7 +2860,6 @@ public open class ViewBase <: InteractableView & UINodeBase {}
 **父类型：**
 
 - [InteractableView](#class-interactableview)
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
 
 ### func initial()
 
