@@ -38,7 +38,7 @@ class EntryView {
             //组件一
             Column {
             }
-            .rotate(this.rotateValue)
+            .rotate(angle:this.rotateValue)
             .backgroundColor(0x317AF7)
             .justifyContent(FlexAlign.Center)
             .width(100.vp)
@@ -119,7 +119,7 @@ class EntryView {
             }
             .animationStart(AnimateParam(curve: Curve.Smooth))
             .opacity(Float64(this.opacityValue))
-            .rotate(this.rotateValue)
+            .rotate(angle:this.rotateValue)
             .backgroundColor(0x317AF7)
             .justifyContent(FlexAlign.Center)
             .width(100.vp)
