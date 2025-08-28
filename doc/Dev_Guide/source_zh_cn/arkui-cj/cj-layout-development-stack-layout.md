@@ -128,7 +128,7 @@ class EntryView {
             }
             .width(150)
             .height(150)
-            .backgroundColor(Color.PINK)
+            .backgroundColor(0xFEC0CD)
 
             Column() {
                 Text('Stack子元素3').fontSize(20)
@@ -172,7 +172,7 @@ class EntryView {
             }
             .width(150)
             .height(150)
-            .backgroundColor(Color.PINK)
+            .backgroundColor(0xFEC0CD)
             .zIndex(1)
             Column() {
                 Text('Stack子元素3').fontSize(20)

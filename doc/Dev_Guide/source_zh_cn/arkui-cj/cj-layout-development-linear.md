@@ -625,7 +625,7 @@ class EntryView {
             Row() {
                 Text('Bluetooth').fontSize(18)
                 Blank()
-                Toggle(ToggleType.SwitchType,isOn: true)
+                Toggle(ToggleType.Switch,isOn: true)
             }.backgroundColor(0xFFFFFF).borderRadius(15).padding(left:12).width(100.percent)
         }.backgroundColor(0xEFEFEF).padding(20).width(100.percent)
     }

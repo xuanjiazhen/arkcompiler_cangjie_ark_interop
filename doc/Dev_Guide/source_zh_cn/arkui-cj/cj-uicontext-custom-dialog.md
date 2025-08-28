@@ -37,9 +37,9 @@
     func CustomDialog() {
         Column() {
             Text("Hello").height(50.vp)
-            Button("Close").onClick({
-                => PromptAction.closeCustomDialog(customdialogId)
-            })
+            Button("Close").onClick{
+                evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
+            }
         }.margin(10.vp)
     }
     ```
@@ -53,7 +53,10 @@
     ```cangjie
     package ohos_app_cangjie_entry
 
-    import kit.ArkUI.*
+    import ohos.base.*
+    import ohos.arkui.component.*
+    import ohos.arkui.ui_context.*
+    import ohos.arkui.state_management.*
     import ohos.arkui.state_macro_manage.*
 
     var customdialogId: Int32 = 0
@@ -66,24 +69,23 @@
         func CustomDialog() {
             Column() {
                 Text("Hello Content").height(60.vp)
-                Button("Close").onClick({
-                    => PromptAction.closeCustomDialog(customdialogId)
-                })
+                Button("Close").onClick{
+                    evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
+                }
             }.margin(10.vp)
         }
 
         func build(){
             Button("open dialog and options")
                 .margin(top: 50)
-                .onClick(
-                {
-                    => PromptAction.openCustomDialog(
+                .onClick {
+                    evt => getUIContext().getPromptAction().openCustomDialog(
                         CustomDialogOptions(builder: bind(this.CustomDialog, this)),
                         {
                             id => customdialogId = id
                         }
                     )
-                })
+                }
         }
     }
     ```
@@ -97,7 +99,10 @@
     ```cangjie
     package ohos_app_cangjie_entry
 
-    import kit.ArkUI.*
+    import ohos.base.*
+    import ohos.arkui.component.*
+    import ohos.arkui.ui_context.*
+    import ohos.arkui.state_management.*
     import ohos.arkui.state_macro_manage.*
 
     var customdialogId: Int32 = 0
@@ -110,7 +115,7 @@
             Column() {
                 Text("Hello Content").height(60.vp)
                 Button("Close").onClick({
-                    => PromptAction.closeCustomDialog(customdialogId)
+                    evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
                 })
             }.margin(10.vp)
         }
@@ -120,7 +125,7 @@
                     .margin(top: 50)
                     .onClick(
                         {
-                            => PromptAction.openCustomDialog(
+                            evt => getUIContext().getPromptAction().openCustomDialog(
                                 CustomDialogOptions(builder: bind(this.CustomDialog, this)),
                                 {
                                     id => customdialogId = id
@@ -139,7 +144,10 @@
 ```cangjie
 package ohos_app_cangjie_entry
 
-import kit.ArkUI.*
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.ui_context.*
+import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
 var customdialogId: Int32 = 0
@@ -151,45 +159,43 @@ public class EntryView {
     func CustomDialog() {
         Column() {
             Text("Hello ").height(70.vp)
-            Button("Close").onClick({
-                => PromptAction.closeCustomDialog(customdialogId)
-            })
+            Button("Close").onClick{
+                evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
+            }
         }.margin(15.vp)
     }
     @Builder
     func CustomDialog1() {
         Column() {
             Text("Hello Content").height(60.vp)
-            Button("Close").onClick({
-                => PromptAction.closeCustomDialog(customdialogId)
-            })
+            Button("Close").onClick{
+               evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
+            }
         }.margin(10.vp)
     }
     func build() {
-        Flex(FlexParams(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center)) {
+        Flex(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
             Column(){
             Button("open dialog and options")
                 .margin(top: 50)
-                .onClick(
-                    {
-                        => PromptAction.openCustomDialog(
+                .onClick {
+                        evt => getUIContext().getPromptAction().openCustomDialog(
                             CustomDialogOptions(builder: bind(this.CustomDialog, this)),
                             {
                                 id => customdialogId = id
                             }
                         )
-                    })
+                    }
             Button("open dialog and content")
                 .margin(top: 50)
-                .onClick(
-                    {
-                        => PromptAction.openCustomDialog(
+                .onClick {
+                        evt => getUIContext().getPromptAction().openCustomDialog(
                             CustomDialogOptions(builder: bind(this.CustomDialog1, this)),
                             {
                                 id => customdialogId = id
                             }
                         )
-                    })
+                    }
         }.width(100.percent).padding(top:5)}
     }
 }

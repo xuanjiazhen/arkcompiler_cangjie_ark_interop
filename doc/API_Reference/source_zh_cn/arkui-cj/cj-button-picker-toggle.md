@@ -246,14 +246,14 @@ class EntryView {
             .fontColor(0xcccccc)
             .width(90.percent)
             Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
-                Toggle(ToggleType.SwitchType, isOn: false)
+                Toggle(ToggleType.Switch, isOn: false)
                 .selectedColor(0xed6f21)
                 .switchPointColor(0xe5ffffff)
                 .onChange({isOn: Bool =>
                     nativeLog("Component status: ${isOn}")
                 })
 
-                Toggle(ToggleType.SwitchType, isOn: true)
+                Toggle(ToggleType.Switch, isOn: true)
                 .selectedColor(0x39a2db)
                 .switchPointColor(0xe5ffffff)
                 .onChange({isOn: Bool =>
@@ -266,14 +266,14 @@ class EntryView {
             .fontColor(0xcccccc)
             .width(90.percent)
             Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
-                Toggle(ToggleType.CheckboxType, isOn: false)
+                Toggle(ToggleType.Checkbox, isOn: false)
                 .size(width: 28, height: 28)
                 .selectedColor(0xed6f21)
                 .onChange({isOn: Bool =>
                     nativeLog("Component status: ${isOn}")
                 })
 
-                Toggle(ToggleType.CheckboxType, isOn: true)
+                Toggle(ToggleType.Checkbox, isOn: true)
                 .size(width: 28, height: 28)
                 .selectedColor(0x39a2db)
                 .onChange({isOn: Bool =>
@@ -286,7 +286,7 @@ class EntryView {
             .fontColor(0xcccccc)
             .width(90.percent)
             Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
-                Toggle(ToggleType.ButtonType, false) {
+                Toggle(ToggleType.Button, false) {
                     Text("status")
                     .padding(left:12, right: 12)
                 }
@@ -295,7 +295,7 @@ class EntryView {
                     nativeLog("Component status: ${isOn}")
                 })
 
-                Toggle(ToggleType.ButtonType, true) {
+                Toggle(ToggleType.Button, true) {
                     Text("status")
                     .padding(left:12, right: 12)
                 }

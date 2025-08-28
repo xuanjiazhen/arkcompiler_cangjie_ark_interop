@@ -36,7 +36,7 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
   Text('2')
     .width(90.percent)
     .height(100.percent)
-    .backgroundColor(Color.PINK)
+    .backgroundColor(0xFEC0CD)
     .textAlign(TextAlign.Center)
     .fontSize(30)
   }
@@ -107,7 +107,7 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
       Text('2')
       .width(90.percent)
       .height(100.percent)
-      .backgroundColor(Color.PINK)
+      .backgroundColor(0xFEC0CD)
       .textAlign(TextAlign.Center)
       .fontSize(30)
       }
@@ -331,7 +331,7 @@ class EntryView {
                   Text('2')
                     .width(250)
                     .height(250)
-                    .backgroundColor(Color.PINK)
+                    .backgroundColor(0xFEC0CD)
                     .textAlign(TextAlign.Center)
                     .fontSize(30)
                   Text('3')

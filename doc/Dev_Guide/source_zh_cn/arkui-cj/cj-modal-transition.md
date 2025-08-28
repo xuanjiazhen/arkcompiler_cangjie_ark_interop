@@ -549,6 +549,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -559,7 +560,7 @@ class EntryView {
     @State
     var isShowShare: Bool = false
     private func shareFunc(): Unit {
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(duration: 500),
             {
                 => this.isShowShare = !this.isShowShare

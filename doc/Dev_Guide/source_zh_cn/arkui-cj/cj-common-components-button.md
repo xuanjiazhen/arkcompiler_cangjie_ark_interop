@@ -135,7 +135,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   ```cangjie
   Button('font style', ButtonOptions(shape: ButtonType.Normal))
       .fontSize(20)
-      .fontColor(Color.PINK)
+      .fontColor(0xFEC0CD)
       .fontWeight(W800)
   ```
 

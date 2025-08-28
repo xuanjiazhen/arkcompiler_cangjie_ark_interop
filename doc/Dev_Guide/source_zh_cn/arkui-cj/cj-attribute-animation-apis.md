@@ -21,6 +21,7 @@ public func animateTo(animation: AnimateParam, callback: () -> Unit): Unit
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -45,7 +46,7 @@ class EntryView {
             .height(100.vp)
             .borderRadius(30.vp)
             .onClick{ evt =>
-                    animateTo(AnimateParam(curve: Curve.Smooth),
+                    getUIContext().animateTo(AnimateParam(curve: Curve.Smooth),
                     { =>
                         this.animate = !this.animate
                         //第三步：闭包内通过状态变量改变UI界面

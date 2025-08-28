@@ -1206,6 +1206,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import std.collection.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 class ItemType {
@@ -1240,7 +1241,7 @@ class EntryView {
                     this.scaleList[Int64(to)] = 0.5
                     this.opacityList[Int64(from)] = 1.0
                     this.opacityList[Int64(to)] = 0.5
-                    animateTo(AnimateParam(duration: this.durationList[Int64(from)],onFinish: { => proxy.finishTransition() }),
+                    getUIContext().animateTo(AnimateParam(duration: this.durationList[Int64(from)],onFinish: { => proxy.finishTransition() }),
                         { =>
                           this.scaleList[Int64(from)] = 0.5
                           this.scaleList[Int64(to)] = 1.0
@@ -1386,6 +1387,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import std.collection.{HashMap}
 import std.math.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -1499,7 +1501,7 @@ class EntryView {
 
     func startAnimateTo(duration: Int32, leftMargin: Float64, width: Float64) {
         this.isStartAnimateTo = true
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(
                 duration: duration, // 动画时长
                 curve: Curve.Linear, // 动画曲线
@@ -1820,7 +1822,7 @@ class EntryView{
             }
             Tabs(){
                 TabContent(){
-                    Column().width(100.percent).height(100.percent).backgroundColor(Color.PINK)
+                    Column().width(100.percent).height(100.percent).backgroundColor(0xFEC0CD)
                 }.tabBar(SubTabBarStyle.of(this.text))
 
                 TabContent(){

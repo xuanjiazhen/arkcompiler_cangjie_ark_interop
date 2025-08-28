@@ -94,7 +94,7 @@ class EntryView {
                 .direction(Direction.Auto)
                 .width(100.percent)
                 .height(100.percent)
-                .backgroundColor(Color.PINK)
+                .backgroundColor(0xFEC0CD)
                 .onReady({
                 =>
                     this.drawText()
