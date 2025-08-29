@@ -914,7 +914,7 @@ class EntryView {
     @State var DrawingColorFilterSecond: ColorFilter = colorFilter
 
     func build() {
-        Column(5){
+        Column(space: 5){
             Image(@r(app.media.startIcon))
             .width(100)
             .height(100)
@@ -963,7 +963,7 @@ class EntryView {
                     .height(110)
                     .margin(15)
                     .overlay(title: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
-                    .border(width: 2, color: Color.PINK)
+                    .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.TOP_START)
                     // 加载gif格式图片
                     Image(@r(app.media.list))
@@ -971,7 +971,7 @@ class EntryView {
                     .height(110)
                     .margin(15)
                     .overlay(title: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
-                    .border(width: 2, color: Color.PINK)
+                    .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.BOTTOM_START)
                 }
                 Row() {
@@ -981,7 +981,7 @@ class EntryView {
                     .height(110)
                     .margin(15)
                     .overlay(title: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
-                    .border(width: 2, color: Color.PINK)
+                    .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.TOP_END)
                     // 加载jpg格式图片
                     Image(@r(app.media.startIcon_jpg))
@@ -989,7 +989,7 @@ class EntryView {
                     .height(110)
                     .margin(15)
                     .overlay(title: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
-                    .border(width: 2, color: Color.PINK)
+                    .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.CENTER)
                 }
             }

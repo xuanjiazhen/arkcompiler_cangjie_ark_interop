@@ -595,13 +595,13 @@ class EntryView {
                                     Grid(){
                                         GridItem(){
                                             Text("GridItem").fontSize(16).height(12)
-                                        }.backgroundColor(Color.PINK)
+                                        }.backgroundColor(0xFEC0CD)
                                     }
                                     .columnsTemplate("lfr")
                                     .rowsTemplate("lfr")
                                     .width(120)
                                     .height(myHight[element % 5])
-                                    .backgroundColor(Color.PINK)
+                                    .backgroundColor(0xFEC0CD)
                                     .rowsGap(5)
                                     .columnsGap(4)
                                 }

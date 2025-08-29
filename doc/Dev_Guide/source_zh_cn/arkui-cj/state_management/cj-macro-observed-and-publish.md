@@ -304,7 +304,7 @@ class EntryView{
     @State
     var parent1: Parent = Parent(parentId: 0,child: Child())
     func build(){
-        Column(10){
+        Column(space: 10){
             Text("parentId: ${parent1.parentId}")
             Button("change parentId by 1").onClick{
                 =>
@@ -358,7 +358,7 @@ class EntryView{
     @State
     var parent1: Parent = Parent(parentId: 0,child: Child(childId: 1))
     func build(){
-        Column(10){
+        Column(space: 10){
             Text("parentId: ${parent1.parentId}")
             Button("change parentId by 1").onClick{
                 =>

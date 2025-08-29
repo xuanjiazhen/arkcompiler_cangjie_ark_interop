@@ -45,7 +45,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(20) {
+        Column(space: 20) {
             Text('space: 20').fontSize(15).fontColor(Color.Gray).width(90.percent)
             Row().width(90.percent).height(50).backgroundColor(0xF5DEB3)
             Row().width(90.percent).height(50).backgroundColor(0xD2B48C)
@@ -625,7 +625,7 @@ class EntryView {
             Row() {
                 Text('Bluetooth').fontSize(18)
                 Blank()
-                Toggle(ToggleType.SwitchType,isOn: true)
+                Toggle(ToggleType.Switch,isOn: true)
             }.backgroundColor(0xFFFFFF).borderRadius(15).padding(left:12).width(100.percent)
         }.backgroundColor(0xEFEFEF).padding(20).width(100.percent)
     }

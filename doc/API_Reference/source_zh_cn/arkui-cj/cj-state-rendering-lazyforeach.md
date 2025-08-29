@@ -359,7 +359,7 @@ var changeID: Int64 = 0
 public class EntryView {
 
     public func build(): Unit {
-        Column(30) {
+        Column(space: 30) {
             Column {
                 LazyForEach(dataSourceStu, itemGeneratorFunc: {stu: Student, idx: Int64 =>
                     Column {

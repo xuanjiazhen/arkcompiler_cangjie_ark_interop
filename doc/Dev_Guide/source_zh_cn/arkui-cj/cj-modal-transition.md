@@ -44,7 +44,7 @@
    Button("Click to present model view")
      // 通过选定的模态接口，绑定模态展示界面，ModalTransition是内置的ContentCover转场动画类型，这里选择None代表系统不加默认动画，通过onDisappear控制状态变量变换
      .bindContentCover(this.isPresent, this.MyBuilder, ContentCoverOptions(
-               modalTransition: ModalTransition.DEFAULT,
+               modalTransition: ModalTransition.Default,
                onDisappear: {
                 => if (this.isPresent) {
                   this.isPresent = !this.isPresent
@@ -228,7 +228,7 @@ class EntryView {
                         this.isPresent,
                         this.MyBuilder,
                         ContentCoverOptions(
-                            modalTransition: ModalTransition.DEFAULT,
+                            modalTransition: ModalTransition.Default,
                             onDisappear: {
                                 => if (this.isPresent) {
                                     this.isPresent = !this.isPresent
@@ -549,6 +549,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -559,7 +560,7 @@ class EntryView {
     @State
     var isShowShare: Bool = false
     private func shareFunc(): Unit {
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(duration: 500),
             {
                 => this.isShowShare = !this.isShowShare

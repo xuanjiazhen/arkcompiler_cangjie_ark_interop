@@ -260,7 +260,7 @@ class EntryView {
     var data2: Array<Int64> = [0, 1, 2, 3, 4, 5]
 
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("auto-fill 根据设定的列宽自动计算列数").width(90.percent)
             Grid() {
                 ForEach(
@@ -366,7 +366,7 @@ class EntryView {
     }
 
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text('Grid alignItems示例代码')
 
             Grid() {

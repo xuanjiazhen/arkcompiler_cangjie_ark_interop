@@ -703,7 +703,7 @@ class EntryView {
     @State var text: String = "begin"
 
     func build() {
-        Column(30) {
+        Column(space: 30) {
             Button(text).onClick { evt =>
                 changeText({ p: String =>
                     // 使用launch表达式在主线程中更新状态变量

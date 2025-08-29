@@ -623,7 +623,7 @@ class EntryView {
 
     func build() {
         // Button components are focusable by default
-        Column(20) {
+        Column(space: 20) {
             Row() {
                 // Default focus, and clickable to gain focus
                 Button("Hello Cangjie A")
@@ -762,9 +762,9 @@ class EntryView {
                     }
             }
 
-            Row(space: 20) {
-                Column(20) {
-                    Column(5) {
+             {
+                Column(space: 20) {
+                    Column(space: 5) {
                         Button("Group1")
                             .width(165)
                             .height(40)
@@ -781,7 +781,7 @@ class EntryView {
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b5").key("b5")
                         }
                     }.borderWidth(2).borderColor(Color.RED).borderStyle(BorderStyle.Dashed)
-                    Column(5) {
+                    Column(space: 5) {
                         Button("Group2").width(165).height(40).fontColor(Color.WHITE).id("b6").key("b6")
                         Row(space: 5) {
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b7").key("b7")
@@ -806,7 +806,7 @@ class EntryView {
                         }
                     }.borderWidth(2).borderColor(Color.GREEN).borderStyle(BorderStyle.Dashed)
                 }.focusScopeId("ColumnScope1")
-                Column(5) {
+                Column(space: 5) {
                     Button("Group3")
                         .width(165)
                         .height(40)

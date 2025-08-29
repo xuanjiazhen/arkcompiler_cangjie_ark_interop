@@ -129,7 +129,7 @@ import kit.LocalizationKit.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Column() {
                 Text("floating layer")
                 .fontSize(12).fontColor(0xCCCCCC).maxLines(1)

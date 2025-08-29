@@ -168,9 +168,9 @@ class EntryView {
                     SheetInfo(title: "pears", action: {=> Hilog.info(0, "cangjie", "pears")})]
                 getUIContext().showActionSheet(
                     ActionSheetOptions(
-                        'ActionSheet title',
-                        'message',
-                        sheets,
+                        title: 'ActionSheet title',
+                        message: 'message',
+                        sheets: sheets,
                         autoCancel: false,
                         confirm: confirm,
                         width: 300,

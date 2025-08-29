@@ -73,7 +73,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Text("Orbital LoadingProgress")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)

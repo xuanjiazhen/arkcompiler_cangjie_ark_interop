@@ -350,14 +350,14 @@ public class EntryView {
                 { =>
                     // 循环渲染分组A的ListItem
                 }
-            )
+            ){}
 
             ListItemGroup(
                 ListItemGroupParams(header: {=> bind(this.itemHead, this)("b")}),
                 { =>
                     // 循环渲染分组A的ListItem
                 }
-            )
+            ){}
         }
     }
 }
@@ -470,7 +470,7 @@ var listScroller: Scroller = Scroller()
 
 
 ```cangjie
-Stack(Alignment.Bottom) {
+Stack(alignContent: Alignment.Bottom) {
     List(space: 20, scroller: this.listScroller) {
         // ...
     }
@@ -511,13 +511,13 @@ import ohos.resource_manager.*
 @Component
 public class EntryView {
     let alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K','L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    @State var selectedIndex: UInt32 = 0;
+    @State var selectedIndex: Int32 = 0;
     private var listScroller:Scroller = Scroller()
 
     func build() {
-        Stack(Alignment.End) {
+        Stack(alignContent: Alignment.End) {
             List(scroller: this.listScroller) {}
-                .onScrollIndex({ firstIndex, scrollState =>
+                .onScrollIndex({ firstIndex, scrollState, _ =>
                     // 根据列表滚动到的索引值，重新计算对应联系人索引栏的位置this.selectedIndex
                 })
 
@@ -708,7 +708,7 @@ List() {
         ItemGroupInfo(4, 'tradeInfo', '交易与资产信息', []),
         ItemGroupInfo(5, 'otherInfo', '其他资料', [])
     ]
-    @State var expandedItems: ObservedArray<Float32> = ObservedArray<Float32>([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    @State var expandedItems: ObservedArrayList<Float32> = ObservedArrayList<Float32>([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 
     func build() {
         Column() {
@@ -722,7 +722,7 @@ List() {
                                 footer: {=>}, space: 0, style: ListItemGroupStyle.CARD)) {
                                     if (this.expandedItems[itemGroup.index] == 180.0) {
                                         ForEach(itemGroup.children, itemGeneratorFunc: { item: ItemInfo, _: Int64 =>
-                                            ListItem(ListItemOptions(style: ListItemStyle.CARD)) {
+                                            ListItem() {
                                                     Row() {
                                                         Text(item.name)
                                                         Blank()
@@ -768,7 +768,7 @@ List() {
                 .height(30)
                 .width(30)
                 .animationStart(AnimateParam(curve: Curve.EaseInOut, duration: 500))
-                .rotate(this.expandedItems[itemGroup.index])
+                .rotate(x: this.expandedItems[itemGroup.index])
                 .animationEnd()
         }
         .width(100.percent)

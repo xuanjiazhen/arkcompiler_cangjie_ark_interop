@@ -37,8 +37,8 @@ import ohos.hilog.Hilog
 class EntryView {
     @State var isHoverVal: Bool = false
     func build() {
-        Column(5) {
-            Column(5) {
+        Column(space: 5) {
+            Column(space: 5) {
                 Text('Scale')
                     .fontSize(20)
                     .fontColor(Color.GRAY)

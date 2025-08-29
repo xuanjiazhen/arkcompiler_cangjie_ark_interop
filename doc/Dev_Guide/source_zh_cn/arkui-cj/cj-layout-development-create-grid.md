@@ -53,7 +53,7 @@ rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间
 
 ```cangjie
 Grid() {
-  ...
+  // ...
 }
 .rowsTemplate("1fr 1fr 1fr")
 .columnsTemplate("1fr 2fr 1fr")
@@ -61,32 +61,7 @@ Grid() {
 
 > **说明：**
 >
-> 当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、maxCount、minCount、cellLength属性不生效，属性说明可参考[Grid-属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md#组件属性)。
-
-### 设置主轴方向
-
-使用Grid构建网格布局时，若没有设置行列数量与占比，可以通过layoutDirection设置网格布局的主轴方向，决定子组件的排列方式。此时可以结合minCount和maxCount属性来约束主轴方向上的网格数量。
-
-**图4** 主轴方向示意图
-
-![GridItem3](figures/GridItem3.png)
-
-当前layoutDirection设置为Row时，先从左到右排列，排满一行再排下一行。当前layoutDirection设置为Column时，先从上到下排列，排满一列再排下一列，如上图4所示。此时，将maxCount属性设为3，表示主轴方向上最大显示的网格单元数量为3。
-
-
-```cangjie
-Grid() {
-  ...
-}
-.maxCount(3)
-.layoutDirection(GridDirection.Row)
-```
-
-> **说明：**
->
-> - layoutDirection属性仅在不设置rowsTemplate和columnsTemplate时生效，此时元素在layoutDirection方向上排列。
-> - 仅设置rowsTemplate时，Grid主轴为水平方向，交叉轴为垂直方向。
-> - 仅设置columnsTemplate时，Grid主轴为垂直方向，交叉轴为水平方向。
+> 当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、cellLength属性不生效，属性说明可参考[Grid-属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md#组件属性)。
 
 ## 在网格布局中显示数据
 
@@ -103,22 +78,22 @@ Grid组件可以通过二维布局的方式显示一组GridItem子组件。
 Grid() {
     GridItem() {
         Text("会议")
-          ...
+        //  ...
     }
 
     GridItem() {
         Text("签到")
-          ...
+        //  ...
     }
 
     GridItem() {
         Text("投票")
-          ...
+        //  ...
     }
 
     GridItem() {
         Text("打印")
-          ...
+        //  ...
     }
 }
 .rowsTemplate("1fr 1fr")
@@ -168,7 +143,7 @@ class EntryView {
 
 ```cangjie
 Grid() {
-  ...
+  // ...
 }
 .columnsGap(10)
 .rowsGap(15)
@@ -198,7 +173,7 @@ import ohos.resource_manager.*
 class EntryView {
     @State var services: Array<String> = ["直播", "进口"]
     func build() {
-            Column(5) {
+            Column(space: 5) {
                 Grid() {
                     ForEach(this.services, itemGeneratorFunc: {service: String, _: Int64 =>
                         GridItem() {
@@ -245,7 +220,7 @@ class EntryView {
     var scroller: Scroller = Scroller()
     func build() {
         Column() {
-            Grid(this.scroller) {
+            Grid(scroller: this.scroller) {
               // 添加内容
             }
             .columnsTemplate("1fr 1fr 1fr 1fr 1fr 1fr 1fr")

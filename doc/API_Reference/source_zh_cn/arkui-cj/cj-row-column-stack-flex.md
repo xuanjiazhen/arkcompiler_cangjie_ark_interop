@@ -72,7 +72,7 @@ import std.collection.*
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text("direction:Row")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
@@ -211,7 +211,7 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text("Wrap")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
@@ -323,7 +323,7 @@ class JustifyContentFlex{
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text('justifyContent:Start').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 JustifyContentFlex()// 子组件在容器主轴上首端对齐
                 Text('justifyContent:Center').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
@@ -385,7 +385,7 @@ class AlignItemsFlex{
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text('alignItems:Auto').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 // 子组件在容器交叉轴上首部对齐
                 AlignItemsFlex()
@@ -450,7 +450,7 @@ class AlignContentFlex{
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text('alignContent:Start').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 // 多行布局下子组件首部对齐
                 AlignContentFlex()
@@ -507,7 +507,7 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     func build() {
         Column() {
-            Column(5) {
+            Column(space: 5) {
                 Text("Wrap").fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 Flex(FlexOptions(wrap: FlexWrap.Wrap, space: FlexSpaceOptions(mainSpace: 50.px, crossSpace: 50.px))) {
                     Text("1").width(40.percent).height(50).backgroundColor(0xF5DEB3)

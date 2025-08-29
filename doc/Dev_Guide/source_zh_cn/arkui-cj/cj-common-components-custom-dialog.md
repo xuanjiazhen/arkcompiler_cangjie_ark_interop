@@ -32,7 +32,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 2. 创建构造器，与宏呼应相连。点击与onClick事件绑定的组件使弹出框弹出。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -75,6 +75,10 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 
     ```cangjie
+    package ohos_app_cangjie_entry
+    import kit.ArkUI.*
+    import ohos.arkui.state_macro_manage.*
+
     @CustomDialog
     class MyDialog {
         var controller: Option<CustomDialogController> = Option.None
@@ -172,7 +176,7 @@ class EntryView {
     width: 120,
     height: 120,
     borderWidth: 1,
-    borderStyle: EdgeStyles() // 使用borderStyle属性，需要和borderWidth属性一起使用
+    borderStyle: EdgeStyles(), // 使用borderStyle属性，需要和borderWidth属性一起使用
     borderColor: Color.Blue, // 使用borderColor属性，需要和borderWidth属性一起使用
     shadow: Option<ShadowOptions>.None,
     ))

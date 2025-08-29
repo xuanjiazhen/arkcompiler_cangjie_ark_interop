@@ -651,7 +651,7 @@ class EntryView {
                 }
                 .width(100.percent)
                 .height(10.percent)
-                .backgroundColor(Color.PINK)
+                .backgroundColor(0xFEC0CD)
             }.span(GridColColumnOption(xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12))
         }
         .width(100.percent)

@@ -130,7 +130,9 @@ public init(
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
+import import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -148,15 +150,15 @@ class EntryView {
                 .margin(30)
                 .onClick(
                     {
-                        =>
+                       evt =>
                         if (this.isShow) {
-                            animateTo(
+                            getUIContext().animateTo(
                                 AnimateParam(
                                     duration: 2000,
                                     curve: Curve.EaseOut,
                                     iterations: 3,
                                     playMode: PlayMode.Normal,
-                                    onFinish: {=> AppLog.info("play end")}
+                                    onFinish: {=> Hilog.info(0, "cangjie", "play end")}
                                 ),
                                 {
                                     =>
@@ -165,7 +167,7 @@ class EntryView {
                                 }
                             )
                         } else {
-                            animateTo(
+                            getUIContext().animateTo(
                                 AnimateParam(),
                                 {
                                     =>
@@ -182,14 +184,14 @@ class EntryView {
                 .rotate(x: 0.0, y: 0.0, z: 1.0, angle: this.rotateAngle)
                 .onClick(
                     {
-                        => animateTo(
+                       evt => getUIContext().animateTo(
                             AnimateParam(
                                 duration: 1200,
                                 curve: Curve.Friction,
                                 delay: 500,
                                 iterations: -1, // 设置-1表示动画无限循环
                                 playMode: PlayMode.Alternate,
-                                onFinish: {=> AppLog.info("play end")},
+                                onFinish: {=> Hilog.info(0, "cangjie", "play end")},
                                 expectedFrameRateRange: ExpectedFrameRateRange(
                                     min: 10,
                                     max: 120,
@@ -217,6 +219,7 @@ class EntryView {
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -237,7 +240,7 @@ class EntryView {
                     .backgroundColor(Color.BLUE)
                     .onClick(
                         {
-                            evt => animateTo(
+                            evt => getUIContext().animateTo(
                                 AnimateParam(
                                     duration: 2000,
                                     curve: Curve.EaseOut,

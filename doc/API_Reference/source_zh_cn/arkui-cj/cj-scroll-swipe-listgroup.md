@@ -347,7 +347,7 @@ class EntryView {
                 ForEach(this.arr, itemGeneratorFunc: { item: ArrObject, index: Int64 =>
                     ListItemGroup(ListItemGroupParams(space: 0.px, style: item.style)) {
                         ForEach(item.itemsStyles, itemGeneratorFunc: { itemStyle: ListItemStyle, itemIndex: Int64 =>
-                            ListItem(ListItemOptions(style: itemStyle)) {
+                            ListItem() {
                                 "Item ${itemIndex+1} in Group ${index+1}"
                             }
                         }, keyGeneratorFunc: { _, index: Int64 => index.toString()})

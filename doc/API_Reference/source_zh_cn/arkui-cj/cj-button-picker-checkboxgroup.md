@@ -400,7 +400,7 @@ class EntryView {
                 .selectedColor(0xed6f21)
                 .selectAll(true)
                 .mark(strokeColor: Color.Green, size: 30.vp, strokeWidth: 10.vp)
-                .checkboxShape(CheckBoxShape.CIRCLE)
+                .checkboxShape(CheckBoxShape.Circle)
                 .onChange { val =>
                     BaseLog.info("checkboxGroup1 onChange status:" + val.status.toString())
                     BaseLog.info("checkboxGroup1 onChange names:" + formatNames(val.name))

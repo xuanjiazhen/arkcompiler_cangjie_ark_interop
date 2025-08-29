@@ -142,7 +142,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
     ```cangjie
     TextInput( placeholder: '我是提示文本', text: '我是当前文本内容' )
-    .backgroundColor(Color.PINK)
+    .backgroundColor(0xFEC0CD)
     ```
 
     ![Text12](figures/Text12.png)

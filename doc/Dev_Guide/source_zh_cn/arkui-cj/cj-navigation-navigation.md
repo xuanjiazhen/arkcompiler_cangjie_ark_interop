@@ -16,7 +16,7 @@ Navigation路由相关的操作都是基于页面栈[NavPathStack](../../../API_
 >
 > 不建议开发者通过监听生命周期的方式管理自己的页面栈。
 
- 
+
 ```cangjie
 @Entry
 @Component
@@ -34,7 +34,7 @@ class EntryView {
 
 NavPathStack通过Push相关的接口去实现页面跳转的功能，主要通过页面的name去跳转，并可以携带param。
 
- 
+
 ```cangjie
 this.pageStack.pushPath(NavPathInfo('PageOne', 'PageOne Param'))
 ```
@@ -43,7 +43,7 @@ this.pageStack.pushPath(NavPathInfo('PageOne', 'PageOne Param'))
 
 NavPathStack通过Pop相关接口去实现页面返回功能。
 
- 
+
 ```cangjie
 // 返回到上一页
 this.pageStack.pop()
@@ -59,7 +59,7 @@ NavDestination之间切换时可以通过[geometryTransition](../../../API_Refer
 
 1. 为需要实现共享元素转场的组件添加geometryTransition属性，id参数必须在两个NavDestination之间保持一致。
 
-     
+
     ```cangjie
     // 起始页配置共享元素id
     // ...
@@ -79,7 +79,7 @@ NavDestination之间切换时可以通过[geometryTransition](../../../API_Refer
     }
 
     // 目的页配置共享元素id
-    // ...  
+    // ...
     @Component
     class PageTwo {
         func build() {
@@ -98,7 +98,7 @@ NavDestination之间切换时可以通过[geometryTransition](../../../API_Refer
 
 2. 将页面路由的操作，放到animateTo动画闭包中，配置对应的动画参数。
 
-     
+
     ```cangjie
     @Component
     class PageOne {
@@ -109,7 +109,7 @@ NavDestination之间切换时可以通过[geometryTransition](../../../API_Refer
                     .width(80.percent)
                     .height(40)
                     .margin(20)
-                    .onClick({ => animateTo(AnimateParam(duration: 1200),
+                    .onClick({ => getUIContext().animateTo(AnimateParam(duration: 1200),
                         { => this.pageStack.pushPath(NavPathInfo("PageTwo", "information"))})
                     })
                 }

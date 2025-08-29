@@ -433,7 +433,7 @@ class EntryView {
                 )
                 .id("row3")
 
-                Stack(Alignment.Bottom) {
+                Stack(alignContent: Alignment.Bottom) {
                     Text('First child, show in bottom')
                         .width(90.percent)
                         .height(100.percent)

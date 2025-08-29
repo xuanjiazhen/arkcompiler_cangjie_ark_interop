@@ -918,7 +918,7 @@ class EntryView {
     let webController = WebviewController()
     @State var url: String = "www.example.com"
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("refresh")
             .onClick {
                 evt =>
