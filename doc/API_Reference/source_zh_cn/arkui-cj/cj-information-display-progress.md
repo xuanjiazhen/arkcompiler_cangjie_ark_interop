@@ -557,7 +557,7 @@ class EntryView {
     var value: Float64 = 0.0
 
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text('enableSmoothEffect: true').fontSize(9).fontColor(0xCCCCCC).width(90.percent).margin(5).margin( top: 20 )
             Progress( value: this.value, total: 100.0, `type`: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: true ))
             Text('enableSmoothEffect: false').fontSize(9).fontColor(0xCCCCCC).width(90.percent).margin(5)

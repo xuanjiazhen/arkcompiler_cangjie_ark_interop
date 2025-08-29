@@ -762,7 +762,7 @@ class EntryView {
                     }
             }
 
-            Row(space: 20) {
+             {
                 Column(space: 20) {
                     Column(space: 5) {
                         Button("Group1")

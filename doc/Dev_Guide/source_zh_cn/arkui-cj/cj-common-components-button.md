@@ -300,7 +300,6 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               TextInput(placeholder: 'input your username')
                 .margin(top: 20)
               TextInput(placeholder: 'input your password')
-                .setType(InputType.Password)
                 .margin(top: 20)
               Button('Register')
                 .width(300)

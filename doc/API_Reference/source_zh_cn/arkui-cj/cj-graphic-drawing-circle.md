@@ -62,7 +62,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             // 绘制一个直径为150的圆
             Circle(width: 150, height: 150)
             // 绘制一个直径为150、线条为红色虚线的圆环（宽高设置不一致时以短边为直径）

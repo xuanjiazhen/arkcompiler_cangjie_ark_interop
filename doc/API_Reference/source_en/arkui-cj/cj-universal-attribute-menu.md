@@ -675,7 +675,7 @@ import ohos.state_macro_manage.*
 class EntryView {
     func build() {
         Scroll() {
-            Column(10) {
+            Column(space: 10) {
                 Button("BindMenu").bindMenu(
                     [
                         MenuElement(

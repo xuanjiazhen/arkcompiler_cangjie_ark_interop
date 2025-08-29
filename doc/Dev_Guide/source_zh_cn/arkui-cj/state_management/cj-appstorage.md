@@ -265,7 +265,7 @@ class EntryView{
 
     func build() {
         Column(){
-            Grid(this.gridScroller){
+            Grid(scroller: this.gridScroller){
                 ForEach(this.dataList, itemGeneratorFunc: {item : ViewData , idx : Int64 =>
                         GridItem(){
                             TapImage(index: idx,uri: item.uri)
@@ -342,7 +342,7 @@ class EntryView{
     var preIndex : Int64 = -1
     func build() {
         Column(){
-            Grid(this.gridScroller){
+            Grid(scroller: this.gridScroller){
                 ForEach(this.dataList, itemGeneratorFunc: {item : ViewData , idx : Int64 =>
                         GridItem(){
                             TapImage(index: idx,uri: item.uri)

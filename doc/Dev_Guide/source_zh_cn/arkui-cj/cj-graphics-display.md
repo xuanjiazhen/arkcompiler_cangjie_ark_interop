@@ -282,8 +282,8 @@ import ohos.resource_manager.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
-            Row(5) {
+        Column(space: 10) {
+            Row(space: 5) {
                 Image(@r(app.media.ic_public_favor_filled_1))
                     .width(110)
                     .height(115)
@@ -336,7 +336,7 @@ import ohos.resource_manager.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Row(50) {
                 Image(@r(app.media.example))
                     // 设置图片的渲染模式为原色

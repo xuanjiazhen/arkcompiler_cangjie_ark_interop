@@ -206,7 +206,7 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     private var arr: Array<String> = ['APP1', 'APP2', 'APP3', 'APP4', 'APP5', 'APP6', 'APP7', 'APP8'];
     func build() {
-        Stack(Alignment.Bottom) {
+        Stack(alignContent: Alignment.Bottom) {
             Flex(FlexParams(wrap: FlexWrap.Wrap)) {
                 ForEach(this.arr,itemGeneratorFunc: {
                     item: String, idx: Int64 => Text(item)

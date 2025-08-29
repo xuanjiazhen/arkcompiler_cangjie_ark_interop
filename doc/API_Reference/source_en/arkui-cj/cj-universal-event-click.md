@@ -283,7 +283,7 @@ class EntryView{
   @State var clickEventMsg2: String = ""
 
   func build() {
-    Column(10) {
+    Column(space: 10) {
         Button("Click").backgroundColor(0x2788D9)
           .onClick({event =>
               this.clickEventMsg = resolveClickEvent(event) + event.source.toString()

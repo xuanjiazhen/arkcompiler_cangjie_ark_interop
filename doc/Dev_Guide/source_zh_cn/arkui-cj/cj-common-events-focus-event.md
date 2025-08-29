@@ -425,36 +425,6 @@ class EntryView {
 - 在第三个Button组件上设置了defaultFocus(true)，进入页面后第三个Button默认获焦，显示为绿色。
 - 按下TAB键，触发走焦，第三个Button正处于获焦状态，会出现焦点框。
 
-### 容器的默认焦点
-
-容器的默认焦点受到[获焦优先级](#焦点组与获焦优先级)的影响。
-
-**defaultFocus与FocusPriority的区别：**
-
-[defaultFocus](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-focus.md#func-defaultfocusbool)是用于指定页面首次展示时的默认获焦节点，[FocusPriority](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-focus.md#func-focusscopeprioritystring-focuspriority)是用于指定某个容器首次获焦时其子节点的获焦优先级。上述两个属性在某些场景同时配置时行为未定义，例如下面的场景，页面首次展示无法同时满足defaultFocus获焦和高优先级组件获焦。示例如下：
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row() {
-            Button("Button1")
-                .defaultFocus(true)
-            Button("Button2")
-                .focusScopePriority("RowScope", FocusPriority.PREVIOUS)
-        }
-        .focusScopeId("RowScope")
-    }
-}
-```
-
 ### 页面/容器整体获焦时的焦点链
 
 #### 整体获焦与非整体获焦
@@ -476,55 +446,6 @@ class EntryView {
 
 - 容器内存在优先级大于PREVIOUS的组件，由优先级最高的组件获焦。
 - 容器内不存在优先级大于PREVIOUS的组件，由上次获焦的节点获焦。例如，窗口失焦后重新获焦。
-
-## 焦点样式
-
-> **说明：**
->
-> 最终绘制焦点态的组件的[zIndex](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-zorder.md#func-zindexint32)默认会被抬升至INT_MAX，如果该组件已经配置了zIndex，则不做zIndex调整。该组件不再绘制焦点态时，例如组件失焦或是退出走焦态，zIndex恢复为默认层级。
-
-```cangjie
-public func focusBox(style: FocusBoxStyle): This
-```
-
-设置当前组件系统焦点框样式。
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Column(space: 30) {
-            Button("small black focus box")
-                .focusBox(FocusBoxStyle(
-                    margin: 0.px,
-                    strokeColor: ColorMetrics.rgba(0, 0, 0),
-                ))
-            Button("large red focus box")
-                .focusBox(FocusBoxStyle(
-                    margin: 20.px,
-                    strokeColor: ColorMetrics.rgba(255, 0, 0),
-                    strokeWidth: 10.px
-                ))
-        }
-        .alignItems(HorizontalAlign.Center)
-        .width(100.percent)
-    }
-}
-```
-
-![focusBox](figures/focusBox.gif)
-
-上述示例包含以下2步：
-
-- 进入页面，按下TAB触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的蓝色细框。
-- 按下TAB键，走焦到第二个Button，焦点框样式为远离边缘的红色粗框。
 
 ## 主动获焦/失焦
 
@@ -591,7 +512,7 @@ class EntryView {
                     .width(200)
                     .height(70)
                     .fontColor(Color.White)
-                    .onClick({ =>
+                    .onClick({ evt =>
                         FocusControl.requestFocus("testButton2")
                     })
                     .backgroundColor(0xff2787d9)
@@ -604,169 +525,6 @@ class EntryView {
 ```
 
 ![focus-2](figures/focus-2.gif)
-
-## 焦点组与获焦优先级
-
-
-```cangjie
-public func focusScopePriority(scopeId: String, priority!: FocusPriority = FocusPriority.AUTO): This
-```
-
-设置当前组件在指定容器内获焦的优先级。需要配合focusScopeId一起使用。
-
-
-```cangjie
-public func focusScopeId(id: String, isGroup!: Bool = false, arrowStepOut!: Bool = true): This
-```
-
-设置当前容器组件的id标识，设置当前容器组件是否为焦点组。焦点组与tabIndex不能混用。
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    @State var inputValue: String = ""
-
-    func build() {
-        Scroll {
-            Row(20) { // 组件间距设为20
-                Column(space: 20) {  // 标记为Column1
-                    Column(space: 5) {
-                        Button("Group1")
-                            .width(165)
-                            .height(40)
-                            .fontColor(Color.White)
-                        Row(5) {
-                            Button()
-                                .width(80)
-                                .height(40)
-                                .fontColor(Color.White)
-                            Button()
-                                .width(80)
-                                .height(40)
-                                .fontColor(Color.White)
-                        }
-                        Row(5) {
-                            Button()
-                                .width(80)
-                                .height(40)
-                                .fontColor(Color.White)
-                            Button()
-                                .width(80)
-                                .height(40)
-                                .fontColor(Color.White)
-                        }
-                    }
-                    .borderWidth(2)
-                    .borderColor(Color.Red)
-                    .borderStyle(BorderStyle.Dashed)
-
-                    Column(space: 5) {
-                        Button("Group2")
-                            .width(165)
-                            .height(40)
-                            .fontColor(Color.White)
-                        Row(5) {
-                            Button()
-                                .width(80)
-                                .height(40)
-                                .fontColor(Color.White)
-                            Button()
-                                .width(80)
-                                .height(40)
-                                .fontColor(Color.White)
-                                .focusScopePriority('ColumnScope1',priority: FocusPriority.PRIOR)  // Column1首次获焦时获焦
-                        }
-                        Row(5) {
-                            Button()
-                                .width(80)
-                                .height(40)
-                                .fontColor(Color.White)
-                            Button()
-                                .width(80)
-                                .height(40)
-                                .fontColor(Color.White)
-                        }
-                    }
-                    .borderWidth(2)
-                    .borderColor(Color.Green)
-                    .borderStyle(BorderStyle.Dashed)
-                }
-                .focusScopeId('ColumnScope1')
-
-                Column(space: 5) {  // 标记为Column2
-                    TextInput(placeholder: "input", text: inputValue)
-                        .onChange({ value: String =>
-                            inputValue = value
-                        })
-                        .width(156)
-                    Button("Group3")
-                        .width(165)
-                        .height(40)
-                        .fontColor(Color.White)
-                    Row(5) {
-                        Button()
-                            .width(80)
-                            .height(40)
-                            .fontColor(Color.White)
-                        Button()
-                            .width(80)
-                            .height(40)
-                            .fontColor(Color.White)
-                    }
-                    Button()
-                        .width(165)
-                        .height(40)
-                        .fontColor(Color.White)
-                        .focusScopePriority('ColumnScope2',priority: FocusPriority.PREVIOUS)  // Column2获焦时获焦
-                    Row(5) {
-                        Button()
-                            .width(80)
-                            .height(40)
-                            .fontColor(Color.White)
-                        Button()
-                            .width(80)
-                            .height(40)
-                            .fontColor(Color.White)
-                    }
-                    Button()
-                        .width(165)
-                        .height(40)
-                        .fontColor(Color.White)
-                    Row(5) {
-                        Button()
-                            .width(80)
-                            .height(40)
-                            .fontColor(Color.White)
-                        Button()
-                            .width(80)
-                            .height(40)
-                            .fontColor(Color.White)
-                    }
-                }
-                .borderWidth(2)
-                .borderColor(Color.ORANGE)
-                .borderStyle(BorderStyle.Dashed)
-                .focusScopeId('ColumnScope2',isGroup: true)  // Column2为焦点组
-            }
-            .alignItems(VerticalAlign.Top)
-        }
-    }
-}
-```
-
-![focus-3](figures/focus-3.gif)
-
-上述示例包含以下2步：
-
-- input方框内设置了焦点组，因此按下TAB键后焦点会快速从input中走出去，而按下方向键后可以在input内走焦。
-- 左上角的Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
 
 ## 焦点与按键事件
 
@@ -796,7 +554,7 @@ class EntryView {
         Column {
             Button(name)
                 .fontSize(30)
-                .onClick({ =>
+                .onClick({ evt =>
                     count++
                     if (count <= 0) {
                         name = "count is negative number"

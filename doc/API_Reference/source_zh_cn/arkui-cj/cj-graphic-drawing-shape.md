@@ -373,7 +373,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("basic")
                 .fontSize(11)
                 .fontColor(0xCCCCCC)

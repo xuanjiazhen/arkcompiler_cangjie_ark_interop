@@ -110,7 +110,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             // 线条绘制的起止点坐标均是相对于Line组件本身绘制区域的坐标
             Line()
                 .width(200)
