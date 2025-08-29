@@ -71,7 +71,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // 切换为响铃模式
-                            PromptAction.showToast(message: 'Ringing mode.')
+                            getUIContext().getPromptAction().showToast(message: 'Ringing mode.')
                         }
                     }
                 Text('Ringing')
@@ -83,7 +83,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // 切换为振动模式
-                            PromptAction.showToast(message: 'Vibration mode.')
+                            getUIContext().getPromptAction().showToast(message: 'Vibration mode.')
                         }
                     }
                 Text('Vibration')
@@ -95,7 +95,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // 切换为静音模式
-                            PromptAction.showToast(message: 'Silent mode.')
+                            getUIContext().getPromptAction().showToast(message: 'Silent mode.')
                         }
                     }
                 Text('Silent')
