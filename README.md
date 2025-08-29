@@ -2,10 +2,14 @@
 
 ## Introduction
 
-The Cangjie Interop API public Repository includes the common interfaces, interop macro interfaces, and JSON and CFFI interfaces provided by the Cangjie Interop Library, hoping to provide developers with cross-language interop solutions that take into account both development efficiency and operational efficiency, provide a simple interop development paradigm, and reduce cross-language interop overhead.
+The Cangjie ArkTS Interop Library API is used to provide cross-language interoperability between Cangjie and ArkTS, includes the common interfaces, interop macro interfaces, and JSON and CFFI interfaces provided by the Cangjie Interop Library, hoping to provide developers with cross-language interop solutions that take into account both development efficiency and operational efficiency, provide a simple interop development paradigm, and reduce cross-language interop overhead.
 
 Framework architecture:
 ![cangjie interop API](./figures/api_eng.png)
+
+Module Description:
+- Interop Libraries: Developers can call APIs provided by Interop to achieve cross-language parameter passing, function calling, and other capabilities.
+- Interop macros: Developers use interoperability macros to mark Cangjie interfaces that need to be called by ArkTS code, and can automatically generate interop "glue" code and ArkTS interface declarations.
 
 ## Directory
 
@@ -18,6 +22,33 @@ Framework architecture:
 ├── bundle.json
 └── LICENSE
 ```
+
+## Constraints
+
+- The security cangjie interface currently under development only supports standard devices.
+
+## Build Guide
+
+1. Initialize
+
+    ```text
+    repo init -u https://gitcode.com/openharmony-sig/manifest.git -b master -m cangjie_oh.xml --no-repo-verify
+    ```
+
+2. Pre-download
+
+    ```text
+    bash build/prebuilts_download.sh
+    ```
+
+3. Build
+
+    ```text
+    // build rom
+    ./build.sh --product-name rk3568 -ccache --target-cpu=arm64
+
+    // build oh-sdk：
+    ./build.sh --product-name ohos-sdk --ccache --build-target out/sdk/gen/build/ohos/sdk:cangjie
 
 ## Usage Scenarios
 
@@ -39,6 +70,10 @@ For interop scenarios, Cangjie provides ark_interop libraries to achieve interop
 - JSCallInfo: Used to represent a set of parameters that are called when an ArkTS interop call occurs;
 
 At the same time, in response to the development complexity brought about by interop, Cangjie provides a declarative interoperability macro ark_interop_macro, which allows developers to use the macro "@Interop[ArkTS]" to mark the functions or types that need to be exported to ArkTS in the Cangjie code, and automatically generate the interoperability "glue layer" code and ArkTS interface declarations during the compilation stage, reducing the complexity of the developer's handwritten interoperability code.
+
+## Code Contribution
+
+Developers are welcome to contribute code, documentation, etc. For specific contribution processes and methods, please refer to [Code Contribution](https://gitcode.com/openharmony/docs/blob/master/en/contribute/code-contribution.md).
 
 ## Related Repositories
 
