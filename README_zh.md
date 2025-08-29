@@ -21,6 +21,34 @@
 └── LICENSE
 ```
 
+## 约束
+
+- 当前开放的安全基础能力仓颉接口仅支持standard设备。
+
+## 构建指导
+
+1. 初始化
+
+    ```text
+    repo init -u https://gitcode.com/openharmony-sig/manifest.git -b master -m cangjie_oh.xml --no-repo-verify
+    ```
+
+2. 预下载
+
+    ```text
+    bash build/prebuilts_download.sh
+    ```
+
+3. 构建
+
+    ```text
+    // rom构建
+    ./build.sh --product-name rk3568 -ccache --target-cpu=arm64
+
+    //oh-sdk构建：
+    ./build.sh --product-name ohos-sdk --ccache --build-target out/sdk/gen/build/ohos/sdk:cangjie
+    ```
+
 ## 使用场景
 
 包含仓颉- ArkTS 互操作库，用于仓颉- ArkTS 互操作。json 库/ APILevel / cffi 库为基础功能库，提供给仓颉 api /仓颉 ui 等子系统等公共能力.
@@ -38,6 +66,14 @@
 - JSCallInfo: 用于表示当发生来自于 ArkTS 互操作调用时 调用的参数集合；
 
 同时针对互操作带来的开发复杂度，仓颉提供声明式互操作宏 ark_interop_macro，使开发者可以使用宏“@Interop[ArkTS]”标注仓颉代码中需要导出给 ArkTS 使用的函数或类型，在编译阶段自动生成互操作“胶水层”代码及 ArkTS 接口声明，减少开发者手写互操作代码的复杂度。
+
+互操作开发指南请参见[互操作开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/cangjie_arkts_overview.md)。
+
+互操作 API 指导请参见[互操作 API 指导](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)
+
+## 参与贡献
+
+欢迎广大开发者贡献代码、文档等，具体的贡献流程和方式请参见[参与贡献](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/%E5%8F%82%E4%B8%8E%E8%B4%A1%E7%8C%AE.md)。
 
 ## 相关仓
 
