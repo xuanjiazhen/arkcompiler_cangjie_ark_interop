@@ -2069,42 +2069,6 @@ public func hashCode(): Int64
 |:----|:----|
 |Int64|返回HttpRequestEvent的哈希值。|
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 返回字符串形式的HttpRequestEvent。
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回字符串形式的HttpRequestEvent。|
-
-## enum RequestMethod
-
-```cangjie
-public enum RequestMethod {
-    | Options
-    | Get
-    | Head
-    | Post
-    | Put
-    | Delete
-    | Trace
-    | Connect
-    | ...
-}
-```
-
-**功能：** HTTP请求方法。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
 ### Connect
 
 ```cangjie

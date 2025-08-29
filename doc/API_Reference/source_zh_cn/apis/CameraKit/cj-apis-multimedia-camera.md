@@ -2114,7 +2114,7 @@ let photoSession = photoSessionOption.getOrThrow()
 Hilog.info(0, "AppLogCj", photoSession.getZoomRatio().toString())
 ```
 
-### func setSmoothZoom(Float32, SmoothZoomMode)
+### func setSmoothZoom(Float64, SmoothZoomMode)
 
 ```cangjie
 func setSmoothZoom(targetRatio: Float64, mode: SmoothZoomMode): Unit
@@ -2155,7 +2155,7 @@ let targetRatio: Float64 = 0.3
 photoSession.setSmoothZoom(targetRatio, SmoothZoomMode.Normal)
 ```
 
-### func setSmoothZoom(Float32)
+### func setSmoothZoom(Float64)
 
 ```cangjie
 func setSmoothZoom(targetRatio: Float64): Unit

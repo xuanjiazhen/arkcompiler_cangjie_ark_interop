@@ -935,7 +935,7 @@ import std.collection.Map
 
 let params = HashMap<String, EventValueType>()
 params.add("cangjie", IntValue(1001))
-params.add("cangjie2, StringValue("1001"))
+params.add("cangjie2", StringValue("1001"))
 var appInfo: AppEventInfo = AppEventInfo("cangjie1", "test_event", EventType.Fault, params)
 HiAppEvent.write(appInfo)
 HiAppEvent.clearData()
