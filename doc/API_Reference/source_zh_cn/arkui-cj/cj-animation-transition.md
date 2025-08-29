@@ -844,6 +844,7 @@ public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallb
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -855,7 +856,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -893,6 +894,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -904,7 +906,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -953,7 +955,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import kit.performanceAnalysisKit.Hilog
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component
@@ -965,7 +968,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
