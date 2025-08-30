@@ -192,6 +192,7 @@ public let width: Float64
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+
 @Entry
 @Component
 class EntryView {
@@ -199,12 +200,11 @@ class EntryView {
     var context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
     func build() {
-        Flex(
-            FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-            justifyContent: FlexAlign.Center)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+            justifyContent: FlexAlign.Center) {
             Canvas(this.context).width(100.percent).height(100.percent).backgroundColor(0xffff00).onReady(
                 {
-                => this.context.fillRect(0, 30, 100, 100)
+                => this.context.fillRect(0.0, 30.0, 100.0, 100.0)
             })
         }.width(100.percent).height(100.percent)
     }

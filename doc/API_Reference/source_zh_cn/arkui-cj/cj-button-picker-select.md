@@ -756,6 +756,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
+
 @Entry
 @Component
 class EntryView {
@@ -764,12 +765,12 @@ class EntryView {
     @State var space: Int64 = 8
 
     @State var values1: Array<SelectOption> = [
-            SelectOption("aaa", icon: @r(app.media.startIcon)),
-            SelectOption("bbb", icon: @r(app.media.startIcon)),
-            SelectOption("ccc", icon: @r(app.media.startIcon)),
-            SelectOption("ddd", icon: @r(app.media.startIcon))]
+            SelectOption(value: value: "aaa", icon: @r(app.media.startIcon)),
+            SelectOption(value: value: "bbb", icon: @r(app.media.startIcon)),
+            SelectOption(value: value: "ccc", icon: @r(app.media.startIcon)),
+            SelectOption(value: value: "ddd", icon: @r(app.media.startIcon))]
 
-    @State var arrow: ArrowPosition = ArrowPosition.END
+    @State var arrow: ArrowPosition = ArrowPosition.End
 
     func build() {
         Column {
@@ -781,7 +782,7 @@ class EntryView {
             .selectedOptionFont(size: 16.vp, weight: FontWeight.W400)
             .space(this.space)
             .arrowPosition(this.arrow)
-            .menuAlign(MenuAlignType.START, offset: MenuOffset(0, 0))
+            .menuAlign(alignType: MenuAlignType.Start, offset: Offset(0, 0))
             .optionWidth(200)
             .optionHeight(300)
             .onSelect({ index: Int32, text: String =>
@@ -796,73 +797,3 @@ class EntryView {
 ```
 
 ![selectExample](./figures/selectExample.png)
-
-### 示例2（设置分割线样式）
-
-该示例实现了分割线样式支持自定义。
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column {
-                Select(
-                    [
-                        SelectOption("选项1", icon: ""),
-                        SelectOption("选项2", icon: ""),
-                        SelectOption("选项3", icon: ""),
-                        SelectOption("选项4", icon: "")
-                    ]
-                )
-                    .value("请选择")
-                    .divider(
-                        options: DividerOptions(strokeWidth: 5, startMargin: 15, endMargin: 1,
-                        color: Color(0XFFD700)))
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```
-
-![selectSample2](./figures/selectSample2.PNG)
-
-### 示例3（设置无分割线样式）
-
-该示例通过配置divider为null实现无分割线样式的下拉菜单。
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column {
-                Select(
-                    [
-                        SelectOption("选项1", icon: ""),
-                        SelectOption("选项2", icon: ""),
-                        SelectOption("选项3", icon: ""),
-                        SelectOption("选项4", icon: "")
-                    ]
-                ).value("请选择").divider(options: Option.None)
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```

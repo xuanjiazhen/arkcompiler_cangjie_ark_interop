@@ -232,7 +232,7 @@ class EntryView {
                 .onReady(
                     {
                         =>
-                        this.context1.fillRect(100, 20, 50, 50)
+                        this.context1.fillRect(100.0, 20.0, 50.0, 50.0)
                         this.matrix.scaleX = 1.0
                         this.matrix.scaleY = 1.0
                         this.matrix.rotateX = -0.5
@@ -240,7 +240,7 @@ class EntryView {
                         this.matrix.translateX = 10.0
                         this.matrix.translateY = 10.0
                         this.context1.setTransform(this.matrix)
-                        this.context1.fillRect(100, 20, 50, 50)
+                        this.context1.fillRect(100.0, 20.0, 50.0, 50.0)
                     }
                 )
         }.height(100.percent).width(100.percent)
