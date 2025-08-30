@@ -231,7 +231,7 @@ public static func stepsCurve(count: Int32, end: Bool): ICurve
 ## class ICurve
 
 ```cangjie
-public class ICurve {}
+public class ICurve <: RemoteDataLite {}
 ```
 
 **功能：** 曲线对象类型。

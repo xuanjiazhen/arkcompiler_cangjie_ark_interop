@@ -44,7 +44,7 @@
    Button("Click to present model view")
      // 通过选定的模态接口，绑定模态展示界面，ModalTransition是内置的ContentCover转场动画类型，这里选择None代表系统不加默认动画，通过onDisappear控制状态变量变换
      .bindContentCover(this.isPresent, this.MyBuilder, ContentCoverOptions(
-               modalTransition: ModalTransition.DEFAULT,
+               modalTransition: ModalTransition.Default,
                onDisappear: {
                 => if (this.isPresent) {
                   this.isPresent = !this.isPresent
@@ -218,7 +218,7 @@ class EntryView {
             Column {
                 Text("+ 选择乘车人")
                     .fontSize(18.vp)
-                    .fontColor(Color.ORANGE)
+                    .fontColor(Color(0xFFA500))
                     .fontWeight(FontWeight.Bold)
                     .padding(top: 10.vp, bottom: 10.vp)
                     .width(60.percent)
@@ -228,7 +228,7 @@ class EntryView {
                         this.isPresent,
                         this.MyBuilder,
                         ContentCoverOptions(
-                            modalTransition: ModalTransition.DEFAULT,
+                            modalTransition: ModalTransition.Default,
                             onDisappear: {
                                 => if (this.isPresent) {
                                     this.isPresent = !this.isPresent
@@ -272,7 +272,7 @@ class EntryView {
     @Builder
     func mySheet() {
         Column {
-            Flex(FlexOptions(direction: FlexDirection.Row, wrap: FlexWrap.Wrap)) {
+            Flex(direction: FlexDirection.Row, wrap: FlexWrap.Wrap) {
                 ForEach(
                     this.menusList,
                     itemGeneratorFunc: {
@@ -368,8 +368,8 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State
     var items: Array<Action> = [
-        Action(value: "菜单项1", action: {=> AppLog.info("handle Menu1 select")}),
-        Action(value: "菜单项2", action: {=> AppLog.info("handle Menu2 select")})
+        Action(value: "菜单项1", action: {=> Hilog.info(0, "cangjie", handle Menu1 select")}),
+        Action(value: "菜单项2", action: {=> Hilog.info(0, "cangjie", handle Menu2 select")})
         ]
 
     func build() {
@@ -549,6 +549,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -559,7 +560,7 @@ class EntryView {
     @State
     var isShowShare: Bool = false
     private func shareFunc(): Unit {
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(duration: 500),
             {
                 => this.isShowShare = !this.isShowShare

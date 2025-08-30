@@ -108,12 +108,13 @@ class EntryView {
                         case TouchType.Move => 'Move'
                         case TouchType.Cancel => 'Move'
                         case TouchType.Unknown => "Unknown"
+                        case _ => ""
                     }
                     this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
                         + event.touches[0].x.toString() + '\n' + 'y: ' + event.touches[0].y.toString()
-                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.toString()
-                        + ',' + event.target.area.globalPosition.y.toString() + ')\nwidth:'
-                        + event.target.area.width.toString() + '\nheight:' + event.target.area.height.toString()
+                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.value.toString()
+                        + ',' + event.target.area.globalPosition.y.value.toString() + ')\nwidth:'
+                        + event.target.area.width.value.toString() + '\nheight:' + event.target.area.height.value.toString()
                 })
             Button('Touch')
                 .height(50)
@@ -126,12 +127,13 @@ class EntryView {
                         case TouchType.Move => 'Move'
                         case TouchType.Cancel => 'Move'
                         case TouchType.Unknown => "Unknown"
+                        case _ => ""
                     }
                     this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
                         + event.touches[0].x.toString() + '\n' + 'y: ' + event.touches[0].y.toString()
-                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.toString()
-                        + ',' + event.target.area.globalPosition.y.toString() + ')\nwidth:'
-                        + event.target.area.width.toString() + '\nheight:' + event.target.area.height.toString()
+                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.value.toString()
+                        + ',' + event.target.area.globalPosition.y.value.toString() + ')\nwidth:'
+                        + event.target.area.width.value.toString() + '\nheight:' + event.target.area.height.value.toString()
                 })
             Text(this.text)
         }

@@ -185,7 +185,7 @@ class EntryView {
                   Text("Pink")
                   Text() {
                       SymbolSpan(@r(sys.symbol.ohos_folder_badge_plus))
-                          .fontColor(Color.PINK)
+                          .fontColor(0xFEC0CD)
                           .fontSize(96)
                   }
               }

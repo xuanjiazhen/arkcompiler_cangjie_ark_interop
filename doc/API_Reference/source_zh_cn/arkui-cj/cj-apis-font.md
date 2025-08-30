@@ -20,10 +20,10 @@ public class Font {}
 
 **起始版本：** 21
 
-### static func getFontByName(String)
+###  func getFontByName(String)
 
 ```cangjie
-public static func getFontByName(fontName: String): ?FontInfo
+public func getFontByName(fontName: String): ?FontInfo
 ```
 
 **功能：** 根据传入的系统字体名称获取系统字体的相关信息。
@@ -44,10 +44,10 @@ public static func getFontByName(fontName: String): ?FontInfo
 |:----|:----|
 |?[FontInfo](#class-fontinfo)|字体的详细信息。|
 
-### static func getSystemFontList()
+### func getSystemFontList()
 
 ```cangjie
-public static func getSystemFontList(): Array<String>
+public func getSystemFontList(): Array<String>
 ```
 
 **功能：** 获取系统字体列表。
@@ -62,10 +62,10 @@ public static func getSystemFontList(): Array<String>
 |:----|:----|
 |Array\<String>|系统字体列表。|
 
-### static func registerFont(ResourceStr, ResourceStr)
+### func registerFont(ResourceStr, ResourceStr)
 
 ```cangjie
-public static func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit
+public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit
 ```
 
 **功能：** 在字体管理中注册自定义字体。

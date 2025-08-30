@@ -467,7 +467,7 @@ class ToDoItem {
 @Component
 class ToDoList{
     func build(){
-        Row(5){
+        Row(space: 5){
             ToDoItem()
             ToDoItem()
         }

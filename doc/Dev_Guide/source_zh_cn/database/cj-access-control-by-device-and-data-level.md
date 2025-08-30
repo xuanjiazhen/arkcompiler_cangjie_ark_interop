@@ -68,7 +68,7 @@
 
     ```cangjie
     // main_ability.cj
-    internal import import kit.performanceAnalysisKit.Hilog
+    internal import kit.performanceAnalysisKit.Hilog
     internal import kit.AbilityKit.AbilityStage
     internal import kit.AbilityKit.LaunchReason
     import kit.AbilityKit.UIAbilityContext

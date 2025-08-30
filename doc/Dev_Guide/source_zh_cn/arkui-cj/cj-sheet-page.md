@@ -150,7 +150,7 @@ onWillDismiss: {
                 primaryButton: AlertDialogButtonOptions(
                     value: 'cancel',
                     action: {
-                        => AppLog.info("Callback when the cancel button is clicked")
+                        => Hilog.info(0, "cangjie", Callback when the cancel button is clicked")
                     }
                 ),
                 secondaryButton: AlertDialogButtonOptions(
@@ -160,12 +160,12 @@ onWillDismiss: {
                         => {
                             // 第四步：上述第三步逻辑触发的时候，调用dismiss()关闭半模态
                             dismissSheetAction.dismiss(),
-                            AppLog.info("Callback when the ok button is clicked")
+                            Hilog.info(0, "cangjie", Callback when the ok button is clicked")
                         }
                     }
                 ),
                 cancel: {
-                    => AppLog.info("AlertDialog Closed callbacks")
+                    => Hilog.info(0, "cangjie", AlertDialog Closed callbacks")
                 }
             )
         )

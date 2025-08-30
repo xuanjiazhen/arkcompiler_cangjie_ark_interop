@@ -38,10 +38,10 @@ public init()
 
 **起始版本：** 21
 
-### init(Option\<Scroller>, Option\<() -> Unit>)
+### init(Option\<Scroller>, <() -> Unit>)
 
 ```cangjie
-public init(scroller!: Option<Scroller> = Option.None, child!: Option<() -> Unit> = Option.None)
+public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建包含滚动控制器和子组件的网格容器。
@@ -260,7 +260,7 @@ class EntryView {
     var data2: Array<Int64> = [0, 1, 2, 3, 4, 5]
 
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("auto-fill 根据设定的列宽自动计算列数").width(90.percent)
             Grid() {
                 ForEach(
@@ -366,7 +366,7 @@ class EntryView {
     }
 
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text('Grid alignItems示例代码')
 
             Grid() {

@@ -265,12 +265,12 @@ class EntryView{
 
     func build() {
         Column(){
-            Grid(this.gridScroller){
+            Grid(scroller: this.gridScroller){
                 ForEach(this.dataList, itemGeneratorFunc: {item : ViewData , idx : Int64 =>
                         GridItem(){
                             TapImage(index: idx,uri: item.uri)
                         }
-                            .aspectRatio(1)
+                            .aspectRatio(1.0)
                         })
             }
         }
@@ -342,12 +342,12 @@ class EntryView{
     var preIndex : Int64 = -1
     func build() {
         Column(){
-            Grid(this.gridScroller){
+            Grid(scroller: this.gridScroller){
                 ForEach(this.dataList, itemGeneratorFunc: {item : ViewData , idx : Int64 =>
                         GridItem(){
                             TapImage(index: idx,uri: item.uri)
                         }
-                            .aspectRatio(1)
+                            .aspectRatio(1.0)
                             .onClick({evt =>
                                 if(this.preIndex >= 0 && idx == this.preIndex){
                                     Hilog.info(0, "AppLogCj", "preIndex: ${this.preIndex}, index: ${idx}, red")

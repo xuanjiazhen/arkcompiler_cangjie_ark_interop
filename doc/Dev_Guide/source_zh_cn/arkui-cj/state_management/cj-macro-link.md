@@ -265,7 +265,7 @@ class YellowButton {
         Button("Yellow Button")
             .width(this.yellowButtonState)
             .height(40)
-            .backgroundColor(Color.YELLOW)
+            .backgroundColor(Color(0xFFFF00))
             .fontColor(Color.Black)
             .margin(12)
             .onClick {
@@ -283,7 +283,7 @@ class EntryView {
     @State var yellowButtonProp: Int64 = 180
     func build() {
         Column() {
-            Flex(FlexOptions(direction: FlexDirection.Column, alignItems: ItemAlign.Center)) {
+            Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center) {
                 // 简单类型从父组件@State向子组件@Link数据同步
                 Button("Parent View: Set yellowButton")
                     .width(this.yellowButtonProp)

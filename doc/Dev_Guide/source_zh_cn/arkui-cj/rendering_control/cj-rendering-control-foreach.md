@@ -322,7 +322,7 @@ class EntryView {
             Hilog.info(0,"here","here")
     }
     func build() {
-        Column(5) {
+        Column(space: 5) {
             List() {
                 ForEach(this.articleList, itemGeneratorFunc: {item: Article,idx:Int64  =>
                     ListItem() {

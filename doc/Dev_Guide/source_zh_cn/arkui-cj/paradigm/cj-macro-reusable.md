@@ -149,10 +149,10 @@
     class PlayButton02 {
         @Link var isPlaying02: Bool
         protected override func aboutToRecycle(): Unit {
-            AppLog.info("=====aboutToRecycle====PlayButton02====")
+            Hilog.info(0, "cangjie", =====aboutToRecycle====PlayButton02====")
         }
         protected override func aboutToReuse(param: ReuseParams) {
-            AppLog.info("=====aboutToReuse====PlayButton02====")
+            Hilog.info(0, "cangjie", =====aboutToReuse====PlayButton02====")
         }
         func build() {
             Column() {
@@ -223,7 +223,7 @@ class Child {
         if (val.contains("message")) {
             let msg = val.get("message").getOrThrow()
             message = msg as Message ?? Message("None")
-            AppLog.info("Recycle ===Child===")
+            Hilog.info(0, "cangjie", Recycle ===Child===")
         }
     }
     func build() {
@@ -379,14 +379,14 @@ public class OneMoment {
             let p = params.get("moment").getOrThrow()
             let pVal = (p as FriendMoment) ?? FriendMoment("", "", @r(app.media.startIcon))
             this.moment = pVal
-            AppLog.info("====aboutToReuse====OnMoment==复用了==== ${pVal.text}")
+            Hilog.info(0, "cangjie", ====aboutToReuse====OnMoment==复用了==== ${pVal.text}")
         }
     }
     public func build() {
         Column() {
             Text(moment.text)
             if (moment.image.isSome()) {
-                Flex(FlexOptions(wrap: FlexWrap.Wrap)) {
+                Flex(wrap: FlexWrap.Wrap) {
                     Image((moment.image) ?? @r(app.media.background)).height(50).width(50)
                     Image((moment.image) ?? @r(app.media.background)).height(50).width(50)
                     Image((moment.image) ?? @r(app.media.background)).height(50).width(50)

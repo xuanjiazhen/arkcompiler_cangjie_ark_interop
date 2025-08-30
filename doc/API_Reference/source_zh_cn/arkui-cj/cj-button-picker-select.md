@@ -564,7 +564,7 @@ public init(value: AppResource, icon!: AppResource)
 ### enum ArrowPosition
 
 ```cangjie
-public enum ArrowPosition <: Equatable<ArrowPosition> {
+public enum ArrowPosition {
     | END
     | START
     | ...
@@ -605,50 +605,10 @@ START
 
 **起始版本：** 21
 
-#### func !=(ArrowPosition)
-
-```cangjie
-public operator func !=(other: ArrowPosition): Bool
-```
-
-**功能：** 比较两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ArrowPosition](#enum-arrowposition)|是|-|待比较的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值不相等则返回true，否则返回false。|
-
-#### func ==(ArrowPosition)
-
-```cangjie
-public operator func ==(other: ArrowPosition): Bool
-```
-
-**功能：** 比较两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ArrowPosition](#enum-arrowposition)|是|-|待比较的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值相等则返回true，否则返回false。|
-
 ### enum MenuAlignType
 
 ```cangjie
-public enum MenuAlignType <: Equatable<MenuAlignType> {
+public enum MenuAlignType {
     | START
     | CENTER
     | END
@@ -701,46 +661,6 @@ START
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-#### func !=(MenuAlignType)
-
-```cangjie
-public operator func !=(other: MenuAlignType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[MenuAlignType](#enum-menualigntype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(MenuAlignType)
-
-```cangjie
-public operator func ==(other: MenuAlignType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[MenuAlignType](#enum-menualigntype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## 示例代码
 

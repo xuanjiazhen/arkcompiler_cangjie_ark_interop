@@ -367,7 +367,7 @@ public func onSelect(callback: OnAlphabetIndexerSelectCallback): This
 ### enum IndexerAlign
 
 ```cangjie
-public enum IndexerAlign <: Equatable<IndexerAlign> {
+public enum IndexerAlign {
     | Left
     | Right
     | ...

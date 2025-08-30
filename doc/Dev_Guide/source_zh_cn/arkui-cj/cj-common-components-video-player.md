@@ -114,16 +114,16 @@ class VideoPlayer {
         Column() {
             Video(src: this.innerResource, previewUri: this.previewUris, controller: this.controller)
                 .onUpdate({ value => // 更新事件回调
-                    AppLog.info("video update.")
+                    Hilog.info(0, "cangjie", video update.")
                 })
                 .onPrepared({ value => // 准备事件回调
-                    AppLog.info("video prepared.")
+                    Hilog.info(0, "cangjie", video prepared.")
                 })
                 .onError({ => // 失败事件回调
-                    AppLog.info("video error.")
+                    Hilog.info(0, "cangjie", video error.")
                 })
                 .onStop({ => // 停止事件回调
-                    AppLog.info("video stopped.")
+                    Hilog.info(0, "cangjie", video stopped.")
                 })
         }
     }

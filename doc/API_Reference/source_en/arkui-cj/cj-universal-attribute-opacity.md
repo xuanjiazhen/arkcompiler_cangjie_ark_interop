@@ -51,7 +51,7 @@ import ohos.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Text("opacity(1)")
                 .fontSize(9)
                 .width(90.percent)

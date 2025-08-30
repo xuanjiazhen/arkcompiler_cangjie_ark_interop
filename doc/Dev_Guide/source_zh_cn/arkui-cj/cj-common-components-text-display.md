@@ -775,7 +775,7 @@ class EntryView {
                 }.width(100.percent).margin(5)
 
             Row() {
-                Text("3").fontSize(14).fontColor(Color.ORANGE).margin(left: 10, right: 10)
+                Text("3").fontSize(14).fontColor(Color(0xFFA500)).margin(left: 10, right: 10)
                 Text("我是热搜词条3")
                     .fontSize(12)
                     .fontColor(Color.Blue)

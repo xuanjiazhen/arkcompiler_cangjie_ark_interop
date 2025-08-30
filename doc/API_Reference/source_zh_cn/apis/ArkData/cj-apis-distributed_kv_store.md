@@ -562,22 +562,6 @@ public var nullable: Bool
 
 **起始版本：** 21
 
-### var type_
-
-```cangjie
-public var type_: Int32
-```
-
-**功能：** 表示指定节点对应数据类型的值。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
-
-**起始版本：** 21
-
 ### init(String, Bool, String, Int32)
 
 ```cangjie

@@ -74,12 +74,12 @@ class EntryView {
             try {
                 // 订阅
                 CommonEventManager.subscribe(subscriber, callback)
-                AppLog.info("成功订阅语言地区状态变化公共事件")
+                Hilog.info(0, "cangjie", 成功订阅语言地区状态变化公共事件")
                 } catch (e: BusinessException) {
-                AppLog.info("订阅语言地区状态变化公共事件失败. errorCode = ${e.code}, errorMsg = ${e.message}")
+                Hilog.info(0, "cangjie", 订阅语言地区状态变化公共事件失败. errorCode = ${e.code}, errorMsg = ${e.message}")
             }
             } catch (e: BusinessException) {
-            AppLog.info("Failed to create subscriber. errorCode = ${e.code}, errorMsg = ${e.message}")
+            Hilog.info(0, "cangjie", Failed to create subscriber. errorCode = ${e.code}, errorMsg = ${e.message}")
         }
     }
     public func drawText() {
@@ -94,7 +94,7 @@ class EntryView {
                 .direction(Direction.Auto)
                 .width(100.percent)
                 .height(100.percent)
-                .backgroundColor(Color.PINK)
+                .backgroundColor(0xFEC0CD)
                 .onReady({
                 =>
                     this.drawText()

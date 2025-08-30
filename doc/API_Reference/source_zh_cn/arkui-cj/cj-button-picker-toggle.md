@@ -122,7 +122,7 @@ public func onChange(callback: (Bool) -> Unit): This
 ### enum ToggleType
 
 ```cangjie
-public enum ToggleType <: Equatable<ToggleType> {
+public enum ToggleType {
     | CheckboxType
     | SwitchType
     | ButtonType

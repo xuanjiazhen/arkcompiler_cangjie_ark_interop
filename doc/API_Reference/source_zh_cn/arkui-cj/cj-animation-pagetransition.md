@@ -370,7 +370,7 @@ Top
 ## type PageTransitionCallback
 
 ```cangjie
-public type PageTransitionCallback =(RouteType, Float64) -> Unit
+public type PageTransitionCallback = (RouteType, Float64) -> Unit
 ```
 
 **功能：** [PageTransitionCallback](#type-pagetransitioncallback)是[(RouteType, Float64) -> Unit](#type-pagetransitioncallback)类型的别名。
@@ -413,7 +413,7 @@ class EntryView {
     }
 
     protected func onTransition(): Unit {
-        PageTransitionEnter(PageTransitionOptions(duration: 1200, curve: Curve.Linear)).onEnter {
+        PageTransitionEnter(duration: 1200, curve: Curve.Linear,).onEnter {
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push | RouteType.Pop =>
                     scale2 = Float32(progress)
@@ -421,7 +421,7 @@ class EntryView {
                 case _ => ()
             }
         }
-        PageTransitionExit(PageTransitionOptions(duration: 1200, curve: Curve.Ease)).onExit {
+        PageTransitionExit(duration: 1200, curve: Curve.Ease, ).onExit {
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push =>
                     this.scale2 = Float32(1.0 - progress)
@@ -465,7 +465,7 @@ class Page1 {
     }
 
     protected func onTransition(): Unit {
-        PageTransitionEnter(PageTransitionOptions(duration: 1200, curve: Curve.Linear)).onEnter {
+        PageTransitionEnter(duration: 1200, curve: Curve.Linear).onEnter {
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push | RouteType.Pop =>
                     scale1 = Float32(progress)
@@ -473,7 +473,7 @@ class Page1 {
                 case _ => ()
             }
         }
-        PageTransitionExit(PageTransitionOptions(duration: 1200, curve: Curve.Ease)).onExit {
+        PageTransitionExit(duration: 1200, curve: Curve.Ease).onExit {
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push =>
                     this.scale1 = Float32(1.0 - progress)
@@ -527,8 +527,8 @@ class EntryView {
     }
 
     protected func onTransition(): Unit {
-        PageTransitionEnter(PageTransitionOptions(duration: 1200, curve: Curve.Linear)).slide(SlideEffect.START)
-        PageTransitionExit(PageTransitionOptions(duration: 1200, curve: Curve.Ease)).slide(SlideEffect.START)
+        PageTransitionEnter(duration: 1200, curve: Curve.Linear).slide(SlideEffect.Left)
+        PageTransitionExit(duration: 1200, curve: Curve.Ease).slide(SlideEffect.Left)
     }
 }
 ```
@@ -570,8 +570,8 @@ class Page1 {
     }
 
     protected func onTransition(): Unit {
-        PageTransitionEnter(PageTransitionOptions(duration: 1200)).slide(SlideEffect.END)
-        PageTransitionExit(PageTransitionOptions(duration: 1200)).slide(SlideEffect.END)
+        PageTransitionEnter(duration: 1200).slide(SlideEffect.Right)
+        PageTransitionExit(duration: 1200).slide(SlideEffect.Right)
     }
 }
 ```

@@ -1414,7 +1414,7 @@ public operator func ==(other: RichEditorDeleteDirection): Bool
 ### enum RichEditorSpanType
 
 ```cangjie
-public enum RichEditorSpanType <: Equatable<RichEditorSpanType> {
+public enum RichEditorSpanType {
     | TEXT
     | IMAGE
     | MIXED
@@ -1646,7 +1646,7 @@ class EntryView {
     }
 
     func build() {
-        Column(30) {
+        Column(space: 30) {
             Row {
                 Button("getCaretOffset")
                 .onClick {

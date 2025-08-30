@@ -98,19 +98,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   ![Button5](figures/Button5.png)
 
-- 圆角矩形按钮。
-
-  当[controlSize](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#func-controlsizecontrolsize)为NORMAL时，默认圆角大小为20.vp，[controlSize](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#func-controlsizecontrolsize)为SMALL时，圆角大小为14.vp，支持通过borderRadius属性重新设置圆角。
-
-
-  ```cangjie
-  Button('Disable', ButtonOptions(shape: ButtonType.ROUNDED_RECTANGLE, stateEffect: true))
-      .backgroundColor(0x317aff)
-      .width(90)
-      .height(40)
-  ```
-
-  ![Button11](figures/Button11.png)
 
 ## 自定义样式
 
@@ -135,8 +122,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   ```cangjie
   Button('font style', ButtonOptions(shape: ButtonType.Normal))
       .fontSize(20)
-      .fontColor(Color.PINK)
-      .fontWeight(W800)
+      .fontColor(0xffffc0cb)
   ```
 
   ![Button7](figures/Button7.png)
@@ -179,7 +165,7 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
 ```cangjie
   Button('Ok', ButtonOptions(shape: ButtonType.Normal, stateEffect: true))
       .onClick{ evt =>
-      AppLog.info('Button onClick')
+      Hilog.info(0, '', 'Button onClick')
   }
 ```
 
@@ -314,7 +300,6 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               TextInput(placeholder: 'input your username')
                 .margin(top: 20)
               TextInput(placeholder: 'input your password')
-                .setType(InputType.Password)
                 .margin(top: 20)
               Button('Register')
                 .width(300)
@@ -340,7 +325,7 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
   package ohos_app_cangjie_entry
   import kit.ArkUI.*
   import ohos.arkui.state_macro_manage.*
-  import ohos.resource_manager.*
+  import kit.LocalizationKit.AppResource
 
   @Entry
   @Component
@@ -374,7 +359,7 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               .width(60)
               .height(60)
               .position(x: 80.percent, y: 600)
-              .shadow(radius: 10)
+              .shadow(radius: Float(10))
               .onClick {
                   evt =>
                   // 需要执行的操作

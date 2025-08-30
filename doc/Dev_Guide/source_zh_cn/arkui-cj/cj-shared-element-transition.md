@@ -34,6 +34,7 @@
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.AppResource
 import ohos.resource_manager.__GenerateResource__
@@ -71,7 +72,7 @@ class EntryView {
         if(this.selectedIndex<0){
             return
         }
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(duration: 350,curve: Curve.Friction),
             {
                 => this.isExpand = !this.isExpand
@@ -151,7 +152,7 @@ class Post{
             evt =>
                 this.selecteIndex = -1
                 this.selecteIndex = this.index
-                animateTo(AnimateParam(duration:350,curve:Curve.Friction),{
+                getUIContext().animateTo(AnimateParam(duration:350,curve:Curve.Friction),{
                     =>
                     // 对展开的post做宽高动画，并对头像尺寸和图片尺寸加动画
                     this.isExpand = !this.isExpand
@@ -194,6 +195,7 @@ geometryTransition绑定两个对象的实现方式使得geometryTransition区�
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
 
@@ -234,7 +236,7 @@ class EntryView {
             }
         }
         .onClick({
-            event => animateTo(AnimateParam(duration:1000,curve:Curve.Linear), ({=>this.isShow = !this.isShow}))
+            event => getUIContext().animateTo(AnimateParam(duration:1000,curve:Curve.Linear), ({=>this.isShow = !this.isShow}))
         })
         .size(width:100.percent,height:100.percent)
     }
@@ -253,6 +255,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.AppResource
 import ohos.resource_manager.__GenerateResource__
@@ -291,15 +294,15 @@ class EntryView {
         ]
 
     public func onAppear() {
-        AppLog.info("BindContentCover onAppear.")
+        Hilog.info(0, "cangjie", BindContentCover onAppear.")
     }
     public func onDisappear() {
-        AppLog.info("BindContentCover onDisappear.")
+        Hilog.info(0, "cangjie", BindContentCover onDisappear.")
     }
 
     private func onAvatarClicked(index: Int):Unit {
         this.selectedIndex = index
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(duration: 350,curve: Curve.Friction),
             {
                 =>
@@ -310,7 +313,7 @@ class EntryView {
     }
 
     private func onPersonalPageBack(index: Int):Unit{
-        animateTo(AnimateParam(duration: 350,curve: Curve.Friction),{
+        getUIContext().animateTo(AnimateParam(duration: 350,curve: Curve.Friction),{
             =>
             this.isPersonalPageShow = !this.isPersonalPageShow;
             this.alphaValue = 1;

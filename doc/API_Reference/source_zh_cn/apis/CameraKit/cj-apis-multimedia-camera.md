@@ -2114,7 +2114,7 @@ let photoSession = photoSessionOption.getOrThrow()
 Hilog.info(0, "AppLogCj", photoSession.getZoomRatio().toString())
 ```
 
-### func setSmoothZoom(Float32, SmoothZoomMode)
+### func setSmoothZoom(Float64, SmoothZoomMode)
 
 ```cangjie
 func setSmoothZoom(targetRatio: Float64, mode: SmoothZoomMode): Unit
@@ -2155,7 +2155,7 @@ let targetRatio: Float64 = 0.3
 photoSession.setSmoothZoom(targetRatio, SmoothZoomMode.Normal)
 ```
 
-### func setSmoothZoom(Float32)
+### func setSmoothZoom(Float64)
 
 ```cangjie
 func setSmoothZoom(targetRatio: Float64): Unit
@@ -5845,7 +5845,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
-Hilog.info(0, "AppLogCj", session.canPreconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9).toString())
+Hilog.info(0, "AppLogCj", session.canPreconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9).toString())
 ```
 
 ### func off(CameraEvents, Callback0Argument)
@@ -7904,7 +7904,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
-session.canPreconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9)
+session.canPreconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9)
 ```
 
 ### func off(CameraEvents, Callback0Argument)
@@ -8346,7 +8346,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
-session.preconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9)
+session.preconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9)
 ```
 
 ## enum CameraEvents
@@ -8745,7 +8745,7 @@ public operator func ==(other: CameraFormat): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -8755,7 +8755,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum CameraPosition
 
@@ -8861,7 +8861,7 @@ public operator func ==(other: CameraPosition): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -8871,7 +8871,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum CameraStatus
 
@@ -8990,7 +8990,7 @@ public operator func ==(other: CameraStatus): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9000,7 +9000,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum CameraType
 
@@ -9132,7 +9132,7 @@ public operator func ==(other: CameraType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9142,7 +9142,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum ConnectionType
 
@@ -9248,7 +9248,7 @@ public operator func ==(other: ConnectionType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9258,7 +9258,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum ExposureMode
 
@@ -9364,13 +9364,13 @@ public operator func ==(other: ExposureMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum FlashMode
 
@@ -9489,13 +9489,13 @@ public operator func ==(other: FlashMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum FocusMode
 
@@ -9614,13 +9614,13 @@ public operator func ==(other: FocusMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum FocusState
 
@@ -9726,13 +9726,13 @@ public operator func ==(other: FocusState): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum FoldStatus
 
@@ -9838,7 +9838,7 @@ public operator func ==(other: FoldStatus): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9848,7 +9848,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum ImageRotation
 
@@ -9967,7 +9967,7 @@ public operator func ==(other: ImageRotation): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9977,7 +9977,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum MetadataObjectType
 
@@ -10057,7 +10057,7 @@ public operator func ==(other: MetadataObjectType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10067,7 +10067,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum PreconfigRatio
 
@@ -10173,7 +10173,7 @@ public operator func ==(other: PreconfigRatio): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10183,7 +10183,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum PreconfigType
 
@@ -10302,7 +10302,7 @@ public operator func ==(other: PreconfigType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10312,7 +10312,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum QualityLevel
 
@@ -10418,7 +10418,7 @@ public operator func ==(other: QualityLevel): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10428,7 +10428,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 9
 
@@ -10534,7 +10534,7 @@ public operator func ==(other: SceneMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10544,7 +10544,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum SmoothZoomMode
 
@@ -10624,13 +10624,13 @@ public operator func ==(other: SmoothZoomMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum TorchMode
 
@@ -10736,7 +10736,7 @@ public operator func ==(other: TorchMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10746,7 +10746,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum VideoCodecType
 
@@ -10839,7 +10839,7 @@ public operator func ==(other: VideoCodecType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10849,7 +10849,7 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum VideoStabilizationMode
 
@@ -10981,10 +10981,10 @@ public operator func ==(other: VideoStabilizationMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|

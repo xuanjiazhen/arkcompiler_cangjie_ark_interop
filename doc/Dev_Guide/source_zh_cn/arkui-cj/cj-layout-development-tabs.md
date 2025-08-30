@@ -274,12 +274,12 @@ public class EntryView {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("发现", 1)
-                }).backgroundColor(Color.YELLOW)
+                }).backgroundColor(Color(0xFFFF00))
                 TabContent() {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("推荐", 2)
-                }).backgroundColor(Color.PINK)
+                }).backgroundColor(0xFEC0CD)
                 TabContent() {
                     // ...
                 }.tabBar({ =>

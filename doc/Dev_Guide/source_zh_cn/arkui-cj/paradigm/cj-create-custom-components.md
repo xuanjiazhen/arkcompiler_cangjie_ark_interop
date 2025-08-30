@@ -321,7 +321,7 @@ class Child {
   ```cangjie
   @Component
   class EntryView{
-      @State var textColor : Color = Color.YELLOW
+      @State var textColor : Color = Color(0xFFFF00)
       @State var columnColor : Color  = Color.Green
       @State var count : Int64 = 1
       func build(){
