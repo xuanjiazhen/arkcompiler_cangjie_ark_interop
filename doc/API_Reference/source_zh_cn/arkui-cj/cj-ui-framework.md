@@ -1490,7 +1490,7 @@ public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -
 ## class LocalStorageInterOp
 
 ```cangjie
-public open class LocalStorageInterOp {}
+class LocalStorageInterOp {}
 ```
 
 **功能：** LocalStorage内部使用的类。

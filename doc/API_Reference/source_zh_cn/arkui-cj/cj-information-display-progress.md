@@ -291,50 +291,6 @@ Progressing
 
 **起始版本：** 21
 
-### func !=(ProgressStatus)
-
-```cangjie
-public operator func !=(other: ProgressStatus): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ProgressStatus](<font color="red" face="bold">please add link</font>)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func ==(ProgressStatus)
-
-```cangjie
-public operator func ==(other: ProgressStatus): Bool
-```
-
-**功能：** <font color="red" face="bold">please add description</font>
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ProgressStatus](<font color="red" face="bold">please add link</font>)|是|-|<font color="red" face="bold">please add description</font>|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|<font color="red" face="bold">please add description</font>|
-
 ## 示例代码
 
 ### 示例1（设置进度条的类型）

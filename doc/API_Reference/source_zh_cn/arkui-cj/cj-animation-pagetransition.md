@@ -370,7 +370,7 @@ Top
 ## type PageTransitionCallback
 
 ```cangjie
-public type PageTransitionCallback =(RouteType, Float64) -> Unit
+public type PageTransitionCallback = (RouteType, Float64) -> Unit
 ```
 
 **功能：** [PageTransitionCallback](#type-pagetransitioncallback)是[(RouteType, Float64) -> Unit](#type-pagetransitioncallback)类型的别名。

@@ -38,10 +38,10 @@ public init()
 
 **起始版本：** 21
 
-### init(Option\<Scroller>, Option\<() -> Unit>)
+### init(Option\<Scroller>, <() -> Unit>)
 
 ```cangjie
-public init(scroller!: Option<Scroller> = Option.None, child!: Option<() -> Unit> = Option.None)
+public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建包含滚动控制器和子组件的网格容器。
