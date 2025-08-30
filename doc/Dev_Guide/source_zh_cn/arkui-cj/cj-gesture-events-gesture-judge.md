@@ -116,7 +116,7 @@
                         .width(100.percent)
                         .fontSize(20)
                         .fontColor(0xffdd00)
-                    Stack(Alignment.Center) {
+                    Stack(alignContent: Alignment.Center) {
                         Column(){
                             Stack().width(200).height(100).backgroundColor(Color.Red)
                             Stack().width(200).height(100).backgroundColor(Color.Blue)

@@ -57,7 +57,7 @@ class EntryView {
                                 }
                                 .width(30)
                                 .height(30)
-                                .backgroundColor(Color.GREY)
+                                .backgroundColor(Color.Gray)
                                 .margin( right: 20 )
                                 .borderRadius(20)
                                 .justifyContent(FlexAlign.Center)
@@ -102,7 +102,7 @@ class EntryView {
                                 }
                                 .width(30)
                                 .height(30)
-                                .backgroundColor(Color.GREY)
+                                .backgroundColor(Color.Gray)
                                 .margin( right: 20 )
                                 .borderRadius(20)
                                 .justifyContent(FlexAlign.Center)
@@ -240,7 +240,7 @@ class PageTwo {
                                 }
                                 .width(30)
                                 .height(30)
-                                .backgroundColor(Color.GREY)
+                                .backgroundColor(Color.Gray)
                                 .margin( right: 20 )
                                 .borderRadius(20)
                                 .justifyContent(FlexAlign.Center)

@@ -47,7 +47,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - RelativeContainer父组件为锚点，__container__代表容器的组件标识（id）。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -101,7 +101,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - 以兄弟元素为锚点。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -155,7 +155,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry

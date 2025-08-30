@@ -332,7 +332,7 @@ class EntryView {
                         this.isShowSheet,
                         this.mySheet,
                         options: SheetOptions(
-                            height: SheetSize.FIT_CONTENT,
+                            height: SheetSize.FitContent,
                             dragBar: false,
                             onDisappear: {
                                 => this.isShowSheet = !this.isShowSheet

@@ -379,7 +379,7 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     let arr =[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     func build() {
-        Stack(Alignment.TopStart){
+        Stack(alignContent: Alignment.TopStart){
             Column() {
                 List( space: 20, initialIndex: 0 ) {
                     ForEach(this.arr, itemGeneratorFunc: {item:Int64,_:Int64 =>

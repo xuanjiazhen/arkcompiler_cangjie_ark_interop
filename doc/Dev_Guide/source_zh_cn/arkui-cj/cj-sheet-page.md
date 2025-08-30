@@ -40,9 +40,9 @@
 .nestedScroll(
     NestedScrollOptions(
         // 可滚动组件往末尾端滚动时的嵌套滚动选项，手势向上
-        NestedScrollMode.PARENT_FIRST,
+        NestedScrollMode.ParentFirst,
         // 可滚动组件往起始端滚动时的嵌套滚动选项，手势向下
-        NestedScrollMode.SELF_FIRST,
+        NestedScrollMode.SelfFirst,
     )
 )
 ```
@@ -90,8 +90,8 @@ class EntryView {
             // 第二步：设置滚动组件的嵌套滚动属性
             .nestedScroll(
                 NestedScrollOptions(
-                    NestedScrollMode.PARENT_FIRST,
-                    NestedScrollMode.SELF_FIRST,
+                    NestedScrollMode.ParentFirst,
+                    NestedScrollMode.SelfFirst,
                 )
             )
 
@@ -112,14 +112,14 @@ class EntryView {
                 .width(90.percent)
                 .height(80.vp)
                 .onClick({
-                    => this.isShowSheet = !this.isShowSheet
+                    evt => this.isShowSheet = !this.isShowSheet
                 })
                 .bindSheet(
                     this.isShowSheet,
                     this.SheetBuilder,
                     options: SheetOptions(
-                        detents: [SheetSize.MEDIUM, SheetSize.LARGE, FIT_CONTENT],
-                        preferType: SheetType.BOTTOM,
+                        detents: [SheetSize.Medium, SheetSize.Large, FitContent],
+                        preferType: SheetType.Bottom,
                         title: {=> Text("嵌套滚动场景")}
                     )
                 )

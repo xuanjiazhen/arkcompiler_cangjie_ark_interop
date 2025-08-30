@@ -89,7 +89,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式，Pr
       .height(100)
   // 从左往右，2号圆形进度条，指定前景色为灰色
   Progress(value: 20.0, total: 150.0, progressType: ProgressType.Eclipse)
-      .color(Color.GREY)
+      .color(Color.Gray)
       .width(100)
       .height(100)
   ```
@@ -114,7 +114,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式，Pr
   Progress(value: 20.0, total: 150.0, progressType: ProgressType.Capsule)
       .width(50)
       .height(100)
-      .color(Color.GREY)
+      .color(Color.Gray)
   Progress(value: 50.0, total: 150.0, progressType: ProgressType.Capsule)
       .width(50)
       .height(100)

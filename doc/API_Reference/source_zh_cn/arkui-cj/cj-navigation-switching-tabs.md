@@ -1416,7 +1416,7 @@ class EntryView {
     }
 
     func build() {
-        Stack(Alignment.TopStart) {
+        Stack(alignContent: Alignment.TopStart) {
             Tabs(BarPosition.Start) {
                 TabContent() {
                     Column().width(100.percent).height(100.percent).backgroundColor(0x00CB87)
