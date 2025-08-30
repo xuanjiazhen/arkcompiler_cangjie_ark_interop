@@ -58,7 +58,7 @@ public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[元能力子系统错误码](../../../source_zh_cn/errorcodes/cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -92,7 +92,7 @@ public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): In
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[元能力子系统错误码](../../../source_zh_cn/errorcodes/cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

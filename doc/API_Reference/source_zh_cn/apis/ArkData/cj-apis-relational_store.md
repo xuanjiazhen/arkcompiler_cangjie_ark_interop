@@ -4233,7 +4233,7 @@ public enum Origin {
 
 **功能：** 表示数据来源。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4245,7 +4245,7 @@ Cloud
 
 **功能：** 表示云端同步的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4257,7 +4257,7 @@ Local
 
 **功能：** 表示本地数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4269,7 +4269,7 @@ Remote
 
 **功能：** 表示端端同步的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 

@@ -941,7 +941,7 @@ public var schema:?Schema
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **起始版本：** 21
 
