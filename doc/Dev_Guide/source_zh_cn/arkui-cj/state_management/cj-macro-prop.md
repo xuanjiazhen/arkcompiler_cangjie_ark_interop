@@ -611,8 +611,8 @@ class EntryView {
     func build() {
         Column {
             Flex(
-                FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-                    justifyContent: FlexAlign.SpaceBetween)) {
+                direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+                    justifyContent: FlexAlign.SpaceBetween) {
                 Button('change Father name')
                     .width(312)
                     .height(40)

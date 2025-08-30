@@ -265,7 +265,7 @@ class YellowButton {
         Button("Yellow Button")
             .width(this.yellowButtonState)
             .height(40)
-            .backgroundColor(Color.YELLOW)
+            .backgroundColor(Color(0xFFFF00))
             .fontColor(Color.Black)
             .margin(12)
             .onClick {

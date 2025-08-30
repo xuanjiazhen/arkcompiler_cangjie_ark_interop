@@ -218,7 +218,7 @@ class EntryView {
             Column {
                 Text("+ 选择乘车人")
                     .fontSize(18.vp)
-                    .fontColor(Color.ORANGE)
+                    .fontColor(Color(0xFFA500))
                     .fontWeight(FontWeight.Bold)
                     .padding(top: 10.vp, bottom: 10.vp)
                     .width(60.percent)

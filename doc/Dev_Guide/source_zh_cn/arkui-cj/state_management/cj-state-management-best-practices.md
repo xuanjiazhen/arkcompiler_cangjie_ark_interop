@@ -21,7 +21,7 @@ import std.collection.*
 class EntryView{
     @State var needsUpdate: Bool = true
     var realStateArr: ArrayList<Int64> = ArrayList<Int64>([4, 1, 3, 2])
-    var realState: Color = Color.YELLOW
+    var realState: Color = Color(0xFFFF00)
 
     func updateUIArr(param: ArrayList<Int64>): ArrayList<Int64>{
         let triggerAGet: Bool = this.needsUpdate
@@ -49,8 +49,8 @@ class EntryView{
             .onClick({event =>
                 // 改变realState不会触发UI视图更新
                 match {
-                    case this.realState.toUInt32() == Color.YELLOW.toUInt32() => this.realState = Color.Red
-                    case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color.YELLOW
+                    case this.realState.toUInt32() == Color(0xFFFF00).toUInt32() => this.realState = Color.Red
+                    case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color(0xFFFF00)
                     case _ => AppLog.error("realState invalid")
                 }
 
@@ -84,7 +84,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView{
     @State var realStateArr: ObservedArrayList<Int64> = ObservedArrayList<Int64>([4, 1, 3, 2])
-    @State var realState: Color = Color.YELLOW
+    @State var realState: Color = Color(0xFFFF00)
 
     func build(){
         Column(space: 20){
@@ -100,8 +100,8 @@ class EntryView{
             .onClick({event =>
                 // 改变realState触发UI视图更新
                 match {
-                    case this.realState.toUInt32() == Color.YELLOW.toUInt32() => this.realState = Color.Red
-                    case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color.YELLOW
+                    case this.realState.toUInt32() == Color(0xFFFF00).toUInt32() => this.realState = Color.Red
+                    case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color(0xFFFF00)
                     case _ => AppLog.error("realState invalid")
                 }
             }).backgroundColor(this.realState)
