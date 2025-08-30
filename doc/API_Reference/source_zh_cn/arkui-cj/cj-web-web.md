@@ -911,6 +911,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.ArkWeb.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component

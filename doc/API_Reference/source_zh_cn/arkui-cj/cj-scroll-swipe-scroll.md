@@ -1601,7 +1601,7 @@ class EntryView {
     var arr: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
 
     func build() {
-        Stack(Alignment.TopStart) {
+        Stack(alignContent: Alignment.TopStart) {
             Scroll(this.scroller) {
                 Column {
                     ForEach(
@@ -2139,7 +2139,7 @@ class EntryView {
     private var arr: ArrayList<Int64> = ArrayList<Int64>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 
     func build() {
-        Stack(Alignment.TopStart) {
+        Stack(alignContent: Alignment.TopStart) {
             Scroll(this.scroller) {
                 Column {
                     ForEach(

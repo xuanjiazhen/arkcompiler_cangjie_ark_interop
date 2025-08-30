@@ -99,8 +99,7 @@ class EntryView {
     @State var radioName: String = "Null"
 
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center
-        )) {
+        Flex(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
             Column() {
                 Text("Radio1")
                 Radio(group: "radioGroup", value: "Radio1").checked(true).height(50).width(50)

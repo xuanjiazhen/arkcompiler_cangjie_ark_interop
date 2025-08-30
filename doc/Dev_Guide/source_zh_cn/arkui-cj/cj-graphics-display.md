@@ -149,7 +149,7 @@ class EntryView {
                         // 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。
                         .objectFit(ImageFit.Contain)
                         .margin(15)
-                        .overlay(title: 'Contain', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                        .overlay(value: 'Contain', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                     Image(@r(app.media.example))
                         .width(160)
                         .height(120)
@@ -157,7 +157,7 @@ class EntryView {
                         // 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。
                         .objectFit(ImageFit.Cover)
                         .margin(15)
-                        .overlay(title: 'Cover', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                        .overlay(value: 'Cover', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 }
                 Row() {
                     Image(@r(app.media.example))
@@ -167,7 +167,7 @@ class EntryView {
                         // 自适应显示。
                         .objectFit(ImageFit.Auto)
                         .margin(15)
-                        .overlay(title: 'Auto', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                        .overlay(value: 'Auto', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                     Image(@r(app.media.example))
                         .width(160)
                         .height(80)
@@ -175,7 +175,7 @@ class EntryView {
                         // 不保持宽高比进行放大缩小，使得图片充满显示边界。
                         .objectFit(ImageFit.Fill)
                         .margin(15)
-                        .overlay(title: 'Fill', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                        .overlay(value: 'Fill', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 }
                 Row() {
                     Image(@r(app.media.example))
@@ -185,7 +185,7 @@ class EntryView {
                         // 保持宽高比显示，图片缩小或者保持不变。
                         .objectFit(ImageFit.ScaleDown)
                         .margin(15)
-                        .overlay(title: 'ScaleDown', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                        .overlay(value: 'ScaleDown', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                     Image(@r(app.media.example))
                         .width(160)
                         .height(80)
@@ -193,7 +193,7 @@ class EntryView {
                         // 保持原有尺寸显示。
                         .objectFit(ImageFit.None)
                         .margin(15)
-                        .overlay(title: 'None', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                        .overlay(value: 'None', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 }
             }
         }
@@ -226,14 +226,14 @@ class EntryView {
                     .width(40.percent)
                     .interpolation(ImageInterpolation.None)
                     .borderWidth(1)
-                    .overlay(title: "Interpolation.None", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0
+                    .overlay(value: "Interpolation.None", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0
                     ))
                     .margin(10)
                 Image(@r(app.media.grass))
                     .width(40.percent)
                     .interpolation(ImageInterpolation.Low)
                     .borderWidth(1)
-                    .overlay(title: "Interpolation.Low", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0)
+                    .overlay(value: "Interpolation.Low", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0)
                     )
                     .margin(10)
             }
@@ -245,14 +245,14 @@ class EntryView {
                     .width(40.percent)
                     .interpolation(ImageInterpolation.Medium)
                     .borderWidth(1)
-                    .overlay(title: "Interpolation.Medium", align: Alignment.Bottom,
-                        offset: ContentOffset(x: 0.0, y: 20.0))
+                    .overlay(value: "Interpolation.Medium", align: Alignment.Bottom,
+                        offset: OverlayOffset(x: 0.0, y: 20.0))
                     .margin(10)
                 Image(@r(app.media.grass))
                     .width(40.percent)
                     .interpolation(ImageInterpolation.High)
                     .borderWidth(1)
-                    .overlay(title: "Interpolation.High", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0
+                    .overlay(value: "Interpolation.High", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0
                     ))
                     .margin(10)
             }
@@ -291,7 +291,7 @@ class EntryView {
                     .objectRepeat(ImageRepeat.XY)
                     .objectFit(ImageFit.ScaleDown)
                     // 在水平轴和竖直轴上同时重复绘制图片
-                    .overlay(title: 'ImageRepeat.XY', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                    .overlay(value: 'ImageRepeat.XY', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 Image(@r(app.media.ic_public_favor_filled_1))
                     .width(110)
                     .height(115)
@@ -299,7 +299,7 @@ class EntryView {
                     .objectRepeat(ImageRepeat.Y)
                     .objectFit(ImageFit.ScaleDown)
                     // 只在竖直轴上重复绘制图片
-                    .overlay(title: 'ImageRepeat.Y', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                    .overlay(value: 'ImageRepeat.Y', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 Image(@r(app.media.ic_public_favor_filled_1))
                     .width(110)
                     .height(115)
@@ -307,7 +307,7 @@ class EntryView {
                     .objectRepeat(ImageRepeat.X)
                     .objectFit(ImageFit.ScaleDown)
                     // 只在水平轴上重复绘制图片
-                    .overlay(title: 'ImageRepeat.X', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                    .overlay(value: 'ImageRepeat.X', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
             }
         }
         .height(150)
@@ -345,14 +345,14 @@ class EntryView {
                     .height(100)
                     .border(width: 1)
                     // overlay是通用属性，用于在组件上显示说明文字
-                    .overlay(title: 'Original', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                    .overlay(value: 'Original', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 Image(@r(app.media.example))
                     // 设置图片的渲染模式为黑白
                     .renderMode(ImageRenderMode.Template)
                     .width(100)
                     .height(100)
                     .border(width: 1)
-                    .overlay(title: 'Template', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
+                    .overlay(value: 'Template', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
             }
         }
         .height(150)
@@ -388,17 +388,17 @@ class EntryView {
                 Image(@r(app.media.example))
                     .sourceSize(40, 40)
                     .objectFit(ImageFit.ScaleDown)
-                    .aspectRatio(1)
+                    .aspectRatio(1.0)
                     .width(25.percent)
                     .border(width: 1)
-                    .overlay(title: 'width:40 height:40', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 40.0))
+                    .overlay(value: 'width:40 height:40', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 40.0))
                 Image(@r(app.media.example))
                     .sourceSize(90, 90)
                     .objectFit(ImageFit.ScaleDown)
                     .width(25.percent)
-                    .aspectRatio(1)
+                    .aspectRatio(1.0)
                     .border(width: 1)
-                    .overlay(title: 'width:90 height:90', align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 40.0))
+                    .overlay(value: 'width:90 height:90', align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 40.0))
             }
             .height(150)
             .width(100.percent)
@@ -486,19 +486,19 @@ class EntryView {
                     .width(200)
                     .height(150)
                     .margin(15)
-                    .onComplete({msg: CJImageComplete =>
+                    .onComplete({msg: ImageLoadResult =>
                         this.widthValue = msg.width
                         this.heightValue = msg.height
                         this.componentWidth = msg.componentWidth
                         this.componentHeight = msg.componentHeight
                     })
                     .onError({evt =>
-                        AppLog.info("load image fail")
+                        Hilog.info(0, "cangjie", "load image fail")
                     })
                     .overlay(
-                        title: '\nwidth: ${this.widthValue}, height: ${this.heightValue}\ncomponentWidth: ${this.componentWidth}\ncomponentHeight: ${this.componentHeight}',
+                        value: '\nwidth: ${this.widthValue}, height: ${this.heightValue}\ncomponentWidth: ${this.componentWidth}\ncomponentHeight: ${this.componentHeight}',
                         align: Alignment.Bottom,
-                        offset: ContentOffset( x: 0.0, y: 60.0 )
+                        offset: OverlayOffset( x: 0.0, y: 60.0 )
                     )
             }
         }

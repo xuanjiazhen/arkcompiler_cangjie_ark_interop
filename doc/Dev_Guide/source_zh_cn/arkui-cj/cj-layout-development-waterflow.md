@@ -133,11 +133,11 @@ class EntryView {
                 this.myDataSource.addNewItems(10)
             })
             .onScrollFrameBegin({offset: Float64, state: ScrollState =>
-                AppLog.info("waterFlow scrollFrameBegin offset: " + offset.toString() + " state: " + state.toString())
+                Hilog.info(0, "cangjie", waterFlow scrollFrameBegin offset: " + offset.toString() + " state: " + state.toString())
                 return offset
             })
             .onScrollIndex({first: Int32, last: Int32=>
-                AppLog.info("waterFlow onScrollIndex first: " + first.toString() + " last: " + last.toString() + " totalCount: " + this.myDataSource.totalCount().toString())
+                Hilog.info(0, "cangjie", waterFlow onScrollIndex first: " + first.toString() + " last: " + last.toString() + " totalCount: " + this.myDataSource.totalCount().toString())
             })
         }.height(100.percent)
     }
@@ -267,11 +267,11 @@ class EntryView {
                 AppLog.info('waterFlow reach end')
             })
             .onScrollFrameBegin({offset: Float64, state: ScrollState =>
-                AppLog.info("waterFlow scrollFrameBegin offset: " + offset.toString() + " state: " + state.toString())
+                Hilog.info(0, "cangjie", waterFlow scrollFrameBegin offset: " + offset.toString() + " state: " + state.toString())
                 return offset
             })
             .onScrollIndex({first: Int32, last: Int32=>
-                AppLog.info("waterFlow onScrollIndex first: " + first.toString() + " last: " + last.toString() + " totalCount: " + this.myDataSource.totalCount().toString())
+                Hilog.info(0, "cangjie", waterFlow onScrollIndex first: " + first.toString() + " last: " + last.toString() + " totalCount: " + this.myDataSource.totalCount().toString())
                     if(Int64(last + 20) >= this.myDataSource.totalCount()){
                         this.myDataSource.addNewItems(10)
                     }
@@ -356,7 +356,7 @@ class ReusableListItem {
           Image('res/waterFlow(' + (this.item % 5).toString() + ').JPG')
             .objectFit(ImageFit.Fill)
             .height(100)
-            .aspectRatio(1)
+            .aspectRatio(1.0)
           Text("N" + this.item.toString()).fontSize(12).height(16).layoutWeight(1).textAlign(TextAlign.Center)
         }
     }
@@ -456,11 +456,11 @@ class EntryView {
                 AppLog.info('waterFlow reach end')
             })
             .onScrollFrameBegin({offset: Float64, state: ScrollState =>
-                AppLog.info("waterFlow scrollFrameBegin offset: " + offset.toString() + " state: " + state.toString())
+                Hilog.info(0, "cangjie", waterFlow scrollFrameBegin offset: " + offset.toString() + " state: " + state.toString())
                 return offset
             })
             .onScrollIndex({first: Int32, last: Int32=>
-                AppLog.info("waterFlow onScrollIndex first: " + first.toString() + " last: " + last.toString() + " totalCount: " + this.myDataSource.totalCount().toString())
+                Hilog.info(0, "cangjie", waterFlow onScrollIndex first: " + first.toString() + " last: " + last.toString() + " totalCount: " + this.myDataSource.totalCount().toString())
                     if(Int64(last + 20) >= this.myDataSource.totalCount()){
                         this.myDataSource.addNewItems(10)
                     }
@@ -636,11 +636,11 @@ class EntryView {
                 AppLog.info('waterFlow reach end')
             })
             .onScrollFrameBegin({offset: Float64, state: ScrollState =>
-                AppLog.info("waterFlow scrollFrameBegin offset: " + offset.toString() + " state: " + state.toString())
+                Hilog.info(0, "cangjie", waterFlow scrollFrameBegin offset: " + offset.toString() + " state: " + state.toString())
                 return offset
             })
             .onScrollIndex({first: Int32, last: Int32=>
-                AppLog.info("waterFlow onScrollIndex first: " + first.toString() + " last: " + last.toString() + " totalCount: " + this.myDataSource.totalCount().toString())
+                Hilog.info(0, "cangjie", waterFlow onScrollIndex first: " + first.toString() + " last: " + last.toString() + " totalCount: " + this.myDataSource.totalCount().toString())
                     if(Int64(last + 20) >= this.myDataSource.totalCount()){
                         this.myDataSource.addNewItems(10)
                         this.twoColumnSection.itemsCount += 10;

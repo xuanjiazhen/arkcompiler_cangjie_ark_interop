@@ -94,12 +94,12 @@ Text可通过以下两种方式来创建：
           Scroll {
               Column {
                   Text() {
-                      Span('我是Span1，').fontSize(16).fontColor(Color.GREY)
+                      Span('我是Span1，').fontSize(16).fontColor(Color.Gray)
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red)
                       Span('我是Span2').fontColor(Color.Blue).fontSize(16)
                         .fontStyle(FontStyle.Italic)
                         .decoration(decorationType: TextDecorationType.Underline, color: Color.Black)
-                      Span('，我是Span3').fontSize(16). fontColor(Color.GREY)
+                      Span('，我是Span3').fontSize(16). fontColor(Color.Gray)
                         .decoration(decorationType: TextDecorationType.Overline, color: Color.Green)
                   }
                   .borderWidth(1)
@@ -775,7 +775,7 @@ class EntryView {
                 }.width(100.percent).margin(5)
 
             Row() {
-                Text("3").fontSize(14).fontColor(Color.ORANGE).margin(left: 10, right: 10)
+                Text("3").fontSize(14).fontColor(Color(0xFFA500)).margin(left: 10, right: 10)
                 Text("我是热搜词条3")
                     .fontSize(12)
                     .fontColor(Color.Blue)
@@ -796,7 +796,7 @@ class EntryView {
                 }.width(100.percent).margin(5)
 
             Row() {
-                Text("4").fontSize(14).fontColor(Color.GREY).margin(left: 10, right: 10)
+                Text("4").fontSize(14).fontColor(Color.Gray).margin(left: 10, right: 10)
                 Text("我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4")
                     .fontSize(12)
                     .fontColor(Color.Blue)

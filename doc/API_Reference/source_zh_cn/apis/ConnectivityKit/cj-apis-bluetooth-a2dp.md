@@ -49,7 +49,7 @@ public func createA2dpSrcProfile(): A2dpSourceProfile
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpProfile = createA2dpSrcProfile()
@@ -117,7 +117,7 @@ public func getConnectedDevices(): Array<String>
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -177,7 +177,7 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -237,7 +237,7 @@ public func getPlayingState(deviceId: String): PlayingState
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()

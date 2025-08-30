@@ -687,9 +687,14 @@ public func assertComponentExist(on: On): Unit
 
 import ohos.base.*
 import kit.TestKit.*
+import ohos.business_exception.BusinessException
 
 let driver: Driver = Driver.create()
-driver.assertComponentExist(On().text("next page"))
+try {
+    driver.assertComponentExist(On().text("next page"))
+} catch (e: BusinessException) {
+    Hilog.error(0, "UITest", "The component `text(\"next page\")` does not exist")
+}
 ```
 
 ### func click(Int32, Int32)
@@ -1297,11 +1302,16 @@ public func inputText(p: Point, text: String): Unit
 
 import ohos.base.*
 import kit.TestKit.*
+import ohos.business_exception.BusinessException
 
 let driver: Driver = Driver.create()
-let text: Component = driver.findComponent(On().onType("TextInput")).getOrThrow()
-let point = text.getBoundsCenter()
-driver.inputText(point, "123")
+try {
+    let text: Component = driver.findComponent(On().onType("TextInput")).getOrThrow()
+    let point = text.getBoundsCenter()
+    driver.inputText(point, "123")
+} catch (e: BusinessException) {
+    Hilog.error(0, "UITest", "The component `TextInput` does not exist")
+}
 ```
 
 ### func longClick(Int32, Int32)

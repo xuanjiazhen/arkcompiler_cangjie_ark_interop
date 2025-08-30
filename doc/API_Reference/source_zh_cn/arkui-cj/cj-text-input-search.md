@@ -324,7 +324,7 @@ class EntryView {
 
     let controller = SearchController()
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center)) {
+        Flex(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
           Text(submitValue)
           Text(changeValue)
           Search(value: "", placeholder: "Type to search", controller: controller)

@@ -776,7 +776,7 @@ class EntryView {
                 )
                     .width(100.percent)
                     .fontSize(20)
-                Stack(Alignment.Center) {
+                Stack(alignContent: Alignment.Center) {
                     // Lower area of Stack is the image region bound to drag gesture
                     Image(@r(app.media.startIcon))
                         .draggable(true)

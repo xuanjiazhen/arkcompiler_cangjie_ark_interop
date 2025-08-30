@@ -569,7 +569,7 @@ class EntryView {
                         evt => if (this.allBooks.size > 0) {
                             this.allBooks.remove(0)
                         } else {
-                            AppLog.info("length <= 0")
+                            Hilog.info(0, "cangjie", length <= 0")
                         }
                     })
         }
@@ -611,8 +611,8 @@ class EntryView {
     func build() {
         Column {
             Flex(
-                FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-                    justifyContent: FlexAlign.SpaceBetween)) {
+                direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+                    justifyContent: FlexAlign.SpaceBetween) {
                 Button('change Father name')
                     .width(312)
                     .height(40)

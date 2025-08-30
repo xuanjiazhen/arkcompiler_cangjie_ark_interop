@@ -40,9 +40,9 @@
 .nestedScroll(
     NestedScrollOptions(
         // 可滚动组件往末尾端滚动时的嵌套滚动选项，手势向上
-        NestedScrollMode.PARENT_FIRST,
+        NestedScrollMode.ParentFirst,
         // 可滚动组件往起始端滚动时的嵌套滚动选项，手势向下
-        NestedScrollMode.SELF_FIRST,
+        NestedScrollMode.SelfFirst,
     )
 )
 ```
@@ -90,8 +90,8 @@ class EntryView {
             // 第二步：设置滚动组件的嵌套滚动属性
             .nestedScroll(
                 NestedScrollOptions(
-                    NestedScrollMode.PARENT_FIRST,
-                    NestedScrollMode.SELF_FIRST,
+                    NestedScrollMode.ParentFirst,
+                    NestedScrollMode.SelfFirst,
                 )
             )
 
@@ -112,14 +112,14 @@ class EntryView {
                 .width(90.percent)
                 .height(80.vp)
                 .onClick({
-                    => this.isShowSheet = !this.isShowSheet
+                    evt => this.isShowSheet = !this.isShowSheet
                 })
                 .bindSheet(
                     this.isShowSheet,
                     this.SheetBuilder,
                     options: SheetOptions(
-                        detents: [SheetSize.MEDIUM, SheetSize.LARGE, FIT_CONTENT],
-                        preferType: SheetType.BOTTOM,
+                        detents: [SheetSize.Medium, SheetSize.Large, FitContent],
+                        preferType: SheetType.Bottom,
                         title: {=> Text("嵌套滚动场景")}
                     )
                 )
@@ -150,7 +150,7 @@ onWillDismiss: {
                 primaryButton: AlertDialogButtonOptions(
                     value: 'cancel',
                     action: {
-                        => AppLog.info("Callback when the cancel button is clicked")
+                        => Hilog.info(0, "cangjie", Callback when the cancel button is clicked")
                     }
                 ),
                 secondaryButton: AlertDialogButtonOptions(
@@ -160,12 +160,12 @@ onWillDismiss: {
                         => {
                             // 第四步：上述第三步逻辑触发的时候，调用dismiss()关闭半模态
                             dismissSheetAction.dismiss(),
-                            AppLog.info("Callback when the ok button is clicked")
+                            Hilog.info(0, "cangjie", Callback when the ok button is clicked")
                         }
                     }
                 ),
                 cancel: {
-                    => AppLog.info("AlertDialog Closed callbacks")
+                    => Hilog.info(0, "cangjie", AlertDialog Closed callbacks")
                 }
             )
         )

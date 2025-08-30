@@ -36,8 +36,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.AppResource
-import ohos.resource_manager.__GenerateResource__
+import ohos.resource_manager.*
 import std.collection.ArrayList
 
 let storage: LocalStorage = LocalStorage()
@@ -99,7 +98,7 @@ class EntryView {
              )
         }
         .size(width: 100.percent, height: 100.percent)
-        .backgroundColor(Color.GREY)
+        .backgroundColor(Color.Gray)
     }
 }
 
@@ -204,7 +203,7 @@ import kit.LocalizationKit.*
 class EntryView {
     @State var isShow: Bool = false
     func build() {
-        Stack(Alignment.Center) {
+        Stack(alignContent: Alignment.Center) {
             if (this.isShow) {
                 Image(@r(app.media.spring))
                     .autoResize(false)
@@ -258,7 +257,6 @@ import kit.ArkUI.*
 import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.AppResource
-import ohos.resource_manager.__GenerateResource__
 import std.collection.ArrayList
 import kit.PerformanceAnalysisKit.Hilog
 
@@ -285,7 +283,7 @@ class PostData{
 class EntryView {
     @State var isPersonalPageShow: Bool = false;
     @State var selectedIndex: Int = 0
-    @State var alphaValue: Int = 1
+    @State var alphaValue: Float64 = 1.0
 
     private var allPostData: Array<PostData> = [
         PostData(@r(app.media.flower),"Alice","天气晴朗",[@r(app.media.spring), @r(app.media.tree)] ),
@@ -294,10 +292,10 @@ class EntryView {
         ]
 
     public func onAppear() {
-        AppLog.info("BindContentCover onAppear.")
+        Hilog.info(0, "cangjie", "BindContentCover onAppear.")
     }
     public func onDisappear() {
-        AppLog.info("BindContentCover onDisappear.")
+        Hilog.info(0, "cangjie", "BindContentCover onDisappear.")
     }
 
     private func onAvatarClicked(index: Int):Unit {
@@ -307,7 +305,7 @@ class EntryView {
             {
                 =>
                 this.isPersonalPageShow = !this.isPersonalPageShow
-                this.alphaValue = 0
+                this.alphaValue = 0.0
             }
         )
     }
@@ -316,7 +314,7 @@ class EntryView {
         getUIContext().animateTo(AnimateParam(duration: 350,curve: Curve.Friction),{
             =>
             this.isPersonalPageShow = !this.isPersonalPageShow;
-            this.alphaValue = 1;
+            this.alphaValue = 1.0;
         })
     }
 
@@ -332,7 +330,6 @@ class EntryView {
             .transition(TransitionEffect.opacity(0.99))
 
             Text(this.allPostData[this.selectedIndex].name)
-            .font(TextFont(size:30,weight:FontWeight.W600))
             // 对文本添加出现转场效果
             .transition(TransitionEffect.asymmetric(
                 TransitionEffect.OPACITY.combine(TransitionEffect.translate(TranslateOptions(x:100,y:100,z:100))),
@@ -366,10 +363,10 @@ class EntryView {
              )
         }
         .size(width: 100.percent, height: 100.percent)
-        .backgroundColor(Color.GREY)
+        .backgroundColor(Color.Gray)
         .bindContentCover(this.isPersonalPageShow, this.PersonalPageBuilder,
-            ContentCoverOptions(
-            modalTransition: ModalTransition.NONE,
+            options: ContentCoverOptions(
+            modalTransition: ModalTransition.None,
             onAppear: onAppear,
             onDisappear: onDisappear)
             )

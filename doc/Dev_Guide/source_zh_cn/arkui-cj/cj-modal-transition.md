@@ -218,7 +218,7 @@ class EntryView {
             Column {
                 Text("+ 选择乘车人")
                     .fontSize(18.vp)
-                    .fontColor(Color.ORANGE)
+                    .fontColor(Color(0xFFA500))
                     .fontWeight(FontWeight.Bold)
                     .padding(top: 10.vp, bottom: 10.vp)
                     .width(60.percent)
@@ -272,7 +272,7 @@ class EntryView {
     @Builder
     func mySheet() {
         Column {
-            Flex(FlexOptions(direction: FlexDirection.Row, wrap: FlexWrap.Wrap)) {
+            Flex(direction: FlexDirection.Row, wrap: FlexWrap.Wrap) {
                 ForEach(
                     this.menusList,
                     itemGeneratorFunc: {
@@ -332,7 +332,7 @@ class EntryView {
                         this.isShowSheet,
                         this.mySheet,
                         options: SheetOptions(
-                            height: SheetSize.FIT_CONTENT,
+                            height: SheetSize.FitContent,
                             dragBar: false,
                             onDisappear: {
                                 => this.isShowSheet = !this.isShowSheet
@@ -368,8 +368,8 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State
     var items: Array<Action> = [
-        Action(value: "菜单项1", action: {=> AppLog.info("handle Menu1 select")}),
-        Action(value: "菜单项2", action: {=> AppLog.info("handle Menu2 select")})
+        Action(value: "菜单项1", action: {=> Hilog.info(0, "cangjie", handle Menu1 select")}),
+        Action(value: "菜单项2", action: {=> Hilog.info(0, "cangjie", handle Menu2 select")})
         ]
 
     func build() {

@@ -101,7 +101,7 @@ class EntryView{
     var Time: TimeClass = TimeClass(time: DateTime.now())
 
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center)){
+        Flex(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center){
             Column(){
                 Text("Time: ${Time.time.format("HH:mm:ss")}").margin(10)
                 Button("time update").onClick{

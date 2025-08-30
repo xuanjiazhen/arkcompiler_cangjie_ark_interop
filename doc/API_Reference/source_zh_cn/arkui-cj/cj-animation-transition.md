@@ -318,7 +318,7 @@ public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: L
 ## class TransitionEffect
 
 ```cangjie
-public class TransitionEffect {
+public class TransitionEffect <: RemoteDataLite {
     public static let IDENTITY: TransitionEffect = unsafe {    TransitionEffect(FfiOHOSAceFrameworkTransitionEffectIdentity())}
     public static let OPACITY: TransitionEffect = TransitionEffect.opacity(0.0)
     public static let SLIDE: TransitionEffect = TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.Start), TransitionEffect.move(TransitionEdge.End))
@@ -688,7 +688,7 @@ public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp)
 ## enum TransitionEdge
 
 ```cangjie
-public enum TransitionEdge <: Equatable<TransitionEdge> {
+public enum TransitionEdge {
     | Top
     | Bottom
     | Start

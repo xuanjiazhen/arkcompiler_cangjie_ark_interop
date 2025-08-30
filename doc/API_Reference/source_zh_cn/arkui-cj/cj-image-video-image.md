@@ -807,11 +807,11 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
                     // 加载gif格式图片
                     Image(@r(app.media.list))
                     .width(110).height(110).margin(15)
-                    .overlay(title: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
                 }
                 Row() {
                     // 加载svg格式图片
@@ -819,13 +819,13 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
                     // 加载jpg格式图片
                     Image(@r(app.media.startIcon_jpg))
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
                 }
             }
             .height(320)
@@ -962,7 +962,7 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
                     .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.TOP_START)
                     // 加载gif格式图片
@@ -970,7 +970,7 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
                     .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.BOTTOM_START)
                 }
@@ -980,7 +980,7 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
                     .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.TOP_END)
                     // 加载jpg格式图片
@@ -988,7 +988,7 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
                     .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.CENTER)
                 }

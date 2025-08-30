@@ -367,7 +367,7 @@ public func onSelect(callback: OnAlphabetIndexerSelectCallback): This
 ### enum IndexerAlign
 
 ```cangjie
-public enum IndexerAlign <: Equatable<IndexerAlign> {
+public enum IndexerAlign {
     | Left
     | Right
     | ...
@@ -488,7 +488,7 @@ class EntryView {
     let value: Array<String> = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q","R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     @State var indexerHeight: Length = 75.percent;
     func build() {
-        Stack(Alignment.Start) {
+        Stack(alignContent: Alignment.Start) {
             Row() {
                 List(space: 20, initialIndex: 0) {
                     ForEach(
@@ -618,7 +618,7 @@ class EntryView {
     @State var isNeedAutoCollapse: Bool = false;
     @State var indexerHeight: Length = 75.percent;
     func build() {
-        Stack(Alignment.Start) {
+        Stack(alignContent: Alignment.Start) {
             Row() {
                 List(space: 20, initialIndex: 0) {
                     ForEach(
@@ -761,7 +761,7 @@ class EntryView {
     let value: Array<String> = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q","R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     @State var customBlurStyle: BlurStyle = BlurStyle.NONE;
     func build() {
-        Stack(Alignment.Start) {
+        Stack(alignContent: Alignment.Start) {
             Row() {
                 List(space: 20, initialIndex: 0) {
                     ForEach(

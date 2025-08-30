@@ -8,46 +8,6 @@
 import kit.ArkUI.*
 ```
 
-## func !=(GestureTypes)
-
-```cangjie
-public operator func !=(other: GestureTypes): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[GestureTypes](#enum-gesturetypes)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等时，返回true，否则返回false。|
-
-## func ==(GestureTypes)
-
-```cangjie
-public operator func ==(other: GestureTypes): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[GestureTypes](#enum-gesturetypes)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等时，返回true，否则返回false。|
-
 ## 基础类型定义
 
 ### enum GestureTypes
@@ -171,4 +131,45 @@ TAP_GESTURE
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+#### func !=(GestureTypes)
+
+```cangjie
+public operator func !=(other: GestureTypes): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GestureTypes](#enum-gesturetypes)|是|-|传入的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等时，返回true，否则返回false。|
+
+#### func ==(GestureTypes)
+
+```cangjie
+public operator func ==(other: GestureTypes): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GestureTypes](#enum-gesturetypes)|是|-|传入的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等时，返回true，否则返回false。|
+
 

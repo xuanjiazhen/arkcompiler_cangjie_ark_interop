@@ -5845,7 +5845,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
-Hilog.info(0, "AppLogCj", session.canPreconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9).toString())
+Hilog.info(0, "AppLogCj", session.canPreconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9).toString())
 ```
 
 ### func off(CameraEvents, Callback0Argument)
@@ -7904,7 +7904,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
-session.canPreconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9)
+session.canPreconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9)
 ```
 
 ### func off(CameraEvents, Callback0Argument)
@@ -8346,7 +8346,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
-session.preconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9)
+session.preconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9)
 ```
 
 ## enum CameraEvents

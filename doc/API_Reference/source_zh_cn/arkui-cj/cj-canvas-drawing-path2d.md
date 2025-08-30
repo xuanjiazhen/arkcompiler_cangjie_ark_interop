@@ -11,7 +11,7 @@ import kit.ArkUI.*
 ## class Path2D
 
 ```cangjie
-public class Path2D {
+public class Path2D <: RemoteDataLite {
     public init()
     public init(path: String)
 }

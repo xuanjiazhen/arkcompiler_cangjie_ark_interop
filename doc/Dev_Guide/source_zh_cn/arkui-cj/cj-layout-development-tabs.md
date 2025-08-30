@@ -274,7 +274,7 @@ public class EntryView {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("发现", 1)
-                }).backgroundColor(Color.YELLOW)
+                }).backgroundColor(Color(0xFFFF00))
                 TabContent() {
                     // ...
                 }.tabBar({ =>
