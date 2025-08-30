@@ -54,18 +54,6 @@ public func bindPopup(show: Bool, popup: PopupOptions): This
 |show|Bool|是|-|是否显示。|
 |popup|[PopupOptions](#)|是|-|弹出框选项。|
 
-## func dismiss()
-
-```cangjie
-public func dismiss(): Unit
-```
-
-**功能：** popup交互式关闭拦截开关及拦截结果类型。开发者需要退出时调用，不需要退出时无需调用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
 ## 基础类型定义
 
 ### class CustomPopupOptions
@@ -620,6 +608,18 @@ public let reason: DismissReason
 **类型：** [DismissReason](./cj-dialog-actionsheet.md#enum-dismissreason)
 
 **读写能力：** 只读
+
+## func dismiss()
+
+```cangjie
+public func dismiss(): Unit
+```
+
+**功能：** popup交互式关闭拦截开关及拦截结果类型。开发者需要退出时调用，不需要退出时无需调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 
 ### class PopupMessageOptions
 

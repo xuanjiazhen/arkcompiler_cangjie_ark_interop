@@ -8,18 +8,6 @@
 import kit.ArkUI.*
 ```
 
-## func stopPropagation()
-
-```cangjie
-public func stopPropagation(): Unit
-```
-
-**功能：** 阻止事件继续传播。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
 ## 权限列表
 
 无
@@ -185,5 +173,15 @@ public init(keyText: String, keyType: KeyType, keyCode: Int32, keySource: KeySou
 |deviceId|Int64|是|-|触发当前按键的输入设备ID。|
 |timestamp|Int64|是|-|按键发生时的时间戳。|
 
+#### func stopPropagation()
 
+```cangjie
+public func stopPropagation(): Unit
+```
+
+**功能：** 阻止事件继续传播。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 
