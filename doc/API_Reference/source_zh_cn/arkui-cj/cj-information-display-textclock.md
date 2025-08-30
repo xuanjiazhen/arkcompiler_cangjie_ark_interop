@@ -704,15 +704,15 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State
     var shadowoptions: Array<ShadowOptions> = [
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 10.0, offsetY: 0.0, color: 0xffff0000,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 10.0, offsetY: 0.0, color: 0xffff0000,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 20.0, offsetY: 0.0, color: 0xff000000,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 20.0, offsetY: 0.0, color: 0xff000000,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 30.0, offsetY: 0.0, color: 0xffc0c0c0,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 30.0, offsetY: 0.0, color: 0xffc0c0c0,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 40.0, offsetY: 0.0, color: 0xff00ff00,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 40.0, offsetY: 0.0, color: 0xff00ff00,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 100.0, offsetY: 0.0, color: 0xff0000ff,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 100.0, offsetY: 0.0, color: 0xff0000ff,
             fill: false)
     ]
     public func build() {

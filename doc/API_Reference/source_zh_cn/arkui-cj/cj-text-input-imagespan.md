@@ -110,7 +110,7 @@ public func verticalAlign(value: ImageSpanAlignment): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ImageSpanAlignment](cj-common-types.md#enum-imagespanalignment)|是|-|图片基于文本的对齐方式。<br>初始值：ImageSpanAlignment.BOTTOM。|
+|value|[ImageSpanAlignment](cj-common-types.md#enum-imagespanalignment)|是|-|图片基于文本的对齐方式。<br>初始值：ImageSpanAlignment.Bottom。|
 
 ## 组件事件
 
@@ -342,14 +342,14 @@ import kit.LocalizationKit.*
 class EntryView {
     func build() {
         Column {
-            Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+            Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
                 Text() {
                     //以设定大小和排布方式加载图片资源
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(250.px)
                         .objectFit(ImageFit.Contain)
-                        .verticalAlign(ImageSpanAlignment.CENTER)
+                        .verticalAlign(ImageSpanAlignment.Center)
                     //对图片进行文本修饰
                     Span("This is the Span and ImageSpan component")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
@@ -357,21 +357,21 @@ class EntryView {
                        .width(150.px)
                        .height(50.px)
                         .objectFit(ImageFit.Contain)
-                       .verticalAlign(ImageSpanAlignment.TOP)
+                       .verticalAlign(ImageSpanAlignment.Top)
                     Span("I am Underline-span2")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(250.px)
                         .objectFit(ImageFit.Fill)
-                        .verticalAlign(ImageSpanAlignment.BASELINE)
+                        .verticalAlign(ImageSpanAlignment.Baseline)
                     Span("I am Underline-span3")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(50.px)
                         .objectFit(ImageFit.Auto)
-                        .verticalAlign(ImageSpanAlignment.BOTTOM)
+                        .verticalAlign(ImageSpanAlignment.Bottom)
                     Span("I am Underline-span4")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                 }.textAlign(TextAlign.Center)
@@ -386,36 +386,3 @@ class EntryView {
 
 ![imageSpan](figures/imageSpan.png)
 
-### 示例2
-
-该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Column() {
-            Text() {
-                ImageSpan(@r(app.media.startIcon))//建议使用自定义的本地图片
-                .width(200.vp)
-                .height(200.vp)
-                //设置图片中间与行中间对齐。
-                .verticalAlign(ImageSpanAlignment.CENTER)
-                //设置图片背景颜色和图片背景圆角大小。
-                .textBackgroundStyle(color: Color.Red, radius: BorderRadiuses(topLeft: 0.vp, topRight: 12.vp, bottomLeft: 24.vp, bottomRight: 48.vp))
-            }
-        }.width(100.percent).alignItems(HorizontalAlign.Center).justifyContent(FlexAlign.Center)
-    }
-}
-```
-
-![imageSpan2](figures/imageSpan2.png)

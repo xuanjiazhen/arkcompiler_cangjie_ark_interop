@@ -833,6 +833,7 @@ Inline
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import import kit.performanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -853,7 +854,7 @@ class EntryView {
             .margin(20)
             .fontSize(14)
             .fontColor(Color.Black)
-            .inputFilter(value: '[a-z]', error: { info: String =>
+            .inputFilter('[a-z]', error: { info: String =>
               Hilog.error(0, "AppLogCj", "inputFilter error")
             })
             .onChange({ value: String =>
@@ -869,7 +870,6 @@ class EntryView {
             .width(95.percent)
             .height(40)
             .margin(20)
-            .setType(InputType.Password)
             .maxLength(9)
         // 邮箱地址自动填充类型
         TextInput(placeholder: 'input your email...' )
@@ -877,7 +877,6 @@ class EntryView {
             .height(40)
             .margin(20)
             .maxLength(9)
-            .contentType(ContentType.EMAIL_ADDRESS)
         // 内联风格输入框
         TextInput( text: 'inline style' )
             .width(95.percent)

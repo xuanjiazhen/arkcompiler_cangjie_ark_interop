@@ -208,8 +208,8 @@ import std.collection.*
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start,
-                        justifyContent: FlexAlign.SpaceBetween)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start,
+                        justifyContent: FlexAlign.SpaceBetween) {
             Text("Basic Usage")
             .fontSize(9)
             .fontColor(0xCCCCCC)

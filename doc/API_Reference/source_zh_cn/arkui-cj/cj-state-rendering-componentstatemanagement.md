@@ -489,12 +489,12 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class EntryView {
-    @State var arr: ObservedArray<Int64> = ObservedArray<Int64>([1, 2])
+    @State var arr: ObservedArrayList<Int64> = ObservedArrayList<Int64>([1, 2])
 
     func build() {
         Column {
             Text("arr[0] is ${arr[0]}")
-            Button("click").onClick {
+            Button("click").onClick { evt =>
                 arr[0] = 0
             }
         }
@@ -519,10 +519,10 @@ class EntryView {
     func build() {
         Column {
             Text("arr[0] is ${arr[0]}")
-            Button("click").onClick {
+            Button("click").onClick { evt =>
                 arr[0] = 0
             }
-            Button("append").onClick {
+            Button("append").onClick { evt =>
                 arr.append(0)
             }
         }

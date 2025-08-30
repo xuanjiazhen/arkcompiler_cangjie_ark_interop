@@ -34,6 +34,7 @@ public func onVisibleAreaChange(ratios: Array<Float64>, event: (Bool, Float64)->
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
@@ -101,9 +102,9 @@ class EntryView {
         .scrollBarWidth(10)
         .onScrollEdge({ edge =>
             match(edge) {
-                case Edge.Top => nativeLog("Top")
-                case Edge.Bottom => nativeLog("Bottom")
-                case _ => nativeLog("None")
+                case Edge.Top => Hilog.info(0, "cangjie", "Top")
+                case Edge.Bottom => Hilog.info(0, "cangjie", "Bottom")
+                case _ => Hilog.info(0, "cangjie", "None")
              }
          })
     }
