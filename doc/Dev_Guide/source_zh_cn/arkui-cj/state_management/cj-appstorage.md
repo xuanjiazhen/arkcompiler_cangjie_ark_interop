@@ -270,7 +270,7 @@ class EntryView{
                         GridItem(){
                             TapImage(index: idx,uri: item.uri)
                         }
-                            .aspectRatio(1)
+                            .aspectRatio(1.0)
                         })
             }
         }
@@ -347,7 +347,7 @@ class EntryView{
                         GridItem(){
                             TapImage(index: idx,uri: item.uri)
                         }
-                            .aspectRatio(1)
+                            .aspectRatio(1.0)
                             .onClick({evt =>
                                 if(this.preIndex >= 0 && idx == this.preIndex){
                                     Hilog.info(0, "AppLogCj", "preIndex: ${this.preIndex}, index: ${idx}, red")

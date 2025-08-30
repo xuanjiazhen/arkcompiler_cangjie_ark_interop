@@ -68,7 +68,7 @@
         if (gestureInfo
             .tag
             .isEmpty()) {
-            AppLog.info("gestureInfo tag" + gestureInfo
+            Hilog.info(0, "cangjie", gestureInfo tag" + gestureInfo
                 .tag
                 .toString())
         }
@@ -77,7 +77,7 @@
             case GestureTypes.LONG_PRESS_GESTURE => true
             case _ => false
         }
-        AppLog.info("gestureInfo type" + isLongPressGesture.toString())
+        Hilog.info(0, "cangjie", gestureInfo type" + isLongPressGesture.toString())
         if (isLongPressGesture) {
             if (event
                 .fingerList
@@ -143,7 +143,7 @@
                                     if (gestureInfo
                                         .tag
                                         .isEmpty()) {
-                                        AppLog.info("gestureInfo tag" + gestureInfo
+                                        Hilog.info(0, "cangjie", gestureInfo tag" + gestureInfo
                                             .tag
                                             .toString())
                                     }
@@ -152,7 +152,7 @@
                                         case GestureTypes.LONG_PRESS_GESTURE => true
                                         case _ => false
                                     }
-                                    AppLog.info("gestureInfo type" + isLongPressGesture.toString())
+                                    Hilog.info(0, "cangjie", gestureInfo type" + isLongPressGesture.toString())
                                     if (isLongPressGesture) {
                                         if (event
                                             .fingerList

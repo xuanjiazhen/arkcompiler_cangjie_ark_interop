@@ -93,7 +93,7 @@ class EntryView {
                     .onChange(
                         {
                             selected =>
-                            AppLog.info("menuItem select${selected}")
+                            Hilog.info(0, "cangjie", menuItem select${selected}")
                             let Str: Tmp = Tmp()
                             Str.set(@r(app.media.startIcon))
                         }

@@ -182,7 +182,7 @@ Column() {
       .height(100)
     Button("click +1")
       .onClick({ =>
-        AppLog.info("+1 clicked!");
+        Hilog.info(0, "cangjie", +1 clicked!");
       })
   }
 }

@@ -37,7 +37,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Row)) {
+            Flex(direction: FlexDirection.Row) {
                 Text('1')
                     .width(33.percent)
                     .height(50)
@@ -74,7 +74,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.RowReverse)) {
+            Flex(direction: FlexDirection.RowReverse) {
                 Text('3')
                     .width(33.percent)
                     .height(50)
@@ -111,7 +111,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Column)) {
+            Flex(direction: FlexDirection.Column) {
                 Text('1')
                     .width(100.percent)
                     .height(50)
@@ -148,7 +148,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.ColumnReverse)) {
+            Flex(direction: FlexDirection.ColumnReverse) {
                 Text('1')
                     .width(100.percent)
                     .height(50)
@@ -189,7 +189,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.NoWrap)) {
+            Flex(wrap: FlexWrap.NoWrap) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -225,7 +225,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.Wrap)) {
+            Flex(wrap: FlexWrap.Wrap) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -261,7 +261,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.WrapReverse)) {
+            Flex(wrap: FlexWrap.WrapReverse) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -303,7 +303,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.Start)) {
+            Flex(justifyContent: FlexAlign.Start) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -339,7 +339,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Center) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -375,7 +375,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.End)) {
+            Flex(justifyContent: FlexAlign.End) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -411,7 +411,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -447,7 +447,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceAround)) {
+            Flex(justifyContent: FlexAlign.SpaceAround) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -483,7 +483,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -527,7 +527,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Auto)) {
+            Flex(alignItems: ItemAlign.Auto) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -563,7 +563,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Start)) {
+            Flex(alignItems: ItemAlign.Start) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -599,7 +599,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Center)) {
+            Flex(alignItems: ItemAlign.Center) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -635,7 +635,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.End)) {
+            Flex(alignItems: ItemAlign.End) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -671,7 +671,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Stretch)) {
+            Flex(alignItems: ItemAlign.Stretch) {
                 Text('1')
                     .width(33.percent)
                     .backgroundColor(0xF5DEB3)
@@ -704,7 +704,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Baseline)) {
+            Flex(alignItems: ItemAlign.Baseline) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -742,7 +742,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, alignItems: ItemAlign.Center)) { // 容器组件设置子元素居中
+        Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center) { // 容器组件设置子元素居中
             Text('alignSelf Start')
                 .width(25.percent)
                 .height(80)
@@ -795,7 +795,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.Start)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.Start) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -839,7 +839,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.Center) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -883,7 +883,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.End)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.End) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -927,7 +927,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceBetween)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceBetween) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -971,7 +971,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceAround)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceAround) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -1015,7 +1015,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceEvenly)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceEvenly) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -1152,7 +1152,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Row)) {
+            Flex(direction: FlexDirection.Row) {
                 Text('flexShrink(3)')
                     .flexShrink(3)
                     .width(200)

@@ -92,26 +92,26 @@ class EntryView {
             }
 
             Button("GetSurfaceId").onClick { evt =>
-                AppLog.info("GetSurfaceId start")
+                Hilog.info(0, "cangjie", GetSurfaceId start")
                 surfaceId = myXComponentController.getXComponentSurfaceId()
             }.fontSize(20).height(40)
 
             Button("DrawStar").onClick { evt =>
-                AppLog.info("DrawStar start")
+                Hilog.info(0, "cangjie", DrawStar start")
                 unsafe {
                     FFIDrawPattern(Int64.parse(surfaceId))
                 }
             }.fontSize(20).height(40)
 
             Button("ChangeColor").onClick {
-                evt => AppLog.info("Hello Cangjie")
+                evt => Hilog.info(0, "cangjie", Hello Cangjie")
                 unsafe {
                     FFIChangeColor(Int64.parse(surfaceId))
                 }
             }.fontSize(20).height(40)
 
             Button("SetSurfaceId").onClick {
-                evt => AppLog.info("Hello Cangjie")
+                evt => Hilog.info(0, "cangjie", Hello Cangjie")
             }.fontSize(20).height(40)
 
         }.width(100.percent)

@@ -427,22 +427,24 @@ public class EntryView {
           .padding(5)
     }
 
+    @Builder
+    func footertest(itemGroup: ContactGroup) {
+        ForEach(itemGroup.contacts, itemGeneratorFunc: { item: Contact, _:Int64 =>
+                ListItem() {
+                    // ...
+                }
+            }
+        )
+    }
+
     func build() {
         List() {
             // 循环渲染ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
             ForEach(this.contactsGroups, itemGeneratorFunc: { itemGroup: ContactGroup, _: Int64 =>
-                    ListItemGroup(ListItemGroupParams(header: {=> bind(this.itemHead, this)(itemGroup.title)}), { =>
-                                // 循环渲染ListItem
-                                ForEach(itemGroup.contacts, itemGeneratorFunc: { item: Contact, _:Int64 =>
-                                        ListItem() {
-                                            // ...
-                                        }
-                                    },
-                                    keyGeneratorFunc: {item: Contact, idx: Int64 => idx.toString()}
-                                )
-                            })
+                    ListItemGroup(header: {=> bind(this.itemHead, this)(itemGroup.title)},
+                    footer { => bind(this.footertest, this)(itemGroup)}) {}
                 },
-                keyGeneratorFunc: {itemGroup: ContactGroup, idx: Int64 => idx.toString()}
+                keyGeneratorFunc: {item: Contact, idx: Int64 => idx.toString()}
             )
         }.sticky(StickyStyle.Header) // 设置吸顶，实现粘性标题效果
     }
@@ -558,7 +560,7 @@ ListItem的[swipeAction属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-s
           .height(20)
       }
       .onClick({ event =>
-        // this.messages为列表数据源，可根据实际场景构造。点击后从数据源删除指定数    据项。
+        // this.messages为列表数据源，可根据实际场景构造。点击后从数据源删除指定数据项。
         this.message.remove(index)
       })
     }
@@ -593,10 +595,12 @@ ListItem的[swipeAction属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-s
 ```cangjie
 ListItem(){
   Badge(
-    BadgeParams(count: 1, style: BadgeStyle(color: 0xfa2a2d, badgeSize: 16),
-        position: BadgePosition.RightTop),{ =>
-        Image(@r(app.media.startIcon))
-    })
+    count: 1, style: BadgeStyle(color: 0xfa2a2d, badgeSize: 16),
+        position: BadgePosition.RightTop,
+        child: { =>
+            Image(@r(app.media.startIcon))
+        }
+    )
 }
 ```
 

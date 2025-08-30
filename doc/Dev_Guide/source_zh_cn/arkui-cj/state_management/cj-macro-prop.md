@@ -569,7 +569,7 @@ class EntryView {
                         evt => if (this.allBooks.size > 0) {
                             this.allBooks.remove(0)
                         } else {
-                            AppLog.info("length <= 0")
+                            Hilog.info(0, "cangjie", length <= 0")
                         }
                     })
         }

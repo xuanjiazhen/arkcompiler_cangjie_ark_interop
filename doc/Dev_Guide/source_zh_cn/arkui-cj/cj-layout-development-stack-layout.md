@@ -207,7 +207,7 @@ class EntryView {
     private var arr: Array<String> = ['APP1', 'APP2', 'APP3', 'APP4', 'APP5', 'APP6', 'APP7', 'APP8'];
     func build() {
         Stack(alignContent: Alignment.Bottom) {
-            Flex(FlexParams(wrap: FlexWrap.Wrap)) {
+            Flex((wrap: FlexWrap.Wrap) {
                 ForEach(this.arr,itemGeneratorFunc: {
                     item: String, idx: Int64 => Text(item)
                         .width(100)
@@ -223,7 +223,7 @@ class EntryView {
             }
             .width(100.percent)
             .height(100.percent)
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center) {
                 Text('联系人').fontSize(16)
                 Text('设置').fontSize(16)
                 Text('短信').fontSize(16)

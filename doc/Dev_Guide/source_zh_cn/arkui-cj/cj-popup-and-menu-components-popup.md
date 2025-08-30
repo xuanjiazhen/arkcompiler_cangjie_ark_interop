@@ -171,7 +171,7 @@ class EntryView {
     }
 
     func build() {
-        Flex(FlexOptions(direction: FlexDirection.Column)) {
+        Flex(direction: FlexDirection.Column) {
             // PopupOptions 类型设置弹框内容
             Button('PopupOptions')
                 .position(x: 100, y: 150)

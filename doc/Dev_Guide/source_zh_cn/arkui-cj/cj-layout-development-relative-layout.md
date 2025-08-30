@@ -403,7 +403,7 @@ class EntryView {
                 )
                 .id("row2")
 
-                Flex(FlexParams(direction: FlexDirection.Row)) {
+                Flex(direction: FlexDirection.Row) {
                     Text('1')
                         .width(20.percent)
                         .height(50)

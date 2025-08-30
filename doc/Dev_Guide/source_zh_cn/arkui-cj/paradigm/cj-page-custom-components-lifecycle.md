@@ -66,17 +66,17 @@ class EntryView {
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageShow() {
-        AppLog.info("Index onPageShow")
+        Hilog.info(0, "cangjie", Index onPageShow")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageHide() {
-        AppLog.info("Index onPageHide")
+        Hilog.info(0, "cangjie", Index onPageHide")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onBackPress() {
-        AppLog.info("Index onBackPress")
+        Hilog.info(0, "cangjie", Index onBackPress")
         this.btnColor = Color(0xFFEE0606)
         // 返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑
         return true
@@ -84,17 +84,17 @@ class EntryView {
 
     // 组件生命周期
     protected override func aboutToAppear() {
-        AppLog.info("EntryView aboutToAppear")
+        Hilog.info(0, "cangjie", EntryView aboutToAppear")
     }
 
     // 组件生命周期
     protected override func onDidBuild() {
-        AppLog.info("EntryView onDidBuild")
+        Hilog.info(0, "cangjie", EntryView onDidBuild")
     }
 
     // 组件生命周期
     protected override func aboutToDisappear() {
-        AppLog.info("EntryView aboutToDisappear")
+        Hilog.info(0, "cangjie", EntryView aboutToDisappear")
     }
 
     func build() {
@@ -129,17 +129,17 @@ class Child {
 
     // 组件生命周期
     protected override func aboutToAppear() {
-        AppLog.info("Child aboutToAppear")
+        Hilog.info(0, "cangjie", Child aboutToAppear")
     }
 
     // 组件生命周期
     protected override func onDidBuild() {
-        AppLog.info("Child onDidBuild")
+        Hilog.info(0, "cangjie", Child onDidBuild")
     }
 
     // 组件生命周期
     protected override func aboutToDisappear() {
-        AppLog.info("Child aboutToDisappear")
+        Hilog.info(0, "cangjie", Child aboutToDisappear")
     }
 
     func build() {
@@ -175,7 +175,7 @@ class Page {
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageHide() {
-        AppLog.info("Page onPageHide")
+        Hilog.info(0, "cangjie", Page onPageHide")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
@@ -238,15 +238,15 @@ class TabContentInfoCallback1 <: Callback1Argument<TabContentInfo> {
     public init() {}
     // Tabs1的TabContent页面切换时调用
     public open func invoke(val: TabContentInfo): Unit {
-        AppLog.info("TabContentUpdate1 tabContentId: ${val.tabContentId}")
-        AppLog.info("TabContentUpdate1 tabContentUniqueId: ${val.tabContentUniqueId}")
+        Hilog.info(0, "cangjie", TabContentUpdate1 tabContentId: ${val.tabContentId}")
+        Hilog.info(0, "cangjie", TabContentUpdate1 tabContentUniqueId: ${val.tabContentUniqueId}")
         match (val.state) {
-            case ON_SHOW => AppLog.info("TabContentUpdate1 ON_SHOW")
-            case ON_HIDE => AppLog.info("TabContentUpdate1 ON_HIDE")
-            case _ => AppLog.info("TabContentUpdate1 error")
+            case ON_SHOW => Hilog.info(0, "cangjie", TabContentUpdate1 ON_SHOW")
+            case ON_HIDE => Hilog.info(0, "cangjie", TabContentUpdate1 ON_HIDE")
+            case _ => Hilog.info(0, "cangjie", TabContentUpdate1 error")
         }
-        AppLog.info("TabContentUpdate1 id:${val.id}")
-        AppLog.info("TabContentUpdate1 uniqueId:${val.uniqueId}")
+        Hilog.info(0, "cangjie", TabContentUpdate1 id:${val.id}")
+        Hilog.info(0, "cangjie", TabContentUpdate1 uniqueId:${val.uniqueId}")
     }
 }
 
@@ -254,15 +254,15 @@ class TabContentInfoCallback2 <: Callback1Argument<TabContentInfo> {
     public init() {}
     // Tabs1的TabContent页面切换时调用
     public open func invoke(val: TabContentInfo): Unit {
-        AppLog.info("TabContentUpdate2 tabContentId: ${val.tabContentId}")
-        AppLog.info("TabContentUpdate2 tabContentUniqueId: ${val.tabContentUniqueId}")
+        Hilog.info(0, "cangjie", TabContentUpdate2 tabContentId: ${val.tabContentId}")
+        Hilog.info(0, "cangjie", TabContentUpdate2 tabContentUniqueId: ${val.tabContentUniqueId}")
         match (val.state) {
-            case ON_SHOW => AppLog.info("TabContentUpdate2 ON_SHOW")
-            case ON_HIDE => AppLog.info("TabContentUpdate2 ON_HIDE")
-            case _ => AppLog.info("TabContentUpdate2 error")
+            case ON_SHOW => Hilog.info(0, "cangjie", TabContentUpdate2 ON_SHOW")
+            case ON_HIDE => Hilog.info(0, "cangjie", TabContentUpdate2 ON_HIDE")
+            case _ => Hilog.info(0, "cangjie", TabContentUpdate2 error")
         }
-        AppLog.info("TabContentUpdate2 id:${val.id}")
-        AppLog.info("TabContentUpdate2 uniqueId:${val.uniqueId}")
+        Hilog.info(0, "cangjie", TabContentUpdate2 id:${val.id}")
+        Hilog.info(0, "cangjie", TabContentUpdate2 uniqueId:${val.uniqueId}")
     }
 }
 

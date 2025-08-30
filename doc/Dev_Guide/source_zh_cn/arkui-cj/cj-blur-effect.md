@@ -72,7 +72,7 @@ class EntryView {
     }
 
     func build() {
-        Flex(FlexOptions(direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center)){
+        Flex(direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center){
             Text(this.text)
                 .height(200)
                 .fontSize(20)
@@ -88,11 +88,11 @@ class EntryView {
         .height(100.percent)
         .width(100.percent)
         .onTouch({event: TouchEvent =>
-                if (event.eventType.getValue() == TouchType.Move.getValue()) {
+                if (event.eventType == TouchType.Move) {
                     this.y = event.touches[0].y.toString()
                     this.radius = event.touches[0].y / 10.0
                 }
-                if (event.eventType.getValue() == TouchType.Up.getValue()) {
+                if (event.eventType == TouchType.Up) {
                     this.radius = 0.0
                     this.y = '手指离开屏幕'
                 }

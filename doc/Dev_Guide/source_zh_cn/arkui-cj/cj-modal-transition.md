@@ -272,7 +272,7 @@ class EntryView {
     @Builder
     func mySheet() {
         Column {
-            Flex(FlexOptions(direction: FlexDirection.Row, wrap: FlexWrap.Wrap)) {
+            Flex(direction: FlexDirection.Row, wrap: FlexWrap.Wrap) {
                 ForEach(
                     this.menusList,
                     itemGeneratorFunc: {
@@ -368,8 +368,8 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State
     var items: Array<Action> = [
-        Action(value: "菜单项1", action: {=> AppLog.info("handle Menu1 select")}),
-        Action(value: "菜单项2", action: {=> AppLog.info("handle Menu2 select")})
+        Action(value: "菜单项1", action: {=> Hilog.info(0, "cangjie", handle Menu1 select")}),
+        Action(value: "菜单项2", action: {=> Hilog.info(0, "cangjie", handle Menu2 select")})
         ]
 
     func build() {

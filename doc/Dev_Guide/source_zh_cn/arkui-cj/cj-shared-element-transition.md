@@ -294,10 +294,10 @@ class EntryView {
         ]
 
     public func onAppear() {
-        AppLog.info("BindContentCover onAppear.")
+        Hilog.info(0, "cangjie", BindContentCover onAppear.")
     }
     public func onDisappear() {
-        AppLog.info("BindContentCover onDisappear.")
+        Hilog.info(0, "cangjie", BindContentCover onDisappear.")
     }
 
     private func onAvatarClicked(index: Int):Unit {
