@@ -199,7 +199,7 @@ public let screenDensity: ScreenDensity
 ## class ResourceManager
 
 ```cangjie
-public class ResourceManager {}
+public class ResourceManager <: RemoteDataLite {}
 ```
 
 **功能：** 提供访问应用资源的能力。

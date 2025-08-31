@@ -342,7 +342,7 @@ public var size: Int32
 ## class AppEventPackageHolder
 
 ```cangjie
-public class AppEventPackageHolder {
+public class AppEventPackageHolder <: RemoteDataLite {
     public init(watcherName: String)
 }
 ```

@@ -862,7 +862,7 @@ public var stride: Int32
 ## class ImagePacker
 
 ```cangjie
-public class ImagePacker {}
+public class ImagePacker <: RemoteDataLite {}
 ```
 
 **功能：** 图片打包器类，用于图片压缩和打包。在调用ImagePacker的方法前，需要先通过[createImagePacker](#func-createimagepacker)构建一个ImagePacker实例，当前支持格式有：jpeg、webp、png。
@@ -1217,7 +1217,7 @@ public init(index!: UInt32 = 0, defaultValue!: String = "")
 ## class ImageReceiver
 
 ```cangjie
-public class ImageReceiver {}
+public class ImageReceiver <: RemoteDataLite {}
 ```
 
 **功能：** 图像接收类，用于获取组件surface id，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
@@ -1969,7 +1969,7 @@ public var quality: UInt8
 ### init(String, UInt8, UInt64, PackingDynamicRange, Bool)
 
 ```cangjie
-public init(format: String, quality: UInt8, bufferSize!: UInt64 = 25  * 1024  * 1024,
+public init(format: String, quality: UInt8, bufferSize!: UInt64 = 0,
     desiredDynamicRange!: PackingDynamicRange = Sdr, needsPackProperties!: Bool = false)
 ```
 

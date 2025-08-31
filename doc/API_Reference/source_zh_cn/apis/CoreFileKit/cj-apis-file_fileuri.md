@@ -90,7 +90,7 @@ public prop name: String
 ### prop path
 
 ```cangjie
-public prop path: String
+public override prop path: String
 ```
 
 **功能：** 获取FileUri对应路径名。

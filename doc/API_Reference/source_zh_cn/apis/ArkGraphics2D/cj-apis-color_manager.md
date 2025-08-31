@@ -398,7 +398,7 @@ public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blue
 ## enum ColorSpace
 
 ```cangjie
-public enum ColorSpace <: Equatable<ColorSpace> & ToString {
+public enum ColorSpace {
     | Unknown
     | AdobeRgb1998
     | DciP3

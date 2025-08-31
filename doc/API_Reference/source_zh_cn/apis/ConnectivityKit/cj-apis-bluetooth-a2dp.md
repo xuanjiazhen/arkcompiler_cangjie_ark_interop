@@ -516,7 +516,7 @@ public var codecType: CodecType
 ## enum CodecBitsPerSample
 
 ```cangjie
-public enum CodecBitsPerSample <: Equatable<CodecBitsPerSample> & ToString {
+public enum CodecBitsPerSample {
     | CodecBitsPerSampleNone
     | CodecBitsPerSample16
     | CodecBitsPerSample24
@@ -641,7 +641,7 @@ public func toString(): String
 ## enum CodecChannelMode
 
 ```cangjie
-public enum CodecChannelMode <: Equatable<CodecChannelMode> & ToString {
+public enum CodecChannelMode {
     | CodecChannelModeNone
     | CodecChannelModeMono
     | CodecChannelModeStereo
@@ -753,7 +753,7 @@ public func toString(): String
 ## enum CodecSampleRate
 
 ```cangjie
-public enum CodecSampleRate <: Equatable<CodecSampleRate> & ToString {
+public enum CodecSampleRate {
     | CodecSampleRateNone
     | CodecSampleRate44100
     | CodecSampleRate48000
@@ -917,7 +917,7 @@ public func toString(): String
 ## enum CodecType
 
 ```cangjie
-public enum CodecType <: Equatable<CodecType> & ToString {
+public enum CodecType {
     | CodecTypeInvalid
     | CodecTypeSbc
     | CodecTypeAac
@@ -1042,7 +1042,7 @@ public func toString(): String
 ## enum PlayingState
 
 ```cangjie
-public enum PlayingState <: Equatable<PlayingState> & ToString {
+public enum PlayingState {
     | StateNotPlaying
     | StatePlaying
     | ...

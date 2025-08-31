@@ -403,7 +403,7 @@ public var state: ProfileConnectionState
 ## enum DisconnectCause
 
 ```cangjie
-public enum DisconnectCause <: Equatable<DisconnectCause> & ToString {
+public enum DisconnectCause {
     | UserDisconnect
     | ConnectFromKeyboard
     | ConnectFromMouse
@@ -554,7 +554,7 @@ public func toString(): String
 ## enum ProfileCallbackType
 
 ```cangjie
-public enum ProfileCallbackType <: Equatable<ProfileCallbackType> & Hashable & ToString {
+public enum ProfileCallbackType {
     | ConnectionStateChange
     | ...
 }

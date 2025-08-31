@@ -1965,7 +1965,7 @@ public func toString(): String
 ## enum SensorAccuracy
 
 ```cangjie
-public enum SensorAccuracy <: Equatable<SensorAccuracy> & ToString {
+public enum SensorAccuracy {
     | AccuracyUnreliable
     | AccuracyLow
     | AccuracyMedium
@@ -2090,7 +2090,7 @@ public func toString(): String
 ## enum SensorId
 
 ```cangjie
-public enum SensorId <: Equatable<SensorId> & ToString {
+public enum SensorId {
     | Accelerometer
     | Gyroscope
     | AmbientLight

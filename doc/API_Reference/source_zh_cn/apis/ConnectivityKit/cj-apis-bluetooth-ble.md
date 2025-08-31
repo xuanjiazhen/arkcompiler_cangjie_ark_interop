@@ -1734,7 +1734,7 @@ public var value: Array<Byte>
 ## class GattClientDevice
 
 ```cangjie
-public class GattClientDevice {}
+public class GattClientDevice <: RemoteDataLite {}
 ```
 
 **功能：** client端类。使用client端方法之前需要创建该类的实例进行操作，通过[createGattClientDevice(String)](#func-creategattclientdevicestring)方法构造此实例。
@@ -2844,7 +2844,7 @@ try {
 ## class GattPermissions
 
 ```cangjie
-public class GattPermissions <: Equatable<GattPermissions> {
+public class GattPermissions {
     public var read: Bool
     public var readEncrypted: Bool
     public var readEncryptedMitm: Bool
@@ -3222,7 +3222,7 @@ public init(
 ## class GattServer
 
 ```cangjie
-public class GattServer {}
+public class GattServer <: RemoteDataLite {}
 ```
 
 **功能：** server端类。使用server端方法之前需要创建该类的实例进行操作，通过[createGattServer()](#func-creategattserver)方法构造此实例。
@@ -5016,7 +5016,7 @@ public init(
 ## enum AdvertisingState
 
 ```cangjie
-public enum AdvertisingState <: Equatable<AdvertisingState> & ToString {
+public enum AdvertisingState {
     | Started
     | Enabled
     | Disabled
@@ -5141,7 +5141,7 @@ public func toString(): String
 ## enum BluetoothBleCallbackType
 
 ```cangjie
-public enum BluetoothBleCallbackType <: Equatable<BluetoothBleCallbackType> & Hashable & ToString {
+public enum BluetoothBleCallbackType {
     | AdvertisingStateChange
     | BleDeviceFind
     | ...
@@ -5261,7 +5261,7 @@ public func toString(): String
 ## enum BluetoothBleGattClientDeviceCallbackType
 
 ```cangjie
-public enum BluetoothBleGattClientDeviceCallbackType <: Equatable<BluetoothBleGattClientDeviceCallbackType> & Hashable & ToString {
+public enum BluetoothBleGattClientDeviceCallbackType {
     | BleCharacteristicChange
     | BleConnectionStateChange
     | ClientBleMtuChange
@@ -5396,7 +5396,7 @@ public func toString(): String
 ## enum BluetoothBleGattServerCallbackType
 
 ```cangjie
-public enum BluetoothBleGattServerCallbackType <: Equatable<BluetoothBleGattServerCallbackType> & Hashable & ToString {
+public enum BluetoothBleGattServerCallbackType {
     | CharacteristicRead
     | CharacteristicWrite
     | DescriptorRead
@@ -5576,7 +5576,7 @@ public func toString(): String
 ## enum GattWriteType
 
 ```cangjie
-public enum GattWriteType <: Equatable<GattWriteType> & ToString {
+public enum GattWriteType {
     | Write
     | WriteNoResponse
     | ...
@@ -5675,7 +5675,7 @@ public func toString(): String
 ## enum MatchMode
 
 ```cangjie
-public enum MatchMode <: Equatable<MatchMode> & ToString {
+public enum MatchMode {
     | MatchModeAggressive
     | MatchModeSticky
     | ...
@@ -5774,7 +5774,7 @@ public func toString(): String
 ## enum PhyType
 
 ```cangjie
-public enum PhyType <: Equatable<PhyType> & ToString {
+public enum PhyType {
     | PhyLe1M
     | PhyLeAllSupported
     | ...
@@ -5873,7 +5873,7 @@ public func toString(): String
 ## enum ScanDuty
 
 ```cangjie
-public enum ScanDuty <: Equatable<ScanDuty> & ToString {
+public enum ScanDuty {
     | ScanModeLowPower
     | ScanModeBalanced
     | ScanModeLowLatency
@@ -5985,7 +5985,7 @@ public func toString(): String
 ## enum ScanReportMode
 
 ```cangjie
-public enum ScanReportMode <: Equatable<ScanReportMode> & ToString {
+public enum ScanReportMode {
     | Normal
     | Batch
     | FenceSensitivityLow

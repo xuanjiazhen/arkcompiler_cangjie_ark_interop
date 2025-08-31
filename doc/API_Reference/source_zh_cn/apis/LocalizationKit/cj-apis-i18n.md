@@ -55,7 +55,7 @@ let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist)// 获�
 ## class Calendar
 
 ```cangjie
-public class Calendar {}
+public class Calendar <: RemoteDataLite {}
 ```
 
 **功能：** 实体日历对象。

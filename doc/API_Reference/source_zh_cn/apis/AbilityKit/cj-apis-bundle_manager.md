@@ -944,6 +944,32 @@ public let uid: Int32
 
 **起始版本：** 21
 
+## class BundleFlag
+
+```cangjie
+public class BundleFlag {
+    | GetBundleInfoDefault
+    | GetBundleInfoWithApplication
+    | GetBundleInfoWithHapModule
+    | GetBundleInfoWithAbility
+    | GetBundleInfoWithExtensionAbility
+    | GetBundleInfoWithRequestedPermission
+    | GetBundleInfoWithMetadata
+    | GetBundleInfoWithDisable
+    | GetBundleInfoWithSignatureInfo
+    | GetBundleInfoWithMenu
+    | GetBundleInfoWithRouterMap
+    | GetBundleInfoWithSkill
+    | ...
+}
+```
+
+**功能：** 包信息标志，指示需要获取的包信息的内容。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
 ## class BundleInfo
 
 ```cangjie
@@ -3050,32 +3076,6 @@ public func getValue(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的值。|
-
-## enum BundleFlag
-
-```cangjie
-public enum BundleFlag {
-    | GetBundleInfoDefault
-    | GetBundleInfoWithApplication
-    | GetBundleInfoWithHapModule
-    | GetBundleInfoWithAbility
-    | GetBundleInfoWithExtensionAbility
-    | GetBundleInfoWithRequestedPermission
-    | GetBundleInfoWithMetadata
-    | GetBundleInfoWithDisable
-    | GetBundleInfoWithSignatureInfo
-    | GetBundleInfoWithMenu
-    | GetBundleInfoWithRouterMap
-    | GetBundleInfoWithSkill
-    | ...
-}
-```
-
-**功能：** 包信息标志，指示需要获取的包信息的内容。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
 
 ### GetBundleInfoDefault
 

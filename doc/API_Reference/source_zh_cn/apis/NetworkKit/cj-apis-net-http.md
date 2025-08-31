@@ -870,14 +870,14 @@ httpRequest.requestInStream("http://www.example.com", {err, code =>
 public class HttpRequestOptions {
     public var method: RequestMethod
     public var extraData: HttpData
-    public var expectDataType:?HttpDataType = None
+    public var expectDataType:?HttpDataType
     public var usingCache: Bool
     public var priority: UInt32
     public var header: HashMap<String, String>
     public var readTimeout: UInt32
     public var connectTimeout: UInt32
-    public var usingProtocol:?HttpProtocol = None
-    public var usingProxy: UsingProxy = UseDefault
+    public var usingProtocol:?HttpProtocol
+    public var usingProxy: UsingProxy
     public var caPath: String
     public var resumeFrom: Int64
     public var resumeTo: Int64
@@ -887,9 +887,9 @@ public class HttpRequestOptions {
     public var maxLimit: UInt32
     public var multiFormDataList: Array<MultiFormData>
     public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = HttpData.StringData(""),
-        expectDataType!: ?HttpDataType = None, usingCache!: Bool = true, priority!: UInt32 = 1,
+        expectDataType!: ?HttpDataType, usingCache!: Bool = true, priority!: UInt32 = 1,
         header!: HashMap<String, String> = HashMap<String, String>(), readTimeout!: UInt32 = 60000,
-        connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol = None,
+        connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol,
         usingProxy!: UsingProxy = UsingProxy.UseDefault, caPath!: String = "", resumeFrom!: Int64 = 0,
         resumeTo!: Int64 = 0, clientCert!: ClientCert = ClientCert("",""), dnsOverHttps!: String = "",
         dnsServers!: Array<String> = Array<String>(), maxLimit!: UInt32 = 5 * 1024 * 1024,
@@ -986,7 +986,7 @@ public var dnsServers: Array<String>
 ### var expectDataType
 
 ```cangjie
-public var expectDataType:?HttpDataType = None
+public var expectDataType:?HttpDataType
 ```
 
 **功能：** 指定返回数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。
@@ -1172,7 +1172,7 @@ public var usingCache: Bool
 ### var usingProtocol
 
 ```cangjie
-public var usingProtocol:?HttpProtocol = None
+public var usingProtocol:?HttpProtocol
 ```
 
 **功能：** 使用协议。默认值由系统自动指定。
@@ -1188,7 +1188,7 @@ public var usingProtocol:?HttpProtocol = None
 ### var usingProxy
 
 ```cangjie
-public var usingProxy: UsingProxy = UseDefault
+public var usingProxy: UsingProxy
 ```
 
 **功能：** 是否使用HTTP代理，默认为USE_DEFAULT，使用默认代理。<br /> 当usingProxy为NOT_USE时，不使用网络代理。<br /> 当usingProxy为USE_SPECIFIED类型时，使用指定网络代理。
@@ -1205,9 +1205,9 @@ public var usingProxy: UsingProxy = UseDefault
 
 ```cangjie
 public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = HttpData.StringData(""),
-    expectDataType!: ?HttpDataType = None, usingCache!: Bool = true, priority!: UInt32 = 1,
+    expectDataType!: ?HttpDataTypee, usingCache!: Bool = true, priority!: UInt32 = 1,
     header!: HashMap<String, String> = HashMap<String, String>(), readTimeout!: UInt32 = 60000,
-    connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol = None,
+    connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol,
     usingProxy!: UsingProxy = UsingProxy.UseDefault, caPath!: String = "", resumeFrom!: Int64 = 0,
     resumeTo!: Int64 = 0, clientCert!: ClientCert = ClientCert("",""), dnsOverHttps!: String = "",
     dnsServers!: Array<String> = Array<String>(), maxLimit!: UInt32 = 5 * 1024 * 1024,
@@ -1929,7 +1929,7 @@ Http3
 ## enum HttpRequestEvent
 
 ```cangjie
-public enum HttpRequestEvent <: Equatable<HttpRequestEvent> & Hashable & ToString {
+public enum HttpRequestEvent {
     | HeadersReceive
     | DataReceive
     | DataEnd

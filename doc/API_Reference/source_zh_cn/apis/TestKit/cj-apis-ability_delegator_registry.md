@@ -20,7 +20,7 @@ API示例代码使用说明：
 ## class AbilityDelegator
 
 ```cangjie
-public class AbilityDelegator {}
+public class AbilityDelegator <: RemoteDataLite {}
 ```
 
 **功能：** AbilityDelegator用于创建并管理一个[AbilityMonitor](#class-abilitymonitor)对象（该对象用于监视指定[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)生命周期状态的更改），包括对[AbilityMonitor](#class-abilitymonitor)实例的添加、删除，等待[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)到达OnCreate生命周期、设置等待时间、获取指定Ability的生命周期状态、获取当前应用顶部[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)、启动指定[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)等。
@@ -427,7 +427,7 @@ public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int6
 ## class AbilityDelegatorArgs
 
 ```cangjie
-public class AbilityDelegatorArgs {}
+public class AbilityDelegatorArgs <: RemoteDataLite {}
 ```
 
 **功能：** 测试参数信息。
@@ -845,7 +845,7 @@ public init(
 ## class ShellCmdResult
 
 ```cangjie
-public class ShellCmdResult {}
+public class ShellCmdResult <: RemoteDataLite {}
 ```
 
 **功能：** Shell命令执行结果。
@@ -889,7 +889,7 @@ public mut prop stdResult: String
 ## enum AbilityLifecycleState
 
 ```cangjie
-public enum AbilityLifecycleState <: Equatable<AbilityLifecycleState> & ToString {
+public enum AbilityLifecycleState {
     | Uninitialized
     | Create
     | Foreground

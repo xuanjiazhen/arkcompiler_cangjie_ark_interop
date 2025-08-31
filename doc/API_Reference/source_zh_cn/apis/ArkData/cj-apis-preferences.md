@@ -117,7 +117,7 @@ public var storageType: StorageType
 
 ```cangjie
 public init(name: String, dataGroupId!: String = String.empty,
-    storageType!: StorageType = StorageType.StorageTypeXml)
+    storageType!: StorageType = StorageType.Xml)
 ```
 
 **功能：** 用于创建Options实例的构造函数。默认在本应用沙箱目录下创建Preferences实例。
@@ -137,7 +137,7 @@ public init(name: String, dataGroupId!: String = String.empty,
 ## class Preferences
 
 ```cangjie
-public class Preferences {}
+public class Preferences <: RemoteDataLite {}
 ```
 
 **功能：** 首选项类，提供获取和修改存储数据的接口。

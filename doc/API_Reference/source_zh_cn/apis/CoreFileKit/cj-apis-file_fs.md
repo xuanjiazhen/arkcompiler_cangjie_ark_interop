@@ -71,7 +71,7 @@ public var srcFile: String
 ## class File
 
 ```cangjie
-public class File {}
+public class File <: RemoteDataLite {}
 ```
 
 **功能：** 由open接口打开的File对象。
@@ -2354,7 +2354,7 @@ public init(
 ## class RandomAccessFile
 
 ```cangjie
-public class RandomAccessFile {}
+public class RandomAccessFile <: RemoteDataLite {}
 ```
 
 **功能：** 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过[createRandomAccessFile](#func-createrandomaccessfilestring-string)方法来构建一个RandomAccessFile实例。
@@ -2718,7 +2718,7 @@ public init(
 ## class ReaderIterator
 
 ```cangjie
-public class ReaderIterator {}
+public class ReaderIterator <: RemoteDataLite {}
 ```
 
 **功能：** 文件读取迭代器。在调用ReaderIterator的方法前，需要先通过readLines方法来构建一个ReaderIterator实例。
@@ -2945,7 +2945,7 @@ public init(
 ## class Stat
 
 ```cangjie
-public class Stat {}
+public class Stat <: RemoteDataLite {}
 ```
 
 **功能：** 文件具体信息。在调用Stat的方法前，需要先通过[FileIo.stat()](#func-statstring-string)方法来构建一个Stat实例。
@@ -3314,7 +3314,7 @@ let isSymbolicLink = FileIo.stat(filePath).isSymbolicLink()
 ## class Stream
 
 ```cangjie
-public class Stream {}
+public class Stream <: RemoteDataLite {}
 ```
 
 **功能：** 文件流。在调用Stream的方法前，需要先通过[FileIo.createStream](#func-createstreamstring-string)方法或者[FileIo.fdopenStream](#func-fdopenstreamint32-string)来构建一个Stream实例。

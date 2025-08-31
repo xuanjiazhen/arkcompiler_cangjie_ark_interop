@@ -286,7 +286,7 @@ public class Config {
     public var method:?String
     public var headers: HashMap<String, String>
     public var data:?ConfigData
-    public var saveas:?String
+    public var saveas:String
     public var network: Network
     public var metered: Bool
     public var roaming: Bool
@@ -297,7 +297,7 @@ public class Config {
     public var ends: Int64
     public var gauge: Bool
     public var precise: Bool
-    public var token: String
+    public var token: ?String
     public var priority: UInt32
     public var extras: HashMap<String, String>
 
@@ -625,7 +625,7 @@ public var roaming: Bool
 ### var saveas
 
 ```cangjie
-public var saveas:?String
+public var saveas:String
 ```
 
 **功能：** 保存下载文件的路径，包括如下几种：
@@ -661,7 +661,7 @@ public var title:?String
 ### var token
 
 ```cangjie
-public var token: String
+public var token: ?String
 ```
 
 **功能：** 当创建了一个带有token的任务后，token则为正常查询期间必须提供的，否则将无法通过查询进行检索。其最小长度为8个字节，最大长度为2048个字节。默认为空。
@@ -1826,7 +1826,7 @@ public let url: String
 ## enum Action
 
 ```cangjie
-public enum Action <: Equatable<Action> & ToString {
+public enum Action {
     | Download
     | Upload
     | ...
@@ -2015,7 +2015,7 @@ StringValue(String)
 ## enum EventCallbackType
 
 ```cangjie
-public enum EventCallbackType <: Equatable<EventCallbackType> & Hashable & ToString {
+public enum EventCallbackType {
     | Progress
     | Completed
     | Failed
@@ -2194,7 +2194,7 @@ public func toString(): String
 ## enum Faults
 
 ```cangjie
-public enum Faults <: ToString {
+public enum Faults {
     | Others
     | Disconnected
     | Timeout
@@ -2344,7 +2344,7 @@ StringItem(String)
 ## enum Mode
 
 ```cangjie
-public enum Mode <: Equatable<Mode> & ToString {
+public enum Mode {
     | Background
     | Foreground
     | ...
@@ -2442,7 +2442,7 @@ public func toString(): String
 ## enum Network
 
 ```cangjie
-public enum Network <: Equatable<Network> & ToString {
+public enum Network {
     | AnyType
     | Wifi
     | Cellular
@@ -2554,7 +2554,7 @@ public func toString(): String
 ## enum State
 
 ```cangjie
-public enum State <: ToString {
+public enum State {
     | Initialized
     | Waiting
     | Running
