@@ -369,8 +369,8 @@ import ohos.hilog.*
 class EntryView {
     @State
     var items: Array<MenuElement> = [
-        MenuElement(value: "菜单项1", action: {=> Hilog.info(0, "cangjie", handle Menu1 select")}),
-        MenuElement(value: "菜单项2", action: {=> Hilog.info(0, "cangjie", handle Menu2 select")})
+        MenuElement(value: "菜单项1", action: {=> Hilog.info(0, "cangjie", "handle Menu1 select")}),
+        MenuElement(value: "菜单项2", action: {=> Hilog.info(0, "cangjie", "handle Menu2 select")})
     ]
 
     func build() {
