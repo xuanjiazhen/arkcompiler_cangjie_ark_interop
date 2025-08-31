@@ -126,7 +126,6 @@
                     - [进度条（Progress）](source_zh_cn/arkui-cj/cj-common-components-progress-indicator.md)
                     - [显示图片（Image）](source_zh_cn/arkui-cj/cj-graphics-display.md)
                     - [视频播放（Video）](source_zh_cn/arkui-cj/cj-common-components-video-player.md)
-                    - [自定义渲染（XComponent）](source_zh_cn/arkui-cj/cj-common-components-xcomponent.md)
                 - [设置组件导航和页面路由]()
                     - [组件导航和页面路由概述](source_zh_cn/arkui-cj/cj-navigation-introduction.md)
                     - [组件导航（Navigation）（推荐）](source_zh_cn/arkui-cj/cj-navigation-navigation.md)
