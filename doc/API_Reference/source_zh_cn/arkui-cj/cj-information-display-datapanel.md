@@ -17,7 +17,7 @@ import kit.ArkUI.*
 ### init(Array\<Float64>, Float64, DataPanelType)
 
 ```cangjie
-public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPanelType = DataPanelType.CircleType)
+public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPanelType = DataPanelType.Circle)
 ```
 
 **功能：** 创建一个数据面板组件。
@@ -32,7 +32,7 @@ public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPane
 |:---|:---|:---|:---|:---|
 |values|Array\<Float64>|是|-|**命名参数。** 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。|
 |max|Float64|否|100.0|**命名参数。** \- max大于0，表示数据的最大值。 <br> \- max小于等于0，max等于value数组各项的和，按比例显示。|
-|panelType|[DataPanelType](./cj-common-types.md#enum-datapaneltype)|否|DataPanelType.CircleType|**命名参数。** 数据面板的类型（不支持动态修改）。|
+|panelType|[DataPanelType](./cj-common-types.md#enum-datapaneltype)|否|DataPanelType.Circle|**命名参数。** 数据面板的类型（不支持动态修改）。|
 
 ## 通用属性/通用事件
 

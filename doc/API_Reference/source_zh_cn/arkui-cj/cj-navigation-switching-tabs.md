@@ -304,7 +304,7 @@ public func tabBar(content: CustomBuilder): This
 ### class TabsController
 
 ```cangjie
-public class TabsController {
+public class TabsController <: RemoteDataLite {
     public init()
 }
 ```

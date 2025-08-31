@@ -132,13 +132,13 @@ public func position(x!: Length, y!: Length): This
 
 ```cangjie
 public class AlignRuleOption {
-    public var left:?HorizontalAlignment = None
-    public var right:?HorizontalAlignment = None
-    public var middle:?HorizontalAlignment = None
-    public var top:?VerticalAlignment = None
-    public var bottom:?VerticalAlignment = None
-    public var center:?VerticalAlignment = None
-    public var bias: Bias = Bias()
+    public var left:?HorizontalAlignment
+    public var right:?HorizontalAlignment
+    public var middle:?HorizontalAlignment
+    public var top:?VerticalAlignment
+    public var bottom:?VerticalAlignment
+    public var center:?VerticalAlignment 
+    public var bias: Bias
     public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
         middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None,
         bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None,
@@ -172,7 +172,7 @@ public var bias: Bias = Bias()
 #### var bottom
 
 ```cangjie
-public var bottom:?VerticalAlignment = None
+public var bottom:?VerticalAlignment
 ```
 
 **功能：** 设置组件底部对齐方式。
@@ -188,7 +188,7 @@ public var bottom:?VerticalAlignment = None
 #### var center
 
 ```cangjie
-public var center:?VerticalAlignment = None
+public var center:?VerticalAlignment
 ```
 
 **功能：** 设置组件垂直居中对齐方式。
@@ -204,7 +204,7 @@ public var center:?VerticalAlignment = None
 #### var left
 
 ```cangjie
-public var left:?HorizontalAlignment = None
+public var left:?HorizontalAlignment
 ```
 
 **功能：** 设置组件左侧对齐方式。
@@ -220,7 +220,7 @@ public var left:?HorizontalAlignment = None
 #### var middle
 
 ```cangjie
-public var middle:?HorizontalAlignment = None
+public var middle:?HorizontalAlignment
 ```
 
 **功能：** 设置组件水平居中对齐方式。
@@ -236,7 +236,7 @@ public var middle:?HorizontalAlignment = None
 #### var right
 
 ```cangjie
-public var right:?HorizontalAlignment = None
+public var right:?HorizontalAlignment
 ```
 
 **功能：** 设置组件右侧对齐方式。
@@ -252,7 +252,7 @@ public var right:?HorizontalAlignment = None
 #### var top
 
 ```cangjie
-public var top:?VerticalAlignment = None
+public var top:?VerticalAlignment
 ```
 
 **功能：** 设置组件顶部对齐方式。
@@ -298,9 +298,9 @@ public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = N
 
 ```cangjie
 public class Bias {
-    public var horizontal: Float32 = 0.5
-    public var vertical: Float32 = 0.5
-    public init(horizontal!: Float32 = 0.5, vertical!: Float32 = 0.5)
+    public var horizontal: Float32, 
+    public var vertical: Float32, 
+    public init(horizontal!: Float32, vertical!: Float32)
 }
 ```
 
@@ -313,7 +313,7 @@ public class Bias {
 #### var horizontal
 
 ```cangjie
-public var horizontal: Float32 = 0.5
+public var horizontal: Float32
 ```
 
 **功能：** 设置组件水平方向的偏移量。
@@ -329,7 +329,7 @@ public var horizontal: Float32 = 0.5
 #### var vertical
 
 ```cangjie
-public var vertical: Float32 = 0.5
+public var vertical: Float32
 ```
 
 **功能：** 设置组件垂直方向的偏移量。

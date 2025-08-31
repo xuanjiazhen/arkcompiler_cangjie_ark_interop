@@ -297,7 +297,8 @@ public init(fadingEdgeLength!: Length = 32.vp)
 public class NestedScrollOptions {
     public NestedScrollOptions(
         public var scrollForward: NestedScrollMode,
-        public var scrollBackward: NestedScrollMode
+        public var scrollBackward: NestedScrollMode,
+        public init(scrollForward: NestedScrollMode, scrollBackward: NestedScrollMode)
     )
 }
 ```
@@ -340,10 +341,29 @@ public var scrollForward: NestedScrollMode
 
 **起始版本：** 21
 
+#### init(NestedScrollMode, NestedScrollMode)
+
+```cangjie
+public init(scrollForward: NestedScrollMode, scrollBackward: NestedScrollMode)
+```
+
+**功能：** 构造一个NestedScrollOptions对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|scrollForward|NestedScrollMode|是|-|滚动组件往末尾端滚动时的嵌套滚动选项|
+|scrollBackward|NestedScrollMode|是|-|滚动组件往起始端滚动时的嵌套滚动选项。|
+
 #### NestedScrollOptions(NestedScrollMode, NestedScrollMode)
 
 ```cangjie
-public NestedScrollOptions(
+public class NestedScrollOptions(
     public var scrollForward: NestedScrollMode,
     public var scrollBackward: NestedScrollMode
 )

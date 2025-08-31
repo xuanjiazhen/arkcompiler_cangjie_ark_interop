@@ -237,6 +237,7 @@ public class ActionSheetOptions {
     public var borderStyle: EdgeStyles
     public var width:?Length
     public var height:?Length
+    public var shadow: ShadowOptions
     public var transition:?TransitionEffect
 
     /**
@@ -262,6 +263,7 @@ public class ActionSheetOptions {
      * @param { EdgeStyles } borderStyle
      * @param { ?Length } width
      * @param { ?Length } height
+     * @param { ShadowOptions } shadow
      * @param { ?TransitionEffect } transition
      * @returns { ActionSheetOptions }
      * @relation interface ActionSheetOptions
@@ -289,6 +291,7 @@ public class ActionSheetOptions {
         borderStyle!: EdgeStyles = EdgeStyles(),
         width!: ?Length = None,
         height!: ?Length = None,
+        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
         transition!: ?TransitionEffect = None
     )
 }
@@ -555,6 +558,23 @@ public var onWillDismiss:?Callback<DismissDialogAction, Unit>
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+### var shadow
+
+```cangjie
+public var shadow: ShadowOptions
+```
+
+**功能：** 设置弹窗背板的阴影。
+
+**类型：** ?[ShadowOptions](./cj-text-input-text.md#class-shadowoptions)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 
 ### var sheets
 

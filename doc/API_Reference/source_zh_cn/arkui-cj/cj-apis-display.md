@@ -551,7 +551,7 @@ public init(
 ## class Display
 
 ```cangjie
-public class Display {}
+public class Display <: RemoteDataLite {}
 ```
 
 **功能：** 设置屏幕实例。描述Display对象的属性和方法。
