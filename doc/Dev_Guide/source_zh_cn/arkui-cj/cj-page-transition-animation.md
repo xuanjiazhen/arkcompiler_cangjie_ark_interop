@@ -18,14 +18,14 @@ PageTransitionEnter的接口为：
 
 
 ```cangjie
-PageTransitionEnter(PageTransitionOptions(`type`: RouteType.None, duration: 1000))
+PageTransitionEnter(routeType: RouteType.None, duration: 1000)
 ```
 
 PageTransitionExit的接口为：
 
 
 ```cangjie
-PageTransitionExit(PageTransitionOptions(`type`: RouteType.None, duration: 1000))
+PageTransitionExit(routeType: RouteType.None, duration: 1000)
 ```
 
 上述接口定义了PageTransitionEnter和PageTransitionExit组件，可通过slide、translate、scale、opacity属性定义不同的页面转场效果。对于PageTransitionEnter而言，这些效果表示入场时起点值，对于PageTransitionExit而言，这些效果表示退场的终点值，这一点与组件转场transition配置方法类似。此外，PageTransitionEnter提供了onEnter接口进行自定义页面入场动画的回调，PageTransitionExit提供了onExit接口进行自定义页面退场动画的回调。
@@ -41,10 +41,10 @@ type为RouteType.None表示对页面栈的push、pop操作均生效，type的默
 // page A
 protected func pageTransition(): Unit {
     // 定义页面进入时的效果，从左侧滑入，时长为1200ms，无论页面栈发生push还是pop操作均可生效
-    PageTransitionEnter(PageTransitionOptions(`type`: RouteType.None, duration: 1200))
+    PageTransitionEnter(routeType: RouteType.None, duration: 1200)
         .slide(SlideEffect.Left)
     // 定义页面退出时的效果，向左侧滑出，时长为1000ms，无论页面栈发生push还是pop操作均可生效
-    PageTransitionExit(PageTransitionOptions(`type`: RouteType.None, duration: 1000))
+    PageTransitionExit(routeType: RouteType.None, duration: 1000)
         .slide(SlideEffect.Left)
 }
 ```
@@ -54,10 +54,10 @@ protected func pageTransition(): Unit {
 // page B
 protected func pageTransition(): Unit {
     // 定义页面进入时的效果，从右侧滑入，时长为1000ms，无论页面栈发生push还是pop操作均可生效
-    PageTransitionEnter(PageTransitionOptions(`type`: RouteType.None, duration: 1000))
+    PageTransitionEnter(routeType: RouteType.None, duration: 1000)
         .slide(SlideEffect.Right)
     // 定义页面退出时的效果，向右侧滑出，时长为1200ms，无论页面栈发生push还是pop操作均可生效
-    PageTransitionExit(PageTransitionOptions(`type`: RouteType.None, duration: 1200))
+    PageTransitionExit(routeType: RouteType.None, duration: 1200)
         .slide(SlideEffect.Right)
 }
 ```
@@ -82,16 +82,16 @@ type为RouteType.Push表示仅对页面栈的push操作生效，type为RouteType
 // page A
 protected func pageTransition(): Unit {
     // 定义页面进入时的效果，从右侧滑入，时长为1200ms，页面栈发生push操作时该效果才生效
-    PageTransitionEnter(PageTransitionOptions(`type`: RouteType.Push, duration: 1200))
+    PageTransitionEnter(routeType: RouteType.Push, duration: 1200)
         .slide(SlideEffect.Right)
     // 定义页面进入时的效果，从左侧滑入，时长为1200ms，页面栈发生pop操作时该效果才生效
-    PageTransitionEnter(PageTransitionOptions(`type`: RouteType.Pop, duration: 1200))
+    PageTransitionEnter(routeType: RouteType.Pop, duration: 1200)
         .slide(SlideEffect.Left)
     // 定义页面退出时的效果，向左侧滑出，时长为1000ms，页面栈发生push操作时该效果才生效
-    PageTransitionExit(PageTransitionOptions(`type`: RouteType.Push, duration: 1000))
+    PageTransitionExit(routeType: RouteType.Push, duration: 1000)
         .slide(SlideEffect.Left)
     // 定义页面退出时的效果，向右侧滑出，时长为1000ms，页面栈发生pop操作时该效果才生效
-    PageTransitionExit(PageTransitionOptions(`type`: RouteType.Pop, duration: 1000))
+    PageTransitionExit(routeType: RouteType.Pop, duration: 1000)
         .slide(SlideEffect.Right)
 }
 ```
@@ -101,16 +101,16 @@ protected func pageTransition(): Unit {
 // page B
 protected func pageTransition(): Unit {
     // 定义页面进入时的效果，从右侧滑入，时长为1000ms，页面栈发生push操作时该效果才生效
-    PageTransitionEnter(PageTransitionOptions(`type`: RouteType.Push, duration: 1000))
+    PageTransitionEnter(routeType: RouteType.Push, duration: 1000)
         .slide(SlideEffect.Right)
     // 定义页面进入时的效果，从左侧滑入，时长为1000ms，页面栈发生pop操作时该效果才生效
-    PageTransitionEnter(PageTransitionOptions(`type`: RouteType.Pop, duration: 1000))
+    PageTransitionEnter(routeType: RouteType.Pop, duration: 1000)
         .slide(SlideEffect.Left)
     // 定义页面退出时的效果，向左侧滑出，时长为1200ms，页面栈发生push操作时该效果才生效
-    PageTransitionExit(PageTransitionOptions(`type`: RouteType.Push, duration: 1200))
+    PageTransitionExit(routeType: RouteType.Push, duration: 1200)
         .slide(SlideEffect.Left)
     // 定义页面退出时的效果，向右侧滑出，时长为1200ms，页面栈发生pop操作时该效果才生效
-    PageTransitionExit(PageTransitionOptions(`type`: RouteType.Pop, duration: 1200))
+    PageTransitionExit(routeType: RouteType.Pop, duration: 1200)
         .slide(SlideEffect.Right)
 }
 ```
@@ -136,8 +136,8 @@ protected func pageTransition(): Unit {
 
 ```cangjie
 protected func pageTransition(): Unit {
-    PageTransitionEnter(PageTransitionOptions(`type`: RouteType.None, duration: 0))
-    PageTransitionExit(PageTransitionOptions(`type`: RouteType.None, duration: 0))
+    PageTransitionEnter(routeType: RouteType.None, duration: 0)
+    PageTransitionExit(routeType: RouteType.None, duration: 0)
 }
 ```
 
@@ -165,7 +165,7 @@ class EntryView {
                 .syncLoad(true) // 同步加载图片，使页面出现时图片已经加载完成
                 .margin(30)
 
-             Row(10){
+             Row(space: 10){
                 Button("pushUrl")
                   .onClick { evt =>
                     // 路由到下一个页面，push操作
@@ -220,7 +220,7 @@ class Page1 {
                 .syncLoad(true) // 同步加载图片，使页面出现时图片已经加载完成
                 .margin(30)
 
-             Row(10){
+             Row(space: 10){
                 Button("pushUrl")
                   .onClick { evt =>
                     // 路由到下一个页面，push操作
@@ -278,7 +278,7 @@ class EntryView {
                 .syncLoad(true) // 同步加载图片，使页面出现时图片已经加载完成
                 .margin(30)
 
-             Row(10){
+             Row(space: 10){
                 Button("pushUrl")
                   .onClick { evt =>
                     // 路由到下一个页面，push操作
@@ -302,7 +302,7 @@ class EntryView {
         // 定义页面退出时的效果，相对于正常页面位置x方向平移100vp，y方向平移100vp，透明度变为0，时长为1200ms，无论页面栈发生push还是pop操作均可生效
         PageTransitionExit(duration: 1200)
             .translate(x: 100.0, y: 100.0)
-            .opacity(0)
+            .opacity(0.0)
     }
 }
 ```
@@ -327,7 +327,7 @@ class Page1 {
                 .syncLoad(true) // 同步加载图片，使页面出现时图片已经加载完成
                 .margin(30)
 
-             Row(10){
+             Row(space: 10){
                 Button("pushUrl")
                   .onClick { evt =>
                     // 路由到下一个页面，push操作
@@ -351,7 +351,7 @@ class Page1 {
         // 定义页面退出时的效果，相对于正常页面位置x方向平移100vp，y方向平移100vp，透明度变为0，时长为1000ms，无论页面栈发生push还是pop操作均可生效
         PageTransitionExit(duration: 1000)
             .translate(x: 100.0, y: 100.0)
-            .opacity(0)
+            .opacity(0.0)
     }
 }
 ```
