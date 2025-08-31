@@ -59,19 +59,10 @@ import ohos.display.{Orientation as DisplayOrientation}
 
 func matchor(orientation: DisplayOrientation): String {
     match(orientation){
-        case Unspecified => "Unspecified"
         case Landscape => "Landscape"
         case Portrait => "Portrait"
-        case FollowRecent => "FollowRecent"
         case LandscapeInverted => "LandscapeInverted"
         case PortraitInverted => "PortraitInverted"
-        case AutoRotation => "AutoRotation"
-        case AutoRotationLandscape => "AutoRotationLandscape"
-        case AutoRotationPortrait => "AutoRotationPortrait"
-        case AutoRotationRestricted => "AutoRotationRestricted"
-        case AutoRotationLandscapeRestricted => "AutoRotationLandscapeRestricted"
-        case Locked => "Locked"
-        case AutoRotationUnspecified => "AutoRotationUnspecified"
         case _ => "FollowDesktop"
     }
 }
@@ -85,13 +76,13 @@ class EntryView{
     func build(){
         Stack() {
             if(matchor(orientation) == "Portrait"|| matchor(orientation) == "PortraitInverted"){
-                Image(@r(app.media.img_1))
+                Image(@r(app.media.startIcon))
                     .size(width: 100, height: 100 )
                     .id('image1')
                   // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY转场效果来实现旋转屏动画的透明度变化
 //                   .transition(TransitionEffect.OPACITY)
             }else{
-                Image(@r(app.media.img_2))
+                Image(@r(app.media.startIcon))
                     .position(x: 0, y: 0 )
                     .size( width: 200, height: 200)
                     .id('image2')
