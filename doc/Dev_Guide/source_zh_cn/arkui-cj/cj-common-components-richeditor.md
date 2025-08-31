@@ -78,8 +78,8 @@ class EntryView {
         Scroll() {
             Column {
                 RichEditor(RichEditorController())
-                    .bindSelectionMenu(spantype: RichEditorSpanType.Text, content: {=>}, responseType = ResponseType.LongPress,
-                        option: SelectionMenuOptions( onDisappear: {
+                    .bindSelectionMenu(spantype: RichEditorSpanType.Text, content: {=>}, responseType: ResponseType.LongPress,
+                        options: SelectionMenuOptions( onDisappear: {
                             => Hilog.info(0, " ", "自定义选择菜单关闭时  触发该回调")
                         },
                         onAppear: {

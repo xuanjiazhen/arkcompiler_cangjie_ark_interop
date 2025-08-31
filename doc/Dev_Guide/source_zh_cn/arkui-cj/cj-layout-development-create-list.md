@@ -178,7 +178,7 @@ public class EntryView {
 List() {
     ListItem() {
         Row() {
-            Image(@r(app.media.iconE))
+            Image(@r(app.media.startIcon))
                 .width(40)
                 .height(40)
                 .margin(10)
@@ -187,7 +187,7 @@ List() {
     }
     ListItem() {
         Row() {
-            Image(@r(app.media.iconF))
+            Image(@r(app.media.startIcon))
                 .width(40)
                 .height(40)
                 .margin(10)
@@ -225,7 +225,7 @@ public class Contact {
 @Entry
 @Component
 public class EntryView {
-    private var contacts: Array<Contact> = [Contact('小明', @r(app.media.iconE)), Contact('小红', @r(app.media.iconF))]
+    private var contacts: Array<Contact> = [Contact('小明', @r(app.media.startIcon)), Contact('小红', @r(app.media.startIcon))]
     func build() {
         List() {
             ForEach(this.contacts, itemGeneratorFunc: { item: Contact, _: Int64 =>
@@ -346,18 +346,16 @@ public class EntryView {
     func build() {
         List() {
             ListItemGroup(
-                ListItemGroupParams(header: {=> bind(this.itemHead, this)("a")}),
-                { =>
+                header: {=> bind(this.itemHead, this)("a")}){
+                    =>
                     // 循环渲染分组A的ListItem
                 }
-            ){}
 
             ListItemGroup(
-                ListItemGroupParams(header: {=> bind(this.itemHead, this)("b")}),
-                { =>
+                header: {=> bind(this.itemHead, this)("b")}) {
+                    =>
                     // 循环渲染分组A的ListItem
                 }
-            ){}
         }
     }
 }
@@ -413,8 +411,8 @@ public class ContactGroup {
 public class EntryView {
     // 定义分组联系人数据集合contactsGroups数组
     private var contactsGroups : Array<ContactGroup> = [
-            ContactGroup('A', [Contact('艾佳', @r(app.media.iconA)),Contact('安安', @r(app.media.iconB)),Contact('Angela', @r(app.media.iconC))]),
-            ContactGroup('B', [Contact('白叶', @r(app.media.iconD)),Contact('伯明', @r(app.media.iconE))])
+            ContactGroup('A', [Contact('艾佳', @r(app.media.startIcon)),Contact('安安', @r(app.media.startIcon)),Contact('Angela', @r(app.media.startIcon))]),
+            ContactGroup('B', [Contact('白叶', @r(app.media.startIcon)),Contact('伯明', @r(app.media.startIcon))])
         ]
 
     @Builder
@@ -442,9 +440,9 @@ public class EntryView {
             // 循环渲染ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
             ForEach(this.contactsGroups, itemGeneratorFunc: { itemGroup: ContactGroup, _: Int64 =>
                     ListItemGroup(header: {=> bind(this.itemHead, this)(itemGroup.title)},
-                    footer { => bind(this.footertest, this)(itemGroup)}) {}
+                    footer: { => bind(this.footertest, this)(itemGroup)}) {}
                 },
-                keyGeneratorFunc: {item: Contact, idx: Int64 => idx.toString()}
+                keyGeneratorFunc: {item: ContactGroup, idx: Int64 => idx.toString()}
             )
         }.sticky(StickyStyle.Header) // 设置吸顶，实现粘性标题效果
     }
