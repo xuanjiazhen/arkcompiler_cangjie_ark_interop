@@ -140,8 +140,8 @@ import ohos.arkui.state_macro_manage.*
 
 @Component
 class MyComponent {
-    private var countDownFrom : Int64 = 0
-    private var color : Color = Color.Blue
+    private var countDownFrom: Int64 = 0
+    private var color: Color = Color.Blue
     func build() {
     }
 }
@@ -149,7 +149,7 @@ class MyComponent {
 @Entry
 @Component
 class EntryView {
-    private var someColor : Color = Color.PINK
+    private var someColor: Color = Color.Red
     func build() {
         Column(){
             // 创建MyComponent实例，并将创建MyComponent成员变量countDownFrom初始化为10，将成员变量color初始化为this.someColor
