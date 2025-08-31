@@ -773,36 +773,3 @@ class EntryView {
 ```
 
 ![text_clock2](figures/text_clock2.gif)
-
-### 示例3（设置前导零）
-
-该示例演示了dateTimeOptions属性为小时字段增加或去除前导0的功能。24小时制的小时字段默认带有前导0，可通过dateTimeOptions属性去除前导0，12小时制的小时字段默认不带有前导0，可通过dateTimeOptions属性增加前导0。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    let numericOption = DateTimeOptions(hour: "numeric")
-    let digitOption = DateTimeOptions(hour: "2-digit")
-    public func build() {
-        Column {
-            Row() {
-                Text("24小时制去除前导0：").fontSize(20)
-                TextClock().fontSize(20).format("HH:mm:ss").dateTimeOptions(numericOption)
-            }
-            Row() {
-                Text("12小时制增加前导0：").fontSize(20).margin(10)
-                TextClock().fontSize(20).format("aa hh:mm:ss").dateTimeOptions(digitOption)
-            }
-        }
-    }
-}
-```
-
-![text_clock3](figures/text_clock3.jpg)

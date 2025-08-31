@@ -345,36 +345,30 @@ class EntryView {
             Row(space: 10) {
                 // 数字上标，maxCount默认99,超过99展示99+
                 Badge(
-                    BadgeParams(
-                        count: 1,
-                        style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                            fontWeight: FontWeight.Bolder, borderColor: Color.Black, borderWidth: 2.vp),
-                        position: BadgePosition.RightTop,
-                        maxCount: 99
-                    )
+                    count: 1,
+                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
+                        fontWeight: FontWeight.Bolder, borderColor: Color.Black, borderWidth: 2.vp),
+                    position: BadgePosition.RightTop,
+                    maxCount: 99
                 ) {
                     Button("message").width(100).height(50).backgroundColor(0x317aff)
                 }.width(100).height(50)
                 Badge(
-                    BadgeParams(
-                        count: 1,
-                        style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                            fontWeight: FontWeight.Bolder, borderColor: Color.Green, borderWidth: 2.vp),
-                        position: BadgePosition.Left,
-                        maxCount: 99
-                    )
+                    count: 1,
+                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
+                        fontWeight: FontWeight.Bolder, borderColor: Color.Green, borderWidth: 2.vp),
+                    position: BadgePosition.Left,
+                    maxCount: 99
                 ) {
                     Button("message").width(100).height(50).backgroundColor(0x317aff)
                 }.width(100).height(50)
                 // 数字上标
                 Badge(
-                    BadgeParams(
-                        count: 1,
-                        style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                            fontWeight: FontWeight.Regular, borderColor: Color.Gray, borderWidth: 4.vp),
-                        position: BadgePosition.Right,
-                        maxCount: 99
-                    )
+                    count: 1,
+                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
+                        fontWeight: FontWeight.Regular, borderColor: Color.Gray, borderWidth: 4.vp),
+                    position: BadgePosition.Right,
+                    maxCount: 99
                 ) {
                     Button("message").width(100).height(50).backgroundColor(0x317aff)
                 }.width(100).height(50)
@@ -382,10 +376,8 @@ class EntryView {
             Text("stringBadge").width(80.percent)
             Row(space: 30) {
                 Badge(
-                    BadgeParams(
-                        value: "new",
-                        style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 9, badgeSize: 20, badgeColor: Color.Blue)
-                    )
+                    value: "new",
+                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 9, badgeSize: 20, badgeColor: Color.Blue)
                 ) {
                     Text("message")
                         .width(80)
@@ -398,11 +390,9 @@ class EntryView {
                 }.width(80).height(50)
                 // value为空，设置圆点标记
                 Badge(
-                    BadgeParams(
-                        value: "",
-                        style: BadgeStyle(badgeSize: 6, badgeColor: Color.Blue),
-                        position: BadgePosition.Right
-                    )
+                    value: "",
+                    style: BadgeStyle(badgeSize: 6, badgeColor: Color.Blue),
+                    position: BadgePosition.Right
                 ) {
                     Text("message")
                         .width(90)
@@ -439,11 +429,9 @@ class EntryView {
     func build() {
         Column() {
             Badge(
-                BadgeParams(
-                    count: this.badgeCount,
-                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,fontWeight: FontWeight.Bolder, borderColor: Color.Black, borderWidth: 2.vp),
-                    position: BadgePosition.RightTop,
-                )
+                count: this.badgeCount,
+                style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,fontWeight: FontWeight.Bolder, borderColor: Color.Black, borderWidth: 2.vp),
+                position: BadgePosition.RightTop,
             ){
                 Text("message")
                     .width(100)
@@ -453,9 +441,9 @@ class EntryView {
                 .width(100)
                 .height(50)
             Button("count 0")
-                .onClick{=>  this.badgeCount =0;}
+                .onClick{ evt =>  this.badgeCount =0;}
             Button("count 1")
-                .onClick{=>  this.badgeCount =1;}
+                .onClick{ evt =>  this.badgeCount =1;}
         }.margin(10)
     }
 }

@@ -1624,17 +1624,16 @@ class EntryView {
                 .scrollBarColor(Color.Gray) // 滚动条颜色
                 .scrollBarWidth(10.px) // 滚动条宽度
                 .friction(0.6)
-                .edgeEffect(EdgeEffect.None)
                 .onScrollEdge(
                     {
                         edge => match (edge) {
-                            case Edge.Top => nativeLog("Top")
-                            case Edge.Bottom => nativeLog("Bottom")
-                            case _ => nativeLog("None")
+                            case Edge.Top => loggerInfo("Top")
+                            case Edge.Bottom => loggerInfo("Bottom")
+                            case _ => loggerInfo("None")
                         }
                     })
                 .onScrollStop({
-                    => nativeLog("Scroll Stop")
+                    => loggerInfo("Scroll Stop")
                 })
 
             Button("scroll 150")
@@ -1650,15 +1649,15 @@ class EntryView {
                 .onClick(
                     {
                         evt => //点击后滑动到指定位置，即下滑100.0vp的距离
-                        nativeLog("current offset ${this.scroller.currentOffset().yOffset}")
-                        nativeLog("CALCULATE offset ${this.scroller.currentOffset().yOffset + 100.0}")
+                        loggerInfo("current offset ${this.scroller.currentOffset().yOffset}")
+                        loggerInfo("CALCULATE offset ${this.scroller.currentOffset().yOffset + 100.0}")
                         let curyOffset = this
                             .scroller
                             .currentOffset()
                             .yOffset
                         this
                             .scroller
-                            .scrollTo(xOffset: 0.vp, yOffset: (curyOffset + 100.0).vp, duration: 0.0, curve: Curve.Ease)
+                            .scrollTo(xOffset: 0.vp, yOffset: (curyOffset + 100.0).vp, animation: ScrollAnimationOptions(duration: 0.0, curve: Curve.Ease))
                     }
                 )
                 .margin(top: 60, left: 20)
@@ -1686,7 +1685,7 @@ class EntryView {
                     evt => // 点击后触发初始速度为-3000vp/s的惯性滚动
                     this
                         .scroller
-                        .fling(-3000)
+                        .fling(-3000.0)
                 })
                 .margin(top: 210, left: 20)
 
@@ -1742,7 +1741,7 @@ class EntryView {
                             {
                                 evt => this
                                     .scrollerForList
-                                    .scrollToIndex(5, smooth: false, align: ScrollAlign.START, extraOffset: 5.vp)
+                                    .scrollToIndex(5, smooth: false, align: ScrollAlign.Start, options: ScrollToIndexOptions(extraOffset: 5.vp))
                             })
 
                     List(space: 20, scroller: this.scrollerForList) {
@@ -1781,10 +1780,10 @@ class EntryView {
                                     this
                                         .scroller
                                         .scrollBy(xOffset: 0.0, yOffset: x)
-                                    return 0.0
+                                    return onScrollFrameBeginHandleResult(offsetRemain: 0.0)
                                 }
                                 this.listPosition = 1
-                                return x
+                                return onScrollFrameBeginHandleResult(offsetRemain: x)
                             }
                         )
 
@@ -1834,7 +1833,7 @@ class EntryView {
                     .height(40.percent)
                     .backgroundColor(0x00800C)
                     .textAlign(TextAlign.Center)
-                Tabs(BarPosition.Start) {
+                Tabs(barPosition: BarPosition.Start) {
                     TabContent {
                         List(space: 10) {
                             ForEach(
@@ -1856,7 +1855,7 @@ class EntryView {
                             .width(100.percent)
                             .edgeEffect(EdgeEffect.Spring)
                             .nestedScroll(
-                                NestedScrollOptions(NestedScrollMode.PARENT_FIRST, NestedScrollMode.SELF_FIRST))
+                                NestedScrollOptions(NestedScrollMode.ParentFirst, NestedScrollMode.SelfFirst))
                     }.tabBar("Tab1")
 
                     TabContent {
@@ -1866,7 +1865,6 @@ class EntryView {
                     .height(100.percent)
             }.width(100.percent)
         }
-            .edgeEffect(EdgeEffect.Spring)
             .friction(0.6)
             .backgroundColor(0xDCDCDC)
             .scrollBar(BarState.Off)
@@ -1918,9 +1916,6 @@ class EntryView {
                     .backgroundColor(0x330000FF)
                     .fontSize(16)
                     .textAlign(TextAlign.Center)
-                    .onAreaChange({
-                        oldValue: Area, newValue: Area => this.headerHeight = newValue.height
-                    })
 
                 List(space: 20, scroller: this.scrollerForChild) {
                     ForEach(
@@ -1958,7 +1953,6 @@ class EntryView {
             }
         }
             .scrollBar(BarState.Off)
-            .edgeEffect(EdgeEffect.Spring)
             .onScrollFrameBegin(
                 {
                     offset: Float64, state: ScrollState =>
@@ -2048,73 +2042,6 @@ class EntryView {
         }
         .backgroundColor(Color.White)
         .height(100.percent)
-        .edgeEffect(EdgeEffect.Spring)
-        .scrollSnap(ScrollSnapOptions(ScrollSnapAlign.START, snapPagination: 400, enableSnapToStart: true, enableSnapToEnd: true))
-    }
-}
-```
-
-## 示例代码6（设置子组件索引）
-
-该示例展示了如何获得List组件的子组件索引。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.ArrayList
-
-@Entry
-@Component
-class EntryView {
-    private var arr: ArrayList<Int64> = ArrayList<Int64>([])
-    private var scroller: ListScroller = ListScroller()
-    @State
-    var listSpace: Int64 = 10
-    @State
-    var listIndex: Int64 = 0
-
-    protected override func aboutToAppear() {
-        for (i in 0..10) {
-            this.arr.add(i)
-        }
-    }
-
-    func build() {
-        Column {
-            List(space: this.listSpace, initialIndex: 4, scroller: this.scroller) {
-                ForEach(
-                    this.arr,
-                    itemGeneratorFunc: {
-                        item: Int64, idx: Int64 => ListItem {
-                            Text("item-" + item.toString())
-                                .height(100)
-                                .width(90.percent)
-                                .fontSize(16)
-                                .textAlign(TextAlign.Center)
-                                .borderRadius(10)
-                                .backgroundColor(Color.White)
-                                .onClick({
-                                    _ => this.listIndex = item
-                                })
-                        }
-                    }
-                )
-            }
-                .backgroundColor(Color.Gray)
-                .layoutWeight(1)
-                .scrollBar(BarState.On)
-                .alignListItem(ListItemAlign.Center)
-
-            Text("您当前位置Item索引为：" + this
-                .listIndex
-                .toString())
-                .fontColor(Color.Red)
-                .height(50)
-        }
     }
 }
 ```
