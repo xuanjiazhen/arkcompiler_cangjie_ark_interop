@@ -138,7 +138,6 @@
                     - [文本显示（Text/Span）](source_zh_cn/arkui-cj/cj-common-components-text-display.md)
                     - [文本输入（TextInput/TextArea）](source_zh_cn/arkui-cj/cj-common-components-text-input.md)
                     - [富文本（RichEditor）](source_zh_cn/arkui-cj/cj-common-components-richeditor.md)
-                    - [图标小符号（SymbolGlyph/SymbolSpan）](source_zh_cn/arkui-cj/cj-common-components-symbol.md)
                 - [使用弹窗]()
                     - [弹窗概述](source_zh_cn/arkui-cj/cj-dialog-overview.md)
                     - [使用弹出框（Dialog）]()
