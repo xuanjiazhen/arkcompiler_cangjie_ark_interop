@@ -43,6 +43,7 @@ Button("click for Menu").bindMenu(
 
 ```cangjie
 package ohos_app_cangjie_entry
+
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
@@ -93,7 +94,6 @@ class EntryView {
                     .onChange(
                         {
                             selected =>
-                            Hilog.info(0, "cangjie", menuItem select${selected}")
                             let Str: Tmp = Tmp()
                             Str.set(@r(app.media.startIcon))
                         }

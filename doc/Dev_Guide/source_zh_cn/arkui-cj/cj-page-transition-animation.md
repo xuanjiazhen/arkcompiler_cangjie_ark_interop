@@ -174,7 +174,7 @@ class EntryView {
                 Button("back")
                     .onClick { evt =>
                     // 返回到上一页面，相当于pop操作
-                    Router.back()
+                    getUIContext().getRouter().back()
                   }
             }.justifyContent(FlexAlign.Center)
         }
@@ -184,16 +184,16 @@ class EntryView {
 
     protected func pageTransition(): Unit {
         // 定义页面进入时的效果，从右侧滑入，时长为1000ms，页面栈发生push操作时该效果才生效
-        PageTransitionEnter(PageTransitionOptions(`type`: RouteType.Push, duration: 1000))
+        PageTransitionEnter(routeType: RouteType.Push, duration: 1000)
             .slide(SlideEffect.Right)
         // 定义页面进入时的效果，从左侧滑入，时长为1000ms，页面栈发生pop操作时该效果才生效
-        PageTransitionEnter(PageTransitionOptions(`type`: RouteType.Pop, duration: 1000))
+        PageTransitionEnter(routeType: RouteType.Pop, duration: 1000)
             .slide(SlideEffect.Left)
         // 定义页面退出时的效果，向左侧滑出，时长为1000ms，页面栈发生push操作时该效果才生效
-        PageTransitionExit(PageTransitionOptions(`type`: RouteType.Push, duration: 1000))
+        PageTransitionExit(routeType: RouteType.Push, duration: 1000)
             .slide(SlideEffect.Left)
         // 定义页面退出时的效果，向右侧滑出，时长为1000ms，页面栈发生pop操作时该效果才生效
-        PageTransitionExit(PageTransitionOptions(`type`: RouteType.Pop, duration: 1000))
+        PageTransitionExit(routeType: RouteType.Pop, duration: 1000)
             .slide(SlideEffect.Right)
     }
 }
@@ -203,6 +203,7 @@ class EntryView {
 
 ```cangjie
 package ohos_app_cangjie_entry
+
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
@@ -228,7 +229,7 @@ class Page1 {
                 Button("back")
                     .onClick { evt =>
                     // 返回到上一页面，相当于pop操作
-                    Router.back()
+                    getUIContext().getRouter().back()
                   }
             }.justifyContent(FlexAlign.Center)
         }
@@ -238,16 +239,16 @@ class Page1 {
 
     protected func pageTransition(): Unit {
         // 定义页面进入时的效果，从右侧滑入，时长为1000ms，页面栈发生push操作时该效果才生效
-        PageTransitionEnter(PageTransitionOptions(`type`: RouteType.Push, duration: 1000))
+        PageTransitionEnter(routeType: RouteType.Push, duration: 1000)
             .slide(SlideEffect.Right)
         // 定义页面进入时的效果，从左侧滑入，时长为1000ms，页面栈发生pop操作时该效果才生效
-        PageTransitionEnter(PageTransitionOptions(`type`: RouteType.Pop, duration: 1000))
+        PageTransitionEnter(routeType: RouteType.Pop, duration: 1000)
             .slide(SlideEffect.Left)
         // 定义页面退出时的效果，向左侧滑出，时长为1000ms，页面栈发生push操作时该效果才生效
-        PageTransitionExit(PageTransitionOptions(`type`: RouteType.Push, duration: 1000))
+        PageTransitionExit(routeType: RouteType.Push, duration: 1000)
             .slide(SlideEffect.Left)
         // 定义页面退出时的效果，向右侧滑出，时长为1000ms，页面栈发生pop操作时该效果才生效
-        PageTransitionExit(PageTransitionOptions(`type`: RouteType.Pop, duration: 1000))
+        PageTransitionExit(routeType: RouteType.Pop, duration: 1000)
             .slide(SlideEffect.Right)
     }
 }
@@ -286,7 +287,7 @@ class EntryView {
                 Button("back")
                     .onClick { evt =>
                     // 返回到上一页面，相当于pop操作
-                    Router.back()
+                    getUIContext().getRouter().back()
                   }
             }.justifyContent(FlexAlign.Center)
         }
@@ -296,10 +297,10 @@ class EntryView {
 
     protected func pageTransition(): Unit {
         // 定义页面进入时的效果，从左侧滑入，时长为1000ms，无论页面栈发生push还是pop操作均可生效
-        PageTransitionEnter(PageTransitionOptions(duration: 1000))
+        PageTransitionEnter(duration: 1000)
             .slide(SlideEffect.Left)
         // 定义页面退出时的效果，相对于正常页面位置x方向平移100vp，y方向平移100vp，透明度变为0，时长为1200ms，无论页面栈发生push还是pop操作均可生效
-        PageTransitionExit(PageTransitionOptions(duration: 1200))
+        PageTransitionExit(duration: 1200)
             .translate(x: 100.0, y: 100.0)
             .opacity(0)
     }
@@ -335,7 +336,7 @@ class Page1 {
                 Button("back")
                     .onClick { evt =>
                     // 返回到上一页面，相当于pop操作
-                    Router.back()
+                    getUIContext().getRouter().back()
                   }
             }.justifyContent(FlexAlign.Center)
         }
@@ -345,10 +346,10 @@ class Page1 {
 
     protected func pageTransition(): Unit {
         // 定义页面进入时的效果，从左侧滑入，时长为1200ms，无论页面栈发生push还是pop操作均可生效
-        PageTransitionEnter(PageTransitionOptions(duration: 1200))
+        PageTransitionEnter(duration: 1200)
             .slide(SlideEffect.Left)
         // 定义页面退出时的效果，相对于正常页面位置x方向平移100vp，y方向平移100vp，透明度变为0，时长为1000ms，无论页面栈发生push还是pop操作均可生效
-        PageTransitionExit(PageTransitionOptions(duration: 1000))
+        PageTransitionExit(duration: 1000)
             .translate(x: 100.0, y: 100.0)
             .opacity(0)
     }
