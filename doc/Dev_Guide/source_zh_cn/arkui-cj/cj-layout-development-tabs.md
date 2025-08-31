@@ -68,7 +68,7 @@ Tabs() {
 
 
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     // TabContent的内容，例如：首页、发现、推荐、我的
     // ...
 }
@@ -84,7 +84,7 @@ Tabs(BarPosition.End) {
 
 
 ```cangjie
-Tabs(BarPosition.Start) {
+Tabs(barPosition: BarPosition.Start) {
     // TabContent的内容，例如:关注、视频、游戏、数码、科技、体育、影视
     // ...
 }
@@ -102,7 +102,7 @@ Tabs(BarPosition.Start) {
 
 
 ```cangjie
-Tabs(BarPosition.Start) {
+Tabs(barPosition: BarPosition.Start) {
     // TabContent的内容，例如：首页、发现、推荐、我的
     // ...
 }
@@ -126,7 +126,7 @@ Tabs(BarPosition.Start) {
 
 
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     TabContent() {
         Column() {
             Tabs() {
@@ -137,7 +137,7 @@ Tabs(BarPosition.End) {
         .backgroundColor(0XFF08A8F1)
         .width(100.percent)
     }
-    .tabBar("首页)
+    .tabBar("首页")
 
     // 其他TabContent内容，例如：发现、推荐、我的
     // ...
@@ -157,7 +157,7 @@ Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMod
 
 
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     // TabContent的内容，例如：首页、发现、推荐、我的
     // ...
 }
@@ -176,7 +176,7 @@ Tabs(BarPosition.End) {
 
 
 ```cangjie
-Tabs(BarPosition.Start) {
+Tabs(barPosition: BarPosition.Start) {
     // TabContent的内容，例如：首页、发现、推荐、我的
     // ...
 }
@@ -197,7 +197,7 @@ Tabs(BarPosition.Start) {
 
 
 ```cangjie
-@tate var currentIndex: Int32 = 0
+@State var currentIndex: Int32 = 0
 
 @Builder
 func tabBuilder(title: String, targetIndex: Int32, imgs: Array<AppResource>) {
@@ -264,7 +264,7 @@ public class EntryView {
 
     func build() {
         Column() {
-            Tabs(BarPosition.End){
+            Tabs(barPosition: BarPosition.End){
                 TabContent(){
                     // ...
                 }.tabBar({ =>
@@ -286,7 +286,7 @@ public class EntryView {
                     bind(this.tabBuilder, this)("我的", 3)
                 }).backgroundColor(Color.Blue)
             }
-            .animationDuration(0)
+            .animationDuration(0.0)
             .backgroundColor(0xF1F3F5)
             .onChange({index =>
                 this.currentIndex = index
@@ -305,23 +305,3 @@ public class EntryView {
 **图12** 切换指定页签
 
 ![tab-12](figures/tab-12.gif)
-
-开发者可以通过Tabs组件的onContentWillChange接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
-
-
-```cangjie
-Tabs(BarPosition.End, this.controller, this.currentIndex){
-  // ...
-}
-.onContentWillChange({currentIndex, commingIndex =>
-    if (commingIndex == 2) {
-        return false
-    } else {
-        return true
-    }
-})
-```
-
-**图13** 支持开发者自定义页面切换拦截事件
-
-![tab-13](figures/tab-13.gif)
