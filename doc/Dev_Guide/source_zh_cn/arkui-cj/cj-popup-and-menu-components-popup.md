@@ -65,7 +65,7 @@ class EntryView {
                 })
                 .bindPopup(
                     this.handlePopup,
-                    popup: CustomPopupOptions(
+                    CustomPopupOptions(
                         builder: {=>},
                         showInSubWindow: false,
                         onStateChange: {
@@ -289,7 +289,6 @@ class EntryView {
                     CustomPopupOptions(
                         builder: {=>},
                         width: 200,
-                        message: 'This is a popup.',
                         popupColor: Color.Red,
                         mask: Color(0x33d9d9d9), // 设置气泡的背景色
                         placement: Placement.Top,
