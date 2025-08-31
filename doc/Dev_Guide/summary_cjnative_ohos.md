@@ -128,7 +128,6 @@
                 - [设置组件导航和页面路由]()
                     - [组件导航和页面路由概述](source_zh_cn/arkui-cj/cj-navigation-introduction.md)
                     - [页面路由（ohos.router）（不推荐）](source_zh_cn/arkui-cj/cj-page-routing.md)
-                    - [Router切换Navigation](source_zh_cn/arkui-cj/cj-router-to-navigation.md)
                 - [使用文本]()
                     - [文本概述](source_zh_cn/arkui-cj/cj-text-introduction.md)
                     - [文本显示（Text/Span）](source_zh_cn/arkui-cj/cj-common-components-text-display.md)
