@@ -127,7 +127,6 @@
                     - [视频播放（Video）](source_zh_cn/arkui-cj/cj-common-components-video-player.md)
                 - [设置组件导航和页面路由]()
                     - [组件导航和页面路由概述](source_zh_cn/arkui-cj/cj-navigation-introduction.md)
-                    - [导航转场](source_zh_cn/arkui-cj/cj-navigation-transition.md)
                     - [页面路由（ohos.router）（不推荐）](source_zh_cn/arkui-cj/cj-page-routing.md)
                     - [Router切换Navigation](source_zh_cn/arkui-cj/cj-router-to-navigation.md)
                 - [使用文本]()
