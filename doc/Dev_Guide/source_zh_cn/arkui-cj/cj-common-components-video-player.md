@@ -122,9 +122,6 @@ class VideoPlayer {
                 .onError({ => // 失败事件回调
                     Hilog.info(0, "cangjie", video error.")
                 })
-                .onStop({ => // 停止事件回调
-                    Hilog.info(0, "cangjie", video stopped.")
-                })
         }
     }
 }
@@ -152,7 +149,7 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   class EntryView {
       @State var videoSrc: AppResource = @rawfile("video.mp4")
       @State var previewUri: AppResource = @r(app.media.preview)
-      @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+      @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100_X
 
       func build() {
           Row() {
@@ -184,7 +181,7 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   class EntryView {
       @State var videoSrc: AppResource = @rawfile("video.mp4")
       @State var previewUri: AppResource = @r(app.media.preview)
-      @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+      @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
       @State var isAutoPlay: Bool = false
       @State var showControls: Bool = true
       @State var sliderStartTime: String = ""
@@ -199,10 +196,10 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
                       .controls(false)
                       .autoPlay(true)
                       .onPrepared({
-                              value => this.durationTime = value
+                              value => this.durationTime = value.duration
                           })
                       .onUpdate({
-                              value => this.currentTime = value
+                              value => this.currentTime = value.time
                           })
                   Row() {
                       Text("${this.currentTime}s")
