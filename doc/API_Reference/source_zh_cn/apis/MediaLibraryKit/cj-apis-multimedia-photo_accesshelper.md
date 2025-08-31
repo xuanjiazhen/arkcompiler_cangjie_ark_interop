@@ -288,7 +288,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 ```
 
@@ -335,7 +335,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let photoAssetArray = fetchResult.getAllObjects()
 ```
 
@@ -383,7 +383,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let count = fetchResult.getCount()
 ```
 
@@ -430,7 +430,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 ```
 
@@ -477,7 +477,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getLastObject()
 ```
 
@@ -526,7 +526,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getNextObject()
 ```
 
@@ -579,7 +579,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 ```
 
@@ -626,7 +626,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let isAfterLast = fetchResult.isAfterLast()
 ```
 
@@ -1697,7 +1697,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.User,
+let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.User,
     AlbumSubtype.UserGeneric, options: fetchOptions)
 ```
 
@@ -1753,7 +1753,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 ```
 
 ### func getBurstAssets(String, FetchOptions)
@@ -1809,7 +1809,7 @@ let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
 
 ### func registerChange(String, Bool, Callback1Argument\<ChangeData>)
@@ -1879,7 +1879,7 @@ let callback1 = MyCallback<ChangeData>(
     })
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
 ```
@@ -1922,7 +1922,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 phAccessHelper.release()
 ```
@@ -2076,7 +2076,7 @@ let callback1 = MyCallback<ChangeData>(
 
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)

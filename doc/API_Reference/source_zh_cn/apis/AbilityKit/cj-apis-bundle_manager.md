@@ -1256,7 +1256,7 @@ public class BundleManager {}
 public static func canOpenLink(link: String): Bool
 ```
 
-**功能：** 查询给定的链接是否可以打开。指定链接的scheme需要在module.json文件的querySchemes字段下配置。
+**功能：** 查询给定的链接是否可以打开。指定链接的scheme需要在module.json5文件的querySchemes字段下配置。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

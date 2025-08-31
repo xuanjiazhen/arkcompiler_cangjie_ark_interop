@@ -209,7 +209,7 @@ public func onPatternComplete(callback: (Array<Int32>) -> Unit): This
 ### class PatternLockController
 
 ```cangjie
-public class PatternLockController {
+public class PatternLockController <: RemoteDataLite {
     public init()
 }
 ```
@@ -235,7 +235,7 @@ public init()
 #### func reset()
 
 ```cangjie
-public func reset()
+public func reset(): Unit
 ```
 
 **功能：** 重置组件状态。
@@ -253,6 +253,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import std.collection.*
 
 @Entry
 @Component
@@ -277,8 +278,6 @@ class EntryView {
                 .pathColor(Color(0x90EE90))
                 .backgroundColor(Color(0xF5F5F5))
                 .autoReset(true)
-                .activateCircleStyle(CircleStyleOptions(Color(0x90EE90), (16.0).vp, true))
-                .onDotConnect({index: Int64 => Hilog.info(0, "AppLogCj", "onDotConnect index: " + index.toString());})
                 .onPatternComplete(
                     {
                         input: Array<Int32> =>
@@ -293,10 +292,8 @@ class EntryView {
                             if (this.passwords.get().toString() == input.toString()) {
                                 this.passwords = ObservedArray<Int32>(input)
                                 this.message = 'Set password successfully: ' + this.passwords.get().toString()
-                                this.patternLockController.setChallengeResult(PatternLockChallengeResult.CORRECT)
                             } else {
                                 this.message = 'Inconsistent passwords, please enter again.'
-                                this.patternLockController.setChallengeResult(PatternLockChallengeResult.WRONG)
                             }
                         } else {
                             // 提示第二次输入密码
@@ -310,7 +307,7 @@ class EntryView {
                 .margin(30)
                 .onClick(
                     {
-                        => // 重置密码锁
+                        evt => // 重置密码锁
                         this.patternLockController.reset()
                         this.passwords = ObservedArray<Int32>([])
                         this.message = 'Please input password'

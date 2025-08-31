@@ -214,7 +214,7 @@ public func onTimer(event: (Int64, Int64) -> Unit): This
 ### class TextTimerController
 
 ```cangjie
-public class TextTimerController <: RemoteDataLite {
+public class TextTimerController <: RemoteDataLite <: RemoteDataLite {
     public init()
 }
 ```
@@ -303,13 +303,13 @@ class EntryView {
                     Hilog.info(0, "AppLogCj", "time has been changed")
                 })
             Row() {
-                Button("start").onClick{=>
+                Button("start").onClick{ evt =>
                   this.textTimerController.start()
                 }
-                Button("pause").onClick{=>
+                Button("pause").onClick{ evt =>
                   this.textTimerController.pause()
                 }
-                Button("reset").onClick{=>
+                Button("reset").onClick{ evt =>
                     this.textTimerController.reset()
                 }
             }
@@ -351,7 +351,7 @@ class EntryView {
         ),
         ShadowOptions(
             radius: 10.0,
-            color: Color.BROWN,
+            color: Color.Gray,
             offsetX: 30.0,
             offsetY: 0.0
         ),
@@ -363,12 +363,12 @@ class EntryView {
         ),
         ShadowOptions(
         radius: 10.0,
-        color: Color.YELLOW,
+        color: Color.Blue,
         offsetX: 100.0,
         offsetY: 0.0
         )]
     func build() {
-        Column(8) {
+        Column(space: 8) {
             TextTimer().fontSize(50).textShadow(this.textShadows)
         }
     }
@@ -396,10 +396,10 @@ class EntryView {
     @State var format: String = 'mm:ss.SS'
 
     func build() {
-        Column(8) {
+        Column(space: 8) {
             Scroll().height(20.percent)
             Button("openTextTimer").onClick({
-                =>
+                evt =>
 
             })
             TextTimer( isCountDown: true, count: 30000, controller: this.textTimerController )

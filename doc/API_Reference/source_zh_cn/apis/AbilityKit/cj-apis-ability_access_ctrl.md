@@ -115,8 +115,8 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 import kit.AbilityKit.*
 
 let atManager = AbilityAccessCtrl.createAtManager()
-let tokenID : UInt32 = 0 // tokenID系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取
-let status = atManager.checkAccessToken(tokenID, "ohos.permission.GRANT_SENSITIVE_PERMISSIONS")
+let tokenID : UInt32 = 1 // tokenID系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取
+let status = atManager.checkAccessToken(tokenID, "ohos.permission.READ_CONTACTS")
 ```
 
 ### func requestPermissionsFromUser(UIAbilityContext, Array\<Permissions>, AsyncCallback\<PermissionRequestResult>)

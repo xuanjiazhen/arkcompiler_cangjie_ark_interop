@@ -5,7 +5,7 @@
 ## func onVisibleAreaChange(Array\<Float64>, (Bool, Float64)->Unit)
 
 ```cangjie
-public func onVisibleAreaChange(ratios: Array<Float64>, event: (Bool, Float64)->Unit): This
+public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -> Unit): This
 ```
 
 **功能：** 组件可见区域变化时触发的事件。

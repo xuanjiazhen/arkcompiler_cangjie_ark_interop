@@ -147,9 +147,9 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   @Entry
   @Component
   class EntryView {
-      @State var videoSrc: AppResource = @rawfile("video.mp4")
-      @State var previewUri: AppResource = @r(app.media.preview)
-      @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100_X
+      @State var videoSrc: AppResource = @r(app.media.startIcon) // 需要传入正确的视频数据源
+      @State var previewUri: AppResource = @r(app.media.startIcon)
+      @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
 
       func build() {
           Row() {
@@ -179,8 +179,8 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   @Entry
   @Component
   class EntryView {
-      @State var videoSrc: AppResource = @rawfile("video.mp4")
-      @State var previewUri: AppResource = @r(app.media.preview)
+      @State var videoSrc: AppResource = @r(app.media.startIcon) // 需要传入正确的视频数据源
+      @State var previewUri: AppResource = @r(app.media.startIcon)
       @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
       @State var isAutoPlay: Bool = false
       @State var showControls: Bool = true

@@ -17,7 +17,7 @@ import kit.ArkUI.*
 ### init(Array\<Float64>, Float64, DataPanelType)
 
 ```cangjie
-public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPanelType = DataPanelType.CircleType)
+public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPanelType = DataPanelType.Circle)
 ```
 
 **功能：** 创建一个数据面板组件。
@@ -32,7 +32,7 @@ public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPane
 |:---|:---|:---|:---|:---|
 |values|Array\<Float64>|是|-|**命名参数。** 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。|
 |max|Float64|否|100.0|**命名参数。** \- max大于0，表示数据的最大值。 <br> \- max小于等于0，max等于value数组各项的和，按比例显示。|
-|panelType|[DataPanelType](./cj-common-types.md#enum-datapaneltype)|否|DataPanelType.CircleType|**命名参数。** 数据面板的类型（不支持动态修改）。|
+|panelType|[DataPanelType](./cj-common-types.md#enum-datapaneltype)|否|DataPanelType.Circle|**命名参数。** 数据面板的类型（不支持动态修改）。|
 
 ## 通用属性/通用事件
 
@@ -450,7 +450,7 @@ class EntryView {
         Column {
             Row() {
                 Stack() {
-                    DataPanel(values: [30.0], max: 100.0, panelType: DataPanelType.CircleType).width(168).height(168)
+                    DataPanel(values: [30.0], max: 100.0, panelType: DataPanelType.Circle).width(168).height(168)
                     Column() {
                         Text("30")
                             .fontSize(35)
@@ -469,7 +469,7 @@ class EntryView {
                         .position(x: 104.42, y: 78.17)
                 }.margin(right: 44)
                 Stack() {
-                    DataPanel(values: [50.0, 12.0, 8.0, 5.0], max: 100.0, panelType: DataPanelType.CircleType)
+                    DataPanel(values: [50.0, 12.0, 8.0, 5.0], max: 100.0, panelType: DataPanelType.Circle)
                         .width(168)
                         .height(168)
                     Column() {
@@ -538,7 +538,7 @@ class EntryView {
                 .textAlign(TextAlign.Start)
                 .width(100.percent)
                 .margin(top: 20, left: 20)
-            DataPanel(values: this.values1, max: 100.0, panelType: DataPanelType.CircleType)
+            DataPanel(values: this.values1, max: 100.0, panelType: DataPanelType.Circle)
                 .width(300)
                 .height(300).
                 valueColors(this.colorArray)
@@ -598,7 +598,7 @@ class EntryView {
                 .textAlign(TextAlign.Start)
                 .width(100.percent)
                 .margin(top: 20, left: 20)
-            DataPanel(values: this.values1, max: 100.0, panelType: DataPanelType.CircleType)
+            DataPanel(values: this.values1, max: 100.0, panelType: DataPanelType.Circle)
                 .width(300)
                 .height(300).
                 valueColors(this.colorArray)

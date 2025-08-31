@@ -70,7 +70,7 @@ public prop width: Int32
 
 ```cangjie
 public init(width: Float64, height: Float64, data!: Array<UInt8>,
-    unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
+    unit!: LengthMetricsUnit = LengthMetricsUnit.Default)
 ```
 
 **功能：** 构造一个ImageData类型的对象。

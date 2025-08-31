@@ -20,8 +20,8 @@ import kit.ArkUI.*
 ## func bindContextMenu(CustomBuilder, ResponseType, ContextMenuOptions)
 
 ```cangjie
-public func bindContextMenu(content: CustomBuilder, responseType: ResponseType,
-    options!: ContextMenuOptions = ContextMenuOptions()): This
+public func bindContextMenu(builder!: CustomBuilder, responseType!: ResponseType,
+        options!: ContextMenuOptions = ContextMenuOptions()): This
 ```
 
 **功能：** 绑定上下文菜单。
@@ -61,7 +61,7 @@ public func bindMenu(content: Array<MenuElement>): This
 ## func bindMenu(CustomBuilder)
 
 ```cangjie
-public func bindMenu(content: CustomBuilder): This
+public func bindMenu(builder!: CustomBuilder): This
 ```
 
 **功能：** 绑定自定义菜单。

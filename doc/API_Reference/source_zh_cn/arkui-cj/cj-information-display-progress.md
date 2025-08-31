@@ -308,26 +308,23 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class EntryView {
-    let scaleStyle0 = ScaleRingStyleOptions(strokeWidth: 15.vp, scaleCount: 15, scaleWidth: 5.vp,
-        enableSmoothEffect: true)
-    let scaleStyle1 = ScaleRingStyleOptions(strokeWidth: 20.vp, scaleCount: 20, scaleWidth: 5.vp,
-        enableSmoothEffect: true)
-    let scaleStyle2 = ScaleRingStyleOptions(strokeWidth: 20.vp, scaleCount: 30, scaleWidth: 3.vp,
-        enableSmoothEffect: true)
+    let scaleStyle0 = RingStyleOptions(strokeWidth: 15.vp, enableSmoothEffect: true)
+    let scaleStyle1 = RingStyleOptions(strokeWidth: 20.vp, enableSmoothEffect: true)
+    let scaleStyle2 = RingStyleOptions(strokeWidth: 20.vp, enableSmoothEffect: true)
     let ringStyle = RingStyleOptions(strokeWidth: 20.vp)
     func build() {
-        Column(15) {
+        Column(space: 15) {
             Text("Linear Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Progress(value: 10.0, `type`: ProgressType.Linear).width(200)
-            Progress(value: 20.0, total: 150.0, `type`: ProgressType.Linear)
+            Progress(value: 10.0, progressType: ProgressType.Linear).width(200)
+            Progress(value: 20.0, total: 150.0, progressType: ProgressType.Linear)
                 .color(Color.Gray)
                 .value(50.0)
                 .width(200)
 
             Text("Eclipse Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
             Row(space: 40) {
-                Progress(value: 10.0, `type`: ProgressType.Eclipse).width(100)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.Eclipse)
+                Progress(value: 10.0, progressType: ProgressType.Eclipse).width(100)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.Eclipse)
                     .width(100)
                     .color(Color.Gray)
                     .value(50.0)
@@ -335,8 +332,8 @@ class EntryView {
 
             Text("ScaleRing Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
             Row(space: 40) {
-                Progress(value: 10.0, `type`: ProgressType.ScaleRing).width(100)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+                Progress(value: 10.0, progressType: ProgressType.ScaleRing).width(100)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
@@ -344,12 +341,12 @@ class EntryView {
             }
 
             Row(space: 40) {
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
                     .style(scaleStyle1)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
@@ -358,8 +355,8 @@ class EntryView {
 
             Text("Ring Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
             Row(space: 40) {
-                Progress(value: 10.0, `type`: ProgressType.Ring).width(100)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.Ring)
+                Progress(value: 10.0, progressType: ProgressType.Ring).width(100)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.Ring)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
@@ -368,8 +365,8 @@ class EntryView {
 
             Text("Capsule Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
             Row(space: 40) {
-                Progress(value: 10.0, `type`: ProgressType.Capsule).width(100).height(50)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.Capsule)
+                Progress(value: 10.0, progressType: ProgressType.Capsule).width(100).height(50)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.Capsule)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
@@ -397,22 +394,20 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class EntryView {
-    let colorStop0 = ColorStop(0X02fd03, 0.5)
-    let colorStop1 = ColorStop(Color.Blue, 1.0)
     let ringStyle0 = RingStyleOptions(strokeWidth: 20.vp)
     let ringStyle1 = RingStyleOptions(strokeWidth: 20.vp, shadow: true)
     func build() {
-        Column(15) {
+        Column(space: 15) {
             Text("Gradient Color").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
             Row(space: 40) {
-                Progress(value: 70.0, `type`: ProgressType.Ring)
+                Progress(value: 70.0, progressType: ProgressType.Ring)
                     .width(100)
                     .style(ringStyle0)
-                    .color([colorStop0, colorStop1])
+                    .color(0X02fd03)
             }
             Text("Shadow").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
             Row(space: 40) {
-                Progress(value: 70.0, `type`: ProgressType.Ring).width(120).color(Color.Blue).style(ringStyle1)
+                Progress(value: 70.0, progressType: ProgressType.Ring).width(120).color(Color.Blue).style(ringStyle1)
             }
         }
     }
@@ -439,17 +434,17 @@ import ohos.resource_manager.*
 @Entry
 @Component
 class EntryView {
-    let ringStyle0 = RingStyleOptions(strokeWidth: 20.vp, status: ProgressStatus.LOADING)
+    let ringStyle0 = RingStyleOptions(strokeWidth: 20.vp, status: ProgressStatus.Loading)
     let ringStyle1 = RingStyleOptions(strokeWidth: 20.vp, enableScanEffect: true)
     func build() {
-        Column(15) {
+        Column(space: 15) {
             Text("Loading Effect").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
             Row(space: 40) {
-                Progress(value: 0.0, `type`: ProgressType.Ring).width(100).style(ringStyle0).color(Color.Blue)
+                Progress(value: 0.0, progressType: ProgressType.Ring).width(100).style(ringStyle0).color(Color.Blue)
             }
             Text("Shadow").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
             Row(space: 40) {
-                Progress(value: 30.0, `type`: ProgressType.Ring).width(100).color(0X02fd03).style(ringStyle1)
+                Progress(value: 30.0, progressType: ProgressType.Ring).width(100).color(0X02fd03).style(ringStyle1)
             }
         }
     }
@@ -458,43 +453,7 @@ class EntryView {
 
 ![progress3](figures/progress3.gif)
 
-### 示例4（设置胶囊形进度条属性）
-
-该示例通过style接口的borderColor、borderWidth、content、font、fontColor、enableScanEffect、showDefaultPercentage属性，实现了胶囊形进度条视觉属性设置功能。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Column(15) {
-          Row(space: 40) {
-            Progress(value: 100.0, total: 100.0, `type`: ProgressType.Capsule).width(100).height(50)
-              .style(
-                CapsuleStyleOptions(
-                    content: 'Installing...',
-                    font: Fonts(size: 13, style: FontStyle.Normal),
-                    borderColor: Color.Blue,
-                    borderWidth: 1,
-                    fontColor: Color.Gray,
-                    enableScanEffect: false,
-                    showDefaultPercentage: false))
-          }
-        }.width(100.percent).padding( top: 5 )
-    }
-}
-```
-
-![progress4](figures/progress4.png)
-
-### 示例5（设置进度平滑动效）
+### 示例4（设置进度平滑动效）
 
 该示例通过style接口的enableSmoothEffect属性，实现了进度平滑动效开关的功能。
 
@@ -515,11 +474,11 @@ class EntryView {
     func build() {
         Column(space: 10) {
             Text('enableSmoothEffect: true').fontSize(9).fontColor(0xCCCCCC).width(90.percent).margin(5).margin( top: 20 )
-            Progress( value: this.value, total: 100.0, `type`: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: true ))
+            Progress( value: this.value, total: 100.0, progressType: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: true ))
             Text('enableSmoothEffect: false').fontSize(9).fontColor(0xCCCCCC).width(90.percent).margin(5)
-            Progress( value: this.value, total: 100.0, `type`: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: false ))
+            Progress( value: this.value, total: 100.0, progressType: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: false ))
             Button('value +10')
-                .onClick{ =>
+                .onClick{ evt =>
                     this.value += 10.0
             }.width(75).height(15).fontSize(9)
         }.width(50.percent).height(100.percent).margin( left: 20 )

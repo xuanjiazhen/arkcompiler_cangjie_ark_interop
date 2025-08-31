@@ -45,7 +45,7 @@ public init(value!: String, group!: String)
 ### func checked(Bool)
 
 ```cangjie
-public func checked(isChecked: Bool): This
+public func checked(value: Bool): This
 ```
 
 **功能：** 单选框的选中状态。

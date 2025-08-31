@@ -180,12 +180,6 @@
                         - [键鼠事件](source_zh_cn/arkui-cj/cj-common-events-device-input-event.md)
                         - [焦点事件](source_zh_cn/arkui-cj/cj-common-events-focus-event.md)
                         - [拖拽事件](source_zh_cn/arkui-cj/cj-common-events-drag-event.md)
-                    - [使用手势事件]()
-                        - [绑定手势方法](source_zh_cn/arkui-cj/cj-gesture-events-binding.md)
-                        - [单一手势](source_zh_cn/arkui-cj/cj-gesture-events-single-gesture.md)
-                        - [组合手势](source_zh_cn/arkui-cj/cj-gesture-events-combined-gestures.md)
-                        - [多层级手势事件](source_zh_cn/arkui-cj/cj-gesture-events-multi-level-gesture.md)
-                        - [手势拦截](source_zh_cn/arkui-cj/cj-gesture-events-gesture-judge.md)
                 - [使用镜像能力](source_zh_cn/arkui-cj/cj-mirroring-display.md)
                 <!--RP1--><!--RP1End-->
                 - [主题设置]()

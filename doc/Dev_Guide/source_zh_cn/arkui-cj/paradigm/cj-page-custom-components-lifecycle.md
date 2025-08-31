@@ -57,6 +57,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import ohos.arkui.ui_context.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -66,12 +67,12 @@ class EntryView {
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageShow() {
-        Hilog.info(0, "cangjie", Index onPageShow")
+        Hilog.info(0, "cangjie", "Index onPageShow")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageHide() {
-        Hilog.info(0, "cangjie", Index onPageHide")
+        Hilog.info(0, "cangjie", "Index onPageHide")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
@@ -84,17 +85,17 @@ class EntryView {
 
     // 组件生命周期
     protected override func aboutToAppear() {
-        Hilog.info(0, "cangjie", EntryView aboutToAppear")
+        Hilog.info(0, "cangjie", "EntryView aboutToAppear")
     }
 
     // 组件生命周期
     protected override func onDidBuild() {
-        Hilog.info(0, "cangjie", EntryView onDidBuild")
+        Hilog.info(0, "cangjie", "EntryView onDidBuild")
     }
 
     // 组件生命周期
     protected override func aboutToDisappear() {
-        Hilog.info(0, "cangjie", EntryView aboutToDisappear")
+        Hilog.info(0, "cangjie", "EntryView aboutToDisappear")
     }
 
     func build() {
@@ -129,17 +130,17 @@ class Child {
 
     // 组件生命周期
     protected override func aboutToAppear() {
-        Hilog.info(0, "cangjie", Child aboutToAppear")
+        Hilog.info(0, "cangjie", "Child aboutToAppear")
     }
 
     // 组件生命周期
     protected override func onDidBuild() {
-        Hilog.info(0, "cangjie", Child onDidBuild")
+        Hilog.info(0, "cangjie", "Child onDidBuild")
     }
 
     // 组件生命周期
     protected override func aboutToDisappear() {
-        Hilog.info(0, "cangjie", Child aboutToDisappear")
+        Hilog.info(0, "cangjie", "Child aboutToDisappear")
     }
 
     func build() {
@@ -161,6 +162,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -222,134 +224,3 @@ class Page {
 - 最小化应用或者应用进入后台，触发Index onPageHide。当前Index页面没有被销毁，所以并不会执行组件的aboutToDisappear。应用回到前台，执行Index onPageShow。
 
 - 退出应用，执行Index onPageHide --> EntryView aboutToDisappear --> Child aboutToDisappear。
-
-## 自定义组件监听页面声明周期
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import ohos.observer.*
-
-class TabContentInfoCallback1 <: Callback1Argument<TabContentInfo> {
-    public init() {}
-    // Tabs1的TabContent页面切换时调用
-    public open func invoke(val: TabContentInfo): Unit {
-        Hilog.info(0, "cangjie", TabContentUpdate1 tabContentId: ${val.tabContentId}")
-        Hilog.info(0, "cangjie", TabContentUpdate1 tabContentUniqueId: ${val.tabContentUniqueId}")
-        match (val.state) {
-            case ON_SHOW => Hilog.info(0, "cangjie", TabContentUpdate1 ON_SHOW")
-            case ON_HIDE => Hilog.info(0, "cangjie", TabContentUpdate1 ON_HIDE")
-            case _ => Hilog.info(0, "cangjie", TabContentUpdate1 error")
-        }
-        Hilog.info(0, "cangjie", TabContentUpdate1 id:${val.id}")
-        Hilog.info(0, "cangjie", TabContentUpdate1 uniqueId:${val.uniqueId}")
-    }
-}
-
-class TabContentInfoCallback2 <: Callback1Argument<TabContentInfo> {
-    public init() {}
-    // Tabs1的TabContent页面切换时调用
-    public open func invoke(val: TabContentInfo): Unit {
-        Hilog.info(0, "cangjie", TabContentUpdate2 tabContentId: ${val.tabContentId}")
-        Hilog.info(0, "cangjie", TabContentUpdate2 tabContentUniqueId: ${val.tabContentUniqueId}")
-        match (val.state) {
-            case ON_SHOW => Hilog.info(0, "cangjie", TabContentUpdate2 ON_SHOW")
-            case ON_HIDE => Hilog.info(0, "cangjie", TabContentUpdate2 ON_HIDE")
-            case _ => Hilog.info(0, "cangjie", TabContentUpdate2 error")
-        }
-        Hilog.info(0, "cangjie", TabContentUpdate2 id:${val.id}")
-        Hilog.info(0, "cangjie", TabContentUpdate2 uniqueId:${val.uniqueId}")
-    }
-}
-
-@Entry
-@Component
-class EntryView {
-    var tabContentUpdate1: TabContentInfoCallback1 = TabContentInfoCallback1()
-
-    protected override func aboutToAppear() {
-        // 监听Tabs1的TabContent页面的切换事件。
-        on(ObserverType.OBSERVER_TAB_CONTENT_UPDATE, ObserverOptions("Tabs1"), tabContentUpdate1)
-    }
-
-    protected override func aboutToDisappear() {
-        // 取消监听Tabs1的TabContent页面的切换事件。
-        off(ObserverType.OBSERVER_TAB_CONTENT_UPDATE, ObserverOptions("Tabs1"), tabContentUpdate1)
-    }
-
-    func build() {
-        Column {
-            Tabs {
-                TabContent {
-                    Column {
-                        Text("TabContent1")
-                    }
-                }.id("TabContent1")
-
-                TabContent {
-                    Column {
-                        Text("TabContent2")
-                    }
-                }.id("TabContent2")
-
-                TabContent {
-                    Column {
-                        Text("TabContent3")
-                    }
-                }.id("TabContent3")
-            }
-                .width(100.percent)
-                .height(40.percent)
-                .id("Tabs1")
-
-            Column {
-                SubComponent()
-            }
-        }
-    }
-}
-
-@Component
-class SubComponent {
-    var tabContentUpdate2: TabContentInfoCallback2 = TabContentInfoCallback2()
-
-    protected override func aboutToAppear() {
-        // 监听Tabs2的TabContent页面的切换事件。
-        on(ObserverType.OBSERVER_TAB_CONTENT_UPDATE, ObserverOptions("Tabs2"), tabContentUpdate2)
-    }
-
-    protected override func aboutToDisappear() {
-        // 取消监听Tabs2的TabContent页面的切换事件。
-        off(ObserverType.OBSERVER_TAB_CONTENT_UPDATE, ObserverOptions("Tabs2"), tabContentUpdate2)
-    }
-
-    func build() {
-        Tabs {
-            TabContent {
-                Column {
-                    Text("TabContent1")
-                }
-            }.id("TabContent1")
-
-            TabContent {
-                Column {
-                    Text("TabContent2")
-                }
-            }.id("TabContent2")
-
-            TabContent {
-                Column {
-                    Text("TabContent3")
-                }
-            }.id("TabContent3")
-        }
-            .width(100.percent)
-            .height(40.percent)
-            .id("Tabs2")
-    }
-}
-```

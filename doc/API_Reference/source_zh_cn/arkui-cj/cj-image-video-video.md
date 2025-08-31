@@ -393,7 +393,7 @@ public var duration: Int32
 ### class VideoController
 
 ```cangjie
-public class VideoController {
+public class VideoController <: RemoteDataLite {
     public init()
 }
 ```

@@ -890,7 +890,7 @@ public func top(value: Length): This
 ### class SwiperController
 
 ```cangjie
-public class SwiperController {
+public class SwiperController <: RemoteDataLite {
     public init()
 }
 ```

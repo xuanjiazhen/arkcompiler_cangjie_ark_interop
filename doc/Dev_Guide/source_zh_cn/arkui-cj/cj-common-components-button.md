@@ -171,116 +171,6 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
 
 ## 场景示例
 
-- 用于启动操作。
-  可以用按钮启动任何用户界面元素，按钮会根据用户的操作触发相应的事件。例如，在List容器里通过点击按钮进行页面跳转。
-
-     <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-
-  @Builder
-  func pageMap(name: String) {
-      if (name == "pageOne") {
-          View_NavDestination_One()
-      } else if (name == "pageTwo") {
-          View_NavDestination_Two()
-      } else {
-          View_NavDestination_Three()
-      }
-  }
-
-  @Entry
-  @Component
-  class EntryView {
-      var pageStack: NavPathStack = NavPathStack()
-      public func build() {
-          Navigation(this.pageStack) {
-              List() {
-                  ListItem() {
-                      Button("First").onClick {
-                          this.pageStack.pushPath(NavPathInfo("pageOne", "pageOne test"))
-                      }
-                      .width(100.percent)
-                  }
-                  ListItem() {
-                      Button("Second").onClick {
-                          this.pageStack.pushPath(NavPathInfo("pageTwo", "pageTwo test"))
-                      }
-                      .width(100.percent)
-                  }
-                  ListItem() {
-                      Button("Third").onClick {
-                          this.pageStack.pushPath(NavPathInfo("pageThree", "pageThree test"))
-                      }
-                      .width(100.percent)
-                  }
-              }
-              .listDirection(Axis.Vertical)
-              .backgroundColor(Color.Gray)
-              .padding(20)
-
-          }
-          .navDestination(bind<String>(pageMap, this))
-      }
-  }
-
-  // pageOne
-  @Component
-  class View_NavDestination_One {
-      var pageInfos: NavPathStack = NavPathStack()
-
-      public func build() {
-          NavDestination() {
-              Text("Page One")
-          }.onReady {
-              context => pageInfos = context.pathStack
-          }.onBackPressed {
-              pageInfos.pop()
-              true
-          }
-      }
-  }
-
-  // pageTwo
-  @Component
-  class View_NavDestination_Two {
-      var pageInfos: NavPathStack = NavPathStack()
-
-      public func build() {
-          NavDestination() {
-              Text("Page Two")
-          }.onReady {
-              context => pageInfos = context.pathStack
-          }.onBackPressed {
-              pageInfos.pop()
-              true
-          }
-      }
-  }
-
-  // pageThree
-  @Component
-  class View_NavDestination_Three {
-      var pageInfos: NavPathStack = NavPathStack()
-
-      public func build() {
-          NavDestination() {
-              Text("Page Three")
-          }.onReady {
-              context => pageInfos = context.pathStack
-          }.onBackPressed {
-              pageInfos.pop()
-              true
-          }
-      }
-  }
-  ```
-
-  ![Button12](figures/Button12.gif)
-
 - 用于提交表单。
 
   在用户登录/注册页面，使用按钮进行登录或注册操作。
@@ -351,7 +241,7 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               }.width(90.percent)
 
               Button() {
-                  Image(@r(app.media.ic_public_add))
+                  Image(@r(app.media.startIcon))
                       .width(50)
                       .height(50)
               }
@@ -359,7 +249,7 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               .width(60)
               .height(60)
               .position(x: 80.percent, y: 600)
-              .shadow(radius: Float(10))
+              .shadow(radius: 10.0)
               .onClick {
                   evt =>
                   // 需要执行的操作

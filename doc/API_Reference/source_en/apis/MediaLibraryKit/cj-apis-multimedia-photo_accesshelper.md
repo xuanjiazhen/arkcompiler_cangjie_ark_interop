@@ -215,7 +215,7 @@ let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 predicates.equalTo('album_name', Str('test1'))
 let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
+let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.USER,
     AlbumSubtype.USER_GENERIC, options: fetchOptions)
 let firstAlbum = fetchResult.getFirstObject()
 firstAlbum.albumName = "test10086"
@@ -274,7 +274,7 @@ let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 predicates.equalTo('album_name', Str('test1'))
 let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
+let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.USER,
     AlbumSubtype.USER_GENERIC, options: fetchOptions)
 let firstAlbum = fetchResult.getFirstObject()
 let photoCount = firstAlbum.count
@@ -1922,7 +1922,7 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 ### func getAlbums(AlbumType, AlbumSubtype, FetchOptions)
 
 ```cangjie
-public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchOptions = FetchOptions()): FetchResult<Album>
+public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchOptions = FetchOptions()): AlbumResult
 ```
 
 **Function:** Retrieve albums based on search options and album type. Ensure the album exists before retrieval.
@@ -1976,7 +1976,7 @@ predicates
     .and()
     .equalTo('count', Integer(2))
 let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
+let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.USER,
     AlbumSubtype.USER_GENERIC, options: fetchOptions)
 ```
 

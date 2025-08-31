@@ -18,10 +18,10 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(() -> Unit)
+### init(() -> Unit = {=>})
 
 ```cangjie
-public init(child: () -> Unit)
+public init(child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建一个存在子组件的菜单。
@@ -69,7 +69,7 @@ public func font(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](<font color="red" face="bold">please add link</font>)|否|16.vp|**命名参数。** 设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
 |weight|[FontWeight](<font color="red" face="bold">please add link</font>)|否|FontWeight.Normal|**命名参数。** 设置文本的字体粗细。|
 |family|String|否|"HarmonyOS Sans"|**命名参数。** 设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体和[注册自定义字体](https://gitcode.com/Cangjie/cangjie-ohos-docs/blob/main/docs/API_Reference/source_zh_cn/arkui-cj/cj-apis-font.md)。|
 |style|[FontStyle](<font color="red" face="bold">please add link</font>)|否|FontStyle.Normal|**命名参数。** 设置文本的字体样式。|
@@ -77,7 +77,7 @@ public func font(
 ### func fontColor(ResourceColor)
 
 ```cangjie
-public func fontColor(color: ResourceColor): This
+public func fontColor(value: ResourceColor): This
 ```
 
 **功能：** 统一设置Menu中所有文本的颜色。
@@ -90,7 +90,7 @@ public func fontColor(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|Menu中所有文本的颜色。<br/>初始值：0xE5000000|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|Menu中所有文本的颜色。<br/>初始值：0xE5000000|
 
 ### func radius(Length)
 
@@ -112,7 +112,7 @@ public func radius(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](<font color="red" face="bold">please add link</font>)|是|        | Menu边框圆角半径。<br/>初始值：20.vp。 |
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|        | Menu边框圆角半径。<br/>初始值：20.vp。 |
 
 ### func radius(BorderRadiuses)
 
@@ -130,7 +130,7 @@ public func radius(value: BorderRadiuses): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[BorderRadiuses](<font color="red" face="bold">please add link</font>)|是|-|Menu边框圆角半径。|
+|value|[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|是|-|Menu边框圆角半径。|
 
 ## 示例代码
 

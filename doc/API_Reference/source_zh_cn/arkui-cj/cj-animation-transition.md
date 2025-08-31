@@ -170,7 +170,7 @@ public var z: Float32
 
 ```cangjie
 public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 0.0, centerX!: Length = 50.percent,
-    centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0)
+        centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0)
 ```
 
 **功能：** RotateOptions构造函数。
@@ -296,7 +296,7 @@ public var z: Float32
 
 ```cangjie
 public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: Length = 50.percent,
-    centerY!: Length = 50.percent)
+        centerY!: Length = 50.percent)
 ```
 
 **功能：** ScaleOptions构造函数。
