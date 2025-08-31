@@ -751,7 +751,7 @@ class EntryView {
                     reference: BreakpointsReference.WindowSize
                 ), //设置为以窗口为参照。
                 //设置栅格布局排列方向,按照行方向排列。
-                direction: GridRowDirection.GridRowRow
+                direction: GridRowDirection.Row
             ) {
                 //循环渲染出bgColors对应颜色的栅格
                 ForEach(
@@ -784,7 +784,7 @@ class EntryView {
                     value: [400.vp, 600.vp, 800.vp], //设置断点位置的单调递增数组。
                     reference: BreakpointsReference.WindowSize //设置为以窗口为参照。
                 ),
-                direction: GridRowDirection.GridRowRow
+                direction: GridRowDirection.Row
             ) {
                 ForEach(
                     bgColors,

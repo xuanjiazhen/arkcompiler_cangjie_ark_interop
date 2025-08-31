@@ -142,7 +142,7 @@ class EntryView {
                 .size(width: 50.percent, height: 25.vp)
                 .margin(10.vp)
             // 绘制直线图形
-            Flex(FlexParams(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
+            Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
                 Path()
                     .width(210.px)
                     .height(310.px)
@@ -172,7 +172,7 @@ class EntryView {
                 .fontSize(20)
                 .size(width: 50.percent, height: 25.vp)
                 .margin(10.vp)
-            Flex(FlexParams(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
+            Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
                 Path()
                     .width(210.px)
                     .height(310.px)

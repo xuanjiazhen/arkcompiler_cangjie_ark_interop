@@ -3400,7 +3400,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class newPage{
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)) {
+        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center) {
             Column{
                 Text("New Page")
                 Button("Untouchable").onClick{
@@ -3468,7 +3468,7 @@ class newPage{
     }
 
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)) {
+        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center) {
             Column{
                 TextInput(placeholder: 'input some words here... ').margin(10.vp)
             }.margin(10.vp)
@@ -3576,7 +3576,7 @@ class newPage{
     }
 
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)){
+        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center){
             Column(){
                 Text("SubWindowCreated: ${hint}")
                 Button("GetSubWindow").onClick{

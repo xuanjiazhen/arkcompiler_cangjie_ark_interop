@@ -149,7 +149,9 @@ public func radiusWidth(value: Length): This
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.ArkUI.*
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry

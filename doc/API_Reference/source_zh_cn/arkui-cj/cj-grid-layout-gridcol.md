@@ -384,7 +384,7 @@ class EntryView {
                     value: [400.vp, 600.vp, 800.vp],
                     reference: BreakpointsReference.WindowSize
                 ),
-                direction: GridRowDirection.GridRowRow
+                direction: GridRowDirection.Row
             ) {
                 //GridCol栅格子组件，必须作为栅格容器组件(GridRow)的子组件使用。
                 //构造第1个GridCol子组件，栅格占2列，为第1,2列

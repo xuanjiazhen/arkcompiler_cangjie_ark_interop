@@ -800,7 +800,7 @@ import kit.LocalizationKit.__GenerateResource__
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                 Row() {
                     // 加载png格式图片
                     Image(@r(app.media.startIcon))
@@ -955,7 +955,7 @@ import kit.LocalizationKit.__GenerateResource__
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                 Row() {
                     // 加载png格式图片
                     Image(@r(app.media.startIcon))
