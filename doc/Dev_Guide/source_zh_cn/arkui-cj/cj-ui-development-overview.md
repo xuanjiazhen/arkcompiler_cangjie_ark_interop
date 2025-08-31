@@ -62,7 +62,7 @@
 |学习仓颉|介绍了仓颉的基本语法、状态管理和渲染控制的场景。| - [基本语法](./paradigm/cj-basic-syntax-overview.md)<br> - [状态管理](./state_management/cj-state-management-overview.md)<br> - [渲染控制](./rendering_control/cj-rendering-control-overview.md)|
 | 开发布局| 介绍了几种常用的布局方式。| - [常用布局](./cj-layout-development-overview.md)<br/> |
 | 添加组件| 介绍了几种常用的系统组件使用方法。 | - [常用组件](cj-common-components-button.md)<br/> - [自定义组件](./paradigm/cj-create-custom-components.md)|
-|设置组件导航和页面路由|介绍了如何设置组件间的导航以及页面路由。| - [组件导航（推荐）](cj-navigation-navigation.md)<br> - [页面路由](cj-page-routing.md)|
+|设置组件导航和页面路由|介绍了如何设置组件间的导航以及页面路由。| - [页面路由](cj-page-routing.md)|
 | 使用文本 | 介绍了输入框、富文本等文本组件的使用方法。| - [文本](cj-text-introduction.md)<br/>- [文本显示](cj-common-components-text-display.md) <br/>- [文本输入](cj-common-components-text-input.md)<br/> - [富文本](./cj-common-components-richeditor.md)<br>|
 | 使用弹窗 | 介绍了弹窗的应用场景与使用方法。 | - [弹窗](cj-dialog-overview.md)<br/>- [弹出框](cj-dialog-base-overview.md)<br> - [菜单控制](./cj-popup-and-menu-components-menu.md)<br/>- [不依赖UI组件的全局自定义弹出框](cj-uicontext-custom-dialog.md)<br/>- [固定样式弹出框](cj-fixes-style-dialog.md)<br/>- [气泡提示](cj-popup-and-menu-components-popup.md)<br> - [绑定模态页面](./cj-modal-overview.md)<br> - [即时反馈](./cj-create-toast.md)|
 | 显示图形| 介绍了如何显示图片、绘制自定义几何图形以及使用画布绘制自定义图形。| - [几何图形](cj-shape-drawing.md)<br/>- [画布](cj-drawing-customization-on-canvas.md) |
