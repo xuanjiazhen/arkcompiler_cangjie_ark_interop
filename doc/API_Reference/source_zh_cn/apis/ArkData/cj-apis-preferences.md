@@ -16,6 +16,7 @@ API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 正确的[dataGroupId](#var-datagroupid)需要向应用市场获取。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -310,6 +311,7 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -378,6 +380,7 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -434,6 +437,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -499,6 +503,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -544,6 +549,7 @@ public func clear(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -630,6 +636,7 @@ public func flush(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -684,6 +691,7 @@ public func get(key: String, defValue: ValueType): ValueType
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -736,6 +744,7 @@ public func getAll(): HashMap<String, ValueType>
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -797,6 +806,7 @@ public func has(key: String): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -965,6 +975,7 @@ public func put(key: String, value: ValueType): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie

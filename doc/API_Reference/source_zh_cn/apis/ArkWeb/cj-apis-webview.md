@@ -380,9 +380,10 @@ public static func configCookie(url: String, value: String, incognito!: Bool = f
 // index.cj
 
 import kit.ArkWeb.*
+import ohos.business_exception.BusinessException
 
 try {
-    WebCookieManager.configCookie("https://www.example.com", "a=b", incognito: false, includeHttpOnly: false)
+    WebCookieManager.configCookie("https://www.example.com", "a=b", incognito: false)
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
 }
