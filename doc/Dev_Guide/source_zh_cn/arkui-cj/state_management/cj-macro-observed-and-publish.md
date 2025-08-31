@@ -105,19 +105,19 @@ class EntryView{
             Column(){
                 Text("Time: ${Time.time.format("HH:mm:ss")}").margin(10)
                 Button("time update").onClick{
-                    =>
+                    evt =>
                         Time.time = DateTime.now()
                 }
                 Button("time addHours by 2").onClick{
-                    =>
+                    evt =>
                         Time.time = Time.time.addHours(2)
                 }
                 Button("time addMinutes by 31").onClick{
-                    =>
+                    evt =>
                         Time.time = Time.time.addMinutes(31)
                 }
                 Button("add 31 seconds").onClick{
-                    =>
+                    evt =>
                         Time.time = Time.time.addSeconds(31)
                 }
             }
@@ -186,7 +186,7 @@ class EntryView{
         Column{
             Text("Index: ${this.bag.book.name}")
             Button("change book.name").onClick{
-                =>
+                evt =>
                     this.bag.book.name = "ArkUI"
             }
         }
@@ -307,13 +307,13 @@ class EntryView{
         Column(space: 10){
             Text("parentId: ${parent1.parentId}")
             Button("change parentId by 1").onClick{
-                =>
+                evt =>
                     parent1.parentId += 1
             }
 
             Text("childId: ${parent1.child.childId}")
             Button("change childId by 1").onClick{
-                =>
+                evt =>
                     parent1.child.childId += 1
             }
         }
@@ -361,13 +361,13 @@ class EntryView{
         Column(space: 10){
             Text("parentId: ${parent1.parentId}")
             Button("change parentId by 1").onClick{
-                =>
+                evt =>
                     parent1.parentId += 1
             }
 
             Text("childId: ${parent1.child.childId}")
             Button("change childId by 1").onClick{
-                =>
+                evt =>
                     parent1.child.childId += 1
             }
         }

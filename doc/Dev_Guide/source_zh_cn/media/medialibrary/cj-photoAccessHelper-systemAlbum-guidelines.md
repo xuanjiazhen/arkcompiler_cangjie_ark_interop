@@ -37,7 +37,7 @@ func example() {
   try {
     let context = ctx.getOrThrow()
     let phAccessHelper = getPhotoAccessHelper(context)
-    let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
+    let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
     let album: Album = fetchResult.getFirstObject()
     AppLog.info('get favorite album successfully, albumUri: ' + album.albumUri)
     fetchResult.close()
@@ -112,11 +112,11 @@ func example() {
     )
 
   try {
-    let albumFetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
+    let albumFetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
     let album: Album = albumFetchResult.getFirstObject()
     AppLog.info('get favorite album successfully, albumUri: ' + album.albumUri)
 
-    let photoFetchResult: FetchResult<PhotoAsset> = album.getAssets(fetchOptions)
+    let photoFetchResult: PhotoAssetResult = album.getAssets(fetchOptions)
     let photoAsset: PhotoAsset = photoFetchResult.getFirstObject()
     AppLog.info('favorite album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName)
     photoFetchResult.close()
@@ -186,7 +186,7 @@ func example() {
   try {
     let context = ctx.getOrThrow()
     let phAccessHelper = getPhotoAccessHelper(context)
-    let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
+    let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
     let album: Album = fetchResult.getFirstObject()
     AppLog.info('get video album successfully, albumUri: ' + album.albumUri)
     fetchResult.close()
@@ -261,11 +261,11 @@ func example() {
     )
 
   try {
-    let albumFetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
+    let albumFetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
     let album: Album = albumFetchResult.getFirstObject()
     AppLog.info('get video album successfully, albumUri: ' + album.albumUri)
 
-    let videoFetchResult: FetchResult<PhotoAsset> = album.getAssets(fetchOptions)
+    let videoFetchResult: PhotoAssetResult = album.getAssets(fetchOptions)
     let photoAsset: PhotoAsset = videoFetchResult.getFirstObject()
     AppLog.info('video album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName)
     videoFetchResult.close()

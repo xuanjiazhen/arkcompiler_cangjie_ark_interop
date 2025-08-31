@@ -16,6 +16,7 @@ API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 获取当前应用沙箱所在路径可通过UIAbilityContext.[filesDir](../AbilityKit/cj-apis-app-ability-ui_ability.md#prop-filesdir)获取。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -158,6 +159,7 @@ public func getParent(): String
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -167,7 +169,7 @@ import kit.CoreFileKit.*
 import kit.PerformanceAnalysisKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let file = FileIo.open(filePath, mode: (OpenMode.READ_WRITE | OpenMode.CREATE))
 Hilog.info(0, "", "The parent path is: " + file.getParent())
 FileIo.close(file)
@@ -206,6 +208,7 @@ public func tryLock(exclusive!: Bool = false): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -214,7 +217,7 @@ public func tryLock(exclusive!: Bool = false): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let file = FileIo.open(filePath, mode:(OpenMode.READ_WRITE | OpenMode.CREATE))
 file.tryLock(exclusive: true)
 FileIo.close(file)
@@ -2409,6 +2412,7 @@ public func close(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2417,7 +2421,7 @@ public func close(): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 randomAccessFile.close()
 ```
@@ -2466,6 +2470,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2474,7 +2479,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let file = FileIo.open(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let randomAccessFile = FileIo.createRandomAccessFile(file)
 let length: Int64 = 4096
@@ -2504,6 +2509,7 @@ public func setFilePointer(filepointer: Int64): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2512,7 +2518,7 @@ public func setFilePointer(filepointer: Int64): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 randomAccessFile.setFilePointer(1)
 randomAccessFile.close()
@@ -2564,6 +2570,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2572,7 +2579,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let option = WriteOptions(length: 5, offset: 5)
 let bytesWritten = randomAccessFile.write("hello, world", options: option)
@@ -2624,6 +2631,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2632,7 +2640,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let option = WriteOptions(length: 5, offset: 5)
 let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
@@ -3106,6 +3114,7 @@ public func isBlockDevice(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3114,7 +3123,7 @@ public func isBlockDevice(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isBLockDevice = FileIo.stat(filePath).isBlockDevice()
 ```
 
@@ -3138,6 +3147,7 @@ public func isCharacterDevice(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3146,7 +3156,7 @@ public func isCharacterDevice(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isCharacterDevice = FileIo.stat(filePath).isCharacterDevice()
 ```
 
@@ -3170,6 +3180,7 @@ public func isDirectory(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3202,6 +3213,7 @@ public func isFIFO(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3210,7 +3222,7 @@ public func isFIFO(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isFIFO = FileIo.stat(filePath).isFIFO()
 ```
 
@@ -3234,6 +3246,7 @@ public func isFile(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3242,7 +3255,7 @@ public func isFile(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isFile = FileIo.stat(filePath).isFile()
 ```
 
@@ -3266,6 +3279,7 @@ public func isSocket(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3274,7 +3288,7 @@ public func isSocket(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isSocket = FileIo.stat(filePath).isSocket()
 ```
 
@@ -3298,6 +3312,7 @@ public func isSymbolicLink(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3306,7 +3321,7 @@ public func isSymbolicLink(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isSymbolicLink = FileIo.stat(filePath).isSymbolicLink()
 ```
 
@@ -3350,6 +3365,7 @@ public func close(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3358,7 +3374,7 @@ public func close(): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 stream.close()
 ```
@@ -3396,6 +3412,7 @@ public func flush(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3404,7 +3421,7 @@ public func flush(): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 stream.flush()
 stream.close()
@@ -3454,6 +3471,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3462,7 +3480,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 let buf = Array<Byte>(4096, repeat: 0)
 let num = stream.read(buf)
@@ -3515,6 +3533,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3523,7 +3542,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
 let num = stream.write(arr)
@@ -3576,6 +3595,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3584,7 +3604,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
 let num = stream.write(arr)

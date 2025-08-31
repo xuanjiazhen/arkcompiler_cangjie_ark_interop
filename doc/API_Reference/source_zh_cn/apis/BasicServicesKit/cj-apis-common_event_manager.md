@@ -163,6 +163,7 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncC
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -233,6 +234,7 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie

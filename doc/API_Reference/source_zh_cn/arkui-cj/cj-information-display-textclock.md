@@ -634,7 +634,7 @@ public init(locale!: String = "zh-Hans-CN", dateStyle!: String = "long", timeSty
 ### class TextClockController
 
 ```cangjie
-public class TextClockController {
+public class TextClockController <: RemoteDataLite {
 
 
     public init()

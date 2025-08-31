@@ -63,7 +63,7 @@ public func onReady(callback: () -> Unit): This
 ### class CanvasGradient
 
 ```cangjie
-public class CanvasGradient {}
+public class CanvasGradient <: RemoteDataLite {}
 ```
 
 **功能：** 渐变对象。

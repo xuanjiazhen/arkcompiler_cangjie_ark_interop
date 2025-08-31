@@ -14,6 +14,7 @@ API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 运行示例代码时，请先通过 [createImageSource](#func-createImageSourceString-SourceOptions) 构建正确的图片源，支持从raw数组、Uri、文件描述符等构建图片源。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -673,6 +674,12 @@ public func getComponent(componentType: ComponentType): Component
 
 **起始版本：** 21
 
+<!-- compile -->
+
+```cangjie
+// removed
+```
+
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -684,21 +691,6 @@ public func getComponent(componentType: ComponentType): Component
 |类型|说明|
 |:----|:----|
 |[Component](#class-component)|返回组件缓冲区。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let size = Size(8, 8192)
-let imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
-let img = imageCreator.dequeueImage()
-let component : Component = img.getComponent(ComponentType.Jpeg)
-```
 
 ### func release()
 
@@ -712,19 +704,10 @@ public func release(): Unit
 
 **起始版本：** 21
 
-**示例：**
-
 <!-- compile -->
 
 ```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let size = Size(8, 8192)
-let imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
-let img = imageCreator.dequeueImage()
-img.release()
+// removed
 ```
 
 ## class ImageInfo
@@ -930,6 +913,7 @@ public func packToData(source: ImageSource, options: PackingOption): Array<UInt8
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -939,7 +923,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSource: ImageSource = createImageSource(data, sourceOptions)
+let imageSource: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 var imagePacker = createImagePacker()
 let supportedFormats = imagePacker.supportedFormats
 let packingOption = PackingOption("image/jpeg", 98)
@@ -1043,6 +1027,7 @@ public func packToFile(source: ImageSource, fd: Int32, options: PackingOption): 
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1053,7 +1038,7 @@ import kit.CoreFileKit.{FileIo, OpenMode}
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSource: ImageSource = createImageSource(data, sourceOptions)
+let imageSource: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 var fd: Int32 = 0
 let filePath = "data/storage/el1/base/xxx.txt"
 let file = FileIo.open(filePath,mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
@@ -1388,6 +1373,7 @@ public func createPixelMap(options!: DecodingOptions = DecodingOptions()): Pixel
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1397,7 +1383,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let option = DecodingOptions(
     sampleSize: 1,
     rotate: 10,
@@ -1548,6 +1534,7 @@ public func getImageInfo(index!: UInt32 = 0): ImageInfo
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1557,7 +1544,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 imageSourceApi.getImageInfo(index : 0)
 ```
 
@@ -1607,6 +1594,7 @@ public func getImageProperty(key: PropertyKey, options!: ImagePropertyOptions = 
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1616,7 +1604,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 imageSourceApi.getImageProperty(PropertyKey.ImageLength)
 ```
 
@@ -1674,7 +1662,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 imageSourceApi.release()
 ```
 
@@ -1701,6 +1689,7 @@ public func updateData(buf: Array<UInt8>, isFinished: Bool, offset: UInt32, leng
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1710,7 +1699,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let testPng = Array<UInt8>(16500, repeat: 0)
 let bufferSize = 5000
 var offset = 0
@@ -2086,6 +2075,7 @@ public func createAlphaPixelmap(): PixelMap
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2095,7 +2085,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let alphaPixelmap = pixelMap.createAlphaPixelmap()
 ```
@@ -2120,6 +2110,7 @@ public func crop(region: Region): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2129,7 +2120,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let region: Region = Region(Size(100, 100), 0, 0)
 pixelMap.crop(region)
@@ -2156,6 +2147,7 @@ public func flip(horizontal: Bool, vertical: Bool): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2165,7 +2157,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let horizontal: Bool = true
 let vertical: Bool = false
@@ -2192,6 +2184,7 @@ public func getBytesNumberPerRow(): UInt32
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2201,7 +2194,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let rowCount : UInt32 = pixelMap.getBytesNumberPerRow()
 ```
@@ -2254,6 +2247,7 @@ public func getDensity(): Int32
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2263,7 +2257,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let getDensity : Int32 = pixelMap.getDensity()
 ```
@@ -2288,6 +2282,7 @@ public func getImageInfo(): ImageInfo
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2297,7 +2292,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 pixelMap.getImageInfo()
 ```
@@ -2322,6 +2317,7 @@ public func getPixelBytesNumber(): UInt32
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2331,7 +2327,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let pixelBytesNumber : UInt32 = pixelMap.getPixelBytesNumber()
 ```
@@ -2356,6 +2352,7 @@ public func opacity(rate: Float32): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2365,7 +2362,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let rate: Float32 = 0.5
 pixelMap.opacity(rate)
@@ -2391,6 +2388,7 @@ public func readPixels(area: PositionArea): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2400,7 +2398,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let area: PositionArea = PositionArea(
     Array<UInt8>(8, repeat: 0),
@@ -2431,6 +2429,7 @@ public func readPixelsToBuffer(dst: Array<UInt8>): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2440,7 +2439,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let readBuffer: Array<UInt8> = Array<UInt8>(96, repeat: 0) //96为需要创建的像素buffer大小，取值为：height * width *4
 pixelMap.readPixelsToBuffer(readBuffer)
@@ -2460,6 +2459,7 @@ public func release(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2469,7 +2469,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 pixelMap.release()
 ```
@@ -2494,6 +2494,7 @@ public func rotate(angle: Float32): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2503,7 +2504,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let angle: Float32 = 90.0
 pixelMap.rotate(angle)
@@ -2576,6 +2577,7 @@ public func translate(x: Float32, y: Float32): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2585,7 +2587,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let translateX: Float32 = 50.0
 let translateY: Float32 = 10.0
@@ -2612,6 +2614,7 @@ public func writeBufferToPixels(src: Array<UInt8>): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2621,7 +2624,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let color: Array<UInt8> = Array<UInt8>(96, {i => UInt8(i)}) //96为需要创建的像素buffer大小，取值为：height * width *4
 pixelMap.writeBufferToPixels(color)
@@ -2647,6 +2650,7 @@ public func writePixels(area: PositionArea): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2656,7 +2660,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let area: PositionArea = PositionArea(
     Array<UInt8>(8, {i => UInt8(i)}),

@@ -10,7 +10,7 @@ import kit.ArkUI.*
 
 ## 子组件
 
-可以包含[Span](./cj-text-input-span.md#span)、[ImageSpan](./cj-text-input-imagespan.md#imagespan)、[SymbolSpan](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-symbol.md#图标小符号(SymbolGlyph/SymbolSpan))子组件。
+可以包含[Span](./cj-text-input-span.md#span)、[ImageSpan](./cj-text-input-imagespan.md#imagespan)子组件。
 
 ## 创建组件
 
@@ -564,7 +564,7 @@ public init(
 ### class TextController
 
 ```cangjie
-public class TextController {
+public class TextController <: RemoteDataLite {
     public init()
 }
 ```

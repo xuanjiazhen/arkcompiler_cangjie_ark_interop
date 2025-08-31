@@ -352,7 +352,7 @@ public init(
 ### class PasteEvent
 
 ```cangjie
-public class PasteEvent {}
+public class PasteEvent <: RemoteDataLite {}
 ```
 
 **功能：** 定义用户粘贴事件。
@@ -742,6 +742,7 @@ public var insertOffset: Int32
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+
 **起始版本：** 21
 
 #### var insertValue
@@ -782,6 +783,16 @@ public init(
 |:---|:---|:---|:---|:---|
 |insertOffset|Int32|是|-|插入的文本偏移位置。|
 |insertValue|String|是|-|插入的文本内容。|
+
+### interface RichEditorSpanResult
+
+```cangjie
+public interface RichEditorSpanResult {}
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### class RichEditorSelection
 

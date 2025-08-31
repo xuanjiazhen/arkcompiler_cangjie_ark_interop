@@ -333,15 +333,6 @@ class EntryView {
             .onReachEnd( {=>
                 this.isListReachEnd = true
             })
-            .parallelGesture(
-                PanGesture()
-                .onActionStart({e=>
-                    if (this.isListReachEnd) {
-                    this.loadMoreArticles()
-                    this.isListReachEnd = false
-                    }
-                })
-        )
         .padding(20)
         .scrollBar(BarState.Off)
         }

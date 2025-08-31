@@ -105,6 +105,8 @@ public func append(element: T): Unit
 |:---|:---|:---|:---|:---|
 |element|T|是|-|插入的元素。|
 
+
+
 ### func appendAll(Collection\<T>)
 
 ```cangjie

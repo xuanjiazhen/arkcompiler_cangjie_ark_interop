@@ -73,7 +73,7 @@ class EntryView {
         Column() {
             Stack(alignContent: Alignment.End) {
                 Scroll(this.scroller) {
-                    Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+                    Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                         ForEach(this.arr, itemGeneratorFunc: { item: Int64, idx: Int64 =>
                             Row() {
                                 Text(item.toString())
@@ -130,7 +130,7 @@ class EntryView {
         Column() {
             Stack(alignContent: Alignment.End) {
                 Scroll(this.scroller) {
-                    Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+                    Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                         ForEach(
                             this.arr,
                             itemGeneratorFunc: {

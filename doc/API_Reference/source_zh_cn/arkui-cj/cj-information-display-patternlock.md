@@ -209,7 +209,7 @@ public func onPatternComplete(callback: (Array<Int32>) -> Unit): This
 ### class PatternLockController
 
 ```cangjie
-public class PatternLockController {
+public class PatternLockController <: RemoteDataLite {
     public init()
 }
 ```
@@ -235,7 +235,7 @@ public init()
 #### func reset()
 
 ```cangjie
-public func reset()
+public func reset(): Unit
 ```
 
 **功能：** 重置组件状态。

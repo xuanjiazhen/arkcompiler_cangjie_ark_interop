@@ -199,7 +199,6 @@ class EntryView{
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import std.ast.FuncType
 
 @Builder func globalBuilder() {
     Text('Hello World')
@@ -237,7 +236,6 @@ class ChildPage {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import std.ast.FuncType
 
 @Builder func globalBuilder() {
     Text('Hello World')
