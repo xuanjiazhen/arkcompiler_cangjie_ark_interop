@@ -341,14 +341,14 @@ class Child{
                 .margin(12)
                 .size(width: 312, height: 40)
                 .onClick{
-                    => this.items.append(this.items.size + 1)
+                    evt => this.items.append(this.items.size + 1)
                 }
 
             Button("Button 2: replace whole item")
                 .margin(12)
                 .size(width: 312, height:40)
                 .onClick{
-                    => this.items = ObservedArrayList<Int>([100,200,300])
+                    ect => this.items = ObservedArrayList<Int>([100,200,300])
                 }
         }
     }
@@ -402,7 +402,7 @@ class Child {
             Text("子组件的sourceNumber：" + this.sourceNumber.toString())
             Button("子组件更改memberMessage")
               .onClick {
-                  => this.memberMessage = "Hello memberMessage"
+                  evt => this.memberMessage = "Hello memberMessage"
             }
         }
         .margin(10)
@@ -419,7 +419,7 @@ class EntryView {
             Child(sourceNumber: this.sourceNumber)
             Button("父组件更改sourceNumber")
               .onClick {
-                  => this.sourceNumber++
+                  evt => this.sourceNumber++
             }
         }
     }

@@ -371,10 +371,9 @@ class EntryView {
 
 ```cangjie
 package ohos_app_cangjie_entry
-internal import ohos.base.AppLog
-internal import ohos.ability.AbilityStage
-internal import ohos.ability.LaunchReason
 import kit.ArkUI.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.*
 
 let storage =  LocalStorage()
 let temp = storage.setOrCreate("PropA", 47)
@@ -386,15 +385,15 @@ class MainAbility <: UIAbility {
     }
 
     public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        Hilog.info(0, "cangjie", MainAbility OnCreated.${want.abilityName}")
+        Hilog.info(0, "cangjie", "MainAbility OnCreated.${want.abilityName}")
         match (launchParam.launchReason) {
-            case LaunchReason.START_ABILITY => Hilog.info(0, "cangjie", START_ABILITY")
+            case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
             case _ => ()
         }
     }
 
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        Hilog.info(0, "cangjie", MainAbility onWindowStageCreate.")
+        Hilog.info(0, "cangjie", "MainAbility onWindowStageCreate.")
         windowStage.loadContent("EntryView")
     }
 }
@@ -703,30 +702,5 @@ struct Index {
     .height('100%')
     .width('100%')
   }
-}
-```
-
-在仓颉侧可以使用宏`@LocalStorageProp["propName", "InterOp"]`和`@LocalStorageLink["propName", "InterOp"]`与ArkTS视图LocalStorage实例中的属性建立单向和双向同步关系。
-
-
-```cangjie
-package ohos_app
-import kit.HybridUIKit.*
-import ohos.arkui.state_macro_manage.*
-
-@HybridComponentEntry
-@Component
-class MyLocalStorage {
-    @State
-    var text: String = "Text"
-    @LocalStorageLink["PropA", "InterOp"] var storage: String = "b"
-    @LocalStorageProp["PropB", "InterOp"] let storage2: String = "b"
-    public func build() {
-        Column {
-            Text(text).onClick({ evt => storage = "88" })
-            Text("PropA " + storage)
-            Text("PropB " + storage2)
-        }
-    }
 }
 ```
