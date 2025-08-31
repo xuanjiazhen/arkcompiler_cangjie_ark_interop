@@ -115,7 +115,6 @@
                         - [栅格布局（GridRow/GridCol）](source_zh_cn/arkui-cj/cj-layout-development-grid-layout.md)
                         - [创建列表（List）](source_zh_cn/arkui-cj/cj-layout-development-create-list.md)
                         - [创建网格（Grid/GridItem）](source_zh_cn/arkui-cj/cj-layout-development-create-grid.md)
-                        - [创建瀑布流（WaterFlow）](source_zh_cn/arkui-cj/cj-layout-development-waterflow.md)
                         - [创建轮播（Swiper）](source_zh_cn/arkui-cj/cj-layout-development-create-looping.md)
                         - [选项卡（Tabs）](source_zh_cn/arkui-cj/cj-layout-development-tabs.md)
                     <!--RP2--><!--RP2End-->
