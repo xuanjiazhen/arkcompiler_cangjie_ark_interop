@@ -147,7 +147,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M100 0 L200 240 L0 240 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
 
@@ -155,7 +155,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M0 0 H200 V200 H0 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
 
@@ -163,7 +163,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M100 0 L0 100 L50 200 L150 200 L200 100 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
             }.width(90.percent)
@@ -177,7 +177,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M0 300 S100 0 240 300 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
 
@@ -185,7 +185,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M0 150 C0 100 140 0 200 150 L100 300 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
 
@@ -193,7 +193,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M0 100 A30 20 20 0 0 200 100 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
             }.width(90.percent)

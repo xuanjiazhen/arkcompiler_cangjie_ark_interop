@@ -167,7 +167,7 @@ class EntryView {
                 Rect()
                 .width(90.percent)
                 .height(50)
-                .fillOpacity(0)
+                .fillOpacity(0.0)
                 .stroke(Color.Red)
                 .strokeWidth(3)
 
