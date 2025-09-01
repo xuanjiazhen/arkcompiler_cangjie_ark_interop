@@ -408,46 +408,6 @@ Right
 
 **起始版本：** 21
 
-#### func !=(IndexerAlign)
-
-```cangjie
-public operator func !=(other: IndexerAlign): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[IndexerAlign](#enum-indexeralign)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(IndexerAlign)
-
-```cangjie
-public operator func ==(other: IndexerAlign): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[IndexerAlign](#enum-indexeralign)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 #### func getValue()
 
 ```cangjie
@@ -475,6 +435,7 @@ public func getValue(): Int32
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 
 @Entry

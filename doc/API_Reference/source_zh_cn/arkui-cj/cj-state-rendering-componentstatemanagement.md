@@ -435,7 +435,6 @@ public func unsubscribeInner(observer: Observer): Unit
 ### func \[](int64)
 
 ```cangjie
-
 public operator func [](index: Int64): T
 ```
 

@@ -147,7 +147,7 @@ public func onSkip(callback: () -> Unit): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.performanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -159,7 +159,7 @@ class EntryView {
 
     func build() {
         Column() {
-            Stepper(currentIndex) {
+            Stepper(index:currentIndex) {
                 StepperItem() {
                     Column() {
                       Text("Page One").fontSize(35).fontColor(0x182431)

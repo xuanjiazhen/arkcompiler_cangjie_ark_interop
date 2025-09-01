@@ -214,7 +214,7 @@ public func onTimer(event: (Int64, Int64) -> Unit): This
 ### class TextTimerController
 
 ```cangjie
-public class TextTimerController <: RemoteDataLite <: RemoteDataLite {
+public class TextTimerController <: RemoteDataLite {
     public init()
 }
 ```
@@ -286,6 +286,7 @@ public func start(): Unit
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -387,6 +388,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 
 @Entry

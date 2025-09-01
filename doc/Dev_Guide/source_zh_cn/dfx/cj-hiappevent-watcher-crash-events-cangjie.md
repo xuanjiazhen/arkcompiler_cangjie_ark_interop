@@ -85,7 +85,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 若应用主动捕获崩溃异常，如下两种场景，HiAppEvent事件将会在应用退出前回调。
 
-场景1：异常处理中未主动退出，应用发生崩溃后将不会退出。例如采用[errorManger.on](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#static-func-onstring-errorobserver)方法捕获CjError崩溃；应用主动注册NativeCrash崩溃信号处理函数未主动退出。
+场景1：异常处理中未主动退出，应用发生崩溃后将不会退出。例如采用[errorManger.on](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-error_manager.md#static-func-onErrorManagerEvent-errorobserver)方法捕获CjError崩溃；应用主动注册NativeCrash崩溃信号处理函数未主动退出。
 
 场景2：异常处理耗时太久，应用退出时机延后。
 
