@@ -743,6 +743,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -769,20 +770,20 @@ class EntryView {
 
             Row() {
                 Button("start")
-                    .onClick({
-                        evt => this.controller.start() // 开始播放
+                    .onClick({ evt
+                        => this.controller.start() // 开始播放
                     })
                     .margin(5)
                     .id("start")
                 Button("pause")
-                    .onClick({
-                        evt => this.controller.pause() // 暂停播放
+                    .onClick({ evt
+                        => this.controller.pause() // 暂停播放
                     })
                     .margin(5)
                     .id("pause")
                 Button("stop")
-                    .onClick({
-                        evt => this.controller.stop() // 暂停播放
+                    .onClick({ evt
+                        => this.controller.stop() // 暂停播放
                            this.controller.exitFullscreen()
                         }
                     )
@@ -791,40 +792,40 @@ class EntryView {
             }
             Row() {
                 Button("Fullscreen")
-                    .onClick({
-                        evt => this.controller.requestFullscreen(true)
+                    .onClick({ evt
+                        => this.controller.requestFullscreen(true)
                     })
                     .margin(5)
                     .id("Fullscreen")
                 Button("at 10s")
-                    .onClick({
-                        evt => this.controller.setCurrentTime(10, SeekMode.ClosestKeyframe)
+                    .onClick({ evt
+                        => this.controller.setCurrentTime(10, SeekMode.ClosestKeyframe)
                     })
                     .margin(5)
                     .id("at 10s")
                 Button("exitFull")
-                    .onClick({
-                        evt => this.controller.exitFullscreen()
+                    .onClick({ evt
+                        => this.controller.exitFullscreen()
                     })
                     .margin(5)
                     .id("exitFull")
             }
             Row() {
                 Button("rate 0.75")
-                    .onClick({
-                        evt => this.curRate = PlaybackSpeed.SpeedForward075X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward075X
                     })
                     .margin(5)
                     .id("rate 0.75")
                 Button("rate 1")
-                    .onClick({
-                        evt => this.curRate = PlaybackSpeed.SpeedForward100X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward100X
                     })
                     .margin(5)
                     .id("rate 1")
                 Button("rate 2")
-                    .onClick({
-                        evt => this.curRate = PlaybackSpeed.SpeedForward200X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.Speed_Forward200X
                     })
                     .margin(5)
                     .id("rate 2")

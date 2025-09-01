@@ -147,23 +147,7 @@ public func onSkip(callback: () -> Unit): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.PerformanceAnalysisKit.Hilog
-
-interface Display {
-    func display(): String
-}
-
-extend ItemState <: Display {
-    public func display(): String {
-        match (this) {
-            case Normal => "Normal"
-            case Disabled => "Disabled"
-            case Waiting => "Waiting"
-            case Skip => "Skip"
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -175,14 +159,14 @@ class EntryView {
 
     func build() {
         Column() {
-            Stepper(index:currentIndex) {
+            Stepper(currentIndex) {
                 StepperItem() {
                     Column() {
-                    Text("Page One").fontSize(35).fontColor(0x182431)
-                    Button("change status: ${this.firstState.display()}")
+                      Text("Page One").fontSize(35).fontColor(0x182431)
+                      Button("change status")
                         .backgroundColor(0x007dFF)
                         .onClick({ evt =>
-                            if(this.firstState == ItemState.Skip) {
+                            if(this.firstState.toString() == ItemState.Skip) {
                                 this.firstState = ItemState.Normal
                             } else {
                                 this.firstState = ItemState.Skip
@@ -194,11 +178,11 @@ class EntryView {
                 .status(status:this.firstState)
                 StepperItem() {
                     Column() {
-                    Text("Page Two").fontSize(35).fontColor(0x182431)
-                    Button("change status: ${this.secondState.display()}")
+                      Text("Page Two").fontSize(35).fontColor(0x182431)
+                      Button("change status")
                         .backgroundColor(0x007dFF)
                         .onClick({ evt =>
-                            if(this.secondState == ItemState.Disabled) {
+                            if(this.secondState.toString() == ItemState.Disabled) {
                                 this.secondState = ItemState.Normal
                             } else {
                                 this.secondState = ItemState.Disabled
@@ -208,14 +192,14 @@ class EntryView {
                 }
                 .nextLabel("Next Page")
                 .prevLabel("Previous Page")
-                .status(status: this.secondState)
+                .status(status:this.secondState)
                 StepperItem() {
                     Column() {
-                    Text("Page Three").fontSize(35).fontColor(0x182431)
-                    Button("change status: ${this.thirdState.display()}")
+                      Text("Page Three").fontSize(35).fontColor(0x182431)
+                      Button("change status")
                         .backgroundColor(0x007dFF)
                         .onClick({ evt =>
-                            if(this.thirdState == ItemState.Waiting) {
+                            if(this.thirdState.toString() == ItemState.Waiting) {
                                 this.thirdState = ItemState.Normal
                             } else {
                                 this.thirdState = ItemState.Waiting

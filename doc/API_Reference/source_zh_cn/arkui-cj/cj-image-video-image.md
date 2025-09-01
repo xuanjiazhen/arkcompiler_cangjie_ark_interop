@@ -794,6 +794,7 @@ public operator func ==(other: ImageRenderMode): Bool
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -883,7 +884,58 @@ class EntryView {
 
 ![image2](figures/image2.gif)
 
-### 示例3（为图像设置填充效果）
+### 示例3（图像设置颜色滤镜效果）
+
+该示例通过colorFilter实现了给图像设置颜色滤镜效果。
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
+
+@Entry
+@Component
+class EntryView {
+    let blueColor = ColorFilter([0.38, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.81, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.43, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 1.0, 0.0])
+    let colorFilter = ColorFilter([1.0, 0.0, 1.0, 0.0, 1.0,
+                                   0.0, 0.0, 0.0, 1.0, 0.0,
+                                   1.0, 0.0, 1.0, 0.0, 0.0,
+                                   0.0, 1.0, 0.0, 1.0, 0.0])
+
+    @State var DrawingColorFilterFirst: ColorFilter = blueColor
+    @State var DrawingColorFilterSecond: ColorFilter = colorFilter
+
+    func build() {
+        Column(space: 5){
+            Image(@r(app.media.startIcon))
+            .width(100)
+            .height(100)
+            .onClick{
+                    evt =>
+                    this.DrawingColorFilterFirst = colorFilter
+            }
+            Image(@r(app.media.startIcon))
+            .width(110)
+            .height(110)
+            .margin(15)
+            .onClick{
+                    evt =>
+                    this.DrawingColorFilterSecond = blueColor
+            }
+        }
+    }
+}
+```
+
+![image3](figures/image3.gif)
+
+### 示例4（为图像设置填充效果）
 
 该示例通过objectFit为图像设置填充效果。
 
@@ -892,8 +944,8 @@ class EntryView {
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import kit.LocalizationKit.AppResource
 import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -906,17 +958,17 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "png", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                    .overlay(value: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
                     .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.Contain)
+                    .objectFit(ImageFit.Auto)
                     // 加载gif格式图片
                     Image(@r(app.media.list))
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "gif", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                    .overlay(value: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
                     .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.Cover)
+                    .objectFit(ImageFit.Auto)
                 }
                 Row() {
                     // 加载svg格式图片
@@ -924,25 +976,7 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "svg", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
-                    .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.Fill)
-                    // 加载jpg格式图片
-                    Image(@r(app.media.startIcon_jpg))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(value: "jpg", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
-                    .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.ScaleDown)
-                }
-                Row() {
-                    // 加载png格式图片
-                    Image(@r(app.media.startIcon))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(value: "png", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                    .overlay(value: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
                     .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.Auto)
                     // 加载jpg格式图片
@@ -950,7 +984,7 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "gif", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                    .overlay(value: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
                     .border(width: 2, color: 0xFEC0CD)
                     .objectFit(ImageFit.None)
                 }
@@ -962,7 +996,9 @@ class EntryView {
 }
 ```
 
-### 示例4（切换显示不同类型图片）
+![image4](figures/image4.gif)
+
+### 示例5（切换显示不同类型图片）
 
 该示例展示了png类型与svg类型作为数据源的显示图片效果。
 
@@ -1000,7 +1036,7 @@ class EntryView {
 
 ![image5](figures/image5.gif)
 
-### 示例5（通过sourceSize设置图片解码尺寸）
+### 示例6（通过sourceSize设置图片解码尺寸）
 
 该示例通过[sourceSize](#func-sourcesizelength-length)接口自定义图片的解码尺寸。
 
@@ -1038,7 +1074,7 @@ class EntryView {
 
 ![image6](figures/image6_api.png)
 
-### 示例6（通过renderMode设置图片的渲染模式）
+### 示例7（通过renderMode设置图片的渲染模式）
 
 该示例通过通过[renderMode](#func-rendermodeimagerendermode)接口设置图片渲染模式为黑白模式。
 
@@ -1071,7 +1107,7 @@ class EntryView {
 
 ![image7](figures/image7_api.png)
 
-### 示例7（通过objectRepeat设置图片的重复样式）
+### 示例8（通过objectRepeat设置图片的重复样式）
 
 该示例通过通过[objectRepeat](#func-objectrepeatimagerepeat)接口在竖直轴上重复绘制图片。
 
@@ -1105,7 +1141,7 @@ class EntryView {
 
 ![image8](figures/image8.png)
 
-### 示例8（设置SVG图片的填充颜色）
+### 示例9（设置SVG图片的填充颜色）
 
 该示例通过通过[fillColor](#func-fillcolorresourcecolor)接口在竖直轴上重复绘制图片。
 
@@ -1129,14 +1165,14 @@ class EntryView {
                 .height(100)
                 .objectFit(ImageFit.Contain)
                 .borderWidth(1)
-            Text("fillColor传入Color.Green")
+            Text("fillColor传入Color.Gray")
             Image(@r(app.media.svg))
                 .width(100)
                 .height(100)
                 .objectFit(ImageFit.Contain)
                 .borderWidth(1)
-                .fillColor(Color.Green)
-            Text("fillColor传入Color.Blue")
+                .fillColor(Color.Gray)
+            Text("fillColor传入Color.BLUE")
             Image(@r(app.media.svg))
                 .width(100)
                 .height(100)
