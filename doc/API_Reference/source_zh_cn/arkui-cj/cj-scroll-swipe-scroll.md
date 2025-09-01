@@ -1613,6 +1613,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
+import kit.PerformanceAnalysisKit.Hilog
 
 func loggerInfo(str: String) {
     Hilog.info(0, "CangjieTest", str)
