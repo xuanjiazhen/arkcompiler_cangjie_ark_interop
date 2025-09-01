@@ -68,7 +68,7 @@
 
     ```cangjie
     // main_ability.cj
-    import kit.performanceAnalysisKit.Hilog
+    import kit.PerformanceAnalysisKit.Hilog
     import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
@@ -139,7 +139,7 @@
 
     ```cangjie
     // main_ability.cj
-    import kit.performanceAnalysisKit.Hilog
+    import kit.PerformanceAnalysisKit.Hilog
     import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None

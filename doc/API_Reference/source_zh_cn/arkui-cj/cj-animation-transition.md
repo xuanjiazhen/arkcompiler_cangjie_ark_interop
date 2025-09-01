@@ -844,7 +844,7 @@ public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallb
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.performanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -894,7 +894,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.performanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -955,7 +955,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.performanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.resource_manager.AppResource
 
 @Entry
