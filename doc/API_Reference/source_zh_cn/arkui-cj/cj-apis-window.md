@@ -3270,7 +3270,7 @@ class newPage{
             Column{
                 Text("New Page")
                 Button("Untouchable").onClick{ evt
-                    => AlertDialogParamWithConfirm(title:"Unreachable")
+                    => AlertDialogParamWithConfirm(message:"Unreachable")
                 }.margin(10.vp)
             }.margin(10.vp)
         }

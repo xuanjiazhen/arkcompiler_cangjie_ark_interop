@@ -159,7 +159,7 @@ class EntryView {
 
     func build() {
         Column() {
-            Stepper(currentIndex) {
+            Stepper(index:currentIndex) {
                 StepperItem() {
                     Column() {
                       Text("Page One").fontSize(35).fontColor(0x182431)
