@@ -35,7 +35,7 @@
     ```cangjie
     // main_ability.cj
     import kit.ArkData.{ DistributedKVStore, KVManagerConfig }
-    import import kit.performanceAnalysisKit.Hilog
+    import kit.performanceAnalysisKit.Hilog
     import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
     import ohos.business_exception.BusinessException
     import ohos.data.distributed_kv_store.KVManager

@@ -258,7 +258,7 @@ import std.collection.*
 @Entry
 @Component
 class EntryView {
-    @State var passwords: ObservedArray<Int32> = ObservedArray<Int32>([])
+    @State var passwords: ObservedArrayList<Int32> = ObservedArrayList<Int32>([])
     @State var message: String = 'please input password!'
     let patternLockController = PatternLockController()
 
@@ -269,7 +269,7 @@ class EntryView {
                 .margin(20)
                 .fontSize(20)
 
-            PatternLock(this.patternLockController)
+            PatternLock(controller: this.patternLockController)
                 .sideLength(200.vp)
                 .circleRadius(9.vp)
                 .pathStrokeWidth(18.vp)
@@ -290,14 +290,14 @@ class EntryView {
                         if (this.passwords.size > 0) {
                             // 判断两次输入的密码是否相同，相同则提示密码设置成功，否则提示重新输入
                             if (this.passwords.get().toString() == input.toString()) {
-                                this.passwords = ObservedArray<Int32>(input)
+                                this.passwords = ObservedArrayList<Int32>(input)
                                 this.message = 'Set password successfully: ' + this.passwords.get().toString()
                             } else {
                                 this.message = 'Inconsistent passwords, please enter again.'
                             }
                         } else {
                             // 提示第二次输入密码
-                            this.passwords = ObservedArray<Int32>(input)
+                            this.passwords = ObservedArrayList<Int32>(input)
                             this.message = "Please enter again."
                         }
                     }
@@ -309,7 +309,7 @@ class EntryView {
                     {
                         evt => // 重置密码锁
                         this.patternLockController.reset()
-                        this.passwords = ObservedArray<Int32>([])
+                        this.passwords = ObservedArrayList<Int32>([])
                         this.message = 'Please input password'
                     }
                 )

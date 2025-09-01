@@ -92,7 +92,7 @@ class EntryView {
                 .width(90.percent)
                 .scrollBar(BarState.Off)
                 .scrollable(ScrollDirection.Vertical)
-                ScrollBar(this.scroller, ScrollBarDirection.Vertical, BarState.Auto) {
+                ScrollBar(scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto) {
                     Text("")
                     .width(20)
                     .height(100)
@@ -142,7 +142,7 @@ class EntryView {
                         )
                     }.margin(right: 15)
                 }.width(90.percent).scrollBar(BarState.Off).scrollable(ScrollDirection.Vertical)
-                ScrollBar(this.scroller, ScrollBarDirection.Vertical, BarState.Auto) {}
+                ScrollBar(scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto) {}
             }
         }
     }

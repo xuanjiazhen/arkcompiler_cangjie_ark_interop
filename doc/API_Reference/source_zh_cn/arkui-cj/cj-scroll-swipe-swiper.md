@@ -1013,7 +1013,7 @@ Stretch
 
 ## 示例代码
 
-## 示例代码1（设置导航点交互及翻页动效）
+### 示例代码1（设置导航点交互及翻页动效）
 
 该示例通过changeIndex接口设置SwiperAnimationMode动效模式，实现了Swiper组件翻页至指定页面。
 
@@ -1062,7 +1062,7 @@ class EntryView {
 
     func build() {
         Column(space: 5) {
-            Swiper(this.swiperController) {
+            Swiper(controller: this.swiperController) {
                 LazyForEach(
                     this.data,
                     itemGeneratorFunc: {
@@ -1080,7 +1080,6 @@ class EntryView {
                 .autoPlay(true)
                 .interval(4000)
                 .loop(true)
-                .indicatorInteractive(true)
                 .duration(1000)
                 .itemSpace(0)
                 .indicator( // 设置圆点导航点样式
@@ -1091,17 +1090,6 @@ class EntryView {
                         .selectedItemHeight(15)
                         .color(Color.Gray)
                         .selectedColor(Color.Blue))
-                .displayArrow( // 设置导航点箭头样式
-                    ArrowStyle(
-                        showBackground: true,
-                        isSidebarMiddle: true,
-                        backgroundSize: 24,
-                        backgroundColor: Color.White,
-                        arrowSize: 18,
-                        arrowColor: Color.Blue
-                    ),
-                    isHoverShow: true
-                )
                 .curve(Curve.Linear)
 
             Row(space: 12) {
@@ -1117,26 +1105,6 @@ class EntryView {
                         .showPrevious()
                 })
             }.margin(5)
-
-            Row(space: 5) {
-                Button("FAST 0").onClick({
-                    _ => this
-                        .swiperController
-                        .changeIndex(0, true)
-                })
-
-                Button("FAST 3").onClick({
-                    _ => this
-                        .swiperController
-                        .changeIndex(3, true)
-                })
-
-                Button("FAST 9").onClick({
-                    _ => this
-                        .swiperController
-                        .changeIndex(9, true)
-                })
-            }.margin(5)
         }
             .width(100.percent)
             .margin(top: 5)
@@ -1146,7 +1114,7 @@ class EntryView {
 
 ![swiper1](./figures/swiper1.gif)
 
-## 示例代码2（设置数字指示器）
+### 示例代码2（设置数字指示器）
 
 该示例通过DigitIndicator接口，实现了数字指示器的效果和功能。
 
@@ -1197,7 +1165,7 @@ class EntryView {
 
     func build() {
         Column(space: 5) {
-            Swiper(this.swiperController) {
+            Swiper(controller: this.swiperController) {
                 LazyForEach(
                     this.data,
                     itemGeneratorFunc: {
@@ -1224,7 +1192,6 @@ class EntryView {
                 .loop(true)
                 .duration(1000)
                 .itemSpace(0)
-                .displayArrow(true)
 
             Row(space: 12) {
                 Button("showNext").onClick({
@@ -1248,7 +1215,7 @@ class EntryView {
 
 ![swiper2](./figures/swiper2.gif)
 
-## 示例代码3（设置按组翻页）
+### 示例代码3（设置按组翻页）
 
 该示例通过displayCount属性实现了按组翻页效果。
 
@@ -1299,7 +1266,7 @@ class EntryView {
 
     func build() {
         Column(space: 5) {
-            Swiper(this.swiperController) {
+            Swiper(controller: this.swiperController) {
                 LazyForEach(
                     this.data,
                     itemGeneratorFunc: {
@@ -1312,7 +1279,7 @@ class EntryView {
                     }
                 )
             }
-                .displayCount(3, true)
+                .displayCount(3, swipeByGroup: true)
                 .autoPlay(true)
                 .interval(4000)
                 .indicator( // 设置圆点导航点样式
@@ -1348,7 +1315,7 @@ class EntryView {
 
 ![swiper3](./figures/swiper3.gif)
 
-## 示例代码4（设置圆点导航点超长显示）
+### 示例代码4（设置圆点导航点超长显示）
 
 该示例通过DotIndicator接口的maxDisplayCount属性，实现了圆点导航点超长显示动画效果。
 
@@ -1399,7 +1366,7 @@ class EntryView {
 
     func build() {
         Column(space: 5) {
-            Swiper(this.swiperController) {
+            Swiper(controller: this.swiperController) {
                 LazyForEach(
                     this.data,
                     itemGeneratorFunc: {
@@ -1428,9 +1395,6 @@ class EntryView {
                         .color(Color.Gray)
                         .selectedColor(Color.Blue)
                         .maxDisplayCount(9))
-                .displayArrow( // 设置导航点箭头样式
-                    ArrowStyle(showBackground: true, isSidebarMiddle: true, backgroundSize: 24,
-                        backgroundColor: Color.White, arrowSize: 18, arrowColor: Color.Blue))
                 .curve(Curve.Linear)
 
             Row(space: 12) {

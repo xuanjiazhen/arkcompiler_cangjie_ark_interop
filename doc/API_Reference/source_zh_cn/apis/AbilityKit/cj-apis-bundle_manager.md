@@ -1382,8 +1382,7 @@ import kit.AbilityKit.*
 
 let moduleName = "entry"
 let abilityName = "EntryAbility"
-let metadataName = "ohos.extension.form"
-let info = BundleManager.getProfileByAbility(moduleName, abilityName, metadataName: metadataName)
+let infoList = BundleManager.getProfileByAbility(moduleName, abilityName)
 ```
 
 ### static func getProfileByExtensionAbility(String, String, String)

@@ -132,7 +132,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
-import import kit.performanceAnalysisKit.Hilog
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component

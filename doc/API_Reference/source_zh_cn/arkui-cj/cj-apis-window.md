@@ -3347,7 +3347,7 @@ internal import kit.ArkUI.*
 internal import kit.AbilityKit.*
 internal import kit.ArkUI.*
 
-class MainAbility <: Ability {
+class MainAbility <: UIAbility {
     public init() {
         super()
         registerSelf()
@@ -3383,10 +3383,8 @@ class newPage{
         Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center) {
             Column{
                 Text("New Page")
-                Button("Untouchable").onClick{
-                    => AlertDialog.show(
-                        AlertDialogParamWithConfirm("Unreachable")
-                    )
+                Button("Untouchable").onClick{ evt
+                    => AlertDialogParamWithConfirm("Unreachable")
                 }.margin(10.vp)
             }.margin(10.vp)
         }
@@ -3408,7 +3406,7 @@ package ohos_app_cangjie_entry
 internal import kit.AbilityKit.*
 internal import kit.ArkUI.*
 
-class MainAbility <: Ability {
+class MainAbility <: UIAbility {
 
     public init() {
         super()
@@ -3434,6 +3432,7 @@ import kit.ArkUI.*
 import kit.ArkUI.*
 import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
+import ohos.callback_invoke.*
 
 @Entry
 @Component
@@ -3444,7 +3443,7 @@ class newPage{
         let mainWindow: Window = windowStage.getMainWindow()
 
         // 开启监听
-        var tmp: Unit = mainWindow.on("keyboardHeightChange",TestCallback(0))
+        var tmp: Unit = mainWindow.on(WindowCallbackType.KeyboardHeightChange,TestCallback(0))
     }
 
     func build(){
@@ -3464,7 +3463,7 @@ public class TestCallback <: Callback1Argument<UInt32>{
         this.count = count
     }
 
-    public func invoke(value: UInt32): Unit {
+    public func invoke(err: ?BusinessException, value: UInt32): Unit {
         count++
         // 拉起或隐藏键盘时，会触发日志打印总计的键盘高度变化计数
         Hilog.info(0,"","KeyboardHeightChangeCount: ${this.count}")
@@ -3478,110 +3477,6 @@ public class TestCallback <: Callback1Argument<UInt32>{
 KeyboardHeightChangeCount: 1
 KeyboardHeightChangeCount: 2
 KeyboardHeightChangeCount: 3
-```
-
-### 示例3（设置子窗口回调函数）
-
-该示例创建了一个isModal属性为true的子窗口。监听子窗口点击模态窗口事件，触发回调时销毁子窗。
-
-<!-- run -example3 -->
-
-```cangjie
-// main_ability.cj
-
-package ohos_app_cangjie_entry
-
-internal import kit.AbilityKit.*
-internal import kit.ArkUI.*
-
-class MainAbility <: Ability {
-
-    public init() {
-        super()
-        registerSelf()
-    }
-
-    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        windowStage.loadContent("newPage")
-        // 将该Ability的窗口管理器传入AppStorage中
-        AppStorage.setOrCreate("windowStage",windowStage)
-    }
-}
-```
-
-<!-- run -example3 -->
-
-```cangjie
-// newPage.cj
-
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import kit.ArkUI.*
-import ohos.hilog.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class newPage{
-    @State
-    var hint: Bool = AppStorage.has("windowStage")
-
-    public func CreateSubWindow(): Unit{
-        hint = AppStorage.has("windowStage")
-        // 获取该Ability的窗口管理器实例
-        var windowStage: WindowStage = AppStorage.get<WindowStage>("windowStage").getOrThrow()
-
-        var mainWindow: Window = windowStage.getMainWindow()
-
-        mainWindow.setWindowGrayScale(1.0)
-
-        // 1.创建应用子窗口，子窗口显示时，主窗口不能响应用户操作。
-        var subWindowOptions: SubWindowOptions = SubWindowOptions(
-            title: "mySubWindow",
-            decorEnabled: true,
-            isModal: true
-        )
-        var subWindow: Window = windowStage.createSubWindowWithOptions("tempSubWindow", subWindowOptions)
-
-        // 2.设置应用子窗口的位置、大小及相关属性等。
-        subWindow.moveWindowTo(300,300)
-        subWindow.resize(500,500)
-
-        // 3.注册监听点击模态窗口事件。
-        subWindow.on(WindowCallbackType.DialogTargetTouch,DestroySubWindow())
-
-        // 4.显示子窗口（空内容）
-        subWindow.showWindow()
-    }
-
-    func build(){
-        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center){
-            Column(){
-                Text("SubWindowCreated: ${hint}")
-                Button("GetSubWindow").onClick{
-                    =>  CreateSubWindow()
-                }
-            }
-        }
-    }
-}
-
-public class DestroySubWindow <: Callback0Argument{
-    public init(){}
-
-    // 当点击模态窗口区域时，关闭子窗。
-    public override func invoke(): Unit{
-        var windowStage: WindowStage = AppStorage.get<WindowStage>("windowStage").getOrThrow()
-        var subWindows: Array<Window> = windowStage.getSubWindow()
-        for(i in subWindows){
-            i.destroyWindow()
-        }
-        // 子窗关闭后，恢复主窗口灰阶。
-        var mainWindow: Window = windowStage.getMainWindow()
-        mainWindow.setWindowGrayScale(0.0)
-    }
-}
 ```
 
 ![img3](figures/window_subwindow_created.png)
