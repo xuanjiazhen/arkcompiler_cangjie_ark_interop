@@ -20,7 +20,7 @@ public interface JSInteropType<T> {
 
 **功能：** 该接口用于为可用于声明式互操作宏的类型实现扩展方法。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 如下类型扩展了此接口：
 
@@ -36,7 +36,7 @@ static func fromJSValue(context: JSContext, input: JSValue): T
 
 **功能：** 将 JSValue 类型数据转换为相应的仓颉类型。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -59,7 +59,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉类型对应的ArkTS类型名称。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -75,7 +75,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉类型数据转换为JSValue。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -99,7 +99,7 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 **功能：** 可用于作为 JSObject 键的接口。该接口为 String 类型实现了扩展方法。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -113,7 +113,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉类型数据转换为JSValue。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -137,7 +137,7 @@ interface ToJSValue {
 
 **功能：** 可用于实现ToJSValue的接口
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### func toJSValue(JSContext)
 
@@ -147,7 +147,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -165,7 +165,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Int8 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -175,7 +175,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int8
 
 **功能：** 将 JSValue 类型数据转换为相应的 Int8 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -198,7 +198,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Int8 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -214,7 +214,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Int8 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -232,7 +232,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Int16 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -242,7 +242,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int16
 
 **功能：** 将 JSValue 类型数据转换为相应的 Int16 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -265,7 +265,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Int16 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -281,7 +281,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Int16 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -299,7 +299,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Int32 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -309,7 +309,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int32
 
 **功能：** 将 JSValue 类型数据转换为相应的 Int32 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -332,7 +332,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Int32 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -348,7 +348,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Int32 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -366,7 +366,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Int64 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -376,7 +376,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int64
 
 **功能：** 将 JSValue 类型数据转换为相应的 Int64 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -399,7 +399,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Int64 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -415,7 +415,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Int64 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -433,7 +433,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 UInt8 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -443,7 +443,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt8
 
 **功能：** 将 JSValue 类型数据转换为相应的 UInt8 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -466,7 +466,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 UInt8 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -482,7 +482,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 UInt8 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -500,7 +500,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 UInt16 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -510,7 +510,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt16
 
 **功能：** 将 JSValue 类型数据转换为相应的 UInt16 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -533,7 +533,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 UInt16 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -549,7 +549,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 UInt16 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -567,7 +567,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 UInt32 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -577,7 +577,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt32
 
 **功能：** 将 JSValue 类型数据转换为相应的 UInt32 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -600,7 +600,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 UInt32 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -616,7 +616,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 UInt32 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -634,7 +634,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 UInt64 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -644,7 +644,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt64
 
 **功能：** 将 JSValue 类型数据转换为相应的 UInt64 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -667,7 +667,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 UInt64 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -683,7 +683,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 UInt64 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -701,7 +701,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Float16 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -711,7 +711,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float16
 
 **功能：** 将 JSValue 类型数据转换为相应的 Float16 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -734,7 +734,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Float16 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -750,7 +750,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Float16 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -768,7 +768,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Float32 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -778,7 +778,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float32
 
 **功能：** 将 JSValue 类型数据转换为相应的 Float32 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -801,7 +801,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Float32 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -817,7 +817,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Float32 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -835,7 +835,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Float64 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -845,7 +845,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float64
 
 **功能：** 将 JSValue 类型数据转换为相应的 Float64 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -868,7 +868,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Float64 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -884,7 +884,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Float64 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -902,7 +902,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Bool 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -912,7 +912,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Bool
 
 **功能：** 将 JSValue 类型数据转换为相应的 Bool 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -935,7 +935,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Bool 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -951,7 +951,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Bool 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -969,7 +969,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 String 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -979,7 +979,7 @@ static func fromJSValue(_: JSContext, input: JSValue): String
 
 **功能：** 将 JSValue 类型数据转换为相应的 String 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -1002,7 +1002,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 String 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -1014,7 +1014,7 @@ static func toArkTsType(): String
 
 **功能：** 该接口可用为内置类型 String 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### func toJSValue(JSContext)
 
@@ -1024,7 +1024,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 String 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -1042,7 +1042,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为内置类型 Unit 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -1052,7 +1052,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Unit
 
 **功能：** 将 JSValue 类型数据转换为相应的 Bool 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -1075,7 +1075,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Unit 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -1091,7 +1091,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Unit 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -1109,7 +1109,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为类型 Option<T> 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -1119,7 +1119,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Option<T>
 
 **功能：** 将 JSValue 类型数据转换为相应的 Option<T> 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -1142,7 +1142,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Option<T> 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -1158,7 +1158,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Option<T> 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -1176,7 +1176,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 该接口可用为类型 Array<T> 实现扩展方法。
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -1186,7 +1186,7 @@ static func fromJSValue(_: JSContext, input: JSValue): Array<T>
 
 **功能：** 将 JSValue 类型数据转换为相应的 Array<T> 类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -1209,7 +1209,7 @@ static func toArkTsType(): String
 
 **功能：** 获取仓颉 Array<T> 类型对应的ArkTS类型名称。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **返回值：**
 
@@ -1225,7 +1225,7 @@ func toJSValue(context: JSContext): JSValue
 
 **功能：** 将仓颉 Array<T> 类型数据转换为JSValue。
 
-**起始版本：** 12
+**起始版本：** 21
 
 **参数：**
 
@@ -1247,7 +1247,7 @@ public class JSArray <: JSHeapObject {}
 
 **功能：** 一个ArkTS数组的安全引用。支持获取长度，读写元素功能。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -1261,7 +1261,7 @@ public prop size: Int64
 
 **功能：** 获取元素数量。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** Int64
 
@@ -1275,7 +1275,7 @@ public operator func[](index: Int64): JSValue
 
 **功能：** 往 ArkTS 数组写入一个元素。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -1308,7 +1308,7 @@ public operator func[](index: Int64, value!: JSValue): Unit
 
 **功能：** 往 ArkTS 数组写入一个元素。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -1337,7 +1337,7 @@ public operator func[](index: Int64, value!: JSHeapObject): Unit
 
 **功能：** 往 ArkTS 数组写入一个元素。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -1366,7 +1366,7 @@ public class JSArrayBuffer <: JSHeapObject {}
 
 **功能：** JSArrayBuffer 对象用来表示通用的原始二进制数据缓冲区。通过创建 JS ArrayBuffer 对象，可以获取对象字节长度，转换为仓颉数组。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -1380,7 +1380,7 @@ public prop byteLength: Int32
 
 **功能：** ArrayBuffer 的字节数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** Int32
 
@@ -1394,7 +1394,7 @@ public func readBytes(): Array<Byte>
 
 **功能：** 读取二进制数据，转换为仓颉数组。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -1410,7 +1410,7 @@ public func toArrayBufferJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 ArrayBuffer 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1426,7 +1426,7 @@ public func toFloat32Array(): Array<Float32>
 
 **功能：** 转换为仓颉数组 Array\<Float32>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1456,7 +1456,7 @@ public func toFloat64Array(): Array<Float64>
 
 **功能：** 转换为仓颉数组 Array\<Float64>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1472,7 +1472,7 @@ public func toFloat64ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Float64Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1488,7 +1488,7 @@ public func toInt16Array(): Array<Int16>
 
 **功能：** 转换为仓颉数组 Array\<Int16>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1504,7 +1504,7 @@ public func toInt16ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Int16Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1520,7 +1520,7 @@ public func toInt32Array(): Array<Int32>
 
 **功能：** 转换为仓颉数组 Array\<Int32>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1536,7 +1536,7 @@ public func toInt32ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Int32Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1552,7 +1552,7 @@ public func toInt64Array(): Array<Int64>
 
 **功能：** 转换为仓颉数组 Array\<Int64>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1568,7 +1568,7 @@ public func toInt64ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 BigInt64Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1584,7 +1584,7 @@ public func toInt8Array(): Array<Int8>
 
 **功能：** 转换为仓颉数组 Array\<Int8>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1600,7 +1600,7 @@ public func toInt8ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Int8Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1616,7 +1616,7 @@ public func toUInt16Array(): Array<UInt16>
 
 **功能：** 转换为仓颉数组 Array\<UInt16>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1632,7 +1632,7 @@ public func toUInt16ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Uint16Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1648,7 +1648,7 @@ public func toUInt32Array(): Array<UInt32>
 
 **功能：** 转换为仓颉数组 Array\<UInt32>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1664,7 +1664,7 @@ public func toUInt32ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Uint32Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1680,7 +1680,7 @@ public func toUInt64Array(): Array<UInt64>
 
 **功能：** 转换为仓颉数组 Array\<UInt64>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1696,7 +1696,7 @@ public func toUInt64ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 BigUint64Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1712,7 +1712,7 @@ public func toUInt8Array(): Array<UInt8>
 
 **功能：** 转换为仓颉数组 Array\<UInt8>。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1728,7 +1728,7 @@ public func toUInt8ArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Uint8Array 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1744,7 +1744,7 @@ public func toUInt8ClampedArrayJSValue(): JSValue
 
 **功能：** 返回 ArkTS 的 Uint8ClampedArray 的 JSValue 。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **返回值：**
 
@@ -1762,7 +1762,7 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **功能：** 在声明式互操作宏中使用，对应ArkTS的 Array\<T> 类型。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **父类型：**
 
@@ -1776,7 +1776,7 @@ public prop size: Int64
 
 **功能：** 获取元素数量。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **类型：** Int64
 
@@ -1790,7 +1790,7 @@ public init(arr: Array<T>)
 
 **功能：** 给定 Array\<T>，构造对应的 JSArrayEx\<T> 实例。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -1806,7 +1806,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSArrayEx<T>
 
 **功能：** 从 JSValue 转换为 JSArrayEx。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -1829,7 +1829,7 @@ public static func toArkTsType(): String
 
 **功能：** 获取仓颉类型对应的ArkTS类型名称。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -1845,7 +1845,7 @@ public func clone(): JSArrayEx<T>
 
 **功能：** 克隆 JSArrayEx，将对 JSArrayEx 数据进行深拷贝。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -1861,7 +1861,7 @@ public func concat(other: JSArrayEx<T>): JSArrayEx<T>
 
 **功能：** 该函数将创建一个新的 JSArrayEx，内容是当前 JSArrayEx 后面串联 other 指向的 JSArrayEx。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -1883,7 +1883,7 @@ public func get(index: Int64): Option<T>
 
 **功能：** 获取数组中下标 index 对应的元素。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -1905,7 +1905,7 @@ public func isEmpty(): Bool
 
 **功能：** 判断数组是否为空。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -1921,7 +1921,7 @@ public func set(index: Int64, element: T): Unit
 
 **功能：** 修改数组中下标 index 对应的值。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -1938,7 +1938,7 @@ public func toArray(): Array<T>
 
 **功能：** 转换为 Array。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -1954,7 +1954,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **功能：** 转换为 JSValue。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -1976,7 +1976,7 @@ public operator func[](index: Int64): T
 
 **功能：** 获取数组下标 index 对应的值。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -1998,7 +1998,7 @@ public operator func[](index: Int64, value!: T)
 
 **功能：** 修改数组中下标 index 对应的值。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2017,7 +2017,7 @@ public class JSArrayRangeMisMatch <: JSInteropException {
 
 **功能：** 访问越界异常。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -2031,7 +2031,7 @@ public init(min: Int64, max: Int64, given: Int64, message!: String = "js array r
 
 **功能：** 构造函数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2048,7 +2048,7 @@ public init(min: Int64, max: Int64, given: Int64, message!: String = "js array r
 public class JSBigInt <: JSHeapObject {}
 ```
 
-**起始版本：** 13
+**起始版本：** 21
 
 **功能：** JSBigInt 对象用来表示 JS bigint 类型的安全引用。通过创建 JS bigint 对象，可以转换为仓颉 Int64，转换为仓颉 BigInt。
 
@@ -2064,7 +2064,7 @@ public func toBigInt(): BigInt
 
 **功能：** 转换为仓颉 BigInt。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -2080,7 +2080,7 @@ public class JSClass <: JSHeapObject {}
 
 **功能：** 一个ArkTS类（构造函数）的安全引用。可以为该类添加方法和accessor、创建该类的实例。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -2094,7 +2094,7 @@ public prop prototype: JSObject
 
 **功能：** 类的原型对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSObject](#class-jsobject)
 
@@ -2108,7 +2108,7 @@ public func addAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?J
 
 **功能：** 为当前 ArkTS 类定义一对 getter 和 setter。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2146,7 +2146,7 @@ public func addAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSL
 
 **功能：** 为当前 ArkTS 类定义一对 getter 和 setter。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2184,7 +2184,7 @@ public func addMethod(key: JSKeyable, method: JSFunction): Unit
 
 **功能：** 为当前 ArkTS 类定义一个方法。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2221,7 +2221,7 @@ public func addMethod(key: JSKeyable, method: JSLambda): Unit
 
 **功能：** 为当前 ArkTS 类定义一个方法。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2258,7 +2258,7 @@ public func addProperty(key: JSKeyable, value: JSValue): Unit
 
 **功能：** 为目标 ArkTS 类新增一个数据成员，一般用于定义不可变属性。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2292,7 +2292,7 @@ public func new(): JSValue
 
 **功能：** 通过 ArkTS 类实例化一个新对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -2322,7 +2322,7 @@ public func new(arg: JSValue): JSValue
 
 **功能：** 通过 ArkTS 类实例化一个新对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2362,7 +2362,7 @@ public func new(args: Array<JSValue>): JSValue
 
 **功能：** 通过 ArkTS 类实例化一个新对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2410,7 +2410,7 @@ public class JSCodeError <: JSInteropException {
 
 **功能：** ArkTS 代码里的异常。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -2424,7 +2424,7 @@ public let code:?Int32
 
 **功能：** 异常错误码。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** ?Int32
 
@@ -2450,7 +2450,7 @@ public let jsStack: Array<String>
 
 **功能：** 异常栈。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** Array\<String>
 
@@ -2464,7 +2464,7 @@ public init(jsMessage: String, jsStack: Array<String>)
 
 **功能：** 构造函数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2481,7 +2481,7 @@ public class JSContext {}
 
 **功能：** 一个单线程执行的 ArkTS 互操作上下文。
 
-**起始版本：** 13
+**起始版本：** 21
 
 JSContext和ArkTS运行时是一一对应的关系，其主要目标是创建JSValue和安全引用、管理ArkTS侧引用的仓颉对象的生命周期。
 
@@ -2495,7 +2495,7 @@ public prop env: JSEnv
 
 **功能：** ArkTS 互操作上下文。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** JSEnv
 
@@ -2509,7 +2509,7 @@ public prop global: JSObject
 
 **功能：** js全局环境变量 globalThis。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSObject](#class-jsobject)
 
@@ -2523,7 +2523,7 @@ public func array(arr: Array<JSValue>): JSArray
 
 **功能：** 创建一个 ArkTS 数组。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2555,7 +2555,7 @@ public func arrayBuffer(length: Int32): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2587,7 +2587,7 @@ public func arrayBuffer(data: Array<Byte>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2620,7 +2620,7 @@ public func arrayBuffer(data: Array<Int8>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2642,7 +2642,7 @@ public func arrayBuffer(data: Array<Int16>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2664,7 +2664,7 @@ public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2686,7 +2686,7 @@ public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2708,7 +2708,7 @@ public func arrayBuffer(data: Array<Int32>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2730,7 +2730,7 @@ public func arrayBuffer(data: Array<Float32>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2752,7 +2752,7 @@ public func arrayBuffer(data: Array<Int64>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2774,7 +2774,7 @@ public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2796,7 +2796,7 @@ public func arrayBuffer(data: Array<Float64>): JSArrayBuffer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -2818,7 +2818,7 @@ public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer
 
 **功能：** 通过内存块创建一个 ArkTS ArrayBuffer。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2857,7 +2857,7 @@ public func bigint(value: Int64): JSBigInt
 
 **功能：** 通过仓颉 BigInt 创建一个等值的 ArkTS bigint。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2889,7 +2889,7 @@ public func bigint(value: BigInt): JSBigInt
 
 **功能：** 通过仓颉 BigInt 创建一个等值的 ArkTS bigint。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2923,7 +2923,7 @@ public func boolean(value: Bool): JSBoolean
 
 **功能：** 创建一个 ArkTS boolean。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2955,7 +2955,7 @@ public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass
 
 **功能：** 创建一个 ArkTS 类。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -2992,7 +2992,7 @@ public func external(data: SharedObject): JSExternal
 
 **功能：** 创建一个 ArkTS 对仓颉对象的引用。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3027,7 +3027,7 @@ public func function(lambda: JSLambda): JSFunction
 
 **功能：** 创建一个 ArkTS 函数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3063,7 +3063,7 @@ public func getNapiEnv(): napi_env
 
 **功能：** 获取一个全局环境的指针。
 
-**起始版本：** 14
+**起始版本：** 21
 
 **返回值：**
 
@@ -3079,7 +3079,7 @@ public func isInBindThread(): Bool
 
 **功能：** 多线程工具：检查当前线程是否可执行互操作接口。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -3107,7 +3107,7 @@ public func null(): JSNull
 
 **功能：** 创建一个 ArkTS null。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -3133,7 +3133,7 @@ public func number(value: Float64): JSNumber
 
 **功能：** 创建一个 ArkTS number。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3165,7 +3165,7 @@ public func number(value: Int32): JSNumber
 
 **功能：** 创建一个 ArkTS number。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3197,7 +3197,7 @@ public func object(): JSObject
 
 **功能：** 创建一个空的 ArkTS object 引用。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -3223,7 +3223,7 @@ public func postJSTask(callback: ()->Unit): Unit
 
 **功能：** 多线程工具：创建在 ArkTS 线程执行的任务。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3254,7 +3254,7 @@ public func promiseCapability(): JSPromiseCapability
 
 **功能：** 创建一个 ArkTS Promise。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -3280,7 +3280,7 @@ public func requireSystemNativeModule(moduleName: String, prefix!: ?String = Non
 
 **功能：** 加载系统内置的 ArkTS napi 模块。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3313,7 +3313,7 @@ public func string(value: String): JSString
 
 **功能：** 创建一个 ArkTS string。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3345,7 +3345,7 @@ public func string(value: Utf16String): JSString
 
 **功能：** 从 Utf16String 创建 JSString。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -3367,7 +3367,7 @@ public func symbol(description!: String = ""): JSSymbol
 
 **功能：** 创建一个 ArkTS symbol 对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3400,7 +3400,7 @@ public func undefined(): JSUndefined
 
 **功能：** 创建一个 ArkTS undefined。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -3426,7 +3426,7 @@ public class JSExternal <: JSHeapObject {}
 
 **功能：** 一个可传递到ArkTS侧的仓颉对象引用。可以获取绑定的仓颉对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 JSExternal的目标是传递一个仓颉对象的强引用到ArkTS运行时，配合其他用户自定义的互操作接口可以访问这个仓颉对象。
 
@@ -3442,7 +3442,7 @@ public func cast<T>(): Option<T> where T <: SharedObject
 
 **功能：** 获取绑定的 SharedObject 对象并转换为 T 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -3477,7 +3477,7 @@ public func getData(): SharedObject
 
 **功能：** 获取绑定的 SharedObject 对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -3513,7 +3513,7 @@ public class JSFunction <: JSHeapObject {}
 
 **功能：** 一个 ArkTS 函数的安全引用。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -3527,7 +3527,7 @@ public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue
 
 **功能：** 进行一次 ArkTS 函数调用（多个参数）。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3559,7 +3559,7 @@ public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue
 
 **功能：** 进行一次 ArkTS 函数调用（多个参数）。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3593,7 +3593,7 @@ public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().t
 
 **功能：** 进行一次 ArkTS 函数调用（多个参数）。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -3631,7 +3631,7 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **功能：** 在声明式互操作宏中使用，对应ArkTS的 Map 类型。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **父类型：**
 
@@ -3645,7 +3645,7 @@ public prop size: Int64
 
 **功能：** 返回键值对的个数。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **类型：** Int64
 
@@ -3659,7 +3659,7 @@ public init(map: HashMap<K, V>)
 
 **功能：** 构造空的 JSHashMapEx\<K, V> 实例。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3675,7 +3675,7 @@ public init()
 
 **功能：** 构造空的 JSHashMapEx\<K, V> 实例。
 
-**起始版本：** 15
+**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -3685,7 +3685,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSHashMapEx<
 
 **功能：** 从 JSValue 转换为 JSHashMapEx。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3708,7 +3708,7 @@ public static func toArkTsType(): String
 
 **功能：** 获取仓颉类型对应的ArkTS类型名称。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -3724,7 +3724,7 @@ public func clear(): Unit
 
 **功能：** 从此 HashMapEx 中移除所有元素。
 
-**起始版本：** 15
+**起始版本：** 21
 
 ### func clone()
 
@@ -3748,7 +3748,7 @@ public func containsAll(keys: Collection<K>): Bool
 
 **功能：** 判断是否包含指定集合中所有键的映射。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3770,7 +3770,7 @@ public func delete(key: K): Bool
 
 **功能：** 从此 JSHashMapEx 中删除指定键的映射（如果存在）。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3792,7 +3792,7 @@ public func deleteAll(keys: Collection<K>): Unit
 
 **功能：** 从此 JSHashMapEx 中删除指定集合中键的映射（如果存在）。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3810,7 +3810,7 @@ public func deleteIf(predicate: (K, V) -> Bool): Unit
 
 该函数会遍历整个 JSHashMapEx，所有满足 predicate(K, V) == true 的键值对都会被删除。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3826,7 +3826,7 @@ public func get(key: K): Option<V>
 
 **功能：** 返回指定键映射到的值，如果不包含指定键的映射，则返回 Option\<V>.None。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3848,7 +3848,7 @@ public func has(key: K) : Bool
 
 **功能：** 判断是否包含指定键的映射。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3870,7 +3870,7 @@ public func isEmpty(): Bool
 
 **功能：** 判断 JSHashMapEx 是否为空，如果是，则返回 true；否则，返回 false。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -3886,7 +3886,7 @@ public func keys(): EquatableCollection<K>
 
 **功能：** 返回 JSHashMapEx 中所有的 key，并将所有 key 存储在一个 Keys 容器中。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -3902,7 +3902,7 @@ public func set(key: K, value: V): Unit
 
 **功能：** 将键值对放入 JSHashMapEx 中。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3919,7 +3919,7 @@ public func setAll(elements: Collection<(K, V)>): Unit
 
 **功能：** 按照 elements 的迭代器顺序将新的键值对集合放入 JSHashMapEx 中。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3935,7 +3935,7 @@ public func setIfAbsent(key: K, value: V): Bool
 
 **功能：** 当此 JSHashMapEx 中不存在键 key 时，向 JSHashMapEx 中插入键值对(key, value)。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3958,7 +3958,7 @@ public func toHashMap(): HashMap<K, V>
 
 **功能：** 转换为 HashMap。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -3974,7 +3974,7 @@ public func toJSValue(c: JSContext): JSValue
 
 **功能：** 转换为 JSValue。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -3996,7 +3996,7 @@ public func values(): Collection<V>
 
 **功能：** 返回 JSHashMapEx 中包含的值，并将所有的 value 存储在一个 Values 容器中。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -4012,7 +4012,7 @@ public operator func [](key: K): V
 
 **功能：** 运算符重载 set 方法，如果键存在，新 value 覆盖旧 value，如果键不存在，添加此键值对。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -4034,7 +4034,7 @@ public operator func [](key: K, value!: V): Unit
 
 **功能：** 运算符重载 set 方法，如果键存在，新 value 覆盖旧 value，如果键不存在，添加此键值对。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -4051,7 +4051,7 @@ sealed abstract class JSHeapObject {}
 
 **功能：** 一个 ArkTS 运行时对象的强引用（但不会超过 ArkTS 运行时的生命周期，也不会阻止 ArkTS 运行时的销毁）。可以转换为JSValue。
 
-**起始版本：** 15
+**起始版本：** 21
 
 它是所有安全引用的基类，用户不能创建它只能创建它的子类（隐藏构造函数），它的目标是让引用的 ArkTS 运行时对象持续时间超过这个仓颉对象本身。
 
@@ -4063,7 +4063,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -4079,7 +4079,7 @@ public abstract class JSInteropException <: Exception {}
 
 **功能：** 互操作异常基类。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -4095,7 +4095,7 @@ public class JSInteropNativeError <: JSInteropException {
 
 **功能：** 互操作C接口异常。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -4109,7 +4109,7 @@ public init(message: String)
 
 **功能：** 构造 JSInteropNativeError 对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4125,7 +4125,7 @@ public class JSModule {}
 
 **功能：** 一个提供导出符号注册接口的静态类。
 
-**起始版本：** 13
+**起始版本：** 21
 
 JSModule的目标是提供符号导出能力（导出到ArkTS）。配合自定义静态初始化函数，在动态库被加载时把导出目标注册到全局表，并由ArkTS引擎来执行导出。
 
@@ -4137,7 +4137,7 @@ public static func registerClass(name: String, register: ClassRegister): Unit
 
 **功能：** 注册一个要导出到 ArkTS 的 ArkTS 类（构造函数）。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4169,7 +4169,7 @@ public static func registerFunc(name: String, register: FuncRegister): Unit
 
 **功能：** 注册一个要导出到 ArkTS 的函数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4198,7 +4198,7 @@ public static func registerFunc(name: String, lambda: JSLambda): Unit
 
 **功能：** 注册一个要导出到 ArkTS 的函数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4227,7 +4227,7 @@ public static func registerModule(register: ModuleRegister): Unit
 
 **功能：** 注册要导出到 ArkTS 接口。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4259,7 +4259,7 @@ public class JSObjUseAfterFree <: JSInteropException {
 
 **功能：** 生命周期异常。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -4287,7 +4287,7 @@ public class JSObject <: JSObjectBase {}
 
 **功能：** 一个ArkTS对象的安全引用。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -4301,7 +4301,7 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **功能：** 一个 ArkTS 对象的安全引用的基类。可以操作 ArkTS 对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -4315,7 +4315,7 @@ public func attachCJObject(target: JSExternal): Unit
 
 **功能：** 为当前对象绑定一个仓颉对象在 ArkTS 的引用。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4346,7 +4346,7 @@ public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue
 
 **功能：** 调用当前对象下的方法。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4382,7 +4382,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSFunction = None, sette
 
 **功能：** 为当前对象定义 accessors 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4419,7 +4419,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 
 **功能：** 为当前对象定义 accessors 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4457,7 +4457,7 @@ public func defineOwnProperty(key: JSKeyable, setValue: JSValue,
 
 **功能：** 在当前对象上定义属性。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4488,7 +4488,7 @@ public func getAttachInfo(): ?JSExternal
 
 **功能：** 从当前对象上获取绑定的仓颉对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -4521,7 +4521,7 @@ public func getProperty(key: JSKeyable): JSValue
 
 **功能：** 从当前对象获取目标属性值。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4554,7 +4554,7 @@ public func hasProperty(key: JSKeyable): Bool
 
 **功能：** 判断当前对象是否存在目标属性。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4588,7 +4588,7 @@ public func instanceOf(clazz: JSClass): Bool
 
 **功能：** 判断当前的对象是否是目标 ArkTS 类的实例。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4626,7 +4626,7 @@ public func keys(): Array<String>
 
 **功能：** 枚举出当前对象所有可枚举的属性名。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -4653,7 +4653,7 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 
 **功能：** 对当前对象赋值一个属性。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4681,7 +4681,7 @@ public operator func [](key: JSKeyable): JSValue
 
 **功能：** 对当前对象赋值一个属性。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4714,7 +4714,7 @@ public operator func [](key: JSKeyable, value!: JSValue): Unit
 
 **功能：** 对当前对象赋值一个属性。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4746,7 +4746,7 @@ JSPromise的目标是为回调形式的一致性封装，配合 async、await �
 
 JSPromise的生命周期超过引用的 ArkTS 对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -4760,7 +4760,7 @@ public func catchError(callback: JSFunction): Unit
 
 **功能：** 注册异常处理回调。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4790,7 +4790,7 @@ public func then(onFulfilled: JSFunction, onRejected!: ?JSFunction = None): Unit
 
 **功能：** 注册结果处理回调。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4817,31 +4817,14 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
 ```cangjie
 public class JSPromiseCapability {
-    public init(context: JSContext)
 }
 ```
 
 **功能：** JSPromiseCapability 对应一个 Promise 对象，可以通过它来 resolve 和 reject 该 Promise。
 
-**起始版本：** 13
+**起始版本：** 21
 
 生命周期：JSPromiseCapability是一个弱引用，对应ArkTS对象的生命周期在首次 resolve 或 reject 时结束，结束后继续使用会抛出仓颉异常。
-
-### init(JSContext)
-
-```cangjie
-public init(context: JSContext)
-```
-
-**功能：** 构造一个 JSPromiseCapability 对象。
-
-**起始版本：** 13
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|context|[JSContext](#class-jscontext)|是|-|ArkTS 互操作上下文。|
 
 ### func reject(JSValue)
 
@@ -4851,7 +4834,7 @@ public func reject(value: JSValue): Unit
 
 **功能：** 向 Promise 提交异常。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4880,7 +4863,7 @@ public func resolve(value: JSValue): Unit
 
 **功能：** 通知 Promise 正常结束并提交返回值。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -4911,7 +4894,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 ArkTS 统一类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -4953,7 +4936,7 @@ public class JSRuntime {
 
 **功能：** 仓颉创建的 ArkTS 运行时。
 
-**起始版本：** 13
+**起始版本：** 21
 
 > **注意：**
 >
@@ -4967,7 +4950,7 @@ public prop mainContext: JSContext
 
 **功能：** 互操作上下文。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSContext](#class-jscontext)
 
@@ -4989,7 +4972,7 @@ public func getNapiEnv(): CPointer<Unit>
 
 **功能：** 获取环境指针。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## class JSString
 
@@ -4999,7 +4982,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 
 **功能：** 一个ArkTS字符串的安全引用。可以转换为String。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -5015,7 +4998,7 @@ public func toJSValue(_: JSContext): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -5037,7 +5020,7 @@ public func toString(): String
 
 **功能：** 转换为仓颉字符串。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5065,7 +5048,7 @@ public func toUtf16String(): Utf16String
 
 **功能：** 从 JSString 转换为 Utf16String。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -5083,29 +5066,13 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **功能：** 对 [JSString](#class-jsstring) 的功能及性能扩展，可在声明式互操作宏中使用。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **父类型：**
 
 * [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
 * Equatable\<JSStringEx>
 * ToString
-
-### prop size
-
-```cangjie
-public prop size: Int64
-```
-
-**功能：** 获取字符串 UTF-8 编码后的字节长度。
-
-**起始版本：** 15
-
-类型：Int64
-
-**类型：** Int64
-
-**读写能力：** 只读
 
 ### init(String)
 
@@ -5115,7 +5082,7 @@ public init(str: String)
 
 **功能：** 给定 String，构造对应的 JSStringEx 实例。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -5131,7 +5098,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSStringEx
 
 **功能：** 从 JSValue 转换为 JSStringEx。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -5154,7 +5121,7 @@ public static func toArkTsType(): String
 
 **功能：** 获取仓颉类型对应的ArkTS类型名称。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -5170,7 +5137,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **功能：** 转换为 JSValue。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -5192,7 +5159,7 @@ public func toString(): String
 
 **功能：** 转换为 String。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **返回值：**
 
@@ -5208,7 +5175,7 @@ public operator func !=(str: JSStringEx): Bool
 
 **功能：** 判断两个 JSStringEx 是否不相等。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -5230,7 +5197,7 @@ public operator func ==(str: JSStringEx): Bool
 
 **功能：** 功能：判断两个 JSStringEx 是否相等。
 
-**起始版本：** 15
+**起始版本：** 21
 
 **参数：**
 
@@ -5252,7 +5219,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **功能：** 一个js symbol的安全引用。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -5267,7 +5234,7 @@ public prop description: String
 
 **功能：** symbol的描述。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** String
 
@@ -5281,7 +5248,7 @@ public func toJSValue(_: JSContext): JSValue
 
 **功能：** 转换为 JSValue。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -5303,7 +5270,7 @@ public func toString(): String
 
 **功能：** 转换为 String。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5321,7 +5288,7 @@ public class JSThreadMisMatch <: JSInteropException {
 
 **功能：** 执行 ArkTS 接口的线程不匹配异常。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -5335,7 +5302,7 @@ public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread misma
 
 **功能：** 构造函数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -5356,7 +5323,7 @@ public class JSTypeMisMatch <: JSInteropException {
 
 **功能：** ArkTS 操作和实际类型不匹配异常。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **父类型：**
 
@@ -5370,7 +5337,7 @@ public init(acquireType: String, givenType: JSType, message!: String = "js type 
 
 **功能：** 构造函数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -5388,7 +5355,7 @@ public init(acquireType: JSType, givenType: JSType, message!: String = "js type 
 
 **功能：** 构造函数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -5408,7 +5375,7 @@ public open class SharedObject {
 
 **功能：** 可以被 ArkTS 引用的仓颉对象的基类。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ### prop nativeId
 
@@ -5430,7 +5397,7 @@ public init()
 
 **功能：** 创建一个 SharedObject 对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## struct JSBoolean
 
@@ -5440,7 +5407,7 @@ public struct JSBoolean {}
 
 **功能：** ArkTS boolean。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ### func toBool()
 
@@ -5450,7 +5417,7 @@ public func toBool(): Bool
 
 **功能：** 转换为仓颉 Bool。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5478,7 +5445,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5496,7 +5463,7 @@ public struct JSCallInfo {}
 
 每次ArkTS函数调用会在ArkTS栈上保存参数列表和其他相关信息，JSCallInfo是一个指向这些信息的指针。
 
-**起始版本：** 13
+**起始版本：** 21
 
 生命周期：本次ArkTS函数调用结束这个JSCallInfo就会失效。
 
@@ -5508,7 +5475,7 @@ public prop count: Int64
 
 **功能：** 入参数量。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** Int64
 
@@ -5522,7 +5489,7 @@ public prop thisArg: JSValue
 
 **功能：** this 指针。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSValue](#struct-jsvalue)
 
@@ -5536,7 +5503,7 @@ public operator func[](index: Int64): JSValue
 
 **功能：** 通过索引获取对应的参数。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -5571,7 +5538,7 @@ public struct JSNull {}
 
 **功能：** ArkTS null。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ### func toJSValue()
 
@@ -5581,7 +5548,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转为为 ArkTS 统一类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5597,7 +5564,7 @@ public struct JSNumber {}
 
 **功能：** ArkTS number。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ### func toFloat64()
 
@@ -5607,7 +5574,7 @@ public func toFloat64(): Float64
 
 **功能：** 转换为 Float64 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5635,7 +5602,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5662,7 +5629,7 @@ public struct JSType {
 
 **功能：** ArkTS 数据类型枚举。
 
-**起始版本：** 13
+**起始版本：** 21
 
 在 ArkTS 里，通过 typeof 操作符可枚举出某个数据的大致类型，JSType 罗列出这些类型并且加入 EXTERNAL 类型。
 
@@ -5674,7 +5641,7 @@ public static let BIGINT: JSType = JSType(4)
 
 **功能：** bigint 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5686,7 +5653,7 @@ public static let BOOLEAN: JSType = JSType(3)
 
 **功能：** bool 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5698,7 +5665,7 @@ public static let EXTERNAL: JSType = JSType(9)
 
 **功能：** external 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5710,7 +5677,7 @@ public static let FUNCTION: JSType = JSType(8)
 
 **功能：** function 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5722,7 +5689,7 @@ public static let NULL: JSType = JSType(1)
 
 **功能：** null 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5734,7 +5701,7 @@ public static let NUMBER: JSType = JSType(2)
 
 **功能：** number 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5746,7 +5713,7 @@ public static let OBJECT: JSType = JSType(7)
 
 **功能：** object 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5758,7 +5725,7 @@ public static let STRING: JSType = JSType(5)
 
 **功能：** string 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5770,7 +5737,7 @@ public static let SYMBOL: JSType = JSType(6)
 
 **功能：** symbol 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5782,7 +5749,7 @@ public static let UNDEFINED: JSType = JSType(0)
 
 **功能：** undefined 类型。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **类型：** [JSType](#struct-jstype)
 
@@ -5794,7 +5761,7 @@ public func toString(): String
 
 **功能：** 获取 JSType 的字符串描述。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5810,7 +5777,7 @@ public operator func !=(target: JSType): Bool
 
 **功能：** 对两个 JSType 进行不等判断。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -5832,7 +5799,7 @@ public operator func ==(target: JSType): Bool
 
 **功能：** 对两个 JSType 进行判等。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -5854,7 +5821,7 @@ public struct JSUndefined {}
 
 **功能：** ArkTS null。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ### func toJSValue()
 
@@ -5864,7 +5831,7 @@ public func toJSValue(): JSValue
 
 **功能：** 转换为 JSValue 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5880,7 +5847,7 @@ public struct JSValue {}
 
 **功能：** 一个ArkTS变量（弱类型，短生命周期）。
 
-**起始版本：** 13
+**起始版本：** 21
 
 JSValue是ArkTS运行时统一类型，也是直接与ArkTS运行时交互的数据类型。
 
@@ -5894,7 +5861,7 @@ public func asArray(): JSArray
 
 **功能：** 把一个 JSValue 转换为 JSArray 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5910,7 +5877,7 @@ public func asArrayBuffer(): JSArrayBuffer
 
 **功能：** 把一个 JSValue 转换为 JSArrayBuffer 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5926,7 +5893,7 @@ public func asBigInt(): JSBigInt
 
 **功能：** 把一个 JSValue 转换为 JSBigInt 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5942,7 +5909,7 @@ public func asBoolean(): JSBoolean
 
 **功能：** 把一个 JSValue 转换为 JSBoolean 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5958,7 +5925,7 @@ public func asClass(): JSClass
 
 **功能：** 把一个 JSValue 转换为 JSClass 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5974,7 +5941,7 @@ public func asExternal(): JSExternal
 
 **功能：** 把一个 JSValue 转换为 JSExternal 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -5990,7 +5957,7 @@ public func asFunction(): JSFunction
 
 **功能：** 把一个 JSValue 转换为 JSFunction 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6006,7 +5973,7 @@ public func asNull(): JSNull
 
 **功能：** 把一个 JSValue 转换为 JSNull 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6022,7 +5989,7 @@ public func asNumber(): JSNumber
 
 **功能：** 把一个 JSValue 转换为 JSNumber 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6038,7 +6005,7 @@ public func asObject(): JSObject
 
 **功能：** 把一个 JSValue 转换为 JSObject 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6058,7 +6025,7 @@ public func asPromise(): JSPromise
 
 **功能：** 把一个 JSValue 转换为 JSPromise 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6073,7 +6040,7 @@ public func asString(): JSString
 ```
 **功能：** 把一个 JSValue 转换为 JSString 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6089,7 +6056,7 @@ public func asSymbol(): JSSymbol
 
 **功能：** 把一个 JSValue 转换为 JSSymbol 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6105,7 +6072,7 @@ public func asUndefined(): JSUndefined
 
 **功能：** 把一个 JSValue 转换为 JSUndefined 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6121,7 +6088,7 @@ public func bindObject(external: JSValue): Unit
 
 **功能：** 往 ArkTS 对象绑定一个仓颉对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -6155,7 +6122,7 @@ public func bindObject(data: SharedObject): Unit
 
 **功能：** 往 ArkTS 对象绑定一个仓颉对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -6188,7 +6155,7 @@ public func getBindingObject(): ?SharedObject
 
 **功能：** 获取 ArkTS 对象绑定的仓颉对象。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6223,7 +6190,7 @@ public func getElement(index: Int64): JSValue
 
 **功能：** 从 ArkTS 数组读取元素。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -6256,7 +6223,7 @@ public func getProperty(key: JSKeyable): JSValue
 
 **功能：** 从 ArkTS 对象读取属性。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -6293,7 +6260,7 @@ public func isArray(): Bool
 
 **功能：** 判断一个 JSValue 是否是 Array 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6323,7 +6290,7 @@ public func isArrayBuffer(): Bool
 
 **功能：** 判断一个 JSValue 是否是 ArrayBuffer 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6353,7 +6320,7 @@ public func isBigInt(): Bool
 
 **功能：** 判断一个 JSValue 是否是 bigint 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6383,7 +6350,7 @@ public func isBoolean(): Bool
 
 **功能：** 判断一个 JSValue 是否是 boolean 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6413,7 +6380,7 @@ public func isClass(): Bool
 
 **功能：** 判断一个 JSValue 是否是一个 ArkTS 类（构造函数） 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6443,7 +6410,7 @@ public func isExternal(): Bool
 
 **功能：** 判断一个 JSValue 是否是一个外部对象（仓颉对象的 ArkTS 引用） 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6473,7 +6440,7 @@ public func isFunction(): Bool
 
 **功能：** 判断一个 JSValue 是否是 function 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6503,7 +6470,7 @@ public func isNull(): Bool
 
 **功能：** 判断一个 JSValue 是否是 null 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6533,7 +6500,7 @@ public func isNumber(): Bool
 
 **功能：** 判断一个 JSValue 是否是 number 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6563,7 +6530,7 @@ public func isObject(): Bool
 
 **功能：** 判断一个 JSValue 是否是 object 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6593,7 +6560,7 @@ public func isPromise(): Bool
 
 **功能：** 判断一个 JSValue 是否是 Promise 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6623,7 +6590,7 @@ public func isString(): Bool
 
 **功能：** 判断一个 JSValue 是否是 string 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6653,7 +6620,7 @@ public func isSymbol(): Bool
 
 **功能：** 判断一个 JSValue 是否是 Symbol 类型 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6683,7 +6650,7 @@ public func isUndefined(): Bool
 
 **功能：** 判断一个 JSValue 是否是 undefined 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6713,7 +6680,7 @@ public func setElement(index: Int64, value: JSValue): Unit
 
 **功能：** 从 ArkTS 数组写入元素。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -6743,7 +6710,7 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 
 **功能：** 往 ArkTS 对象写入属性。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -6772,7 +6739,7 @@ public func strictEqual(target: JSValue): Bool
 
 **功能：** 对两个 JSValue 做严格判等（类型一致 + 值相等）。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **参数：**
 
@@ -6809,7 +6776,7 @@ public func toBigInt(): BigInt
 
 **功能：** 把一个 JSValue 转换为 BigInt 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6836,7 +6803,7 @@ public func toBoolean(): Bool
 
 **功能：** 把一个 JSValue 转换为 Bool 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6863,7 +6830,7 @@ public func toNumber(): Float64
 
 **功能：** 把一个 JSValue 转换为 Float64 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6890,7 +6857,7 @@ public func toString(): String
 
 **功能：** 把一个 JSValue 转换为 String 。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6926,7 +6893,7 @@ public func toUtf16String(): Utf16String
 
 **功能：** 从 JSValue 转换为 Utf16String。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -6942,7 +6909,7 @@ public func typeof(): JSType
 
 **功能：** 获取一个 JSValue 的类型，和 ArkTS 的 typeof 语法枚举出的类型基本一致。
 
-**起始版本：** 13
+**起始版本：** 21
 
 **返回值：**
 
@@ -6973,7 +6940,7 @@ public type ClassRegister =(JSContext) -> JSClass
 
 **功能：** ClassRegister 是 ([JSContext](#class-jscontext)) -> [JSClass](#class-jsclass) 类型的别名。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## type FuncRegister
 
@@ -6983,7 +6950,7 @@ public type FuncRegister =(JSContext) -> JSFunction
 
 **功能：** FuncRegister 是 ([JSContext](#class-jscontext)) -> [JSFunction](#class-jsfunction) 类型的别名。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## type JSBufferFinalizer
 
@@ -6993,7 +6960,7 @@ public type JSBufferFinalizer =(CPointer<Byte>) -> Unit
 
 **功能：** JSBufferFinalizer 是 (CPointer\<Byte>) -> Unit 类型的别名。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## type JSLambda
 
@@ -7003,7 +6970,7 @@ public type JSLambda =(JSContext, JSCallInfo) -> JSValue
 
 **功能：** JSLambda 是 ([JSContext](#class-jscontext), [JSCallInfo](#struct-jscallinfo)) -> [JSValue](#struct-jsvalue) 类型的别名。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## type ModuleRegister
 
@@ -7013,7 +6980,7 @@ public type ModuleRegister =(JSContext, JSObject) -> Unit
 
 **功能：** ModuleRegister 是 ([JSContext](#class-jscontext), [JSObject](#class-jsobject)) -> Unit 类型的别名。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## type napi_env
 
@@ -7023,7 +6990,7 @@ public type napi_env = CPointer<Unit>
 
 **功能：** napi_env 是 CPointer\<Unit> 类型的别名。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## type napi_value
 
@@ -7033,7 +7000,7 @@ public type napi_value = CPointer<Unit>
 
 **功能：** napi_value 是 CPointer\<Unit> 类型的别名。
 
-**起始版本：** 13
+**起始版本：** 21
 
 ## class Utf16String
 
@@ -7045,7 +7012,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
 **功能：** 以 UTF-16 编码格式存储的字符串，在与 ArkTS 字符串相互转换时，相比 String 有更好的性能。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **父类型：**
 
@@ -7063,7 +7030,7 @@ public prop accessible: Bool
 
 **功能：** 判断字符串内容是否可访问。该对象的字符串内容可以使用 dispose 手动释放，释放后继续访问会抛出异常。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **类型：** Bool
 
@@ -7077,7 +7044,7 @@ public prop size: Int64
 
 **功能：** 表示该字符串（UTF-16 编码格式）中编码单元的总长度。其中，UTF-16 编码格式的编码单元占 2 个字节，每个字符有 1-2 个编码单元。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **类型：** Int64
 
@@ -7091,7 +7058,7 @@ public prop totalChars: Int64
 
 **功能：** 该字符的总字符数。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **类型：** Int64
 
@@ -7105,7 +7072,7 @@ public static let empty: Utf16String
 
 **功能：** 空字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **类型：** Utf16String
 
@@ -7119,7 +7086,7 @@ public init(src: String)
 
 **功能：** 从标准库 String 创建一个 Utf16String。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7135,7 +7102,7 @@ public static func fromJSValue(_: JSContext, value: JSValue): Utf16String
 
 **功能：** 将 JSValue 转换为 Utf16String 对象。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7158,7 +7125,7 @@ public static func toArkTsType(): String
 
 **功能：** 对应的 ArkTS 类型名称。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -7174,7 +7141,7 @@ public func compare(target: Utf16String): Ordering
 
 **功能：** 按照字符 Unicode 的字典序比较大小。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7196,7 +7163,7 @@ public func contains(target: Utf16String): Bool
 
 **功能：** 是否包含字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7218,7 +7185,7 @@ public func count(src: Utf16String): Int64
 
 **功能：** 包含字符串次数。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7240,7 +7207,7 @@ public func dispose(): Unit
 
 **功能：** 释放保存字符串内容的内存。在首次 dispose 之后继续访问该字符串的内容将导致异常。
 
-**起始版本：** 20
+**起始版本：** 21
 
 ### func endsWith(Utf16String)
 
@@ -7250,7 +7217,7 @@ public func endsWith(target: Utf16String): Bool
 
 **功能：** 字符串是否以目标字符串结束。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7272,7 +7239,7 @@ public func hashCode(): Int64
 
 **功能：** 字符串 hash 值。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -7288,7 +7255,7 @@ public func indexOf(target: Utf16String): ?Int64
 
 **功能：** 向后查找字符串所在的位置（字符索引）。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7310,7 +7277,7 @@ public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 **功能：** 向后查找字符串所在的位置（编码单元索引）。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7333,7 +7300,7 @@ public func isEmpty(): Bool
 
 **功能：** 是否为空字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -7349,7 +7316,7 @@ public func isCompressed(): Bool
 
 **功能：** 判断内容是否被压缩。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -7365,7 +7332,7 @@ public func lastIndexOf(target: Utf16String): ?Int64
 
 **功能：** 向前查找字符所在的位置。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7387,7 +7354,7 @@ public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 **功能：** 向前查找字符所在的位置。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7410,7 +7377,7 @@ public func lazySplit(separator: Utf16String, remoteEmpty!: Bool = false): Itera
 
 **功能：** 懒分割字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7433,7 +7400,7 @@ public func lazySplit(separator: Utf16String, maxSplit: Int64, remoteEmpty!: Boo
 
 **功能：** 懒分割字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7457,7 +7424,7 @@ public func lines(): Iterator<Utf16String>
 
 **功能：** 获取行迭代器。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -7468,12 +7435,12 @@ public func lines(): Iterator<Utf16String>
 ### func replace(Utf16String, Utf16String, Int64)
 
 ```cangjie
-public func replace(old: Utf16String, new: Utf16String, count!: Int64 = 1): Utf16String
+public func replace(old: Utf16String, new: Utf16String, count!: Int64 = Int64.Max): Utf16String
 ```
 
 **功能：** 替换字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7481,7 +7448,7 @@ public func replace(old: Utf16String, new: Utf16String, count!: Int64 = 1): Utf1
 |:---|:---|:---|:---|:---|
 |old|[Utf16String](#class-utfstring)|是|-|替换前的元素|
 |new|[Utf16String](#class-utfstring)|是|-|替换后的元素|
-|count|Int64|否|1|替换次数|
+|count|Int64|否|Int64.Max|替换次数|
 
 **返回值：**
 
@@ -7497,7 +7464,7 @@ public func runes(): Iterator<Rune>
 
 **功能：** 获取字符迭代器。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -7513,7 +7480,7 @@ public func split(seperator: Utf16String, remoteEmpty!: Bool = false): Array<Utf
 
 **功能：** 分割字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7536,7 +7503,7 @@ public func split(seperator: Utf16String, maxSplit: Int64, remoteEmpty!: Bool = 
 
 **功能：** 分割字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7560,7 +7527,7 @@ public func startsWith(target: Utf16String): Bool
 
 **功能：** 字符串是否以目标字符串开头。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7582,7 +7549,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **功能：** 将 Utf16String 对象转换成 JSValue。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7604,7 +7571,7 @@ public func toString(): String
 
 **功能：** 转换为 String。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **返回值：**
 
@@ -7620,7 +7587,7 @@ public operator func != (target: Utf16String): Bool
 
 **功能：** 判断与目标字符串是否不相等。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7642,7 +7609,7 @@ public operator func + (right: Utf16String): Utf16String
 
 **功能：** 往后拼接一个字符串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7664,7 +7631,7 @@ public operator func < (target: Utf16String): Bool
 
 **功能：** 判断是否小于目标字符串（按字符 Unicode 的字典序）。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7686,7 +7653,7 @@ public operator func <= (target: Utf16String): Bool
 
 **功能：** 判断是否小于或等于目标字符串（按字符 Unicode 的字典序）。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7708,7 +7675,7 @@ public operator func == (target: Utf16String): Bool
 
 **功能：** 判断与目标字符串是否相等。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7730,7 +7697,7 @@ public operator func > (target: Utf16String): Bool
 
 **功能：** 判断是否大于目标字符串（按字符 Unicode 的字典序）。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7752,7 +7719,7 @@ public operator func >= (target: Utf16String): Bool
 
 **功能：** 判断是否大于或等于目标字符串（按字符 Unicode 的字典序）。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7774,7 +7741,7 @@ public operator func [](index: Int64): UInt16
 
 **功能：** 根据元素索引获取字符。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
@@ -7796,7 +7763,7 @@ public operator func [](range: Range<Int64>): Utf16String
 
 **功能：** 从字符串截取一段子串。
 
-**起始版本：** 20
+**起始版本：** 21
 
 **参数：**
 
