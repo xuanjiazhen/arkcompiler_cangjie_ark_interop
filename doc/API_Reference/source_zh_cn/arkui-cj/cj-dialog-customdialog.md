@@ -602,11 +602,11 @@ class MyDialog {
     func build() {
         Row(space: 60) {
             Button("cancel").onClick { evt =>
-                controller?.close()
+                controller?.releaseSelf()
             }
 
             Button("confirm").onClick { evt =>
-                controller?.close()
+                controller?.releaseSelf()
             }
         }.height(500.px)
     }

@@ -628,7 +628,6 @@ import kit.ArkUI.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -636,9 +635,8 @@ class EntryView {
     @State var arr: Array<Int64> = [1, 2, 3]
     @State var current: Int64 = 1
     var normalIcon: AppResource = @r(app.media.startIcon)
-    let dividerProp = SideBarDividerStyle(strokeWidth: 1.vp, color: Color.Blue, startMargin: 4.vp, endMargin: 4.vp)
-    let ctrlButton: ButtonStyle = ButtonStyle(left: 17, top: 49, width: 20, height: 31,
-        icons: Icons(shown: "", hidden: "", switching: ""))
+    let ctrlButton: ButtonStyle = ButtonStyle(left: 17.0, top: 49.0, width: 20.0, height: 31.0,
+        icons: ButtonIconOptions(shown: "", hidden: "", switching: ""))
     func build() {
         SideBarContainer() {
             Column() {
@@ -672,7 +670,6 @@ class EntryView {
             .id("SideBarDefault")
             .showSideBar(true)
             .showControlButton(true)
-            .divider(value: dividerProp)
             .showControlButton(true)
             .autoHide(false)
             .sideBarWidth(150.vp)

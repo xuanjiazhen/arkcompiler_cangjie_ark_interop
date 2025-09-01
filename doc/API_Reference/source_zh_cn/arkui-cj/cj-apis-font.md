@@ -281,7 +281,7 @@ import kit.LocalizationKit.*
 @Component
 class EntryView {
     protected func onAppear() {
-        Font.registerFont(
+        getUIContext().getFont().registerFont(
             familyName: "Deyihei",
             familySrc: "/resources/rawfile/SmileySans-Oblique.ttf"
         )
@@ -309,6 +309,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -318,7 +319,7 @@ class EntryView {
             Column {
                 Button("HelloWorld")
                 .onClick {evt =>
-                    let list = Font.getSystemFontList()
+                    let list = getUIContext().getFont().getSystemFontList()
                     Hilog.info(0, "AppLogCj", "${list.size}")
                 }
             }.width(100.percent)
@@ -336,6 +337,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -345,7 +347,7 @@ class EntryView {
             Column {
                 Button("HelloWorld")
                 .onClick {evt =>
-                    let info = Font.getFontByName("HarmonyOS Sans Italic")
+                    let info = getUIContext().getFont().getFontByName("HarmonyOS Sans Italic")
                     match (info) {
                         case Some(v) =>
                             Hilog.info(0, "AppLogCj", "${v.path}")
