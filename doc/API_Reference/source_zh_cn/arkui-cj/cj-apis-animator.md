@@ -204,7 +204,7 @@ public init(
 ## class AnimatorResult
 
 ```cangjie
-public class AnimatorResult {}
+public class AnimatorResult <: RemoteDataLite {}
 ```
 
 **功能：** 定义动画的初始化类。

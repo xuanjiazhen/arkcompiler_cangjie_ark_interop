@@ -288,24 +288,6 @@ public func getValue(): Int32
 |:----|:----|
 |Int32|枚举的值。|
 
-#### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
-
 ## 示例代码
 
 ### 示例1（设置多选框群组）

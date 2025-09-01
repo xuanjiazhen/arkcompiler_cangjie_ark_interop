@@ -1,4 +1,4 @@
-# RectShape
+# Rect
 
 矩形绘制组件。
 

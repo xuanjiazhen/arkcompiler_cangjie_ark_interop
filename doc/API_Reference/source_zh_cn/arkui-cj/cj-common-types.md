@@ -1827,46 +1827,6 @@ START
 
 **起始版本：** 21
 
-### func !=(ArrowPointPosition)
-
-```cangjie
-public operator func !=(other: ArrowPointPosition): Bool
-```
-
-**功能：** 比较两个ArrowPointPosition是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ArrowPointPosition](#enum-arrowpointposition)|是|-|待比较的另一个ArrowPointPosition值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个ArrowPointPosition不相等则返回true，否则返回false|
-
-### func ==(ArrowPointPosition)
-
-```cangjie
-public operator func ==(other: ArrowPointPosition): Bool
-```
-
-**功能：** 比较两个ArrowPointPosition是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ArrowPointPosition](#enum-arrowpointposition)|是|-|待比较的另一个ArrowPointPosition值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个ArrowPointPosition相等则返回true，否则返回false|
-
 ## enum Axis
 
 ```cangjie
@@ -5128,46 +5088,6 @@ Thin
 
 **起始版本：** 21
 
-### func !=(ForegroundBlurStyle)
-
-```cangjie
-public operator func !=(other: ForegroundBlurStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ForegroundBlurStyle](#enum-foregroundblurstyle)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(ForegroundBlurStyle)
-
-```cangjie
-public operator func ==(other: ForegroundBlurStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ForegroundBlurStyle](#enum-foregroundblurstyle)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 ## enum FunctionKey
 
 ```cangjie
@@ -5886,26 +5806,6 @@ Y
 
 **起始版本：** 21
 
-### func ==(ImageRepeat)
-
-```cangjie
-public operator func ==(other: ImageRepeat): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ImageRepeat](#enum-imagerepeat)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 ## enum ImageSize
 
 ```cangjie
@@ -6430,24 +6330,6 @@ public operator func ==(other: KeySource): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举的字符串表示。|
-
 ## enum KeyType
 
 ```cangjie
@@ -6545,24 +6427,6 @@ public operator func ==(other: KeyType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举的字符串表示。|
-
 ## enum SafeAreaEdge
 
 ```cangjie
@@ -6606,77 +6470,6 @@ TOP
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-## enum LayoutSafeAreaType
-
-```cangjie
-public enum LayoutSafeAreaType <: Equatable<LayoutSafeAreaType> {
-    | SYSTEM
-    | ...
-}
-```
-
-**功能：** 扩展布局安全区域的枚举类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<LayoutSafeAreaType>
-
-### SYSTEM
-
-```cangjie
-SYSTEM
-```
-
-**功能：** 系统默认非安全区域，包括状态栏、导航栏。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### func !=(LayoutSafeAreaType)
-
-```cangjie
-public operator func !=(other: LayoutSafeAreaType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaType](#enum-layoutsafeareatype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(LayoutSafeAreaType)
-
-```cangjie
-public operator func ==(other: LayoutSafeAreaType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaType](#enum-layoutsafeareatype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## enum LengthMetricsUnit
 
@@ -7441,24 +7234,6 @@ public operator func ==(other: ModifierKey): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举的字符串表示。|
-
 ## enum MouseAction
 
 ```cangjie
@@ -7581,24 +7356,6 @@ public operator func ==(other: MouseAction): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
 
 ## enum MouseButton
 
@@ -7735,24 +7492,6 @@ public operator func ==(other: MouseButton): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
 
 ## enum NavigationType
 
@@ -8048,7 +7787,7 @@ public operator func ==(other: OptionWidthMode): Bool
 ## enum Placement
 
 ```cangjie
-public enum Placement <: Equatable<Placement> {
+public enum Placement {
     | Left
     | Right
     | Top
@@ -8821,24 +8560,6 @@ public operator func ==(other: Repetition): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
-
 ## enum ResponseType
 
 ```cangjie
@@ -9349,24 +9070,6 @@ public operator func ==(other: ScrollState): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
 
 ## enum ShadowStyle
 
@@ -10095,24 +9798,6 @@ public operator func ==(other: SourceType): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
 
 ## enum StickyStyle
 
@@ -11471,24 +11156,6 @@ public operator func ==(other: TouchType): Bool
 |:----|:----|
 |Bool|两个枚举值相等时，返回true，否则返回false。|
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 将枚举类型值转换成字符串类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举值对应的字符串类型。|
-
 ## enum VerticalAlign
 
 ```cangjie
@@ -11880,7 +11547,7 @@ public operator func ==(other: WordBreak): Bool
 ## type CustomBuilder
 
 ```cangjie
-public type CustomBuilder =() -> Unit
+public type CustomBuilder = () -> Unit
 ```
 
 **功能：** [CustomBuilder](#type-custombuilder)是[() -> Unit](#)类型的别名。
@@ -11888,7 +11555,7 @@ public type CustomBuilder =() -> Unit
 ## type TransitionFinishCallback
 
 ```cangjie
-public type TransitionFinishCallback =(Bool) -> Unit
+public type TransitionFinishCallback = (Bool) -> Unit
 ```
 
 **功能：** [TransitionFinishCallback](#type-transitionfinishcallback)是[(Bool) -> Unit](#)类型的别名。
