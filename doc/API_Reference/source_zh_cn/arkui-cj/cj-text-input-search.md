@@ -117,7 +117,6 @@ public func placeholderFont(
 ### func searchButton(String)
 
 ```cangjie
-
 public func searchButton(value: ResourceStr): This
 ```
 

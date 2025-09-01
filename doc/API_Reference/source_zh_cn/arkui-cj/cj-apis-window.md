@@ -937,7 +937,7 @@ public init(
 ## class Window
 
 ```cangjie
-public class Window {}
+public class Window <: RemoteDataLite {}
 ```
 
 **功能：** 当前窗口实例，窗口管理器管理的基本单元。
@@ -1999,124 +1999,10 @@ public init(
 |isTransparent|Bool|是|-|窗口是否透明。默认为false。true表示透明；false表示不透明。|
 |id|UInt32|是|-|窗口ID。<br>初始值：0|
 
-## class WindowStage
-
-```cangjie
-public class WindowStage {}
-```
-
-**功能：** 窗口管理器。管理各个基本窗口单元，即Window实例。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-### func createSubWindow(String)
-
-```cangjie
-public func createSubWindow(name: String): Window
-```
-
-**功能：** 创建该WindowStage实例下的子窗口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|name|String|是|-|子窗口的名字。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[Window](#class-window)|返回当前WindowStage下的子窗口对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1300002 | This window state is abnormal. |
-
-### func getMainWindow()
-
-```cangjie
-public func getMainWindow(): Window
-```
-
-**功能：** 获取该WindowStage实例下的主窗口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[Window](#class-window)|返回当前WindowStage下的主窗口对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1300002 | This window state is abnormal. |
-
-### func getSubWindow()
-
-```cangjie
-public func getSubWindow(): Array<Window>
-```
-
-**功能：** 获取该WindowStage实例下的所有子窗口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<[Window](#class-window)>|返回当前WindowStage下的所有子窗口对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1300002 | This window state is abnormal. |
-
-### func loadContent(String)
-
-```cangjie
-public func loadContent(path: String): Unit
-```
-
-**功能：** 为当前WindowStage的主窗口加载具体页面内容。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|path|String|是|-|要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。|
-
 ## enum AvoidAreaType
 
 ```cangjie
-public enum AvoidAreaType <: Equatable<AvoidAreaType> {
+public enum AvoidAreaType {
     | TypeSystem
     | TypeCutout
     | TypeSystemGesture
@@ -2219,7 +2105,7 @@ public operator func ==(other: AvoidAreaType): Bool
 ## enum ColorSpace
 
 ```cangjie
-public enum ColorSpace <: Equatable<ColorSpace> {
+public enum ColorSpace {
     | Default
     | WideGamut
     | ...
@@ -2303,7 +2189,7 @@ public operator func ==(other: ColorSpace): Bool
 ## enum Orientation
 
 ```cangjie
-public enum Orientation <: Equatable<Orientation> {
+public enum Orientation {
     | Unspecified
     | Portrait
     | Landscape
@@ -2517,7 +2403,7 @@ public operator func ==(other: Orientation): Bool
 ## enum SystemBarType
 
 ```cangjie
-public enum SystemBarType <: Equatable<SystemBarType> {
+public enum SystemBarType {
     | Status
     | Navigation
     | ...
@@ -2601,7 +2487,7 @@ public operator func ==(other: SystemBarType): Bool
 ## enum WindowCallbackType
 
 ```cangjie
-public enum WindowCallbackType <: Equatable<WindowCallbackType> {
+public enum WindowCallbackType {
     | WindowStageEvent
     | WindowSizeChange
     | WindowAvoidAreaChange
@@ -2841,7 +2727,7 @@ public operator func ==(other: WindowCallbackType): Bool
 ## enum WindowEventType
 
 ```cangjie
-public enum WindowEventType <: Equatable<WindowEventType> {
+public enum WindowEventType {
     | WindowShown
     | WindowActive
     | WindowInactive
@@ -2964,7 +2850,7 @@ public operator func ==(other: WindowEventType): Bool
 ## enum WindowStageEventType
 
 ```cangjie
-public enum WindowStageEventType <: Equatable<WindowStageEventType> {
+public enum WindowStageEventType {
     | Shown
     | Active
     | Inactive
@@ -3100,7 +2986,7 @@ public operator func ==(other: WindowStageEventType): Bool
 ## enum WindowStatusType
 
 ```cangjie
-public enum WindowStatusType <: Equatable<WindowStatusType> {
+public enum WindowStatusType {
     | Undefined
     | FullScreen
     | Maximize
@@ -3236,7 +3122,7 @@ public operator func ==(other: WindowStatusType): Bool
 ## enum WindowType
 
 ```cangjie
-public enum WindowType <: Equatable<WindowType> {
+public enum WindowType {
     | TypeApp
     | TypeFloat
     | TypeDialog

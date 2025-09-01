@@ -23,7 +23,7 @@ ohos.permission.INTERNET
 API示例代码使用说明：
 
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[接口使用说明](../../cj-development-intro.md#接口使用说明)。
 
@@ -3003,7 +3003,7 @@ public operator func !=(other: SecurityLevel): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[SecurityLevel](cj-apis-data-distributed_kv_store.md#enum-securitylevel)|是|-|待比较的另一个枚举值。|
+|other|[SecurityLevel](../ArkData/cj-apis-distributed_kv_store.md#enum-securitylevel)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
@@ -3027,7 +3027,7 @@ public operator func ==(other: SecurityLevel): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[SecurityLevel](cj-apis-data-distributed_kv_store.md#enum-securitylevel)|是|-|待比较的另一个枚举值。|
+|other|[SecurityLevel](../ArkData/cj-apis-distributed_kv_store.md#enum-securitylevel)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
