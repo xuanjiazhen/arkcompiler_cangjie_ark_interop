@@ -385,3 +385,56 @@ class EntryView {
 ```
 
 ![imageSpan](figures/imageSpan.png)
+
+### 示例2（图像设置颜色滤镜效果）
+
+该示例通过colorFilter实现了给图像设置颜色滤镜效果。
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
+
+@Entry
+@Component
+class EntryView {
+    let blueColor = ColorFilter([0.38, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.81, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.43, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 1.0, 0.0])
+    let colorFilter = ColorFilter([1.0, 0.0, 1.0, 0.0, 1.0,
+                                   0.0, 0.0, 0.0, 1.0, 0.0,
+                                   1.0, 0.0, 1.0, 0.0, 0.0,
+                                   0.0, 1.0, 0.0, 1.0, 0.0])
+
+    @State var DrawingColorFilterFirst: ColorFilter = blueColor
+    @State var DrawingColorFilterSecond: ColorFilter = colorFilter
+
+    func build() {
+        Column(space: 5){
+            Image(@r(app.media.startIcon))
+            .width(100)
+            .height(100)
+            .colorFilter(this.DrawingColorFilterFirst)
+            .onClick{
+                    evt =>
+                    this.DrawingColorFilterFirst = colorFilter
+            }
+            Image(@r(app.media.startIcon))
+            .width(110)
+            .height(110)
+            .margin(15)
+            .colorFilter(this.DrawingColorFilterSecond)
+            .onClick{
+                    evt =>
+                    this.DrawingColorFilterSecond = blueColor
+            }
+        }
+    }
+}
+```
+
+![image3](figures/imageSpan2.gif)
