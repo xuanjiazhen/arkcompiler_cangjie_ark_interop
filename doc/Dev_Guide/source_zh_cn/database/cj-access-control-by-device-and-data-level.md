@@ -68,10 +68,8 @@
 
     ```cangjie
     // main_ability.cj
-    internal import kit.performanceAnalysisKit.Hilog
-    internal import kit.AbilityKit.AbilityStage
-    internal import kit.AbilityKit.LaunchReason
-    import kit.AbilityKit.UIAbilityContext
+    import import kit.performanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -101,7 +99,7 @@
     ```cangjie
     // xxx.cj
     import kit.ArkData.{DistributedKVStore, KVManagerConfig}
-    import kit.ArkUI.BusinessException
+    import ohos.business_exception.BusinessException
     import kit.AbilityKit.getStageContext
     import ohos.data.distributed_kv_store.Options as KVOptions
     import ohos.data.distributed_kv_store.SecurityLevel as KVSecurityLevel
@@ -140,10 +138,9 @@
     <!-- compile -->
 
     ```cangjie
-    internal import import kit.performanceAnalysisKit.Hilog
-    internal import kit.AbilityKit.AbilityStage
-    internal import kit.AbilityKit.LaunchReason
-    import kit.AbilityKit.UIAbilityContext
+    // main_ability.cj
+    import import kit.performanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -173,7 +170,7 @@
     ```cangjie
     // xxx.cj
     import kit.ArkData.{StoreConfig, getRdbStore}
-    import kit.ArkUI.BusinessException
+    import ohos.business_exception.BusinessException
     import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
 
     try {
