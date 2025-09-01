@@ -50,7 +50,7 @@ public class PermissionOr <: PermissionValue {
     }
 }
 
-extend String <: PermissionValue {
+extend String <:  {
     public operator const func &(rhs: PermissionValue): PermissionValue {
         return PermissionAnd(this, rhs)
     }
