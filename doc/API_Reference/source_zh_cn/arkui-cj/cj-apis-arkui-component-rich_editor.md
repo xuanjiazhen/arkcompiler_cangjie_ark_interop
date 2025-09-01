@@ -1143,6 +1143,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -1203,8 +1204,8 @@ class EntryView {
                                 fontColor: Color(0XFF1298),
                                 fontSize: 20.fp,
                                 fontStyle: FontStyle.Italic,
-                                decoration: TextDecoration(
-                                    `type`: TextDecorationType.Overline,
+                                decoration: TextDecorationOptions(
+                                    decorationType: TextDecorationType.Overline,
                                     color: Color(0X12FF98)
                                 ),
                             )
@@ -1227,25 +1228,6 @@ class EntryView {
             }
 
             Row {
-                Button("getSpans")
-                .onClick {
-                     evt =>
-                    let array = controller.getSpans(start: 0, end: 10)
-                    for(i in 0..array.size) {
-                        match(array[i].spanType) {
-                            case TEXT =>
-                                let textResult = array[i].textResult.getOrThrow()
-                                Hilog.info(0, "AppLogCj", "RichEditor textResult. value: ${textResult.value}")
-                            case IMAGE =>
-                                let imageResult = array[i].imageResult.getOrThrow()
-                                Hilog.info(0, "AppLogCj", "RichEditor ImageResult. size: ${imageResult.size[0].toString()} - ${imageResult.size[1].toString()}")
-                            case _ => return
-                        }
-                    }
-                }.width(400.px).height(150.px)
-            }
-
-            Row {
                 Button("updateParagraphStyle")
                 .onClick {
                     evt =>
@@ -1261,9 +1243,9 @@ class EntryView {
             }
 
             RichEditor(controller)
-            .customKeyboard(builder: bind(builder, this))
+            .customKeyboard(value: bind(builder, this))
             .bindSelectionMenu(
-                spantype: RichEditorSpanType.TEXT,
+                spantype: RichEditorSpanType.Text,
                 content: bind(builder, this),
                 responseType: ResponseType.LongPress,
                 options: SelectionMenuOptions(onAppear: { => Hilog.info(0, "AppLogCj", "SelectionMenuOptions onAppear")}, onDisappear: { => Hilog.info(0, "AppLogCj", "SelectionMenuOptions onDisappear")})

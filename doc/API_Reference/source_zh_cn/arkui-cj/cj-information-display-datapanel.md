@@ -74,7 +74,7 @@ public func strokeWidth(value: Length): This
 
 > **说明：**
 >
-> 数据面板的类型为DataPanelType.LineType时该属性不生效。
+> 数据面板的类型为DataPanelType.Line时该属性不生效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -491,7 +491,7 @@ class EntryView {
                 }
             }
                 .margin(bottom: 59)
-            DataPanel(values: this.valueArr, max: 100.0, panelType: DataPanelType.LineType)
+            DataPanel(values: this.valueArr, max: 100.0, panelType: DataPanelType.Line)
                 .width(300)
                 .height(10)
         }

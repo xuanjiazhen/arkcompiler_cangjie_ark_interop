@@ -264,10 +264,10 @@ class TimeTable {
 
 class EntryView {
      let timeTable = [
-            TimeTable("Monday", ["Chinese", "Math", "English"]),
-            TimeTable("Tuesday", ["Physics", "Chemistry", "Biology"]),
-            TimeTable("Wednesday", ["History", "Geography", "Politics"]),
-            TimeTable("Thursday", ["Art", "Music", "PE"])]
+        TimeTable("Monday", ["Chinese", "Math", "English"]),
+        TimeTable("Tuesday", ["Physics", "Chemistry", "Biology"]),
+        TimeTable("Wednesday", ["History", "Geography", "Politics"]),
+        TimeTable("Thursday", ["Art", "Music", "PE"])]
 
       @Builder func itemHead(text:String) {
         Text(text)
@@ -278,7 +278,7 @@ class EntryView {
     }
 
     @Builder func itemFoot(num:Int64) {
-        Text("Total ${num} classes")
+        Text("Total ${num} classes")
         .fontSize(16)
         .backgroundColor(0xAABBCC)
         .width(100.percent)

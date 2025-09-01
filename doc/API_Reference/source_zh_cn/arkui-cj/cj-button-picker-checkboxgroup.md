@@ -322,6 +322,10 @@ import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
 func formatNames(names: Array<String>): String {
     var result = ""
     for(name in names) {
@@ -403,11 +407,6 @@ class EntryView {
                 .size(width: 50.vp, height: 50.vp)
                 .selectedColor(0xed6f21)
                 .selectAll(true)
-<<<<<<< HEAD
-=======
-                .mark(strokeColor: Color.Green, size: 30.vp, strokeWidth: 10.vp)
-                .checkboxShape(CheckBoxShape.Circle)
->>>>>>> a9d7a488770f0887c8d7737cb4e4b814fe9acf01
                 .onChange { val =>
                     loggerInfo("checkboxGroup1 onChange names:" + formatNames(val.name))
                 }

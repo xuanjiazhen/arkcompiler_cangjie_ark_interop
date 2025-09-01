@@ -1691,7 +1691,7 @@ class EntryView {
                                 fontColor: Color(0XFF1298),
                                 fontSize: 20.fp,
                                 fontStyle: FontStyle.Italic,
-                                decoration: TextDecorationOption(
+                                decoration: TextDecorationOptions(
                                     decorationType: TextDecorationType.Overline,
                                     color: Color(0X12FF98)
                                 ),
