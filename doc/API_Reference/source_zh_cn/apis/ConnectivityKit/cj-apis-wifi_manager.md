@@ -19,7 +19,7 @@ ohos.permission.SET_WIFI_INFO
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md)。
 
@@ -719,7 +719,7 @@ public let timestamp: Int64
 ## enum DeviceAddressType
 
 ```cangjie
-public enum DeviceAddressType <: Equatable<DeviceAddressType> & ToString {
+public enum DeviceAddressType {
     | RandomDeviceAddress
     | RealDeviceAddress
     | ...
@@ -731,11 +731,6 @@ public enum DeviceAddressType <: Equatable<DeviceAddressType> & ToString {
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<DeviceAddressType>
-- ToString
 
 ### RandomDeviceAddress
 
@@ -822,7 +817,7 @@ public func toString(): String
 ## enum GroupOwnerBand
 
 ```cangjie
-public enum GroupOwnerBand <: Equatable<GroupOwnerBand> & ToString {
+public enum GroupOwnerBand {
     | GoBandAuto
     | GoBand2GHz
     | GoBand5GHz
@@ -835,11 +830,6 @@ public enum GroupOwnerBand <: Equatable<GroupOwnerBand> & ToString {
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<GroupOwnerBand>
-- ToString
 
 ### GoBand2GHz
 
@@ -938,7 +928,7 @@ public func toString(): String
 ## enum WifiCallbackType
 
 ```cangjie
-public enum WifiCallbackType <: Equatable<WifiCallbackType> & Hashable & ToString {
+public enum WifiCallbackType {
     | WifiScanStateChange
     | ...
 }
@@ -949,12 +939,6 @@ public enum WifiCallbackType <: Equatable<WifiCallbackType> & Hashable & ToStrin
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<WifiCallbackType>
-- Hashable
-- ToString
 
 ### WifiScanStateChange
 
@@ -1035,7 +1019,7 @@ public func toString(): String
 ## enum WifiCategory
 
 ```cangjie
-public enum WifiCategory <: Equatable<WifiCategory> & ToString {
+public enum WifiCategory {
     | Default
     | Wifi6
     | Wifi6Plus
@@ -1048,11 +1032,6 @@ public enum WifiCategory <: Equatable<WifiCategory> & ToString {
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<WifiCategory>
-- ToString
 
 ### Default
 
@@ -1151,7 +1130,7 @@ public func toString(): String
 ## enum WifiSecurityType
 
 ```cangjie
-public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
+public enum WifiSecurityType {
     | WifiSecTypeInvalid
     | WifiSecTypeOpen
     | WifiSecTypeWep
@@ -1171,11 +1150,6 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<WifiSecurityType>
-- ToString
 
 ### WifiSecTypeEap
 

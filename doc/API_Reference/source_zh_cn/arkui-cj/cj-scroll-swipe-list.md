@@ -324,7 +324,7 @@ public class onScrollFrameBeginHandleResult {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 	返回实际滑动量。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -336,7 +336,7 @@ public class onScrollFrameBeginHandleResult {
 public var offsetRemain: Float64
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 实际滚动偏移量。
 
 **类型：** Float64
 
@@ -349,7 +349,7 @@ public var offsetRemain: Float64
 public init(offsetRemain!: Float64)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建实际滑动量对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -359,7 +359,7 @@ public init(offsetRemain!: Float64)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|offsetRemain|Float64|是|-|<font color="red" face="bold">please add description</font>|
+|offsetRemain|Float64|是|-|实际滚动偏移量，单位vp。|
 
 ## 示例代码
 
@@ -373,13 +373,18 @@ public init(offsetRemain!: Float64)
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.*
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
 class EntryView {
     let arr =[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     func build() {
-        Stack(Alignment.TopStart){
+        Stack(alignContent: Alignment.TopStart){
             Column() {
                 List( space: 20, initialIndex: 0 ) {
                     ForEach(this.arr, itemGeneratorFunc: {item:Int64,_:Int64 =>
@@ -395,9 +400,10 @@ class EntryView {
                 //.friction(0.6)
                 .divider(strokeWidth: 2.px, color: Color(0xFFFFFF), startMargin: 20.px, endMargin: 20.px) // 每行之间的分界线
                 .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
-                .onScrollIndex({firstIndex: Int32, lastIndex: Int32 =>
-                        BaseLog.info("first" + firstIndex.toString())
-                        BaseLog.info("last" + lastIndex.toString())
+                .onScrollIndex({firstIndex: Int32, lastIndex: Int32, middleIndex: Int32 =>
+                        loggerInfo("first" + firstIndex.toString())
+                        loggerInfo("last" + lastIndex.toString())
+                        loggerInfo("middle" + middleIndex.toString())
                       })
                 .width(90.percent)
                 }
@@ -406,7 +412,6 @@ class EntryView {
             .backgroundColor(0xDCDCDC)
             .padding(top: 5.px )
         }
-
     }
 }
 
@@ -456,9 +461,9 @@ class EntryView {
             .alignListItem(
                 this.alignListItem)
             .scrollBar(BarState.Off)
-            Button("点击更改alignListItem:${this.alignListItem.getValue()}").onClick(
+            Button("点击更改alignListItem}").onClick(
                 {
-                 => match (this.alignListItem) {
+                 evt => match (this.alignListItem) {
                     case ListItemAlign.Start =>
                         this.alignListItem = ListItemAlign.Center
                     case ListItemAlign.Center =>
@@ -493,12 +498,12 @@ class EntryView {
   @State var editFlag: Bool = false
 
   func build() {
-    Stack( Alignment.TopStart ) {
+    Stack(alignContent: Alignment.TopStart ) {
       Column() {
         List(space: 20, initialIndex: 0 ) {
           ForEach(this.arr, itemGeneratorFunc:{item: Int64,index: Int64  =>
             ListItem() {
-              Flex(FlexParams(direction:FlexDirection.Row, alignItems:ItemAlign.Center)) {
+              Flex(direction:FlexDirection.Row, alignItems:ItemAlign.Center) {
                 Text("${item}" )
                   .width(100.percent)
                   .height(80)

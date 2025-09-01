@@ -20,16 +20,16 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 
 
   ```cangjie
-  Toggle(ToggleType.CheckboxType, isOn: false)
-  Toggle(ToggleType.CheckboxType, isOn: true)
+  Toggle(ToggleType.Checkbox, isOn: false)
+  Toggle(ToggleType.Checkbox, isOn: true)
   ```
 
   ![Toggle](figures/Toggle.png)
 
 
   ```cangjie
-  Toggle(ToggleType.SwitchType, isOn: false)
-  Toggle(ToggleType.SwitchType, isOn: true)
+  Toggle(ToggleType.Switch, isOn: false)
+  Toggle(ToggleType.Switch, isOn: true)
   ```
 
   ![Toggle1](figures/Toggle1.png)
@@ -40,12 +40,12 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 
 
   ```cangjie
-  Toggle(ToggleType.ButtonType, false) {
+  Toggle(ToggleType.Button, false) {
       Text('status button')
           .fontColor(0x182431)
           .fontSize(12)
   }.width(100)
-  Toggle(ToggleType.ButtonType, true) {
+  Toggle(ToggleType.Button, true) {
       Text('status button')
           .fontColor(0x182431)
           .fontSize(12)
@@ -60,25 +60,25 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 
 
   ```cangjie
-  Toggle(ToggleType.ButtonType, true) {
+  Toggle(ToggleType.Button, true) {
       Text('status button')
           .fontColor(0x182431)
           .fontSize(12)
   }
       .width(100)
-      .selectedColor(Color.PINK)
-  Toggle(ToggleType.CheckboxType, isOn: true).selectedColor(Color.PINK)
-  Toggle(ToggleType.SwitchType, isOn: true).selectedColor(Color.PINK)
+      .selectedColor(0xFEC0CD)
+  Toggle(ToggleType.Checkbox, isOn: true).selectedColor(0xFEC0CD)
+  Toggle(ToggleType.Switch, isOn: true).selectedColor(0xFEC0CD)
   ```
 
   ![Toggle3](figures/Toggle3.png)
 
-- 通过switchPointColor属性设置SwitchType类型的圆形滑块颜色，仅对toggleType为ToggleType.SwitchType生效。
+- 通过switchPointColor属性设置SwitchType类型的圆形滑块颜色，仅对toggleType为ToggleType.Switch生效。
 
 
   ```cangjie
-  Toggle(ToggleType.SwitchType, isOn: false).switchPointColor(Color.PINK)
-  Toggle(ToggleType.SwitchType, isOn: true).switchPointColor(Color.PINK)
+  Toggle(ToggleType.Switch, isOn: false).switchPointColor(0xFEC0CD)
+  Toggle(ToggleType.Switch, isOn: true).switchPointColor(0xFEC0CD)
   ```
 
   ![Toggle4](figures/Toggle4.png)
@@ -89,7 +89,7 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 
 
 ```cangjie
-Toggle(ToggleType.SwitchType, isOn: false)
+Toggle(ToggleType.Switch, isOn: false)
     .onChange {
         isOn => if (isOn) {
             // 需要执行的操作
@@ -106,6 +106,7 @@ Toggle用于切换蓝牙开关状态。
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -125,13 +126,13 @@ class EntryView {
                     .fontSize(16)
                     .textAlign(TextAlign.Start)
                     .backgroundColor(0xFFFFFF)
-                Toggle(ToggleType.SwitchType)
+                Toggle(ToggleType.Switch)
                     .margin(left: 200, right: 10)
                     .onChange {
                         isOn => if (isOn) {
-                            PromptAction.showToast(message: 'Bluetooth is on.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Bluetooth is on.'))
                         } else {
-                            PromptAction.showToast(message: 'Bluetooth is off.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Bluetooth is off.'))
                         }
                     }
             }.backgroundColor(0xFFFFFF)

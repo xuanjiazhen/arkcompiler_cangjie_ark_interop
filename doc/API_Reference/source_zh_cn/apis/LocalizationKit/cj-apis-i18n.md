@@ -13,14 +13,49 @@ import kit.LocalizationKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+
+## func getCalendar(String, ?CalendarType)
+
+```cangjie
+public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Calendar
+```
+
+**功能：** 获取指定区域和日历类型对应的日历对象。
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|locale|calendarType|是|-|表示区域信息的字符串，由语言、脚本、国家或地区组成。|日历类型。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Calendar|返回与指定区域和日历类型对应的日历对象。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.i18n.*
+
+let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist)// 获得一个基于 en-US 区域设置的佛教日历对象
+```
 
 ## class Calendar
 
 ```cangjie
-public class Calendar {}
+public class Calendar <: RemoteDataLite {}
 ```
 
 **功能：** 实体日历对象。
@@ -105,42 +140,6 @@ let hour = calendar.get("hour_of_day") // 12
 let minute = calendar.get("minute") // 30
 let second = calendar.get("second") // 30
 ```
-
-### func getCalendar(String, ?CalendarType)
-
-```cangjie
-public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Calendar
-```
-
-**功能：** 获取指定区域和日历类型对应的日历对象。
-**系统能力：** SystemCapability.Global.I18n
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|locale|calendarType|是|-|表示区域信息的字符串，由语言、脚本、国家或地区组成。|日历类型。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Calendar|返回与指定区域和日历类型对应的日历对象。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.i18n.*
-
-let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist)// 获得一个基于 en-US 区域设置的佛教日历对象
-```
-
 
 ### func getDisplayName(String)
 
@@ -307,7 +306,7 @@ calendar.setTimeZone("Asia/Shanghai")
 let timeZone = calendar.getTimeZone() // timeZone = "Asia/Shanghai"
 ```
 
-### func set(Int32, Int32, Int32, Int32, Int32, Int32)
+### func set(Int32, Int32, Int32, ?Int32, ?Int32, ?Int32)
 
 ```cangjie
 public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, minute!: ?Int32 = None, second!: ?Int32 = None): Unit
@@ -684,21 +683,3 @@ Persian
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 21
-
-### func toString()
-```cangjie
-public func toString(): String
-```
-**功能：**  获取当前枚举值对应的字符串表示。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**起始版本：** 21
-
-**返回值:**
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回与枚举值对应的字符串。|

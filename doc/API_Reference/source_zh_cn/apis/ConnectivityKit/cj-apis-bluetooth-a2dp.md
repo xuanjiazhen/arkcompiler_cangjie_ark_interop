@@ -17,7 +17,7 @@ ohos.permission.ACCESS_BLUETOOTH
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](./../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](./../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -49,7 +49,7 @@ public func createA2dpSrcProfile(): A2dpSourceProfile
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpProfile = createA2dpSrcProfile()
@@ -117,7 +117,7 @@ public func getConnectedDevices(): Array<String>
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -177,7 +177,7 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -237,7 +237,7 @@ public func getPlayingState(deviceId: String): PlayingState
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -266,7 +266,7 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|回调事件类型。|
-|callback|[CallbackObject](<font color="red" face="bold">please add link</font>)|是|-|回调事件。|
+|callback|[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 
@@ -516,7 +516,7 @@ public var codecType: CodecType
 ## enum CodecBitsPerSample
 
 ```cangjie
-public enum CodecBitsPerSample <: Equatable<CodecBitsPerSample> & ToString {
+public enum CodecBitsPerSample {
     | CodecBitsPerSampleNone
     | CodecBitsPerSample16
     | CodecBitsPerSample24
@@ -530,11 +530,6 @@ public enum CodecBitsPerSample <: Equatable<CodecBitsPerSample> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CodecBitsPerSample>
-- ToString
 
 ### CodecBitsPerSample16
 
@@ -641,7 +636,7 @@ public func toString(): String
 ## enum CodecChannelMode
 
 ```cangjie
-public enum CodecChannelMode <: Equatable<CodecChannelMode> & ToString {
+public enum CodecChannelMode {
     | CodecChannelModeNone
     | CodecChannelModeMono
     | CodecChannelModeStereo
@@ -654,11 +649,6 @@ public enum CodecChannelMode <: Equatable<CodecChannelMode> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CodecChannelMode>
-- ToString
 
 ### CodecChannelModeMono
 
@@ -753,7 +743,7 @@ public func toString(): String
 ## enum CodecSampleRate
 
 ```cangjie
-public enum CodecSampleRate <: Equatable<CodecSampleRate> & ToString {
+public enum CodecSampleRate {
     | CodecSampleRateNone
     | CodecSampleRate44100
     | CodecSampleRate48000
@@ -770,11 +760,6 @@ public enum CodecSampleRate <: Equatable<CodecSampleRate> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CodecSampleRate>
-- ToString
 
 ### CodecSampleRate176400
 
@@ -917,7 +902,7 @@ public func toString(): String
 ## enum CodecType
 
 ```cangjie
-public enum CodecType <: Equatable<CodecType> & ToString {
+public enum CodecType {
     | CodecTypeInvalid
     | CodecTypeSbc
     | CodecTypeAac
@@ -931,11 +916,6 @@ public enum CodecType <: Equatable<CodecType> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CodecType>
-- ToString
 
 ### CodecTypeAac
 
@@ -1042,7 +1022,7 @@ public func toString(): String
 ## enum PlayingState
 
 ```cangjie
-public enum PlayingState <: Equatable<PlayingState> & ToString {
+public enum PlayingState {
     | StateNotPlaying
     | StatePlaying
     | ...
@@ -1054,11 +1034,6 @@ public enum PlayingState <: Equatable<PlayingState> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<PlayingState>
-- ToString
 
 ### StateNotPlaying
 

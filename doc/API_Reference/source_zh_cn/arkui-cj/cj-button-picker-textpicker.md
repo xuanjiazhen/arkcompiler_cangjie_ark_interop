@@ -100,7 +100,7 @@ public func onChange(callback: OnTextPickerChangeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnTextPickerChangeCallback](<font color="red" face="bold">please add link</font>)|是|-|当前选中项的文本和索引值。|
+|callback|OnTextPickerChangeCallback|是|-|当前选中项的文本和索引值。|
 
 ## 示例代码
 
@@ -115,6 +115,11 @@ public func onChange(callback: OnTextPickerChangeCallback): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
@@ -123,9 +128,9 @@ class EntryView {
     @State var fruits: Array<String> = ["apple", "banana", "orange", "peach"]
     func build() {
         Column {
-            TextPicker(this.fruits, selected: this.select)
-            .onChange({result: TextPickerResData =>
-                    nativeLog("Picker item changed, value: ${result.index}")
+            TextPicker(range: this.fruits, selected: this.select)
+            .onChange({value: String, index: UInt32  =>
+                    loggerInfo("Picker item changed, value: ${index}")
             })
         }
         .width(100.percent)

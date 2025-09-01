@@ -17,7 +17,7 @@ ohos.permission.INTERNET
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -400,7 +400,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<Array<Byte>>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataReceive事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<Byte>>|是|-|回调函数，用于接收HTTP流式响应数据。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<Byte>>|是|-|回调函数，用于接收HTTP流式响应数据。|
 
 **异常：**
 
@@ -427,7 +427,7 @@ public func on(event: HttpRequestEvent, callback: Callback0Argument): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataEnd事件。|
-|callback|[Callback0Argument](<font color="red" face="bold">please add link</font>)|是|-|回调函数。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
 
 **异常：**
 
@@ -454,7 +454,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataReceiveP
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataReceiveProgress事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[DataReceiveProgressInfo](#class-datareceiveprogressinfo)>|是|-|回调函数，用于接收数据接收进度信息，参数为DataReceiveProgressInfo对象。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[DataReceiveProgressInfo](#class-datareceiveprogressinfo)>|是|-|回调函数，用于接收数据接收进度信息，参数为DataReceiveProgressInfo对象。|
 
 **异常：**
 
@@ -481,7 +481,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataSendProg
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataSendProgress事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[DataSendProgressInfo](#class-datasendprogressinfo)>|是|-|回调函数，用于接收数据发送进度信息，参数为DataSendProgressInfo对象。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[DataSendProgressInfo](#class-datasendprogressinfo)>|是|-|回调函数，用于接收数据发送进度信息，参数为DataSendProgressInfo对象。|
 
 **异常：**
 
@@ -508,7 +508,7 @@ public func once(event: HttpRequestEvent, callback: Callback1Argument<HashMap<St
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持HeadersReceive事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>>|是|-|回调函数。返回HTTP响应头对象。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>>|是|-|回调函数。返回HTTP响应头对象。|
 
 **异常：**
 
@@ -542,7 +542,9 @@ public func request(url: String, options: HttpRequestOptions, callback: AsyncCal
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
 |options|[HttpRequestOptions](#class-httprequestoptions)|是|-|参考[HttpRequestOptions](#class-httprequestoptions)。|
-|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
+|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
+
+**异常：**
 
 **异常：**
 
@@ -630,7 +632,7 @@ public func request(url: String, callback: AsyncCallback<HttpResponse>): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
-|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
+|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
 
 **异常：**
 
@@ -715,7 +717,7 @@ public func requestInStream(url: String, options: HttpRequestOptions, callback: 
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
 |options|[HttpRequestOptions](#class-httprequestoptions)|是|-|参考[HttpRequestOptions](#class-httprequestoptions)。|
-|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<UInt32>|是|-|回调函数。|
+|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<UInt32>|是|-|回调函数。|
 
 **异常：**
 
@@ -799,7 +801,7 @@ public func requestInStream(url: String, callback: AsyncCallback<UInt32>): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
-|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<UInt32>|是|-|回调函数。|
+|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<UInt32>|是|-|回调函数。|
 
 **异常：**
 
@@ -870,14 +872,14 @@ httpRequest.requestInStream("http://www.example.com", {err, code =>
 public class HttpRequestOptions {
     public var method: RequestMethod
     public var extraData: HttpData
-    public var expectDataType:?HttpDataType = None
+    public var expectDataType:?HttpDataType
     public var usingCache: Bool
     public var priority: UInt32
     public var header: HashMap<String, String>
     public var readTimeout: UInt32
     public var connectTimeout: UInt32
-    public var usingProtocol:?HttpProtocol = None
-    public var usingProxy: UsingProxy = UseDefault
+    public var usingProtocol:?HttpProtocol
+    public var usingProxy: UsingProxy
     public var caPath: String
     public var resumeFrom: Int64
     public var resumeTo: Int64
@@ -887,9 +889,9 @@ public class HttpRequestOptions {
     public var maxLimit: UInt32
     public var multiFormDataList: Array<MultiFormData>
     public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = HttpData.StringData(""),
-        expectDataType!: ?HttpDataType = None, usingCache!: Bool = true, priority!: UInt32 = 1,
+        expectDataType!: ?HttpDataType, usingCache!: Bool = true, priority!: UInt32 = 1,
         header!: HashMap<String, String> = HashMap<String, String>(), readTimeout!: UInt32 = 60000,
-        connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol = None,
+        connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol,
         usingProxy!: UsingProxy = UsingProxy.UseDefault, caPath!: String = "", resumeFrom!: Int64 = 0,
         resumeTo!: Int64 = 0, clientCert!: ClientCert = ClientCert("",""), dnsOverHttps!: String = "",
         dnsServers!: Array<String> = Array<String>(), maxLimit!: UInt32 = 5 * 1024 * 1024,
@@ -986,7 +988,7 @@ public var dnsServers: Array<String>
 ### var expectDataType
 
 ```cangjie
-public var expectDataType:?HttpDataType = None
+public var expectDataType:?HttpDataType
 ```
 
 **功能：** 指定返回数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。
@@ -1172,7 +1174,7 @@ public var usingCache: Bool
 ### var usingProtocol
 
 ```cangjie
-public var usingProtocol:?HttpProtocol = None
+public var usingProtocol:?HttpProtocol
 ```
 
 **功能：** 使用协议。默认值由系统自动指定。
@@ -1188,7 +1190,7 @@ public var usingProtocol:?HttpProtocol = None
 ### var usingProxy
 
 ```cangjie
-public var usingProxy: UsingProxy = UseDefault
+public var usingProxy: UsingProxy
 ```
 
 **功能：** 是否使用HTTP代理，默认为USE_DEFAULT，使用默认代理。<br /> 当usingProxy为NOT_USE时，不使用网络代理。<br /> 当usingProxy为USE_SPECIFIED类型时，使用指定网络代理。
@@ -1205,9 +1207,9 @@ public var usingProxy: UsingProxy = UseDefault
 
 ```cangjie
 public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = HttpData.StringData(""),
-    expectDataType!: ?HttpDataType = None, usingCache!: Bool = true, priority!: UInt32 = 1,
+    expectDataType!: ?HttpDataTypee, usingCache!: Bool = true, priority!: UInt32 = 1,
     header!: HashMap<String, String> = HashMap<String, String>(), readTimeout!: UInt32 = 60000,
-    connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol = None,
+    connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol,
     usingProxy!: UsingProxy = UsingProxy.UseDefault, caPath!: String = "", resumeFrom!: Int64 = 0,
     resumeTo!: Int64 = 0, clientCert!: ClientCert = ClientCert("",""), dnsOverHttps!: String = "",
     dnsServers!: Array<String> = Array<String>(), maxLimit!: UInt32 = 5 * 1024 * 1024,
@@ -1929,7 +1931,7 @@ Http3
 ## enum HttpRequestEvent
 
 ```cangjie
-public enum HttpRequestEvent <: Equatable<HttpRequestEvent> & Hashable & ToString {
+public enum HttpRequestEvent {
     | HeadersReceive
     | DataReceive
     | DataEnd
@@ -1944,12 +1946,6 @@ public enum HttpRequestEvent <: Equatable<HttpRequestEvent> & Hashable & ToStrin
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<HttpRequestEvent>
-- Hashable
-- ToString
 
 ### DataEnd
 
@@ -2068,42 +2064,6 @@ public func hashCode(): Int64
 |类型|说明|
 |:----|:----|
 |Int64|返回HttpRequestEvent的哈希值。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 返回字符串形式的HttpRequestEvent。
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回字符串形式的HttpRequestEvent。|
-
-## enum RequestMethod
-
-```cangjie
-public enum RequestMethod {
-    | Options
-    | Get
-    | Head
-    | Post
-    | Put
-    | Delete
-    | Trace
-    | Connect
-    | ...
-}
-```
-
-**功能：** HTTP请求方法。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
 
 ### Connect
 

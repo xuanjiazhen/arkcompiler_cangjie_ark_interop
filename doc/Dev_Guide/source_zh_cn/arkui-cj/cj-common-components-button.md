@@ -98,19 +98,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   ![Button5](figures/Button5.png)
 
-- 圆角矩形按钮。
-
-  当[controlSize](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#func-controlsizecontrolsize)为NORMAL时，默认圆角大小为20.vp，[controlSize](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#func-controlsizecontrolsize)为SMALL时，圆角大小为14.vp，支持通过borderRadius属性重新设置圆角。
-
-
-  ```cangjie
-  Button('Disable', ButtonOptions(shape: ButtonType.ROUNDED_RECTANGLE, stateEffect: true))
-      .backgroundColor(0x317aff)
-      .width(90)
-      .height(40)
-  ```
-
-  ![Button11](figures/Button11.png)
 
 ## 自定义样式
 
@@ -135,8 +122,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   ```cangjie
   Button('font style', ButtonOptions(shape: ButtonType.Normal))
       .fontSize(20)
-      .fontColor(Color.PINK)
-      .fontWeight(W800)
+      .fontColor(0xffffc0cb)
   ```
 
   ![Button7](figures/Button7.png)
@@ -179,121 +165,11 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
 ```cangjie
   Button('Ok', ButtonOptions(shape: ButtonType.Normal, stateEffect: true))
       .onClick{ evt =>
-      AppLog.info('Button onClick')
+      Hilog.info(0, '', 'Button onClick')
   }
 ```
 
 ## 场景示例
-
-- 用于启动操作。
-  可以用按钮启动任何用户界面元素，按钮会根据用户的操作触发相应的事件。例如，在List容器里通过点击按钮进行页面跳转。
-
-     <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-
-  @Builder
-  func pageMap(name: String) {
-      if (name == "pageOne") {
-          View_NavDestination_One()
-      } else if (name == "pageTwo") {
-          View_NavDestination_Two()
-      } else {
-          View_NavDestination_Three()
-      }
-  }
-
-  @Entry
-  @Component
-  class EntryView {
-      var pageStack: NavPathStack = NavPathStack()
-      public func build() {
-          Navigation(this.pageStack) {
-              List() {
-                  ListItem() {
-                      Button("First").onClick {
-                          this.pageStack.pushPath(NavPathInfo("pageOne", "pageOne test"))
-                      }
-                      .width(100.percent)
-                  }
-                  ListItem() {
-                      Button("Second").onClick {
-                          this.pageStack.pushPath(NavPathInfo("pageTwo", "pageTwo test"))
-                      }
-                      .width(100.percent)
-                  }
-                  ListItem() {
-                      Button("Third").onClick {
-                          this.pageStack.pushPath(NavPathInfo("pageThree", "pageThree test"))
-                      }
-                      .width(100.percent)
-                  }
-              }
-              .listDirection(Axis.Vertical)
-              .backgroundColor(Color.Gray)
-              .padding(20)
-
-          }
-          .navDestination(bind<String>(pageMap, this))
-      }
-  }
-
-  // pageOne
-  @Component
-  class View_NavDestination_One {
-      var pageInfos: NavPathStack = NavPathStack()
-
-      public func build() {
-          NavDestination() {
-              Text("Page One")
-          }.onReady {
-              context => pageInfos = context.pathStack
-          }.onBackPressed {
-              pageInfos.pop()
-              true
-          }
-      }
-  }
-
-  // pageTwo
-  @Component
-  class View_NavDestination_Two {
-      var pageInfos: NavPathStack = NavPathStack()
-
-      public func build() {
-          NavDestination() {
-              Text("Page Two")
-          }.onReady {
-              context => pageInfos = context.pathStack
-          }.onBackPressed {
-              pageInfos.pop()
-              true
-          }
-      }
-  }
-
-  // pageThree
-  @Component
-  class View_NavDestination_Three {
-      var pageInfos: NavPathStack = NavPathStack()
-
-      public func build() {
-          NavDestination() {
-              Text("Page Three")
-          }.onReady {
-              context => pageInfos = context.pathStack
-          }.onBackPressed {
-              pageInfos.pop()
-              true
-          }
-      }
-  }
-  ```
-
-  ![Button12](figures/Button12.gif)
 
 - 用于提交表单。
 
@@ -314,7 +190,6 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               TextInput(placeholder: 'input your username')
                 .margin(top: 20)
               TextInput(placeholder: 'input your password')
-                .setType(InputType.Password)
                 .margin(top: 20)
               Button('Register')
                 .width(300)
@@ -340,7 +215,7 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
   package ohos_app_cangjie_entry
   import kit.ArkUI.*
   import ohos.arkui.state_macro_manage.*
-  import ohos.resource_manager.*
+  import kit.LocalizationKit.AppResource
 
   @Entry
   @Component
@@ -366,7 +241,7 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               }.width(90.percent)
 
               Button() {
-                  Image(@r(app.media.ic_public_add))
+                  Image(@r(app.media.startIcon))
                       .width(50)
                       .height(50)
               }
@@ -374,7 +249,7 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               .width(60)
               .height(60)
               .position(x: 80.percent, y: 600)
-              .shadow(radius: 10)
+              .shadow(radius: 10.0)
               .onClick {
                   evt =>
                   // 需要执行的操作

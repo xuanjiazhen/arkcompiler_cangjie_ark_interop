@@ -15,8 +15,13 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是一个Web前�
     ```cangjie
     // xxx.cj
     import ohos.arkui.state_macro_manage.*
-    import kit.ArkWeb.WebviewController
-    import kit.ArkUI.{Web, BusinessException}
+    import kit.PerformanceAnalysisKit.Hilog
+    import ohos.web.webview.WebviewController
+    import kit.ArkUI.{Web}
+
+    func loggerError(str: String) {
+        Hilog.error(0, "CangjieTest", str)
+    }
 
     @Entry
     @Component
@@ -28,15 +33,15 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是一个Web前�
                 // 配置Web开启调试模式
                 WebviewController.setWebDebuggingAccess(true)
             } catch (e: BusinessException) {
-                AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+                loggerError("ErrorCode: ${e.code},  Message: ${e.message}")
             }
         }
 
-      func build() {
-          Column {
-              Web(src: 'www.example.com', controller: this.webController)
-          }
-      }
+        func build() {
+            Column {
+                Web(src: 'www.example.com', controller: this.webController)
+            }
+        }
     }
     ```
 

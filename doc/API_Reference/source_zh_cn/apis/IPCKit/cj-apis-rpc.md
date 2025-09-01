@@ -13,7 +13,7 @@ import kit.IPCKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -89,7 +89,7 @@ func unmarshalling(dataIn: MessageSequence): Bool
 ## class Ashmem
 
 ```cangjie
-public class Ashmem {
+public class Ashmem <: RemoteDataLite {
     public static const PROT_EXEC: UInt32 = 4
     public static const PROT_NONE: UInt32 = 0
     public static const PROT_READ: UInt32 = 1
@@ -454,7 +454,7 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
 ## class MessageSequence
 
 ```cangjie
-public class MessageSequence {}
+public class MessageSequence <: RemoteDataLite {}
 ```
 
 **功能：**  在RPC或IPC过程中，发送方可以使用MessageSequence提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageSequence提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。

@@ -123,7 +123,7 @@ public func onDidScroll(callback: ScrollOnScrollCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ScrollOnScrollCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，Scroll滚动时触发。<br>参数一：每帧滚动时水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。单位vp。<br>参数二：每帧滚动时竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br>参数三：当前滚动状态。|
+|callback|ScrollOnScrollCallback|是|-|回调函数，Scroll滚动时触发。<br>参数一：每帧滚动时水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。单位vp。<br>参数二：每帧滚动时竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br>参数三：当前滚动状态。|
 
 ### func onScrollEdge(OnScrollEdgeCallback)
 
@@ -149,7 +149,7 @@ public func onScrollEdge(event: OnScrollEdgeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[OnScrollEdgeCallback](<font color="red" face="bold">please add link</font>)|是|-|滚动到的边缘位置。<br>当Scroll设置为水平方向滚动时，上报Edge.Center表示水平方向起始位置，上报Edge.Baseline表示水平方向末尾位置。由于Edge.Center和Edge.Baseline枚举值已经废弃，推荐使用onReachStart、onReachEnd事件监听是否滚动到边界。|
+|event|OnScrollEdgeCallback|是|-|滚动到的边缘位置。<br>当Scroll设置为水平方向滚动时，上报Edge.Center表示水平方向起始位置，上报Edge.Baseline表示水平方向末尾位置。由于Edge.Center和Edge.Baseline枚举值已经废弃，推荐使用onReachStart、onReachEnd事件监听是否滚动到边界。|
 
 ### func onScrollFrameBegin(OnScrollFrameBeginCallback)
 
@@ -181,7 +181,7 @@ public func onScrollFrameBegin(event: OnScrollFrameBeginCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[OnScrollFrameBeginCallback](<font color="red" face="bold">please add link</font>)|是|-|每帧滚动开始回调函数。|
+|event|OnScrollFrameBeginCallback|是|-|每帧滚动开始回调函数。|
 
 ### func onWillScroll((Float64,Float64,ScrollState,ScrollSource) -> OffsetResult)
 
@@ -297,7 +297,8 @@ public init(fadingEdgeLength!: Length = 32.vp)
 public class NestedScrollOptions {
     public NestedScrollOptions(
         public var scrollForward: NestedScrollMode,
-        public var scrollBackward: NestedScrollMode
+        public var scrollBackward: NestedScrollMode,
+        public init(scrollForward: NestedScrollMode, scrollBackward: NestedScrollMode)
     )
 }
 ```
@@ -340,10 +341,29 @@ public var scrollForward: NestedScrollMode
 
 **起始版本：** 21
 
+#### init(NestedScrollMode, NestedScrollMode)
+
+```cangjie
+public init(scrollForward: NestedScrollMode, scrollBackward: NestedScrollMode)
+```
+
+**功能：** 构造一个NestedScrollOptions对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|scrollForward|NestedScrollMode|是|-|滚动组件往末尾端滚动时的嵌套滚动选项|
+|scrollBackward|NestedScrollMode|是|-|滚动组件往起始端滚动时的嵌套滚动选项。|
+
 #### NestedScrollOptions(NestedScrollMode, NestedScrollMode)
 
 ```cangjie
-public NestedScrollOptions(
+public class NestedScrollOptions(
     public var scrollForward: NestedScrollMode,
     public var scrollBackward: NestedScrollMode
 )
@@ -808,7 +828,7 @@ public func clipContent(clip: RectShape): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|clip|[RectShape](<font color="red" face="bold">please add link</font>)|是|Grid、Scroll的默认值为ContentClipMode.BOUNDARY，List、WaterFlow的默认值为ContentClipMode.CONTENT_ONLY。|裁剪只针对滚动容器的内容，即其子节点，背景不受影响。通过RectShape传入自定义矩形区域时仅支持设置宽高和相对于组件左上角的[offset](./cj-universal-attribute-location.md#func-offsetlength-length)，不支持圆角。<br/>|
+|clip|RectShape|是|Grid、Scroll的默认值为ContentClipMode.BOUNDARY，List、WaterFlow的默认值为ContentClipMode.CONTENT_ONLY。|裁剪只针对滚动容器的内容，即其子节点，背景不受影响。通过RectShape传入自定义矩形区域时仅支持设置宽高和相对于组件左上角的[offset](./cj-universal-attribute-location.md#func-offsetlength-length)，不支持圆角。<br/>|
 
 #### func enableScrollInteraction(Bool)
 
@@ -844,7 +864,7 @@ public func fadingEdge(enabled: Option<Bool>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|enabled|[Option](<font color="red" face="bold">please add link</font>)\<Bool>|是|false|fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。|
+|enabled|Option\<Bool>|是|false|fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。|
 
 #### func fadingEdge(Option\<Bool>, FadingEdgeOptions)
 
@@ -862,7 +882,7 @@ public func fadingEdge(enabled: Option<Bool>, options: FadingEdgeOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|enabled|[Option](<font color="red" face="bold">please add link</font>)\<Bool>|是|false|fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。|
+|enabled|Option\<Bool>|是|false|fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。|
 |options|[FadingEdgeOptions](#class-fadingedgeoptions)|是|-|边缘渐隐参数对象。可以通过该对象定义边缘渐隐效果属性，比如设置渐隐长度。|
 
 #### func flingSpeedLimit(Float64)
@@ -917,7 +937,7 @@ public func friction(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|默认值：非wearable设备为0.6，wearable设备为0.9。<br/>从API version 11开始，非wearable设备默认值为0.7。<br/>从API version 12开始，非wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。|摩擦系数。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|默认值：非wearable设备为0.6，wearable设备为0.9。<br/>从API version 11开始，非wearable设备默认值为0.7。<br/>从API version 12开始，非wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。|摩擦系数。|
 
 #### func nestedScroll(NestedScrollOptions)
 
@@ -953,7 +973,7 @@ public func onDidScroll(handler: OnScrollCallBack): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|handler|[OnScrollCallBack](<font color="red" face="bold">please add link</font>)|是|-|滚动组件滑动时触发的回调。|
+|handler|OnScrollCallBack|是|-|滚动组件滑动时触发的回调。|
 
 #### func onReachEnd(() -> Unit)
 
@@ -1055,7 +1075,7 @@ public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) ->
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|handler|[Option](<font color="red" face="bold">please add link</font>)\<(Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->[ScrollResult](#class-scrollresult)>|是|-|滚动组件滑动前触发的回调。|
+|handler|Option\<(Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->[ScrollResult](#class-scrollresult)>|是|-|滚动组件滑动前触发的回调。|
 
 #### func onWillScroll(Option\<(Float64,ScrollState,ScrollSource) -> Unit>)
 
@@ -1075,7 +1095,7 @@ public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) ->
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|handler|[Option](<font color="red" face="bold">please add link</font>)\<(Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->Unit>|是|-|滚动组件滑动前触发的回调。|
+|handler|Option\<(Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->Unit>|是|-|滚动组件滑动前触发的回调。|
 
 #### func scrollBar(BarState)
 
@@ -1593,6 +1613,11 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
@@ -1601,7 +1626,7 @@ class EntryView {
     var arr: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
 
     func build() {
-        Stack(Alignment.TopStart) {
+        Stack(alignContent: Alignment.TopStart) {
             Scroll(this.scroller) {
                 Column {
                     ForEach(
@@ -1624,17 +1649,16 @@ class EntryView {
                 .scrollBarColor(Color.Gray) // 滚动条颜色
                 .scrollBarWidth(10.px) // 滚动条宽度
                 .friction(0.6)
-                .edgeEffect(EdgeEffect.None)
                 .onScrollEdge(
                     {
                         edge => match (edge) {
-                            case Edge.Top => nativeLog("Top")
-                            case Edge.Bottom => nativeLog("Bottom")
-                            case _ => nativeLog("None")
+                            case Edge.Top => loggerInfo("Top")
+                            case Edge.Bottom => loggerInfo("Bottom")
+                            case _ => loggerInfo("None")
                         }
                     })
                 .onScrollStop({
-                    => nativeLog("Scroll Stop")
+                    => loggerInfo("Scroll Stop")
                 })
 
             Button("scroll 150")
@@ -1650,15 +1674,15 @@ class EntryView {
                 .onClick(
                     {
                         evt => //点击后滑动到指定位置，即下滑100.0vp的距离
-                        nativeLog("current offset ${this.scroller.currentOffset().yOffset}")
-                        nativeLog("CALCULATE offset ${this.scroller.currentOffset().yOffset + 100.0}")
+                        loggerInfo("current offset ${this.scroller.currentOffset().yOffset}")
+                        loggerInfo("CALCULATE offset ${this.scroller.currentOffset().yOffset + 100.0}")
                         let curyOffset = this
                             .scroller
                             .currentOffset()
                             .yOffset
                         this
                             .scroller
-                            .scrollTo(xOffset: 0.vp, yOffset: (curyOffset + 100.0).vp, duration: 0.0, curve: Curve.Ease)
+                            .scrollTo(xOffset: 0.vp, yOffset: (curyOffset + 100.0).vp, animation: ScrollAnimationOptions(duration: 0.0, curve: Curve.Ease))
                     }
                 )
                 .margin(top: 60, left: 20)
@@ -1686,7 +1710,7 @@ class EntryView {
                     evt => // 点击后触发初始速度为-3000vp/s的惯性滚动
                     this
                         .scroller
-                        .fling(-3000)
+                        .fling(-3000.0)
                 })
                 .margin(top: 210, left: 20)
 
@@ -1742,7 +1766,7 @@ class EntryView {
                             {
                                 evt => this
                                     .scrollerForList
-                                    .scrollToIndex(5, smooth: false, align: ScrollAlign.START, extraOffset: 5.vp)
+                                    .scrollToIndex(5, smooth: false, align: ScrollAlign.Start, options: ScrollToIndexOptions(extraOffset: 5.vp))
                             })
 
                     List(space: 20, scroller: this.scrollerForList) {
@@ -1781,10 +1805,10 @@ class EntryView {
                                     this
                                         .scroller
                                         .scrollBy(xOffset: 0.0, yOffset: x)
-                                    return 0.0
+                                    return onScrollFrameBeginHandleResult(offsetRemain: 0.0)
                                 }
                                 this.listPosition = 1
-                                return x
+                                return onScrollFrameBeginHandleResult(offsetRemain: x)
                             }
                         )
 
@@ -1834,7 +1858,7 @@ class EntryView {
                     .height(40.percent)
                     .backgroundColor(0x00800C)
                     .textAlign(TextAlign.Center)
-                Tabs(BarPosition.Start) {
+                Tabs(barPosition: BarPosition.Start) {
                     TabContent {
                         List(space: 10) {
                             ForEach(
@@ -1856,7 +1880,7 @@ class EntryView {
                             .width(100.percent)
                             .edgeEffect(EdgeEffect.Spring)
                             .nestedScroll(
-                                NestedScrollOptions(NestedScrollMode.PARENT_FIRST, NestedScrollMode.SELF_FIRST))
+                                NestedScrollOptions(NestedScrollMode.ParentFirst, NestedScrollMode.SelfFirst))
                     }.tabBar("Tab1")
 
                     TabContent {
@@ -1866,7 +1890,6 @@ class EntryView {
                     .height(100.percent)
             }.width(100.percent)
         }
-            .edgeEffect(EdgeEffect.Spring)
             .friction(0.6)
             .backgroundColor(0xDCDCDC)
             .scrollBar(BarState.Off)
@@ -1918,9 +1941,6 @@ class EntryView {
                     .backgroundColor(0x330000FF)
                     .fontSize(16)
                     .textAlign(TextAlign.Center)
-                    .onAreaChange({
-                        oldValue: Area, newValue: Area => this.headerHeight = newValue.height
-                    })
 
                 List(space: 20, scroller: this.scrollerForChild) {
                     ForEach(
@@ -1958,7 +1978,6 @@ class EntryView {
             }
         }
             .scrollBar(BarState.Off)
-            .edgeEffect(EdgeEffect.Spring)
             .onScrollFrameBegin(
                 {
                     offset: Float64, state: ScrollState =>
@@ -2048,73 +2067,6 @@ class EntryView {
         }
         .backgroundColor(Color.White)
         .height(100.percent)
-        .edgeEffect(EdgeEffect.Spring)
-        .scrollSnap(ScrollSnapOptions(ScrollSnapAlign.START, snapPagination: 400, enableSnapToStart: true, enableSnapToEnd: true))
-    }
-}
-```
-
-## 示例代码6（设置子组件索引）
-
-该示例展示了如何获得List组件的子组件索引。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.ArrayList
-
-@Entry
-@Component
-class EntryView {
-    private var arr: ArrayList<Int64> = ArrayList<Int64>([])
-    private var scroller: ListScroller = ListScroller()
-    @State
-    var listSpace: Int64 = 10
-    @State
-    var listIndex: Int64 = 0
-
-    protected override func aboutToAppear() {
-        for (i in 0..10) {
-            this.arr.add(i)
-        }
-    }
-
-    func build() {
-        Column {
-            List(space: this.listSpace, initialIndex: 4, scroller: this.scroller) {
-                ForEach(
-                    this.arr,
-                    itemGeneratorFunc: {
-                        item: Int64, idx: Int64 => ListItem {
-                            Text("item-" + item.toString())
-                                .height(100)
-                                .width(90.percent)
-                                .fontSize(16)
-                                .textAlign(TextAlign.Center)
-                                .borderRadius(10)
-                                .backgroundColor(Color.White)
-                                .onClick({
-                                    _ => this.listIndex = item
-                                })
-                        }
-                    }
-                )
-            }
-                .backgroundColor(Color.Gray)
-                .layoutWeight(1)
-                .scrollBar(BarState.On)
-                .alignListItem(ListItemAlign.Center)
-
-            Text("您当前位置Item索引为：" + this
-                .listIndex
-                .toString())
-                .fontColor(Color.Red)
-                .height(50)
-        }
     }
 }
 ```
@@ -2139,7 +2091,7 @@ class EntryView {
     private var arr: ArrayList<Int64> = ArrayList<Int64>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 
     func build() {
-        Stack(Alignment.TopStart) {
+        Stack(alignContent: Alignment.TopStart) {
             Scroll(this.scroller) {
                 Column {
                     ForEach(

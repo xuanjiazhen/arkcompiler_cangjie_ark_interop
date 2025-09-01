@@ -173,7 +173,7 @@
 
     ```cangjie
     // ObservedArray数组类型
-    @Prop var title: ObservedArray<Model>
+    @Prop var title: ObservedArrayList<Model>
     ```
 
     数组自身的赋值可以感知。
@@ -181,7 +181,7 @@
 
     ```cangjie
     // 数组赋值
-    this.title = ObservedArray<Model>([Model(value: 2)])
+    this.title = ObservedArrayList<Model>([Model(value: 2)])
     ```
 
     数组项的赋值可以感知。
@@ -491,6 +491,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Observed
@@ -569,7 +570,7 @@ class EntryView {
                         evt => if (this.allBooks.size > 0) {
                             this.allBooks.remove(0)
                         } else {
-                            AppLog.info("length <= 0")
+                            Hilog.info(0, "cangjie", "length <= 0")
                         }
                     })
         }
@@ -611,8 +612,8 @@ class EntryView {
     func build() {
         Column {
             Flex(
-                FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-                    justifyContent: FlexAlign.SpaceBetween)) {
+                direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+                    justifyContent: FlexAlign.SpaceBetween) {
                 Button('change Father name')
                     .width(312)
                     .height(40)

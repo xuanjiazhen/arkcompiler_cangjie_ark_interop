@@ -332,7 +332,7 @@ public class Environment {}
 public static func aboutToBeDeleted(): Unit
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 取消SubscribedAbstractProperty实例对AppStorage/LocalStorage的单/双向同步关系，并无效化SubscribedAbstractProperty实例，即当调用aboutToBeDeleted方法之后不能再使用SubscribedAbstractProperty实例调用set或get方法。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -397,7 +397,7 @@ public class LocalStorage {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 页面级的UI状态存储。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,7 +836,7 @@ public static func persistProps<T>(props: Array<(String, T)>): Unit
 public func aboutToBeDeleted(): Unit
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 取消SubscribedAbstractProperty实例对AppStorage/LocalStorage的单/双向同步关系，并无效化SubscribedAbstractProperty实例，即当调用aboutToBeDeleted方法之后不能再使用SubscribedAbstractProperty实例调用set或get方法。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -849,7 +849,7 @@ public func aboutToBeDeleted(): Unit
 public func id(): Int64
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 返回属性ID。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -859,7 +859,7 @@ public func id(): Int64
 
 |类型|说明|
 |:----|:----|
-|Int64|<font color="red" face="bold">please add description</font>|
+|Int64|属性ID|
 
 ### func notifyRead(String)
 
@@ -868,7 +868,7 @@ public func id(): Int64
 public func notifyRead(_: String): Unit
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 读取属性名称。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -878,7 +878,7 @@ public func notifyRead(_: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|String|是|-|<font color="red" face="bold">please add description</font>|
+|_|String|是|-|属性名称|
 
 ### func onStateUpdate(String, ArrayList\<Int64>)
 
@@ -887,7 +887,7 @@ public func notifyRead(_: String): Unit
 public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 更新状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -897,8 +897,8 @@ public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|String|是|-|<font color="red" face="bold">please add description</font>|
-|_|ArrayList\<Int64>|是|-|<font color="red" face="bold">please add description</font>|
+|_|String|是|-|属性名称。|
+|_|ArrayList\<Int64>|是|-|属性列表。|
 
 ## enum ColorMode
 
@@ -963,7 +963,7 @@ public enum LayoutDirection {
 Auto
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 跟随系统。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

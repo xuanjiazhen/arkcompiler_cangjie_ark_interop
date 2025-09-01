@@ -165,7 +165,7 @@ func notifyRead(info: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|info|String|是|-|<font color="red" face="bold">please add description</font>|
+|info|String|是|-|UI框架信息。|
 
 ### func onStateUpdate(String, ArrayList\<Int64>)
 
@@ -325,11 +325,6 @@ public abstract class CustomView <: RemoteView & Observer {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- [RemoteView](<font color="red" face="bold">please add link</font>)
-- [Observer](<font color="red" face="bold">please add link</font>)
 
 ### var isReusable
 
@@ -494,7 +489,7 @@ public func addProvideVar(value: ObservedPropertyAbstract, name: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ObservedPropertyAbstract](<font color="red" face="bold">please add link</font>)|是|-| -    |
+|value|ObservedPropertyAbstract|是|-| -    |
 |name|String|是| -      | -    |
 
 ### func build()
@@ -684,7 +679,7 @@ public func initializeConsume(name: String): ObservedPropertyAbstract
 
 |类型|说明|
 |:----|:----|
-|[ObservedPropertyAbstract](<font color="red" face="bold">please add link</font>)|-|
+|ObservedPropertyAbstract|-|
 
 ### func markLazyForEachProcess(String)
 
@@ -930,10 +925,6 @@ public class ForEach <: UINodeBase {
 
 **起始版本：** 21
 
-**父类型：**
-
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
-
 ### init(() -> Unit)
 
 ```cangjie
@@ -956,13 +947,13 @@ public init(subcomponent: () -> Unit)
 
 ```cangjie
 public static func create<T>(viewID: Int64, parentView: CustomView, dataSource: CollectionEx<T>,
-    itemGeneratorFunc!: ItemGenFuncType<T>,
-    keyGeneratorFunc!: KeyGenFuncType<T> = {
-        realData: T, idx: Int64 => match (realData) {
-            case realDataStr: ToString => realDataStr.toString()
-            case _ => idx.toString()
-        }
-    }): Unit
+itemGeneratorFunc!: ItemGenFuncType<T>,
+keyGeneratorFunc!: KeyGenFuncType<T> = {
+    realData: T, idx: Int64 => match (realData) {
+        case realDataStr: ToString => realDataStr.toString()
+        case _ => idx.toString()
+    }
+}): Unit
 ```
 
 **功能：** UI框架使用。
@@ -1072,10 +1063,6 @@ public class If <: UINodeBase {
 
 **起始版本：** 21
 
-**父类型：**
-
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
-
 ### init(() -> Unit)
 
 ```cangjie
@@ -1165,10 +1152,6 @@ abstract sealed class InteractableView <: RemoteData {}
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- [RemoteData](<font color="red" face="bold">please add link</font>)
 
 ### func onAppear(() -> Unit)
 
@@ -1507,7 +1490,7 @@ public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -
 ## class LocalStorageInterOp
 
 ```cangjie
-public open class LocalStorageInterOp {}
+class LocalStorageInterOp {}
 ```
 
 **功能：** LocalStorage内部使用的类。
@@ -1552,13 +1535,13 @@ public func `prop`<T>(propName: String): ObservedProperty<T> where T <: JSIntero
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|propName|String|是|-|<font color="red" face="bold">please add description</font>|
+|propName|String|是|-|框架名称。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](<font color="red" face="bold">please add link</font>)\<T>|LocalStorageInterOp中的属性名。|
+|ObservedProperty\<T>|LocalStorageInterOp中的属性名。|
 
 ### func aboutToBeDeleted()
 
@@ -1690,14 +1673,14 @@ public func hasChanged(context: JSContext, callInfo: JSCallInfo): JSValue
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](<font color="red" face="bold">please add link</font>)|是|-|互操作上下文。|
-|callInfo|[JSCallInfo](<font color="red" face="bold">please add link</font>)|是|-|ArkTS函数调用的相关信息。|
+|context|JSContext|是|-|互操作上下文。|
+|callInfo|JSCallInfo|是|-|ArkTS函数调用的相关信息。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[JSValue](<font color="red" face="bold">please add link</font>)|-|
+|JSValue|-|
 
 ### func keys()
 
@@ -1735,7 +1718,7 @@ public func link<T>(propName: String): ObservedProperty<T> where T <: JSInteropT
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](<font color="red" face="bold">please add link</font>)\<T>|双向绑定的数据。|
+|ObservedProperty\<T>|双向绑定的数据。|
 
 ### func set\<T>(String, T) where T \<: JSInteropType \<T>
 
@@ -1787,7 +1770,7 @@ public func setAndLink<T>(propName: String, value: T): ObservedProperty<T> where
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](<font color="red" face="bold">please add link</font>)\<T>|该propName对应的属性的双向绑定数据。|
+|ObservedProperty\<T>|该propName对应的属性的双向绑定数据。|
 
 ### func setAndProp\<T>(String, T) where T \<: JSInteropType \<T>
 
@@ -1813,7 +1796,7 @@ public func setAndProp<T>(propName: String, value: T): ObservedProperty<T> where
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](<font color="red" face="bold">please add link</font>)\<T>|单向绑定的数据。|
+|ObservedProperty\<T>|单向绑定的数据。|
 
 ### func setOrCreate\<T>(String, T) where T \<: JSInteropType \<T>
 
@@ -2498,7 +2481,7 @@ public func get(id: Int64): Option<Observer>
 
 |类型|说明|
 |:----|:----|
-|[Option](<font color="red" face="bold">please add link</font>)\<[Observer](#interface-observer)>|观察者。|
+|Option\<[Observer](#interface-observer)>|观察者。|
 
 ### func has(Int64)
 
@@ -2587,7 +2570,7 @@ public static func check(_: ViewBuilder)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|[ViewBuilder](<font color="red" face="bold">please add link</font>)|是|-|UI框架使用。|
+|_|ViewBuilder|是|-|UI框架使用。|
 
 ### static func check(CustomView)
 
@@ -2601,7 +2584,7 @@ public static func check(_: CustomView)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|[CustomView](<font color="red" face="bold">please add link</font>)|是|-|UI框架使用。|
+|_|CustomView|是|-|UI框架使用。|
 
 ## class View
 
@@ -2877,7 +2860,6 @@ public open class ViewBase <: InteractableView & UINodeBase {}
 **父类型：**
 
 - [InteractableView](#class-interactableview)
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
 
 ### func initial()
 
@@ -3069,3 +3051,50 @@ func update(): Unit
 ```
 
 **功能：** UI框架使用。
+
+
+## interface CStringExtend
+
+```cangjie
+extend CString <: CStringExtend {
+    func free(): Unit
+    func toStringOption(): ?String
+}
+```
+
+**功能：** 仓颉与C互操作字符串类型。内部接口，框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 12
+
+### func free()
+
+```cangjie
+public func free(): Unit
+```
+
+**功能：** 释放字符串内存。UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 12
+
+### func toStringOption()
+
+```cangjie
+public func toStringOption(): ?String
+```
+
+**功能：** 将CStringExtend类型对象转换为Option类型字符串。UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 12
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|?String|Option类型字符串。|
+

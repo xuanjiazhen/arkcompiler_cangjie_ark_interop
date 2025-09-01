@@ -937,7 +937,7 @@ public init(
 ## class Window
 
 ```cangjie
-public class Window {}
+public class Window <: RemoteDataLite {}
 ```
 
 **功能：** 当前窗口实例，窗口管理器管理的基本单元。
@@ -1999,124 +1999,10 @@ public init(
 |isTransparent|Bool|是|-|窗口是否透明。默认为false。true表示透明；false表示不透明。|
 |id|UInt32|是|-|窗口ID。<br>初始值：0|
 
-## class WindowStage
-
-```cangjie
-public class WindowStage {}
-```
-
-**功能：** 窗口管理器。管理各个基本窗口单元，即Window实例。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-### func createSubWindow(String)
-
-```cangjie
-public func createSubWindow(name: String): Window
-```
-
-**功能：** 创建该WindowStage实例下的子窗口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|name|String|是|-|子窗口的名字。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[Window](#class-window)|返回当前WindowStage下的子窗口对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1300002 | This window state is abnormal. |
-
-### func getMainWindow()
-
-```cangjie
-public func getMainWindow(): Window
-```
-
-**功能：** 获取该WindowStage实例下的主窗口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[Window](#class-window)|返回当前WindowStage下的主窗口对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1300002 | This window state is abnormal. |
-
-### func getSubWindow()
-
-```cangjie
-public func getSubWindow(): Array<Window>
-```
-
-**功能：** 获取该WindowStage实例下的所有子窗口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<[Window](#class-window)>|返回当前WindowStage下的所有子窗口对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1300002 | This window state is abnormal. |
-
-### func loadContent(String)
-
-```cangjie
-public func loadContent(path: String): Unit
-```
-
-**功能：** 为当前WindowStage的主窗口加载具体页面内容。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|path|String|是|-|要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。|
-
 ## enum AvoidAreaType
 
 ```cangjie
-public enum AvoidAreaType <: Equatable<AvoidAreaType> {
+public enum AvoidAreaType {
     | TypeSystem
     | TypeCutout
     | TypeSystemGesture
@@ -2196,26 +2082,6 @@ TypeSystemGesture
 
 **起始版本：** 21
 
-### func !=(AvoidAreaType)
-
-```cangjie
-public operator func !=(other: AvoidAreaType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[AvoidAreaType](#enum-avoidareatype)|是|-另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
 ### func ==(AvoidAreaType)
 
 ```cangjie
@@ -2239,7 +2105,7 @@ public operator func ==(other: AvoidAreaType): Bool
 ## enum ColorSpace
 
 ```cangjie
-public enum ColorSpace <: Equatable<ColorSpace> {
+public enum ColorSpace {
     | Default
     | WideGamut
     | ...
@@ -2323,7 +2189,7 @@ public operator func ==(other: ColorSpace): Bool
 ## enum Orientation
 
 ```cangjie
-public enum Orientation <: Equatable<Orientation> {
+public enum Orientation {
     | Unspecified
     | Portrait
     | Landscape
@@ -2537,7 +2403,7 @@ public operator func ==(other: Orientation): Bool
 ## enum SystemBarType
 
 ```cangjie
-public enum SystemBarType <: Equatable<SystemBarType> {
+public enum SystemBarType {
     | Status
     | Navigation
     | ...
@@ -2621,7 +2487,7 @@ public operator func ==(other: SystemBarType): Bool
 ## enum WindowCallbackType
 
 ```cangjie
-public enum WindowCallbackType <: Equatable<WindowCallbackType> {
+public enum WindowCallbackType {
     | WindowStageEvent
     | WindowSizeChange
     | WindowAvoidAreaChange
@@ -2861,7 +2727,7 @@ public operator func ==(other: WindowCallbackType): Bool
 ## enum WindowEventType
 
 ```cangjie
-public enum WindowEventType <: Equatable<WindowEventType> {
+public enum WindowEventType {
     | WindowShown
     | WindowActive
     | WindowInactive
@@ -2984,7 +2850,7 @@ public operator func ==(other: WindowEventType): Bool
 ## enum WindowStageEventType
 
 ```cangjie
-public enum WindowStageEventType <: Equatable<WindowStageEventType> {
+public enum WindowStageEventType {
     | Shown
     | Active
     | Inactive
@@ -3120,7 +2986,7 @@ public operator func ==(other: WindowStageEventType): Bool
 ## enum WindowStatusType
 
 ```cangjie
-public enum WindowStatusType <: Equatable<WindowStatusType> {
+public enum WindowStatusType {
     | Undefined
     | FullScreen
     | Maximize
@@ -3256,7 +3122,7 @@ public operator func ==(other: WindowStatusType): Bool
 ## enum WindowType
 
 ```cangjie
-public enum WindowType <: Equatable<WindowType> {
+public enum WindowType {
     | TypeApp
     | TypeFloat
     | TypeDialog
@@ -3367,7 +3233,7 @@ internal import kit.ArkUI.*
 internal import kit.AbilityKit.*
 internal import kit.ArkUI.*
 
-class MainAbility <: Ability {
+class MainAbility <: UIAbility {
     public init() {
         super()
         registerSelf()
@@ -3400,13 +3266,11 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class newPage{
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)) {
+        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center) {
             Column{
                 Text("New Page")
-                Button("Untouchable").onClick{
-                    => AlertDialog.show(
-                        AlertDialogParamWithConfirm("Unreachable")
-                    )
+                Button("Untouchable").onClick{ evt
+                    => AlertDialogParamWithConfirm(message:"Unreachable")
                 }.margin(10.vp)
             }.margin(10.vp)
         }
@@ -3414,7 +3278,7 @@ class newPage{
 }
 ```
 
-![img1](./../../比对/main/arkui-cj/figures/window_touchable_is_false.png)
+![img1](figures/window_touchable_is_false.png)
 
 ### 示例2（主窗口监听键盘高度变化事件）
 
@@ -3428,7 +3292,7 @@ package ohos_app_cangjie_entry
 internal import kit.AbilityKit.*
 internal import kit.ArkUI.*
 
-class MainAbility <: Ability {
+class MainAbility <: UIAbility {
 
     public init() {
         super()
@@ -3454,6 +3318,8 @@ import kit.ArkUI.*
 import kit.ArkUI.*
 import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
+import ohos.callback_invoke.*
+import ohos.business_exception.BusinessException
 
 @Entry
 @Component
@@ -3464,11 +3330,11 @@ class newPage{
         let mainWindow: Window = windowStage.getMainWindow()
 
         // 开启监听
-        var tmp: Unit = mainWindow.on("keyboardHeightChange",TestCallback(0))
+        var tmp: Unit = mainWindow.on(WindowCallbackType.KeyboardHeightChange,TestCallback(0))
     }
 
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)) {
+        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center) {
             Column{
                 TextInput(placeholder: 'input some words here... ').margin(10.vp)
             }.margin(10.vp)
@@ -3484,7 +3350,7 @@ public class TestCallback <: Callback1Argument<UInt32>{
         this.count = count
     }
 
-    public func invoke(value: UInt32): Unit {
+    public func invoke(err: ?BusinessException, value: UInt32): Unit {
         count++
         // 拉起或隐藏键盘时，会触发日志打印总计的键盘高度变化计数
         Hilog.info(0,"","KeyboardHeightChangeCount: ${this.count}")
@@ -3498,110 +3364,6 @@ public class TestCallback <: Callback1Argument<UInt32>{
 KeyboardHeightChangeCount: 1
 KeyboardHeightChangeCount: 2
 KeyboardHeightChangeCount: 3
-```
-
-### 示例3（设置子窗口回调函数）
-
-该示例创建了一个isModal属性为true的子窗口。监听子窗口点击模态窗口事件，触发回调时销毁子窗。
-
-<!-- run -example3 -->
-
-```cangjie
-// main_ability.cj
-
-package ohos_app_cangjie_entry
-
-internal import kit.AbilityKit.*
-internal import kit.ArkUI.*
-
-class MainAbility <: Ability {
-
-    public init() {
-        super()
-        registerSelf()
-    }
-
-    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        windowStage.loadContent("newPage")
-        // 将该Ability的窗口管理器传入AppStorage中
-        AppStorage.setOrCreate("windowStage",windowStage)
-    }
-}
-```
-
-<!-- run -example3 -->
-
-```cangjie
-// newPage.cj
-
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import kit.ArkUI.*
-import ohos.hilog.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class newPage{
-    @State
-    var hint: Bool = AppStorage.has("windowStage")
-
-    public func CreateSubWindow(): Unit{
-        hint = AppStorage.has("windowStage")
-        // 获取该Ability的窗口管理器实例
-        var windowStage: WindowStage = AppStorage.get<WindowStage>("windowStage").getOrThrow()
-
-        var mainWindow: Window = windowStage.getMainWindow()
-
-        mainWindow.setWindowGrayScale(1.0)
-
-        // 1.创建应用子窗口，子窗口显示时，主窗口不能响应用户操作。
-        var subWindowOptions: SubWindowOptions = SubWindowOptions(
-            title: "mySubWindow",
-            decorEnabled: true,
-            isModal: true
-        )
-        var subWindow: Window = windowStage.createSubWindowWithOptions("tempSubWindow", subWindowOptions)
-
-        // 2.设置应用子窗口的位置、大小及相关属性等。
-        subWindow.moveWindowTo(300,300)
-        subWindow.resize(500,500)
-
-        // 3.注册监听点击模态窗口事件。
-        subWindow.on(WindowCallbackType.DialogTargetTouch,DestroySubWindow())
-
-        // 4.显示子窗口（空内容）
-        subWindow.showWindow()
-    }
-
-    func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)){
-            Column(){
-                Text("SubWindowCreated: ${hint}")
-                Button("GetSubWindow").onClick{
-                    =>  CreateSubWindow()
-                }
-            }
-        }
-    }
-}
-
-public class DestroySubWindow <: Callback0Argument{
-    public init(){}
-
-    // 当点击模态窗口区域时，关闭子窗。
-    public override func invoke(): Unit{
-        var windowStage: WindowStage = AppStorage.get<WindowStage>("windowStage").getOrThrow()
-        var subWindows: Array<Window> = windowStage.getSubWindow()
-        for(i in subWindows){
-            i.destroyWindow()
-        }
-        // 子窗关闭后，恢复主窗口灰阶。
-        var mainWindow: Window = windowStage.getMainWindow()
-        mainWindow.setWindowGrayScale(0.0)
-    }
-}
 ```
 
 ![img3](figures/window_subwindow_created.png)

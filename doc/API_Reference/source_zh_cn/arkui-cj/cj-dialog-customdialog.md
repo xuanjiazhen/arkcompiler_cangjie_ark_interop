@@ -11,7 +11,7 @@ import kit.ArkUI.*
 ## class CustomDialogController
 
 ```cangjie
-public class CustomDialogController {
+public class CustomDialogController <: RemoteDataLite {
     public init(value: CustomDialogControllerOptions)
 }
 ```
@@ -600,13 +600,13 @@ import ohos.arkui.state_macro_manage.*
 class MyDialog {
     var controller: Option<CustomDialogController> = Option.None
     func build() {
-        Row(60) {
+        Row(space: 60) {
             Button("cancel").onClick { evt =>
-                controller?.close()
+                controller?.releaseSelf()
             }
 
             Button("confirm").onClick { evt =>
-                controller?.close()
+                controller?.releaseSelf()
             }
         }.height(500.px)
     }
@@ -619,7 +619,7 @@ class EntryView {
     func build() {
         Column {
             Button("open dialog").onClick({evt =>
-                dialogController.`open`()
+                dialogController.openDialog()
             })
         }
     }

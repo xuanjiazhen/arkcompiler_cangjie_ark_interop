@@ -38,7 +38,7 @@ public init(
 |:---|:---|:---|:---|:---|
 |value|ResourceStr|否|""| **命名参数。** 当前显示的搜索文本内容。|
 |placeholder|ResourceStr|否|""| **命名参数。** 无输入时的提示文本。|
-|icon|[Option](../apis/BasicServicesKit/cj-apis-base.md#type-option)\<[AppResource](<font color="red" face="bold">please add link</font>)>|否|Option.None|搜索图标路径，默认使用系统搜索图标。<br>**说明：** <br>icon的数据源支持本地图片和网络图片。<br> - 支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br> - 支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\| **命名参数。** heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br>如果与属性searchIcon同时设置，则searchIcon优先。|
+|icon|[Option](../apis/BasicServicesKit/cj-apis-base.md#type-option)\<[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)>|否|Option.None|搜索图标路径，默认使用系统搜索图标。<br>**说明：** <br>icon的数据源支持本地图片和网络图片。<br> - 支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br> - 支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\| **命名参数。** heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br>如果与属性searchIcon同时设置，则searchIcon优先。|
 |controller|[SearchController](#class-searchcontroller)|否|Option.None| **命名参数。** Search组件控制器。|
 
 ## 通用属性/通用事件
@@ -72,7 +72,7 @@ public func copyOption(value: CopyOptions): This
 
 ```cangjie
 
-public func placeholderColor(color: ResourceColor): This
+public func placeholderColor(value: ResourceColor): This
 ```
 
 **功能：** 设置placeholder文本颜色。
@@ -85,14 +85,14 @@ public func placeholderColor(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|目标颜色。<br>初始值：0x99000000。|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|目标颜色。<br>初始值：0x99000000。|
 
 ### func placeholderFont(Length, FontWeight, FontStyle, ResourceStr)
 
 ```cangjie
 
 public func placeholderFont(
-    size!: Length = DEFAULT_SIZE.fp,
+    size!: Length = 16.fp,
     weight!: FontWeight = FontWeight.W400,
     style!: FontStyle = FontStyle.Normal,
     family!: ResourceStr = ""
@@ -117,7 +117,6 @@ public func placeholderFont(
 ### func searchButton(String)
 
 ```cangjie
-
 public func searchButton(value: ResourceStr): This
 ```
 
@@ -138,7 +137,7 @@ public func searchButton(value: ResourceStr): This
 ```cangjie
 
 public func textFont(
-    size!: Length = DEFAULT_SIZE.fp,
+    size!: Length = 16.fp,
     weight!: FontWeight = FontWeight.W400,
     style!: FontStyle = FontStyle.Normal,
     family!: ResourceStr = ""
@@ -262,7 +261,7 @@ public func onSubmit(callback: (String) -> Unit): This
 ### class SearchController
 
 ```cangjie
-public class SearchController {
+public class SearchController <: RemoteDataLite & TextContentControllerBase{
 
 
     public init()
@@ -324,7 +323,7 @@ class EntryView {
 
     let controller = SearchController()
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center)) {
+        Flex(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
           Text(submitValue)
           Text(changeValue)
           Search(value: "", placeholder: "Type to search", controller: controller)

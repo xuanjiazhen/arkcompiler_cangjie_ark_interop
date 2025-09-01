@@ -89,13 +89,13 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-            Column(5) {
+            Column(space: 5) {
             // 设置子组件水平方向的间距为5
                 Text("space")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
-                Row(5) {
+                Row(space: 5) {
                     Row()
                     .width(30.percent)
                     .height(50)

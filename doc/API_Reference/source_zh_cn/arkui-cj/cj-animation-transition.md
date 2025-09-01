@@ -170,7 +170,7 @@ public var z: Float32
 
 ```cangjie
 public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 0.0, centerX!: Length = 50.percent,
-    centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0)
+        centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0)
 ```
 
 **功能：** RotateOptions构造函数。
@@ -296,7 +296,7 @@ public var z: Float32
 
 ```cangjie
 public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: Length = 50.percent,
-    centerY!: Length = 50.percent)
+        centerY!: Length = 50.percent)
 ```
 
 **功能：** ScaleOptions构造函数。
@@ -318,7 +318,7 @@ public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: L
 ## class TransitionEffect
 
 ```cangjie
-public class TransitionEffect {
+public class TransitionEffect <: RemoteDataLite {
     public static let IDENTITY: TransitionEffect = unsafe {    TransitionEffect(FfiOHOSAceFrameworkTransitionEffectIdentity())}
     public static let OPACITY: TransitionEffect = TransitionEffect.opacity(0.0)
     public static let SLIDE: TransitionEffect = TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.Start), TransitionEffect.move(TransitionEdge.End))
@@ -688,7 +688,7 @@ public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp)
 ## enum TransitionEdge
 
 ```cangjie
-public enum TransitionEdge <: Equatable<TransitionEdge> {
+public enum TransitionEdge {
     | Top
     | Bottom
     | Start
@@ -811,7 +811,7 @@ public func transition(value: TransitionEffect): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[TransitionEffect](<font color="yellow" face="bold">please add lnk</font>)|是|-|以函数的形式指定转场效果。|
+|value|TransitionEffect|是|-|以函数的形式指定转场效果。|
 
 ## func transition(TransitionEffect, ?TransitionFinishCallback)
 
@@ -844,6 +844,7 @@ public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallb
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -855,7 +856,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -881,7 +882,7 @@ class EntryView {
 }
 ```
 
-![transition](./../../比对/main/arkui-cj/figures/transition_api.gif)
+![transition](figures/transition_api.gif)
 
 ### 示例代码2（使用不同接口实现图片出现消失）
 
@@ -893,6 +894,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -904,7 +906,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -941,7 +943,7 @@ class EntryView {
 }
 ```
 
-![transition2](./../../比对/main/arkui-cj/figures/transition2_api.gif)
+![transition2](./figures/transition2_api.gif)
 
 ### 示例代码3（设置父子组件为transition）
 
@@ -953,7 +955,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component
@@ -965,7 +968,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {

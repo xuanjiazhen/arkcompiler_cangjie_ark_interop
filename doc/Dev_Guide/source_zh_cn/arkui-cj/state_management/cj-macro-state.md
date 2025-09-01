@@ -170,7 +170,7 @@
 
     ```cangjie
     // ObservedArray数组类型
-    @State var title: ObservedArray<Model> = ObservedArray<Model>([Model(value: 11), Model(value: 1)])
+    @State var title: ObservedArrayList<Model> = ObservedArrayList<Model>(ArrayList<Model>([Model(value: 11), Model(value: 1)]))
     ```
 
     数组自身的赋值可以感知。
@@ -178,7 +178,7 @@
 
     ```cangjie
     // 数组赋值
-    this.title = ObservedArray<Model>([Model(value: 2)])
+    this.title = ObservedArrayList<Model>(ArrayList<Model>([Model(value: 2)]))
     ```
 
     数组项的赋值可以感知。

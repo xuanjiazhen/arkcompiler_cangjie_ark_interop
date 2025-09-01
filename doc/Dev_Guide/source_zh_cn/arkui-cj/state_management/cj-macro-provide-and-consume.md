@@ -113,7 +113,7 @@ class EntryView{
             DatePicker(
                 start: DateTime.of(year:1970,month:1,dayOfMonth:1),
                 end: DateTime.of(year:2100,month:1,dayOfMonth:1),
-                selected: @Binder(this.selectedDate)
+                selected: this.selectedDate
             )
            Child()
         }
@@ -140,7 +140,7 @@ class Child{
             DatePicker(
                 start: DateTime.of(year:1970,month:1,dayOfMonth:1),
                 end: DateTime.of(year:2100,month:1,dayOfMonth:1),
-                selected: @Binder(this.selectedDate)
+                selected: this.selectedDate
             )
         }
     }
@@ -196,7 +196,7 @@ class EntryView{
                 }else{
                     "Switch to add"
                 }
-            ).onClick{
+            ).onClick{ evt =>
                 if(isAdd == true){ Func1 = returnMinus }
                 else{ Func1 = returnAdd }
                 isAdd = !isAdd
@@ -230,7 +230,7 @@ class Child{
                 }else{
                     "Switch to add"
                 }
-            ).onClick{
+            ).onClick{ evt =>
                 if(isAdd == true){ Func2 = returnMinus }
                 else{ Func2 = returnAdd }
                 isAdd = !isAdd
@@ -458,7 +458,7 @@ class ToDoItem {
             Text("count(${this.count})")
             Button("count(${this.count}), count + 1")
                 .onClick{
-                    => this.count += 1
+                   evt => this.count += 1
             }
         }.width(100.percent)
     }
@@ -467,7 +467,7 @@ class ToDoItem {
 @Component
 class ToDoList{
     func build(){
-        Row(5){
+        Row(space: 5){
             ToDoItem()
             ToDoItem()
         }
@@ -494,7 +494,7 @@ class EntryView{
         Column{
             Button("count(${this.count}), count + 1")
                 .onClick{
-                    => this.count += 1
+                   evt => this.count += 1
                 }
             ToDoDemo()
         }
@@ -536,27 +536,27 @@ class Child {
                     => "${idx}_${item[0]}" + item[1]
                 })
             Button("Consume init map").onClick{
-                =>
+                evt =>
                     this.message = HashMap<Int64, String>([(0,"a"),(1,"b"),(3,"c")])
                     arr = message.toArray()
             }
             Button("Consume set new one").onClick{
-                =>
+                evt =>
                     this.message.add(4,"d")
                     arr = message.toArray()
             }
             Button("Consume clear").onClick{
-                =>
+                evt =>
                     this.message.clear()
                     arr = message.toArray()
             }
             Button("Consume replace the first item").onClick{
-                =>
+                evt =>
                     this.message.add(0,"aa")
                     arr = message.toArray()
             }
             Button("Consume delete the first item").onClick{
-                =>
+                evt =>
                     this.message.remove(0)
                     arr = message.toArray()
             }
@@ -581,7 +581,7 @@ class EntryView {
         Row(){
             Column(){
                 Button("Provide init map").onClick{
-                    =>
+                    evt =>
                         this.message = HashMap<Int64,String>([(0,"a"),(1,"b"),(3,"c"),(4,"d")])
                         arr = message.toArray()
                 }
@@ -622,22 +622,22 @@ class Child{
                 Divider()
             })
             Button("Consume init set").onClick{
-                =>
+                evt =>
                     this.message = HashSet<Int64>([0,1,2,3,4])
                     this.arr = this.message.toArray()
             }
             Button("Consume set new one").onClick{
-                =>
+                evt =>
                     this.message.add(5)
                     this.arr = this.message.toArray()
             }
             Button("Consume clear").onClick{
-                =>
+                evt =>
                     this.message.clear()
                     this.arr = this.message.toArray()
             }
             Button("Consume delete the first one").onClick{
-                =>
+                evt =>
                     this.message.remove(0)
                     this.arr = this.message.toArray()
             }
@@ -662,7 +662,7 @@ class EntryView{
         Row(){
             Column(){
                 Button("Provide init Set").onClick{
-                    =>
+                    evt =>
                     this.message = HashSet<Int64>([0,1,2,3,4,5])
                     this.arr = this.message.toArray()
                 }

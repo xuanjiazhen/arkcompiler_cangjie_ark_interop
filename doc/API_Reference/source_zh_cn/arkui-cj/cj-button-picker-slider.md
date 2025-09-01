@@ -528,7 +528,7 @@ class EntryView {
                     value: this.noneValueOne,
                     min: 0.0,
                     max: 100.0,
-                    style: SliderStyle.NONE
+                    style: SliderStyle.OutSet
                 )
                     .blockColor(0x191970)
                     .trackColor(0xADD8E6)
@@ -606,61 +606,3 @@ class EntryView {
 ```
 
 ![slider](figures/slider1.gif)
-
-### 示例2（设置滑动条样式）
-
-该示例通过blockBorderColor、blockSize、blockBorderWidth、blockStyle设置滑块的样式，通过stepSize、stepColor设置刻度值的样式，通过trackBorderRadius设置底板的圆角，通过selectedBorderRadius设置已滑动部分的圆角。
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-internal import kit.LocalizationKit.{AppResource, __GenerateResource__}
-
-@Entry
-@Component
-class EntryView {
-    @State var tipsValue: Float64 = 40.0
-
-    func build() {
-        Column {
-            Text('block').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.OutSet, value: 40.0)
-                .blockSize(width: 40.0, height: 40.0)
-                .blockBorderColor(Color.Red)
-                .blockBorderWidth(5)
-            Divider()
-            Text('step').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.InSet, value: 40.0, step: 10.0).showSteps(true).stepSize(8).stepColor(0xFFFF00)
-            Divider()
-            Text('track').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.InSet, value: 40.0).trackBorderRadius(2)
-            Divider()
-            Text('selected').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.InSet, value: 40.0).selectedBorderRadius(2)
-            Divider()
-            Text('blockStyle').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.OutSet, value: 40.0).blockStyle(SliderBlockType.DEFAULT)
-            Slider(style: SliderStyle.OutSet, value: 40.0).blockStyle(SliderBlockType.IMAGE,
-                image: @r(app.media.startIcon))
-            //            .blockStyle( SliderBlockType.IMAGE, image: "app.media.startIcon" )
-            Slider(style: SliderStyle.OutSet, value: 40.0)
-                .blockSize(width: 60.px, height: 60.px)
-                .blockColor(Color.Red)
-                .blockStyle(SliderBlockType.SHAPE, shape: PathShape(commands: 'M60 60 M30 30 L15 56 L45 56 Z'))
-            Divider()
-            Text('tips').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.InSet, value: this.tipsValue)
-                .showTips(true, content: "${Int64(this.tipsValue)}")
-                .onChange({
-                    value: Float64, mode: SliderChangeMode => this.tipsValue = value
-                })
-        }
-    }
-}
-```
-
-![slider](figures/slider2.png)

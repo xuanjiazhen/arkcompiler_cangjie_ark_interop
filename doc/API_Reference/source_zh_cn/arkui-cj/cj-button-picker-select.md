@@ -413,7 +413,7 @@ public func onSelect(callback: OnSelectCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnSelectCallback](<font color="red" face="bold">please add link</font>)|是|-|选中项的索引和值。|
+|callback|OnSelectCallback|是|-|选中项的索引和值。|
 
 ## 基础类型定义
 
@@ -520,7 +520,7 @@ public init(value: String, icon!: AppResource)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|String|是|-|下拉选项内容。|
-|icon|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|**命名参数。** 下拉选项图标。|
+|icon|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|**命名参数。** 下拉选项图标。|
 
 #### init(AppResource, String)
 
@@ -538,7 +538,7 @@ public init(value: AppResource, icon!: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|下拉选项内容。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|下拉选项内容。|
 |icon|String|是|-|**命名参数。** 下拉选项图标。|
 
 #### init(AppResource, AppResource)
@@ -557,14 +557,14 @@ public init(value: AppResource, icon!: AppResource)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|下拉选项内容。|
-|icon|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|**命名参数。** 下拉选项图标。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|下拉选项内容。|
+|icon|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|**命名参数。** 下拉选项图标。|
 
 
 ### enum ArrowPosition
 
 ```cangjie
-public enum ArrowPosition <: Equatable<ArrowPosition> {
+public enum ArrowPosition {
     | END
     | START
     | ...
@@ -605,50 +605,10 @@ START
 
 **起始版本：** 21
 
-#### func !=(ArrowPosition)
-
-```cangjie
-public operator func !=(other: ArrowPosition): Bool
-```
-
-**功能：** 比较两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ArrowPosition](#enum-arrowposition)|是|-|待比较的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值不相等则返回true，否则返回false。|
-
-#### func ==(ArrowPosition)
-
-```cangjie
-public operator func ==(other: ArrowPosition): Bool
-```
-
-**功能：** 比较两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ArrowPosition](#enum-arrowposition)|是|-|待比较的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值相等则返回true，否则返回false。|
-
 ### enum MenuAlignType
 
 ```cangjie
-public enum MenuAlignType <: Equatable<MenuAlignType> {
+public enum MenuAlignType {
     | START
     | CENTER
     | END
@@ -702,46 +662,6 @@ START
 
 **起始版本：** 21
 
-#### func !=(MenuAlignType)
-
-```cangjie
-public operator func !=(other: MenuAlignType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[MenuAlignType](#enum-menualigntype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(MenuAlignType)
-
-```cangjie
-public operator func ==(other: MenuAlignType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[MenuAlignType](#enum-menualigntype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 ## 示例代码
 
 ### 示例1（设置下拉菜单）
@@ -756,6 +676,8 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
 @Entry
 @Component
 class EntryView {
@@ -764,12 +686,12 @@ class EntryView {
     @State var space: Int64 = 8
 
     @State var values1: Array<SelectOption> = [
-            SelectOption("aaa", icon: @r(app.media.startIcon)),
-            SelectOption("bbb", icon: @r(app.media.startIcon)),
-            SelectOption("ccc", icon: @r(app.media.startIcon)),
-            SelectOption("ddd", icon: @r(app.media.startIcon))]
+            SelectOption(value: "aaa", icon: @r(app.media.startIcon)),
+            SelectOption(value: "bbb", icon: @r(app.media.startIcon)),
+            SelectOption(value: "ccc", icon: @r(app.media.startIcon)),
+            SelectOption(value: "ddd", icon: @r(app.media.startIcon))]
 
-    @State var arrow: ArrowPosition = ArrowPosition.END
+    @State var arrow: ArrowPosition = ArrowPosition.End
 
     func build() {
         Column {
@@ -781,7 +703,7 @@ class EntryView {
             .selectedOptionFont(size: 16.vp, weight: FontWeight.W400)
             .space(this.space)
             .arrowPosition(this.arrow)
-            .menuAlign(MenuAlignType.START, offset: MenuOffset(0, 0))
+            .menuAlign(alignType: MenuAlignType.Start, offset: Offset(0, 0))
             .optionWidth(200)
             .optionHeight(300)
             .onSelect({ index: Int32, text: String =>
@@ -796,73 +718,3 @@ class EntryView {
 ```
 
 ![selectExample](./figures/selectExample.png)
-
-### 示例2（设置分割线样式）
-
-该示例实现了分割线样式支持自定义。
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column {
-                Select(
-                    [
-                        SelectOption("选项1", icon: ""),
-                        SelectOption("选项2", icon: ""),
-                        SelectOption("选项3", icon: ""),
-                        SelectOption("选项4", icon: "")
-                    ]
-                )
-                    .value("请选择")
-                    .divider(
-                        options: DividerOptions(strokeWidth: 5, startMargin: 15, endMargin: 1,
-                        color: Color(0XFFD700)))
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```
-
-![selectSample2](./figures/selectSample2.PNG)
-
-### 示例3（设置无分割线样式）
-
-该示例通过配置divider为null实现无分割线样式的下拉菜单。
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column {
-                Select(
-                    [
-                        SelectOption("选项1", icon: ""),
-                        SelectOption("选项2", icon: ""),
-                        SelectOption("选项3", icon: ""),
-                        SelectOption("选项4", icon: "")
-                    ]
-                ).value("请选择").divider(options: Option.None)
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```

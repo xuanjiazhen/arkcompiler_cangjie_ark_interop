@@ -393,7 +393,7 @@ public var duration: Int32
 ### class VideoController
 
 ```cangjie
-public class VideoController {
+public class VideoController <: RemoteDataLite {
     public init()
 }
 ```
@@ -505,11 +505,11 @@ public func stop(): Unit
 
 ```cangjie
 public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
-    | Speed_Forward_0_75_X
-    | Speed_Forward_1_00_X
-    | Speed_Forward_1_25_X
-    | Speed_Forward_1_75_X
-    | Speed_Forward_2_00_X
+    | SpeedForward075X
+    | SpeedForward100X
+    | SpeedForward125X
+    | SpeedForward175X
+    | SpeedForward200X
     | ...
 }
 ```
@@ -524,10 +524,10 @@ public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
 
 - Equatable\<PlaybackSpeed>
 
-#### Speed_Forward_0_75_X
+#### SpeedForward075X
 
 ```cangjie
-Speed_Forward_0_75_X
+SpeedForward075X
 ```
 
 **功能：** 0.75倍速播放。
@@ -536,10 +536,10 @@ Speed_Forward_0_75_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_00_X
+#### SpeedForward100X
 
 ```cangjie
-Speed_Forward_1_00_X
+SpeedForward100X
 ```
 
 **功能：** 1倍速播放。
@@ -548,10 +548,10 @@ Speed_Forward_1_00_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_25_X
+#### SpeedForward125X
 
 ```cangjie
-Speed_Forward_1_25_X
+SpeedForward125X
 ```
 
 **功能：** 1.25倍速播放。
@@ -560,10 +560,10 @@ Speed_Forward_1_25_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_75_X
+#### SpeedForward175X
 
 ```cangjie
-Speed_Forward_1_75_X
+SpeedForward175X
 ```
 
 **功能：** 1.75倍速播放。
@@ -572,10 +572,10 @@ Speed_Forward_1_75_X
 
 **起始版本：** 21
 
-#### Speed_Forward_2_00_X
+#### SpeedForward200X
 
 ```cangjie
-Speed_Forward_2_00_X
+SpeedForward200X
 ```
 
 **功能：** 2倍速播放。
@@ -743,6 +743,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -750,7 +751,7 @@ class EntryView {
     var videoSrc: AppResource = @rawfile("video.mp4")
     var previewUri: AppResource = @r(app.media.preview)
     var controller: VideoController = VideoController()
-    @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+    @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
     @State var isAutoPlay: Bool = false
     @State var showControls: Bool = true
 
@@ -769,19 +770,19 @@ class EntryView {
 
             Row() {
                 Button("start")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.start() // 开始播放
                     })
                     .margin(5)
                     .id("start")
                 Button("pause")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.pause() // 暂停播放
                     })
                     .margin(5)
                     .id("pause")
                 Button("stop")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.stop() // 暂停播放
                            this.controller.exitFullscreen()
                         }
@@ -791,19 +792,19 @@ class EntryView {
             }
             Row() {
                 Button("Fullscreen")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.requestFullscreen(true)
                     })
                     .margin(5)
                     .id("Fullscreen")
                 Button("at 10s")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.setCurrentTime(10, SeekMode.ClosestKeyframe)
                     })
                     .margin(5)
                     .id("at 10s")
                 Button("exitFull")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.exitFullscreen()
                     })
                     .margin(5)
@@ -811,20 +812,20 @@ class EntryView {
             }
             Row() {
                 Button("rate 0.75")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_0_75_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward075X
                     })
                     .margin(5)
                     .id("rate 0.75")
                 Button("rate 1")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_1_00_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward100X
                     })
                     .margin(5)
                     .id("rate 1")
                 Button("rate 2")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_2_00_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward200X
                     })
                     .margin(5)
                     .id("rate 2")

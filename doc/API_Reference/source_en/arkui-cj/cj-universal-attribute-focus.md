@@ -623,7 +623,7 @@ class EntryView {
 
     func build() {
         // Button components are focusable by default
-        Column(20) {
+        Column(space: 20) {
             Row() {
                 // Default focus, and clickable to gain focus
                 Button("Hello Cangjie A")
@@ -762,9 +762,9 @@ class EntryView {
                     }
             }
 
-            Row(20) {
-                Column(20) {
-                    Column(5) {
+             {
+                Column(space: 20) {
+                    Column(space: 5) {
                         Button("Group1")
                             .width(165)
                             .height(40)
@@ -772,18 +772,18 @@ class EntryView {
                             .id("b1")
                             .key("b1")
                             .focusOnTouch(true)
-                        Row(5) {
+                        Row(space: 5) {
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b2").key("b2")
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b3").key("b3")
                         }
-                        Row(5) {
+                        Row(space: 5) {
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b4").key("b4")
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b5").key("b5")
                         }
                     }.borderWidth(2).borderColor(Color.RED).borderStyle(BorderStyle.Dashed)
-                    Column(5) {
+                    Column(space: 5) {
                         Button("Group2").width(165).height(40).fontColor(Color.WHITE).id("b6").key("b6")
-                        Row(5) {
+                        Row(space: 5) {
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b7").key("b7")
                             Button("PRIOR")
                                 .width(80)
@@ -800,13 +800,13 @@ class EntryView {
                                 .id("b8")
                                 .key("b8")
                         }
-                        Row(5) {
+                        Row(space: 5) {
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b9").key("b9")
                             Button().width(80).height(40).fontColor(Color.WHITE).id("b10").key("b10")
                         }
                     }.borderWidth(2).borderColor(Color.GREEN).borderStyle(BorderStyle.Dashed)
                 }.focusScopeId("ColumnScope1")
-                Column(5) {
+                Column(space: 5) {
                     Button("Group3")
                         .width(165)
                         .height(40)
@@ -814,7 +814,7 @@ class EntryView {
                         .id("b11")
                         .key("b11")
                         .focusOnTouch(true)
-                    Row(5) {
+                    Row(space: 5) {
                         Button().width(80).height(40).fontColor(Color.WHITE).id("b12").key("b12")
                         Button().width(80).height(40).fontColor(Color.WHITE).id("b13").key("b13")
                     }
@@ -825,12 +825,12 @@ class EntryView {
                         .focusScopePriority("ColumnScope2", priority: FocusPriority.PREVIOUS)
                         .id("b14")
                         .key("b14")
-                    Row(5) {
+                    Row(space: 5) {
                         Button().width(80).height(40).fontColor(Color.WHITE).id("b15").key("b15")
                         Button().width(80).height(40).fontColor(Color.WHITE).id("b16").key("b16")
                     }
                     Button().width(165).height(40).fontColor(Color.WHITE).id("b17").key("b17")
-                    Row(5) {
+                    Row(space: 5) {
                         Button().width(80).height(40).fontColor(Color.WHITE).id("b18").key("b18")
                         Button().width(80).height(40).fontColor(Color.WHITE).id("b19").key("b19")
                     }

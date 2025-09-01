@@ -43,7 +43,6 @@ class TextStyles{
 @Entry
 @Component
 class EntryView {
-
     @State
     var styleList: ArrayList<TextStyles> = ArrayList<TextStyles>([])
 
@@ -57,16 +56,16 @@ class EntryView {
         Column {
             Text("Font Size List")
                 .fontSize(50)
-                .onClick{
+                .onClick {
                     evt =>
-                    for(i in 0..this.styleList.size){
-                        this.styleList[i].fontSize++
+                        for(i in 0..this.styleList.size){
+                            this.styleList[i].fontSize++
+                        }
+                        Hilog.info(0, "AppLogCj", "change font size")
                     }
-                    Hilog.info(0, "AppLogCj", "change font size")
-                }
-            List(){
-                ForEach(this.styleList ,{
-                        item: TextStyles, _:Int64 =>
+            List() {
+                ForEach(this.styleList, {
+                        item: TextStyles, _: Int64 =>
                         ListItem(){
                             Text("Hello World")
                                 .fontSize(item.fontSize)
@@ -94,19 +93,17 @@ import kit.PerformanceAnalysisKit.Hilog
 
 @Observed
 class TextStyles{
-    @Publish
-    var fontSize: Int64
+    @Publish var fontSize: Int64
 }
 
 @Entry
 @Component
 class EntryView {
-
     @State
     var styleList: ObservedArrayList<TextStyles> = ObservedArrayList<TextStyles>([])
 
     public override func aboutToAppear(){
-        for(i in 1..=35){
+        for(i in 1..= 35) {
             this.styleList.append(TextStyles(fontSize: i))
         }
     }

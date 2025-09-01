@@ -58,6 +58,10 @@ var outKekEncTag: ?Array<UInt8> = None
 var outAgreeKeyEncTag: ?Array<UInt8> = None
 var mask = [0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000]
 
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
 func subUint8ArrayOf(arrayBuf: Array<UInt8>, start: Int64, end: Int64) {
     let realEnd = min(end, arrayBuf.size)
     let list = ArrayList<UInt8>()
@@ -540,7 +544,4 @@ func ImportWrappedKey() {
     publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams)
 }
 
-func loggerInfo(str: String) {
-    Hilog.info(0, "CangjieTest", str)
-}
 ```

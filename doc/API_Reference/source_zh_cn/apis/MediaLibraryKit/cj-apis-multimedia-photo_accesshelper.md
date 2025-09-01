@@ -19,7 +19,7 @@ ohos.permission.WRITE_IMAGEVIDEO
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -242,7 +242,7 @@ public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 ## class FetchResult
 
 ```cangjie
-public class FetchResult<T> <:  where T <:  FetchData <T> {}
+public class FetchResult<T> <: RemoteDataLite {}
 ```
 
 **功能：** 文件检索结果集。
@@ -288,7 +288,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 ```
 
@@ -335,7 +335,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let photoAssetArray = fetchResult.getAllObjects()
 ```
 
@@ -383,7 +383,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let count = fetchResult.getCount()
 ```
 
@@ -430,7 +430,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 ```
 
@@ -477,7 +477,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getLastObject()
 ```
 
@@ -526,7 +526,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getNextObject()
 ```
 
@@ -579,7 +579,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 ```
 
@@ -626,14 +626,14 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let isAfterLast = fetchResult.isAfterLast()
 ```
 
 ## class MediaAlbumChangeRequest
 
 ```cangjie
-public class MediaAlbumChangeRequest <:  MediaChangeRequest {
+public class MediaAlbumChangeRequest <: RemoteDataLite & MediaChangeRequest {
     /**
      * The constructor to create a MediaAlbumChangeRequest instance.
      *
@@ -759,7 +759,7 @@ albumChangeRequest.addAssets([asset, asset])
 ### func getAlbum()
 
 ```cangjie
-public func getAlbum(): ?Album
+public func getAlbum(): Album
 ```
 
 **功能：** 获取当前相册变更请求中的相册。
@@ -920,7 +920,7 @@ albumChangeRequest.setAlbumName(newAlbumName)
 ## class MediaAssetChangeRequest
 
 ```cangjie
-public class MediaAssetChangeRequest <:  MediaChangeRequest {
+public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
     public init(asset: PhotoAsset)
 }
 ```
@@ -1406,7 +1406,7 @@ phAccessHelper.applyChanges(assetChangeRequest)
 ### func getAsset()
 
 ```cangjie
-public func getAsset(): ?PhotoAsset
+public func getAsset(): PhotoAsset
 ```
 
 **功能：** 获取当前资产变更请求中的资产。
@@ -1602,7 +1602,7 @@ phAccessHelper.applyChanges(assetChangeRequest)
 ## class PhotoAccessHelper
 
 ```cangjie
-public class PhotoAccessHelper {}
+public class PhotoAccessHelper <: RemoteDataLite {}
 ```
 
 **功能：** 获取图片和视频资源。
@@ -1645,7 +1645,7 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 
 ```cangjie
 public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
-    options!: FetchOptions = FetchOptions(["uri", "album_name"], DataSharePredicates())): FetchResult<Album>
+    options!: FetchOptions = FetchOptions(["uri", "album_name"], DataSharePredicates())): AlbumResult
 ```
 
 **功能：** 根据检索选项和相册类型获取相册。获取相册前需先保证相册存在。
@@ -1697,14 +1697,14 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.User,
+let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.User,
     AlbumSubtype.UserGeneric, options: fetchOptions)
 ```
 
 ### func getAssets(FetchOptions)
 
 ```cangjie
-public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
+public func getAssets(options: FetchOptions): PhotoAssetResult
 ```
 
 **功能：** 获取图片和视频资源。
@@ -1753,13 +1753,13 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 ```
 
 ### func getBurstAssets(String, FetchOptions)
 
 ```cangjie
-public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult<PhotoAsset>
+public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetResult
 ```
 
 **功能：** 获取连拍照片资源。
@@ -1809,7 +1809,7 @@ let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
 
 ### func registerChange(String, Bool, Callback1Argument\<ChangeData>)
@@ -1879,7 +1879,7 @@ let callback1 = MyCallback<ChangeData>(
     })
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
 ```
@@ -1922,7 +1922,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 phAccessHelper.release()
 ```
@@ -1946,7 +1946,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 |:---|:---|:---|:---|:---|
 |srcFileUris|Array\<String>|是|-|需保存到媒体库中的图片/视频文件对应的媒体库uri。<br>**注意：**  仅支持处理图片、视频uri。|
 |photoCreationConfigs|Array\<[PhotoCreationConfig](#class-photocreationconfig)>|是|-|保存图片/视频到媒体库的配置，包括保存的文件名等，与srcFileUris保持一一对应。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
 
 **异常：**
 
@@ -2026,7 +2026,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
-|callback|?[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
+|callback|?[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
 
 **异常：**
 
@@ -2076,7 +2076,7 @@ let callback1 = MyCallback<ChangeData>(
 
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
@@ -2236,7 +2236,6 @@ public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
 **父类型：**
 
 - ToString
-- Equatable\<AlbumKeys>
 
 ### AlbumName
 
@@ -2338,11 +2337,6 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<AlbumSubtype>
-- ToString
 
 ### Any
 
@@ -2474,11 +2468,6 @@ public enum AlbumType <: Equatable<AlbumType> & ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<AlbumType>
-- ToString
-
 ### System
 
 ```cangjie
@@ -2576,7 +2565,6 @@ public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
 **父类型：**
 
 - ToString
-- Equatable\<DefaultChangeUri>
 
 ### DefaultAlbumUri
 
@@ -2676,11 +2664,6 @@ public enum DeliveryMode <: Equatable<DeliveryMode> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<DeliveryMode>
-- ToString
 
 ### BalanceMode
 
@@ -2788,11 +2771,6 @@ public enum DynamicRangeType <: Equatable<DynamicRangeType> & ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<DynamicRangeType>
-- ToString
-
 ### Hdr
 
 ```cangjie
@@ -2889,11 +2867,6 @@ public enum NotifyType <: Equatable<NotifyType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<NotifyType>
-- ToString
 
 ### NotifyAdd
 
@@ -3047,7 +3020,6 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
 **父类型：**
 
 - ToString
-- Equatable\<PhotoKeys>
 
 ### BurstKey
 
@@ -3382,11 +3354,6 @@ public enum PhotoSubtype <: Equatable<PhotoSubtype> & ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<PhotoSubtype>
-- ToString
-
 ### Burst
 
 ```cangjie
@@ -3494,11 +3461,6 @@ public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<PhotoViewMIMETypes>
-- ToString
 
 ### ImageType
 
@@ -3625,11 +3587,6 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<RecommendationType>
-- ToString
 
 ### BankCard
 
@@ -3820,11 +3777,6 @@ public enum ResourceType <: Equatable<ResourceType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<ResourceType>
-- ToString
 
 ### ImageResource
 

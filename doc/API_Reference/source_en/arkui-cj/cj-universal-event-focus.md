@@ -62,7 +62,7 @@ class EntryView {
   @State var threeButtonColor: ResourceColor = Color.GREEN
 
   func build() {
-    Column(20) {
+    Column(space: 20) {
       // Using the up/down keys on an external keyboard moves focus between the three buttons. The button color changes when focused and reverts when blurred.
       Button('First Button')
         .backgroundColor(this.oneButtonColor)

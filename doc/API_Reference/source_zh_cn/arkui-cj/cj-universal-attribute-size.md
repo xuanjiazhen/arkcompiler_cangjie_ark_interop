@@ -46,7 +46,7 @@ public func height(value: Option<Length>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Option](<font color="red" face="bold">please add link</font>)\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件高度。</br>单位：vp。|
+|value|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件高度。</br>单位：vp。|
 
 ## func layoutWeight(Int32)
 
@@ -183,5 +183,5 @@ public func width(value: Option<Length>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Option](<font color="red" face="bold">please add link</font>)\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件宽度。<br>默认单位：vp。|
+|value|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件宽度。<br>默认单位：vp。|
 

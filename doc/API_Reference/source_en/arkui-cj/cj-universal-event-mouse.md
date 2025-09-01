@@ -192,7 +192,7 @@ class EntryView {
     @State var mouseText: String = "MouseText"
     @State var color: Color = Color.BLUE
     func build() {
-        Column(20) {
+        Column(space: 20) {
             Button(this.hoverText)
             .onHover({isHover =>
             if (isHover) {

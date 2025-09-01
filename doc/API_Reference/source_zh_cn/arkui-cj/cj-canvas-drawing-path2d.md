@@ -11,7 +11,7 @@ import kit.ArkUI.*
 ## class Path2D
 
 ```cangjie
-public class Path2D {
+public class Path2D <: RemoteDataLite {
     public init()
     public init(path: String)
 }
@@ -80,7 +80,7 @@ public func arc(
     radius: Float64,
     startAngle: Float64,
     endAngle: Float64,
-    anticlockwise!: Bool = false
+    counterclockwise!: Bool = false
 ): Unit
 ```
 
@@ -99,7 +99,7 @@ public func arc(
 |radius|Float64|是|-|弧线的圆半径。<br>默认单位：vp。|
 |startAngle|Float64|是|-|弧线的起始弧度。<br>单位：弧度。|
 |endAngle|Float64|是|-|弧线的终止弧度。<br>单位：弧度。|
-|anticlockwise|Bool|否|false| **命名参数。** 是否逆时针绘制圆弧。<br>true:逆时针方向绘制椭圆。<br>false:顺时针方向绘制椭圆。|
+|counterclockwise|Bool|否|false| **命名参数。** 是否逆时针绘制圆弧。<br>true:逆时针方向绘制椭圆。<br>false:顺时针方向绘制椭圆。|
 
 ### func arcTo(Float64, Float64, Float64, Float64, Float64)
 
@@ -182,7 +182,7 @@ public func ellipse(
     rotation: Float64,
     startAngle: Float64,
     endAngle: Float64,
-    anticlockwise!: Bool = false
+    counterclockwise!: Bool = false
 ): Unit
 ```
 
@@ -203,7 +203,7 @@ public func ellipse(
 |rotation|Float64|是|-|椭圆的旋转角度。<br>单位：弧度。|
 |startAngle|Float64|是|-|椭圆绘制的起始点角度。<br>单位：弧度。|
 |endAngle|Float64|是|-|椭圆绘制的结束点角度。<br>单位：弧度。|
-|anticlockwise|Bool|否|false| **命名参数。** 是否以逆时针方向绘制椭圆。<br>true:逆时针方向绘制椭圆。<br>false:顺时针方向绘制椭圆。|
+|counterclockwise|Bool|否|false| **命名参数。** 是否以逆时针方向绘制椭圆。<br>true:逆时针方向绘制椭圆。<br>false:顺时针方向绘制椭圆。|
 
 ### func lineTo(Float64, Float64)
 

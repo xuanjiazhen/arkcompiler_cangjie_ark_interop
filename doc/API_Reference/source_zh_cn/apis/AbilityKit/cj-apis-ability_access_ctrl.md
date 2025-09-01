@@ -13,7 +13,7 @@ import kit.AbilityKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -115,8 +115,8 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 import kit.AbilityKit.*
 
 let atManager = AbilityAccessCtrl.createAtManager()
-let tokenID : UInt32 = 0 // tokenID系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取
-let status = atManager.checkAccessToken(tokenID, "ohos.permission.GRANT_SENSITIVE_PERMISSIONS")
+let tokenID : UInt32 = 1 // tokenID系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取
+let status = atManager.checkAccessToken(tokenID, "ohos.permission.READ_CONTACTS")
 ```
 
 ### func requestPermissionsFromUser(UIAbilityContext, Array\<Permissions>, AsyncCallback\<PermissionRequestResult>)
@@ -138,7 +138,7 @@ public func requestPermissionsFromUser(context: UIAbilityContext, permissionList
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。|
 |permissionList|Array\<[Permissions](#type-permissions)>|是|-|需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)中查询。|
 |requestCallback|AsyncCallback\<[AccessCtrlPermissionRequestResult](#class-accessctrlpermissionrequestresult)>|是|-|回调函数，返回接口调用是否成功的结果。|
 

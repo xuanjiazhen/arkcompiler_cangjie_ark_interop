@@ -11,7 +11,7 @@ import kit.ArkUI.*
 ## class ImageData
 
 ```cangjie
-public class ImageData {
+public class ImageData <: RemoteDataLite {
     public init(width: Float64, height: Float64, data!: Array<UInt8>, unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
     public init(width: Float64, height: Float64, unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
 }
@@ -70,7 +70,7 @@ public prop width: Int32
 
 ```cangjie
 public init(width: Float64, height: Float64, data!: Array<UInt8>,
-    unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
+    unit!: LengthMetricsUnit = LengthMetricsUnit.Default)
 ```
 
 **功能：** 构造一个ImageData类型的对象。

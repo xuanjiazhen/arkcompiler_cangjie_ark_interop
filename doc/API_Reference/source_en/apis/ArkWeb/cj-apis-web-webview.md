@@ -85,7 +85,7 @@ public func getItemAtIndex(index: Int32): HistoryItem
 
 **Parameters:**
 
-| Parameter 
+| Parameter
 | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | index | Int32 | Yes | - | The specified index in the history list. |
@@ -120,7 +120,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("getItemAtIndex")
             .onClick {
                 evt =>
@@ -596,304 +596,304 @@ public static func clearAllCookies(incognito!: Bool = false): Unit
 
 **Function:** Clears all cookies.
 
-**System Capability:** SystemCapability.Web.Webview.Core**Initial Version:** 21  
+**System Capability:** SystemCapability.Web.Webview.Core**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| incognito | Bool | No | false | **Named parameter.** `true` indicates clearing all in-memory cookies of the WebView in incognito mode, while `false` indicates clearing all cookies in normal non-incognito mode. |  
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| incognito | Bool | No | false | **Named parameter.** `true` indicates clearing all in-memory cookies of the WebView in incognito mode, while `false` indicates clearing all cookies in normal non-incognito mode. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import kit.ArkWeb.*  
-import kit.UIKit.Web  
+import kit.ArkWeb.*
+import kit.UIKit.Web
 
-WebCookieManager.clearAllCookies()  
-```  
+WebCookieManager.clearAllCookies()
+```
 
-### static func clearSessionCookie()  
+### static func clearSessionCookie()
 
-```cangjie  
-public static func clearSessionCookie(): Unit  
-```  
+```cangjie
+public static func clearSessionCookie(): Unit
+```
 
-**Function:** Clears all session cookies.  
+**Function:** Clears all session cookies.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import kit.ArkWeb.*  
+import kit.ArkWeb.*
 
-WebCookieManager.clearSessionCookie()  
-```  
+WebCookieManager.clearSessionCookie()
+```
 
-### static func configCookie(String, String, Bool)  
+### static func configCookie(String, String, Bool)
 
-```cangjie  
-public static func configCookie(url: String, value: String, incognito!: Bool = false): Unit  
-```  
+```cangjie
+public static func configCookie(url: String, value: String, incognito!: Bool = false): Unit
+```
 
-**Function:** Sets the cookie value for the specified URL.  
+**Function:** Sets the cookie value for the specified URL.
 
-> **Note:**  
->  
-> - The `url` parameter specifies the domain name to ensure that cookies are also attached to requests within the page.  
-> - It is recommended to synchronize cookies before loading the WebView component.  
+> **Note:**
+>
+> - The `url` parameter specifies the domain name to ensure that cookies are also attached to requests within the page.
+> - It is recommended to synchronize cookies before loading the WebView component.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| url | String | Yes | - | The URL to which the cookie belongs. A complete URL is recommended. |  
-| value | String | Yes | - | The value of the cookie to be set. |  
-| incognito | Bool | No | false | **Named parameter.** `true` indicates setting cookies for the specified URL in incognito mode, while `false` indicates setting cookies for the specified URL in normal non-incognito mode. |  
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| url | String | Yes | - | The URL to which the cookie belongs. A complete URL is recommended. |
+| value | String | Yes | - | The value of the cookie to be set. |
+| incognito | Bool | No | false | **Named parameter.** `true` indicates setting cookies for the specified URL in incognito mode, while `false` indicates setting cookies for the specified URL in normal non-incognito mode. |
 
-**Exceptions:**  
+**Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
+- BusinessException: For detailed error codes, refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
 
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 17100002 | Invalid URL. |  
-  | 17100005 | Invalid cookie value. |  
+  | Error Code ID | Error Message |
+  |:---|:---|
+  | 17100002 | Invalid URL. |
+  | 17100005 | Invalid cookie value. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import kit.ArkWeb.*  
+import kit.ArkWeb.*
 
-WebCookieManager.configCookie("https://www.example.com", "a=b,c=d,e=f")  
-```  
+WebCookieManager.configCookie("https://www.example.com", "a=b,c=d,e=f")
+```
 
-### static func existCookie(Bool)  
+### static func existCookie(Bool)
 
-```cangjie  
-public static func existCookie(incognito!: Bool = false): Bool  
-```  
+```cangjie
+public static func existCookie(incognito!: Bool = false): Bool
+```
 
-**Function:** Checks whether cookies exist in WebCookieManager.  
+**Function:** Checks whether cookies exist in WebCookieManager.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| incognito | Bool | No | false | **Named parameter.** `true` indicates checking for cookies in incognito mode, while `false` indicates checking for cookies in normal non-incognito mode. |  
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| incognito | Bool | No | false | **Named parameter.** `true` indicates checking for cookies in incognito mode, while `false` indicates checking for cookies in normal non-incognito mode. |
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | `true` indicates cookies exist, while `false` indicates no cookies exist. |  
+| Type | Description |
+|:----|:----|
+| Bool | `true` indicates cookies exist, while `false` indicates no cookies exist. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
+import ohos.base.*
+import kit.ArkWeb.*
 
-let result = WebCookieManager.existCookie()  
-AppLog.info("WebCookiemanager result: ${result}")  
-```  
+let result = WebCookieManager.existCookie()
+AppLog.info("WebCookiemanager result: ${result}")
+```
 
-### static func fetchCookie(String, Bool)  
+### static func fetchCookie(String, Bool)
 
-```cangjie  
-public static func fetchCookie(url: String, incognito!: Bool = false): String  
-```  
+```cangjie
+public static func fetchCookie(url: String, incognito!: Bool = false): String
+```
 
-**Function:** Retrieves the cookie value for the specified URL.  
+**Function:** Retrieves the cookie value for the specified URL.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| url | String | Yes | - | The URL to which the cookie belongs. A complete URL is recommended. |  
-| incognito | Bool | No | false | **Named parameter.** `true` retrieves in-memory cookies of the WebView in incognito mode, while `false` retrieves cookies in normal non-incognito mode. |  
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| url | String | Yes | - | The URL to which the cookie belongs. A complete URL is recommended. |
+| incognito | Bool | No | false | **Named parameter.** `true` retrieves in-memory cookies of the WebView in incognito mode, while `false` retrieves cookies in normal non-incognito mode. |
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| String | The cookie value corresponding to the specified URL. |  
+| Type | Description |
+|:----|:----|
+| String | The cookie value corresponding to the specified URL. |
 
-**Exceptions:**  
+**Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
+- BusinessException: For detailed error codes, refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
 
-| Error Code ID | Error Message |  
-| :---- | :--- |  
-| 401 | Invalid input parameter. |  
-| 17100002 | Invalid URL. |  
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Invalid input parameter. |
+| 17100002 | Invalid URL. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
+import ohos.base.*
+import kit.ArkWeb.*
 
-let value = WebCookieManager.fetchCookie("https://www.example.com")  
-AppLog.info("WebCookieManager,fetchCookie cookie = ${value}")  
-```  
+let value = WebCookieManager.fetchCookie("https://www.example.com")
+AppLog.info("WebCookieManager,fetchCookie cookie = ${value}")
+```
 
-### static func isCookieAllowed()  
+### static func isCookieAllowed()
 
-```cangjie  
-public static func isCookieAllowed(): Bool  
-```  
+```cangjie
+public static func isCookieAllowed(): Bool
+```
 
-**Function:** Checks whether the WebCookieManager instance has permission to send and receive cookies.  
+**Function:** Checks whether the WebCookieManager instance has permission to send and receive cookies.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Whether the instance has permission to send and receive cookies. `true` indicates permission is granted, while `false` indicates permission is denied. Default is `true`. |  
+| Type | Description |
+|:----|:----|
+| Bool | Whether the instance has permission to send and receive cookies. `true` indicates permission is granted, while `false` indicates permission is denied. Default is `true`. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
+import ohos.base.*
+import kit.ArkWeb.*
 
-let result = WebCookieManager.isCookieAllowed()  
-AppLog.info("WebCookieManager, result: ${result}")  
-```  
+let result = WebCookieManager.isCookieAllowed()
+AppLog.info("WebCookieManager, result: ${result}")
+```
 
-### static func isThirdPartyCookieAllowed()  
+### static func isThirdPartyCookieAllowed()
 
-```cangjie  
-public static func isThirdPartyCookieAllowed(): Bool  
-```  
+```cangjie
+public static func isThirdPartyCookieAllowed(): Bool
+```
 
-**Function:** Checks whether the WebCookieManager instance has permission to send and receive third-party cookies.  
+**Function:** Checks whether the WebCookieManager instance has permission to send and receive third-party cookies.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Whether the instance has permission to send and receive third-party cookies. `true` indicates permission is granted, while `false` indicates permission is denied. Default is `false`. |  
+| Type | Description |
+|:----|:----|
+| Bool | Whether the instance has permission to send and receive third-party cookies. `true` indicates permission is granted, while `false` indicates permission is denied. Default is `false`. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
+import ohos.base.*
+import kit.ArkWeb.*
 
-let result = WebCookieManager.isThirdPartyCookieAllowed()  
-AppLog.info("WebCookieManager, result: ${result}")  
-```  
+let result = WebCookieManager.isThirdPartyCookieAllowed()
+AppLog.info("WebCookieManager, result: ${result}")
+```
 
-### static func putAcceptCookieEnabled(Bool)  
+### static func putAcceptCookieEnabled(Bool)
 
-```cangjie  
-public static func putAcceptCookieEnabled(accept: Bool): Unit  
-```  
+```cangjie
+public static func putAcceptCookieEnabled(accept: Bool): Unit
+```
 
-**Function:** Sets whether the WebCookieManager instance has permission to send and receive cookies.  
+**Function:** Sets whether the WebCookieManager instance has permission to send and receive cookies.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| accept | Bool | Yes | - | Sets whether the instance has permission to send and receive cookies. Default is `true`, indicating permission is granted. |  
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| accept | Bool | Yes | - | Sets whether the instance has permission to send and receive cookies. Default is `true`, indicating permission is granted. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
+import ohos.base.*
+import kit.ArkWeb.*
 
-WebCookieManager.putAcceptCookieEnabled(false)  
-```  
+WebCookieManager.putAcceptCookieEnabled(false)
+```
 
-### static func putAcceptThirdPartyCookieEnabled(Bool)  
+### static func putAcceptThirdPartyCookieEnabled(Bool)
 
-```cangjie  
-public static func putAcceptThirdPartyCookieEnabled(accept: Bool): Unit  
-```  
+```cangjie
+public static func putAcceptThirdPartyCookieEnabled(accept: Bool): Unit
+```
 
-**Function:** Sets whether the WebCookieManager instance has permission to send and receive third-party cookies.  
+**Function:** Sets whether the WebCookieManager instance has permission to send and receive third-party cookies.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| accept | Bool | Yes | - | Sets whether the instance has permission to send and receive third-party cookies. `true` grants permission, while `false` denies permission. Default is `false`. |  
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| accept | Bool | Yes | - | Sets whether the instance has permission to send and receive third-party cookies. `true` grants permission, while `false` denies permission. Default is `false`. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
+import ohos.base.*
 import kit.ArkWeb.*
 WebCookieManager.putAcceptThirdPartyCookieEnabled(true)
 ```
@@ -1192,304 +1192,304 @@ public var origin: String
 
 **Read/Write:** Readable and Writable
 
-**System Capability:** SystemCapability.Web.Webview.Core**Initial Version:** 21  
+**System Capability:** SystemCapability.Web.Webview.Core**Initial Version:** 21
 
-### var quota  
+### var quota
 
-```cangjie  
-public var quota: Int64  
-```  
+```cangjie
+public var quota: Int64
+```
 
-**Function:** Specifies the storage quota for a given origin.  
+**Function:** Specifies the storage quota for a given origin.
 
-**Type:** Int64  
+**Type:** Int64
 
-**Read/Write Capability:** Read-Write  
+**Read/Write Capability:** Read-Write
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-### var usage  
+### var usage
 
-```cangjie  
-public var usage: Int64  
-```  
+```cangjie
+public var usage: Int64
+```
 
-**Function:** Specifies the storage usage for a given origin.  
+**Function:** Specifies the storage usage for a given origin.
 
-**Type:** Int64  
+**Type:** Int64
 
-**Read/Write Capability:** Read-Write  
+**Read/Write Capability:** Read-Write
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-### WebStorageOrigin(String, Int64, Int64)  
+### WebStorageOrigin(String, Int64, Int64)
 
-```cangjie  
-public WebStorageOrigin(  
-    public var origin: String,  
-    public var quota: Int64,  
-    public var usage: Int64  
-)  
-```  
+```cangjie
+public WebStorageOrigin(
+    public var origin: String,
+    public var quota: Int64,
+    public var usage: Int64
+)
+```
 
-**Function:** Primary constructor for WebStorageOrigin.  
+**Function:** Primary constructor for WebStorageOrigin.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| origin | String | Yes | - | String identifier for the specified origin. |  
-| quota | Int64 | Yes | - | Storage quota for the specified origin. |  
-| usage | Int64 | Yes | - | Storage usage for the specified origin. |  
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| origin | String | Yes | - | String identifier for the specified origin. |
+| quota | Int64 | Yes | - | Storage quota for the specified origin. |
+| usage | Int64 | Yes | - | Storage usage for the specified origin. |
 
-## class WebviewController  
+## class WebviewController
 
-```cangjie  
-public class WebviewController {  
-    public init()  
-    public init(webTag: String)  
-}  
-```  
+```cangjie
+public class WebviewController {
+    public init()
+    public init(webTag: String)
+}
+```
 
-**Function:** Clears the IP addresses owned by the primary name.  
+**Function:** Clears the IP addresses owned by the primary name.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-### init()  
+### init()
 
-```cangjie  
-public init()  
-```  
+```cangjie
+public init()
+```
 
-**Function:** Creates a WebviewController object.  
+**Function:** Creates a WebviewController object.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-### init(String)  
+### init(String)
 
-```cangjie  
-public init(webTag: String)  
-```  
+```cangjie
+public init(webTag: String)
+```
 
-**Function:** Creates a WebviewController object.  
+**Function:** Creates a WebviewController object.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| webTag | String | Yes | - | Specifies the name of the Web component. |  
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| webTag | String | Yes | - | Specifies the name of the Web component. |
 
-### static func setWebDebuggingAccess(Bool)  
+### static func setWebDebuggingAccess(Bool)
 
-```cangjie  
-public static func setWebDebuggingAccess(webDebuggingAccess: Bool): Unit  
-```  
+```cangjie
+public static func setWebDebuggingAccess(webDebuggingAccess: Bool): Unit
+```
 
-**Function:** Enables or disables web page debugging functionality.  
+**Function:** Enables or disables web page debugging functionality.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| webDebuggingAccess | Bool | Yes | - | Sets whether to enable web page debugging functionality. |  
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| webDebuggingAccess | Bool | Yes | - | Sets whether to enable web page debugging functionality. |
 
-**Exceptions:**  
+**Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For detailed information, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).  
+- BusinessException: Corresponding error codes are listed below. For detailed information, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
-| Error Code ID | Error Message |  
-| :---- | :--- |  
-| 401 | Invalid input parameter. |  
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Invalid input parameter. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
-import kit.UIKit.Web  
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
 
-@Entry  
-@Component  
-class EntryView {  
-    let webController = WebviewController()  
-    let headers = [WebHeader("headerKey", "headerValue")]  
-    func build() {  
-        Column(10) {  
-            Button("setWebDebuggingAccess")  
-            .onClick {  
-                evt =>  
-                AppLog.info("setWebDebuggingAccess")  
-                WebviewController.setWebDebuggingAccess(true)  
-            }.width(400.px).height(150.px)  
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    let headers = [WebHeader("headerKey", "headerValue")]
+    func build() {
+        Column(space: 10) {
+            Button("setWebDebuggingAccess")
+            .onClick {
+                evt =>
+                AppLog.info("setWebDebuggingAccess")
+                WebviewController.setWebDebuggingAccess(true)
+            }.width(400.px).height(150.px)
 
-            Web(src: "www.example.com", controller: webController)  
-            .onPageBegin({evt =>  
-                AppLog.info("page begin url: ${evt.url}")  
-            })  
-            .onPageEnd({evt =>  
-                AppLog.info("page end url: ${evt.url}")  
-            })  
-        }  
-    }  
-}  
-```  
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
 
-### func accessBackward()  
+### func accessBackward()
 
-```cangjie  
-public func accessBackward(): Bool  
-```  
+```cangjie
+public func accessBackward(): Bool
+```
 
-**Function:** Checks whether the current page can navigate backward, i.e., whether there is a back history record.  
+**Function:** Checks whether the current page can navigate backward, i.e., whether there is a back history record.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if backward navigation is possible, otherwise `false`. |  
+| Type | Description |
+|:----|:----|
+| Bool | Returns `true` if backward navigation is possible, otherwise `false`. |
 
-**Exceptions:**  
+**Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
+- BusinessException: For detailed error codes, refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
 
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 17100001 | Init error. The WebviewController must be associated with a Web component. |  
+  | Error Code ID | Error Message |
+  |:---|:---|
+  | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
-import kit.UIKit.Web  
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
 
-@Entry  
-@Component  
-class EntryView {  
-    let webController = WebviewController()  
-    func build() {  
-        Column(10) {  
-            Button("accessBackward")  
-            .onClick {  
-                evt =>  
-                AppLog.info("accessBackward")  
-                let bool = webController.accessBackward()  
-                AppLog.info("accessBackward returns ${bool}")  
-            }.width(400.px).height(150.px)  
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(space: 10) {
+            Button("accessBackward")
+            .onClick {
+                evt =>
+                AppLog.info("accessBackward")
+                let bool = webController.accessBackward()
+                AppLog.info("accessBackward returns ${bool}")
+            }.width(400.px).height(150.px)
 
-            Web(src: "www.example.com", controller: webController)  
-            .onPageBegin({evt =>  
-                AppLog.info("page begin url: ${evt.url}")  
-            })  
-            .onPageEnd({evt =>  
-                AppLog.info("page end url: ${evt.url}")  
-            })  
-        }  
-    }  
-}  
-```  
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
 
-### func accessStep(Int32)  
+### func accessStep(Int32)
 
-```cangjie  
-public func accessStep(step: Int32): Bool  
-```  
+```cangjie
+public func accessStep(step: Int32): Bool
+```
 
-**Function:** Checks whether the current page can navigate forward or backward by the specified number of steps.  
+**Function:** Checks whether the current page can navigate forward or backward by the specified number of steps.
 
-**System Capability:** SystemCapability.Web.Webview.Core  
+**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| step | Int32 | Yes | - | Number of steps to navigate. Positive values indicate forward navigation, negative values indicate backward navigation. |  
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| step | Int32 | Yes | - | Number of steps to navigate. Positive values indicate forward navigation, negative values indicate backward navigation. |
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if navigation is possible, otherwise `false`. |  
+| Type | Description |
+|:----|:----|
+| Bool | Returns `true` if navigation is possible, otherwise `false`. |
 
-**Exceptions:**  
+**Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
+- BusinessException: For detailed error codes, refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
 
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 17100001 | Init error. The WebviewController must be associated with a Web component. |  
+  | Error Code ID | Error Message |
+  |:---|:---|
+  | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
-import kit.UIKit.Web  
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
 
-@Entry  
-@Component  
-class EntryView {  
-    var message: String = "Hello World"  
-    let webController = WebviewController()  
-    func build() {  
-        Column(10) {  
-            Button("accessStep")  
-             Text(this.message).onClick {  
-                evt =>  
-                AppLog.info("accessStep")  
-                let access = webController.accessStep(2)  
-                AppLog.info("accessStep returns: ${access}")  
-            }.width(400.px).height(150.px)  
+@Entry
+@Component
+class EntryView {
+    var message: String = "Hello World"
+    let webController = WebviewController()
+    func build() {
+        Column(space: 10) {
+            Button("accessStep")
+             Text(this.message).onClick {
+                evt =>
+                AppLog.info("accessStep")
+                let access = webController.accessStep(2)
+                AppLog.info("accessStep returns: ${access}")
+            }.width(400.px).height(150.px)
 
-            Web(src: "www.example.com", controller: webController)  
-            .onPageBegin({evt =>  
-                AppLog.info("page begin url: ${evt.url}")  
-            })  
-            .onPageEnd({evt =>  
-                AppLog.info("page end url: ${evt.url}")  
-            })  
-        }  
-    }  
-}  
-```  
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
 
 ### func backOrForward(Int32)
 ```cangjie
@@ -1534,7 +1534,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("backOrForward")
             .onClick {
                 evt =>
@@ -1590,7 +1590,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("backward")
             .onClick {
                 evt =>
@@ -1646,7 +1646,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("clearHistory")
             .onClick {
                 evt =>
@@ -1708,7 +1708,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("enableSafeBrowsing")
             .onClick {
                 evt =>
@@ -1764,7 +1764,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("forward")
             .onClick {
                 evt =>
@@ -1790,305 +1790,32 @@ class EntryView {
 public func getBackForwardEntries(): BackForwardList
 ```
 
-**Function:** Retrieves the current Webview's history information list.**System Capability:** SystemCapability.Web.Webview.Core  
+**Function:** Retrieves the current Webview's history information list.**System Capability:** SystemCapability.Web.Webview.Core
 
-**Initial Version:** 21  
+**Initial Version:** 21
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| [BackForwardList](#class-backforwardlist) | The history list of the current Webview. |  
+| Type | Description |
+|:----|:----|
+| [BackForwardList](#class-backforwardlist) | The history list of the current Webview. |
 
-**Exceptions:**  
+**Exceptions:**
 
-- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
+- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
 
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 17100001 | Init error. The WebviewController must be associated with a Web component. |  
+  | Error Code ID | Error Message |
+  |:---|:---|
+  | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
-**Example:**  
+**Example:**
 
-<!-- compile -->  
+<!-- compile -->
 
-```cangjie  
-// index.cj  
+```cangjie
+// index.cj
 
-import ohos.base.*  
-import kit.ArkWeb.*  
-import kit.UIKit.Web  
-
-@Entry  
-@Component  
-class EntryView {  
-    let webController = WebviewController()  
-    func build() {  
-        Column(10) {  
-            Button("getBackForwardEntries")  
-            .onClick {  
-                evt =>  
-                AppLog.info("getBackForwardEntries")  
-                let backForwardList = webController.getBackForwardEntries()  
-                AppLog.info("backForwardList currentIndex is ${backForwardList.currentIndex}")  
-                AppLog.info("backForwardList size is ${backForwardList.size}")  
-            }.width(400.px).height(150.px)  
-
-            Web(src: "www.example.com", controller: webController)  
-            .onPageBegin({evt =>  
-                AppLog.info("page begin url: ${evt.url}")  
-            })  
-            .onPageEnd({evt =>  
-                AppLog.info("page end url: ${evt.url}")  
-            })  
-        }  
-    }  
-}  
-```  
-
-### func getCustomUserAgent()  
-
-```cangjie  
-public func getCustomUserAgent(): String  
-```  
-
-**Description:** Gets the custom user agent.  
-
-**System Capability:** SystemCapability.Web.Webview.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| String | The custom user agent information. |  
-
-**Exceptions:**  
-
-- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
-
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 17100001 | Init error. The WebviewController must be associated with a Web component. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.ArkWeb.*  
-import kit.UIKit.Web  
-
-@Entry  
-@Component  
-class EntryView {  
-    let webController = WebviewController()  
-    let headers = [WebHeader("headerKey", "headerValue")]  
-    func build() {  
-        Column(10) {  
-            Button("getCustomUserAgent")  
-            .onClick {  
-                evt =>  
-                AppLog.info("getCustomUserAgent")  
-                let agent = webController.getCustomUserAgent()  
-                AppLog.info("getCustomUserAgent returns ${agent}")  
-            }.width(400.px).height(150.px)  
-
-            Web(src: "www.example.com", controller: webController)  
-            .onPageBegin({evt =>  
-                AppLog.info("page begin url: ${evt.url}")  
-            })  
-            .onPageEnd({evt =>  
-                AppLog.info("page end url: ${evt.url}")  
-            })  
-        }  
-    }  
-}  
-```  
-
-### func getHitTest()  
-
-```cangjie  
-public func getHitTest(): WebHitTestType  
-```  
-
-**Description:** Gets the type of the element in the currently clicked area.  
-
-**System Capability:** SystemCapability.Web.Webview.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [WebHitTestType](#enum-webhittesttype) | The type of the element in the clicked area. |  
-
-**Exceptions:**  
-
-- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
-
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 17100001 | Init error. The WebviewController must be associated with a Web component. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.ArkWeb.*  
-import kit.UIKit.Web  
-
-@Entry  
-@Component  
-class EntryView {  
-    let webController = WebviewController()  
-    func build() {  
-        Column(10) {  
-            Button("getHitTest")  
-            .onClick {  
-                evt =>  
-                AppLog.info("getHitTest")  
-                let hitType = webController.getHitTest()  
-                match(hitType) {  
-                    case WebHitTestType.EditText => AppLog.info("getHitTest returns EditText")  
-                    case WebHitTestType.Email => AppLog.info("getHitTest returns Email")  
-                    case WebHitTestType.HttpAnchor => AppLog.info("getHitTest returns HttpAnchor")  
-                    case WebHitTestType.HttpAnchorImg => AppLog.info("getHitTest returns HttpAnchorImg")  
-                    case WebHitTestType.Img => AppLog.info("getHitTest returns Img")  
-                    case WebHitTestType.Map => AppLog.info("getHitTest returns Map")  
-                    case WebHitTestType.Phone => AppLog.info("getHitTest returns Phone")  
-                    case WebHitTestType.Unknown => AppLog.info("getHitTest returns Unknown")  
-                    case _ =>  ()  
-                }  
-            }.width(400.px).height(150.px)  
-            Web(src: "www.example.com", controller: webController)  
-            .onPageBegin({evt =>  
-                AppLog.info("page begin url: ${evt.url}")  
-            })  
-            .onPageEnd({evt =>  
-                AppLog.info("page end url: ${evt.url}")  
-            })  
-        }  
-    }  
-}  
-```  
-
-### func getHitTestValue()  
-
-```cangjie  
-public func getHitTestValue(): HitTestValue  
-```  
-
-**Description:** Gets the element information of the currently clicked area.  
-
-**System Capability:** SystemCapability.Web.Webview.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [HitTestValue](#class-hittestvalue) | The element information of the clicked area. |  
-
-**Exceptions:**  
-
-- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
-
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 17100001 | Init error. The WebviewController must be associated with a Web component. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.ArkWeb.*  
-import kit.UIKit.Web  
-
-@Entry  
-@Component  
-class EntryView {  
-    let webController = WebviewController()  
-    func build() {  
-        Column(10) {  
-            Button("getHitTestValue")  
-            .onClick {  
-                evt =>  
-                AppLog.info("getHitTestValue")  
-                let hitTestValue = webController.getHitTestValue()  
-                match(hitTestValue.hitTestType) {  
-                    case WebHitTestType.EditText => AppLog.info("getHitTestValue returns EditText")  
-                    case WebHitTestType.Email => AppLog.info("getHitTestValue returns Email")  
-                    case WebHitTestType.HttpAnchor => AppLog.info("getHitTestValue returns HttpAnchor")  
-                    case WebHitTestType.HttpAnchorImg => AppLog.info("getHitTestValue returns HttpAnchorImg")  
-                    case WebHitTestType.Img => AppLog.info("getHitTestValue returns Img")  
-                    case WebHitTestType.Map => AppLog.info("getHitTestValue returns Map")  
-                    case WebHitTestType.Phone => AppLog.info("getHitTestValue returns Phone")  
-                    case WebHitTestType.Unknown => AppLog.info("getHitTestValue returns Unknown")  
-                    case _ =>  ()  
-                 }  
-                AppLog.info("getHitTestValue extra returns ${hitTestValue.extra}")  
-            }.width(400.px).height(150.px)  
-            Web(src: "www.example.com", controller: webController)  
-            .onPageBegin({evt =>  
-                AppLog.info("page begin url: ${evt.url}")  
-            })  
-            .onPageEnd({evt =>  
-                AppLog.info("page end url: ${evt.url}")  
-            })  
-        }  
-    }  
-}  
-```  
-
-### func getOriginalUrl()  
-
-```cangjie  
-public func getOriginalUrl(): String  
-```  
-
-**Description:** Gets the original URL address of the current page.  
-
-**System Capability:** SystemCapability.Web.Webview.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| String | The original URL address of the current page. |  
-
-**Exceptions:**  
-
-- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).  
-
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 17100001 | Init error. The WebviewController must be associated with a Web component. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
+import ohos.base.*
 import kit.ArkWeb.*
 import kit.UIKit.Web
 
@@ -2097,7 +1824,280 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
+            Button("getBackForwardEntries")
+            .onClick {
+                evt =>
+                AppLog.info("getBackForwardEntries")
+                let backForwardList = webController.getBackForwardEntries()
+                AppLog.info("backForwardList currentIndex is ${backForwardList.currentIndex}")
+                AppLog.info("backForwardList size is ${backForwardList.size}")
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func getCustomUserAgent()
+
+```cangjie
+public func getCustomUserAgent(): String
+```
+
+**Description:** Gets the custom user agent.
+
+**System Capability:** SystemCapability.Web.Webview.Core
+
+**Initial Version:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | The custom user agent information. |
+
+**Exceptions:**
+
+- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+
+  | Error Code ID | Error Message |
+  |:---|:---|
+  | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    let headers = [WebHeader("headerKey", "headerValue")]
+    func build() {
+        Column(space: 10) {
+            Button("getCustomUserAgent")
+            .onClick {
+                evt =>
+                AppLog.info("getCustomUserAgent")
+                let agent = webController.getCustomUserAgent()
+                AppLog.info("getCustomUserAgent returns ${agent}")
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func getHitTest()
+
+```cangjie
+public func getHitTest(): WebHitTestType
+```
+
+**Description:** Gets the type of the element in the currently clicked area.
+
+**System Capability:** SystemCapability.Web.Webview.Core
+
+**Initial Version:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [WebHitTestType](#enum-webhittesttype) | The type of the element in the clicked area. |
+
+**Exceptions:**
+
+- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+
+  | Error Code ID | Error Message |
+  |:---|:---|
+  | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(space: 10) {
+            Button("getHitTest")
+            .onClick {
+                evt =>
+                AppLog.info("getHitTest")
+                let hitType = webController.getHitTest()
+                match(hitType) {
+                    case WebHitTestType.EditText => AppLog.info("getHitTest returns EditText")
+                    case WebHitTestType.Email => AppLog.info("getHitTest returns Email")
+                    case WebHitTestType.HttpAnchor => AppLog.info("getHitTest returns HttpAnchor")
+                    case WebHitTestType.HttpAnchorImg => AppLog.info("getHitTest returns HttpAnchorImg")
+                    case WebHitTestType.Img => AppLog.info("getHitTest returns Img")
+                    case WebHitTestType.Map => AppLog.info("getHitTest returns Map")
+                    case WebHitTestType.Phone => AppLog.info("getHitTest returns Phone")
+                    case WebHitTestType.Unknown => AppLog.info("getHitTest returns Unknown")
+                    case _ =>  ()
+                }
+            }.width(400.px).height(150.px)
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func getHitTestValue()
+
+```cangjie
+public func getHitTestValue(): HitTestValue
+```
+
+**Description:** Gets the element information of the currently clicked area.
+
+**System Capability:** SystemCapability.Web.Webview.Core
+
+**Initial Version:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [HitTestValue](#class-hittestvalue) | The element information of the clicked area. |
+
+**Exceptions:**
+
+- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+
+  | Error Code ID | Error Message |
+  |:---|:---|
+  | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(space: 10) {
+            Button("getHitTestValue")
+            .onClick {
+                evt =>
+                AppLog.info("getHitTestValue")
+                let hitTestValue = webController.getHitTestValue()
+                match(hitTestValue.hitTestType) {
+                    case WebHitTestType.EditText => AppLog.info("getHitTestValue returns EditText")
+                    case WebHitTestType.Email => AppLog.info("getHitTestValue returns Email")
+                    case WebHitTestType.HttpAnchor => AppLog.info("getHitTestValue returns HttpAnchor")
+                    case WebHitTestType.HttpAnchorImg => AppLog.info("getHitTestValue returns HttpAnchorImg")
+                    case WebHitTestType.Img => AppLog.info("getHitTestValue returns Img")
+                    case WebHitTestType.Map => AppLog.info("getHitTestValue returns Map")
+                    case WebHitTestType.Phone => AppLog.info("getHitTestValue returns Phone")
+                    case WebHitTestType.Unknown => AppLog.info("getHitTestValue returns Unknown")
+                    case _ =>  ()
+                 }
+                AppLog.info("getHitTestValue extra returns ${hitTestValue.extra}")
+            }.width(400.px).height(150.px)
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func getOriginalUrl()
+
+```cangjie
+public func getOriginalUrl(): String
+```
+
+**Description:** Gets the original URL address of the current page.
+
+**System Capability:** SystemCapability.Web.Webview.Core
+
+**Initial Version:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | The original URL address of the current page. |
+
+**Exceptions:**
+
+- BusinessException: For detailed error code descriptions, please refer to [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+
+  | Error Code ID | Error Message |
+  |:---|:---|
+  | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(space: 10) {
             Button("getOriginalUrl")
             .onClick {
                 evt =>
@@ -2186,7 +2186,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("getSecurityLevel")
             .onClick {
                 evt =>
@@ -2280,7 +2280,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("getUrl")
             .onClick {
                 evt =>
@@ -2343,7 +2343,7 @@ class EntryView {
     let webController = WebviewController()
     let headers = [WebHeader("headerKey", "headerValue")]
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("getUserAgent")
             .onClick {
                 evt =>
@@ -2403,7 +2403,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("isIncognitoMode")
             .onClick {
                 evt =>
@@ -2466,7 +2466,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("isSafeBrowsingEnabled")
             .onClick {
                 evt =>
@@ -2530,7 +2530,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("loadUrl")
             .onClick {
                 evt =>
@@ -2597,7 +2597,7 @@ class EntryView {
     let webController = WebviewController()
     let headers = [WebHeader("headerKey", "headerValue")]
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("loadUrl")
             .onClick {
                 evt =>
@@ -2663,7 +2663,7 @@ class EntryView {
     let webController = WebviewController()
     let headers = [WebHeader("headerKey", "headerValue")]
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("loadUrl")
             .onClick {
                 evt =>
@@ -2730,7 +2730,7 @@ class EntryView {
     let webController = WebviewController()
     let headers = [WebHeader("headerKey", "headerValue")]
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("loadUrl")
             .onClick {
                 evt =>
@@ -2792,7 +2792,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("pageDown")
             .onClick {
                 evt =>
@@ -2854,7 +2854,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("pageUp")
             .onClick {
                 evt =>
@@ -2911,7 +2911,7 @@ class EntryView {
     let webController = WebviewController()
     let headers = [WebHeader("headerKey", "headerValue")]
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("refresh")
             .onClick {
                 evt =>
@@ -3130,7 +3130,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("removeCache")
             .onClick {
                 evt =>
@@ -3204,7 +3204,7 @@ let callback: AsyncCallback<String> = {
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("runJavaScript")
             .onClick {
                 evt =>
@@ -3287,7 +3287,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("scrollBy")
             .onClick {
                 evt =>
@@ -3376,7 +3376,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("scrollTo")
             .onClick {
                 evt =>
@@ -3464,7 +3464,7 @@ class EntryView {
     let webController = WebviewController()
     let headers = [WebHeader("headerKey", "headerValue")]
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("setCustomUserAgent")
             .onClick {
                 evt =>
@@ -3520,7 +3520,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("stop")
             .onClick {
                 evt =>
@@ -3597,7 +3597,7 @@ let callback: AsyncCallback<String> = {
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("storeWebArchive")
             .onClick {
                 evt =>
@@ -3661,7 +3661,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("zoom")
             .onClick {
                 evt =>
@@ -3718,7 +3718,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("zoomIn")
             .onClick {
                 evt =>
@@ -3775,7 +3775,7 @@ import kit.UIKit.Web
 class EntryView {
     let webController = WebviewController()
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("zoomOut")
             .onClick {
                 evt =>
@@ -3869,7 +3869,7 @@ MODULE_JS
 ### func !=(OfflineResourceType)
 
 ```cangjie
-public operator func !=(other: OfflineResourceType): Bool 
+public operator func !=(other: OfflineResourceType): Bool
 ```
 
 **Function:** Determines whether two enum values are not equal.
@@ -3893,7 +3893,7 @@ public operator func !=(other: OfflineResourceType): Bool
 ### func ==(OfflineResourceType)
 
 ```cangjie
-public operator func ==(other: OfflineResourceType): Bool 
+public operator func ==(other: OfflineResourceType): Bool
 ```
 
 **Function:** Determines whether two enum values are equal.
@@ -3917,7 +3917,7 @@ public operator func ==(other: OfflineResourceType): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **Function:** Gets the value of the enum.
@@ -4006,7 +4006,7 @@ WARNING
 ### func !=(SecurityLevel)
 
 ```cangjie
-public operator func !=(other: SecurityLevel): Bool 
+public operator func !=(other: SecurityLevel): Bool
 ```
 
 **Function:** Determines whether two enum values are not equal.
@@ -4030,7 +4030,7 @@ public operator func !=(other: SecurityLevel): Bool
 ### func ==(SecurityLevel)
 
 ```cangjie
-public operator func ==(other: SecurityLevel): Bool 
+public operator func ==(other: SecurityLevel): Bool
 ```
 
 **Function:** Determines whether two enum values are equal.
@@ -4054,7 +4054,7 @@ public operator func ==(other: SecurityLevel): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **Function:** Gets the string representation of the enum.
@@ -4130,7 +4130,7 @@ Unknown
 ### func !=(WebHitTestType)
 
 ```cangjie
-public operator func !=(other: WebHitTestType): Bool 
+public operator func !=(other: WebHitTestType): Bool
 ```
 
 **Function:** Determines whether two enum values are not equal.
@@ -4154,7 +4154,7 @@ public operator func !=(other: WebHitTestType): Bool
 ### func ==(WebHitTestType)
 
 ```cangjie
-public operator func ==(other: WebHitTestType): Bool 
+public operator func ==(other: WebHitTestType): Bool
 ```
 
 **Function:** Determines whether two enum values are equal.
@@ -4178,7 +4178,7 @@ public operator func ==(other: WebHitTestType): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **Function:** Gets the string representation of the enum.

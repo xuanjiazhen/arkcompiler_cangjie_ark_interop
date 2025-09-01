@@ -205,10 +205,10 @@ import ohos.state_macro_manage.*
 class EntryView {
     public func build() {
         Column() {
-            Row(30) {
+            Row(space: 30) {
                 // Dashed line
                 Text('DASHED')
-                    .backgroundColor(Color.PINK)
+                    .backgroundColor(0xFEC0CD)
                     .outlineStyle(OutlineStyle.DASHED)
                     .outlineWidth(5.vp)
                     .outlineColor(Color.BLUE)
@@ -219,7 +219,7 @@ class EntryView {
                     .fontSize(16)
                 // Dotted line
                 Text('DOTTED')
-                    .backgroundColor(Color.PINK)
+                    .backgroundColor(0xFEC0CD)
                     .outline(width: 5.vp, color: Color.GREEN, radius: 10.vp, style: OutlineStyle.DOTTED)
                     .width(120.vp)
                     .height(120.vp)
@@ -230,7 +230,7 @@ class EntryView {
                 .height(150)
 
             Text('.outlineWidth/outlineColor/outlineRadius/outlineStyle')
-                .backgroundColor(Color.PINK)
+                .backgroundColor(0xFEC0CD)
                 .fontSize(20.vp)
                 .width(300.vp)
                 .height(300.vp)

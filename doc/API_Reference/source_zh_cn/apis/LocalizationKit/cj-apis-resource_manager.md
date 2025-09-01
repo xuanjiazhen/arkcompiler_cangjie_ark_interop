@@ -13,7 +13,7 @@ import kit.LocalizationKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -199,7 +199,7 @@ public let screenDensity: ScreenDensity
 ## class ResourceManager
 
 ```cangjie
-public class ResourceManager {}
+public class ResourceManager <: RemoteDataLite {}
 ```
 
 **功能：** 提供访问应用资源的能力。
@@ -344,7 +344,7 @@ public func getBoolean(resource: AppResource): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -438,7 +438,7 @@ public func getColor(resource: AppResource): UInt32
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -823,7 +823,7 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |density|?[ScreenDensity](#enum-screendensity)|否|None|资源获取需要的屏幕密度，0表示默认屏幕密度。|
 
 **返回值：**
@@ -922,7 +922,7 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |density|?[ScreenDensity](#enum-screendensity)|否|None| **命名参数。** 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。|
 
 **返回值：**
@@ -1022,7 +1022,7 @@ public func getNumber(resource: AppResource): NumberValueType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -1226,7 +1226,7 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |num|Int64|是|-|数量值。|
 
 **返回值：**
@@ -1393,60 +1393,6 @@ public func getRawFileList(path: String): Array<String>
   | If the instance id invallid.
  | todo | todo |
 
-### func getString(UInt32)
-
-```cangjie
-
-public func getString(resId: UInt32): String
-```
-
-**功能：** 获取资源ID对应的字符串资源。
-
-**系统能力：** SystemCapability.Global.ResourceManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resId|UInt32|是|-|资源ID。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|资源ID对应的字符串资源。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-
-- IllegalStateException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
-- IllegalMemoryException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | Out of memory.
- | todo | todo |
-
 ### func getString(UInt32, Array\<ArgsValueType>)
 
 ```cangjie
@@ -1497,53 +1443,6 @@ public func getString(resId: UInt32, args: Array<ArgsValueType>): String
   | If the instance id invallid.
  | todo | todo |
 
-### func getString(AppResource)
-
-```cangjie
-
-public func getString(resource: AppResource): String
-```
-
-**功能：** 获取资源对象对应的字符串资源。此接口用于多工程应用内跨包访问。
-
-**系统能力：** SystemCapability.Global.ResourceManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|资源对象对应的字符串资源。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-
-- IllegalStateException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
 ### func getString(AppResource, Array\<ArgsValueType>)
 
 ```cangjie
@@ -1561,7 +1460,7 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |args|Array\<[ArgsValueType](#enum-argsvaluetype)>|是|-|格式化字符串资源参数。 <br>支持参数类型：<br /> %d、%f、%s、%%。 <br>说明：%%转译符，转译%。<br>举例：%%d格式化后为%d字符串。|
 
 **返回值：**
@@ -1585,53 +1484,6 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
   | 9001006 | The resource is referenced cyclically.
  |
   | 9001007 | Failed to format the resource obtained based on the resource ID.
- |
-
-- IllegalStateException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
-### func getStringArrayByName(String)
-
-```cangjie
-
-public func getStringArrayByName(resName: String): Array<String>
-```
-
-**功能：** 获取资源名对应的字符串数组资源。
-
-**系统能力：** SystemCapability.Global.ResourceManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resName|String|是|-|资源名。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<String>|对应资源名的字符串数组。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
-  | 9001006 | The resource is referenced cyclically.
  |
 
 - IllegalStateException：
@@ -1705,7 +1557,7 @@ public func getStringArrayValue(resource: AppResource): Array<String>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -1724,53 +1576,6 @@ public func getStringArrayValue(resource: AppResource): Array<String>
   | 9001001 | Invalid resource ID.
  |
   | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-
-- IllegalStateException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
-### func getStringByName(String)
-
-```cangjie
-
-public func getStringByName(resName: String): String
-```
-
-**功能：** 获取资源名对应的字符串资源。
-
-**系统能力：** SystemCapability.Global.ResourceManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resName|String|是|-|资源名。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|资源名对应的字符串资源。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
  |
   | 9001006 | The resource is referenced cyclically.
  |
@@ -1878,7 +1683,7 @@ public enum ArgsValueType {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 格式化字符串资源参数枚举类型。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1890,7 +1695,7 @@ public enum ArgsValueType {
 Float32Value(Float32)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Float32类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1902,7 +1707,7 @@ Float32Value(Float32)
 Int32Value(Int32)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Int32类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1914,7 +1719,7 @@ Int32Value(Int32)
 StringValue(String)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** String类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 

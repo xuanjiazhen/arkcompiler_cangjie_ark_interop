@@ -25,7 +25,7 @@ ohos.permission.DISTRIBUTED_DATASYNC
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -546,6 +546,22 @@ public var default: String
 
 **起始版本：** 21
 
+### var nodeType
+
+```cangjie
+public var nodeType: Int32
+```
+
+**功能：** 表示指定节点对应的数据类型。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**起始版本：** 21
+
 ### var nullable
 
 ```cangjie
@@ -562,27 +578,11 @@ public var nullable: Bool
 
 **起始版本：** 21
 
-### var type_
-
-```cangjie
-public var type_: Int32
-```
-
-**功能：** 表示指定节点对应数据类型的值。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
-
-**起始版本：** 21
-
 ### init(String, Bool, String, Int32)
 
 ```cangjie
 
-public init(name: String, nullable: Bool, default: String, type_: Int32)
+public init(name: String, nullable: Bool, default: String, nodeType: Int32)
 ```
 
 **功能：** 创建带有值的FieldNode实例。
@@ -598,12 +598,12 @@ public init(name: String, nullable: Bool, default: String, type_: Int32)
 |name|String|是|-|FieldNode的值。|
 |nullable|Bool|是|-|表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。|
 |default|String|是|-|表示FieldNode的默认值。|
-|type_|Int32|是|-|表示指定节点对应的数据类型，取值为ValueType对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致getKVStore失败。|
+|nodeType|Int32|是|-|表示指定节点对应的数据类型，取值为ValueType对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致getKVStore失败。|
 
 ## class KVManager
 
 ```cangjie
-public class KVManager {}
+public class KVManager <: RemoteDataLite {}
 ```
 
 **功能：** 分布式键值数据库管理实例，用于获取分布式键值数据库的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](#static-func-createkvmanagerkvmanagerconfig)构建一个KVManager实例。
@@ -830,7 +830,7 @@ public init(context: BaseContext, bundleName: String)
 ## class KVStoreResultSet
 
 ```cangjie
-public class KVStoreResultSet {}
+public class KVStoreResultSet <: RemoteDataLite {}
 ```
 
 **功能：** 提供获取数据库结果集的相关方法，包括查询和移动数据读取位置等。允许打开的结果集最大数量为8个。
@@ -957,7 +957,7 @@ public var schema:?Schema
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **起始版本：** 21
 
@@ -1005,7 +1005,7 @@ public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt
 ## class Query
 
 ```cangjie
-public class Query {
+public class Query <: RemoteDataLite {
 
 
     public init()
@@ -1140,7 +1140,7 @@ public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 ## class SingleKVStore
 
 ```cangjie
-public open class SingleKVStore {}
+public open class SingleKVStore <: RemoteDataLite {}
 ```
 
 **功能：** SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据变更、订阅数据同步完成的方法。

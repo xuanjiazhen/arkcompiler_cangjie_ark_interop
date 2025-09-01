@@ -191,7 +191,7 @@ public func sharedTransition(id: String, options!: SharedTransitionOptions = Sha
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component
@@ -203,7 +203,7 @@ class EntryView {
                 .width(50)
                 .height(50)
                 .onClick {
-                    e => Router.push(url: "Page1")
+                    e => getUIContext().getRouter()
                 }
                 .sharedTransition("sharedImage",
                     options: SharedTransitionOptions(duration: 800, curve: Curve.Linear, delay: 100))
@@ -219,7 +219,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component

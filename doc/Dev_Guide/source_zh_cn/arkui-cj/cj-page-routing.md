@@ -4,7 +4,7 @@
 
 > **说明：**
 >
-> [组件导航 (Navigation)](./cj-navigation-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异请参见[Router切换Navigation](./cj-router-to-navigation.md)指导。
+> [组件导航 (Navigation)](./cj-navigation-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。
 
 ## 页面跳转
 

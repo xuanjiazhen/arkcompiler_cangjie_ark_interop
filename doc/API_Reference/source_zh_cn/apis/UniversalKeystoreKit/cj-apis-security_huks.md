@@ -15,7 +15,7 @@ import kit.UniversalKeystoreKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -298,7 +298,7 @@ public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: By
 
 |类型|说明|
 |:----|:----|
-|[Option](please add link)\<[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|表示USER IAM服务的AuthToken的值。|
+|[Option]\<[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|表示USER IAM服务的AuthToken的值。|
 
 **异常：**
 
@@ -1084,7 +1084,7 @@ public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.Uint32Value(4
 public class HuksHandleId {}
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 加密handle的id。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

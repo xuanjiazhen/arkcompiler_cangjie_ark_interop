@@ -551,7 +551,7 @@ public init(
 ## class Display
 
 ```cangjie
-public class Display {}
+public class Display <: RemoteDataLite {}
 ```
 
 **功能：** 设置屏幕实例。描述Display对象的属性和方法。
@@ -1128,7 +1128,7 @@ public init(
 ## enum DisplayState
 
 ```cangjie
-public enum DisplayState <: Equatable<DisplayState> {
+public enum DisplayState {
     | StateUnknown
     | StateOff
     | StateOn
@@ -1277,7 +1277,7 @@ public operator func ==(other: DisplayState): Bool
 ## enum FoldDisplayMode
 
 ```cangjie
-public enum FoldDisplayMode <: Equatable<FoldDisplayMode> {
+public enum FoldDisplayMode {
     | FoldDisplayModeUnknown
     | FoldDisplayModeFull
     | FoldDisplayModeMain
@@ -1400,7 +1400,7 @@ public operator func ==(other: FoldDisplayMode): Bool
 ## enum FoldStatus
 
 ```cangjie
-public enum FoldStatus <: Equatable<FoldStatus> {
+public enum FoldStatus {
     | FoldStatusUnknown
     | FoldStatusExpanded
     | FoldStatusFolded
@@ -1510,7 +1510,7 @@ public operator func ==(other: FoldStatus): Bool
 ## enum ListenerType
 
 ```cangjie
-public enum ListenerType <: Equatable<ListenerType> {
+public enum ListenerType {
     | ListnerTypeAdd
     | ListnerTypeRemove
     | ListnerTypeChange
@@ -1672,7 +1672,7 @@ public operator func ==(other: ListenerType): Bool
 ## enum Orientation
 
 ```cangjie
-public enum Orientation <: Equatable<Orientation> {
+public enum Orientation {
     | Portrait
     | Landscape
     | PortraitInverted

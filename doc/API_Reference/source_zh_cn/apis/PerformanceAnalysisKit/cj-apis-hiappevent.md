@@ -13,7 +13,7 @@ import kit.PerformanceAnalysisKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -28,7 +28,7 @@ public class AppEventFilter {
 }
 ```
 
-**功能：** 提供了过滤应用事件的参数选项。
+**功能：** 提供设置Watcher的订阅过滤条件的参数选项。用于在事件观察者中设置事件过滤条件，确保只有满足过滤条件的事件才会被监听处理。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -40,7 +40,7 @@ public class AppEventFilter {
 public var domain: String
 ```
 
-**功能：** 需要订阅的事件领域。
+**功能：** 	需要订阅的事件领域。可以是系统事件领域（hiAppEvent.domain.OS）或开发者在使用Write接口时传入的自定义事件信息（AppEventInfo）中的事件领域。       
 
 **类型：** String
 
@@ -342,7 +342,7 @@ public var size: Int32
 ## class AppEventPackageHolder
 
 ```cangjie
-public class AppEventPackageHolder {
+public class AppEventPackageHolder <: RemoteDataLite {
     public init(watcherName: String)
 }
 ```
@@ -359,7 +359,7 @@ public class AppEventPackageHolder {
 public init(watcherName: String)
 ```
 
-**功能：** 类构造函数，创建订阅数据持有者实例，通过观察者名称关联到应用内已添加的观察者对象。
+**功能：** 类构造函数，创建订阅数据持有者实例，通过addWatcher添加事件观察者关联到应用内已添加的观察者对象。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -369,7 +369,7 @@ public init(watcherName: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|watcherName|String|是|-|观察者名称。|
+|watcherName|String|是|-|已通过addWatcher添加的事件观察者名称。若未通过addWatcher添加，则默认无数据。|
 
 ### func setSize(Int32)
 
@@ -409,6 +409,16 @@ import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 import kit.PerformanceAnalysisKit.Hilog
 
+// 添加数据观察者“Watcher1”，订阅监听系统事件
+HiAppEvent.addWatcher(Watcher(
+    "Watcher1",
+    appEventFilters: [
+        AppEventFilter(
+
+        )
+    ]
+))
+
 let holder = AppEventPackageHolder("watcher2")
 holder.setSize(100)
 ```
@@ -429,7 +439,7 @@ public func takeNext(): Option<AppEventPackage>
 
 |类型|说明|
 |:----|:----|
-|[Option](<font color="red" face="bold">please add link</font>)\<[AppEventPackage](#class-appeventpackage)>|取出的事件包对象，订阅事件数据被全部取出后会返回None。|
+|[Option][AppEventPackage](#class-appeventpackage)|取出的事件包对象，订阅事件数据被全部取出后会返回None。|
 
 **示例：**
 
@@ -812,7 +822,7 @@ public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 
 |类型|说明|
 |:----|:----|
-|[Option](<font color="red" face="bold">please add link</font>)\<[AppEventPackageHolder](#class-appeventpackageholder)>|订阅数据持有者，订阅失败时返回None。|
+|[Option][AppEventPackageHolder](#class-appeventpackageholder)|订阅数据持有者，订阅失败时返回None。|
 
 **异常：**
 
@@ -935,7 +945,7 @@ import std.collection.Map
 
 let params = HashMap<String, EventValueType>()
 params.add("cangjie", IntValue(1001))
-params.add("cangjie2, StringValue("1001"))
+params.add("cangjie2", StringValue("1001"))
 var appInfo: AppEventInfo = AppEventInfo("cangjie1", "test_event", EventType.Fault, params)
 HiAppEvent.write(appInfo)
 HiAppEvent.clearData()
@@ -1633,7 +1643,7 @@ public var onReceive: Option <(String, Array<AppEventGroup>) -> Unit>
 
 **功能：** 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调。回调函数的第一个参数表示回调事件的领域名称，回调函数的第二个参数表示回调事件集合。
 
-**类型：** [Option](<font color="red" face="bold">please add link</font>)\<(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit>
+**类型：** [AppEventGroup](#class-appeventgroup)->Unit
 
 **读写能力：** 可读写
 
@@ -1649,7 +1659,7 @@ public var onTrigger: Option <(Int32, Int32, AppEventPackageHolder) -> Unit>
 
 **功能：** 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效。回调函数的第一个参数表示在本次回调触发时的订阅事件总数量。回调函数的第二个参数表示在本次回调触发时的订阅事件总大小，单位为byte。回调函数的第三个参数表示订阅数据持有者对象，可以通过其对订阅事件进行处理。
 
-**类型：** [Option](<font color="red" face="bold">please add link</font>)\<(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit>
+**类型：** (Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit
 
 **读写能力：** 可读写
 
@@ -1695,8 +1705,8 @@ public init(name: String, triggerCondition!: TriggerCondition = TriggerCondition
 |name|String|是|-|观察者名称，用于唯一标识观察者。|
 |triggerCondition|[TriggerCondition](#class-triggercondition)|否|TriggerCondition()|**命名参数。** 订阅回调触发条件，需要与回调函数onTrigger一同传入才会生效。|
 |appEventFilters|Array\<[AppEventFilter](#class-appeventfilter)>|否|[]|**命名参数。** 订阅过滤条件，在需要对订阅事件进行过滤时传入。|
-|onTrigger|[Option](<font color="red" face="bold">please add link</font>)\<(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit>|否|None|**命名参数。** 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；<br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。|
-|onReceive|[Option](<font color="red" face="bold">please add link</font>)\<(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit>|否|None|**命名参数。** 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称；<br>appEventGroups：回调事件集合。|
+|onTrigger|(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit|否|None|**命名参数。** 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；<br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。|
+|onReceive|(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit|否|None|**命名参数。** 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称；<br>appEventGroups：回调事件集合。|
 
 ## enum EventType
 

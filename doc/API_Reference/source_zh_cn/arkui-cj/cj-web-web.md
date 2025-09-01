@@ -401,7 +401,7 @@ public class OnLoadInterceptEvent {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 当资源加载被拦截时，加载拦截事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -413,7 +413,7 @@ public class OnLoadInterceptEvent {
 public var data: WebResourceRequest
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 网页请求的封装信息。
 
 **类型：** [WebResourceRequest](#class-webresourcerequest)
 
@@ -430,7 +430,7 @@ public var data: WebResourceRequest
 public init(data: WebResourceRequest)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -440,7 +440,7 @@ public init(data: WebResourceRequest)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|data|[WebResourceRequest](#class-webresourcerequest)|是|-|<font color="red" face="bold">please add description</font>|
+|data|[WebResourceRequest](#class-webresourcerequest)|是|-|网页请求的封装信息。|
 
 ### class OnPageBeginEvent
 
@@ -453,7 +453,7 @@ public class OnPageBeginEvent {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 定义网页加载开始时触发的函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -482,7 +482,7 @@ public var url: String
 public init(url: String)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -505,7 +505,7 @@ public class OnPageEndEvent {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 定义网页加载结束时触发的函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -534,7 +534,7 @@ public var url: String
 public init(url: String)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -586,7 +586,7 @@ public var request: PermissionRequest
 public init(request: PermissionRequest)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -596,7 +596,7 @@ public init(request: PermissionRequest)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|request|[PermissionRequest](#class-permissionrequest)|是|-|<font color="red" face="bold">please add description</font>|
+|request|[PermissionRequest](#class-permissionrequest)|是|-|Web组件返回授权或拒绝权限功能的对象。|
 
 ### class PermissionRequest
 
@@ -911,6 +911,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.ArkWeb.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -918,7 +919,7 @@ class EntryView {
     let webController = WebviewController()
     @State var url: String = "www.example.com"
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("refresh")
             .onClick {
                 evt =>

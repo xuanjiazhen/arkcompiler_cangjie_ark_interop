@@ -13,7 +13,7 @@ import kit.AbilityKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
-- 若示例需获取[Context](cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -648,7 +648,7 @@ public let descriptionResource: AppResource
 
 **功能：** 应用程序的描述资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
 
-**类型：** [AppResource](<font color="red" face="bold">please add link</font>)
+**类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
 **读写能力：** 只读
 
@@ -712,7 +712,7 @@ public let iconResource: AppResource
 
 **功能：** 应用程序的图标资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
 
-**类型：** [AppResource](<font color="red" face="bold">please add link</font>)
+**类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
 **读写能力：** 只读
 
@@ -776,7 +776,7 @@ public let labelResource: AppResource
 
 **功能：** 应用程序的标签资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
 
-**类型：** [AppResource](<font color="red" face="bold">please add link</font>)
+**类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
 **读写能力：** 只读
 
@@ -939,6 +939,32 @@ public let uid: Int32
 **类型：** Int32
 
 **读写能力：** 只读
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+## class BundleFlag
+
+```cangjie
+public class BundleFlag {
+    | GetBundleInfoDefault
+    | GetBundleInfoWithApplication
+    | GetBundleInfoWithHapModule
+    | GetBundleInfoWithAbility
+    | GetBundleInfoWithExtensionAbility
+    | GetBundleInfoWithRequestedPermission
+    | GetBundleInfoWithMetadata
+    | GetBundleInfoWithDisable
+    | GetBundleInfoWithSignatureInfo
+    | GetBundleInfoWithMenu
+    | GetBundleInfoWithRouterMap
+    | GetBundleInfoWithSkill
+    | ...
+}
+```
+
+**功能：** 包信息标志，指示需要获取的包信息的内容。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1230,7 +1256,7 @@ public class BundleManager {}
 public static func canOpenLink(link: String): Bool
 ```
 
-**功能：** 查询给定的链接是否可以打开。指定链接的scheme需要在module.json文件的querySchemes字段下配置。
+**功能：** 查询给定的链接是否可以打开。指定链接的scheme需要在module.json5文件的querySchemes字段下配置。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1356,8 +1382,7 @@ import kit.AbilityKit.*
 
 let moduleName = "entry"
 let abilityName = "EntryAbility"
-let metadataName = "ohos.extension.form"
-let info = BundleManager.getProfileByAbility(moduleName, abilityName, metadataName: metadataName)
+let infoList = BundleManager.getProfileByAbility(moduleName, abilityName)
 ```
 
 ### static func getProfileByExtensionAbility(String, String, String)
@@ -3050,32 +3075,6 @@ public func getValue(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的值。|
-
-## enum BundleFlag
-
-```cangjie
-public enum BundleFlag {
-    | GetBundleInfoDefault
-    | GetBundleInfoWithApplication
-    | GetBundleInfoWithHapModule
-    | GetBundleInfoWithAbility
-    | GetBundleInfoWithExtensionAbility
-    | GetBundleInfoWithRequestedPermission
-    | GetBundleInfoWithMetadata
-    | GetBundleInfoWithDisable
-    | GetBundleInfoWithSignatureInfo
-    | GetBundleInfoWithMenu
-    | GetBundleInfoWithRouterMap
-    | GetBundleInfoWithSkill
-    | ...
-}
-```
-
-**功能：** 包信息标志，指示需要获取的包信息的内容。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
 
 ### GetBundleInfoDefault
 

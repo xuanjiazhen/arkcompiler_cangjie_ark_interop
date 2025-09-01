@@ -13,7 +13,7 @@ import kit.CryptoArchitectureKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -454,11 +454,17 @@ public func initialize(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 
 import kit.CryptoArchitectureKit.*
 
-let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
-let cipher = createCipher(cipherAlgName)
-let syg = createSymKeyGenerator("AES128")
-let sk = syg.generateSymKey()
-cipher.initialize(CryptoMode.EncryptMode, sk, None)
+let skg = createSymKeyGenerator("AES128")
+let sk = skg.convertKey(DataBlob([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]))
+let encoder = createCipher("AES128|CBC|PKCS7")
+let ivBlob = DataBlob([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+var ivParamsSpec = IvParamsSpec("IvParamsSpec", ivBlob)
+ivParamsSpec.algName = "IvParamsSpec"
+ivParamsSpec.iv = ivBlob
+encoder.initialize(CryptoMode.EncryptMode, sk, ivParamsSpec)
+let message = "This is a test"
+let blob = DataBlob(message.toArray())
+let encryptText = encoder.doFinal(blob)
 ```
 
 ### func doFinal(?DataBlob)
@@ -521,12 +527,17 @@ public func doFinal(data: ?DataBlob): DataBlob
 
 import kit.CryptoArchitectureKit.*
 
-let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
-let cipher = createCipher(cipherAlgName)
-let syg = createSymKeyGenerator("AES128")
-let sk = syg.generateSymKey()
-cipher.initialize(CryptoMode.EncryptMode, sk, None)
-cipher.doFinal(None)
+let skg = createSymKeyGenerator("AES128")
+let sk = skg.convertKey(DataBlob([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]))
+let encoder = createCipher("AES128|CBC|PKCS7")
+let ivBlob = DataBlob([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+var ivParamsSpec = IvParamsSpec("IvParamsSpec", ivBlob)
+ivParamsSpec.algName = "IvParamsSpec"
+ivParamsSpec.iv = ivBlob
+encoder.initialize(CryptoMode.EncryptMode, sk, ivParamsSpec)
+let message = "This is a test"
+let blob = DataBlob(message.toArray())
+let encryptText = encoder.doFinal(blob)
 ```
 
 ### func update(DataBlob)
@@ -586,11 +597,14 @@ public func update(data: DataBlob): DataBlob
 
 import kit.CryptoArchitectureKit.*
 
-let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
-let cipher = createCipher(cipherAlgName)
-let syg = createSymKeyGenerator("AES128")
-let sk = syg.generateSymKey()
-cipher.initialize(CryptoMode.EncryptMode, sk, None)
+let skg = createSymKeyGenerator("AES128")
+let sk = skg.convertKey(DataBlob([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]))
+let cipher = createCipher("AES128|CBC|PKCS7")
+let ivBlob = DataBlob([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+var ivParamsSpec = IvParamsSpec("IvParamsSpec", ivBlob)
+ivParamsSpec.algName = "IvParamsSpec"
+ivParamsSpec.iv = ivBlob
+cipher.initialize(CryptoMode.EncryptMode, sk, ivParamsSpec)
 let plainText: DataBlob = DataBlob("this is test".toArray())
 cipher.update(plainText)
 ```

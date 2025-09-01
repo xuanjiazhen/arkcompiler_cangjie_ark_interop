@@ -1,4 +1,4 @@
-# ohos.application.test_runner（UI测试）
+# ohos.ui_test（UI测试）
 
 ui_test提供模拟UI操作的能力，供开发者在测试场景使用，主要支持如点击、双击、长按、滑动等UI操作能力。
 
@@ -23,7 +23,7 @@ import kit.TestKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -687,9 +687,14 @@ public func assertComponentExist(on: On): Unit
 
 import ohos.base.*
 import kit.TestKit.*
+import ohos.business_exception.BusinessException
 
 let driver: Driver = Driver.create()
-driver.assertComponentExist(On().text("next page"))
+try {
+    driver.assertComponentExist(On().text("next page"))
+} catch (e: BusinessException) {
+    Hilog.error(0, "UITest", "The component `text(\"next page\")` does not exist")
+}
 ```
 
 ### func click(Int32, Int32)
@@ -1297,11 +1302,16 @@ public func inputText(p: Point, text: String): Unit
 
 import ohos.base.*
 import kit.TestKit.*
+import ohos.business_exception.BusinessException
 
 let driver: Driver = Driver.create()
-let text: Component = driver.findComponent(On().onType("TextInput")).getOrThrow()
-let point = text.getBoundsCenter()
-driver.inputText(point, "123")
+try {
+    let text: Component = driver.findComponent(On().onType("TextInput")).getOrThrow()
+    let point = text.getBoundsCenter()
+    driver.inputText(point, "123")
+} catch (e: BusinessException) {
+    Hilog.error(0, "UITest", "The component `TextInput` does not exist")
+}
 ```
 
 ### func longClick(Int32, Int32)
@@ -3322,67 +3332,6 @@ public init(left: Int32, top: Int32, right: Int32, bottom: Int32, displayId!: ?I
 |bottom|Int32|是|-|控件边框的右下角的Y坐标。|
 |displayId|?Int32|否|None| **命名参数。** 控件边框所属的屏幕ID，取值大于或等于0的整数。|
 
-
-## class TestRunner
-
-```cangjie
-public open class TestRunner <: FFIData {}
-```
-
-**功能：** 提供了框架测试的能力。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [FFIData](../AbilityKit/cj-apis-ability.md#class-ffidata)
-
-### static func registerCreator(String, () -> TestRunner)
-
-```cangjie
-public static func registerCreator(name: String, creator: () -> TestRunner): Unit
-```
-
-**功能：** 注册构建[TestRunner](#class-testrunner)对象的函数。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|name|String|是|-|构建函数标识。|
-|creator|()->[TestRunner](#class-testrunner)|是|-|构建[TestRunner](#class-testrunner)对象的函数。|
-
-### func onPrepare()
-
-```cangjie
-public open func onPrepare(): Unit
-```
-
-**功能：** 运行测试用例。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### func onRun()
-
-```cangjie
-public open func onRun(): Unit
-```
-
-**功能：** 为运行测试用例准备单元测试环境。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-
 ## class UIElementInfo
 
 ```cangjie
@@ -3487,55 +3436,6 @@ public func once(onceType: OnceType, callback: Callback<UIElementInfo>): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-
-## class UITest
-
-```cangjie
-public class UITest {}
-```
-
-**功能：** [UITest](#class-uitest)类只包含一个静态方法[setup](#func-setup)，用于初始化ui_test库。
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**起始版本：** 21
-
-### static func setup()
-
-```cangjie
-public static func setup(): Unit
-```
-
-**功能：** 初始化ui_test库。目前[setup](#func-setup)必须写在[TestRunner](#class-testrunner)的[onRun](#func-onrun)中。
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// unittest_enginge.cj
-import ohos.base.*
-import kit.TestKit.*
-import ohos.test_runner.*
-
-class MyTestRunner <: TestRunner {
-    public func onRun() {
-        UITest.setup()
-    }
-
-    public func onPrepare() {
-        Hilog.info(0, "AppLogCj", "CJTestRunner onPrepare")
-    }
-}
-
-let _ = TestRunner.registerCreator("MyTestRunner") {MyTestRunner()}
-```
-
-
 ## class UiWindow
 
 ```cangjie
@@ -3571,6 +3471,7 @@ public func close(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3591,6 +3492,8 @@ public func focus(): Unit
 ```
 
 **功能：** 让窗口获焦。
+
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -3873,6 +3776,8 @@ public func maximize(): Unit
 
 **功能：** 将窗口最大化。适用于支持窗口最大化操作的窗口。
 
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
@@ -3888,6 +3793,7 @@ public func maximize(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3909,6 +3815,8 @@ public func minimize(): Unit
 
 **功能：** 将窗口最小化。适用于支持窗口最小化操作的窗口。
 
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
@@ -3924,6 +3832,7 @@ public func minimize(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3944,6 +3853,8 @@ public func moveTo(x: Int32, y: Int32): Unit
 ```
 
 **功能：** 将窗口移动到目标点。适用于支持移动的窗口。
+
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -4013,6 +3924,7 @@ public func resize(wide: Int32, height: Int32, direction: ResizeDirection): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -4034,6 +3946,8 @@ public func resume(): Unit
 
 **功能：** 将窗口恢复到之前的窗口模式。
 
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
@@ -4049,6 +3963,7 @@ public func resume(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -4070,6 +3985,8 @@ public func split(): Unit
 
 **功能：** 将窗口模式切换成分屏模式。适用于支持切换分屏模式的窗口。
 
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
@@ -4085,6 +4002,7 @@ public func split(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -4198,10 +4116,10 @@ public var title:?String
 
 **起始版本：** 21
 
-### init(String, String, Bool, Bool, ?Int32)
+### init(?String, ?String, ?Bool, ?Bool, ?Int32)
 
 ```cangjie
-public init(bundleName!: String = "", title!: String = "", focused!: Bool = false, active!: Bool = false, displayId!: ?Int32 = None)
+public init(bundleName!: ?String = "", title!: ?String = "", focused!: ?Bool = false, active!: ?Bool = false, displayId!: ?Int32 = None)
 ```
 
 **功能：** 创建[WindowFilter](#class-windowfilter)实例。
@@ -4424,11 +4342,6 @@ public enum OnceType <: Equatable<OnceType> & ToString {
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<OnceType>
-- ToString
 
 ### DialogShow
 

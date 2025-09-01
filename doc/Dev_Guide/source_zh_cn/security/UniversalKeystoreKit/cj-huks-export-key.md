@@ -25,6 +25,10 @@ import kit.CoreFileKit.*
 import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
 /* 1. 设置密钥别名 */
 let keyAlias = "keyAlias"
 
@@ -39,7 +43,4 @@ try {
     loggerInfo("exportKeyItem input arg invalid")
 }
 
-func loggerInfo(str: String) {
-    Hilog.info(0, "CangjieTest", str)
-}
 ```

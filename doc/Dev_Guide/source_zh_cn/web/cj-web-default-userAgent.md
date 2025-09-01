@@ -44,8 +44,17 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 
 ```cangjie
 // index.cj
-import kit.ArkWeb.*
-import kit.ArkUI.{Web, BusinessException}
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.web.webview.*
+import kit.ArkUI.{Web}
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func loggerError(str: String) {
+    Hilog.error(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
@@ -57,49 +66,12 @@ class EntryView {
             Button("getUserAgent").onClick { evt =>
                 try {
                     let userAgent = webController.getUserAgent()
-                    AppLog.info("userAgent: ${userAgent}")
+                    loggerInfo("userAgent: ${userAgent}")
                 } catch (e: BusinessException) {
-                    AppLog.error("getUserAgent ErrorCode: ${e.code},  Message: ${e.message}")
+                    loggerError("getUserAgent ErrorCode: ${e.code},  Message: ${e.message}")
                 }
             }
             Web(src: 'www.example.com', controller: webController)
-        }
-    }
-}
-```
-
-以下示例请注意，此操作会覆盖系统的用户代理。因此，我们建议将扩展字段追加在默认用户代理的末尾，比如三方应用程序的开发场景，可以在系统默认用户代理字符串的末尾追加特定的APP标识，这样既能保留原有用户代理信息，又能增加自定义的应用识别信息。
-
-当Web组件src设置了url时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。如果未在onControllerAttached回调事件中设置User-Agent。再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
-
-当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-import kit.ArkWeb.*
-import kit.ArkUI.{Web, BusinessException}
-
-@Entry
-@Component
-class EntryView {
-    let webController = WebviewController()
-
-    func build() {
-        Column {
-            Web(src: 'www.example.com', controller: webController)
-                .onControllerAttached({ =>
-                    AppLog.info("controller attached")
-                    try {
-                        let customUserAgent: String = 'DemoApp'
-                        let userAgent = webController.getUserAgent() + customUserAgent
-                        AppLog.info("userAgent: ${userAgent}")
-                        webController.setCustomUserAgent(userAgent)
-                    } catch (e: BusinessException) {
-                        AppLog.error("setCustomUserAgent ErrorCode: ${e.code},  Message: ${e.message}")
-                    }
-                })
         }
     }
 }

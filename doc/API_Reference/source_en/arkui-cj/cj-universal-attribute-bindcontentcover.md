@@ -34,7 +34,7 @@ public func bindContentCover(isShow: Bool, builder: () -> Unit, contentCoverOpti
 ```cangjie
 public class ContentCoverOptions <: BindOptions {
     public init(
-        modalTransition!: ModalTransition = ModalTransition.DEFAULT,
+        modalTransition!: ModalTransition = ModalTransition.Default,
         onWillDismiss!: Option<(DismissContentCoverAction) -> Unit> = Option.None,
         transition!: Option<TransitionEffect> = Option.None,
         backgroundColor!: Option<Color> = Option.None,
@@ -60,7 +60,7 @@ public class ContentCoverOptions <: BindOptions {
 
 ```cangjie
 public init(
-    modalTransition!: ModalTransition = ModalTransition.DEFAULT,
+    modalTransition!: ModalTransition = ModalTransition.Default,
     onWillDismiss!: Option<(DismissContentCoverAction) -> Unit> = Option.None,
     transition!: Option<TransitionEffect> = Option.None,
     backgroundColor!: Option<Color> = Option.None,
@@ -81,7 +81,7 @@ public init(
 
 | Name | Type | Required | Default | Description |
 | :------- | :---------- | :------- | :-------- | :---------- |
-| modalTransition | [ModalTransition](./cj-common-types.md#enum-modaltransition) | No | ModalTransition.DEFAULT | **Named parameter.** Transition style for the full-screen modal page. |
+| modalTransition | [ModalTransition](./cj-common-types.md#enum-modaltransition) | No | ModalTransition.Default | **Named parameter.** Transition style for the full-screen modal page. |
 | onWillDismiss | Option<(DismissContentCoverAction) -> Unit> | No | Option.None | **Named parameter.** Callback function for interactive dismissal of the full-screen modal page. |
 | transition | Option<TransitionEffect> | No | Option.None | **Named parameter.** Custom transition effect for the full-screen modal page. |
 | onAppear | Option<() -> Unit> | No | Option.None | **Named parameter.** Callback function triggered after the full-screen modal page appears (post-animation). |
@@ -132,7 +132,7 @@ class EntryView {
             .onClick({
               => this.isShow2 = true
             }).bindContentCover(this.isShow2, myBuilder2, ContentCoverOptions(
-                modalTransition: ModalTransition.DEFAULT,
+                modalTransition: ModalTransition.Default,
                 backgroundColor: Color.GREEN,
                 onAppear: onAppear,
                 onDisappear: onDisappear)
@@ -158,7 +158,7 @@ class EntryView {
             .fontSize(20)
             .margin(10)
             .bindContentCover(this.isShow, myBuilder, ContentCoverOptions(
-                 modalTransition: ModalTransition.DEFAULT,
+                 modalTransition: ModalTransition.Default,
                  backgroundColor: Color.RED,
                  onAppear: onAppear,
                  onDisappear: onDisappear)

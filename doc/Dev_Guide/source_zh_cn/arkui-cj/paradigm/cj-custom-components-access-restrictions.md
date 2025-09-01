@@ -72,7 +72,7 @@
 
     【正例】
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -169,7 +169,7 @@
 
     【正例】
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -251,7 +251,7 @@
 
     【正例】
 
-         <!-- run -->
+     <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
