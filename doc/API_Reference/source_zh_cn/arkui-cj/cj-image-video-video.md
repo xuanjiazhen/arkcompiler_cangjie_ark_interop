@@ -825,7 +825,7 @@ class EntryView {
                     .id("rate 1")
                 Button("rate 2")
                     .onClick({ evt
-                        => this.curRate = PlaybackSpeed.Speed_Forward200X
+                        => this.curRate = PlaybackSpeed.SpeedForward200X
                     })
                     .margin(5)
                     .id("rate 2")
