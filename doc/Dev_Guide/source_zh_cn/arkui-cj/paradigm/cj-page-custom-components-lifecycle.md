@@ -77,7 +77,7 @@ class EntryView {
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onBackPress() {
-        Hilog.info(0, "cangjie", Index onBackPress")
+        Hilog.info(0, "cangjie", "Index onBackPress")
         this.btnColor = Color(0xFFEE0606)
         // 返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑
         return true
@@ -177,7 +177,7 @@ class Page {
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageHide() {
-        Hilog.info(0, "cangjie", Page onPageHide")
+        Hilog.info(0, "cangjie", "Page onPageHide")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
