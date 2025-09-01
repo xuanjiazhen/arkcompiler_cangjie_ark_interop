@@ -943,7 +943,7 @@ class EntryView {
 }
 ```
 
-![transition2](./../../比对/main/arkui-cj/figures/transition2_api.gif)
+![transition2](./figures/transition2_api.gif)
 
 ### 示例代码3（设置父子组件为transition）
 
