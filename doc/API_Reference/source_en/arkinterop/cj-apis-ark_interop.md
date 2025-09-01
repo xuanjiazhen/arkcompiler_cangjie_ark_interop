@@ -20,7 +20,7 @@ public interface JSInteropType<T> {
 
 **Description:** This interface is used to implement extension methods for types that can be used with declarative interoperability macros. Used by the declarative interoperability macro framework; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 The following types extend this interface:
 
@@ -36,7 +36,7 @@ static func fromJSValue(context: JSContext, input: JSValue): T
 
 **Description:** Converts JSValue type data to the corresponding Cangjie type.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -59,7 +59,7 @@ static func toArkTsType(): String
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie type.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -75,7 +75,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** Converts Cangjie type data to JSValue.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -99,7 +99,7 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 **Description:** Interface for types that can be used as keys in JSObject. This interface implements extension methods for the String type. Used by the declarative interoperability macro framework; developers do not need to use this API.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Types:**
 
@@ -113,7 +113,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** Converts Cangjie type data to JSValue.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -1758,7 +1758,7 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **Function:** Used in declarative interop macros, corresponding to ArkTS's Array\<T> type.
 
-**Since:** 15
+**Since:** 21
 
 **Parent Type:**
 
@@ -1772,7 +1772,7 @@ public prop size: Int64
 
 **Function:** Gets the number of elements.
 
-**Since:** 15
+**Since:** 21
 
 **Type:** Int64
 
@@ -1786,7 +1786,7 @@ public init(arr: Array<T>)
 
 **Function:** Constructs a corresponding JSArrayEx\<T> instance from the given Array\<T>.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -1802,7 +1802,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSArrayEx<T>
 
 **Function:** Converts from JSValue to JSArrayEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -1825,7 +1825,7 @@ public static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -1841,7 +1841,7 @@ public func clone(): JSArrayEx<T>
 
 **Function:** Clones the JSArrayEx, performing a deep copy of the JSArrayEx data.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -1857,7 +1857,7 @@ public func concat(other: JSArrayEx<T>): JSArrayEx<T>
 
 **Function:** This function creates a new JSArrayEx by concatenating the current JSArrayEx with the JSArrayEx pointed to by `other`.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2592,7 +2592,7 @@ public func arrayBuffer(data: Array<Int32>): JSArrayBuffer
 ```
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2614,7 +2614,7 @@ public func arrayBuffer(data: Array<Float32>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2636,7 +2636,7 @@ public func arrayBuffer(data: Array<Int64>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2658,7 +2658,7 @@ public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2680,7 +2680,7 @@ public func arrayBuffer(data: Array<Float64>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2702,7 +2702,7 @@ public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2741,7 +2741,7 @@ public func bigint(value: Int64): JSBigInt
 
 **Function:** Creates an ArkTS bigint with the same value as the Cangjie BigInt.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2773,7 +2773,7 @@ public func bigint(value: BigInt): JSBigInt
 
 **Function:** Creates an ArkTS bigint with the same value as the Cangjie BigInt.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2807,7 +2807,7 @@ public func boolean(value: Bool): JSBoolean
 
 **Function:** Creates an ArkTS boolean.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2839,7 +2839,7 @@ public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass
 
 **Function:** Creates an ArkTS class.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2875,7 +2875,7 @@ public func external(data: SharedObject): JSExternal
 
 **Description:** Creates an ArkTS reference to a Cangjie object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2910,7 +2910,7 @@ public func function(lambda: JSLambda): JSFunction
 
 **Description:** Creates an ArkTS function.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2962,7 +2962,7 @@ public func isInBindThread(): Bool
 
 **Description:** Multi-threading utility: Checks whether the current thread can execute interoperation interfaces.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -2990,7 +2990,7 @@ public func null(): JSNull
 
 **Description:** Creates an ArkTS `null`.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3016,7 +3016,7 @@ public func number(value: Float64): JSNumber
 
 **Description:** Creates an ArkTS `number`.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3048,7 +3048,7 @@ public func number(value: Int32): JSNumber
 
 **Description:** Creates an ArkTS `number`.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3080,7 +3080,7 @@ public func object(): JSObject
 
 **Description:** Creates an empty ArkTS `object` reference.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3106,7 +3106,7 @@ public func postJSTask(callback: ()->Unit): Unit
 
 **Description:** Multi-threading utility: Creates a task to be executed on the ArkTS thread.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3137,7 +3137,7 @@ public func promiseCapability(): JSPromiseCapability
 
 **Description:** Creates an ArkTS `Promise`.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3161,7 +3161,7 @@ public func requireSystemNativeModule(moduleName: String, prefix!: ?String = Non
 
 **Function:** Loads a built-in ArkTS NAPI module from the system.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3194,7 +3194,7 @@ public func string(value: String): JSString
 
 **Function:** Creates an ArkTS string.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3226,7 +3226,7 @@ public func string(value: Utf16String): JSString
 
 **Function:** Creates a JSString from a Utf16String.
 
-**Since:** 20
+**Since:** 21
 
 **Parameters:**
 
@@ -3248,7 +3248,7 @@ public func symbol(description!: String = ""): JSSymbol
 
 **Function:** Creates an ArkTS symbol object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3281,7 +3281,7 @@ public func undefined(): JSUndefined
 
 **Function:** Creates an ArkTS undefined value.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3307,7 +3307,7 @@ public class JSExternal <: JSHeapObject {}
 
 **Function:** A Cangjie object reference that can be passed to the ArkTS side. Can retrieve the bound Cangjie object.
 
-**Since:** 13
+**Since:** 21
 
 JSExternal aims to pass a strong reference of a Cangjie object to the ArkTS runtime. It can be used with other user-defined interoperability interfaces to access this Cangjie object.
 
@@ -3323,7 +3323,7 @@ public func cast<T>(): Option<T> where T <: SharedObject
 
 **Function:** Retrieves the bound SharedObject and casts it to type T.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 | Type | Description |
@@ -3357,7 +3357,7 @@ public func getData(): SharedObject
 
 **Function:** Gets the bound SharedObject.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3393,7 +3393,7 @@ public class JSFunction <: JSHeapObject {}
 
 **Function:** A secure reference to an ArkTS function.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Type:**
 
@@ -3407,7 +3407,7 @@ public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue
 
 **Function:** Performs an ArkTS function call (multiple parameters).
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3439,7 +3439,7 @@ public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue
 
 **Function:** Performs an ArkTS function call (multiple parameters).
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3473,7 +3473,7 @@ public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().t
 
 **Function:** Performs an ArkTS function call (multiple parameters).
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3511,7 +3511,7 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **Function:** Used in declarative interop macros, corresponding to the ArkTS Map type.
 
-**Since:** 15
+**Since:** 21
 
 **Parent Type:**
 
@@ -3525,7 +3525,7 @@ public prop size: Int64
 
 **Function:** Returns the number of key-value pairs.
 
-**Since:** 15
+**Since:** 21
 
 **Type:** Int64
 
@@ -3539,7 +3539,7 @@ public init(map: HashMap<K, V>)
 
 **Function:** Constructs an empty JSHashMapEx\<K, V> instance.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -3555,7 +3555,7 @@ public init()
 
 **Function:** Constructs an empty JSHashMapEx\<K, V> instance.
 
-**Since:** 15
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -3565,7 +3565,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSHashMapEx<
 
 **Function:** Converts from JSValue to JSHashMapEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -3588,7 +3588,7 @@ public static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -4089,7 +4089,7 @@ public class JSObject <: JSObjectBase {}
 
 **Function:** A safe reference to an ArkTS object.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Type:**
 
@@ -4103,7 +4103,7 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **Function:** Base class for safe references to ArkTS objects. Allows operations on ArkTS objects.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Type:**
 
@@ -4117,7 +4117,7 @@ public func attachCJObject(target: JSExternal): Unit
 
 **Function:** Binds a Cangjie object reference in ArkTS to the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4148,7 +4148,7 @@ public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue
 
 **Function:** Calls a method on the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4184,7 +4184,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSFunction = None, sette
 
 **Function:** Defines accessors for the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4221,7 +4221,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 
 **Function:** Defines accessors for the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4259,7 +4259,7 @@ public func defineOwnProperty(key: JSKeyable, setValue: JSValue,
 
 **Function:** Defines a property on the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4290,7 +4290,7 @@ public func getAttachInfo(): ?JSExternal
 
 **Function:** Retrieves the bound Cangjie object from the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -4625,7 +4625,7 @@ public class JSPromiseCapability {
 
 **Function:** JSPromiseCapability corresponds to a Promise object, allowing resolution or rejection of the Promise.
 
-**Since:** 13
+**Since:** 21
 
 Lifecycle: JSPromiseCapability is a weak reference. The lifecycle of its corresponding ArkTS object ends upon first resolution or rejection. Subsequent usage will throw a Cangjie exception.
 
@@ -4637,7 +4637,7 @@ public init(context: JSContext)
 
 **Function:** Constructs a JSPromiseCapability object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4653,7 +4653,7 @@ public func reject(value: JSValue): Unit
 
 **Function:** Submits an exception to the Promise.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4682,7 +4682,7 @@ public func resolve(value: JSValue): Unit
 
 **Function:** Notifies the Promise of successful completion and submits the return value.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4713,7 +4713,7 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to ArkTS unified type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -4755,7 +4755,7 @@ public class JSRuntime {
 
 **Function:** ArkTS runtime created by Cangjie.
 
-**Since:** 13
+**Since:** 21
 
 > **Note:**
 >
@@ -4769,7 +4769,7 @@ public prop mainContext: JSContext
 
 **Function:** Interoperability context.
 
-**Since:** 13
+**Since:** 21
 
 **Type:** [JSContext](#class-jscontext)
 
@@ -4791,7 +4791,7 @@ public func getNapiEnv(): CPointer<Unit>
 
 **Function:** Gets the environment pointer.
 
-**Since:** 13
+**Since:** 21
 
 ## class JSString
 
@@ -4801,7 +4801,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 
 **Function:** A safe reference to an ArkTS string. Can be converted to String.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Types:**
 
@@ -4817,7 +4817,7 @@ public func toJSValue(_: JSContext): JSValue
 
 **Function:** Converts to JSValue.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4838,7 +4838,7 @@ public func toString(): String
 
 **Function:** Convert to a Cangjie string.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -4866,7 +4866,7 @@ public func toUtf16String(): Utf16String
 
 **Function:** Convert from JSString to Utf16String.
 
-**Since:** 20
+**Since:** 21
 
 **Return Value:**
 
@@ -4884,7 +4884,7 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **Function:** Extension of [JSString](#class-jsstring) functionality and performance, usable in declarative interop macros.
 
-**Since:** 15
+**Since:** 21
 
 **Parent Types:**
 
@@ -4900,7 +4900,7 @@ public prop size: Int64
 
 **Function:** Get the byte length of the string after UTF-8 encoding.
 
-**Since:** 15
+**Since:** 21
 
 Type: Int64
 
@@ -4916,7 +4916,7 @@ public init(str: String)
 
 **Function:** Construct a corresponding JSStringEx instance given a String.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -4932,7 +4932,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSStringEx
 
 **Function:** Convert from JSValue to JSStringEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -4955,7 +4955,7 @@ public static func toArkTsType(): String
 
 **Function:** Get the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -4971,7 +4971,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **Function:** Convert to JSValue. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -4993,7 +4993,7 @@ public func toString(): String
 
 **Function:** Convert to String.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -5009,7 +5009,7 @@ public operator func !=(str: JSStringEx): Bool
 
 **Function:** Determine if two JSStringEx instances are not equal.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -5031,7 +5031,7 @@ public operator func ==(str: JSStringEx): Bool
 
 **Function:** Determine if two JSStringEx instances are equal.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -5053,7 +5053,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **Function:** A safe reference to a JS symbol.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Types:**
 
@@ -5068,7 +5068,7 @@ public prop description: String
 
 **Function:** Description of the symbol.
 
-**Since:** 13
+**Since:** 21
 
 **Type:** String
 
@@ -5082,7 +5082,7 @@ public func toJSValue(_: JSContext): JSValue
 
 **Function:** Convert to JSValue. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -5566,7 +5566,7 @@ public struct JSUndefined {}
 
 **Function:** ArkTS null.
 
-**Since:** 13
+**Since:** 21
 
 ### func toJSValue()
 
@@ -5576,7 +5576,7 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to JSValue.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5592,7 +5592,7 @@ public struct JSValue {}
 
 **Function:** An ArkTS variable (weakly typed, short lifecycle).
 
-**Since:** 13
+**Since:** 21
 
 JSValue is the unified type in the ArkTS runtime and also the data type that directly interacts with the ArkTS runtime.
 
@@ -5606,7 +5606,7 @@ public func asArray(): JSArray
 
 **Function:** Converts a JSValue to JSArray.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5622,7 +5622,7 @@ public func asArrayBuffer(): JSArrayBuffer
 
 **Function:** Converts a JSValue to JSArrayBuffer.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5638,7 +5638,7 @@ public func asBigInt(): JSBigInt
 
 **Function:** Converts a JSValue to JSBigInt.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5654,7 +5654,7 @@ public func asBoolean(): JSBoolean
 
 **Function:** Converts a JSValue to JSBoolean.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5670,7 +5670,7 @@ public func asClass(): JSClass
 
 **Function:** Converts a JSValue to JSClass.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5686,7 +5686,7 @@ public func asExternal(): JSExternal
 
 **Function:** Converts a JSValue to JSExternal.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5703,7 +5703,7 @@ public func asFunction(): JSFunction
 
 **Function:** Converts a JSValue to JSFunction.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5719,7 +5719,7 @@ public func asNull(): JSNull
 
 **Function:** Converts a JSValue to JSNull.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5735,7 +5735,7 @@ public func asNumber(): JSNumber
 
 **Function:** Converts a JSValue to JSNumber.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5751,7 +5751,7 @@ public func asObject(): JSObject
 
 **Function:** Converts a JSValue to JSObject.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5771,7 +5771,7 @@ public func asPromise(): JSPromise
 
 **Function:** Converts a JSValue to JSPromise.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5785,7 +5785,7 @@ public func asPromise(): JSPromise
 public func asString(): JSString
 ```
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5801,7 +5801,7 @@ public func asSymbol(): JSSymbol
 
 **Function:** Converts a JSValue to JSSymbol.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5817,7 +5817,7 @@ public func asUndefined(): JSUndefined
 
 **Function:** Converts a JSValue to JSUndefined.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5833,7 +5833,7 @@ public func bindObject(external: JSValue): Unit
 
 **Function:** Binds a Cangjie object to an ArkTS object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -6035,7 +6035,7 @@ public func isArrayBuffer(): Bool
 
 **Function:** Determines whether a JSValue is of ArrayBuffer type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6065,7 +6065,7 @@ public func isBigInt(): Bool
 
 **Function:** Determines whether a JSValue is of bigint type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6095,7 +6095,7 @@ public func isBoolean(): Bool
 
 **Function:** Determines whether a JSValue is of boolean type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6125,7 +6125,7 @@ public func isClass(): Bool
 
 **Function:** Determines whether a JSValue is an ArkTS class (constructor).
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6155,7 +6155,7 @@ public func isExternal(): Bool
 
 **Function:** Determines whether a JSValue is an external object (ArkTS reference of a Cangjie object).
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6185,7 +6185,7 @@ public func isFunction(): Bool
 
 **Function:** Determines whether a JSValue is of function type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6215,7 +6215,7 @@ public func isNull(): Bool
 
 **Function:** Determines whether a JSValue is null.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6245,7 +6245,7 @@ public func isNumber(): Bool
 
 **Function:** Determines whether a JSValue is of number type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6275,7 +6275,7 @@ public func isObject(): Bool
 
 **Function:** Determines whether a JSValue is of object type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6545,7 +6545,7 @@ public func toBoolean(): Bool
 
 **Function:** Converts a JSValue to Bool.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6572,7 +6572,7 @@ public func toNumber(): Float64
 
 **Function:** Converts a JSValue to Float64.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6599,7 +6599,7 @@ public func toString(): String
 
 **Function:** Converts a JSValue to String.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6634,7 +6634,7 @@ public func toUtf16String(): Utf16String
 
 **Function:** Converts from JSValue to Utf16String.
 
-**Since:** 20
+**Since:** 21
 
 **Return Value:**
 
@@ -6650,7 +6650,7 @@ public func typeof(): JSType
 
 **Function:** Gets the type of a JSValue, which is basically consistent with the types enumerated by ArkTS's typeof syntax.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6681,7 +6681,7 @@ public type ClassRegister =(JSContext) -> JSClass
 
 **Function:** ClassRegister is a type alias for ([JSContext](#class-jscontext)) -> [JSClass](#class-jsclass).
 
-**Since:** 13
+**Since:** 21
 
 ## type FuncRegister
 
@@ -6691,7 +6691,7 @@ public type FuncRegister =(JSContext) -> JSFunction
 
 **Function:** FuncRegister is a type alias for ([JSContext](#class-jscontext)) -> [JSFunction](#class-jsfunction).
 
-**Since:** 13
+**Since:** 21
 
 ## type JSBufferFinalizer
 
@@ -6701,7 +6701,7 @@ public type JSBufferFinalizer =(CPointer<Byte>) -> Unit
 
 **Function:** JSBufferFinalizer is a type alias for (CPointer\<Byte>) -> Unit.
 
-**Since:** 13
+**Since:** 21
 
 ## type JSLambda
 
@@ -6711,7 +6711,7 @@ public type JSLambda =(JSContext, JSCallInfo) -> JSValue
 
 **Function:** JSLambda is a type alias for ([JSContext](#class-jscontext), [JSCallInfo](#struct-jscallinfo)) -> [JSValue](#struct-jsvalue).
 
-**Since:** 13
+**Since:** 21
 
 ## type ModuleRegister
 
@@ -6721,7 +6721,7 @@ public type ModuleRegister =(JSContext, JSObject) -> Unit
 
 **Function:** ModuleRegister is a type alias for ([JSContext](#class-jscontext), [JSObject](#class-jsobject)) -> Unit.
 
-**Since:** 13
+**Since:** 21
 
 ## type napi_env
 
@@ -6731,7 +6731,7 @@ public type napi_env = CPointer<Unit>
 
 **Function:** napi_env is a type alias for CPointer\<Unit>.
 
-**Since:** 13
+**Since:** 21
 
 ## type napi_value
 
@@ -6741,7 +6741,7 @@ public type napi_value = CPointer<Unit>
 
 **Function:** napi_value is a type alias for CPointer\<Unit>.
 
-**Since:** 13
+**Since:** 21
 
 ## class Utf16String
 
@@ -6753,7 +6753,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
 **Function:** A string stored in UTF-16 encoding format, which provides better performance than String when converting to/from ArkTS strings.
 
-**Since:** 20
+**Since:** 21
 
 **Parent Types:**
 
