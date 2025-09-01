@@ -43,7 +43,7 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 public override func initial()
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建circleshape对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

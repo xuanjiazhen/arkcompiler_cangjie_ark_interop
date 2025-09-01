@@ -1024,7 +1024,7 @@ public class TextDecorationOptions {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 文本装饰线的配置项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1036,7 +1036,7 @@ public class TextDecorationOptions {
 public var color: ResourceColor
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 	设置文本装饰线颜色。
 
 **类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
@@ -1052,7 +1052,7 @@ public var color: ResourceColor
 public var decorationType: TextDecorationType
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 	设置文本装饰线类型。
 
 **类型：** [TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
 
@@ -1068,7 +1068,7 @@ public var decorationType: TextDecorationType
 public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建的文本装饰线对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1092,7 +1092,7 @@ public enum LeadingMarginType {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 文本段落缩进类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1104,7 +1104,7 @@ public enum LeadingMarginType {
 LengthType(Length)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 文本段落缩进距离。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1116,7 +1116,7 @@ LengthType(Length)
 None
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 文本段落不缩进。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1128,7 +1128,7 @@ None
 PlaceholderType(LeadingMarginPlaceholder)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 前导边距占位符，用于表示文本段落左侧与组件边缘之间的距离。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -51,7 +51,7 @@ public mut prop filter: Option<String>
 
 **功能：** 提供模糊、灰度等滤镜效果
 
-**类型：** [Option<String>](<font color="red" face="bold">please add link</font>)
+**类型：** Option<String>
 
 **读写能力：** 可读写
 
@@ -67,7 +67,7 @@ public mut prop globalAlpha: Option<Float64>
 
 **功能：** 透明度
 
-**类型：** [Option < Float64 >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < Float64 >
 
 **读写能力：** 可读写
 
@@ -83,7 +83,7 @@ public mut prop globalCompositeOperation: Option<GlobalCompositeOperation>
 
 **功能：** 绘制新形状时应用的合成作类型
 
-**类型：** [Option < GlobalCompositeOperation >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < GlobalCompositeOperation >
 
 **读写能力：** 可读写
 
@@ -115,7 +115,7 @@ public mut prop imageSmoothingEnabled: Option<Bool>
 
 **功能：** 指定是否平滑图像。
 
-**类型：** [Option < Bool >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < Bool >
 
 **读写能力：** 可读写
 
@@ -131,7 +131,7 @@ public mut prop imageSmoothingQuality: Option<ImageSmoothingQuality>
 
 **功能：** 当前图像的平滑度级别
 
-**类型：** [Option < ImageSmoothingQuality >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < ImageSmoothingQuality >
 
 **读写能力：** 可读写
 
@@ -147,7 +147,7 @@ public mut prop lineCap: Option<LineCapStyle>
 
 **功能：** 线段端点属性。
 
-**类型：** [Option < LineCapStyle >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < LineCapStyle >
 
 **读写能力：** 可读写
 
@@ -163,7 +163,7 @@ public mut prop lineDashOffset: Option<Float64>
 
 **功能：** 虚线偏移属性。
 
-**类型：** [Option < Float64 >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < Float64 >
 
 **读写能力：** 可读写
 
@@ -179,7 +179,7 @@ public mut prop lineJoin: Option<LineJoinStyle>
 
 **功能：** 线段连接点属性
 
-**类型：** [Option < LineJoinStyle >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < LineJoinStyle >
 
 **读写能力：** 可读写
 
@@ -195,7 +195,7 @@ public mut prop lineWidth: Option<Float64>
 
 **功能：** 线粗细属性。
 
-**类型：** [Option < Float64 >](<font color="red" face="bold">please add link</font>)
+**类型：**[Option < Float64 >
 
 **读写能力：** 可读写
 
@@ -211,7 +211,7 @@ public mut prop miterLimit: Option<Float64>
 
 **功能：** 此参数的值不能是0或负数。
 
-**类型：** [Option < Float64 >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < Float64 >
 
 **读写能力：** 可读写
 
@@ -227,7 +227,7 @@ public mut prop shadowBlur: Option<Float64>
 
 **功能：** 阴影模糊半径
 
-**类型：** [Option < Float64 >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < Float64 >
 
 **读写能力：** 可读写
 
@@ -243,7 +243,7 @@ public mut prop shadowColor: Option<ResourceColor>
 
 **功能：** 阴影颜色。
 
-**类型：** [Option < ResourceColor >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < ResourceColor >
 
 **读写能力：** 可读写
 
@@ -259,7 +259,7 @@ public mut prop shadowOffsetX: Option<Float64>
 
 **功能：** 阴影的水平偏移距离。
 
-**类型：** [Option < Float64 >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < Float64 >
 
 **读写能力：** 可读写
 
@@ -275,7 +275,7 @@ public mut prop shadowOffsetY: Option<Float64>
 
 **功能：** 阴影的垂直偏移距离
 
-**类型：** [Option < Float64 >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < Float64 >
 
 **读写能力：** 可读写
 
@@ -291,7 +291,7 @@ public mut prop textAlign: Option<CanvasTextAlign>
 
 **功能：** 文本对齐模式
 
-**类型：** [Option < CanvasTextAlign >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < CanvasTextAlign >
 
 **读写能力：** 可读写
 
@@ -307,7 +307,7 @@ public mut prop textBaseline: Option<CanvasTextBaseline>
 
 **功能：** 文本基线
 
-**类型：** [Option < CanvasTextBaseline >](<font color="red" face="bold">please add link</font>)
+**类型：** Option < CanvasTextBaseline >
 
 **读写能力：** 可读写
 

@@ -941,7 +941,7 @@ public func finishAnimation(callback: VoidCallback): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[VoidCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，动画结束时触发。|
+|callback|VoidCallback|是|-|回调函数，动画结束时触发。|
 
 #### func showNext()
 

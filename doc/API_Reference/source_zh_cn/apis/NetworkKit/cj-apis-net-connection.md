@@ -1261,7 +1261,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetHandle>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetAvailable和NetLost事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[NetHandle](#class-nethandle)>|是|-|回调函数，返回数据网络句柄。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[NetHandle](#class-nethandle)>|是|-|回调函数，返回数据网络句柄。|
 
 **异常：**
 
@@ -1290,7 +1290,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetBlockSt
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetBlockStatusChange事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[NetBlockStatusInfo](#class-netblockstatusinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）,及网络堵塞状态（blocked）。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[NetBlockStatusInfo](#class-netblockstatusinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）,及网络堵塞状态（blocked）。|
 
 **异常：**
 
@@ -1319,7 +1319,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetCapabil
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetCapabilitiesChange事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[NetCapabilityInfo](#class-netcapabilityinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）和网络的能力信息（netCap）。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[NetCapabilityInfo](#class-netcapabilityinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）和网络的能力信息（netCap）。|
 
 **异常：**
 
@@ -1348,7 +1348,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetConnect
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetConnectionPropertiesChange事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[NetConnectionPropertyInfo](#class-netconnectionpropertyinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）和网络的连接信息（connectionProperties）。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[NetConnectionPropertyInfo](#class-netconnectionpropertyinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）和网络的连接信息（connectionProperties）。|
 
 **异常：**
 
@@ -1377,7 +1377,7 @@ public func on(event: NetConnectionEvent, callback: Callback0Argument): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetUnavailable事件。|
-|callback|[Callback0Argument](<font color="red" face="bold">please add link</font>)|是|-|回调函数，无返回结果。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，无返回结果。|
 
 **异常：**
 
@@ -1965,10 +1965,6 @@ public enum NetConnectionEvent {
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<NetConnectionEvent>
 
 ### NetAvailable
 

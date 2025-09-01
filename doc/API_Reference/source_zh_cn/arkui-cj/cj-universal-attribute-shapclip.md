@@ -60,5 +60,5 @@ public func maskShape(value: BaseShape): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[BaseShape](<font color="red" face="bold">please add link</font>)|是|-|在当前组件上加上指定形状的遮罩。|
+|value|BaseShape|是|-|在当前组件上加上指定形状的遮罩。|
 

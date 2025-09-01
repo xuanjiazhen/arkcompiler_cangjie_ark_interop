@@ -334,7 +334,7 @@ public func onComplete(callback: ImageCompleteCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ImageCompleteCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，图片成功加载时触发。|
+|callback|ImageCompleteCallback|是|-|回调函数，图片成功加载时触发。|
 
 ### func onError(ImageErrorCallback)
 
@@ -352,7 +352,7 @@ public func onError(callback: ImageErrorCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ImageErrorCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，图片加载出现异常时触发。|
+|callback|ImageErrorCallback|是|-|回调函数，图片加载出现异常时触发。|
 
 ### func onFinish(() -> Unit)
 

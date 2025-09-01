@@ -123,7 +123,7 @@ public func onDidScroll(callback: ScrollOnScrollCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ScrollOnScrollCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，Scroll滚动时触发。<br>参数一：每帧滚动时水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。单位vp。<br>参数二：每帧滚动时竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br>参数三：当前滚动状态。|
+|callback|ScrollOnScrollCallback|是|-|回调函数，Scroll滚动时触发。<br>参数一：每帧滚动时水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。单位vp。<br>参数二：每帧滚动时竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br>参数三：当前滚动状态。|
 
 ### func onScrollEdge(OnScrollEdgeCallback)
 
@@ -149,7 +149,7 @@ public func onScrollEdge(event: OnScrollEdgeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[OnScrollEdgeCallback](<font color="red" face="bold">please add link</font>)|是|-|滚动到的边缘位置。<br>当Scroll设置为水平方向滚动时，上报Edge.Center表示水平方向起始位置，上报Edge.Baseline表示水平方向末尾位置。由于Edge.Center和Edge.Baseline枚举值已经废弃，推荐使用onReachStart、onReachEnd事件监听是否滚动到边界。|
+|event|OnScrollEdgeCallback|是|-|滚动到的边缘位置。<br>当Scroll设置为水平方向滚动时，上报Edge.Center表示水平方向起始位置，上报Edge.Baseline表示水平方向末尾位置。由于Edge.Center和Edge.Baseline枚举值已经废弃，推荐使用onReachStart、onReachEnd事件监听是否滚动到边界。|
 
 ### func onScrollFrameBegin(OnScrollFrameBeginCallback)
 
@@ -181,7 +181,7 @@ public func onScrollFrameBegin(event: OnScrollFrameBeginCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[OnScrollFrameBeginCallback](<font color="red" face="bold">please add link</font>)|是|-|每帧滚动开始回调函数。|
+|event|OnScrollFrameBeginCallback|是|-|每帧滚动开始回调函数。|
 
 ### func onWillScroll((Float64,Float64,ScrollState,ScrollSource) -> OffsetResult)
 
@@ -828,7 +828,7 @@ public func clipContent(clip: RectShape): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|clip|[RectShape](<font color="red" face="bold">please add link</font>)|是|Grid、Scroll的默认值为ContentClipMode.BOUNDARY，List、WaterFlow的默认值为ContentClipMode.CONTENT_ONLY。|裁剪只针对滚动容器的内容，即其子节点，背景不受影响。通过RectShape传入自定义矩形区域时仅支持设置宽高和相对于组件左上角的[offset](./cj-universal-attribute-location.md#func-offsetlength-length)，不支持圆角。<br/>|
+|clip|RectShape|是|Grid、Scroll的默认值为ContentClipMode.BOUNDARY，List、WaterFlow的默认值为ContentClipMode.CONTENT_ONLY。|裁剪只针对滚动容器的内容，即其子节点，背景不受影响。通过RectShape传入自定义矩形区域时仅支持设置宽高和相对于组件左上角的[offset](./cj-universal-attribute-location.md#func-offsetlength-length)，不支持圆角。<br/>|
 
 #### func enableScrollInteraction(Bool)
 
@@ -864,7 +864,7 @@ public func fadingEdge(enabled: Option<Bool>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|enabled|[Option](<font color="red" face="bold">please add link</font>)\<Bool>|是|false|fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。|
+|enabled|Option\<Bool>|是|false|fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。|
 
 #### func fadingEdge(Option\<Bool>, FadingEdgeOptions)
 
@@ -882,7 +882,7 @@ public func fadingEdge(enabled: Option<Bool>, options: FadingEdgeOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|enabled|[Option](<font color="red" face="bold">please add link</font>)\<Bool>|是|false|fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。|
+|enabled|Option\<Bool>|是|false|fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。|
 |options|[FadingEdgeOptions](#class-fadingedgeoptions)|是|-|边缘渐隐参数对象。可以通过该对象定义边缘渐隐效果属性，比如设置渐隐长度。|
 
 #### func flingSpeedLimit(Float64)
@@ -937,7 +937,7 @@ public func friction(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|默认值：非wearable设备为0.6，wearable设备为0.9。<br/>从API version 11开始，非wearable设备默认值为0.7。<br/>从API version 12开始，非wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。|摩擦系数。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|默认值：非wearable设备为0.6，wearable设备为0.9。<br/>从API version 11开始，非wearable设备默认值为0.7。<br/>从API version 12开始，非wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。|摩擦系数。|
 
 #### func nestedScroll(NestedScrollOptions)
 
@@ -973,7 +973,7 @@ public func onDidScroll(handler: OnScrollCallBack): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|handler|[OnScrollCallBack](<font color="red" face="bold">please add link</font>)|是|-|滚动组件滑动时触发的回调。|
+|handler|OnScrollCallBack|是|-|滚动组件滑动时触发的回调。|
 
 #### func onReachEnd(() -> Unit)
 
@@ -1075,7 +1075,7 @@ public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) ->
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|handler|[Option](<font color="red" face="bold">please add link</font>)\<(Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->[ScrollResult](#class-scrollresult)>|是|-|滚动组件滑动前触发的回调。|
+|handler|Option\<(Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->[ScrollResult](#class-scrollresult)>|是|-|滚动组件滑动前触发的回调。|
 
 #### func onWillScroll(Option\<(Float64,ScrollState,ScrollSource) -> Unit>)
 
@@ -1095,7 +1095,7 @@ public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) ->
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|handler|[Option](<font color="red" face="bold">please add link</font>)\<(Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->Unit>|是|-|滚动组件滑动前触发的回调。|
+|handler|Option\<(Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->Unit>|是|-|滚动组件滑动前触发的回调。|
 
 #### func scrollBar(BarState)
 

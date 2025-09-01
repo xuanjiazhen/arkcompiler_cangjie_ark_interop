@@ -96,7 +96,7 @@ public func onChange(callback: OnCheckboxGroupChangeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnCheckboxGroupChangeCallback](<font color="red" face="bold">please add link</font>)|是|-|多选框群组的信息。|
+|callback|OnCheckboxGroupChangeCallback|是|-|多选框群组的信息。|
 
 ## 基础类型定义
 

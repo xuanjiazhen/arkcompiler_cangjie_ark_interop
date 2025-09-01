@@ -3332,67 +3332,6 @@ public init(left: Int32, top: Int32, right: Int32, bottom: Int32, displayId!: ?I
 |bottom|Int32|是|-|控件边框的右下角的Y坐标。|
 |displayId|?Int32|否|None| **命名参数。** 控件边框所属的屏幕ID，取值大于或等于0的整数。|
 
-
-## class TestRunner
-
-```cangjie
-public open class TestRunner <: FFIData {}
-```
-
-**功能：** 提供了框架测试的能力。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [FFIData](../AbilityKit/cj-apis-ability.md#class-ffidata)
-
-### static func registerCreator(String, () -> TestRunner)
-
-```cangjie
-public static func registerCreator(name: String, creator: () -> TestRunner): Unit
-```
-
-**功能：** 注册构建[TestRunner](#class-testrunner)对象的函数。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|name|String|是|-|构建函数标识。|
-|creator|()->[TestRunner](#class-testrunner)|是|-|构建[TestRunner](#class-testrunner)对象的函数。|
-
-### func onPrepare()
-
-```cangjie
-public open func onPrepare(): Unit
-```
-
-**功能：** 运行测试用例。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### func onRun()
-
-```cangjie
-public open func onRun(): Unit
-```
-
-**功能：** 为运行测试用例准备单元测试环境。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-
 ## class UIElementInfo
 
 ```cangjie
@@ -3496,55 +3435,6 @@ public func once(onceType: OnceType, callback: Callback<UIElementInfo>): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-
-## class UITest
-
-```cangjie
-public class UITest {}
-```
-
-**功能：** [UITest](#class-uitest)类只包含一个静态方法[setup](#func-setup)，用于初始化ui_test库。
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**起始版本：** 21
-
-### static func setup()
-
-```cangjie
-public static func setup(): Unit
-```
-
-**功能：** 初始化ui_test库。目前[setup](#func-setup)必须写在[TestRunner](#class-testrunner)的[onRun](#func-onrun)中。
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// unittest_enginge.cj
-import ohos.base.*
-import kit.TestKit.*
-import ohos.test_runner.*
-
-class MyTestRunner <: TestRunner {
-    public func onRun() {
-        UITest.setup()
-    }
-
-    public func onPrepare() {
-        Hilog.info(0, "AppLogCj", "CJTestRunner onPrepare")
-    }
-}
-
-let _ = TestRunner.registerCreator("MyTestRunner") {MyTestRunner()}
-```
-
 
 ## class UiWindow
 
@@ -4226,10 +4116,10 @@ public var title:?String
 
 **起始版本：** 21
 
-### init(String, String, Bool, Bool, ?Int32)
+### init(?String, ?String, ?Bool, ?Bool, ?Int32)
 
 ```cangjie
-public init(bundleName!: String = "", title!: String = "", focused!: Bool = false, active!: Bool = false, displayId!: ?Int32 = None)
+public init(bundleName!: ?String = "", title!: ?String = "", focused!: ?Bool = false, active!: ?Bool = false, displayId!: ?Int32 = None)
 ```
 
 **功能：** 创建[WindowFilter](#class-windowfilter)实例。
@@ -4452,11 +4342,6 @@ public enum OnceType <: Equatable<OnceType> & ToString {
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<OnceType>
-- ToString
 
 ### DialogShow
 

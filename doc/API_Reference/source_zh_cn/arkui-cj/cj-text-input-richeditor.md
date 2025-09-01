@@ -231,7 +231,7 @@ public func onPaste(callback: PasteEventCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[PasteEventCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，完成粘贴前，触发回调。<br>PasteEvent：定义用户粘贴事件。|
+|callback|PasteEventCallback|是|-|回调函数，完成粘贴前，触发回调。<br>PasteEvent：定义用户粘贴事件。|
 
 ### func onReady(VoidCallback)
 
@@ -288,7 +288,7 @@ public class DecorationStyleResult {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 后端返回的文本装饰线样式信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,7 +316,7 @@ public var color: ResourceColor
 public var decorationType: TextDecorationType
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 装饰线类型。
 
 **类型：** [TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
 
@@ -336,7 +336,7 @@ public init(
 )
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建文本装饰线样式对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -346,7 +346,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|<font color="red" face="bold">please add description</font>|
+|decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|装饰线类型。|
 |color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置文本识别成功后的实体颜色。<br>默认值：'#ff0a59f7'<br>元服务API： 从API version 12开始，该接口支持在元服务中使用。|
 
 ### class PasteEvent
@@ -455,7 +455,7 @@ public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
 
 **功能：** 表示删除的文本或者图片Span的具体信息。
 
-**类型：** ArrayList\<[RichEditorSpanResult](<font color="red" face="bold">please add link</font>)>
+**类型：** ArrayList\<RichEditorSpanResult
 
 **读写能力：** 可读写
 
@@ -488,7 +488,7 @@ public init(
 |offset|Int32|是|-|删除内容的偏移位置。|
 |direction|[RichEditorDeleteDirection](#enum-richeditordeletedirection)|是|-|删除操作的方向。|
 |length|Int32|是|-|删除内容长度。|
-|richEditorDeleteSpans|ArrayList\<[RichEditorSpanResult](<font color="red" face="bold">please add link</font>)>|是|-|删除的文本或者图片Span的具体信息。|
+|richEditorDeleteSpans|ArrayList\<RichEditorSpanResult>|是|-|删除的文本或者图片Span的具体信息。|
 
 ### class RichEditorImageSpanResult
 
@@ -790,7 +790,7 @@ public init(
 public interface RichEditorSpanResult {}
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 支持图文混排和文本交互式编辑的组件结果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,7 +836,7 @@ public var spans: ArrayList<RichEditorSpanResult>
 
 **功能：** 表示Span信息。
 
-**类型：** ArrayList\<[RichEditorSpanResult](<font color="red" face="bold">please add link</font>)>
+**类型：** ArrayList\<RichEditorSpanResult>
 
 **读写能力：** 可读写
 
@@ -862,7 +862,7 @@ public init(selection: (Int32, Int32), spans: ArrayList<RichEditorSpanResult>)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |selection|(Int32,Int32)|是|-|选中范围。|
-|spans|ArrayList\<[RichEditorSpanResult](<font color="red" face="bold">please add link</font>)>|是|-|Span信息。|
+|spans|ArrayList\<RichEditorSpanResult>|是|-|Span信息。|
 
 ### class RichEditorSpanPosition
 
@@ -1325,7 +1325,7 @@ public var start: Int32
 public init(start: Int32, end: Int32)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建文本范围对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

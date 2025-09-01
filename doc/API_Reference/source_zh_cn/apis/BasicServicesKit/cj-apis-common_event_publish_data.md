@@ -188,4 +188,4 @@ public init(
 |subscriberPermissions|Array\<String>|否|Array < String >()| **命名参数。** 表示订阅者的权限。|
 |isOrdered|Bool|否|false| **命名参数。** 表示是否是有序事件。|
 |isSticky|Bool|否|false| **命名参数。** 表示是否是粘性事件。仅系统应用或系统服务允许发送粘性事件。|
-|parameters|HashMap\<String, [ValueType](#enum-valuetype)>|否|HashMap\<String, ValueType>()| **命名参数。** 表示公共事件的附加信息|
+|parameters|HashMap\<String, [ValueType](#enum-valuetype)>|否|HashMap<String, ValueType>()| **命名参数。** 表示公共事件的附加信息|

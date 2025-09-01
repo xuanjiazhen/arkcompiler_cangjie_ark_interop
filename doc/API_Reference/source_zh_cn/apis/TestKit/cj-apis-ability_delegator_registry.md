@@ -905,11 +905,6 @@ public enum AbilityLifecycleState {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<AbilityLifecycleState>
-- ToString
-
 ### Background
 
 ```cangjie

@@ -324,7 +324,7 @@ public class onScrollFrameBeginHandleResult {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 	返回实际滑动量。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -336,7 +336,7 @@ public class onScrollFrameBeginHandleResult {
 public var offsetRemain: Float64
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 实际滚动偏移量。
 
 **类型：** Float64
 
@@ -349,7 +349,7 @@ public var offsetRemain: Float64
 public init(offsetRemain!: Float64)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建实际滑动量对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -359,7 +359,7 @@ public init(offsetRemain!: Float64)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|offsetRemain|Float64|是|-|<font color="red" face="bold">please add description</font>|
+|offsetRemain|Float64|是|-|实际滚动偏移量，单位vp。|
 
 ## 示例代码
 

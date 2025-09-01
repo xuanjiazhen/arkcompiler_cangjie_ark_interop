@@ -2846,10 +2846,10 @@ let `type` = cameraDevice0.cameraType
 let cameraInput = cameraManager.createCameraInput(position , `type`)
 ```
 
-### func createPhotoOutput(profile:?Profile)
+### func createPhotoOutput(?Profile)
 
 ```cangjie
-public func createPhotoOutput(profile:profile!: ?Profile = None): PhotoOutput
+public func createPhotoOutput(?Profile = None): PhotoOutput
 ```
 
 **功能：** 创建拍照输出对象。
@@ -8378,10 +8378,6 @@ public enum CameraEvents {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<CameraEvents>
-
 ### CameraError
 
 ```cangjie
@@ -8622,11 +8618,6 @@ public enum CameraFormat {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<CameraFormat>
-- ToString
-
 ### CameraFormatHeic
 
 ```cangjie
@@ -8774,11 +8765,6 @@ public enum CameraPosition {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<CameraPosition>
-- ToString
-
 ### CameraPositionBack
 
 ```cangjie
@@ -8890,11 +8876,6 @@ public enum CameraStatus {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CameraStatus>
-- ToString
 
 ### CameraStatusAppear
 
@@ -9020,11 +9001,6 @@ public enum CameraType {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CameraType>
-- ToString
 
 ### CameraTypeDefault
 
@@ -9161,11 +9137,6 @@ public enum ConnectionType {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<ConnectionType>
-- ToString
-
 ### CameraConnectionBuiltIn
 
 ```cangjie
@@ -9277,11 +9248,6 @@ public enum ExposureMode {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<ExposureMode>
-- ToString
-
 ### ExposureModeAuto
 
 ```cangjie
@@ -9389,11 +9355,6 @@ public enum FlashMode {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<FlashMode>
-- ToString
 
 ### FlashModeAlwaysOpen
 
@@ -9515,11 +9476,6 @@ public enum FocusMode {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<FocusMode>
-- ToString
-
 ### FocusModeAuto
 
 ```cangjie
@@ -9639,11 +9595,6 @@ public enum FocusState {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<FocusState>
-- ToString
-
 ### FocusStateFocused
 
 ```cangjie
@@ -9750,11 +9701,6 @@ public enum FoldStatus {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<FoldStatus>
-- ToString
 
 ### Expanded
 
@@ -9867,11 +9813,6 @@ public enum ImageRotation {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<ImageRotation>
-- ToString
 
 ### Rotation0
 
@@ -9994,11 +9935,6 @@ public enum MetadataObjectType {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<MetadataObjectType>
-- ToString
-
 ### FaceDetection
 
 ```cangjie
@@ -10085,11 +10021,6 @@ public enum PreconfigRatio {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<PreconfigRatio>
-- ToString
 
 ### PreconfigRatio_16_9
 
@@ -10202,11 +10133,6 @@ public enum PreconfigType {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<PreconfigType>
-- ToString
 
 ### Preconfig1080p
 
@@ -10331,11 +10257,6 @@ public enum QualityLevel {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<QualityLevel>
-- ToString
-
 ### QualityLevelHigh
 
 ```cangjie
@@ -10447,11 +10368,6 @@ public enum SceneMode {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<SceneMode>
-- ToString
-
 ### NormalPhoto
 
 ```cangjie
@@ -10561,11 +10477,6 @@ public enum SmoothZoomMode {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<SmoothZoomMode>
-- ToString
-
 ### Normal
 
 ```cangjie
@@ -10648,11 +10559,6 @@ public enum TorchMode {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<TorchMode>
-- ToString
 
 ### Auto
 
@@ -10764,11 +10670,6 @@ public enum VideoCodecType {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<VideoCodecType>
-- ToString
-
 ### Avc
 
 ```cangjie
@@ -10869,11 +10770,6 @@ public enum VideoStabilizationMode {
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<VideoStabilizationMode>
-- ToString
 
 ### Auto
 

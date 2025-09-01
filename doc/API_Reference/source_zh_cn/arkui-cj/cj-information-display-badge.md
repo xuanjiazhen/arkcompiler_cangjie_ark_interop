@@ -295,7 +295,7 @@ public operator func ==(other: BadgePosition): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[BadgePosition](<font color="red" face="bold">please add link</font>)|是|-|另一个枚举值。|
+|other|BadgePosition|是|-|另一个枚举值。|
 
 **返回值：**
 

@@ -732,11 +732,6 @@ public enum DeviceAddressType {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<DeviceAddressType>
-- ToString
-
 ### RandomDeviceAddress
 
 ```cangjie
@@ -835,11 +830,6 @@ public enum GroupOwnerBand {
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<GroupOwnerBand>
-- ToString
 
 ### GoBand2GHz
 
@@ -950,12 +940,6 @@ public enum WifiCallbackType {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<WifiCallbackType>
-- Hashable
-- ToString
-
 ### WifiScanStateChange
 
 ```cangjie
@@ -1048,11 +1032,6 @@ public enum WifiCategory {
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<WifiCategory>
-- ToString
 
 ### Default
 
@@ -1171,11 +1150,6 @@ public enum WifiSecurityType {
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<WifiSecurityType>
-- ToString
 
 ### WifiSecTypeEap
 

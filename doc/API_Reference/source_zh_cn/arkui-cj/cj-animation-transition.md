@@ -811,7 +811,7 @@ public func transition(value: TransitionEffect): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[TransitionEffect](<font color="yellow" face="bold">please add lnk</font>)|是|-|以函数的形式指定转场效果。|
+|value|TransitionEffect|是|-|以函数的形式指定转场效果。|
 
 ## func transition(TransitionEffect, ?TransitionFinishCallback)
 

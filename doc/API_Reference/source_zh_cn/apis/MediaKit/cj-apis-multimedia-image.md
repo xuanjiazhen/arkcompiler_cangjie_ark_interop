@@ -66,7 +66,7 @@ public func on(eventType: ReceiveType, callback: Callback0Argument): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ReceiveType](#enum-receivetype)|是|-|注册事件的类型，固定为'imageArrival'，接收图片时触发。|
-|callback|[Callback0Argument](<font color="red" face="bold">please add link</font>)|是|-|回调函数，当注册事件触发成功，err为undefined，否则为错误对象。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，当注册事件触发成功，err为undefined，否则为错误对象。|
 
 ### func readLatestImage()
 

@@ -130,7 +130,7 @@ public func onComplete(callback: ImageCompleteCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ImageCompleteCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，图片数据加载成功和解码成功时触发。参数：成功加载的图片尺寸。|
+|callback|ImageCompleteCallback|是|-|回调函数，图片数据加载成功和解码成功时触发。参数：成功加载的图片尺寸。|
 
 ### func onError(ImageErrorCallback)
 
@@ -148,7 +148,7 @@ public func onError(callback: ImageErrorCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ImageErrorCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，图片加载出现异常时触发。参数：图片加载异常信息。|
+|callback|ImageErrorCallback|是|-|回调函数，图片加载出现异常时触发。参数：图片加载异常信息。|
 
 ## 基础类型定义
 

@@ -1946,7 +1946,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 |:---|:---|:---|:---|:---|
 |srcFileUris|Array\<String>|是|-|需保存到媒体库中的图片/视频文件对应的媒体库uri。<br>**注意：**  仅支持处理图片、视频uri。|
 |photoCreationConfigs|Array\<[PhotoCreationConfig](#class-photocreationconfig)>|是|-|保存图片/视频到媒体库的配置，包括保存的文件名等，与srcFileUris保持一一对应。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
 
 **异常：**
 
@@ -2026,7 +2026,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
-|callback|?[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
+|callback|?[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
 
 **异常：**
 
@@ -2236,7 +2236,6 @@ public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
 **父类型：**
 
 - ToString
-- Equatable\<AlbumKeys>
 
 ### AlbumName
 
@@ -2338,11 +2337,6 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<AlbumSubtype>
-- ToString
 
 ### Any
 
@@ -2474,11 +2468,6 @@ public enum AlbumType <: Equatable<AlbumType> & ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<AlbumType>
-- ToString
-
 ### System
 
 ```cangjie
@@ -2576,7 +2565,6 @@ public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
 **父类型：**
 
 - ToString
-- Equatable\<DefaultChangeUri>
 
 ### DefaultAlbumUri
 
@@ -2676,11 +2664,6 @@ public enum DeliveryMode <: Equatable<DeliveryMode> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<DeliveryMode>
-- ToString
 
 ### BalanceMode
 
@@ -2788,11 +2771,6 @@ public enum DynamicRangeType <: Equatable<DynamicRangeType> & ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<DynamicRangeType>
-- ToString
-
 ### Hdr
 
 ```cangjie
@@ -2889,11 +2867,6 @@ public enum NotifyType <: Equatable<NotifyType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<NotifyType>
-- ToString
 
 ### NotifyAdd
 
@@ -3047,7 +3020,6 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
 **父类型：**
 
 - ToString
-- Equatable\<PhotoKeys>
 
 ### BurstKey
 
@@ -3382,11 +3354,6 @@ public enum PhotoSubtype <: Equatable<PhotoSubtype> & ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<PhotoSubtype>
-- ToString
-
 ### Burst
 
 ```cangjie
@@ -3494,11 +3461,6 @@ public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<PhotoViewMIMETypes>
-- ToString
 
 ### ImageType
 
@@ -3625,11 +3587,6 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<RecommendationType>
-- ToString
 
 ### BankCard
 
@@ -3820,11 +3777,6 @@ public enum ResourceType <: Equatable<ResourceType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<ResourceType>
-- ToString
 
 ### ImageResource
 

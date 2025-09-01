@@ -413,7 +413,7 @@ public func onSelect(callback: OnSelectCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnSelectCallback](<font color="red" face="bold">please add link</font>)|是|-|选中项的索引和值。|
+|callback|OnSelectCallback|是|-|选中项的索引和值。|
 
 ## 基础类型定义
 
@@ -520,7 +520,7 @@ public init(value: String, icon!: AppResource)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|String|是|-|下拉选项内容。|
-|icon|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|**命名参数。** 下拉选项图标。|
+|icon|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|**命名参数。** 下拉选项图标。|
 
 #### init(AppResource, String)
 
@@ -538,7 +538,7 @@ public init(value: AppResource, icon!: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|下拉选项内容。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|下拉选项内容。|
 |icon|String|是|-|**命名参数。** 下拉选项图标。|
 
 #### init(AppResource, AppResource)
@@ -557,8 +557,8 @@ public init(value: AppResource, icon!: AppResource)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|下拉选项内容。|
-|icon|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|**命名参数。** 下拉选项图标。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|下拉选项内容。|
+|icon|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|**命名参数。** 下拉选项图标。|
 
 
 ### enum ArrowPosition

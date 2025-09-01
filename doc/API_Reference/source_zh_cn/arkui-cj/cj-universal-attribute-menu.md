@@ -128,7 +128,7 @@ public var transition:?TransitionEffect = None
 
 **功能：** 设置菜单显示和退出的过渡效果。
 
-**类型：** ?[TransitionEffect](<font color="yellow" face="bold">please add lnk</font>)
+**类型：** ?TransitionEffect
 
 **读写能力：** 可读写
 
@@ -150,7 +150,7 @@ public init(scale!: ?VArray<Float64, $2> = None, transition!: ?TransitionEffect 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |scale|?VArray\<Float64,$2>|否|None| **命名参数。** 动画开始和结束时相对预览原图缩放比例。<br> **说明：** 缩放比例需要根据实际开发场景设置，建议设置值为小于预览图宽度或布局的最大限制。|
-|transition|?[TransitionEffect](<font color="yellow" face="bold">please add lnk</font>)|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：** 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。详细描述见TransitionEffect对象说明。|
+|transition|?TransitionEffect|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：** 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。详细描述见TransitionEffect对象说明。|
 |hoverScale|?VArray\<Float64,$2>|否|None| **命名参数。** 预览自定义长按场景下，浮起原组件截图的缩放动画开始和结束时相对预览原图缩放比例，且有与预览图的切换的过渡动效。<br> **说明：** 倍率设置参数小于等于0时，不生效。<br> 设置transition接口时，不生效。<br>使用此接口且同时使用scale接口时，scale接口起始值不生效。<br> 为保障最佳体验，最终预览图尺寸不建议小于原组件截图尺寸。当前预览动效宽高会受组件截图和自定义预览大小影响，请根据实际使用情况自行保障展示效果。|
 
 
@@ -252,7 +252,7 @@ public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
 
 **功能：** 弹窗背板模糊材质。
 
-**类型：** [BlurStyle](<font color="yellow" face="bold">please add lnk</font>)
+**类型：** BlurStyle
 
 **读写能力：** 可读写
 
@@ -364,7 +364,7 @@ public var preview:?CustomBuilder = Option.None
 
 **功能：** 长按悬浮菜单或使用bindContextMenu显示菜单的预览内容样式，为用户自定义的内容。
 
-**类型：** ?[CustomBuilder](<font color="yellow" face="bold">please add lnk</font>)
+**类型：** ?CustomBuilder
 
 **读写能力：** 可读写
 
@@ -396,7 +396,7 @@ public var transition:?TransitionEffect = None
 
 **功能：** 设置菜单显示和退出的过渡效果。
 
-**类型：** ?[TransitionEffect](<font color="yellow" face="bold">please add lnk</font>)
+**类型：** ?TransitionEffect
 
 **读写能力：** 可读写
 
@@ -445,8 +445,8 @@ public init(
 |aboutToAppear|?()->Unit|否|None| **命名参数。** 菜单显示动效前的事件回调。|
 |aboutToDisappear|?()->Unit|否|None| **命名参数。** 菜单退出动效前的事件回调。|
 |backgroundColor|[ResourceColor](cj-common-types.md#interface-resourcecolor)|否|Color.Transparent| **命名参数。** 弹窗背板颜色。|
-|backgroundBlurStyle|[BlurStyle](<font color="yellow" face="bold">please add lnk</font>)|否|BlurStyle.ComponentUltraThick| **命名参数。** 弹窗背板模糊材质。|
-|transition|?[TransitionEffect](<font color="yellow" face="bold">please add lnk</font>)|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：**<br> 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。<br> 详细描述见TransitionEffect对象说明。|
+|backgroundBlurStyle|BlurStyle|否|BlurStyle.ComponentUltraThick| **命名参数。** 弹窗背板模糊材质。|
+|transition|?TransitionEffect|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：**<br> 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。<br> 详细描述见TransitionEffect对象说明。|
 |borderRadius|?[BorderRadiuses](cj-common-types.md#class-borderradiuses)|否|None| **命名参数。** 设置菜单显示区域的圆角。|
 |layoutRegionMargin|?[Margin](cj-common-types.md#class-margin)|否|None| **命名参数。** 设置菜单的布局区域的边距。|
 

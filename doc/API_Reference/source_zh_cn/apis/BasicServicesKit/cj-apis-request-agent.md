@@ -76,7 +76,7 @@ public func create(context: UIAbilityContext, config: Config): Task
   | The context is invalid.
  | todo | todo |
 
-## func getTask(UIAbilityContext, String, String)
+## func getTask(UIAbilityContext, String, ?String)
 
 ```cangjie
 
@@ -690,7 +690,7 @@ public var url: String
 
 **起始版本：** 21
 
-### init(Action, String, ?String, String, Mode, Bool, ?String, HashMap\<String,String>, ?ConfigData, ?String, Network, Bool, Bool, Bool, Bool, UInt32, Int64, Int64, Bool, Bool, String, UInt32, HashMap\<String,String>)
+### init(Action, String, ?String, String, Mode, Bool, ?String, HashMap\<String,String>, ?ConfigData, String, Network, Bool, Bool, Bool, Bool, UInt32, Int64, Int64, Bool, Bool, ?String, UInt32, HashMap\<String,String>)
 
 ```cangjie
 
@@ -1839,11 +1839,6 @@ public enum Action {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<Action>
-- ToString
-
 ### Download
 
 ```cangjie
@@ -1937,10 +1932,6 @@ public enum BroadcastEvent <: ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- ToString
-
 ### Complete
 
 ```cangjie
@@ -2032,12 +2023,6 @@ public enum EventCallbackType {
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<EventCallbackType>
-- Hashable
-- ToString
 
 ### Completed
 
@@ -2210,10 +2195,6 @@ public enum Faults {
 
 **起始版本：** 21
 
-**父类型：**
-
-- ToString
-
 ### Disconnected
 
 ```cangjie
@@ -2357,11 +2338,6 @@ public enum Mode {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<Mode>
-- ToString
-
 ### Background
 
 ```cangjie
@@ -2455,11 +2431,6 @@ public enum Network {
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<Network>
-- ToString
 
 ### AnyType
 
@@ -2573,10 +2544,6 @@ public enum State {
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **起始版本：** 21
-
-**父类型：**
-
-- ToString
 
 ### Completed
 

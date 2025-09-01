@@ -2492,7 +2492,7 @@ FileIo.close(file)
 ### func setFilePointer(Int64)
 
 ```cangjie
-public func setFilePointer(filepointer: Int64): Unit
+public func setFilePointer(filePointer: Int64): Unit
 ```
 
 **功能：** 设置文件偏置指针。
@@ -2505,7 +2505,7 @@ public func setFilePointer(filepointer: Int64): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|filepointer|Int64|是|-|RandomAccessFile对象的偏置指针。|
+|fileOointer|Int64|是|-|RandomAccessFile对象的偏置指针。|
 
 **示例：**
 

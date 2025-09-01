@@ -68,7 +68,7 @@ public func endPoint(value: (Float64, Float64)): This
 public override func initial()
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建line对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

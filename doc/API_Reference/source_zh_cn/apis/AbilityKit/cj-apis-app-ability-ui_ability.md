@@ -416,7 +416,7 @@ public open func onCreate(want: Want, launchParam: LaunchParam): Unit
 
 **功能：** UIAbility创建时回调，执行初始化业务逻辑操作。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **起始版本：** 21
 
@@ -559,7 +559,7 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |want|[Want](#class-want)|是|-|需要启动的目标ServiceExtensionAbility的want信息。|
-|result|[AsyncCallback](#type-asynccallbackex)\<[RequestResult](#class-requestresult)>|是|-| 用于返回结果的回调。|
+|result|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[RequestResult](#class-requestresult)>|是|-| 用于返回结果的回调。|
 
 **异常：**
 
@@ -659,7 +659,7 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |want|[Want](#class-want)|是|-|启动Ability的want信息。|
-|callback|[AsyncCallback](#type-asynccallbackex)\<[AbilityResult](#class-abilityresult)>|是|-| 执行结果回调函数。|
+|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[AbilityResult](#class-abilityresult)>|是|-| 执行结果回调函数。|
 
 **异常：**
 
@@ -712,8 +712,8 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |want|[Want](#class-want)|是|-|启动Ability的want信息。|
-|options|[StartOptions](#class-startoptions)|是|-|启动Ability所携带的参数。|
-|callback|[AsyncCallback](#type-asynccallbackex)\<[AbilityResult](#class-abilityresult)>|是|-|执行结果回调函数。|
+|options|StartOptions|是|-|启动Ability所携带的参数。|
+|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<AbilityResult>|是|-|执行结果回调函数。|
 
 **异常：**
 

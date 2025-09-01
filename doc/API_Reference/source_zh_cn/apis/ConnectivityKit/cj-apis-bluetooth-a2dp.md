@@ -266,7 +266,7 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|回调事件类型。|
-|callback|[CallbackObject](<font color="red" face="bold">please add link</font>)|是|-|回调事件。|
+|callback|[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 
@@ -531,11 +531,6 @@ public enum CodecBitsPerSample {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<CodecBitsPerSample>
-- ToString
-
 ### CodecBitsPerSample16
 
 ```cangjie
@@ -655,11 +650,6 @@ public enum CodecChannelMode {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<CodecChannelMode>
-- ToString
-
 ### CodecChannelModeMono
 
 ```cangjie
@@ -770,11 +760,6 @@ public enum CodecSampleRate {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CodecSampleRate>
-- ToString
 
 ### CodecSampleRate176400
 
@@ -932,11 +917,6 @@ public enum CodecType {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<CodecType>
-- ToString
-
 ### CodecTypeAac
 
 ```cangjie
@@ -1054,11 +1034,6 @@ public enum PlayingState {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<PlayingState>
-- ToString
 
 ### StateNotPlaying
 

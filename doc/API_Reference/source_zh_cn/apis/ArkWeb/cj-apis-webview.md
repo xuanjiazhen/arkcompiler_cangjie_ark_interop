@@ -2403,7 +2403,7 @@ public func storeWebArchive(baseName: String, autoName: Bool, callback: AsyncCal
 |:---|:---|:---|:---|:---|
 |baseName|String|是|-|生成的离线网页存储位置，该值不能为空。|
 |autoName|Bool|是|-|决定是否自动生成文件名。如果为false，则按baseName的文件名存储；如果为true，则根据当前Url自动生成文件名，并按baseName的文件目录存储。|
-|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<String>|是|-|返回文件存储路径。|
+|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<String>|是|-|返回文件存储路径。|
 
 **异常：**
 
@@ -2657,7 +2657,7 @@ public func runJavaScript(script: String, callback: AsyncCallback<String>): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |script|String|是|-|JavaScript脚本。|
-|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<String>|是|-|回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。|
+|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<String>|是|-|回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。|
 
 **异常：**
 
@@ -2991,11 +2991,6 @@ public enum SecurityLevel <: Equatable<SecurityLevel> & ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<SecurityLevel>
-- ToString
-
 ### func !=(SecurityLevel)
 
 ```cangjie
@@ -3070,11 +3065,6 @@ public enum WebHitTestType <: Equatable<WebHitTestType> & ToString {
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- [Equatable\<WebHitTestType>]
-- ToString
 
 ### func !=(WebHitTestType)
 

@@ -306,7 +306,7 @@ calendar.setTimeZone("Asia/Shanghai")
 let timeZone = calendar.getTimeZone() // timeZone = "Asia/Shanghai"
 ```
 
-### func set(Int32, Int32, Int32, Int32, Int32, Int32)
+### func set(Int32, Int32, Int32, ?Int32, ?Int32, ?Int32)
 
 ```cangjie
 public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, minute!: ?Int32 = None, second!: ?Int32 = None): Unit

@@ -344,7 +344,7 @@ public func getBoolean(resource: AppResource): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -438,7 +438,7 @@ public func getColor(resource: AppResource): UInt32
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -823,7 +823,7 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |density|?[ScreenDensity](#enum-screendensity)|否|None|资源获取需要的屏幕密度，0表示默认屏幕密度。|
 
 **返回值：**
@@ -922,7 +922,7 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |density|?[ScreenDensity](#enum-screendensity)|否|None| **命名参数。** 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。|
 
 **返回值：**
@@ -1022,7 +1022,7 @@ public func getNumber(resource: AppResource): NumberValueType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -1226,7 +1226,7 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |num|Int64|是|-|数量值。|
 
 **返回值：**
@@ -1460,7 +1460,7 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |args|Array\<[ArgsValueType](#enum-argsvaluetype)>|是|-|格式化字符串资源参数。 <br>支持参数类型：<br /> %d、%f、%s、%%。 <br>说明：%%转译符，转译%。<br>举例：%%d格式化后为%d字符串。|
 
 **返回值：**
@@ -1557,7 +1557,7 @@ public func getStringArrayValue(resource: AppResource): Array<String>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -1576,53 +1576,6 @@ public func getStringArrayValue(resource: AppResource): Array<String>
   | 9001001 | Invalid resource ID.
  |
   | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-
-- IllegalStateException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
-### func getStringByName(String)
-
-```cangjie
-
-public func getStringByName(resName: String): String
-```
-
-**功能：** 获取资源名对应的字符串资源。
-
-**系统能力：** SystemCapability.Global.ResourceManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resName|String|是|-|资源名。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|资源名对应的字符串资源。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
  |
   | 9001006 | The resource is referenced cyclically.
  |

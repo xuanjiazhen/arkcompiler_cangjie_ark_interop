@@ -171,7 +171,7 @@ func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|回调事件类型。|
-|callback|[CallbackObject](<font color="red" face="bold">please add link</font>)|是|-|回调事件。|
+|callback|[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 
@@ -294,7 +294,7 @@ func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeP
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|传入`CONNECTIONSTATECHANGE`，表示连接状态变化事件类型。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[StateChangeParam](#class-statechangeparam)>|是|-|表示回调函数的入参。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callbackobject)\<[StateChangeParam](#class-statechangeparam)>|是|-|表示回调函数的入参。|
 
 **异常：**
 
@@ -419,11 +419,6 @@ public enum DisconnectCause {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<DisconnectCause>
-- ToString
 
 ### ConnectFailInternal
 
@@ -565,12 +560,6 @@ public enum ProfileCallbackType {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<ProfileCallbackType>
-- Hashable
-- ToString
 
 ### ConnectionStateChange
 

@@ -359,7 +359,7 @@ public class AppEventPackageHolder <: RemoteDataLite {
 public init(watcherName: String)
 ```
 
-**功能：** 类构造函数，创建订阅数据持有者实例，通过观察者名称关联到应用内已添加的观察者对象。
+**功能：** 类构造函数，创建订阅数据持有者实例，通过addWatcher添加事件观察者关联到应用内已添加的观察者对象。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -369,7 +369,7 @@ public init(watcherName: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|watcherName|String|是|-|观察者名称。|
+|watcherName|String|是|-|已通过addWatcher添加的观察者对象名称。若未通过addWatcher添加的观察者对象，则默认无数据。|
 
 ### func setSize(Int32)
 

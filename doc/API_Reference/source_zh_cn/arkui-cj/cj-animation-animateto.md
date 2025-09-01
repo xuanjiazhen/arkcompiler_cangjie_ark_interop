@@ -24,7 +24,7 @@ public func animateTo(value: AnimateParam, event: VoidCallback): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |animation|[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|设置动画效果相关参数。|
-|callback|[VoidCallback](<font color="red" face="bold">please add link</font>)|是|-|指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。|
+|callback|VoidCallback|是|-|指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。|
 
 ## class ExpectedFrameRateRange
 

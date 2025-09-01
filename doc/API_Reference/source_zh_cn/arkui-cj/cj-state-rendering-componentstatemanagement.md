@@ -30,7 +30,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract {
 **父类型：**
 
 - [ObservedComplexAbstract](./cj-state-rendering-appstatemanagement.md#class-observedcomplexabstract)
-- [CollectionEx](please add link)\<T>
+- CollectionEx\<T>
 
 ### prop size
 
@@ -124,7 +124,7 @@ public func appendAll(elements: Collection<T>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|elements|[Collection](<font color="red" face="bold">please add link</font>)\<T>|是|-|需要插入的元素的集合。|
+|elements|Collection\<T>|是|-|需要插入的元素的集合。|
 
 ### func clear()
 
@@ -215,7 +215,7 @@ public func insertAll(index: Int64, elements: Collection<T>): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |index|Int64|是|-|插入集合的目标索引。|
-|elements|[Collection](<font color="red" face="bold">please add link</font>)\<T>|是|-|要插入的 T 类型元素集合。|
+|elements|Collection\<T>|是|-|要插入的 T 类型元素集合。|
 
 ### func isEmpty()
 
@@ -272,7 +272,7 @@ public func prependAll(elements: Collection<T>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|elements|[Collection](<font color="red" face="bold">please add link</font>)\<T>|是|-|需要插入的元素的集合。|
+|elements|Collection\<T>|是|-|需要插入的元素的集合。|
 
 ### func remove(Int64)
 
@@ -316,7 +316,7 @@ public func remove(range: Range<Int64>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|range|[Range](<font color="red" face="bold">please add link</font>)\<Int64>|是|-|需要被删除的元素的范围。|
+|range|Range\<Int64>|是|-|需要被删除的元素的范围。|
 
 ### func removeIf((T) -> Bool)
 
@@ -392,7 +392,7 @@ public func set(newValue: ObservedComplexAbstract): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|newValue|[ObservedComplexAbstract](<font color="red" face="bold">please add link</font>)|是|-|ObservedComplexAbstract数据，用来设置ObservedArrayList的值。|
+|newValue|ObservedComplexAbstract|是|-|ObservedComplexAbstract数据，用来设置ObservedArrayList的值。|
 
 ### func subscribeInner(Observer)
 
@@ -411,7 +411,7 @@ public func subscribeInner(observer: Observer): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|observer|[Observer](<font color="red" face="bold">please add link</font>)|是|-|绑定的观察类。|
+|observer|Observer|是|-|绑定的观察类。|
 
 ### func unsubscribeInner(Observer)
 
@@ -430,7 +430,7 @@ public func unsubscribeInner(observer: Observer): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|observer|[Observer](<font color="red" face="bold">please add link</font>)|是|-|解绑的观察类。|
+|observer|Observer|是|-|解绑的观察类。|
 
 ### func \[](int64)
 
@@ -573,7 +573,7 @@ public init(info: String, initValue: T)
 public func createProp(info: String): ObservedProperty<T>
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建并返回当前属性的单向绑定副本。新创建的属性与原属性保持同步，但对新属性的修改不会影响原属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -583,13 +583,13 @@ public func createProp(info: String): ObservedProperty<T>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|info|String|是|-|<font color="red" face="bold">please add description</font>|
+|info|String|是|-|新创建属性的描述信息。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](#class-observedproperty)\<T>|<font color="red" face="bold">please add description</font>|
+|[ObservedProperty](#class-observedproperty)\<T>|当前属性的单向绑定副本。|
 
 ### func get()
 
@@ -617,7 +617,7 @@ public func get(): T
 public func getInner(): T
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 获取属性的内部值，不触发状态更新
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -627,7 +627,7 @@ public func getInner(): T
 
 |类型|说明|
 |:----|:----|
-|T|<font color="red" face="bold">please add description</font>|
+|T|属性的内部值|
 
 ### func set(T)
 
@@ -655,7 +655,7 @@ public open func set(newValue: T): Unit
 public func subscribeEx(observer: Observer)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 添加属性变化的观察者
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -665,7 +665,7 @@ public func subscribeEx(observer: Observer)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|observer|[Observer](<font color="red" face="bold">please add link</font>)|是|-|<font color="red" face="bold">please add description</font>|
+|observer|Observer|是|-|属性变化的观察者|
 
 ### func unsubscribeEx(Observer)
 
@@ -674,7 +674,7 @@ public func subscribeEx(observer: Observer)
 public func unsubscribeEx(observer: Observer)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 移除属性变化的观察者
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -684,7 +684,7 @@ public func unsubscribeEx(observer: Observer)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|observer|[Observer](<font color="red" face="bold">please add link</font>)|是|-|<font color="red" face="bold">please add description</font>|
+|observer|Observer|是|-|需要移除的观察者|
 
 ## 示例代码
 

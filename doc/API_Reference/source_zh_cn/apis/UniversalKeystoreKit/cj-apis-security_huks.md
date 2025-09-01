@@ -298,7 +298,7 @@ public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: By
 
 |类型|说明|
 |:----|:----|
-|[Option](please add link)\<[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|表示USER IAM服务的AuthToken的值。|
+|[Option]\<[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|表示USER IAM服务的AuthToken的值。|
 
 **异常：**
 
@@ -1084,7 +1084,7 @@ public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.Uint32Value(4
 public class HuksHandleId {}
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 加密handle的id。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

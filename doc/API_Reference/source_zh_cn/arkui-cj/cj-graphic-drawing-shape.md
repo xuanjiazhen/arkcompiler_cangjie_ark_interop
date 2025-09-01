@@ -196,7 +196,7 @@ public func fillOpacity(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|不透明度资源。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|不透明度资源。|
 
 #### func stroke(ResourceColor)
 
@@ -340,7 +340,7 @@ public func strokeOpacity(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|不透明度资源。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|不透明度资源。|
 
 #### func strokeWidth(Length)
 

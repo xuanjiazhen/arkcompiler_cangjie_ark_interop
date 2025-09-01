@@ -670,7 +670,7 @@ public var borderWidth: EdgeWidths
 
 **功能：** 表示弹窗背板的边框宽度。
 
-**类型：** [EdgeWidths](<font color="red" face="bold">please add link</font>)
+**类型：** EdgeWidths
 
 **读写能力：** 可读写
 
@@ -819,7 +819,7 @@ public init(
 |hoverModeArea|[HoverModeAreaType](#enum-hovermodeareatype)|否|HoverModeAreaType.BottomScreen|悬停态下弹窗默认展示区域。|
 |backgroundColor|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Transparent|设置弹窗背板颜色。|
 |cornerRadius|[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|否|BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp)|设置背板的圆角半径。|
-|borderWidth|[EdgeWidths](<font color="red" face="bold">please add link</font>)|否|EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp)|设置弹窗背板的边框宽度。|
+|borderWidth|EdgeWidths|否|EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp)|设置弹窗背板的边框宽度。|
 |borderColor|[EdgeColors](#class-edgecolors)|否|EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black)|设置弹窗背板的边框颜色。|
 |borderStyle|[EdgeStyles](./cj-common-types.md#class-edgestyles)|否|EdgeStyles()|设置弹窗背板的边框样式。|
 |width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|400.vp|设置弹窗背板的宽度。|
@@ -1531,7 +1531,7 @@ public enum HoverModeAreaType <: Equatable<HoverModeAreaType> {
 
 **父类型：**
 
-- [Equatable\<HoverModeAreaType>](<font color="red" face="bold">please add link</font>)
+- Equatable\<HoverModeAreaType>
 
 ### BottomScreen
 
@@ -1615,7 +1615,7 @@ public enum KeyboardAvoidMode <: Equatable<KeyboardAvoidMode> {
 
 **父类型：**
 
-- [Equatable\<KeyboardAvoidMode>](<font color="red" face="bold">please add link</font>)
+- Equatable\<KeyboardAvoidMode>
 
 ### Default
 
@@ -1699,7 +1699,7 @@ public enum ToastShowMode <: Equatable<ToastShowMode> {
 
 **父类型：**
 
-- [Equatable\<ToastShowMode>](<font color="red" face="bold">please add link</font>)
+- Equatable\<ToastShowMode>
 
 ### Default
 
@@ -1771,7 +1771,7 @@ public operator func ==(other: ToastShowMode): Bool
 public type ShowActionMenuCallBack = AsyncCallback<Int32>
 ```
 
-**功能：** [ShowActionMenuCallBack](#type-showactionmenucallback)是[AsyncCallback < Int32 >](<font color="red" face="bold">please add link</font>)类型的别名。
+**功能：** [ShowActionMenuCallBack](#type-showactionmenucallback)是[AsyncCallback < Int32 >](../apis/BasicServicesKit/cj-apis-base.md#type-asynccallback)类型的别名。
 
 ## type ShowDialogCallBack
 
@@ -1779,4 +1779,4 @@ public type ShowActionMenuCallBack = AsyncCallback<Int32>
 public type ShowDialogCallBack = AsyncCallback<Int32>
 ```
 
-**功能：** [ShowDialogCallBack](#type-showdialogcallback)是[AsyncCallback < Int32 >](<font color="red" face="bold">please add link</font>)类型的别名。
+**功能：** [ShowDialogCallBack](#type-showdialogcallback)是[AsyncCallback < Int32 >](../apis/BasicServicesKit/cj-apis-base.md#type-asynccallback)类型的别名。

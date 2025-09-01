@@ -100,7 +100,7 @@ public func onChange(callback: OnTextPickerChangeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnTextPickerChangeCallback](<font color="red" face="bold">please add link</font>)|是|-|当前选中项的文本和索引值。|
+|callback|OnTextPickerChangeCallback|是|-|当前选中项的文本和索引值。|
 
 ## 示例代码
 
