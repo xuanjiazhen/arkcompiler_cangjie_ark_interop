@@ -833,7 +833,7 @@ Inline
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import import kit.performanceAnalysisKit.*
+import kit.performanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
