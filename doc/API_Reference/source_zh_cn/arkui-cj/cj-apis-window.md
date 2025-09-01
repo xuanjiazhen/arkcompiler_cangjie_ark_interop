@@ -3270,7 +3270,7 @@ class newPage{
             Column{
                 Text("New Page")
                 Button("Untouchable").onClick{ evt
-                    => AlertDialogParamWithConfirm("Unreachable")
+                    => AlertDialogParamWithConfirm(title:"Unreachable")
                 }.margin(10.vp)
             }.margin(10.vp)
         }
@@ -3319,6 +3319,7 @@ import kit.ArkUI.*
 import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
 import ohos.callback_invoke.*
+import ohos.business_exception.BusinessException
 
 @Entry
 @Component
