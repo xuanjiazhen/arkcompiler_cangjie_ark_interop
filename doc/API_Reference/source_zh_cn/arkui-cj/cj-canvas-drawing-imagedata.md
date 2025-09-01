@@ -31,6 +31,8 @@ public prop data: Array<UInt8>
 
 **功能：** 一维数组，保存了相应的颜色数据，数据值范围为0到255。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Array\<UInt8>
 
 **读写能力：** 只读
@@ -45,6 +47,8 @@ public prop height: Int32
 
 **功能：** 矩形区域高度，默认单位为vp。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Int32
 
 **读写能力：** 只读
@@ -58,6 +62,8 @@ public prop width: Int32
 ```
 
 **功能：** 矩形区域宽度，默认单位为vp。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** Int32
 

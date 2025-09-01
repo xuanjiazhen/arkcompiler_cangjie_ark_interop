@@ -937,7 +937,7 @@ public init(
 ## class Window
 
 ```cangjie
-public class Window <: RemoteDataLite {}
+public class Window {}
 ```
 
 **功能：** 当前窗口实例，窗口管理器管理的基本单元。

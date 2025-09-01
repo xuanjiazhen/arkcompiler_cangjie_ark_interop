@@ -28,6 +28,8 @@ public mut prop rotateX: Float64
 
 **功能：** 水平倾斜系数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Float64
 
 **读写能力：** 可读写
@@ -41,6 +43,8 @@ public mut prop rotateY: Float64
 ```
 
 **功能：** 垂直倾斜系数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** Float64
 
@@ -56,6 +60,8 @@ public mut prop scaleX: Float64
 
 **功能：** 水平缩放系数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Float64
 
 **读写能力：** 可读写
@@ -69,6 +75,8 @@ public mut prop scaleY: Float64
 ```
 
 **功能：** 垂直缩放系数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** Float64
 
@@ -84,6 +92,8 @@ public mut prop translateX: Float64
 
 **功能：** 水平平移距离。默认单位：vp。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Float64
 
 **读写能力：** 可读写
@@ -97,6 +107,8 @@ public mut prop translateY: Float64
 ```
 
 **功能：** 垂直平移距离。默认单位：vp。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** Float64
 
