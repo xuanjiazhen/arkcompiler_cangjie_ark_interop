@@ -58,7 +58,7 @@
 
     ```cangjie
     // main_ability.cj
-    import import kit.performanceAnalysisKit.Hilog
+    import kit.performanceAnalysisKit.Hilog
     import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
     import kit.ArkData.{ Preferences}
     import ohos.data.preferences.Option as PreferencesOptions
