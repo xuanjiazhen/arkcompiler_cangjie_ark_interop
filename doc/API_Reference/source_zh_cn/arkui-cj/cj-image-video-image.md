@@ -794,7 +794,7 @@ public operator func ==(other: ImageRenderMode): Bool
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.__GenerateResource__
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -807,11 +807,11 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "png", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                     // 加载gif格式图片
                     Image(@r(app.media.list))
                     .width(110).height(110).margin(15)
-                    .overlay(value: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "gif", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 }
                 Row() {
                     // 加载svg格式图片
@@ -819,13 +819,13 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "svg", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                     // 加载jpg格式图片
                     Image(@r(app.media.startIcon_jpg))
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "jpg", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 }
             }
             .height(320)
@@ -848,7 +848,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -896,7 +895,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -918,7 +916,6 @@ class EntryView {
             Image(@r(app.media.startIcon))
             .width(100)
             .height(100)
-            .colorFilter(this.DrawingColorFilterFirst)
             .onClick{
                     evt =>
                     this.DrawingColorFilterFirst = colorFilter
@@ -927,7 +924,6 @@ class EntryView {
             .width(110)
             .height(110)
             .margin(15)
-            .colorFilter(this.DrawingColorFilterSecond)
             .onClick{
                     evt =>
                     this.DrawingColorFilterSecond = blueColor
@@ -949,7 +945,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.__GenerateResource__
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -962,17 +958,17 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
                     .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.TOP_START)
+                    .objectFit(ImageFit.Auto)
                     // 加载gif格式图片
                     Image(@r(app.media.list))
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
                     .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.BOTTOM_START)
+                    .objectFit(ImageFit.Auto)
                 }
                 Row() {
                     // 加载svg格式图片
@@ -980,17 +976,17 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
                     .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.TOP_END)
+                    .objectFit(ImageFit.Auto)
                     // 加载jpg格式图片
                     Image(@r(app.media.startIcon_jpg))
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(value: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0.0, y: 20.0))
                     .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.CENTER)
+                    .objectFit(ImageFit.None)
                 }
             }
             .height(320)
@@ -1013,7 +1009,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -1052,7 +1047,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1091,7 +1085,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1125,7 +1118,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1160,7 +1152,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -1174,13 +1165,13 @@ class EntryView {
                 .height(100)
                 .objectFit(ImageFit.Contain)
                 .borderWidth(1)
-            Text("fillColor传入Color.ORANGE")
+            Text("fillColor传入Color.Gray")
             Image(@r(app.media.svg))
                 .width(100)
                 .height(100)
                 .objectFit(ImageFit.Contain)
                 .borderWidth(1)
-                .fillColor(Color.ORANGE)
+                .fillColor(Color.Gray)
             Text("fillColor传入Color.BLUE")
             Image(@r(app.media.svg))
                 .width(100)
