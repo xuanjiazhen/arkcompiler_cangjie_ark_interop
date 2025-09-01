@@ -676,6 +676,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -685,10 +686,10 @@ class EntryView {
     @State var space: Int64 = 8
 
     @State var values1: Array<SelectOption> = [
-            SelectOption(value: value: "aaa", icon: @r(app.media.startIcon)),
-            SelectOption(value: value: "bbb", icon: @r(app.media.startIcon)),
-            SelectOption(value: value: "ccc", icon: @r(app.media.startIcon)),
-            SelectOption(value: value: "ddd", icon: @r(app.media.startIcon))]
+            SelectOption(value: "aaa", icon: @r(app.media.startIcon)),
+            SelectOption(value: "bbb", icon: @r(app.media.startIcon)),
+            SelectOption(value: "ccc", icon: @r(app.media.startIcon)),
+            SelectOption(value: "ddd", icon: @r(app.media.startIcon))]
 
     @State var arrow: ArrowPosition = ArrowPosition.End
 
