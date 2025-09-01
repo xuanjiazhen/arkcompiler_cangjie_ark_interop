@@ -28,7 +28,7 @@ public class AppEventFilter {
 }
 ```
 
-**功能：** 提供了过滤应用事件的参数选项。
+**功能：** 提供设置Watcher的订阅过滤条件的参数选项。用于在事件观察者中设置事件过滤条件，确保只有满足过滤条件的事件才会被监听处理。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -40,7 +40,7 @@ public class AppEventFilter {
 public var domain: String
 ```
 
-**功能：** 需要订阅的事件领域。
+**功能：** 	需要订阅的事件领域。可以是系统事件领域（hiAppEvent.domain.OS）或开发者在使用Write接口时传入的自定义事件信息（AppEventInfo）中的事件领域。       
 
 **类型：** String
 
@@ -369,7 +369,7 @@ public init(watcherName: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|watcherName|String|是|-|观察者名称。|
+|watcherName|String|是|-|已通过addWatcher添加的事件观察者名称。若未通过addWatcher添加，则默认无数据。|
 
 ### func setSize(Int32)
 
@@ -408,6 +408,16 @@ public func setSize(size: Int32): Unit
 import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 import kit.PerformanceAnalysisKit.Hilog
+
+// 添加数据观察者“Watcher1”，订阅监听系统事件
+HiAppEvent.addWatcher(Watcher(
+    "Watcher1",
+    appEventFilters: [
+        AppEventFilter(
+
+        )
+    ]
+))
 
 let holder = AppEventPackageHolder("watcher2")
 holder.setSize(100)
