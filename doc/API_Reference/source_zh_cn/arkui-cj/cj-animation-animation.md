@@ -48,6 +48,7 @@ public func animationStart(value: AnimateParam): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 let animateOpt1 = AnimateParam(
     duration: 1200,

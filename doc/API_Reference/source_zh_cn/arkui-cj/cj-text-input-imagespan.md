@@ -415,22 +415,26 @@ class EntryView {
 
     func build() {
         Column(space: 5){
-            Image(@r(app.media.startIcon))
-            .width(100)
-            .height(100)
-            .colorFilter(this.DrawingColorFilterFirst)
-            .onClick{
-                    evt =>
-                    this.DrawingColorFilterFirst = colorFilter
+            Text {
+                ImageSpan(@r(app.media.startIcon))
+                .width(100)
+                .height(100)
+                .colorFilter(this.DrawingColorFilterFirst)
+                .onClick{
+                        evt =>
+                        this.DrawingColorFilterFirst = colorFilter
+                }
             }
-            Image(@r(app.media.startIcon))
-            .width(110)
-            .height(110)
-            .margin(15)
-            .colorFilter(this.DrawingColorFilterSecond)
-            .onClick{
-                    evt =>
-                    this.DrawingColorFilterSecond = blueColor
+            Text {
+                ImageSpan(@r(app.media.startIcon))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .colorFilter(this.DrawingColorFilterSecond)
+                .onClick{
+                        evt =>
+                        this.DrawingColorFilterSecond = blueColor
+                }
             }
         }
     }
