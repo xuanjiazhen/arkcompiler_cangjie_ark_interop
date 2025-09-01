@@ -750,7 +750,7 @@ class EntryView {
     var videoSrc: AppResource = @rawfile("video.mp4")
     var previewUri: AppResource = @r(app.media.preview)
     var controller: VideoController = VideoController()
-    @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+    @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
     @State var isAutoPlay: Bool = false
     @State var showControls: Bool = true
 
@@ -770,19 +770,19 @@ class EntryView {
             Row() {
                 Button("start")
                     .onClick({
-                        => this.controller.start() // 开始播放
+                        evt => this.controller.start() // 开始播放
                     })
                     .margin(5)
                     .id("start")
                 Button("pause")
                     .onClick({
-                        => this.controller.pause() // 暂停播放
+                        evt => this.controller.pause() // 暂停播放
                     })
                     .margin(5)
                     .id("pause")
                 Button("stop")
                     .onClick({
-                        => this.controller.stop() // 暂停播放
+                        evt => this.controller.stop() // 暂停播放
                            this.controller.exitFullscreen()
                         }
                     )
@@ -792,19 +792,19 @@ class EntryView {
             Row() {
                 Button("Fullscreen")
                     .onClick({
-                        => this.controller.requestFullscreen(true)
+                        evt => this.controller.requestFullscreen(true)
                     })
                     .margin(5)
                     .id("Fullscreen")
                 Button("at 10s")
                     .onClick({
-                        => this.controller.setCurrentTime(10, SeekMode.ClosestKeyframe)
+                        evt => this.controller.setCurrentTime(10, SeekMode.ClosestKeyframe)
                     })
                     .margin(5)
                     .id("at 10s")
                 Button("exitFull")
                     .onClick({
-                        => this.controller.exitFullscreen()
+                        evt => this.controller.exitFullscreen()
                     })
                     .margin(5)
                     .id("exitFull")
@@ -812,19 +812,19 @@ class EntryView {
             Row() {
                 Button("rate 0.75")
                     .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_0_75_X
+                        evt => this.curRate = PlaybackSpeed.SpeedForward075X
                     })
                     .margin(5)
                     .id("rate 0.75")
                 Button("rate 1")
                     .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_1_00_X
+                        evt => this.curRate = PlaybackSpeed.SpeedForward100X
                     })
                     .margin(5)
                     .id("rate 1")
                 Button("rate 2")
                     .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_2_00_X
+                        evt => this.curRate = PlaybackSpeed.SpeedForward200X
                     })
                     .margin(5)
                     .id("rate 2")
