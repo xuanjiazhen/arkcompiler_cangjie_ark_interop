@@ -1,4 +1,4 @@
-# CircleShape
+# Circle
 
 用于绘制圆形的组件。
 
@@ -43,7 +43,7 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 public override func initial()
 ```
 
-**功能：** 创建circleshape对象。
+**功能：** 创建对象
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

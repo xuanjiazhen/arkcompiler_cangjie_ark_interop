@@ -521,7 +521,7 @@ public func onSubmit(callback: (EnterKeyType) -> Unit): This
 ### class TextInputController
 
 ```cangjie
-public class TextInputController {
+public class TextInputController <: RemoteDataLite {
     public init()
 }
 ```
