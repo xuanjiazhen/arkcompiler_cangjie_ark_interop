@@ -20,8 +20,6 @@
 .
 ├── api                  # 仓颉互操作 API 的公共仓代码
 ├── doc                   # 仓颉文档，包括api参考、应用开发指南、仓颉编程语言用户手册
-├── mocks                 # sdk 构建时 ffi mock 桩
-├── generate_mock.py      # 生成 mock 的构建脚本
 ├── bundle.json
 └── LICENSE
 ```

@@ -19,8 +19,6 @@ For interop scenarios, Cangjie provides ark_interop libraries to achieve interop
 .
 ├── api                  # Public repository code for Cangjie Interop API
 ├── doc                   # Cangjie documentation including API reference, development guide and user manual
-├── mocks                 # FFI mock stubs during SDK build
-├── generate_mock.py      # Build script for generating mocks
 ├── bundle.json
 └── LICENSE
 ```
