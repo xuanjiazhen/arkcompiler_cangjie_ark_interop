@@ -3392,7 +3392,7 @@ class newPage{
 }
 ```
 
-![img1](./../../比对/main/arkui-cj/figures/window_touchable_is_false.png)
+![img1](figures/window_touchable_is_false.png)
 
 ### 示例2（主窗口监听键盘高度变化事件）
 

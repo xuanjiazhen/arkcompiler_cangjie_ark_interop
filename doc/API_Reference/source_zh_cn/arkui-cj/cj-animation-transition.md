@@ -882,7 +882,7 @@ class EntryView {
 }
 ```
 
-![transition](./../../比对/main/arkui-cj/figures/transition_api.gif)
+![transition](figures/transition_api.gif)
 
 ### 示例代码2（使用不同接口实现图片出现消失）
 
