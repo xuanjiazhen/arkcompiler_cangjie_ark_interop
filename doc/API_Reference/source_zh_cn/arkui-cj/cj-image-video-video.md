@@ -505,11 +505,11 @@ public func stop(): Unit
 
 ```cangjie
 public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
-    | Speed_Forward_0_75_X
-    | Speed_Forward_1_00_X
-    | Speed_Forward_1_25_X
-    | Speed_Forward_1_75_X
-    | Speed_Forward_2_00_X
+    | SpeedForward075X
+    | SpeedForward100X
+    | SpeedForward125X
+    | SpeedForward175X
+    | SpeedForward200X
     | ...
 }
 ```
@@ -524,10 +524,10 @@ public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
 
 - Equatable\<PlaybackSpeed>
 
-#### Speed_Forward_0_75_X
+#### SpeedForward075X
 
 ```cangjie
-Speed_Forward_0_75_X
+SpeedForward075X
 ```
 
 **功能：** 0.75倍速播放。
@@ -536,10 +536,10 @@ Speed_Forward_0_75_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_00_X
+#### SpeedForward100X
 
 ```cangjie
-Speed_Forward_1_00_X
+SpeedForward100X
 ```
 
 **功能：** 1倍速播放。
@@ -548,10 +548,10 @@ Speed_Forward_1_00_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_25_X
+#### SpeedForward125X
 
 ```cangjie
-Speed_Forward_1_25_X
+SpeedForward125X
 ```
 
 **功能：** 1.25倍速播放。
@@ -560,10 +560,10 @@ Speed_Forward_1_25_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_75_X
+#### SpeedForward175X
 
 ```cangjie
-Speed_Forward_1_75_X
+SpeedForward175X
 ```
 
 **功能：** 1.75倍速播放。
@@ -572,10 +572,10 @@ Speed_Forward_1_75_X
 
 **起始版本：** 21
 
-#### Speed_Forward_2_00_X
+#### SpeedForward200X
 
 ```cangjie
-Speed_Forward_2_00_X
+SpeedForward200X
 ```
 
 **功能：** 2倍速播放。
