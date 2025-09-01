@@ -19,9 +19,11 @@
 ```text
 .
 ├── api                  # 仓颉互操作 API 的公共仓代码
-├── doc                   # 仓颉文档，包括api参考、应用开发指南、仓颉编程语言用户手册
-├── bundle.json
-└── LICENSE
+├── doc                  # 仓颉文档，包括 api 参考、应用开发指南、仓颉编程语言用户手册
+    ├── API_Reference    # 仓颉 api 参考
+    └── Dev_Guide        # 仓颉开发指南
+    └── release-notes    # 仓颉发布说明
+    └── User_Manual      # 仓颉用户手册
 ```
 
 ## 约束
@@ -53,11 +55,11 @@
     ./build.sh --product-name ohos-sdk --ccache --build-target out/sdk/gen/build/ohos/sdk:cangjie
     ```
 
-构建产物一般在： out/generic_generic_arm_64only/hisi_newbaltimore_hmscore_standard/packages/hmos-sdk目录
+构建产物一般在： out/generic_generic_arm_64only/hisi_newbaltimore_hmscore_standard/packages/hmos-sdk目录。
 
 ## 使用场景
 
-包含仓颉- ArkTS 互操作库，用于仓颉- ArkTS 互操作。json 库/ APILevel / cffi 库为基础功能库，提供给仓颉 api /仓颉 ui 等子系统等公共能力.
+包含仓颉- ArkTS 互操作库，用于仓颉- ArkTS 互操作。json 库/ APILevel / cffi 库为基础功能库，提供给仓颉 api /仓颉 ui 等子系统等公共能力。
 
 在 OpenHarmony 应用开发中，存在使用仓颉与 ArkTS 混合开发的诉求，例如以下场景：
 
@@ -75,7 +77,7 @@
 
 互操作开发指南请参见[互操作开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/cangjie_arkts_overview.md)。
 
-互操作 API 指导请参见[互操作 API 指导](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)
+互操作 API 指导请参见[互操作 API 指导](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)。
 
 ## 参与贡献
 
