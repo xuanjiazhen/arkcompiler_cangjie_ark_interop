@@ -65,58 +65,6 @@ class EntryView {
 
 对话框通过PromptAction方法获取到PromptAction对象，支持在回调或开发者自定义类中使用。
 
-创建并显示对话框，对话框响应后异步返回选中按钮在buttons数组中的索引。
-
- <!-- run -->
-
-```cangjie
-// xxx.cj
-package ohos_app_cangjie_entry
-
-import ohos.base.*
-import ohos.arkui.component.*
-import ohos.arkui.state_management.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.*
-import ohos.prompt_action.ButtonInfo
-import ohos.prompt_action.ShowDialogOptions
-import ohos.arkui.ui_context.*
-import ohos.business_exception.BusinessException
-import kit.PerformanceAnalysisKit.*
-
-@Entry
-@Component
-class EntryView {
-    @State var index0: Int32 = 0
-    func build() {
-        Column {
-            Button("showDialog").onClick(
-                {
-                    evt =>
-                    let buttons: Array<ButtonInfo> = [
-                        ButtonInfo(text: "button1", color: Color.Black),
-                        ButtonInfo(text: "button2", color: Color.Black)]
-                    getUIContext().getPromptAction().showDialog(ShowDiaglogOptions(title: "showDialog Title Info", message: "Message Info", buttons: buttons),
-                        callback: {
-                            err: Option<BusinessException>, i: Option<Int32> => try {
-                                match (err) {
-                                    case Some(e) => Hilog.info(0, "cangjie", "error: errcode is ${e.code}")
-                                    case _ => index0 = i.getOrThrow()
-                                }
-                            } catch (e: Exception) {
-                                Hilog.info(0, "cangjie", e.toString())
-                            }
-                        })
-                }
-            )
-        }.width(100.percent).padding(top: 5)
-    }
-}
-
-```
-
-![image](figures/UIShowDialog.gif)
-
 ## 选择器弹窗（PickerDialog）
 
 选择器弹窗通常用于在用户进行某些操作（如点击按钮）时显示特定的信息或选项。
@@ -159,8 +107,8 @@ import kit.PerformanceAnalysisKit.*
 class EntryView {
     func build() {
         Column() {
-            Button('showActionSheet').onClick {
-                let confirm: ActionSheetButtonOptions = ActionSheetButtonOptions("Confirm button", {=> Hilog.info(0, "cangjie", "Get Alert Dialog handled")},
+            Button('showActionSheet').onClick { e =>
+                let confirm: ActionSheetButtonOptions = ActionSheetButtonOptions(value: "Confirm button", action: {=> Hilog.info(0, "cangjie", "Get Alert Dialog handled")},
                     defaultFocus: true, style: DialogButtonStyle.Default)
                 let sheets: Array<SheetInfo> = [
                     SheetInfo(title: "apple", action: {=> Hilog.info(0, "cangjie", "apple")}),

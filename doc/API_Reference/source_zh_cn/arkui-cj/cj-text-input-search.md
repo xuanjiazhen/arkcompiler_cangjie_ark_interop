@@ -72,7 +72,7 @@ public func copyOption(value: CopyOptions): This
 
 ```cangjie
 
-public func placeholderColor(color: ResourceColor): This
+public func placeholderColor(value: ResourceColor): This
 ```
 
 **功能：** 设置placeholder文本颜色。
@@ -85,14 +85,14 @@ public func placeholderColor(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|目标颜色。<br>初始值：0x99000000。|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|目标颜色。<br>初始值：0x99000000。|
 
 ### func placeholderFont(Length, FontWeight, FontStyle, ResourceStr)
 
 ```cangjie
 
 public func placeholderFont(
-    size!: Length = DEFAULT_SIZE.fp,
+    size!: Length = 16.fp,
     weight!: FontWeight = FontWeight.W400,
     style!: FontStyle = FontStyle.Normal,
     family!: ResourceStr = ""
@@ -138,7 +138,7 @@ public func searchButton(value: ResourceStr): This
 ```cangjie
 
 public func textFont(
-    size!: Length = DEFAULT_SIZE.fp,
+    size!: Length = 16.fp,
     weight!: FontWeight = FontWeight.W400,
     style!: FontStyle = FontStyle.Normal,
     family!: ResourceStr = ""
@@ -262,7 +262,7 @@ public func onSubmit(callback: (String) -> Unit): This
 ### class SearchController
 
 ```cangjie
-public class SearchController {
+public class SearchController <: RemoteDataLite & TextContentControllerBase{
 
 
     public init()
@@ -324,7 +324,7 @@ class EntryView {
 
     let controller = SearchController()
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center)) {
+        Flex(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
           Text(submitValue)
           Text(changeValue)
           Search(value: "", placeholder: "Type to search", controller: controller)

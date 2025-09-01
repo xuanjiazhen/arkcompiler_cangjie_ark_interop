@@ -473,7 +473,7 @@ class EntryView {
                     .width(200)
                     .height(70)
                     .fontColor(Color.WHITE)
-                    .onClick({ =>
+                    .onClick({ evt =>
                         FocusControl.requestFocus("testButton2")
                     })
                     .backgroundColor(0xff2787d9)
@@ -522,7 +522,7 @@ class EntryView {
                             .width(165)
                             .height(40)
                             .fontColor(Color.WHITE)
-                        Row(5) {
+                        Row(space: 5) {
                             Button()
                                 .width(80)
                                 .height(40)
@@ -532,7 +532,7 @@ class EntryView {
                                 .height(40)
                                 .fontColor(Color.WHITE)
                         }
-                        Row(5) {
+                        Row(space: 5) {
                             Button()
                                 .width(80)
                                 .height(40)
@@ -552,7 +552,7 @@ class EntryView {
                             .width(165)
                             .height(40)
                             .fontColor(Color.WHITE)
-                        Row(5) {
+                        Row(space: 5) {
                             Button()
                                 .width(80)
                                 .height(40)
@@ -563,7 +563,7 @@ class EntryView {
                                 .fontColor(Color.WHITE)
                                 .focusScopePriority('ColumnScope1',priority: FocusPriority.PRIOR)  // Column1 gets focus first when focused
                         }
-                        Row(5) {
+                        Row(space: 5) {
                             Button()
                                 .width(80)
                                 .height(40)
@@ -590,7 +590,7 @@ class EntryView {
                         .width(165)
                         .height(40)
                         .fontColor(Color.WHITE)
-                    Row(5) {
+                    Row(space: 5) {
                         Button()
                             .width(80)
                             .height(40)
@@ -605,7 +605,7 @@ class EntryView {
                         .height(40)
                         .fontColor(Color.WHITE)
                         .focusScopePriority('ColumnScope2',priority: FocusPriority.PREVIOUS)  // Gets focus when Column2 is focused
-                    Row(5) {
+                    Row(space: 5) {
                         Button()
                             .width(80)
                             .height(40)
@@ -619,7 +619,7 @@ class EntryView {
                         .width(165)
                         .height(40)
                         .fontColor(Color.WHITE)
-                    Row(5) {
+                    Row(space: 5) {
                         Button()
                             .width(80)
                             .height(40)

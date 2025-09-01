@@ -687,9 +687,14 @@ public func assertComponentExist(on: On): Unit
 
 import ohos.base.*
 import kit.TestKit.*
+import ohos.business_exception.BusinessException
 
 let driver: Driver = Driver.create()
-driver.assertComponentExist(On().text("next page"))
+try {
+    driver.assertComponentExist(On().text("next page"))
+} catch (e: BusinessException) {
+    Hilog.error(0, "UITest", "The component `text(\"next page\")` does not exist")
+}
 ```
 
 ### func click(Int32, Int32)
@@ -1297,11 +1302,16 @@ public func inputText(p: Point, text: String): Unit
 
 import ohos.base.*
 import kit.TestKit.*
+import ohos.business_exception.BusinessException
 
 let driver: Driver = Driver.create()
-let text: Component = driver.findComponent(On().onType("TextInput")).getOrThrow()
-let point = text.getBoundsCenter()
-driver.inputText(point, "123")
+try {
+    let text: Component = driver.findComponent(On().onType("TextInput")).getOrThrow()
+    let point = text.getBoundsCenter()
+    driver.inputText(point, "123")
+} catch (e: BusinessException) {
+    Hilog.error(0, "UITest", "The component `TextInput` does not exist")
+}
 ```
 
 ### func longClick(Int32, Int32)
@@ -3571,6 +3581,7 @@ public func close(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3591,6 +3602,8 @@ public func focus(): Unit
 ```
 
 **功能：** 让窗口获焦。
+
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -3873,6 +3886,8 @@ public func maximize(): Unit
 
 **功能：** 将窗口最大化。适用于支持窗口最大化操作的窗口。
 
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
@@ -3888,6 +3903,7 @@ public func maximize(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3909,6 +3925,8 @@ public func minimize(): Unit
 
 **功能：** 将窗口最小化。适用于支持窗口最小化操作的窗口。
 
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
@@ -3924,6 +3942,7 @@ public func minimize(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3944,6 +3963,8 @@ public func moveTo(x: Int32, y: Int32): Unit
 ```
 
 **功能：** 将窗口移动到目标点。适用于支持移动的窗口。
+
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -4013,6 +4034,7 @@ public func resize(wide: Int32, height: Int32, direction: ResizeDirection): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -4034,6 +4056,8 @@ public func resume(): Unit
 
 **功能：** 将窗口恢复到之前的窗口模式。
 
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
@@ -4049,6 +4073,7 @@ public func resume(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -4070,6 +4095,8 @@ public func split(): Unit
 
 **功能：** 将窗口模式切换成分屏模式。适用于支持切换分屏模式的窗口。
 
+**说明** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
@@ -4085,6 +4112,7 @@ public func split(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie

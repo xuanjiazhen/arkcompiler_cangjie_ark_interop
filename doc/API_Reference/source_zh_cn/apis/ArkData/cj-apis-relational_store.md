@@ -499,7 +499,7 @@ public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
 ## class RdbPredicates
 
 ```cangjie
-public class RdbPredicates {
+public class RdbPredicates <: RemoteDataLite {
 
 
     public init(name: String)
@@ -1435,7 +1435,7 @@ public func orderByDesc(field: String): RdbPredicates
 ## class RdbStore
 
 ```cangjie
-public class RdbStore {}
+public class RdbStore <: RemoteDataLite {}
 ```
 
 **功能：** 提供管理关系数据库（RDB）方法的接口。
@@ -1810,7 +1810,7 @@ public func emit(event: String): Unit
 
 ```cangjie
 
-public func executeSql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType>()): Unit
+public func executeSql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType> = []): Unit
 ```
 
 **功能：**  执行包含指定参数但不返回值的SQL语句。
@@ -1958,7 +1958,7 @@ Possible causes: Insert failed or the updated data does not exist.
 
 ```cangjie
 
-public func off(event: String, interProcess: Bool, callback!: ?Callback0Argument = None): Unit
+public func off(event: String, interProcess: Bool, observer!: ?Callback0Argument = None): Unit
 ```
 
 **功能：** 取消数据变更的事件监听。
@@ -1973,7 +1973,7 @@ public func off(event: String, interProcess: Bool, callback!: ?Callback0Argument
 |:---|:---|:---|:---|:---|
 |event|String|是|-|取消订阅事件名称。|
 |interProcess|Bool|是|-|指定是进程间还是本进程取消订阅。true：进程间。false：本进程。|
-|callback|?[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|否|None|取消指定监听回调对象。|
+|observer|?[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|否|None|取消指定监听回调对象。|
 
 **异常：**
 
@@ -1997,7 +1997,7 @@ public func off(event: String, interProcess: Bool, callback!: ?Callback0Argument
 
 ```cangjie
 
-public func on(event: String, interProcess: Bool, callback: Callback0Argument): Unit
+public func on(event: String, interProcess: Bool, observer: Callback0Argument): Unit
 ```
 
 **功能：** 注册数据库的进程内或者进程间事件监听。当调用[emit](#func-emitstring)接口时，将调用回调。
@@ -2012,7 +2012,7 @@ public func on(event: String, interProcess: Bool, callback: Callback0Argument): 
 |:---|:---|:---|:---|:---|
 |event|String|是|-|订阅事件名称。|
 |interProcess|Bool|是|-|指定是进程间还是本进程订阅。<br/> true：进程间。<br/> false：本进程。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数对象。|
+|observer|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数对象。|
 
 **异常：**
 
@@ -2036,7 +2036,7 @@ public func on(event: String, interProcess: Bool, callback: Callback0Argument): 
 
 ```cangjie
 
-public func query(predicates: RdbPredicates, columns: Array<String>): ResultSet
+public func query(predicates: RdbPredicates, columns!: Array<String> = []): ResultSet
 ```
 
 **功能：** 根据指定条件查询数据库中的数据。
@@ -2050,7 +2050,7 @@ public func query(predicates: RdbPredicates, columns: Array<String>): ResultSet
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |predicates|[RdbPredicates](#class-rdbpredicates)|是|-|RdbPredicates的实例对象指定的查询条件。|
-|columns|Array\<String>|是|-|表示要查询的列。如果值为空，则查询应用于所有列。|
+|columns|Array\<String>|否|-|表示要查询的列。如果值为空，则查询应用于所有列。|
 
 **返回值：**
 
@@ -2078,7 +2078,7 @@ public func query(predicates: RdbPredicates, columns: Array<String>): ResultSet
 
 ```cangjie
 
-public func querySql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType>()): ResultSet
+public func querySql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType> = []): ResultSet
 ```
 
 **功能：** 根据指定SQL语句查询数据库中的数据。
@@ -2321,7 +2321,7 @@ Possible causes: Insert failed or the updated data does not exist.
 ## class ResultSet
 
 ```cangjie
-public class ResultSet {}
+public class ResultSet <: RemoteDataLite {}
 ```
 
 **功能：** 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -3688,7 +3688,7 @@ public init(securityLevel: SecurityLevel, name!: String = "",
     customDir!: String = "", rootDir!: String = "",
     autoCleanDirtyData!: Bool = true, allowRebuild!: Bool = false,
     isReadOnly!: Bool = false, pluginLibs!: Array<String> = Array<String>(),
-    cryptoParam!: CryptoParam, vector!: Bool = false,
+    cryptoParam = CryptoParam([]), vector!: Bool = false,
     tokenizer!: Tokenizer = Tokenizer.NoneTokenizer, persist!: Bool = true,
     enableSemanticIndex!: Bool = false)
 ```
@@ -4233,7 +4233,7 @@ public enum Origin {
 
 **功能：** 表示数据来源。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4245,7 +4245,7 @@ Cloud
 
 **功能：** 表示云端同步的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4257,7 +4257,7 @@ Local
 
 **功能：** 表示本地数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4269,7 +4269,7 @@ Remote
 
 **功能：** 表示端端同步的数据。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4321,111 +4321,6 @@ SyncInProgress
 ```
 
 **功能：** 表示正在端云同步过程中。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-## enum ProgressCode
-
-```cangjie
-public enum ProgressCode {
-    | Success
-    | UnknownError
-    | NetworkError
-    | CloudDisabled
-    | LockedByOthers
-    | RecordLimitExceeded
-    | NoSpaceForAsset
-    | ...
-}
-```
-
-**功能：** 表示端云同步过程的状态。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### CloudDisabled
-
-```cangjie
-CloudDisabled
-```
-
-**功能：** 表示云端不可用。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### LockedByOthers
-
-```cangjie
-LockedByOthers
-```
-
-**功能：** 表示有其他设备正在端云同步，本设备无法进行端云同步。请确保无其他设备占用云端资源后，再使用本设备进行端云同步任务。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### NetworkError
-
-```cangjie
-NetworkError
-```
-
-**功能：** 表示端云同步过程遇到网络错误。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### NoSpaceForAsset
-
-```cangjie
-NoSpaceForAsset
-```
-
-**功能：** 表示云空间剩余空间小于待同步的资产大小。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### RecordLimitExceeded
-
-```cangjie
-RecordLimitExceeded
-```
-
-**功能：** 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### Success
-
-```cangjie
-Success
-```
-
-**功能：** 表示端云同步过程成功。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### UnknownError
-
-```cangjie
-UnknownError
-```
-
-**功能：** 表示端云同步过程遇到未知错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

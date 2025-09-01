@@ -178,7 +178,7 @@ public class EntryView {
 List() {
     ListItem() {
         Row() {
-            Image(@r(app.media.iconE))
+            Image(@r(app.media.startIcon))
                 .width(40)
                 .height(40)
                 .margin(10)
@@ -187,7 +187,7 @@ List() {
     }
     ListItem() {
         Row() {
-            Image(@r(app.media.iconF))
+            Image(@r(app.media.startIcon))
                 .width(40)
                 .height(40)
                 .margin(10)
@@ -225,7 +225,7 @@ public class Contact {
 @Entry
 @Component
 public class EntryView {
-    private var contacts: Array<Contact> = [Contact('小明', @r(app.media.iconE)), Contact('小红', @r(app.media.iconF))]
+    private var contacts: Array<Contact> = [Contact('小明', @r(app.media.startIcon)), Contact('小红', @r(app.media.startIcon))]
     func build() {
         List() {
             ForEach(this.contacts, itemGeneratorFunc: { item: Contact, _: Int64 =>
@@ -346,18 +346,16 @@ public class EntryView {
     func build() {
         List() {
             ListItemGroup(
-                ListItemGroupParams(header: {=> bind(this.itemHead, this)("a")}),
-                { =>
+                header: {=> bind(this.itemHead, this)("a")}){
+                    =>
                     // 循环渲染分组A的ListItem
                 }
-            )
 
             ListItemGroup(
-                ListItemGroupParams(header: {=> bind(this.itemHead, this)("b")}),
-                { =>
+                header: {=> bind(this.itemHead, this)("b")}) {
+                    =>
                     // 循环渲染分组A的ListItem
                 }
-            )
         }
     }
 }
@@ -413,8 +411,8 @@ public class ContactGroup {
 public class EntryView {
     // 定义分组联系人数据集合contactsGroups数组
     private var contactsGroups : Array<ContactGroup> = [
-            ContactGroup('A', [Contact('艾佳', @r(app.media.iconA)),Contact('安安', @r(app.media.iconB)),Contact('Angela', @r(app.media.iconC))]),
-            ContactGroup('B', [Contact('白叶', @r(app.media.iconD)),Contact('伯明', @r(app.media.iconE))])
+            ContactGroup('A', [Contact('艾佳', @r(app.media.startIcon)),Contact('安安', @r(app.media.startIcon)),Contact('Angela', @r(app.media.startIcon))]),
+            ContactGroup('B', [Contact('白叶', @r(app.media.startIcon)),Contact('伯明', @r(app.media.startIcon))])
         ]
 
     @Builder
@@ -427,22 +425,24 @@ public class EntryView {
           .padding(5)
     }
 
+    @Builder
+    func footertest(itemGroup: ContactGroup) {
+        ForEach(itemGroup.contacts, itemGeneratorFunc: { item: Contact, _:Int64 =>
+                ListItem() {
+                    // ...
+                }
+            }
+        )
+    }
+
     func build() {
         List() {
             // 循环渲染ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
             ForEach(this.contactsGroups, itemGeneratorFunc: { itemGroup: ContactGroup, _: Int64 =>
-                    ListItemGroup(ListItemGroupParams(header: {=> bind(this.itemHead, this)(itemGroup.title)}), { =>
-                                // 循环渲染ListItem
-                                ForEach(itemGroup.contacts, itemGeneratorFunc: { item: Contact, _:Int64 =>
-                                        ListItem() {
-                                            // ...
-                                        }
-                                    },
-                                    keyGeneratorFunc: {item: Contact, idx: Int64 => idx.toString()}
-                                )
-                            })
+                    ListItemGroup(header: {=> bind(this.itemHead, this)(itemGroup.title)},
+                    footer: { => bind(this.footertest, this)(itemGroup)}) {}
                 },
-                keyGeneratorFunc: {itemGroup: ContactGroup, idx: Int64 => idx.toString()}
+                keyGeneratorFunc: {item: ContactGroup, idx: Int64 => idx.toString()}
             )
         }.sticky(StickyStyle.Header) // 设置吸顶，实现粘性标题效果
     }
@@ -470,7 +470,7 @@ var listScroller: Scroller = Scroller()
 
 
 ```cangjie
-Stack(Alignment.Bottom) {
+Stack(alignContent: Alignment.Bottom) {
     List(space: 20, scroller: this.listScroller) {
         // ...
     }
@@ -511,13 +511,13 @@ import ohos.resource_manager.*
 @Component
 public class EntryView {
     let alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K','L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    @State var selectedIndex: UInt32 = 0;
+    @State var selectedIndex: Int32 = 0;
     private var listScroller:Scroller = Scroller()
 
     func build() {
-        Stack(Alignment.End) {
+        Stack(alignContent: Alignment.End) {
             List(scroller: this.listScroller) {}
-                .onScrollIndex({ firstIndex, scrollState =>
+                .onScrollIndex({ firstIndex, scrollState, _ =>
                     // 根据列表滚动到的索引值，重新计算对应联系人索引栏的位置this.selectedIndex
                 })
 
@@ -558,7 +558,7 @@ ListItem的[swipeAction属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-s
           .height(20)
       }
       .onClick({ event =>
-        // this.messages为列表数据源，可根据实际场景构造。点击后从数据源删除指定数    据项。
+        // this.messages为列表数据源，可根据实际场景构造。点击后从数据源删除指定数据项。
         this.message.remove(index)
       })
     }
@@ -593,10 +593,12 @@ ListItem的[swipeAction属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-s
 ```cangjie
 ListItem(){
   Badge(
-    BadgeParams(count: 1, style: BadgeStyle(color: 0xfa2a2d, badgeSize: 16),
-        position: BadgePosition.RightTop),{ =>
-        Image(@r(app.media.startIcon))
-    })
+    count: 1, style: BadgeStyle(color: 0xfa2a2d, badgeSize: 16),
+        position: BadgePosition.RightTop,
+        child: { =>
+            Image(@r(app.media.startIcon))
+        }
+    )
 }
 ```
 
@@ -708,7 +710,7 @@ List() {
         ItemGroupInfo(4, 'tradeInfo', '交易与资产信息', []),
         ItemGroupInfo(5, 'otherInfo', '其他资料', [])
     ]
-    @State var expandedItems: ObservedArray<Float32> = ObservedArray<Float32>([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    @State var expandedItems: ObservedArrayList<Float32> = ObservedArrayList<Float32>([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 
     func build() {
         Column() {
@@ -722,7 +724,7 @@ List() {
                                 footer: {=>}, space: 0, style: ListItemGroupStyle.CARD)) {
                                     if (this.expandedItems[itemGroup.index] == 180.0) {
                                         ForEach(itemGroup.children, itemGeneratorFunc: { item: ItemInfo, _: Int64 =>
-                                            ListItem(ListItemOptions(style: ListItemStyle.CARD)) {
+                                            ListItem() {
                                                     Row() {
                                                         Text(item.name)
                                                         Blank()
@@ -768,7 +770,7 @@ List() {
                 .height(30)
                 .width(30)
                 .animationStart(AnimateParam(curve: Curve.EaseInOut, duration: 500))
-                .rotate(this.expandedItems[itemGroup.index])
+                .rotate(x: this.expandedItems[itemGroup.index])
                 .animationEnd()
         }
         .width(100.percent)

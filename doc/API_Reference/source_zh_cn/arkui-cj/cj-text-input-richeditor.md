@@ -89,7 +89,7 @@ public func aboutToIMEInput(callback: Callback<RichEditorInsertValue, Bool>): Th
 ```cangjie
 
 public func bindSelectionMenu(
-    spantype!: RichEditorSpanType = RichEditorSpanType.TEXT,
+    spantype!: RichEditorSpanType = RichEditorSpanType.Text,
     content!: CustomBuilder,
     responseType!: ResponseType = ResponseType.LongPress,
     options!: SelectionMenuOptions
@@ -106,7 +106,7 @@ public func bindSelectionMenu(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|spantype|[RichEditorSpanType](#enum-richeditorspantype)|否|RichEditorSpanType.TEXT| **命名参数。** 指定选择菜单的类型。|
+|spantype|[RichEditorSpanType](#enum-richeditorspantype)|否|RichEditorSpanType.Text| **命名参数。** 指定选择菜单的类型。|
 |content|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-| **命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 |responseType|[ResponseType](#enum-responsetype)|否|ResponseType.LongPress| **命名参数。** 指定选择菜单的响应类型。|
 |options|[SelectionMenuOptions](#func-bindselectionmenutextspantype----unit-textresponsetype-int32int32---unit----unit)|是|-| **命名参数。** 指定选择菜单的选项。|
@@ -352,7 +352,7 @@ public init(
 ### class PasteEvent
 
 ```cangjie
-public class PasteEvent {}
+public class PasteEvent <: RemoteDataLite {}
 ```
 
 **功能：** 定义用户粘贴事件。
@@ -631,7 +631,7 @@ public init(
 ```cangjie
 public class RichEditorImageSpanStyleResult {
     public var size:(Float64, Float64) =(0.0, 0.0)
-    public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.CENTER
+    public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.Center
     public var objectFit: ImageFit = ImageFit.Auto
     public var layoutStyle: RichEditorLayoutStyle = RichEditorLayoutStyle()
 }
@@ -694,7 +694,7 @@ public var size:(Float64, Float64) =(0.0, 0.0)
 #### var verticalAlign
 
 ```cangjie
-public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.CENTER
+public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.Center
 ```
 
 **功能：** 表示图片垂直对齐方式。
@@ -742,6 +742,7 @@ public var insertOffset: Int32
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+
 **起始版本：** 21
 
 #### var insertValue
@@ -782,6 +783,16 @@ public init(
 |:---|:---|:---|:---|:---|
 |insertOffset|Int32|是|-|插入的文本偏移位置。|
 |insertValue|String|是|-|插入的文本内容。|
+
+### interface RichEditorSpanResult
+
+```cangjie
+public interface RichEditorSpanResult {}
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### class RichEditorSelection
 
@@ -1414,7 +1425,7 @@ public operator func ==(other: RichEditorDeleteDirection): Bool
 ### enum RichEditorSpanType
 
 ```cangjie
-public enum RichEditorSpanType <: Equatable<RichEditorSpanType> {
+public enum RichEditorSpanType {
     | TEXT
     | IMAGE
     | MIXED
@@ -1619,6 +1630,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -1679,8 +1691,8 @@ class EntryView {
                                 fontColor: Color(0XFF1298),
                                 fontSize: 20.fp,
                                 fontStyle: FontStyle.Italic,
-                                decoration: TextDecoration(
-                                    `type`: TextDecorationType.Overline,
+                                decoration: TextDecorationOption(
+                                    decorationType: TextDecorationType.Overline,
                                     color: Color(0X12FF98)
                                 ),
                             )
@@ -1703,25 +1715,6 @@ class EntryView {
             }
 
             Row {
-                Button("getSpans")
-                .onClick {
-                     evt =>
-                    let array = controller.getSpans(start: 0, end: 10)
-                    for(i in 0..array.size) {
-                        match(array[i].spanType) {
-                            case TEXT =>
-                                let textResult = array[i].textResult.getOrThrow()
-                                Hilog.info(0, "AppLogCj", "RichEditor textResult. value: ${textResult.value}")
-                            case IMAGE =>
-                                let imageResult = array[i].imageResult.getOrThrow()
-                                Hilog.info(0, "AppLogCj", "RichEditor ImageResult. size: ${imageResult.size[0].toString()} - ${imageResult.size[1].toString()}")
-                            case _ => return
-                        }
-                    }
-                }.width(400.px).height(150.px)
-            }
-
-            Row {
                 Button("updateParagraphStyle")
                 .onClick {
                     evt =>
@@ -1737,9 +1730,9 @@ class EntryView {
             }
 
             RichEditor(controller)
-            .customKeyboard(builder: bind(builder, this))
+            .customKeyboard(value: bind(builder, this))
             .bindSelectionMenu(
-                spantype: RichEditorSpanType.TEXT,
+                spantype: RichEditorSpanType.Text,
                 content: bind(builder, this),
                 responseType: ResponseType.LongPress,
                 options: SelectionMenuOptions(onAppear: { => Hilog.info(0, "AppLogCj", "SelectionMenuOptions onAppear")}, onDisappear: { => Hilog.info(0, "AppLogCj", "SelectionMenuOptions onDisappear")})

@@ -95,7 +95,7 @@ class EntryView {
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
-                Row(5) {
+                Row(space: 5) {
                     Row()
                     .width(30.percent)
                     .height(50)

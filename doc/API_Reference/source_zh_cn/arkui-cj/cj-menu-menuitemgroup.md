@@ -37,7 +37,7 @@ public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit =
 ### init(CustomBuilder, CustomBuilder, () -> Unit)
 
 ```cangjie
-public init(header!: AppResource, footer!: AppResource, child!: () -> Unit = {=>})
+public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建一个用来展示菜单MenuItem的分组。

@@ -11,7 +11,7 @@ import kit.ConnectivityKit.*
 ## enum ProfileConnectionState
 
 ```cangjie
-public enum ProfileConnectionState <: Equatable<ProfileConnectionState> & ToString {
+public enum ProfileConnectionState {
     | StateDisconnected
     | StateConnecting
     | StateConnected

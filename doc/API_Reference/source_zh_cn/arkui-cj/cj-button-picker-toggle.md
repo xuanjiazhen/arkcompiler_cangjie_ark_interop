@@ -122,7 +122,7 @@ public func onChange(callback: (Bool) -> Unit): This
 ### enum ToggleType
 
 ```cangjie
-public enum ToggleType <: Equatable<ToggleType> {
+public enum ToggleType {
     | CheckboxType
     | SwitchType
     | ButtonType
@@ -240,7 +240,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(15) {
+        Column(space: 15) {
             Text("type: Switch")
             .fontSize(12)
             .fontColor(0xcccccc)
@@ -250,14 +250,14 @@ class EntryView {
                 .selectedColor(0xed6f21)
                 .switchPointColor(0xe5ffffff)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
 
                 Toggle(ToggleType.Switch, isOn: true)
                 .selectedColor(0x39a2db)
                 .switchPointColor(0xe5ffffff)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
             }
 
@@ -270,14 +270,14 @@ class EntryView {
                 .size(width: 28, height: 28)
                 .selectedColor(0xed6f21)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
 
                 Toggle(ToggleType.Checkbox, isOn: true)
                 .size(width: 28, height: 28)
                 .selectedColor(0x39a2db)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
             }
 
@@ -292,7 +292,7 @@ class EntryView {
                 }
                 .selectedColor(0xed6f21)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
 
                 Toggle(ToggleType.Button, true) {
@@ -301,7 +301,7 @@ class EntryView {
                 }
                 .selectedColor(0x39a2db)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
             }
         }

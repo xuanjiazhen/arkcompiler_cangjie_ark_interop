@@ -209,9 +209,8 @@ class EntryView {
             .onClick(
                 {
                     evt => getUIContext().animateTo(
-                        AnimateParam(duration: DURATION
-
-                        NTERVAL * (Int32(ITEM_COUNTS) - 1), curve: Curve.Friction),
+                        AnimateParam(duration: DURATION,
+                        delay: INTERVAL * (Int32(ITEM_COUNTS) - 1), curve: Curve.Friction),
                         {
                             => this.isGridShow = !this.isGridShow
                         }

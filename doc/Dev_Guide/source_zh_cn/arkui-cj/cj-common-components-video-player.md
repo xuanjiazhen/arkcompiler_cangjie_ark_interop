@@ -114,16 +114,13 @@ class VideoPlayer {
         Column() {
             Video(src: this.innerResource, previewUri: this.previewUris, controller: this.controller)
                 .onUpdate({ value => // 更新事件回调
-                    AppLog.info("video update.")
+                    Hilog.info(0, "cangjie", video update.")
                 })
                 .onPrepared({ value => // 准备事件回调
-                    AppLog.info("video prepared.")
+                    Hilog.info(0, "cangjie", video prepared.")
                 })
                 .onError({ => // 失败事件回调
-                    AppLog.info("video error.")
-                })
-                .onStop({ => // 停止事件回调
-                    AppLog.info("video stopped.")
+                    Hilog.info(0, "cangjie", video error.")
                 })
         }
     }
@@ -150,9 +147,9 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   @Entry
   @Component
   class EntryView {
-      @State var videoSrc: AppResource = @rawfile("video.mp4")
-      @State var previewUri: AppResource = @r(app.media.preview)
-      @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+      @State var videoSrc: AppResource = @r(app.media.startIcon) // 需要传入正确的视频数据源
+      @State var previewUri: AppResource = @r(app.media.startIcon)
+      @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
 
       func build() {
           Row() {
@@ -182,9 +179,9 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   @Entry
   @Component
   class EntryView {
-      @State var videoSrc: AppResource = @rawfile("video.mp4")
-      @State var previewUri: AppResource = @r(app.media.preview)
-      @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+      @State var videoSrc: AppResource = @r(app.media.startIcon) // 需要传入正确的视频数据源
+      @State var previewUri: AppResource = @r(app.media.startIcon)
+      @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
       @State var isAutoPlay: Bool = false
       @State var showControls: Bool = true
       @State var sliderStartTime: String = ""
@@ -199,10 +196,10 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
                       .controls(false)
                       .autoPlay(true)
                       .onPrepared({
-                              value => this.durationTime = value
+                              value => this.durationTime = value.duration
                           })
                       .onUpdate({
-                              value => this.currentTime = value
+                              value => this.currentTime = value.time
                           })
                   Row() {
                       Text("${this.currentTime}s")

@@ -1,4 +1,4 @@
-# Rect
+# RectShape
 
 矩形绘制组件。
 
@@ -149,14 +149,16 @@ public func radiusWidth(value: Length): This
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.ArkUI.*
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("normal").fontSize(11).fontColor(0xCCCCCC).width(90.percent)
             // 绘制90% * 50的矩形
             Column(space: 5) {
@@ -167,7 +169,7 @@ class EntryView {
                 Rect()
                 .width(90.percent)
                 .height(50)
-                .fillOpacity(0)
+                .fillOpacity(0.0)
                 .stroke(Color.Red)
                 .strokeWidth(3)
 

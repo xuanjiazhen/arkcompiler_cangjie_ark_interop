@@ -574,32 +574,38 @@ RoundRectangle
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
+
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween) {
             Text("Common button").fontSize(9).fontColor(0xCCCCCC)
 
-            Flex(FlexParams(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween)) {
+            Flex(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween) {
                 Button("Ok").shape(ButtonType.Normal).stateEffect(true).borderRadius(8)
-                    .width(90).role(ButtonRole.NORMAL)
+                    .width(90)
                 Button(ButtonOptions()) {
                     Row() {
                         LoadingProgress().width(20).height(20).color(Color.White)
                         Text("loading").fontSize(12).fontColor(0xffffff).margin(left: 5, right: 12)
                     }.alignItems(VerticalAlign.Center).width(90).height(40)
-                }.shape(ButtonType.Normal).stateEffect(true).borderRadius(8).width(90).role(ButtonRole.NORMAL)
+                }.shape(ButtonType.Normal).stateEffect(true).borderRadius(8).width(90)
                 Button("Disable").shape(ButtonType.Normal).stateEffect(true).opacity(0.5)
-                    .borderRadius(8).width(90).role(ButtonRole.ERROR)
+                    .borderRadius(8).width(90)
                 }
 
             Text("Capsule button").fontSize(9).fontColor(0xCCCCCC)
 
-            Flex(FlexParams(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween)) {
+            Flex(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween) {
                 Button("Ok").shape(ButtonType.Capsule).stateEffect(true).borderRadius(8)
-                    .width(90).role(ButtonRole.NORMAL)
+                    .width(90)
                 Button(ButtonOptions()) {
                     Row() {
                         LoadingProgress().width(20).height(20).color(Color.White)
@@ -607,19 +613,19 @@ class EntryView {
                     }.alignItems(VerticalAlign.Center).width(90).height(40)
                 }.shape(ButtonType.Capsule).stateEffect(true).borderRadius(8).width(90)
                 .onClick { evt =>
-                    nativeLog("The login is successful")
-                }.role(ButtonRole.NORMAL)
+                    loggerInfo("The login is successful")
+                }
                 Button("Disable").shape(ButtonType.Capsule).stateEffect(true).opacity(0.5)
-                    .borderRadius(8).width(90).role(ButtonRole.ERROR)
+                    .borderRadius(8).width(90)
             }
 
             Text("Circle button").fontSize(9).fontColor(0xCCCCCC)
 
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
                 Button("YES").shape(ButtonType.Circle).stateEffect(true).width(55)
-                    .height(55).role(ButtonRole.NORMAL)
+                    .height(55)
                 Button("NO").shape(ButtonType.Capsule).stateEffect(true).width(55)
-                    .height(55).margin(left: 20).role(ButtonRole.ERROR).fontSize(15)
+                    .height(55).margin(left: 20).fontSize(15)
                 }
         }.height(400).padding(left: 35, right: 35, top: 35)
     }
@@ -665,48 +671,7 @@ class EntryView {
 
 ![Button2](figures/button_2.gif)
 
-### 示例3（设置按钮文本样式）
-
-该示例通过配置labelStyle自定义按钮文本的显示样式。
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    @State var txt: String = 'overflowTextOverlengthTextOverflow.Clip'
-    func build() {
-        Column() {
-            Button(this.txt)
-                .width(210)
-                .height(100)
-                .backgroundColor(0x317aff)
-                .labelStyle(overflow: TextOverflow.Clip,
-                    maxLines: 1,
-                    minFontSize: 20.fp,
-                    maxFontSize: 20.fp,
-                    font: Fonts(
-                        size: 20.fp,
-                        weight: FontWeight.Bolder,
-                        family: 'cursive',
-                        style: FontStyle.Italic
-                    )
-                )
-                .fontSize(40)
-        }.height(100.percent).width(100.percent).justifyContent(FlexAlign.Center)
-    }
-}
-```
-
-![Button3](figures/button_3.png)
-
-### 示例4（设置不同尺寸按钮的重要程度）
+### 示例3（设置不同尺寸按钮的重要程度）
 
 该示例通过配置controlSize、buttonStyle实现不同尺寸按钮的重要程度。
 
@@ -723,19 +688,19 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State var txt: String = 'overflowTextOverlengthTextOverflow.Clip'
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween) {
             Text('Normal size button').fontSize(9).fontColor(0xCCCCCC)
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
-                Button('Emphasized').buttonStyle(ButtonStyleMode.EMPHASIZED)
-                Button('Normal').buttonStyle(ButtonStyleMode.NORMAL)
-                Button('Textual').buttonStyle(ButtonStyleMode.TEXTUAL)
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
+                Button('Emphasized').buttonStyle(ButtonStyleMode.Emphasized)
+                Button('Normal').buttonStyle(ButtonStyleMode.Normal)
+                Button('Textual').buttonStyle(ButtonStyleMode.Textual)
             }
 
             Text('Small size button').fontSize(9).fontColor(0xCCCCCC)
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
-                Button('Emphasized'). controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.EMPHASIZED)
-                Button('Normal').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.NORMAL)
-                Button('Textual').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.TEXTUAL)
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
+                Button('Emphasized', ButtonOptions(controlSize: ControlSize.Small)).buttonStyle(ButtonStyleMode.Emphasized)
+                Button('Normal', ButtonOptions(controlSize: ControlSize.Small)).buttonStyle(ButtonStyleMode.Normal)
+                Button('Textual', ButtonOptions(controlSize: ControlSize.Small)).buttonStyle(ButtonStyleMode.Textual)
             }
         }.height(400).padding(left: 35, right: 35, top: 35)
     }
@@ -744,7 +709,7 @@ class EntryView {
 
 ![Button4](figures/button_4.png)
 
-### 示例5（设置按钮的角色）
+### 示例4（设置按钮的角色）
 
 该示例通过配置role实现按钮的角色。
 
@@ -761,19 +726,19 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State var txt: String = 'overflowTextOverlengthTextOverflow.Clip'
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween) {
             Text('Role is Normal button').fontSize(9).fontColor(0xCCCCCC)
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
-                Button('Emphasized').buttonStyle(ButtonStyleMode.EMPHASIZED).role(ButtonRole.NORMAL)
-                Button('Normal').buttonStyle(ButtonStyleMode.NORMAL).role(ButtonRole.NORMAL)
-                Button('Textual').buttonStyle(ButtonStyleMode.TEXTUAL).role(ButtonRole.NORMAL);
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
+                Button('Emphasized', ButtonOptions(role: ButtonRole.Normal)).buttonStyle(ButtonStyleMode.Emphasized)
+                Button('Normal', ButtonOptions(role: ButtonRole.Normal)).buttonStyle(ButtonStyleMode.Normal)
+                Button('Textual', ButtonOptions(role: ButtonRole.Normal)).buttonStyle(ButtonStyleMode.Textual);
             }
 
             Text('Role is Error button').fontSize(9).fontColor(0xCCCCCC)
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
-                Button('Emphasized').buttonStyle(ButtonStyleMode.EMPHASIZED).role(ButtonRole.ERROR)
-                Button('Normal').buttonStyle(ButtonStyleMode.NORMAL).role(ButtonRole.ERROR)
-                Button('Textual').buttonStyle(ButtonStyleMode.TEXTUAL).role(ButtonRole.ERROR);
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
+                Button('Emphasized', ButtonOptions(role: ButtonRole.Error)).buttonStyle(ButtonStyleMode.Emphasized)
+                Button('Normal', ButtonOptions(role: ButtonRole.Error)).buttonStyle(ButtonStyleMode.Normal)
+                Button('Textual', ButtonOptions(role: ButtonRole.Error)).buttonStyle(ButtonStyleMode.Textual);
             }
         }.height(400).padding(left: 35, right: 35, top: 35)
     }

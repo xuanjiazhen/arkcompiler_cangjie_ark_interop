@@ -4,7 +4,7 @@
 
 半模态页面适用于展示简单的任务或信息面板，例如，个人信息、文本简介、分享面板、创建日程、添加内容等。若需展示可能影响父视图的半模态页面，半模态支持配置为非模态交互形式。
 
-半模态在不同宽度的设备上存在不同的形态能力，开发者对不同宽度的设备上有不同的形态诉求请参见([preferType](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-sheettransition.md#class-sheetoptions))属性。可以使用bindSheet构建半模态转场效果，详见[模态转场](./cj-modal-transition.md)。对于复杂或者冗长的用户流程，建议考虑其他的转场方式替代半模态。如[全模态转场](./cj-contentcover-page.md)和[Navigation转场](./cj-navigation-transition.md)。
+半模态在不同宽度的设备上存在不同的形态能力，开发者对不同宽度的设备上有不同的形态诉求请参见([preferType](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-sheettransition.md#class-sheetoptions))属性。可以使用bindSheet构建半模态转场效果，详见[模态转场](./cj-modal-transition.md)。对于复杂或者冗长的用户流程，建议考虑其他的转场方式替代半模态。如[全模态转场](./cj-contentcover-page.md)。
 
 ## 使用约束
 
@@ -40,9 +40,9 @@
 .nestedScroll(
     NestedScrollOptions(
         // 可滚动组件往末尾端滚动时的嵌套滚动选项，手势向上
-        NestedScrollMode.PARENT_FIRST,
+        NestedScrollMode.ParentFirst,
         // 可滚动组件往起始端滚动时的嵌套滚动选项，手势向下
-        NestedScrollMode.SELF_FIRST,
+        NestedScrollMode.SelfFirst,
     )
 )
 ```
@@ -90,8 +90,8 @@ class EntryView {
             // 第二步：设置滚动组件的嵌套滚动属性
             .nestedScroll(
                 NestedScrollOptions(
-                    NestedScrollMode.PARENT_FIRST,
-                    NestedScrollMode.SELF_FIRST,
+                    NestedScrollMode.ParentFirst,
+                    NestedScrollMode.SelfFirst,
                 )
             )
 
@@ -112,14 +112,14 @@ class EntryView {
                 .width(90.percent)
                 .height(80.vp)
                 .onClick({
-                    => this.isShowSheet = !this.isShowSheet
+                    evt => this.isShowSheet = !this.isShowSheet
                 })
                 .bindSheet(
                     this.isShowSheet,
                     this.SheetBuilder,
                     options: SheetOptions(
-                        detents: [SheetSize.MEDIUM, SheetSize.LARGE, FIT_CONTENT],
-                        preferType: SheetType.BOTTOM,
+                        detents: [SheetSize.Medium, SheetSize.Large, FitContent],
+                        preferType: SheetType.Bottom,
                         title: {=> Text("嵌套滚动场景")}
                     )
                 )
@@ -150,7 +150,7 @@ onWillDismiss: {
                 primaryButton: AlertDialogButtonOptions(
                     value: 'cancel',
                     action: {
-                        => AppLog.info("Callback when the cancel button is clicked")
+                        => Hilog.info(0, "cangjie", Callback when the cancel button is clicked")
                     }
                 ),
                 secondaryButton: AlertDialogButtonOptions(
@@ -160,12 +160,12 @@ onWillDismiss: {
                         => {
                             // 第四步：上述第三步逻辑触发的时候，调用dismiss()关闭半模态
                             dismissSheetAction.dismiss(),
-                            AppLog.info("Callback when the ok button is clicked")
+                            Hilog.info(0, "cangjie", Callback when the ok button is clicked")
                         }
                     }
                 ),
                 cancel: {
-                    => AppLog.info("AlertDialog Closed callbacks")
+                    => Hilog.info(0, "cangjie", AlertDialog Closed callbacks")
                 }
             )
         )

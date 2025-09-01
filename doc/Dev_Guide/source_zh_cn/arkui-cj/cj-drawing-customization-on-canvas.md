@@ -262,25 +262,34 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
 
   import kit.ArkUI.*
   import ohos.arkui.state_macro_manage.*
+  
+  @Entry
+  @Component
+  class EntryView {
+      private let settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
+      private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
-  Canvas(this.context)
-      .width(100.percent)
-      .height(100.percent)
-      .backgroundColor(0XF5DC62)
-      .onReady(
-          {
-              =>
-              //创建一个径向渐变色的CanvasGradient对象
-              let grad = this.context.createRadialGradient(200.0, 200.0, 50.0, 200.0, 200.0, 200.0)
-              //为CanvasGradient对象设置渐变断点值，包括偏移和颜色
-              grad.addColorStop(0.0, 0XE87361)
-              grad.addColorStop(0.5, 0XFFFFF0)
-              grad.addColorStop(1.0, 0XBDDB69)
-              //用CanvasGradient对象填充矩形
-              this.context.fillStyle(grad)
-              this.context.fillRect(0.0, 0.0, 400.0, 400.0)
-          }
-      )
+      func build() {
+            Canvas(this.context)
+                .width(100.percent)
+                .height(100.percent)
+                .backgroundColor(0XF5DC62)
+                .onReady(
+                    {
+                        =>
+                        //创建一个径向渐变色的CanvasGradient对象
+                        let grad = this.context.createRadialGradient(200.0, 200.0, 50.0, 200.0, 200.0, 200.0)
+                        //为CanvasGradient对象设置渐变断点值，包括偏移和颜色
+                        grad.addColorStop(0.0, 0XE87361)
+                        grad.addColorStop(0.5, 0XFFFFF0)
+                        grad.addColorStop(1.0, 0XBDDB69)
+                        //用CanvasGradient对象填充矩形
+                        this.context.fillStyle(grad)
+                        this.context.fillRect(0.0, 0.0, 400.0, 400.0)
+                    }
+                )
+        }
+  }
   ```
 
   ![Canvas6](figures/Canvas6.jpg)

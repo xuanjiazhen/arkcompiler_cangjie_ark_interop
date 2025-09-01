@@ -60,7 +60,9 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   ```cangjie
   package ohos_app_cangjie_entry
 
-  import kit.ArkUI.*
+  import ohos.base.*
+  import ohos.arkui.component.*
+  import ohos.arkui.state_management.*
   import ohos.arkui.state_macro_manage.*
 
   @Entry
@@ -117,7 +119,9 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   ```cangjie
   package ohos_app_cangjie_entry
 
-  import kit.ArkUI.*
+  import ohos.base.*
+  import ohos.arkui.component.*
+  import ohos.arkui.state_management.*
   import ohos.arkui.state_macro_manage.*
 
   @Entry
@@ -147,7 +151,9 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   ```cangjie
   package ohos_app_cangjie_entry
 
-  import kit.ArkUI.*
+  import ohos.base.*
+  import ohos.arkui.component.*
+  import ohos.arkui.state_management.*
   import ohos.arkui.state_macro_manage.*
 
   @Entry
@@ -195,7 +201,7 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   Path()
       .width(100)
       .height(100)
-      .fillOpacity(0)
+      .fillOpacity(0.0)
       .commands('M150 0 L300 300 L0 300 Z')
       .stroke(Color.Red)
   ```
@@ -209,7 +215,7 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   Path()
       .width(100)
       .height(100)
-      .fillOpacity(0)
+      .fillOpacity(0.0)
       .commands('M150 0 L300 300 L0 300 Z')
       .stroke(Color.Red)
       .strokeWidth(10)
@@ -217,66 +223,6 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   ```
 
   ![strokeopacity](figures/strokeopacity.jpg)
-
-- 通过strokeLineJoin可以设置线条拐角绘制样式。拐角绘制样式分为Bevel(使用斜角连接路径段)、Miter(使用尖角连接路径段)、Round(使用圆角连接路径段)。
-
-
-  ```cangjie
-  Polyline()
-      .width(100)
-      .height(100)
-      .fillOpacity(0)
-      .stroke(Color.Red)
-      .strokeWidth(8)
-      .points([(20, 0), (0, 100), (100, 90)])
-      // 设置折线拐角处为圆弧
-      .strokeLineJoin(LineJoinStyle.Round)
-  ```
-
-  ![strokeLineJoin](figures/strokeLineJoin.jpg)
-
-- 通过strokeMiterLimit设置斜接长度与边框宽度比值的极限值。斜接长度表示外边框外边交点到内边交点的距离，边框宽度即strokeWidth属性的值。strokeMiterLimit取值需大于等于1，且在strokeLineJoin属性取值LineJoinStyle.Miter时生效。
-
- <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-  import std.math.sin
-
-  @Entry
-  @Component
-  class EntryView {
-      func build() {
-          Row() {
-              Polyline()
-                  .width(100)
-                  .height(100)
-                  .fillOpacity(0)
-                  .stroke(Color.Red)
-                  .strokeWidth(10)
-                  .points([(20, 0), (20, 100), (100, 100)])
-                  // 设置折线拐角处为尖角
-                  .strokeLineJoin(LineJoinStyle.Miter)
-                  // 设置斜接长度与线宽的比值
-                  .strokeMiterLimit(1.0/sin(45.0))
-              Polyline()
-                  .width(100)
-                  .height(100)
-                  .fillOpacity(0)
-                  .stroke(Color.Red)
-                  .strokeWidth(10)
-                  .points([(20, 0), (20, 100), (100, 100)])
-                  .strokeLineJoin(LineJoinStyle.Miter)
-                  .strokeMiterLimit(1.42)
-          }
-      }
-  }
-  ```
-
-  ![drawing1](figures/drawing1.jpg)
 
 - 通过antiAlias设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
@@ -286,7 +232,7 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   Circle()
       .width(150)
       .height(200)
-      .fillOpacity(0)
+      .fillOpacity(0.0)
       .strokeWidth(5)
       .stroke(Color.Black)
   ```
@@ -299,7 +245,7 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   Circle()
       .width(150)
       .height(200)
-      .fillOpacity(0)
+      .fillOpacity(0.0)
       .strokeWidth(5)
       .stroke(Color.Black)
       .antiAlias(false)
@@ -325,7 +271,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Shape() {
                 Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
             }
@@ -334,7 +280,7 @@ class EntryView {
             .stroke(Color.Red)
             .strokeWidth(3)
             .strokeLineJoin(LineJoinStyle.Miter)
-            .strokeMiterLimit(5)
+            .strokeMiterLimit(5.0)
         }.width(100.percent).margin( top: 15 )
     }
 }
@@ -358,14 +304,14 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             //绘制一个直径为150的圆
             Circle( width: 150, height: 150 )
             //绘制一个直径为150、线条为红色虚线的圆环
             Circle()
                 .width(150)
                 .height(200)
-                .fillOpacity(0)
+                .fillOpacity(0.0)
                 .strokeWidth(3)
                 .stroke(Color.Red)
                 .strokeDashArray([1, 2])

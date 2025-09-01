@@ -123,9 +123,9 @@ class EntryView {
     @State var fruits: Array<String> = ["apple", "banana", "orange", "peach"]
     func build() {
         Column {
-            TextPicker(this.fruits, selected: this.select)
-            .onChange({result: TextPickerResData =>
-                    nativeLog("Picker item changed, value: ${result.index}")
+            TextPicker(range: this.fruits, selected: this.select)
+            .onChange({value: String, index: UInt32  =>
+                    loggerInfo("Picker item changed, value: ${index}")
             })
         }
         .width(100.percent)

@@ -1470,7 +1470,7 @@ public operator func ==(other: AdaptiveColor): Bool
 ## enum Alignment
 
 ```cangjie
-public enum Alignment <: Equatable<Alignment> {
+public enum Alignment {
     | TopStart
     | Top
     | TopEnd
@@ -2255,24 +2255,6 @@ public operator func ==(other: BorderStyle): Bool
 |:----|:----|
 |Bool|如果两个枚举值相等，则返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举类型对应的数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举类型对应的数值。|
-
 ## enum CanvasDirection
 
 ```cangjie
@@ -2609,28 +2591,10 @@ public operator func ==(other: ColoringStrategy): Bool
 |:----|:----|
 |Bool|如果两个枚举值相等，则返回true，否则返回false。|
 
-### func getValue()
+## enum GlobalCompositeOperation
 
 ```cangjie
-public func getValue(): String
-```
-
-**功能：** 获取枚举类型对应的数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举类型对应的数值。|
-
-## enum CompositeOperation
-
-```cangjie
-public enum CompositeOperation <: Equatable<CompositeOperation> {
+public enum GlobalCompositeOperation {
     | SourceOver
     | SourceAtop
     | SourceIn
@@ -2787,46 +2751,6 @@ Xor
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-### func !=(CompositeOperation)
-
-```cangjie
-public operator func !=(other: CompositeOperation): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CompositeOperation](#enum-compositeoperation)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
-
-### func ==(CompositeOperation)
-
-```cangjie
-public operator func ==(other: CompositeOperation): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CompositeOperation](#enum-compositeoperation)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值相等，则返回true，否则返回false。|
 
 ## enum ContentType
 
@@ -3755,24 +3679,6 @@ public operator func ==(other: DialogAlignment): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
 ## enum DialogButtonStyle
 
 ```cangjie
@@ -4358,7 +4264,7 @@ public operator func ==(other: FinishCallbackType): Bool
 ## enum FlexAlign
 
 ```cangjie
-public enum FlexAlign <: Equatable<FlexAlign> {
+public enum FlexAlign {
     | Start
     | Center
     | End
@@ -4494,7 +4400,7 @@ public operator func ==(other: FlexAlign): Bool
 ## enum FlexDirection
 
 ```cangjie
-public enum FlexDirection <: Equatable<FlexDirection> {
+public enum FlexDirection {
     | Row
     | Column
     | RowReverse
@@ -4604,7 +4510,7 @@ public operator func ==(other: FlexDirection): Bool
 ## enum FlexWrap
 
 ```cangjie
-public enum FlexWrap <: Equatable<FlexWrap> {
+public enum FlexWrap {
     | NoWrap
     | Wrap
     | WrapReverse
@@ -4698,120 +4604,10 @@ public operator func ==(other: FlexWrap): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-## enum FoldStatus
-
-```cangjie
-public enum FoldStatus <: Equatable<FoldStatus> {
-    | FOLD_STATUS_UNKNOWN
-    | FOLD_STATUS_EXPANDED
-    | FOLD_STATUS_FOLDED
-    | FOLD_STATUS_HALF_FOLDED
-    | ...
-}
-```
-
-**功能：** 表示折叠设备折叠状态。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<FoldStatus>
-
-### FOLD_STATUS_EXPANDED
-
-```cangjie
-FOLD_STATUS_EXPANDED
-```
-
-**功能：** 表示设备当前折叠状态为完全展开。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### FOLD_STATUS_FOLDED
-
-```cangjie
-FOLD_STATUS_FOLDED
-```
-
-**功能：** 表示设备当前折叠状态为折叠。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### FOLD_STATUS_HALF_FOLDED
-
-```cangjie
-FOLD_STATUS_HALF_FOLDED
-```
-
-**功能：** 表示设备当前折叠状态为半折叠。半折叠指完全展开和折叠之间的状态。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### FOLD_STATUS_UNKNOWN
-
-```cangjie
-FOLD_STATUS_UNKNOWN
-```
-
-**功能：** 表示设备当前折叠状态未知。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### func !=(FoldStatus)
-
-```cangjie
-public operator func !=(other: FoldStatus): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[FoldStatus](#enum-foldstatus)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(FoldStatus)
-
-```cangjie
-public operator func ==(other: FoldStatus): Bool
-```
-
-**功能：** 判断两个枚举值是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[FoldStatus](#enum-foldstatus)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 ## enum FontStyle
 
 ```cangjie
-public enum FontStyle <: Equatable<FontStyle> {
+public enum FontStyle {
     | Normal
     | Italic
     | ...
@@ -4891,24 +4687,6 @@ public operator func ==(other: FontStyle): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
 
 ## enum FontWeight
 
@@ -5163,46 +4941,10 @@ public operator func ==(other: FontWeight): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
+## enum BlurStyle
 
 ```cangjie
-public func getValue(): String
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举所表示的值。|
-
-### func getValueInt()
-
-```cangjie
-public func getValueInt(): UInt32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|UInt32|当前枚举所表示的值。|
-
-## enum ForegroundBlurStyle
-
-```cangjie
-public enum ForegroundBlurStyle <: Equatable<ForegroundBlurStyle> {
+public enum BlurStyle {
     | None
     | Thin
     | Regular
@@ -6144,26 +5886,6 @@ Y
 
 **起始版本：** 21
 
-### func !=(ImageRepeat)
-
-```cangjie
-public operator func !=(other: ImageRepeat): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ImageRepeat](#enum-imagerepeat)|是|-|图片重复方式。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool||两个枚举值不相等返回true，否则返回false。|
-
 ### func ==(ImageRepeat)
 
 ```cangjie
@@ -6491,7 +6213,7 @@ public operator func ==(other: ImageType): Bool
 ## enum ItemAlign
 
 ```cangjie
-public enum ItemAlign <: Equatable<ItemAlign> {
+public enum ItemAlign {
     | Auto
     | Start
     | Center
@@ -6708,24 +6430,6 @@ public operator func ==(other: KeySource): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取参数值,返回解锁结果是否复用对应的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
 ### func toString()
 
 ```cangjie
@@ -6841,24 +6545,6 @@ public operator func ==(other: KeyType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取参数值,返回解锁结果是否复用对应的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
 ### func toString()
 
 ```cangjie
@@ -6877,10 +6563,10 @@ public func toString(): String
 |:----|:----|
 |String|当前枚举的字符串表示。|
 
-## enum LayoutSafeAreaEdge
+## enum SafeAreaEdge
 
 ```cangjie
-public enum LayoutSafeAreaEdge <: Equatable<LayoutSafeAreaEdge> {
+public enum SafeAreaEdge {
     | TOP
     | BOTTOM
     | ...
@@ -6920,46 +6606,6 @@ TOP
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-### func !=(LayoutSafeAreaEdge)
-
-```cangjie
-public operator func !=(other: LayoutSafeAreaEdge): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaEdge](#enum-layoutsafeareaedge)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(LayoutSafeAreaEdge)
-
-```cangjie
-public operator func ==(other: LayoutSafeAreaEdge): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaEdge](#enum-layoutsafeareaedge)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## enum LayoutSafeAreaType
 
@@ -7504,24 +7150,6 @@ public operator func ==(other: ListItemAlign): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取参数值,返回解锁结果是否复用对应的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
 ## enum MenuPolicy
 
 ```cangjie
@@ -7954,24 +7582,6 @@ public operator func ==(other: MouseAction): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
-
 ### func toString()
 
 ```cangjie
@@ -8125,24 +7735,6 @@ public operator func ==(other: MouseButton): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
 
 ### func toString()
 
@@ -8913,10 +8505,10 @@ public operator func ==(other: ProgressType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-## enum QualityType
+## enum ImageSmoothingQuality
 
 ```cangjie
-public enum QualityType <: Equatable<QualityType> {
+public enum ImageSmoothingQuality {
     | Low
     | Medium
     | High
@@ -8969,46 +8561,6 @@ Medium
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-### func !=(QualityType)
-
-```cangjie
-public operator func !=(other: QualityType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[QualityType](#enum-qualitytype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(QualityType)
-
-```cangjie
-public operator func ==(other: QualityType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[QualityType](#enum-qualitytype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## enum RefreshStatus
 
@@ -9797,24 +9349,6 @@ public operator func ==(other: ScrollState): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
 
 ### func toString()
 
@@ -10690,24 +10224,6 @@ public operator func ==(other: StickyStyle): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
-
 ## enum SwipeEdgeEffect
 
 ```cangjie
@@ -10751,64 +10267,6 @@ Spring
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-### func !=(SwipeEdgeEffect)
-
-```cangjie
-public operator func !=(other: SwipeEdgeEffect): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SwipeEdgeEffect](#enum-swipeedgeeffect)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(SwipeEdgeEffect)
-
-```cangjie
-public operator func ==(other: SwipeEdgeEffect): Bool
-```
-
-**功能：** 判断两个枚举值是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SwipeEdgeEffect](#enum-swipeedgeeffect)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
 
 ## enum TextAlign
 
@@ -10907,31 +10365,13 @@ public operator func ==(other: TextAlign): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
+## enum CanvasTextAlign
 
 ```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
-## enum TextAlignStyle
-
-```cangjie
-public enum TextAlignStyle <: Equatable<TextAlignStyle> {
+public enum CanvasTextAlign {
     | Left
     | Right
     | Center
-    | Justify
     | Start
     | End
     | ...
@@ -11020,68 +10460,10 @@ Start
 
 **起始版本：** 21
 
-### func !=(TextAlignStyle)
+## enum CanvasTextBaseline
 
 ```cangjie
-public operator func !=(other: TextAlignStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[TextAlignStyle](#enum-textalignstyle)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(TextAlignStyle)
-
-```cangjie
-public operator func ==(other: TextAlignStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[TextAlignStyle](#enum-textalignstyle)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
-## enum TextBaseline
-
-```cangjie
-public enum TextBaseline <: Equatable<TextBaseline> {
+public enum CanvasTextBaseline {
     | Alphabetic
     | Ideographic
     | Top
@@ -11173,46 +10555,6 @@ Top
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-### func !=(TextBaseline)
-
-```cangjie
-public operator func !=(other: TextBaseline): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[TextBaseline](#enum-textbaseline)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(TextBaseline)
-
-```cangjie
-public operator func ==(other: TextBaseline): Bool
-```
-
-**功能：** 判断两个枚举值是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[TextBaseline](#enum-textbaseline)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## enum TextCase
 
@@ -11310,24 +10652,6 @@ public operator func ==(other: TextCase): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
 
 ## enum TextContentStyle
 
@@ -11746,24 +11070,6 @@ public operator func ==(other: TextHeightAdaptivePolicy): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
 ## enum TextOverflow
 
 ```cangjie
@@ -11860,24 +11166,6 @@ public operator func ==(other: TextOverflow): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
 
 ## enum ThemeColorMode
 
@@ -12182,24 +11470,6 @@ public operator func ==(other: TouchType): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等时，返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): UInt8
-```
-
-**功能：** 获取枚举类型值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|UInt8|枚举类型值。|
 
 ### func toString()
 
@@ -12606,24 +11876,6 @@ public operator func ==(other: WordBreak): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等时，返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举值的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回枚举值的整数值。|
 
 ## type CustomBuilder
 

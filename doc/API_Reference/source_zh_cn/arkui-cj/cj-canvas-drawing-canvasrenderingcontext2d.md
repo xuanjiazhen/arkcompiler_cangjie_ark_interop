@@ -1387,18 +1387,17 @@ class EntryView {
     private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
     @State var message: String = ""
     func build() {
-            Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center))  {
+            Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)  {
                 Canvas(this.context)
                     .width(100.percent)
                     .height(100.percent)
                     .backgroundColor(0xffff00)
                     .onReady({=>
-                        this.context.fillRect(10, 10, 50, 50)
-                        this.context.translate(70, 70)
-                        this.context.fillRect(10, 10, 50, 50)
+                        this.context.fillRect(10.0, 10.0, 50.0, 50.0)
+                        this.context.translate(70.0, 70.0)
+                        this.context.fillRect(10.0, 10.0, 50.0, 50.0)
                         })
             }.width(100.percent).height(100.percent)
     }
 }
-
 ```

@@ -2196,26 +2196,6 @@ TypeSystemGesture
 
 **起始版本：** 21
 
-### func !=(AvoidAreaType)
-
-```cangjie
-public operator func !=(other: AvoidAreaType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[AvoidAreaType](#enum-avoidareatype)|是|-另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
 ### func ==(AvoidAreaType)
 
 ```cangjie
@@ -3400,7 +3380,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class newPage{
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)) {
+        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center) {
             Column{
                 Text("New Page")
                 Button("Untouchable").onClick{
@@ -3468,7 +3448,7 @@ class newPage{
     }
 
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)) {
+        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center) {
             Column{
                 TextInput(placeholder: 'input some words here... ').margin(10.vp)
             }.margin(10.vp)
@@ -3576,7 +3556,7 @@ class newPage{
     }
 
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)){
+        Flex(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center){
             Column(){
                 Text("SubWindowCreated: ${hint}")
                 Button("GetSubWindow").onClick{

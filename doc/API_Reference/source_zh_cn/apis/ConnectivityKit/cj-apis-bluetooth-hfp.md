@@ -49,6 +49,7 @@ public func createHfpAgProfile(): HandsFreeAudioGatewayProfile
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.BusinessException
 
 try {
     let hdfProfile = createHfpAgProfile()
@@ -116,6 +117,7 @@ public func getConnectedDevices(): Array<String>
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.BusinessException
 
 try {
     let hdfProfile = createHfpAgProfile()
@@ -172,6 +174,7 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -180,10 +183,11 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.BusinessException
 
 try {
     let hdfProfile = createHfpAgProfile()
-    let ret = hdfProfile.getConnectionState("XX:XX:XX:XX:XX:XX")
+    let ret = hdfProfile.getConnectionState("XX:XX:XX:XX:XX:XX")  // 请替换您的 deviceId。
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }

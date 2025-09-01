@@ -639,7 +639,7 @@ class EntryView {
     var cnt: Int64 = 0
     func build() {
         Scroll() {
-            Column(10) {
+            Column(space: 10) {
                 Text("font blur")
                     .fontSize(15)
                     .fontColor(0xCCCCCC)

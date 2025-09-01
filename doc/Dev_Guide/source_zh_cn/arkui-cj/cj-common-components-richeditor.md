@@ -77,16 +77,14 @@ class EntryView {
     func build() {
         Scroll() {
             Column {
-                Text("这是一段文本，用来展示选中菜单", controller:   TextController())
-                    .fontSize(30)
-                    .copyOption(CopyOptions.InApp)
-                    .bindSelectionMenu(TextSpanType.TEXT, bind  (RightClickTextCustomMenu, this),     TextResponseType.LONG_PRESS,
-                        onDisappear: {
+                RichEditor(RichEditorController())
+                    .bindSelectionMenu(spantype: RichEditorSpanType.Text, content: {=>}, responseType: ResponseType.LongPress,
+                        options: SelectionMenuOptions( onDisappear: {
                             => Hilog.info(0, " ", "自定义选择菜单关闭时  触发该回调")
                         },
                         onAppear: {
-                            _: Int32, _: Int32 => Hilog.info(0, " ", "自定义选择菜单弹出时回调")
-                        })
+                            => Hilog.info(0, " ", "自定义选择菜单弹出时回调")
+                        }))
             }
         }
     }
@@ -278,7 +276,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
-import ohos.component
 
 @Entry
 @Component
@@ -362,7 +359,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
-import ohos.component
 
 @Entry
 @Component

@@ -89,7 +89,7 @@ func unmarshalling(dataIn: MessageSequence): Bool
 ## class Ashmem
 
 ```cangjie
-public class Ashmem {
+public class Ashmem <: RemoteDataLite {
     public static const PROT_EXEC: UInt32 = 4
     public static const PROT_NONE: UInt32 = 0
     public static const PROT_READ: UInt32 = 1
@@ -454,7 +454,7 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
 ## class MessageSequence
 
 ```cangjie
-public class MessageSequence {}
+public class MessageSequence <: RemoteDataLite {}
 ```
 
 **功能：**  在RPC或IPC过程中，发送方可以使用MessageSequence提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageSequence提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。

@@ -56,6 +56,7 @@ Radio(value: 'Radio2', group: 'radioGroup')
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohhos.prompt_action.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -71,7 +72,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // 切换为响铃模式
-                            PromptAction.showToast(message: 'Ringing mode.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Ringing mode.'))
                         }
                     }
                 Text('Ringing')
@@ -83,7 +84,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // 切换为振动模式
-                            PromptAction.showToast(message: 'Vibration mode.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Vibration mode.'))
                         }
                     }
                 Text('Vibration')
@@ -95,7 +96,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // 切换为静音模式
-                            PromptAction.showToast(message: 'Silent mode.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Silent mode.'))
                         }
                     }
                 Text('Silent')

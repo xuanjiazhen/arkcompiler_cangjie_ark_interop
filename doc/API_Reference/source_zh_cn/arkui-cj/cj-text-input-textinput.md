@@ -703,50 +703,10 @@ Send
 
 **起始版本：** 21
 
-### func !=(EnterKeyType)
-
-```cangjie
-public operator func !=(other: EnterKeyType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[EnterKeyType](#enum-enterkeytype)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(EnterKeyType)
-
-```cangjie
-public operator func ==(other: EnterKeyType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[EnterKeyType](#enum-enterkeytype)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 ## enum InputType
 
 ```cangjie
-public enum InputType <: Equatable<InputType> {
+public enum InputType {
     | Normal
     | Number
     | Email
@@ -826,46 +786,6 @@ PhoneNumber
 
 **起始版本：** 21
 
-### func !=(InputType)
-
-```cangjie
-public operator func !=(other: InputType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[InputType](#enum-inputtype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(InputType)
-
-```cangjie
-public operator func ==(other: InputType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[InputType](#enum-inputtype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 ## enum TextInputStyle
 
 ```cangjie
@@ -913,6 +833,7 @@ Inline
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import import kit.performanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -933,7 +854,7 @@ class EntryView {
             .margin(20)
             .fontSize(14)
             .fontColor(Color.Black)
-            .inputFilter(value: '[a-z]', error: { info: String =>
+            .inputFilter('[a-z]', error: { info: String =>
               Hilog.error(0, "AppLogCj", "inputFilter error")
             })
             .onChange({ value: String =>
@@ -949,7 +870,6 @@ class EntryView {
             .width(95.percent)
             .height(40)
             .margin(20)
-            .setType(InputType.Password)
             .maxLength(9)
         // 邮箱地址自动填充类型
         TextInput(placeholder: 'input your email...' )
@@ -957,7 +877,6 @@ class EntryView {
             .height(40)
             .margin(20)
             .maxLength(9)
-            .contentType(ContentType.EMAIL_ADDRESS)
         // 内联风格输入框
         TextInput( text: 'inline style' )
             .width(95.percent)

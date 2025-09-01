@@ -34,203 +34,6 @@ public func bindSheet(isShow: Bool, builder: CustomBuilder, options!: SheetOptio
 |builder|[CustomBuilder](#type-custombuilder)|是|-|自定义构建器。|
 |options|[SheetOptions](#)|否|SheetOptions()|底部面板选项。|
 
-## func dismiss()
-
-```cangjie
-public func dismiss(): Unit
-```
-
-**功能：** 半模态页面关闭回调函数。开发者需要退出页面时调用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-## func dismiss()
-
-```cangjie
-public func dismiss(): Unit
-```
-
-**功能：** 半模态面板关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-## func springBack()
-
-```cangjie
-public func springBack()
-```
-
-**功能：** 半模态页面关闭前控制回弹函数，开发者需要半模态回弹时调用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-
-## func !=(ScrollSizeMode)
-
-```cangjie
-public operator func !=(other: ScrollSizeMode): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ScrollSizeMode](#enum-scrollsizemode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
-
-## func ==(ScrollSizeMode)
-
-```cangjie
-public operator func ==(other: ScrollSizeMode): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ScrollSizeMode](#enum-scrollsizemode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值相等，则返回true，否则返回false。|
-
-## func !=(SheetMode)
-
-```cangjie
-public operator func !=(other: SheetMode): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SheetMode](#enum-sheetmode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
-
-## func ==(SheetMode)
-
-```cangjie
-public operator func ==(other: SheetMode): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SheetMode](#enum-sheetmode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值相等，则返回true，否则返回false。|
-
-## func !=(SheetSize)
-
-```cangjie
-public operator func !=(other: SheetSize): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SheetSize](#enum-sheetsize)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
-
-## func ==(SheetSize)
-
-```cangjie
-public operator func ==(other: SheetSize): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SheetSize](#enum-sheetsize)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值相等，则返回true，否则返回false。|
-
-## func !=(SheetType)
-
-```cangjie
-public operator func !=(other: SheetType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SheetType](#enum-sheettype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
-
-## func ==(SheetType)
-
-```cangjie
-public operator func ==(other: SheetType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SheetType](#enum-sheettype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个枚举值相等，则返回true，否则返回false。|
-
 ## 基础类型定义
 
 ### class BindOptions
@@ -304,6 +107,18 @@ public var reason: DismissReason
 
 **起始版本：** 21
 
+#### func dismiss()
+
+```cangjie
+public func dismiss(): Unit
+```
+
+**功能：** 半模态页面关闭回调函数。开发者需要退出页面时调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ### class SheetDismiss
 
 ```cangjie
@@ -316,6 +131,17 @@ public class SheetDismiss {}
 
 **起始版本：** 21
 
+#### func dismiss()
+
+```cangjie
+public func dismiss(): Unit
+```
+
+**功能：** 半模态面板关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 
 ### class SheetOptions
 
@@ -364,7 +190,7 @@ public class SheetOptions <: BindOptions {
 
 - [BindOptions](#class-bindoptions)
 
-### init(Option\<ResourceColor>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<SheetSize>, Option\<Array\<SheetSize>>, Option\<SheetType>, Option\<Bool>, Option\<Bool>, Option\<BlurStyle>, Option\<Color>, Option\<() -> Unit>, Option\<Bool>, Option\<(SheetDismiss) -> Unit>, Option\<(DismissSheetAction) -> Unit>, Option\<(SpringBackAction) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<Length>, Option\<Color>, Option\<EdgeStyles>, Option\<Length>, Option\<ShadowOptions>, Option\<SheetMode>, Option\<ScrollSizeMode>)
+#### init(Option\<ResourceColor>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<SheetSize>, Option\<Array\<SheetSize>>, Option\<SheetType>, Option\<Bool>, Option\<Bool>, Option\<BlurStyle>, Option\<Color>, Option\<() -> Unit>, Option\<Bool>, Option\<(SheetDismiss) -> Unit>, Option\<(DismissSheetAction) -> Unit>, Option\<(SpringBackAction) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<Length>, Option\<Color>, Option\<EdgeStyles>, Option\<Length>, Option\<ShadowOptions>, Option\<SheetMode>, Option\<ScrollSizeMode>)
 
 ```cangjie
 public init(
@@ -451,6 +277,18 @@ public class SpringBackAction {}
 
 **起始版本：** 21
 
+#### func springBack()
+
+```cangjie
+public func springBack()
+```
+
+**功能：** 半模态页面关闭前控制回弹函数，开发者需要半模态回弹时调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 
 ### enum ScrollSizeMode
 
@@ -484,7 +322,7 @@ Continuous
 
 **起始版本：** 21
 
-### FollowDetent
+#### FollowDetent
 
 ```cangjie
 FollowDetent
@@ -533,7 +371,7 @@ Embedded
 
 **起始版本：** 21
 
-### Overlay
+#### Overlay
 
 ```cangjie
 Overlay
@@ -639,7 +477,7 @@ Bottom
 
 **起始版本：** 21
 
-### Center
+#### Center
 
 ```cangjie
 Center

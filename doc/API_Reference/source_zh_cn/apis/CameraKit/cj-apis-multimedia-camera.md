@@ -2114,7 +2114,7 @@ let photoSession = photoSessionOption.getOrThrow()
 Hilog.info(0, "AppLogCj", photoSession.getZoomRatio().toString())
 ```
 
-### func setSmoothZoom(Float32, SmoothZoomMode)
+### func setSmoothZoom(Float64, SmoothZoomMode)
 
 ```cangjie
 func setSmoothZoom(targetRatio: Float64, mode: SmoothZoomMode): Unit
@@ -2155,7 +2155,7 @@ let targetRatio: Float64 = 0.3
 photoSession.setSmoothZoom(targetRatio, SmoothZoomMode.Normal)
 ```
 
-### func setSmoothZoom(Float32)
+### func setSmoothZoom(Float64)
 
 ```cangjie
 func setSmoothZoom(targetRatio: Float64): Unit
@@ -2407,7 +2407,7 @@ public let connectionType: ConnectionType
 ## class CameraInput
 
 ```cangjie
-public class CameraInput {}
+public class CameraInput <: RemoteDataLite {}
 ```
 
 **功能：** 相机设备输入对象。会话中Session使用的相机信息。
@@ -2459,7 +2459,7 @@ cameraInput.close()
 ### func off(CameraEvents, CameraDevice, Callback0Argument)
 
 ```cangjie
-public func off(event: CameraEvents, camera: CameraDevice, callback: Callback0Argument): Unit
+public func off(eventType: CameraEvents, camera: CameraDevice, callback: Callback0Argument): Unit
 ```
 
 **功能：** 取消对应监听事件的对应回调。
@@ -2472,7 +2472,7 @@ public func off(event: CameraEvents, camera: CameraDevice, callback: Callback0Ar
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
 |camera|[CameraDevice](#class-cameradevice)|是|-|CameraDevice对象。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
 
@@ -2508,7 +2508,7 @@ cameraInput.off(CameraEvents.CameraError, cameraDevice)
 ### func off(CameraEvents, CameraDevice)
 
 ```cangjie
-public func off(event: CameraEvents, camera: CameraDevice): Unit
+public func off(eventType: CameraEvents, camera: CameraDevice): Unit
 ```
 
 **功能：** 取消对应监听事件的所有回调。
@@ -2521,7 +2521,7 @@ public func off(event: CameraEvents, camera: CameraDevice): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
 |camera|[CameraDevice](#class-cameradevice)|是|-|CameraDevice对象。|
 
 **异常：**
@@ -2556,7 +2556,7 @@ cameraInput.off(CameraEvents.CameraError, cameraDevice)
 ### func on(CameraEvents, CameraDevice, Callback0Argument)
 
 ```cangjie
-public func on(event: CameraEvents, camera: CameraDevice, callback: Callback0Argument): Unit
+public func on(eventType: CameraEvents, camera: CameraDevice, callback: Callback0Argument): Unit
 ```
 
 **功能：** 监听CameraInput的错误事件，通过注册回调函数获取结果。
@@ -2573,7 +2573,7 @@ public func on(event: CameraEvents, camera: CameraDevice, callback: Callback0Arg
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，CameraInput对象创建成功可监听。相机设备出错情况下可触发该事件并返回结果，比如设备不可用或者冲突等返回对应错误信息。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，CameraInput对象创建成功可监听。相机设备出错情况下可触发该事件并返回结果，比如设备不可用或者冲突等返回对应错误信息。|
 |camera|[CameraDevice](#class-cameradevice)|是|-|CameraDevice对象。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取结果。|
 
@@ -2720,7 +2720,7 @@ let handle = cameraInput.open(isSecureEnabled)
 ## class CameraManager
 
 ```cangjie
-public class CameraManager {}
+public class CameraManager <: RemoteDataLite {}
 ```
 
 **功能：** 相机管理器类，使用前需要通过[getCameraManager](#func-getcameramanageruiabilitycontext)获取相机管理实例。
@@ -3469,7 +3469,7 @@ Hilog.info(0, "AppLogCj", cameraManager.isTorchSupported().toString())
 ### func off(CameraEvents, Callback1Argument\<CameraStatusInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<CameraStatusInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<CameraStatusInfo>): Unit
 ```
 
 **功能：** 相机设备状态注销回调，通过注销回调函数取消获取相机的状态变化。
@@ -3482,7 +3482,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<CameraStatusInf
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraStatus。CameraManager对象获取成功后可监听。目前只支持对设备打开或者关闭会触发该事件并返回对应信息。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraStatus。CameraManager对象获取成功后可监听。目前只支持对设备打开或者关闭会触发该事件并返回对应信息。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CameraStatusInfo](#class-camerastatusinfo)>|是|-|回调函数。|
 
 **异常：**
@@ -3515,7 +3515,7 @@ cameraManager.off(CameraEvents.TorchStatusChange)
 ### func off(CameraEvents, Callback1Argument\<FoldStatusInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<FoldStatusInfo>): Unit
 ```
 
 **功能：** 折叠设备折叠状态变化注销回调，通过注销回调函数取消获取折叠状态变化。
@@ -3528,7 +3528,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FoldStatusChange。表示折叠设备折叠状态发生变化。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FoldStatusChange。表示折叠设备折叠状态发生变化。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatusInfo](#class-foldstatusinfo)>|是|-|回调函数。|
 
 **异常：**
@@ -3561,7 +3561,7 @@ cameraManager.off(CameraEvents.TorchStatusChange)
 ### func off(CameraEvents, Callback1Argument\<TorchStatusInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<TorchStatusInfo>): Unit
 ```
 
 **功能：** 手电筒状态变化注销回调，通过注销回调函数取消获取手电筒状态变化。
@@ -3574,7 +3574,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为TorchStatusChange。CameraManager对象获取成功后可监听。目前只支持手电筒打开，手电筒关闭，手电筒不可用，手电筒恢复可用会触发该事件并返回对应信息。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为TorchStatusChange。CameraManager对象获取成功后可监听。目前只支持手电筒打开，手电筒关闭，手电筒不可用，手电筒恢复可用会触发该事件并返回对应信息。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[TorchStatusInfo](#class-torchstatusinfo)>|是|-|回调函数。|
 
 **异常：**
@@ -3607,7 +3607,7 @@ cameraManager.off(CameraEvents.TorchStatusChange)
 ### func off(CameraEvents)
 
 ```cangjie
-public func off(event: CameraEvents): Unit
+public func off(eventType: CameraEvents): Unit
 ```
 
 **功能：** 取消对应监听事件的所有回调。
@@ -3620,7 +3620,7 @@ public func off(event: CameraEvents): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。必须为可被on函数监听的事件。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件。必须为可被on函数监听的事件。|
 
 **异常：**
 
@@ -3652,7 +3652,7 @@ cameraManager.off(CameraEvents.TorchStatusChange)
 ### func on(CameraEvents, Callback1Argument\<CameraStatusInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<CameraStatusInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<CameraStatusInfo>): Unit
 ```
 
 **功能：** 相机设备状态回调，通过注册回调函数获取相机的状态变化。使用callback异步回调。
@@ -3669,7 +3669,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<CameraStatusInfo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraStatus。CameraManager对象获取成功后可监听。目前只支持对设备打开或者关闭会触发该事件并返回对应信息。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraStatus。CameraManager对象获取成功后可监听。目前只支持对设备打开或者关闭会触发该事件并返回对应信息。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CameraStatusInfo](#class-camerastatusinfo)>|是|-|回调函数，用于获取镜头状态变化信息。|
 
 **异常：**
@@ -3715,7 +3715,7 @@ cameraManager.on(CameraEvents.TorchStatusChange, testCallbackTorchStatusChange)
 ### func on(CameraEvents, Callback1Argument\<FoldStatusInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<FoldStatusInfo>): Unit
 ```
 
 **功能：** 开启折叠设备折叠状态变化的监听。
@@ -3732,7 +3732,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FoldStatusChange。表示折叠设备折叠状态发生变化。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FoldStatusChange。表示折叠设备折叠状态发生变化。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatusInfo](#class-foldstatusinfo)>|是|-|回调函数。返回折叠设备折叠信息。|
 
 **异常：**
@@ -3778,7 +3778,7 @@ cameraManager.on(CameraEvents.TorchStatusChange, testCallbackTorchStatusChange)
 ### func on(CameraEvents, Callback1Argument\<TorchStatusInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<TorchStatusInfo>): Unit
 ```
 
 **功能：** 手电筒状态变化回调，通过注册回调函数获取手电筒状态变化。
@@ -3795,7 +3795,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为TorchStatusChange。cameraManager对象获取成功后可监听。目前只支持手电筒打开，手电筒关闭，手电筒不可用，手电筒恢复可用会触发该事件并返回对应信息。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为TorchStatusChange。cameraManager对象获取成功后可监听。目前只支持手电筒打开，手电筒关闭，手电筒不可用，手电筒恢复可用会触发该事件并返回对应信息。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[TorchStatusInfo](#class-torchstatusinfo)>|是|-|回调函数，用于获取手电筒状态变化信息。|
 
 **异常：**
@@ -4478,7 +4478,7 @@ public init(
 ## class PhotoOutput
 
 ```cangjie
-public class PhotoOutput <:  CameraOutput {}
+public class PhotoOutput <: RemoteDataLite CameraOutput {}
 ```
 
 **功能：** 拍照会话中使用的输出信息。
@@ -4935,7 +4935,7 @@ Hilog.info(0, "AppLogCj", output.isMovingPhotoSupported().toString())
 ### func off(CameraEvents, Callback1Argument\<CaptureStartInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<CaptureStartInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureStartInfo>): Unit
 ```
 
 **功能：** 注销监听拍照。
@@ -4948,7 +4948,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<CaptureStartInf
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureStartWithInfo。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureStartWithInfo。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureStartInfo](#class-capturestartinfo)>|是|-|回调函数，用于处理[CaptureStartInfo](#class-capturestartinfo)。|
 
 **异常：**
@@ -4985,7 +4985,7 @@ output.off(CameraEvents.CaptureStartWithInfo)
 ### func off(CameraEvents, Callback1Argument\<FrameShutterInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<FrameShutterInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutterInfo>): Unit
 ```
 
 **功能：** 注销监听拍照帧输出捕获。
@@ -4998,7 +4998,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<FrameShutterInf
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutter。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutter。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterInfo](#class-frameshutterinfo)>|是|-|回调函数，用于处理[FrameShutterInfo](#class-frameshutterinfo)。|
 
 **异常：**
@@ -5035,7 +5035,7 @@ output.off(CameraEvents.CaptureStartWithInfo)
 ### func off(CameraEvents, Callback1Argument\<CaptureEndInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<CaptureEndInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureEndInfo>): Unit
 ```
 
 **功能：** 注销监听拍照结束。
@@ -5048,7 +5048,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<CaptureEndInfo>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureEnd。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureEnd。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureEndInfo](#class-captureendinfo)>|是|-|回调函数，用于处理[CaptureEndInfo](#class-captureendinfo)。|
 
 **异常：**
@@ -5085,7 +5085,7 @@ output.off(CameraEvents.CaptureStartWithInfo)
 ### func off(CameraEvents, Callback1Argument\<FrameShutterEndInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<FrameShutterEndInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutterEndInfo>): Unit
 ```
 
 **功能：** 注销监听拍照帧输出捕获。
@@ -5098,7 +5098,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<FrameShutterEnd
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutterEnd。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutterEnd。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterEndInfo](#class-frameshutterendinfo)>|是|-|回调函数，用于处理[FrameShutterEndInfo](#class-frameshutterendinfo)。|
 
 **异常：**
@@ -5135,7 +5135,7 @@ output.off(CameraEvents.CaptureStartWithInfo)
 ### func off(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback0Argument): Unit
+public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 注销监听可拍下一张或注销监听错误。
@@ -5148,7 +5148,7 @@ public func off(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[CaptureReady, CameraError]其中之一。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[CaptureReady, CameraError]其中之一。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
 
 **异常：**
@@ -5185,7 +5185,7 @@ output.off(CameraEvents.CaptureStartWithInfo)
 ### func off(CameraEvents, Callback1Argument\<Float64>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<Float64>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<Float64>): Unit
 ```
 
 **功能：** 注销监听预估的拍照时间。
@@ -5198,7 +5198,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<Float64>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为EstimatedCaptureDuration。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为EstimatedCaptureDuration。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Float64>|是|-|回调函数，用于获取预估的拍照时间（毫秒）。|
 
 **异常：**
@@ -5235,7 +5235,7 @@ output.off(CameraEvents.CaptureStartWithInfo)
 ### func off(CameraEvents)
 
 ```cangjie
-public func off(event: CameraEvents): Unit
+public func off(eventType: CameraEvents): Unit
 ```
 
 **功能：** 取消对应监听事件的所有回调。
@@ -5248,7 +5248,7 @@ public func off(event: CameraEvents): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。必须为可被on函数监听的事件。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件。必须为可被on函数监听的事件。|
 
 **异常：**
 
@@ -5284,7 +5284,7 @@ output.off(CameraEvents.CaptureStartWithInfo)
 ### func on(CameraEvents, Callback1Argument\<CaptureStartInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<CaptureStartInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureStartInfo>): Unit
 ```
 
 **功能：** 监听拍照开始，通过注册回调函数获取CaptureStartInfo。使用callback异步回调。
@@ -5301,7 +5301,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<CaptureStartInfo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureStartWithInfo。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureStartWithInfo。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureStartInfo](#class-capturestartinfo)>|是|-|回调函数，用于处理[CaptureStartInfo](#class-capturestartinfo)。|
 
 **异常：**
@@ -5351,7 +5351,7 @@ output.on(CameraEvents.CameraError, testCallbackError)
 ### func on(CameraEvents, Callback1Argument\<FrameShutterInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<FrameShutterInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutterInfo>): Unit
 ```
 
 **功能：** 监听拍照帧输出捕获，通过注册回调函数获取结果。使用callback异步回调。
@@ -5368,7 +5368,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<FrameShutterInfo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutter。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutter。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterInfo](#class-frameshutterinfo)>|是|-|回调函数，用于处理[FrameShutterInfo](#class-frameshutterinfo)。|
 
 **异常：**
@@ -5418,7 +5418,7 @@ output.on(CameraEvents.CameraError, testCallbackError)
 ### func on(CameraEvents, Callback1Argument\<CaptureEndInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<CaptureEndInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureEndInfo>): Unit
 ```
 
 **功能：** 监听拍照结束，通过注册回调函数获取结果。使用callback异步回调。
@@ -5435,7 +5435,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<CaptureEndInfo>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureEnd。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureEnd。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureEndInfo](#class-captureendinfo)>|是|-|回调函数，用于处理[CaptureEndInfo](#class-captureendinfo)。|
 
 **异常：**
@@ -5485,7 +5485,7 @@ output.on(CameraEvents.CameraError, testCallbackError)
 ### func on(CameraEvents, Callback1Argument\<FrameShutterEndInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<FrameShutterEndInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutterEndInfo>): Unit
 ```
 
 **功能：** 监听拍照帧输出捕获，通过注册回调函数获取结果。使用callback异步回调。
@@ -5502,7 +5502,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<FrameShutterEndI
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutterEnd。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutterEnd。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterEndInfo](#class-frameshutterendinfo)>|是|-|回调函数，用于处理[FrameShutterEndInfo](#class-frameshutterendinfo)。|
 
 **异常：**
@@ -5552,7 +5552,7 @@ output.on(CameraEvents.CameraError, testCallbackError)
 ### func on(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback0Argument): Unit
+public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 监听可拍下一张或拍照错误，通过注册回调函数获取结果。使用callback异步回调。
@@ -5569,7 +5569,7 @@ public func on(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[CaptureReady, CameraError]其中之一。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[CaptureReady, CameraError]其中之一。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
 
 **异常：**
@@ -5619,7 +5619,7 @@ output.on(CameraEvents.CameraError, testCallbackError)
 ### func on(CameraEvents, Callback1Argument\<Float64>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<Float64>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<Float64>): Unit
 ```
 
 **功能：** 监听预估的拍照时间，通过注册回调函数获取结果。使用callback异步回调。
@@ -5636,7 +5636,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<Float64>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为EstimatedCaptureDuration。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为EstimatedCaptureDuration。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Float64>|是|-|回调函数，用于获取预估的拍照时间（毫秒）。|
 
 **异常：**
@@ -5776,7 +5776,7 @@ output.setMovingPhotoVideoCodecType(VideoCodecType.Avc)
 ## class PhotoSession
 
 ```cangjie
-public class PhotoSession <:  Session & Flash & AutoExposure & Focus & Zoom & ColorManagement {}
+public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & Focus & Zoom & ColorManagement {}
 ```
 
 **功能：** 普通拍照模式会话类，提供了对闪光灯、曝光、对焦、变焦、色彩空间的操作。
@@ -5845,13 +5845,13 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
-Hilog.info(0, "AppLogCj", session.canPreconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9).toString())
+Hilog.info(0, "AppLogCj", session.canPreconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9).toString())
 ```
 
 ### func off(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback0Argument): Unit
+public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 注销监听普通拍照会话的错误事件，通过注册回调函数获取结果。
@@ -5864,7 +5864,7 @@ public func off(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于处理[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)。|
 
 **示例：**
@@ -5890,7 +5890,7 @@ session.off(CameraEvents.FocusStateChange)
 ### func off(CameraEvents, Callback1Argument\<FocusState>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<FocusState>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>): Unit
 ```
 
 **功能：** 注销监听相机聚焦的状态变化。
@@ -5903,7 +5903,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<FocusState>): U
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于处理[FocusState](#enum-focusstate)。|
 
 **示例：**
@@ -5929,7 +5929,7 @@ session.off(CameraEvents.FocusStateChange)
 ### func off(CameraEvents, Callback1Argument\<SmoothZoomInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
 ```
 
 **功能：** 注销监听相机平滑变焦的状态变化。
@@ -5942,7 +5942,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)>|是|-|回调函数，用于处理[SmoothZoomInfo](#class-smoothzoominfo)。|
 
 **示例：**
@@ -5968,7 +5968,7 @@ session.off(CameraEvents.FocusStateChange)
 ### func off(CameraEvents)
 
 ```cangjie
-public func off(event: CameraEvents): Unit
+public func off(eventType: CameraEvents): Unit
 ```
 
 **功能：** 注销监听普通拍照会话的错误事件/相机聚焦的状态变化/相机平滑变焦的状态变化。
@@ -5981,7 +5981,7 @@ public func off(event: CameraEvents): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。必须为可被on函数监听的事件。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件。必须为可被on函数监听的事件。|
 
 **异常：**
 
@@ -6014,7 +6014,7 @@ session.off(CameraEvents.FocusStateChange)
 ### func on(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback0Argument): Unit
+public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 监听普通拍照会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
@@ -6031,7 +6031,7 @@ public func on(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于处理[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)。|
 
 **示例：**
@@ -6072,7 +6072,7 @@ session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
 ### func on(CameraEvents, Callback1Argument\<FocusState>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<FocusState>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<FocusState>): Unit
 ```
 
 **功能：** 监听相机聚焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
@@ -6089,7 +6089,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<FocusState>): Un
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于获取当前对焦状态。|
 
 **示例：**
@@ -6130,7 +6130,7 @@ session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
 ### func on(CameraEvents, Callback1Argument\<SmoothZoomInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
 ```
 
 **功能：** 监听相机平滑变焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
@@ -6147,7 +6147,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)>|是|-|回调函数，用于处理[SmoothZoomInfo](#class-smoothzoominfo)。|
 
 **示例：**
@@ -6305,7 +6305,7 @@ public init(x: Float64, y: Float64)
 ## class PreviewOutput
 
 ```cangjie
-public class PreviewOutput <:  CameraOutput {}
+public class PreviewOutput <: RemoteDataLite & CameraOutput {}
 ```
 
 **功能：** 预览输出类。
@@ -6548,7 +6548,7 @@ let frameRateRanges = output.getSupportedFrameRates()
 ### func off(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback0Argument): Unit
+public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 注销监听特定事件。
@@ -6561,7 +6561,7 @@ public func off(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一，否则抛出401参数错误。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一，否则抛出401参数错误。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
 
 **异常：**
@@ -6604,7 +6604,7 @@ output.off(CameraEvents.CameraError)
 ### func off(CameraEvents)
 
 ```cangjie
-public func off(event: CameraEvents): Unit
+public func off(eventType: CameraEvents): Unit
 ```
 
 **功能：** 取消对应监听事件的所有回调。
@@ -6617,7 +6617,7 @@ public func off(event: CameraEvents): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。必须为可被on函数监听的事件。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件。必须为可被on函数监听的事件。|
 
 **异常：**
 
@@ -6659,7 +6659,7 @@ output.off(CameraEvents.CameraError)
 ### func on(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback0Argument): Unit
+public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 监听预览帧启动，通过注册回调函数获取结果。使用callback异步回调。
@@ -6676,7 +6676,7 @@ public func on(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一，否则抛出401参数错误。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一，否则抛出401参数错误。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
 
 **异常：**
@@ -7165,7 +7165,7 @@ public let torchLevel: Float64
 ## class VideoOutput
 
 ```cangjie
-public class VideoOutput <:  CameraOutput {}
+public class VideoOutput <: RemoteDataLite & <:  CameraOutput {}
 ```
 
 **功能：** 录像会话中使用的输出信息。
@@ -7408,7 +7408,7 @@ let imageRotation = output.getVideoRotation(0)
 ### func off(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback0Argument): Unit
+public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 注销监听特定事件的特定回调函数。
@@ -7421,7 +7421,7 @@ public func off(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，要取消的callback。|
 
 **异常：**
@@ -7464,7 +7464,7 @@ output.off(CameraEvents.CameraError)
 ### func off(CameraEvents)
 
 ```cangjie
-public func off(event: CameraEvents): Unit
+public func off(eventType: CameraEvents): Unit
 ```
 
 **功能：** 取消对应监听事件的所有回调。
@@ -7477,7 +7477,7 @@ public func off(event: CameraEvents): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一。|
 
 **异常：**
 
@@ -7519,7 +7519,7 @@ output.off(CameraEvents.CameraError)
 ### func on(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback0Argument): Unit
+public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 监听录像的特定事件。
@@ -7536,7 +7536,7 @@ public func on(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一，videoOutput创建成功后可监听。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为[FrameStart, FrameEnd, CameraError]其中之一，videoOutput创建成功后可监听。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，正常时无信息捕获，出错时捕获错误信息。|
 
 **异常：**
@@ -7831,7 +7831,7 @@ public let frameRateRange: FrameRateRange
 ## class VideoSession
 
 ```cangjie
-public class VideoSession <:  Session & Flash & AutoExposure & Focus & Zoom & Stabilization & ColorManagement {}
+public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & Focus & Zoom & Stabilization & ColorManagement {}
 ```
 
 **功能：** 普通录像模式会话类，提供了对闪光灯、曝光、对焦、变焦、视频防抖、色彩空间的操作。
@@ -7904,13 +7904,13 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
-session.canPreconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9)
+session.canPreconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9)
 ```
 
 ### func off(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback0Argument): Unit
+public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 注销监听普通录像会话的错误事件。
@@ -7923,7 +7923,7 @@ public func off(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，session创建成功之后可监听该接口。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，session创建成功之后可监听该接口。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，取消对应callback。|
 
 **异常：**
@@ -7958,7 +7958,7 @@ session.off(CameraEvents.SmoothZoomInfoAvailable)
 ### func off(CameraEvents, Callback1Argument\<FocusState>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<FocusState>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>): Unit
 ```
 
 **功能：** 注销监听普通录像会话的对焦状态变化。
@@ -7971,7 +7971,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<FocusState>): U
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange，session创建成功之后可监听该接口。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange，session创建成功之后可监听该接口。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，取消对应callback。|
 
 **异常：**
@@ -8006,7 +8006,7 @@ session.off(CameraEvents.SmoothZoomInfoAvailable)
 ### func off(CameraEvents, Callback1Argument\<SmoothZoomInfo>)
 
 ```cangjie
-public func off(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
+public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
 ```
 
 **功能：** 注销监听普通录像会话的平滑变焦状态变化。
@@ -8019,7 +8019,7 @@ public func off(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable，session创建成功之后可监听该接口。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable，session创建成功之后可监听该接口。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)>|是|-|回调函数，取消对应callback。|
 
 **异常：**
@@ -8054,7 +8054,7 @@ session.off(CameraEvents.SmoothZoomInfoAvailable)
 ### func off(CameraEvents)
 
 ```cangjie
-public func off(event: CameraEvents): Unit
+public func off(eventType: CameraEvents): Unit
 ```
 
 **功能：** 注销监听普通录像会话的错误事件。
@@ -8067,7 +8067,7 @@ public func off(event: CameraEvents): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
 
 **异常：**
 
@@ -8101,7 +8101,7 @@ session.off(CameraEvents.SmoothZoomInfoAvailable)
 ### func on(CameraEvents, Callback0Argument)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback0Argument): Unit
+public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 ```
 
 **功能：** 监听普通录像会话的错误事件，通过注册回调函数获取结果。
@@ -8118,7 +8118,7 @@ public func on(event: CameraEvents, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，session创建成功之后可监听该接口。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，session创建成功之后可监听该接口。|
 |callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取错误信息。|
 
 **异常：**
@@ -8168,7 +8168,7 @@ session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
 ### func on(CameraEvents, Callback1Argument\<FocusState>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<FocusState>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<FocusState>): Unit
 ```
 
 **功能：** 监听普通录像会话的对焦状态变化，通过注册回调函数获取结果。
@@ -8185,7 +8185,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<FocusState>): Un
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange，session创建成功之后可监听该接口。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange，session创建成功之后可监听该接口。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于获取对焦状态变化信息。|
 
 **异常：**
@@ -8235,7 +8235,7 @@ session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
 ### func on(CameraEvents, Callback1Argument\<SmoothZoomInfo>)
 
 ```cangjie
-public func on(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
+public func on(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
 ```
 
 **功能：** 监听普通录像会话的平滑变焦状态变化，通过注册回调函数获取结果。
@@ -8252,7 +8252,7 @@ public func on(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable，session创建成功之后可监听该接口。|
+|eventType|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable，session创建成功之后可监听该接口。|
 |callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)>|是|-|回调函数，用于获取平滑变焦状态变化信息。|
 
 **异常：**
@@ -8346,13 +8346,13 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
-session.preconfig(Preconfig_1080P, preconfigRatio: PreconfigRatio_16_9)
+session.preconfig(Preconfig1080p, preconfigRatio: PreconfigRatio_16_9)
 ```
 
 ## enum CameraEvents
 
 ```cangjie
-public enum CameraEvents <: Equatable<CameraEvents> {
+public enum CameraEvents {
     | CameraError
     | CameraStatus
     | FoldStatusChange
@@ -8605,7 +8605,7 @@ public operator func ==(other: CameraEvents): Bool
 ## enum CameraFormat
 
 ```cangjie
-public enum CameraFormat <: Equatable<CameraFormat> & ToString {
+public enum CameraFormat {
     | CameraFormatYcbcrP010
     | CameraFormatYcrcbP010
     | CameraFormatHeic
@@ -8745,7 +8745,7 @@ public operator func ==(other: CameraFormat): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -8755,12 +8755,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum CameraPosition
 
 ```cangjie
-public enum CameraPosition <: Equatable<CameraPosition> & ToString {
+public enum CameraPosition {
     | CameraPositionUnspecified
     | CameraPositionBack
     | CameraPositionFront
@@ -8861,7 +8861,7 @@ public operator func ==(other: CameraPosition): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -8871,12 +8871,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum CameraStatus
 
 ```cangjie
-public enum CameraStatus <: Equatable<CameraStatus> & ToString {
+public enum CameraStatus {
     | CameraStatusAppear
     | CameraStatusDisappear
     | CameraStatusAvailable
@@ -8990,7 +8990,7 @@ public operator func ==(other: CameraStatus): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9000,12 +9000,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum CameraType
 
 ```cangjie
-public enum CameraType <: Equatable<CameraType> & ToString {
+public enum CameraType {
     | CameraTypeDefault
     | CameraTypeWideAngle
     | CameraTypeUltraWide
@@ -9132,7 +9132,7 @@ public operator func ==(other: CameraType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9142,12 +9142,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum ConnectionType
 
 ```cangjie
-public enum ConnectionType <: Equatable<ConnectionType> & ToString {
+public enum ConnectionType {
     | CameraConnectionBuiltIn
     | CameraConnectionUsbPlugin
     | CameraConnectionRemote
@@ -9248,7 +9248,7 @@ public operator func ==(other: ConnectionType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9258,12 +9258,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum ExposureMode
 
 ```cangjie
-public enum ExposureMode <: Equatable<ExposureMode> & ToString {
+public enum ExposureMode {
     | ExposureModeLocked
     | ExposureModeAuto
     | ExposureModeContinuousAuto
@@ -9364,18 +9364,18 @@ public operator func ==(other: ExposureMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum FlashMode
 
 ```cangjie
-public enum FlashMode <: Equatable<FlashMode> & ToString {
+public enum FlashMode {
     | FlashModeClose
     | FlashModeOpen
     | FlashModeAuto
@@ -9489,18 +9489,18 @@ public operator func ==(other: FlashMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum FocusMode
 
 ```cangjie
-public enum FocusMode <: Equatable<FocusMode> & ToString {
+public enum FocusMode {
     | FocusModeManual
     | FocusModeContinuousAuto
     | FocusModeAuto
@@ -9614,18 +9614,18 @@ public operator func ==(other: FocusMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum FocusState
 
 ```cangjie
-public enum FocusState <: Equatable<FocusState> & ToString {
+public enum FocusState {
     | FocusStateScan
     | FocusStateFocused
     | FocusStateUnfocused
@@ -9726,18 +9726,18 @@ public operator func ==(other: FocusState): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum FoldStatus
 
 ```cangjie
-public enum FoldStatus <: Equatable<FoldStatus> & ToString {
+public enum FoldStatus {
     | NonFoldable
     | Expanded
     | Folded
@@ -9838,7 +9838,7 @@ public operator func ==(other: FoldStatus): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9848,12 +9848,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum ImageRotation
 
 ```cangjie
-public enum ImageRotation <: Equatable<ImageRotation> & ToString {
+public enum ImageRotation {
     | Rotation0
     | Rotation90
     | Rotation180
@@ -9967,7 +9967,7 @@ public operator func ==(other: ImageRotation): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9977,12 +9977,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum MetadataObjectType
 
 ```cangjie
-public enum MetadataObjectType <: Equatable<MetadataObjectType> & ToString {
+public enum MetadataObjectType {
     | FaceDetection
     | ...
 }
@@ -10057,7 +10057,7 @@ public operator func ==(other: MetadataObjectType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10067,12 +10067,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum PreconfigRatio
 
 ```cangjie
-public enum PreconfigRatio <: Equatable<PreconfigRatio> & ToString {
+public enum PreconfigRatio {
     | PreconfigRatio_1_1
     | PreconfigRatio_4_3
     | PreconfigRatio_16_9
@@ -10173,7 +10173,7 @@ public operator func ==(other: PreconfigRatio): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10183,12 +10183,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum PreconfigType
 
 ```cangjie
-public enum PreconfigType <: Equatable<PreconfigType> & ToString {
+public enum PreconfigType {
     | Preconfig720p
     | Preconfig1080p
     | Preconfig4k
@@ -10302,7 +10302,7 @@ public operator func ==(other: PreconfigType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10312,12 +10312,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum QualityLevel
 
 ```cangjie
-public enum QualityLevel <: Equatable<QualityLevel> & ToString {
+public enum QualityLevel {
     | QualityLevelHigh
     | QualityLevelMedium
     | QualityLevelLow
@@ -10418,7 +10418,7 @@ public operator func ==(other: QualityLevel): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10428,12 +10428,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
-9
+## enum SceneMode
 
 ```cangjie
-public enum SceneMode <: Equatable<SceneMode> & ToString {
+public enum SceneMode {
     | NormalPhoto
     | NormalVideo
     | SecurePhoto
@@ -10534,7 +10534,7 @@ public operator func ==(other: SceneMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10544,12 +10544,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum SmoothZoomMode
 
 ```cangjie
-public enum SmoothZoomMode <: Equatable<SmoothZoomMode> & ToString {
+public enum SmoothZoomMode {
     | Normal
     | ...
 }
@@ -10624,18 +10624,18 @@ public operator func ==(other: SmoothZoomMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum TorchMode
 
 ```cangjie
-public enum TorchMode <: Equatable<TorchMode> & ToString {
+public enum TorchMode {
     | Off
     | On
     | Auto
@@ -10736,7 +10736,7 @@ public operator func ==(other: TorchMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10746,12 +10746,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum VideoCodecType
 
 ```cangjie
-public enum VideoCodecType <: Equatable<VideoCodecType> & ToString {
+public enum VideoCodecType {
     | Avc
     | Hevc
     | ...
@@ -10839,7 +10839,7 @@ public operator func ==(other: VideoCodecType): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10849,12 +10849,12 @@ public func toString(): String
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|
 
 ## enum VideoStabilizationMode
 
 ```cangjie
-public enum VideoStabilizationMode <: Equatable<VideoStabilizationMode> & ToString {
+public enum VideoStabilizationMode {
     | Off
     | Low
     | Middle
@@ -10981,10 +10981,10 @@ public operator func ==(other: VideoStabilizationMode): Bool
 public func toString(): String
 ```
 
-**功能：** 获取枚举的值。
+**功能：** 获取枚举的字符串值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|枚举的说明。|
+|String|枚举的字符串值。|

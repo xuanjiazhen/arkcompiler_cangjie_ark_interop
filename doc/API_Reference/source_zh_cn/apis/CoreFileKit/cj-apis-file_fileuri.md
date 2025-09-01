@@ -17,6 +17,40 @@ API示例代码使用说明：
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
+## static func getUriFromPath(String)
+
+```cangjie
+
+public static func getUriFromPath(path: String): String
+```
+
+**功能：** 通过传入的路径path生成应用自己的uri(不支持媒体类型uri的获取)。将path转uri时，路径中的中文及非数字字母的特殊字符将会被编译成对应的ASCII码，拼接在uri中。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|path|String|是|-|文件的沙箱路径。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|返回文件URI。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The input parameter is invalid.
+ |
+
 ## class FileUri
 
 ```cangjie
@@ -56,7 +90,7 @@ public prop name: String
 ### prop path
 
 ```cangjie
-public prop path: String
+public override prop path: String
 ```
 
 **功能：** 获取FileUri对应路径名。
@@ -103,40 +137,6 @@ public init(uriOrPath: String)
   | 13900042 | Unknown error
  |
   | 14300002 | Invalid uri
- |
-
-### static func getUriFromPath(String)
-
-```cangjie
-
-public static func getUriFromPath(path: String): String
-```
-
-**功能：** 通过传入的路径path生成应用自己的uri(不支持媒体类型uri的获取)。将path转uri时，路径中的中文及非数字字母的特殊字符将会被编译成对应的ASCII码，拼接在uri中。
-
-**系统能力：** SystemCapability.FileManagement.AppFileService
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|path|String|是|-|文件的沙箱路径。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回文件URI。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | The input parameter is invalid.
  |
 
 ### func toString()
