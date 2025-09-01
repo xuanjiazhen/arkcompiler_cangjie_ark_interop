@@ -21,7 +21,7 @@
 
 2. 创建Surface。
 
-    XComponent组件为预览流提供的Surface（获取surfaceId请参见[getXcomponentSurfaceId](../../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-xcomponent.md)，而XComponent的能力由UI提供，相关介绍请参见[XComponent组件参考](../../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-xcomponent.md)。
+    XComponent组件为预览流提供的Surface，而XComponent的能力由UI提供。
 
     > **说明：**
     > 预览流与录像输出流的分辨率的宽高比要保持一致，如果设置XComponent组件中的Surface显示区域宽高比为1920:1080 = 16:9，则需要预览流中的分辨率的宽高比也为16:9，如分辨率选择640:360，或960:540，或1920:1080，以此类推。

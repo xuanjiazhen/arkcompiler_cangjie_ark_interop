@@ -536,7 +536,7 @@ public func isTerminating(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -563,7 +563,7 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -606,7 +606,7 @@ public func startAbility(want: Want, options!: ?StartOptions = None): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -663,7 +663,7 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -717,7 +717,7 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -761,7 +761,7 @@ public func terminateSelf(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -789,7 +789,7 @@ public func terminateSelfWithResult(parameter: AbilityResult): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
