@@ -237,7 +237,7 @@ class EntryView {
                     .margin(50)
                     .width(200)
                     .height(this.heightSize)
-                    .backgroundColor(Color.BLUE)
+                    .backgroundColor(Color.Blue)
                     .onClick(
                         {
                             evt => getUIContext().animateTo(
