@@ -365,7 +365,7 @@ class Page1 {
         Column() {
             Text("This is Page1")
             Button("back()").onClick({
-                evt => Router.back()
+                evt => getUIContext().getRouter().back()
             })
         }
     }

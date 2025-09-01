@@ -203,7 +203,7 @@ class EntryView {
                 .width(50)
                 .height(50)
                 .onClick {
-                    e => Router.push(url: "Page1")
+                    e => getUIContext().getRouter().push(url: "Page1")
                 }
                 .sharedTransition("sharedImage",
                     options: SharedTransitionOptions(duration: 800, curve: Curve.Linear, delay: 100))

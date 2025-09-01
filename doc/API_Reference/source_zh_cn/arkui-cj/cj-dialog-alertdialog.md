@@ -1386,16 +1386,16 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(5.vp) {
+        Column(space:5.vp) {
             Button("one button dialog")
-                .onClick({ =>
-                    AlertDialog.show(
-                        AlertDialogParamWithConfirm("text",
+                .onClick({ evt =>
+                        AlertDialogParamWithConfirm(message:"text",
                             title: "title",
                             subtitle: "subtitle",
                             autoCancel: true,
@@ -1409,13 +1409,12 @@ class EntryView {
                                 }
                             },
                             confirm: AlertDialogButtonOptions(value: "button",
-                                action: {=> Hilog.info(0, "AppLogCj", "Button-clicking callback")})))
+                                action: {=> Hilog.info(0, "AppLogCj", "Button-clicking callback")}))
                 })
             .backgroundColor(0x317aff)
             Button("two button dialog")
-                .onClick({ =>
-                    AlertDialog.show(
-                        AlertDialogParamWithButtons("text",
+                .onClick({ evt =>
+                        AlertDialogParamWithButtons(message: "text",
                             title: "title",
                             subtitle: "subtitle",
                             autoCancel: true,
@@ -1432,15 +1431,14 @@ class EntryView {
                             primaryButton: AlertDialogButtonOptions(value: "Cancel",
                                 action: {=> Hilog.info(0, "AppLogCj", "Callback when second button is clicked")}),
                             secondaryButton: AlertDialogButtonOptions(enabled: true, defaultFocus: true,
-                                style: DialogButtonStyle.HIGHLIGHT, value: "OK",
-                                action: {=> Hilog.info(0, "AppLogCj", "Callback when second button is clicked")})))
+                                style: DialogButtonStyle.Highlight, value: "OK",
+                                action: {=> Hilog.info(0, "AppLogCj", "Callback when second button is clicked")}))
                 })
             .backgroundColor(0x317aff)
             Button("three button dialog")
-                .onClick({ =>
-                    AlertDialog.show(
+                .onClick({ evt =>
                         AlertDialogParamWithOptions(
-                            "text",
+                            message: "text",
                             title: "title",
                             subtitle: "subtitle",
                             autoCancel: true,
@@ -1464,7 +1462,6 @@ class EntryView {
                                     action: {=> Hilog.info(0, "AppLogCj", "Callback when button1 is clicked")})
                             ]
                         )
-                    )
                 })
                 .backgroundColor(0x317aff)
         }
@@ -1484,17 +1481,17 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(5.vp) {
+        Column(space: 5.vp) {
             Button("button dialog")
-                .onClick({ =>
-                    AlertDialog.show(
+                .onClick({ evt =>
                         AlertDialogParamWithOptions(
-                            "text",
+                            message: "text",
                             title: "title",
                             subtitle: "subtitle",
                             autoCancel: true,
@@ -1502,7 +1499,7 @@ class EntryView {
                             alignment: DialogAlignment.Center,
                             offset: Offset(0, -20),
                             showInSubWindow: true,
-                            buttonDirection: DialogButtonDirection.HORIZONTAL,
+                            buttonDirection: DialogButtonDirection.Horizontal,
                             gridCount: 4,
                             onWillDismiss: {
                                 dismissDialogAction: DismissDialogAction => match (dismissDialogAction.reason) {
@@ -1520,7 +1517,6 @@ class EntryView {
                                     action: {=> Hilog.info(0, "AppLogCj", "Callback when button1 is clicked")})
                             ]
                         )
-                    )
                 })
                 .backgroundColor(0x317aff)
         }
@@ -1541,16 +1537,17 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.performanceAnalysisKit.Hilog
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(5.vp) {
+        Column(space: 5.vp) {
             Button("button dialog")
                 .onClick(
                     {
-                        => AlertDialog.show(
+                        evt => AlertDialog.show(
                             AlertDialogParamWithConfirm(
                                 "button dialog",
                                 title: "AlertDialog 1",
@@ -1563,7 +1560,7 @@ class EntryView {
                                 height: 200,
                                 cornerRadius: BorderRadiuses(topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20),
                                 borderWidth: 1,
-                                borderStyle: EdgeStyle.DASHED,
+                                borderStyle: EdgeStyle(),
                                 borderColor: Color.Blue,
                                 backgroundColor: Color.White,
                                 onWillDismiss: {
@@ -1575,7 +1572,7 @@ class EntryView {
                                 },
                                 confirm: AlertDialogButtonOptions(value: "button",
                                     action: {=> Hilog.info(0, "AppLogCj", "Button-clicking callback")})
-                            ), ActionSheetShadowOptions(20.0, color: Color.GREY, offsetX: 50.0, offsetY: 0.0)
+                            )
                         )
                     })
                 .backgroundColor(0x317aff)

@@ -45,6 +45,7 @@ import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import ohos.arkui.ui_context.*
 import kit.PerformanceAnalysisKit.*
+import ohos.arkui.component.action_sheet
 
 @Entry
 @Component
@@ -55,15 +56,15 @@ class EntryView {
                 Button("Click to Show ActionSheet").onClick(
                     {
                         evt =>
-                        let sheets: Array<SheetInfo> = [SheetInfo("apple", {=> Hilog.info(0, "AppLogCj", "apple")}),
-                            SheetInfo("banana", {=> Hilog.info(0, "AppLogCj", "banana")}), SheetInfo("pears", {=> Hilog.info(0, "AppLogCj", "pears")})]
-                        let confirm: Confirm = Confirm("Confirm button", {=> Hilog.info(0, "AppLogCj", "Get Alert Dialog handled")},
+                        let sheets: Array<SheetInfo> = [SheetInfo(title:"apple", action:{=> Hilog.info(0, "AppLogCj", "apple")}, icon:""),
+                            SheetInfo(title:"banana", action: {=> Hilog.info(0, "AppLogCj", "banana")}, icon:""), SheetInfo(title:"pears", action: {=> Hilog.info(0, "AppLogCj", "pears")}, icon:"")]
+                        let confirm = ActionSheetButtonOptions("Confirm button", {=> Hilog.info(0, "AppLogCj", "Get Alert Dialog handled")},
                             defaultFocus: true, style: DialogButtonStyle.HIGHLIGHT)
                         ActionSheet.show(
                             ActionSheetOptions(
-                                "ActionSheet title",
-                                "message",
-                                sheets,
+                                title: "ActionSheet title",
+                                message: "message",
+                                sheets: sheets,
                                 subtitle: "ActionSheet subtitle",
                                 autoCancel: true,
                                 confirm: confirm,
@@ -86,10 +87,7 @@ class EntryView {
                                     }
                                     action.dismiss()
                                 },
-                                alignment: DialogAlignment.Bottom,
-                                offset: Offset(0, -10)
-                            ),
-                            ActionSheetShadowOptions(20.0, color: Color.Gray, offsetX: 50.0, offsetY: 0.0)
+                                alignment: DialogAlignment.Bottom
                         )
                     }
                 )
