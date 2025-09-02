@@ -27,7 +27,7 @@ import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RActi
 
 func Upload(): Unit {
     // 获取应用文件路径
-    let UiStageContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+    let UiStageContext = Global.abilityContext
     let DefaultSandBoxCache = "/data/storage/el2/base/haps/entry/cache"
     // 新建一个本地应用文件
     let filePath = "${DefaultSandBoxCache}/test.txt"
@@ -118,7 +118,7 @@ import std.sync.*
 //下载的函数
 func Download(): Unit {
     // 获取应用文件路径
-    let UiStageContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+    let UiStageContext = Global.abilityContext
     let DefaultSandBoxCache = "/data/storage/el2/base/haps/entry/cache"
     let fileName = "test.txt"
     let filePath = "${DefaultSandBoxCache}/${fileName}"

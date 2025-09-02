@@ -72,7 +72,7 @@
 
 ```cangjie
 import kit.CoreFileKit.*
-var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+var abilityContext = Global.abilityContext
 // 获取resourceManager资源管理器。
 let resourceManager = abilityContext.resourceManager   
         
@@ -93,7 +93,7 @@ FileFs.close(file.fd)
 
 ```cangjie
 import kit.CoreFileKit.*
-var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+var abilityContext = Global.abilityContext
 // 获取resourceManager资源管理器。
 let resourceManager = abilityContext.resourceManager   
         

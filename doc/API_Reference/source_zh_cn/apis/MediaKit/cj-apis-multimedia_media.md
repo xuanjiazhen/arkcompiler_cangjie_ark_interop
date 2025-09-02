@@ -238,16 +238,13 @@ public func fetchFrameByTime(timeUs: Int64, options: AVImageQueryOptions, param:
 // index.cj
 
 import kit.MediaKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 let timeUs = 0
 let queryOption = AVImageQueryOptions.AvImageQueryNextSync
 let param = PixelMapParams(width: 300, height: 300)
 let generator = createAVImageGenerator()
-let abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let abilityContext = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let rawFd = abilityContext.resourceManager.getRawFd("trailer.mp4")    // 请替换您的资源路径，获取文件路径参考本文使用说明
 generator.fdSrc = AVFileDescriptor(rawFd.fd, offset:rawFd.offset, length:rawFd.length)
 let pic = generator.fetchFrameByTime(timeUs, queryOption, param)
@@ -282,10 +279,7 @@ public func release(): Unit
 // index.cj
 
 import kit.MediaKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import ohos.business_exception.BusinessException
 
 try {
@@ -293,7 +287,7 @@ try {
     let queryOption = AVImageQueryOptions.AvImageQueryNextSync
     let param = PixelMapParams(width: 300, height: 300)
     let generator = createAVImageGenerator()
-    let abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+    let abilityContext = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
     let rawFd = abilityContext.resourceManager.getRawFd("trailer.mp4")
     generator.fdSrc = AVFileDescriptor(rawFd.fd, offset:rawFd.offset, length:rawFd.length)
     let pic = generator.fetchFrameByTime(timeUs, queryOption, param)

@@ -167,7 +167,6 @@ public func requestPermissionsFromUser(context: UIAbilityContext, permissionList
 import kit.AbilityKit.*
 import kit.PerformanceAnalysisKit.Hilog
 import ohos.business_exception.*
-import ohos.arkui.state_management.AppStorage
 
 // 此处代码可添加在依赖项定义中
 var resultCallback = {
@@ -184,7 +183,7 @@ var resultCallback = {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let atManager = AbilityAccessCtrl.createAtManager()
 let permissionList = ["ohos.permission.READ_CONTACTS", "ohos.permission.CAMERA"]
 atManager.requestPermissionsFromUser(ctx, permissionList, resultCallback)
