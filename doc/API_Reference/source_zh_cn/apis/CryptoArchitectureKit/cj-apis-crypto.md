@@ -363,22 +363,6 @@ mut prop algName: String
 
 **起始版本：** 21
 
-### prop iv
-
-```cangjie
-mut prop iv: DataBlob
-```
-
-**功能：** 指明加解密参数iv。常见取值如下：<br/>- AES的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节<br/>- 3DES的CBCMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为8字节<br/>- SM4的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节。
-
-**类型：** [DataBlob](#struct-datablob)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
 ## class Cipher
 
 ```cangjie
@@ -1321,22 +1305,6 @@ public mut prop aad: DataBlob
 
 **起始版本：** 21
 
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
 ### prop authTag
 
 ```cangjie
@@ -1434,6 +1402,24 @@ public let data: Array<UInt8>
 
 **起始版本：** 21
 
+### init(Array\<UInt8>)
+
+```cangjie
+public init(data: Array<UInt8>)
+```
+
+**功能：** 创建DataBlob对象。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|data|Array\<UInt8>|是|-|存储的数组。|
+
 ### DataBlob(Array\<UInt8>)
 
 ```cangjie
@@ -1499,22 +1485,6 @@ public mut prop aad: DataBlob
 **功能：** 指明加解密参数aad，长度为8字节。
 
 **类型：** [DataBlob](#struct-datablob)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/>- IvParamsSpec:适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
-
-**类型：** String
 
 **读写能力：** 可读写
 
@@ -1610,22 +1580,6 @@ public struct IvParamsSpec <: ParamsSpec {
 **父类型：**
 
 - [ParamsSpec](#interface-paramsspec)
-
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
 
 ### prop iv
 

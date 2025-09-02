@@ -28,7 +28,7 @@ public func abortSession(handle: HuksHandleId, options: HuksOptions): Unit
 
 **功能：** abortSession操作密钥接口。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **起始版本：** 21
 
@@ -282,7 +282,7 @@ public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: By
 
 **功能：** finishSession操作密钥接口。[security_huks.initSession](#func-initsessionstring-huksoptions)、[security_huks.updateSession](#func-updatesessionhukshandle-huksoptions-arrayuint8)、[security_huks.finishSession](#func-finishsessionhukshandle-huksoptions-arrayuint8)为三段式接口，需要一起使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **起始版本：** 21
 
@@ -347,7 +347,7 @@ public func generateKeyItem(keyAlias: String, options: HuksOptions): Unit
 
 **功能：** 生成密钥。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **起始版本：** 21
 
@@ -421,47 +421,17 @@ public func getKeyItemProperties(keyAlias: String, _: HuksOptions): Array<HuksPa
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | argument is invalid
- |
-  | 801 | api is not supported
- |
-  | 12000001 | algorithm mode is not supported
- |
-  | 12000002 | algorithm param is missing
- |
-  | 12000003 | algorithm param is invalid
- |
-  | 12000004 | operating file failed
- |
-  | 12000005 | IPC communication failed
- |
-  | 12000006 | error occured in crypto engine
- |
-  | 12000011 | queried entity does not exist
- |
-  | 12000012 | external error
- |
-  | 12000014 | memory is insufficient
- |
-
-## func getSdkVersion()
-
-```cangjie
-
-public func getSdkVersion(): String
-```
-
-**功能：** 获取当前系统sdk版本。
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回sdk版本。|
+  | 401 | argument is invalid|
+  | 801 | api is not supported|
+  | 12000001 | algorithm mode is not supported|
+  | 12000002 | algorithm param is missing|
+  | 12000003 | algorithm param is invalid|
+  | 12000004 | operating file failed|
+  | 12000005 | IPC communication failed|
+  | 12000006 | error occured in crypto engine|
+  | 12000011 | queried entity does not exist|
+  | 12000012 | external error|
+  | 12000014 | memory is insufficient|
 
 ## func importKeyItem(String, HuksOptions)
 
@@ -472,7 +442,7 @@ public func importKeyItem(keyAlias: String, options: HuksOptions): Unit
 
 **功能：** 导入明文密钥。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **起始版本：** 21
 
@@ -525,7 +495,7 @@ public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, opt
 
 **功能：** 导入加密密钥。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **起始版本：** 21
 
@@ -579,7 +549,7 @@ public func initSession(keyAlias: String, options: HuksOptions): HuksSessionHand
 
 **功能：** initSession操作密钥接口。[security_huks.initSession](#func-initsessionstring-huksoptions)、[security_huks.updateSession](#func-updatesessionhukshandle-huksoptions)、[security_huks.finishSession](#func-finishsessionhukshandle-huksoptions)为三段式接口，需要一起使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **起始版本：** 21
 
@@ -2746,6 +2716,87 @@ public static const HUKS_USER_AUTH_TYPE_PIN: HuksParamValue = HuksParamValue.Uin
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **起始版本：** 21
+
+## enum CipherSpecItem
+
+```cangjie
+public enum CipherSpecItem <: Equatable<CipherSpecItem> & ToString {
+    | OaepMdNameStr
+    | OaepMgfNameStr
+    | OaepMgf1MdStr
+    | OaepMgf1PsrcUint8Arr
+    | ...
+}
+```
+
+**功能：** 表示加解密参数的枚举，这些加解密参数支持通过setCipherSpec接口设置/通过getCipherSpec接口获取。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<CipherSpecItem>
+- ToString
+
+### func !=(CipherSpecItem)
+
+```cangjie
+public operator func !=(other: CipherSpecItem): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(CipherSpecItem)
+
+```cangjie
+public operator func ==(other: CipherSpecItem): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取枚举的值。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|枚举的说明。|
 
 ## enum HuksParamValue
 
