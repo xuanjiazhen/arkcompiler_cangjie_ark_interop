@@ -179,7 +179,6 @@
                         - [触屏事件](source_zh_cn/arkui-cj/cj-common-events-touch-screen-event.md)
                         - [键鼠事件](source_zh_cn/arkui-cj/cj-common-events-device-input-event.md)
                         - [焦点事件](source_zh_cn/arkui-cj/cj-common-events-focus-event.md)
-                        - [拖拽事件](source_zh_cn/arkui-cj/cj-common-events-drag-event.md)
                 - [使用镜像能力](source_zh_cn/arkui-cj/cj-mirroring-display.md)
                 <!--RP1--><!--RP1End-->
                 - [主题设置]()

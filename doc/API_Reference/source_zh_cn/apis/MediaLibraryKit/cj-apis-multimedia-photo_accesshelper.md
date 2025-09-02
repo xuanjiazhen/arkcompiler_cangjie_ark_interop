@@ -986,7 +986,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |photoType|[PhotoType](#enum-phototype)|是|-|待创建的文件类型，IMAGE或者VIDEO类型。|
 |extension|String|是|-|文件扩展名，例如：'jpg'。|
 |options|[CreateOptions](#class-createoptions)|否|CreateOptions(title: "", subtype: Default)|**命名参数。** 创建选项，例如：{title: 'testPhoto'}。|
@@ -1042,7 +1042,7 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |fileUri|String|是|-|图片资产的数据来源，在应用沙箱下的uri。|
 
 **返回值：**
@@ -1097,7 +1097,7 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |fileUri|String|是|-|视频资产的数据来源，在应用沙箱下的uri。|
 
 **返回值：**
@@ -1152,7 +1152,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待删除的媒体文件uri数组。|
 
 **异常：**
@@ -1203,7 +1203,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |assets|Array\<String>|是|-|待删除的媒体文件uri数组。|
 
 **异常：**
