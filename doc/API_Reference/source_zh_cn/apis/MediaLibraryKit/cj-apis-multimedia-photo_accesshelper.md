@@ -281,10 +281,9 @@ public func close(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -328,10 +327,9 @@ public func getAllObjects(): Array<T>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -376,10 +374,9 @@ public func getCount(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -423,10 +420,9 @@ public func getFirstObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -470,10 +466,9 @@ public func getLastObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -519,10 +514,9 @@ public func getNextObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -572,10 +566,9 @@ public func getObjectByPosition(index: Int32): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -619,10 +612,9 @@ public func isAfterLast(): Bool
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -691,10 +683,9 @@ public init(album: Album)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -741,10 +732,9 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -792,10 +782,9 @@ public func getAlbum(): Album
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -843,10 +832,9 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -902,10 +890,9 @@ public func setAlbumName(name: String): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -971,10 +958,9 @@ public init(asset: PhotoAsset)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions = FetchOptions([], predicates)
@@ -1028,10 +1014,9 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let photoType = PhotoType.Image
 let extension = "jpg"
 let options = CreateOptions(title: "testPhoto")
@@ -1084,10 +1069,9 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createImageAssetRequest(ctx,
@@ -1140,10 +1124,9 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.mp4"
 let assetChangeRequest = MediaAssetChangeRequest.createVideoAssetRequest(ctx,
@@ -1191,10 +1174,9 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1244,10 +1226,9 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1294,10 +1275,9 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let photoType = PhotoType.Image
 let extension = "jpg"
@@ -1345,10 +1325,9 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let photoType = PhotoType.Image
 let extension = "jpg"
@@ -1389,10 +1368,9 @@ public func discardCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions = FetchOptions([], predicates)
@@ -1439,10 +1417,9 @@ public func getAsset(): PhotoAsset
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1492,10 +1469,9 @@ public func getWriteCacheHandler(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.CoreFileKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx,
     PhotoType.Video, "mp4")
@@ -1534,10 +1510,9 @@ public func saveCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions = FetchOptions([], predicates)
@@ -1584,10 +1559,9 @@ public func setTitle(title: String): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1690,10 +1664,9 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1746,10 +1719,9 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1801,10 +1773,9 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetR
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1851,8 +1822,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
+
 import ohos.base.*
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.*
@@ -1867,9 +1837,8 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback1 = MyCallback<ChangeData>(
     {
@@ -1915,10 +1884,9 @@ public func release(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1966,8 +1934,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
+
 import ohos.base.*
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.*
@@ -1982,9 +1949,9 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback3 = MyCallback<Array<String>>(
     {
@@ -2047,8 +2014,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
+
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.BusinessException
@@ -2063,9 +2029,9 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback1 = MyCallback<ChangeData>(
     {

@@ -187,16 +187,13 @@ public static func deletePreferences(context: UIAbilityContext, name: String): U
 
 import kit.ArkData.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")  // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, "myStore")  // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例
-    Preferences.deletePreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")
+    Preferences.deletePreferences(Global.abilityContext, "myStore")
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "delete Preferences failed")
 }
@@ -250,16 +247,13 @@ public static func deletePreferences(context: UIAbilityContext, options: Options
 
 import kit.ArkData.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")  // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, "myStore")  // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例
-    Preferences.deletePreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")
+    Preferences.deletePreferences(Global.abilityContext, "myStore")
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "delete Preferences failed")
 }
@@ -320,15 +314,12 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
+    Preferences.removePreferencesFromCache(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
@@ -389,15 +380,12 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
+    Preferences.removePreferencesFromCache(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
@@ -446,15 +434,12 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
+    Preferences.removePreferencesFromCache(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
@@ -512,15 +497,12 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
+    Preferences.removePreferencesFromCache(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
@@ -558,12 +540,9 @@ public func clear(): Unit
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.data.preferences.ValueType as PreferencesValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("myKey", PreferencesValueType.StringData("myValue"))
 preferences.clear()
 ```
@@ -603,13 +582,10 @@ public func delete(key: String): Unit
 // index.cj
 
 import kit.ArkData.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore") // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, "myStore") // 需获取Context应用上下文，详见本文使用说明
 preferences.delete("startup")
 ```
 
@@ -645,12 +621,9 @@ public func flush(): Unit
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.data.preferences.ValueType as PreferencesValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("myKey", PreferencesValueType.StringData("myValue"))
 preferences.flush()
 ```
@@ -701,13 +674,10 @@ import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.data.preferences.ValueType as PreferencesValueType
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 var value = preferences.get("key", PreferencesValueType.Integer(0))
 match (value) {
     case PreferencesValueType.Integer(n) => Hilog.info(0, "AppLogCj", "获取到的值为${n}")
@@ -753,13 +723,10 @@ public func getAll(): HashMap<String, ValueType>
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 var values = preferences.getAll()
 for ((k, v) in values) {
     match (v) {
@@ -815,13 +782,10 @@ public func has(key: String): Bool
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 let hasKey = preferences.has("startup")
 if (hasKey) {
     Hilog.info(0, "AppLogCj", "The key 'startup' is contained.")
@@ -870,10 +834,7 @@ import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
 import ohos.data.preferences.ValueType as PValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
@@ -885,7 +846,7 @@ class Callback <: Callback1Argument<String> {
 }
 
 var str = "container"
-var a = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), str) // 需获取Context应用上下文，详见本文使用说明
+var a = Preferences.getPreferences(Global.abilityContext, str) // 需获取Context应用上下文，详见本文使用说明
 var c = Callback()
 a.on(PreferencesEvent.PreferencesChange, c)
 a.off(PreferencesEvent.PreferencesChange)
@@ -924,10 +885,7 @@ import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
 import ohos.data.preferences.ValueType as PValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.Hilog
 
 // 回调函数
@@ -938,7 +896,7 @@ class Callback <: Callback1Argument<String> {
 }
 
 var str = "container"
-var a = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), str) // 需获取Context应用上下文，详见本文使用说明
+var a = Preferences.getPreferences(Global.abilityContext, str) // 需获取Context应用上下文，详见本文使用说明
 var c = Callback()
 a.on(PreferencesEvent.PreferencesChange, c)
 a.put("kkk1", PValueType.StringData("vvv1"))
@@ -984,12 +942,9 @@ public func put(key: String, value: ValueType): Unit
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.data.preferences.ValueType as PreferencesValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-var preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+
+var preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("Monday", PreferencesValueType.StringData("今天天气真好"))
 ```
 

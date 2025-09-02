@@ -64,12 +64,9 @@ public func getCameraManager(context: UIAbilityContext): CameraManager
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 ```
 
@@ -131,13 +128,10 @@ func getExposureMode(): ExposureMode
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.*
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let photoSession = session as PhotoSession
@@ -179,12 +173,9 @@ func getExposureValue(): Float64
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let photoSession = session as PhotoSession
@@ -225,12 +216,9 @@ func getMeteringPoint(): Point
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let photoSession = session as PhotoSession
@@ -272,12 +260,9 @@ func setExposureBias(exposureBias: Float64): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -321,12 +306,9 @@ func setExposureMode(aeMode: ExposureMode): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -370,12 +352,9 @@ func setMeteringPoint(point: Point): Unit
 
 import kit.CameraKit.*
 import kit.CameraKit.Point as ImagePoint
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -433,12 +412,9 @@ func getExposureBiasRange(): Array<Float64>
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -487,12 +463,9 @@ func isExposureModeSupported(aeMode: ExposureMode): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -546,12 +519,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -616,12 +586,9 @@ func getActiveColorSpace(): ColorSpace
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -688,12 +655,9 @@ func setColorSpace(colorSpace: ColorSpace): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -750,12 +714,9 @@ func getSupportedColorSpaces(): Array<ColorSpace>
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -816,12 +777,9 @@ func getFlashMode(): FlashMode
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -868,12 +826,9 @@ func setFlashMode(flashMode: FlashMode): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -932,12 +887,9 @@ func hasFlash(): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -985,12 +937,9 @@ func isFlashModeSupported(flashMode: FlashMode): Bool
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -1055,12 +1004,9 @@ func getFocalLength(): Float64
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -1103,12 +1049,9 @@ func getFocusMode(): FocusMode
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -1150,12 +1093,9 @@ func getFocusPoint(): Point
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -1199,12 +1139,9 @@ func setFocusMode(afMode: FocusMode): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -1250,12 +1187,9 @@ func setFocusPoint(point: Point): Unit
 
 import kit.CameraKit.*
 import kit.CameraKit.Point as ImagePoint
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -1318,12 +1252,9 @@ func isFocusModeSupported(afMode: FocusMode): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -1392,12 +1323,9 @@ func addInput(cameraInput: CameraInput): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
@@ -1441,12 +1369,9 @@ func addOutput(cameraOutput: CameraOutput): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
@@ -1485,12 +1410,9 @@ func beginConfig(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.beginConfig()
@@ -1531,12 +1453,9 @@ func canAddInput(cameraInput: CameraInput): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
@@ -1579,12 +1498,9 @@ func canAddOutput(cameraOutput: CameraOutput): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
@@ -1623,12 +1539,9 @@ func commitConfig(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.commitConfig()
@@ -1662,12 +1575,9 @@ func release(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.release()
@@ -1711,12 +1621,9 @@ func removeInput(cameraInput: CameraInput): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
@@ -1763,12 +1670,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
@@ -1811,12 +1715,9 @@ func start(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.start()
@@ -1850,12 +1751,9 @@ func stop(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.stop()
@@ -1915,12 +1813,9 @@ func getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalVideo)
 var videoSessionOption = session as VideoSession
@@ -1962,12 +1857,9 @@ func setVideoStabilizationMode(mode: VideoStabilizationMode): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalVideo)
 var videoSessionOption = session as VideoSession
@@ -2030,12 +1922,9 @@ func isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): Bool
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalVideo)
 var videoSessionOption = session as VideoSession
@@ -2101,12 +1990,9 @@ func getZoomRatio(): Float64
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -2141,12 +2027,9 @@ func setSmoothZoom(targetRatio: Float64, mode: SmoothZoomMode): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -2181,12 +2064,9 @@ func setSmoothZoom(targetRatio: Float64): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -2229,12 +2109,9 @@ func setZoomRatio(zoomRatio: Float64): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -2292,12 +2169,9 @@ func getZoomRatioRange(): Array<Float64>
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
@@ -2444,12 +2318,9 @@ public func close(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
@@ -2493,12 +2364,9 @@ public func off(eventType: CameraEvents, camera: CameraDevice, callback: Callbac
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
@@ -2541,12 +2409,9 @@ public func off(eventType: CameraEvents, camera: CameraDevice): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
@@ -2596,11 +2461,11 @@ public func on(eventType: CameraEvents, camera: CameraDevice, callback: Callback
 import kit.CameraKit.*
 import ohos.base.*
 import kit.PerformanceAnalysisKit.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -2611,7 +2476,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
@@ -2650,12 +2515,9 @@ public func open(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
@@ -2704,12 +2566,9 @@ public func open(isSecureEnabled: Bool): UInt64
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
@@ -2773,12 +2632,9 @@ public func createCameraInput(camera: CameraDevice): CameraInput
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let cameraDevice0 = cameraDevices[0]
@@ -2832,12 +2688,9 @@ public func createCameraInput(position: CameraPosition, cameraType: CameraType):
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let cameraDevice0 = cameraDevices[0]
@@ -2887,12 +2740,9 @@ public func createPhotoOutput(?Profile = None): PhotoOutput
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let camera = cameraDevices[0]
@@ -2947,12 +2797,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let size = ImageSize(8, 8192)
 let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
@@ -3004,12 +2851,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let size = ImageSize(8, 8192)
 let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
@@ -3058,12 +2902,9 @@ public func createSession(mode: SceneMode): Session
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let camera = cameraDevices[0]
@@ -3116,12 +2957,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let size = ImageSize(8, 8192)
 let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
@@ -3173,12 +3011,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let size = ImageSize(8, 8192)
 let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
@@ -3212,12 +3047,9 @@ public func getSupportedCameras(): Array<CameraDevice>
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 ```
@@ -3255,12 +3087,9 @@ public func getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode):
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let camera = cameraDevices[0]
@@ -3300,12 +3129,9 @@ public func getSupportedSceneModes(camera: CameraDevice): Array<SceneMode>
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let camera = cameraDevices[0]
@@ -3338,12 +3164,9 @@ public func getTorchMode(): TorchMode
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let torchMode = cameraManager.getTorchMode()
 ```
@@ -3375,12 +3198,9 @@ public func isCameraMuted(): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 Hilog.info(0, "AppLogCj", cameraManager.isCameraMuted().toString())
 ```
@@ -3418,12 +3238,9 @@ public func isTorchModeSupported(mode: TorchMode): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let torchMode = cameraManager.getTorchMode()
 Hilog.info(0, "AppLogCj", cameraManager.isTorchModeSupported(torchMode).toString())
@@ -3456,12 +3273,9 @@ public func isTorchSupported(): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 Hilog.info(0, "AppLogCj", cameraManager.isTorchSupported().toString())
 ```
@@ -3502,12 +3316,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CameraStatu
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 cameraManager.off(CameraEvents.TorchStatusChange)
 ```
@@ -3548,12 +3359,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FoldStatusI
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 cameraManager.off(CameraEvents.TorchStatusChange)
 ```
@@ -3594,12 +3402,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<TorchStatus
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 cameraManager.off(CameraEvents.TorchStatusChange)
 ```
@@ -3639,12 +3444,9 @@ public func off(eventType: CameraEvents): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 cameraManager.off(CameraEvents.TorchStatusChange)
 ```
@@ -3691,11 +3493,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CameraStatus
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.Callback1Argument
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -3706,7 +3508,7 @@ class TestCallbackTorchStatusChange <: Callback1Argument<TorchStatusInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let testCallbackTorchStatusChange = TestCallbackTorchStatusChange()
 cameraManager.on(CameraEvents.TorchStatusChange, testCallbackTorchStatusChange)
@@ -3754,11 +3556,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FoldStatusIn
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.Callback1Argument
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -3769,7 +3571,7 @@ class TestCallbackTorchStatusChange <: Callback1Argument<TorchStatusInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let testCallbackTorchStatusChange = TestCallbackTorchStatusChange()
 cameraManager.on(CameraEvents.TorchStatusChange, testCallbackTorchStatusChange)
@@ -3817,11 +3619,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<TorchStatusI
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.Callback1Argument
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -3832,7 +3634,7 @@ class TestCallbackTorchStatusChange <: Callback1Argument<TorchStatusInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let testCallbackTorchStatusChange = TestCallbackTorchStatusChange()
 cameraManager.on(CameraEvents.TorchStatusChange, testCallbackTorchStatusChange)
@@ -3873,12 +3675,9 @@ public func setTorchMode(mode: TorchMode): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 cameraManager.setTorchMode(TorchMode.On)
 cameraManager.setTorchMode(TorchMode.Off)
@@ -4520,12 +4319,9 @@ public func capture(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4570,12 +4366,9 @@ public func capture(setting: PhotoCaptureSetting): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4618,12 +4411,9 @@ public func enableMirror(enabled: Bool): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4671,12 +4461,9 @@ public func enableMovingPhoto(enabled: Bool): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4720,12 +4507,9 @@ public func getActiveProfile(): Profile
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4779,12 +4563,9 @@ public func getPhotoRotation(deviceDegree: Int32): ImageRotation
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4820,12 +4601,9 @@ public func getSupportedMovingPhotoVideoCodecTypes(): Array<VideoCodecType>
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4869,12 +4647,9 @@ public func isMirrorSupported(): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4918,12 +4693,9 @@ public func isMovingPhotoSupported(): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -4968,12 +4740,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureStar
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5018,12 +4787,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutte
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5068,12 +4834,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureEndI
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5118,12 +4881,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutte
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5168,12 +4928,9 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5218,12 +4975,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<Float64>): 
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5267,12 +5021,9 @@ public func off(eventType: CameraEvents): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5323,11 +5074,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureStart
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -5338,7 +5089,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5390,11 +5141,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutter
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -5405,7 +5156,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5457,11 +5208,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureEndIn
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -5472,7 +5223,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5524,11 +5275,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutter
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -5539,7 +5290,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5591,11 +5342,11 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -5606,7 +5357,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5658,11 +5409,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<Float64>): U
 import kit.CameraKit.*
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -5673,7 +5424,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5711,12 +5462,9 @@ public func release(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5759,12 +5507,9 @@ public func setMovingPhotoVideoCodecType(codecType: VideoCodecType): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -5836,12 +5581,9 @@ public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: Preconfi
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -5875,12 +5617,9 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -5914,12 +5653,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -5953,12 +5689,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomI
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -5999,12 +5732,9 @@ public func off(eventType: CameraEvents): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -6045,10 +5775,7 @@ import kit.CameraKit.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 此处代码可添加在依赖项定义中
 class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
@@ -6061,7 +5788,7 @@ class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -6103,10 +5830,7 @@ import kit.CameraKit.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 此处代码可添加在依赖项定义中
 class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
@@ -6119,7 +5843,7 @@ class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -6161,10 +5885,7 @@ import kit.CameraKit.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 此处代码可添加在依赖项定义中
 class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
@@ -6177,7 +5898,7 @@ class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -6223,12 +5944,9 @@ public func preconfig(
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
 let session = photoSession.getOrThrow()
@@ -6355,12 +6073,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6409,12 +6124,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6474,12 +6186,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6528,12 +6237,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6584,12 +6290,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6639,12 +6342,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6701,11 +6401,11 @@ import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -6716,7 +6416,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6760,12 +6460,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6820,12 +6517,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -6876,12 +6570,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
@@ -7215,12 +6906,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7269,12 +6957,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7323,12 +7008,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7388,12 +7070,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7444,12 +7123,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7499,12 +7175,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7561,11 +7234,11 @@ import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
 import kit.PerformanceAnalysisKit.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
+
 import ohos.callback_invoke.Callback0Argument
 import ohos.business_exception.BusinessException
 //// check redundant import
-import kit.AbilityKit.UIAbilityContext
+
 //// end
 
 // 此处代码可添加在依赖项定义中
@@ -7576,7 +7249,7 @@ class TestCallbackError <: Callback0Argument {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7620,12 +7293,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7680,12 +7350,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7729,12 +7396,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7777,12 +7441,9 @@ import kit.CameraKit.*
 import kit.ImageKit.createImageReceiver
 import kit.ImageKit.Size as ImageSize
 import kit.ImageKit.ImageFormat
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[1]
@@ -7895,12 +7556,9 @@ public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: Preconfi
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
@@ -7943,12 +7601,9 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
@@ -7991,12 +7646,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
@@ -8039,12 +7691,9 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomI
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
@@ -8086,12 +7735,9 @@ public func off(eventType: CameraEvents): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
@@ -8141,10 +7787,7 @@ import kit.CameraKit.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 此处代码可添加在依赖项定义中
 class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
@@ -8157,7 +7800,7 @@ class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
@@ -8208,10 +7851,7 @@ import kit.CameraKit.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 此处代码可添加在依赖项定义中
 class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
@@ -8224,7 +7864,7 @@ class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
@@ -8275,10 +7915,7 @@ import kit.CameraKit.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 
 // 此处代码可添加在依赖项定义中
 class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
@@ -8291,7 +7928,7 @@ class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()
@@ -8337,12 +7974,9 @@ public func preconfig(
 // index.cj
 
 import kit.CameraKit.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
 let session = videoSession.getOrThrow()

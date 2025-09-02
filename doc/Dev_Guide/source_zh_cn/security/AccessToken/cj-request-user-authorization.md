@@ -195,7 +195,7 @@
             import ohos.arkui.component.button.Button
             import ohos.arkui.state_macro_manage.Entry
             import ohos.arkui.state_macro_manage.Component
-            import ohos.arkui.state_management.AppStorage
+            
 
             @Entry
             @Component
@@ -222,7 +222,7 @@
                         }
                     }
                     let atManager = AbilityAccessCtrl.createAtManager()
-                    let stageContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+                    let stageContext = Global.abilityContext
                     let permissionList = ["ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]
                     atManager.requestPermissionsFromUser(stageContext, permissionList, resultCallback)
                 }

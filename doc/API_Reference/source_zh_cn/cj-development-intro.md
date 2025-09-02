@@ -64,7 +64,7 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
     }
     ```
 
-4. 若示例代码中涉及[Context](./apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)对象，需要在仓颉模板工程的“main_ability.cj”文件中利用全局AppStorage保存Ability上下文，“main_ability.cj”内容如下：
+4. 若示例代码中涉及[Context](./apis/AbilityKit/cj-apis-ability.md#class-context)对象，需要在仓颉模板工程的“main_ability.cj”文件中定义Global类并对其赋值，“main_ability.cj”内容如下：
 
     ```cangjie
     import kit.AbilityKit.*
@@ -72,7 +72,6 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
     internal import kit.AbilityKit.AbilityStage
     internal import kit.ArkUI.WindowStage
     import kit.PerformanceAnalysisKit.Hilog
-    import ohos.arkui.state_management.AppStorage
 
     class MainAbility <: UIAbility {
         public init() {
@@ -90,9 +89,31 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
             Hilog.info(0, "system", "MainAbility onWindowStageCreate.")
-            AppStorage.setOrCreate<UIAbilityContext>("abilityContext", this.context)
-            AppStorage.setOrCreate<WindowStage>("windowStage", windowStage)
+            Global._abilityContext = Some(this.context)
+            Global._windowStage_ = Some(windowStage)
             windowStage.loadContent("EntryView")
+        }
+    }
+
+    // 定义Global类
+    public class Global {
+        public static var _abilityContext: Option<UIAbilityContext> = None
+        public static var _windowStage: Option<WindowStage> = None
+        public static prop abilityContext: UIAbilityContext {
+            get() {
+                match (this._abilityContext) {
+                    case Some(context) => context
+                    case None => throw Exception("Global.abilityContext is not set")
+                }
+            }
+        }
+        public static prop windowStage: WindowStage {
+            get() {
+                match (this._windowStage) {
+                    case Some(stage) => stage
+                    case None => throw Exception("Global.windowStage is not set")
+                }
+            }
         }
     }
     ```
