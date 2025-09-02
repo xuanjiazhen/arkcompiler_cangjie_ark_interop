@@ -1,4 +1,4 @@
-# ohos.labels (通用APILevel)
+# ohos.labels (通用接口标签)
 
 标签说明。标签包括 atomicservice（是否支持原子服务）、crossplatform（是否支持跨平台）、deprecated（已弃用版本）、form（是否在表单中支持）、permission（所需权限）、since（API 级别）、stagemodelonly（是否仅支持 Stage 模型）、syscap（所需系统能力）等。
 
