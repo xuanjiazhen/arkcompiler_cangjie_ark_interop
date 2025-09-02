@@ -901,51 +901,69 @@ import kit.LocalizationKit.AppResource
 class EntryView {
     func build() {
         Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
-                Row() {
-                    // 加载png格式图片
-                    Image(@r(app.media.startIcon))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(value: "png", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
-                    .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.Auto)
-                    // 加载gif格式图片
-                    Image(@r(app.media.list))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(value: "gif", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
-                    .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.Auto)
-                }
-                Row() {
-                    // 加载svg格式图片
-                    Image(@r(app.media.svg))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(value: "svg", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
-                    .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.Auto)
-                    // 加载jpg格式图片
-                    Image(@r(app.media.startIcon_jpg))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(value: "jpg", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
-                    .border(width: 2, color: 0xFEC0CD)
-                    .objectFit(ImageFit.None)
-                }
+            Row() {
+                // 加载png格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "Contain", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.Contain)
+                // 加载gif格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "Cover", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.Cover)
             }
-            .height(320)
-            .width(360)
-            .padding(right: 10, top: 10)
+            Row() {
+                // 加载svg格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "Fill", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.Fill)
+                // 加载jpg格式图片
+                Image(@r(app.media.startIcon))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "ScaleDown", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.ScaleDown)
+            }
+            Row() {
+                // 加载png格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "Auto", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.Auto)
+                // 加载gif格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "None", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.None)
+            }
+        }
+        .height(480)
+        .width(360)
+        .padding(right: 10, top: 10)
     }
 }
 ```
 
-![image4](figures/image4.gif)
+![image4](figures/image10.jpg)
 
 ### 示例4（切换显示不同类型图片）
 
