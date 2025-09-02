@@ -102,7 +102,7 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 **Parent Types:**
 
-* ToString
+- ToString
 
 ## interface ToJSValue
 
@@ -1223,9 +1223,9 @@ public class JSArray <: JSHeapObject {}
 
 **Initial Version:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop size
 
@@ -1342,9 +1342,9 @@ public class JSArrayBuffer <: JSHeapObject {}
 
 **Initial Version:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop byteLength
 
@@ -1737,9 +1737,9 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **Since:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSInteropType\<JSArrayEx\<T>>](#interface-jsinteroptype)
+- [JSInteropType\<JSArrayEx\<T>>](#interface-jsinteroptype)
 
 ### prop size
 
@@ -1990,9 +1990,9 @@ public class JSBigInt <: JSHeapObject {}
 
 **Function:** The JSBigInt object represents a safe reference to the JS bigint type. By creating a JS bigint object, it can be converted to a Cangjie Int64 or Cangjie BigInt.
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func toBigInt()
 
@@ -2020,9 +2020,9 @@ public class JSClass <: JSHeapObject {}
 
 **Initial Version:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop prototype
 
@@ -3372,9 +3372,9 @@ public class JSFunction <: JSHeapObject {}
 
 **Since:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func call(JSValue)
 
@@ -3490,9 +3490,9 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **Since:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSInteropType\<JSHashMapEx\<K,V>>](#interface-jsinteroptype)
+- [JSInteropType\<JSHashMapEx\<K,V>>](#interface-jsinteroptype)
 
 ### prop size
 
@@ -4068,9 +4068,9 @@ public class JSObject <: JSObjectBase {}
 
 **Since:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSObjectBase](#class-jsobjectbase)
+- [JSObjectBase](#class-jsobjectbase)
 
 ## class JSObjectBase
 
@@ -4082,9 +4082,9 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **Since:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func attachCJObject(JSExternal)
 
@@ -4173,6 +4173,12 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSFunction = None, sette
 | isEnumerable | Bool | No | false | **Named parameter.** Whether enumerable. |
 | isConfigurable | Bool | No | false | **Named parameter.** Whether redefinable. |
 
+**Return Value:**
+
+| Type | Description        |
+|:-----|:-------------------|
+| Bool | Is define success. |
+
 **Example:**
 
 <!--compile-->
@@ -4209,6 +4215,12 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 | setter | ?[JSLambda](#type-jslambda) | No | None | **Named parameter.** Setter implementation. |
 | isEnumerable | Bool | No | false | **Named parameter.** Whether enumerable. |
 | isConfigurable | Bool | No | false | **Named parameter.** Whether redefinable. |
+
+**Return Value:**
+
+| Type | Description        |
+|:-----|:-------------------|
+| Bool | Is define success. |
 
 **Example:**
 
@@ -4247,6 +4259,12 @@ public func defineOwnProperty(key: JSKeyable, setValue: JSValue,
 | isWritable | Bool | No | true | **Named parameter.** Whether writable. |
 | isEnumerable | Bool | No | true | **Named parameter.** Whether enumerable. |
 | isConfigurable | Bool | No | true | **Named parameter.** Whether redefinable. |
+
+**Return Value:**
+
+| Type | Description        |
+|:-----|:-------------------|
+| Bool | Is define success. |
 
 **Example:**
 
@@ -4527,9 +4545,9 @@ The lifecycle of JSPromise exceeds that of the referenced ArkTS object.
 
 **Initial Version:** 21  
 
-**Parent Type:**  
+**Parent Types:**  
 
-* [JSHeapObject](#class-jsheapobject)  
+- [JSHeapObject](#class-jsheapobject)  
 
 ### func catchError(JSFunction)  
 
@@ -4751,6 +4769,12 @@ public func getNapiEnv(): CPointer<Unit>
 
 **Function:** Gets the environment pointer.
 
+**Return Value:**
+
+| Type | Description           |
+|:----|:----------------------|
+| CPointer<Unit> | the napi_env of napi. |
+
 **Since:** 21
 
 ## class JSString
@@ -4765,9 +4789,9 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 
 **Parent Types:**
 
-* [JSHeapObject](#class-jsheapobject)
-* ToString
-* [JSKeyable](#interface-jskeyable)
+- [JSHeapObject](#class-jsheapobject)
+- ToString
+- [JSKeyable](#interface-jskeyable)
 
 ### func toJSValue(JSContext)
 
@@ -4848,9 +4872,9 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **Parent Types:**
 
-* [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
-* Equatable\<JSStringEx>
-* ToString
+- [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
+- Equatable\<JSStringEx>
+- ToString
 
 ### init(String)
 
@@ -5001,8 +5025,8 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **Parent Types:**
 
-* [JSHeapObject](#class-jsheapobject)
-* [JSKeyable](#interface-jskeyable)
+- [JSHeapObject](#class-jsheapobject)
+- [JSKeyable](#interface-jskeyable)
 
 ### prop description
 
@@ -6701,11 +6725,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
 **Parent Types:**
 
-* ToString
-* Equatable\<Utf16String>
-* Hashable
-* [JSKeyable](#interface-jskeyable)
-* [JSInteropType\<Utf16String>](#interface-jsinteroptype)
+- ToString
+- Equatable\<Utf16String>
+- Hashable
+- [JSKeyable](#interface-jskeyable)
+- [JSInteropType\<Utf16String>](#interface-jsinteroptype)
 
 ### prop accessible
 

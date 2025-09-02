@@ -8,6 +8,20 @@ ArkTS 应用的开发语言包括 ArkTS、typescript、javascript，ArkTS 互操
 import ohos.ark_interop.*
 ```
 
+## interface JSInteropByte
+
+```cangjie
+sealed interface JSInteropByte {}
+```
+
+**功能：** 该接口用于为可用于声明式互操作宏的Array的泛型约束实现。声明式互操作宏框架场景使用，开发者不需要使用此API。
+
+**起始版本：** 21
+
+如下类型扩展了此接口：
+
+* Byte
+
 ## interface JSInteropType
 
 ```cangjie
@@ -102,7 +116,7 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 **父类型：**
 
-* ToString
+- ToString
 
 ## interface ToJSValue
 
@@ -1228,7 +1242,7 @@ public class JSArray <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop size
 
@@ -1347,7 +1361,7 @@ public class JSArrayBuffer <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop byteLength
 
@@ -1743,7 +1757,7 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **父类型：**
 
-* [JSInteropType\<JSArrayEx\<T>>](#interface-jsinteroptype)
+- [JSInteropType\<JSArrayEx\<T>>](#interface-jsinteroptype)
 
 ### prop size
 
@@ -1984,41 +1998,6 @@ public operator func[](index: Int64, value!: T)
 |index|Int64|是|-|需要修改的值的下标，取值范围为 [0..this.size]。|
 |value|T|是|-| **命名参数。** 修改的目标值。|
 
-## class JSArrayRangeMisMatch
-
-```cangjie
-public class JSArrayRangeMisMatch <: JSInteropException {
-    public init(min: Int64, max: Int64, given: Int64, message!: String = "js array range mismatch")
-}
-```
-
-**功能：** 访问越界异常。
-
-**起始版本：** 21
-
-**父类型：**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### init(Int64, Int64, Int64, String)
-
-```cangjie
-public init(min: Int64, max: Int64, given: Int64, message!: String = "js array range mismatch")
-```
-
-**功能：** 构造函数。
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|min|Int64|是|-|有效值的下限。|
-|max|Int64|是|-|有效值的上限（不包含）。|
-|given|Int64|是|-|当前值。|
-|message|String|否|"js array range mismatch"| **命名参数。** 异常消息。|
-
 ## class JSBigInt
 
 ```cangjie
@@ -2031,7 +2010,7 @@ public class JSBigInt <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func toBigInt()
 
@@ -2061,7 +2040,7 @@ public class JSClass <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop prototype
 
@@ -2321,7 +2300,7 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
     let ctor: JSLambda = { context, callInfo =>
         let firstArg = callInfo[0]
         let thisArg = callInfo.thisArg
-        thisArg.setProperty(context, "id", firstArg)
+        thisArg.setProperty("id", firstArg)
         return thisArg
     }
     let clazz = context.clazz(ctor)
@@ -2362,8 +2341,8 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
         let id = callInfo[0]
         let name = callInfo[1]
         let thisArg = callInfo.thisArg
-        thisArg.setProperty(context, "id", id)
-        thisArg.setProperty(context, "name", name)
+        thisArg.setProperty("id", id)
+        thisArg.setProperty("name", name)
         return thisArg
     }
     let clazz = context.clazz(ctor)
@@ -2373,82 +2352,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
     return obj
 }
 ```
-
-## class JSCodeError
-
-```cangjie
-public class JSCodeError <: JSInteropException {
-    public let code:?Int32
-    public let jsError: String
-    public let jsStack: Array<String>
-    public init(jsMessage: String, jsStack: Array<String>)
-}
-```
-
-**功能：** ArkTS 代码里的异常。
-
-**起始版本：** 21
-
-**父类型：**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### let code
-
-```cangjie
-public let code:?Int32
-```
-
-**功能：** 异常错误码。
-
-**起始版本：** 21
-
-**类型：** ?Int32
-
-**读写能力：** 只读
-
-### let jsError
-
-```cangjie
-public let jsError: String
-```
-
-**功能：** 异常消息。
-
-**类型：** String
-
-**读写能力：** 只读
-
-### let jsStack
-
-```cangjie
-public let jsStack: Array<String>
-```
-
-**功能：** 异常栈。
-
-**起始版本：** 21
-
-**类型：** Array\<String>
-
-**读写能力：** 只读
-
-### init(String, Array\<String>)
-
-```cangjie
-public init(jsMessage: String, jsStack: Array<String>)
-```
-
-**功能：** 构造函数。
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|jsMessage|String|是|-|ArkTS 异常消息。|
-|jsStack|Array\<String>|是|-|ArkTS 异常栈。|
 
 ## class JSContext
 
@@ -3409,7 +3312,7 @@ JSExternal的目标是传递一个仓颉对象的强引用到ArkTS运行时，�
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func cast\<T>() where T <: SharedObject
 
@@ -3494,7 +3397,7 @@ public class JSFunction <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func call(JSValue)
 
@@ -3612,7 +3515,7 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **父类型：**
 
-* [JSInteropType\<JSHashMapEx\<K,V>>](#interface-jsinteroptype)
+- [JSInteropType\<JSHashMapEx\<K,V>>](#interface-jsinteroptype)
 
 ### prop size
 
@@ -4048,52 +3951,6 @@ public func toJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS 统一类型。|
 
-## class JSInteropException
-
-```cangjie
-public abstract class JSInteropException <: Exception {}
-```
-
-**功能：** 互操作异常基类。
-
-**起始版本：** 21
-
-**父类型：**
-
-* Exception
-
-## class JSInteropNativeError
-
-```cangjie
-public class JSInteropNativeError <: JSInteropException {
-    public init(message: String)
-}
-```
-
-**功能：** 互操作C接口异常。
-
-**起始版本：** 21
-
-**父类型：**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### init(String)
-
-```cangjie
-public init(message: String)
-```
-
-**功能：** 构造 JSInteropNativeError 对象。
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|message|String|是|-|异常信息。|
-
 ## class JSModule
 
 ```cangjie
@@ -4226,36 +4083,6 @@ class Main {
 }
 ```
 
-## class JSObjUseAfterFree
-
-```cangjie
-public class JSObjUseAfterFree <: JSInteropException {
-    public init(message!: String = "use after free")
-}
-```
-
-**功能：** 生命周期异常。
-
-**起始版本：** 21
-
-**父类型：**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### init(String)
-
-```cangjie
-public init(message!: String = "use after free")
-```
-
-**功能：** 构造函数。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|message|String|否|"use after free"| **命名参数。** 异常消息。|
-
 ## class JSObject
 
 ```cangjie
@@ -4268,7 +4095,7 @@ public class JSObject <: JSObjectBase {}
 
 **父类型：**
 
-* [JSObjectBase](#class-jsobjectbase)
+- [JSObjectBase](#class-jsobjectbase)
 
 ## class JSObjectBase
 
@@ -4282,7 +4109,7 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func attachCJObject(JSExternal)
 
@@ -4371,6 +4198,12 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSFunction = None, sette
 |isEnumerable|Bool|否|false| **命名参数。** 是否可枚举。|
 |isConfigurable|Bool|否|false| **命名参数。** 是否可重新定义。|
 
+**返回值：**
+
+| 类型   | 说明    |
+|:-----|:------|
+| Bool | 是否成功。 |
+
 **示例：**
 
 <!--compile-->
@@ -4407,6 +4240,13 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 |setter|?[JSLambda](#type-jslambda)|否|None| **命名参数。** setter 实现。|
 |isEnumerable|Bool|否|false| **命名参数。** 是否可枚举。|
 |isConfigurable|Bool|否|false| **命名参数。** 是否可重新定义。|
+
+
+**返回值：**
+
+| 类型   | 说明    |
+|:-----|:------|
+| Bool | 是否成功。 |
 
 **示例：**
 
@@ -4445,6 +4285,12 @@ public func defineOwnProperty(key: JSKeyable, setValue: JSValue,
 |isWritable|Bool|否|true| **命名参数。** 是否可写。|
 |isEnumerable|Bool|否|true| **命名参数。** 是否可枚举。|
 |isConfigurable|Bool|否|true| **命名参数。** 是否可重新定义。|
+
+**返回值：**
+
+| 类型   | 说明    |
+|:-----|:------|
+| Bool | 是否成功。 |
 
 **示例：**
 
@@ -4727,7 +4573,7 @@ JSPromise的生命周期超过引用的 ArkTS 对象。
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func catchError(JSFunction)
 
@@ -4949,6 +4795,12 @@ public func getNapiEnv(): CPointer<Unit>
 
 **功能：** 获取环境指针。
 
+**返回值：**
+
+| 类型       | 说明          |
+|:---------|:------------|
+| CPointer<Unit> | napi接口的env。 |
+
 **起始版本：** 21
 
 ## class JSString
@@ -4963,9 +4815,9 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
-* ToString
-* [JSKeyable](#interface-jskeyable)
+- [JSHeapObject](#class-jsheapobject)
+- ToString
+- [JSKeyable](#interface-jskeyable)
 
 ### func toJSValue(JSContext)
 
@@ -5047,9 +4899,9 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **父类型：**
 
-* [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
-* Equatable\<JSStringEx>
-* ToString
+- [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
+- Equatable\<JSStringEx>
+- ToString
 
 ### init(String)
 
@@ -5200,8 +5052,8 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
-* [JSKeyable](#interface-jskeyable)
+- [JSHeapObject](#class-jsheapobject)
+- [JSKeyable](#interface-jskeyable)
 
 ### prop description
 
@@ -5254,93 +5106,6 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|转换后的字符串。|
-
-## class JSThreadMisMatch
-
-```cangjie
-public class JSThreadMisMatch <: JSInteropException {
-    public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread mismatch")
-}
-```
-
-**功能：** 执行 ArkTS 接口的线程不匹配异常。
-
-**起始版本：** 21
-
-**父类型：**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### init(UInt64, UInt64, String)
-
-```cangjie
-public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread mismatch")
-```
-
-**功能：** 构造函数。
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|bindTid|UInt64|是|-|ArkTS绑定的系统线程的id。|
-|curTid|UInt64|是|-|当前系统线程的id。|
-|message|String|否|"js thread mismatch"| **命名参数。** 异常消息。|
-
-## class JSTypeMisMatch
-
-```cangjie
-public class JSTypeMisMatch <: JSInteropException {
-    public init(acquireType: String, givenType: JSType, message!: String = "js type mismatch")
-    public init(acquireType: JSType, givenType: JSType, message!: String = "js type mismatch")
-}
-```
-
-**功能：** ArkTS 操作和实际类型不匹配异常。
-
-**起始版本：** 21
-
-**父类型：**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### init(String, JSType, String)
-
-```cangjie
-public init(acquireType: String, givenType: JSType, message!: String = "js type mismatch")
-```
-
-**功能：** 构造函数。
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|acquireType|String|是|-|接口要求的类型。|
-|givenType|[JSType](#struct-jstype)|是|-|当前的ArkTS类型。|
-|message|String|否|"js type mismatch"| **命名参数。** 异常消息。|
-
-### init(JSType, JSType, String)
-
-```cangjie
-public init(acquireType: JSType, givenType: JSType, message!: String = "js type mismatch")
-```
-
-**功能：** 构造函数。
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|acquireType|[JSType](#struct-jstype)|是|-|接口要求的类型。|
-|givenType|[JSType](#struct-jstype)|是|-|当前的ArkTS类型。|
-|message|String|否|"js type mismatch"| **命名参数。** 异常消息。|
 
 ## class SharedObject
 
@@ -6993,11 +6758,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
 **父类型：**
 
-* ToString
-* Equatable\<Utf16String>
-* Hashable
-* [JSKeyable](#interface-jskeyable)
-* [JSInteropType\<Utf16String>](#interface-jsinteroptype)
+- ToString
+- Equatable\<Utf16String>
+- Hashable
+- [JSKeyable](#interface-jskeyable)
+- [JSInteropType\<Utf16String>](#interface-jsinteroptype)
 
 ### prop accessible
 
