@@ -21,7 +21,6 @@ Tabs使用花括号包裹TabContent，如图2，其中TabContent显示相应的�
 
 每一个TabContent对应的内容需要有一个页签，可以通过TabContent的tabBar属性进行配置。在如下TabContent组件上设置tabBar属性，可以设置其对应页签中的内容，tabBar作为内容的页签。
 
-
 ```cangjie
  TabContent() {
    Text('首页的内容').fontSize(30)
@@ -30,7 +29,6 @@ Tabs使用花括号包裹TabContent，如图2，其中TabContent显示相应的�
 ```
 
 设置多个内容时，需在Tabs内按照顺序放置。
-
 
 ```cangjie
 Tabs() {
@@ -66,7 +64,6 @@ Tabs() {
 
 导航栏位置使用Tabs的barPosition参数进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
 
-
 ```cangjie
 Tabs(barPosition: BarPosition.End) {
     // TabContent的内容，例如：首页、发现、推荐、我的
@@ -81,7 +78,6 @@ Tabs(barPosition: BarPosition.End) {
 **图4** 顶部导航栏
 
 ![tab-4](figures/tab-4.gif)
-
 
 ```cangjie
 Tabs(barPosition: BarPosition.Start) {
@@ -99,7 +95,6 @@ Tabs(barPosition: BarPosition.Start) {
 ![tab-5](figures/tab-5.png)
 
 实现侧边导航栏需要将Tabs的vertical属性设置为true，vertical默认值为false，表明内容页和导航栏垂直方向排列。
-
 
 ```cangjie
 Tabs(barPosition: BarPosition.Start) {
@@ -123,7 +118,6 @@ Tabs(barPosition: BarPosition.Start) {
 ![tab-6](figures/tab-6.gif)
 
 控制滑动切换的属性为scrollable，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
-
 
 ```cangjie
 Tabs(barPosition: BarPosition.End) {
@@ -155,7 +149,6 @@ Tabs(barPosition: BarPosition.End) {
 
 Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMode.Fixed。
 
-
 ```cangjie
 Tabs(barPosition: BarPosition.End) {
     // TabContent的内容，例如：首页、发现、推荐、我的
@@ -173,7 +166,6 @@ Tabs(barPosition: BarPosition.End) {
 ![tab-8](figures/tab-8.gif)
 
 滚动导航栏需要设置Tabs组件的barMode属性，默认值为BarMode.Fixed表示为固定导航栏，BarMode.Scrollable表示可滚动导航栏
-
 
 ```cangjie
 Tabs(barPosition: BarPosition.Start) {
@@ -194,7 +186,6 @@ Tabs(barPosition: BarPosition.Start) {
 系统默认情况下采用了下划线标志当前活跃的页签，而自定义导航栏需要自行实现相应的样式，用于区分当前活跃页签和未活跃页签。
 
 设置自定义导航栏需要使用tabBar的参数，以其支持的CustomBuilder的方式传入自定义的函数组件样式。例如这里声明tabBuilder的自定义函数组件，传入参数包括页签文字title，对应位置index，以及选中状态和未选中状态的图片资源。通过当前活跃的currentIndex和页签对应的targetIndex匹配与否，决定UI显示的样式。
-
 
 ```cangjie
 @State var currentIndex: Int32 = 0
@@ -218,7 +209,6 @@ func tabBuilder(title: String, targetIndex: Int32, imgs: Array<AppResource>) {
 
 在TabContent对应tabBar属性中传入自定义函数组件，并传递相应的参数。
 
-
 ```cangjie
 TabContent(){
   Text("我的内容").fontSize(30)
@@ -236,7 +226,6 @@ TabContent(){
 ![tab-10](figures/tab-10.gif)
 
 此时需要使用Tabs提供的onChange事件方法，监听索引index的变化，并将当前活跃的index值传递给currentIndex，实现页签的切换。
-
 
 ```cangjie
 package ohos_app_cangjie_entry

@@ -12,7 +12,6 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 1. 使用@CustomDialog宏装饰自定义弹出框，可在此宏内自定义弹出框内容。CustomDialogController需在@Component内定义。
 
-
     ```cangjie
     package ohos_app_cangjie_entry
     import kit.ArkUI.*
@@ -72,7 +71,6 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 弹出框可用于数据交互，完成用户一系列响应操作。
 
 1. 在@CustomDialog宏内添加按钮，同时添加数据函数。
-
 
     ```cangjie
     package ohos_app_cangjie_entry

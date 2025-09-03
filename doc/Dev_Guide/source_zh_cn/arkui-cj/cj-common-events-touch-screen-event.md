@@ -10,7 +10,6 @@
 
 点击事件是指通过手指或手写笔做出一次完整的按下和抬起动作。当发生点击事件时，会触发以下回调函数：
 
-
 ```cangjie
 func onClick(callback: (ClickEvent)->Unit): This
 ```
@@ -67,7 +66,6 @@ class EntryView {
 ## 触摸事件
 
 当手指或手写笔在组件上触碰时，会触发不同动作所对应的事件响应，包括按下（Down）、滑动（Move）、抬起（Up）事件：
-
 
 ```cangjie
 public func onTouch(callback: (TouchEvent)->Unit): This

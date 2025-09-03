@@ -6,7 +6,6 @@ Radio是单选框组件，通常用于提供相应的用户交互选择项，同
 
 Radio通过调用接口来创建，接口调用形式如下：
 
-
 ```cangjie
 init(value!: String, group!: String, indicatorType!: RadioIndicatorType = RadioIndicatorType.TICK,
 indicatorBuilder!: Option<() -> Unit> = Option.None)
@@ -16,7 +15,6 @@ indicatorBuilder!: Option<() -> Unit> = Option.None)
 checked属性可以设置单选框的状态，状态分别为false和true，设置为true时表示单选框被选中。
 
 Radio支持设置选中状态和非选中状态的样式。
-
 
 ```cangjie
 Radio(value: 'Radio1', group: 'radioGroup')
@@ -30,7 +28,6 @@ Radio(value: 'Radio2', group: 'radioGroup')
 ## 添加事件
 
 除支持[通用事件](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-click.md)外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
-
 
 ```cangjie
 Radio(value: 'Radio1', group: 'radioGroup')

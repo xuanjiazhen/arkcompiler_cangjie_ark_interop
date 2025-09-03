@@ -6,7 +6,6 @@ Toggle组件提供状态按钮样式、勾选框样式和开关样式，一般�
 
 Toggle通过调用接口来创建，接口调用形式如下：
 
-
 ```cangjie
 Toggle(toggleType: ToggleType, isOn!: Bool = false)
 ```
@@ -18,14 +17,12 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 - 创建不包含子组件的Toggle。
   当ToggleType为CheckboxType或者SwitchType时，用于创建不包含子组件的Toggle：
 
-
   ```cangjie
   Toggle(ToggleType.Checkbox, isOn: false)
   Toggle(ToggleType.Checkbox, isOn: true)
   ```
 
   ![Toggle](figures/Toggle.png)
-
 
   ```cangjie
   Toggle(ToggleType.Switch, isOn: false)
@@ -37,7 +34,6 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 - 创建包含子组件的Toggle。
 
   当ToggleType为ButtonType时，只能包含一个子组件，如果子组件有文本设置，则相应的文本内容会显示在按钮上。
-
 
   ```cangjie
   Toggle(ToggleType.Button, false) {
@@ -58,7 +54,6 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 
 - 通过selectedColor属性设置Toggle打开选中后的背景颜色。
 
-
   ```cangjie
   Toggle(ToggleType.Button, true) {
       Text('status button')
@@ -75,7 +70,6 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 
 - 通过switchPointColor属性设置SwitchType类型的圆形滑块颜色，仅对toggleType为ToggleType.Switch生效。
 
-
   ```cangjie
   Toggle(ToggleType.Switch, isOn: false).switchPointColor(0xFEC0CD)
   Toggle(ToggleType.Switch, isOn: true).switchPointColor(0xFEC0CD)
@@ -86,7 +80,6 @@ Toggle(toggleType: ToggleType, isOn!: Bool = false)
 ## 添加事件
 
 除支持[通用事件](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-click.md)外，Toggle还用于选中和取消选中后触发某些操作，可以绑定onChange事件来响应操作后的自定义行为。
-
 
 ```cangjie
 Toggle(ToggleType.Switch, isOn: false)

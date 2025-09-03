@@ -8,13 +8,11 @@ Button通过调用接口来创建，接口调用有以下两种形式：
 
 - 通过label和[ButtonOptions](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#class-buttonoptions)创建不包含子组件的按钮。以ButtonOptions中的shape和stateEffect为例。
 
-
   ```cangjie
   init(label: String, options: ButtonOptions)
   ```
 
   其中，label用来设置按钮文字，type用于设置Button类型，stateEffect属性设置Button是否开启点击效果。
-
 
   ```cangjie
   Button('Ok', ButtonOptions(shape: ButtonType.Normal, stateEffect: true))
@@ -28,13 +26,11 @@ Button通过调用接口来创建，接口调用有以下两种形式：
 
 - 通过[ButtonOptions](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#class-buttonoptions)创建包含子组件的按钮。以ButtonOptions中的shape和stateEffect为例。
 
-
   ```cangjie
   init(options: ButtonOptions, content: () -> Unit)
   ```
 
   只支持包含一个子组件，子组件可以是基础组件或者容器组件。
-
 
   ```cangjie
   Button(ButtonOptions(shape: ButtonType.Normal, stateEffect: true)){
@@ -59,7 +55,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   此类型按钮的圆角自动设置为高度的一半，不支持通过borderRadius属性重新设置圆角。
 
-
   ```cangjie
   Button('Disable', ButtonOptions(shape: ButtonType.Capsule, stateEffect: false))
       .backgroundColor(0x317aff)
@@ -72,7 +67,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 - 圆形按钮。
 
   此类型按钮为圆形，不支持通过borderRadius属性重新设置圆角。
-
 
   ```cangjie
   Button('Circle', ButtonOptions(shape: ButtonType.Circle, stateEffect: false))
@@ -87,7 +81,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   此类型的按钮默认圆角为0，支持通过borderRadius属性重新设置圆角。
 
-
   ```cangjie
   Button('Ok', ButtonOptions(shape: ButtonType.Normal, stateEffect: true))
       .borderRadius(8)
@@ -98,13 +91,11 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   ![Button5](figures/Button5.png)
 
-
 ## 自定义样式
 
 - 设置边框弧度。
 
   使用通用属性来自定义按钮样式。例如通过borderRadius属性设置按钮的边框弧度。
-
 
   ```cangjie
   Button('circle border', ButtonOptions(shape: ButtonType.Normal))
@@ -118,7 +109,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   通过添加文本样式设置按钮文本的展示样式。
 
-
   ```cangjie
   Button('font style', ButtonOptions(shape: ButtonType.Normal))
       .fontSize(20)
@@ -131,7 +121,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   添加backgroundColor属性设置按钮的背景颜色。
 
-
   ```cangjie
   Button('background color').backgroundColor(0xF55A42)
   ```
@@ -141,7 +130,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 - 创建功能型按钮。
 
   为删除操作创建一个按钮。
-
 
   ```cangjie
   Button(ButtonOptions(shape: ButtonType.Circle, stateEffect: true)) {
@@ -160,7 +148,6 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 ## 添加事件
 
 Button组件通常用于触发某些操作，可以绑定onClick事件来响应点击操作后的自定义行为。
-
 
 ```cangjie
   Button('Ok', ButtonOptions(shape: ButtonType.Normal, stateEffect: true))

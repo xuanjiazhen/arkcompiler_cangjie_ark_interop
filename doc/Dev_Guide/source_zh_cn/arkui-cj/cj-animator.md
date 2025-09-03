@@ -21,13 +21,11 @@
 
 1. 引入相关依赖。
 
-
     ```cangjie
     import kit.ArkUI.*
     ```
 
 2. 创建执行动画的对象。
-
 
     ```cangjie
     // 创建动画的初始参数
@@ -51,14 +49,12 @@
 
 3. 播放动画。
 
-
     ```cangjie
     // 播放动画
     this.backAnimator?.play()
     ```
 
 4. 动画执行完成后手动释放AnimatorResult对象。
-
 
     ```cangjie
     // 释放动画对象
@@ -69,13 +65,11 @@
 
 1. 引入相关依赖。
 
-
     ```cangjie
     import kit.ArkUI.*
     ```
 
 2. 定义要做动画的组件。
-
 
     ```cangjie
     Button()
@@ -86,7 +80,6 @@
     ```
 
 3. 在onPageShow中创建AnimatorResult对象。
-
 
     ```cangjie
     // 创建animatorResult对象
@@ -124,7 +117,6 @@
 
 4. 定义动画播放，重置，暂停的按钮。
 
-
     ```cangjie
     Button('播放').onClick({ =>
       this.backAnimator?.play()
@@ -141,7 +133,6 @@
     ```
 
 5. 在页面隐藏或销毁的生命周期中释放动画对象，避免内存泄漏。
-
 
     ```cangjie
     protected override func onPageHide() {

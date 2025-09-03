@@ -6,13 +6,11 @@
 >
 > 不支持路由跳转。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func bindSheet(Bool, CustomBuilder, SheetOptions)
 
@@ -75,7 +73,6 @@ public init(backgroundColor!: ?ResourceColor = Option.None, onAppear!: ?() -> Un
 |onDisappear|?()->Unit|否|Option.None|**命名参数。**  半模态页面回退（动画结束后）回调函数。|
 |onWillAppear|?()->Unit|否|Option.None|**命名参数。**  半模态页面显示（动画开始前）回调函数。|
 |onWillDisappear|?()->Unit|否|Option.None|**命名参数。**  半模态页面回退（动画开始前）回调函数。<br>**说明：** 不允许在onWillDisappear函数中修改状态变量，可能会导致组件行为不稳定。|
-
 
 ### class DismissSheetAction
 
@@ -264,7 +261,6 @@ public init(
 |mode|[SheetMode](#enum-sheetmode)|否|SheetMode.Overlay|**命名参数。**  设置半模态页面的显示层级。<br>**说明：**<br>半模态显示期间mode属性不支持动态切换，两种模式的显示层级完全不同，无法做到显示期间同一个半模态从一个层级变换到另一个层级。建议在使用时明确诉求固定mode值。|
 |scrollSizeMode|[ScrollSizeMode](#enum-scrollsizemode)|否|ScrollSizeMode.FollowDetent|**命名参数。**  设置半模态面板滑动时，内容区域刷新时机。|
 
-
 ### class SpringBackAction
 
 ```cangjie
@@ -288,7 +284,6 @@ public func springBack()
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
 
 ### enum ScrollSizeMode
 
@@ -333,7 +328,6 @@ FollowDetent
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
 
 ### enum SheetMode
 
@@ -382,8 +376,6 @@ Overlay
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-
 
 ### enum SheetSize
 
@@ -441,8 +433,6 @@ Medium
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-
 
 ### enum SheetType
 

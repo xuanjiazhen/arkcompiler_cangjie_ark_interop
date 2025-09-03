@@ -53,7 +53,6 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
         Hilog.error(0, "CangjieTest", str)
     }
 
-
     @Entry
     @Component
     class EntryView {

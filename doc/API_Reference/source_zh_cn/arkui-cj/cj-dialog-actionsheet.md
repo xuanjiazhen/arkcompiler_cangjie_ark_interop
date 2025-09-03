@@ -575,7 +575,6 @@ public var shadow: ShadowOptions
 
 **起始版本：** 21
 
-
 ### var sheets
 
 ```cangjie

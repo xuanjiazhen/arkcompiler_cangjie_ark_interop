@@ -268,7 +268,6 @@ public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSo
 |itemGeneratorFunc|ItemGenFuncType\<T>|是|-|子组件生成函数，为数组中的每一个数据项创建一个子组件。lambda函数的第一个泛型参数为数据类型，必须为FFIData的子类；第二个参数为当前列表项的索引值。|
 |keyGeneratorFunc|KeyGenFuncType\<T>|否|{ _: T, idx: Int64 => uniqueKey ++ return "${viewID} - ${idx} - ${uniqueKey}" }|匿名函数，用于键值生成，为给定数组项生成唯一且稳定的键值。当子项在数组中的位置更改时，子项的键值不得更改，当数组中的子项被新项替换时，被替换项的键值和新项的键值必须不同。键值生成器的功能是可选的，但是，为了使开发框架能够更好地识别数组更改，提高性能，建议提供。如将数组反向时，如果没有提供键值生成器，则LazyForEach中的所有节点都将重建。|
 
-
 **返回值：**
 
 |类型|说明|
@@ -298,7 +297,6 @@ public func update(): Unit
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
 
 ## 示例代码
 

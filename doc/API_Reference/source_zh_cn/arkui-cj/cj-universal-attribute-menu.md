@@ -9,13 +9,11 @@
 > - 若组件是可拖动节点，绑定bindContextMenu未指定preview时，菜单弹出会浮起拖拽预览图且菜单选项和预览图不会发生避让。对此，开发者可根据使用场景设置preview或者将目标节点设置成不可拖动节点。
 > - 菜单支持长按500ms弹出子菜单，支持按压态跟随手指移动。<br> a.仅支持使用[Menu](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md##菜单控制（Menu）)组件且子组件包含[MenuItem](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md##菜单控制（Menu）)或[MenuItemGroup](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md##菜单控制（Menu）)的场景。<br> b.仅支持[MenuPreviewMode](./cj-common-types.md#enum-menupreviewmode)为NONE的菜单。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func bindContextMenu(CustomBuilder, ResponseType, ContextMenuOptions)
 
@@ -38,7 +36,6 @@ public func bindContextMenu(builder!: CustomBuilder, responseType!: ResponseType
 |responseType|[ResponseType](#)|是|-|响应类型。|
 |options|[ContextMenuOptions](#)|否|ContextMenuOptions()|上下文菜单选项。|
 
-
 ## func bindMenu(Array\<MenuElement>)
 
 ```cangjie
@@ -56,7 +53,6 @@ public func bindMenu(content: Array<MenuElement>): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |content|Array\<[MenuElement](#)>|是|-|菜单元素数组。|
-
 
 ## func bindMenu(CustomBuilder)
 
@@ -152,7 +148,6 @@ public init(scale!: ?VArray<Float64, $2> = None, transition!: ?TransitionEffect 
 |scale|?VArray\<Float64,$2>|否|None| **命名参数。** 动画开始和结束时相对预览原图缩放比例。<br> **说明：** 缩放比例需要根据实际开发场景设置，建议设置值为小于预览图宽度或布局的最大限制。|
 |transition|?TransitionEffect|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：** 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。详细描述见TransitionEffect对象说明。|
 |hoverScale|?VArray\<Float64,$2>|否|None| **命名参数。** 预览自定义长按场景下，浮起原组件截图的缩放动画开始和结束时相对预览原图缩放比例，且有与预览图的切换的过渡动效。<br> **说明：** 倍率设置参数小于等于0时，不生效。<br> 设置transition接口时，不生效。<br>使用此接口且同时使用scale接口时，scale接口起始值不生效。<br> 为保障最佳体验，最终预览图尺寸不建议小于原组件截图尺寸。当前预览动效宽高会受组件截图和自定义预览大小影响，请根据实际使用情况自行保障展示效果。|
-
 
 ### class ContextMenuOptions
 
@@ -449,7 +444,6 @@ public init(
 |transition|?TransitionEffect|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：**<br> 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。<br> 详细描述见TransitionEffect对象说明。|
 |borderRadius|?[BorderRadiuses](cj-common-types.md#class-borderradiuses)|否|None| **命名参数。** 设置菜单显示区域的圆角。|
 |layoutRegionMargin|?[Margin](cj-common-types.md#class-margin)|否|None| **命名参数。** 设置菜单的布局区域的边距。|
-
 
 ### class MenuElement
 

@@ -2219,7 +2219,6 @@ public class HuksOptions {
     public var properties: Array<HuksParam>
     public var inData: Bytes
 
-
     public init(properties!: Array<HuksParam> = Array<HuksParam>(), inData!: Bytes = Bytes())
 }
 ```
@@ -2288,7 +2287,6 @@ public init(properties!: Array<HuksParam> = Array<HuksParam>(), inData!: Bytes =
 public class HuksParam {
     public var tag: HuksTag
     public var value: HuksParamValue
-
 
     public init(tag: HuksTag, value: HuksParamValue)
 }

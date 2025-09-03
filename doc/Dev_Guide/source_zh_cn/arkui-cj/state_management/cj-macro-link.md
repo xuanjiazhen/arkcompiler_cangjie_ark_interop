@@ -63,7 +63,6 @@
 
 3. \@Link装饰的变量禁止本地初始化，必须从父组件初始化，否则编译期会报错。
 
-
     ```cangjie
     // 错误写法，编译报错
     @Link var count: Int64 = 10
@@ -75,7 +74,6 @@
 4. \@Link装饰的变量的类型要和数据源类型保持一致。具体参见[\@Link装饰状态变量类型错误](#link装饰状态变量类型错误)。
 
     【反例】
-
 
     ```cangjie
     class Info {
@@ -112,7 +110,6 @@
 
     【正例】
 
-
     ```cangjie
     class Info {
         var info: String = 'Hello'
@@ -147,7 +144,6 @@
 
     【反例】
 
-
     ```cangjie
     class Info {
         var info: String = 'Hello'
@@ -179,7 +175,6 @@
     ```
 
     【正例】
-
 
     ```cangjie
     class Info {

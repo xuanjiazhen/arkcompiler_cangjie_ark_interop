@@ -448,7 +448,6 @@ public class Entry {
     public var key: String
     public var value: ValueType
 
-
     public init(key: String, value: ValueType)
 }
 ```
@@ -518,7 +517,6 @@ public class FieldNode {
     public var nullable: Bool
     public var default: String
     public var type_: Int32
-
 
     public init(name: String, nullable: Bool, default: String, type_: Int32)
 }
@@ -764,7 +762,6 @@ public class KVManagerConfig {
     public var context: BaseContext
     public var bundleName: String
 
-
     public init(context: BaseContext, bundleName: String)
 }
 ```
@@ -868,7 +865,6 @@ public class Options {
     public var autoSync: Bool
     public var securityLevel: SecurityLevel
     public var schema:?Schema
-
 
     public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt!: Bool = false,
         backup!: Bool = true, autoSync!: Bool = false, schema!: ?Schema = None)
@@ -1007,7 +1003,6 @@ public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt
 ```cangjie
 public class Query <: RemoteDataLite {
 
-
     public init()
 }
 ```
@@ -1039,7 +1034,6 @@ public class Schema {
     public var indexes: Array<String>
     public var mode: Int32
     public var skip: Int32
-
 
     public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 }

@@ -582,7 +582,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 - index.cj
 
-
     ```cangjie
     package ohos_app_cangjie_entry.view
 
@@ -618,7 +617,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 - thing_model.cj
 
-
     ```cangjie
     package ohos_app_cangjie_entry.model
 
@@ -633,7 +631,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - todolist_model.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.model
@@ -660,7 +657,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - allchoose_component.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.view
@@ -692,7 +688,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - thing_component.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.view
@@ -747,7 +742,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 - todo_component.cj
 
-
     ```cangjie
     package ohos_app_cangjie_entry.view
 
@@ -769,7 +763,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - todolist_component.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.view
@@ -801,7 +794,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 - thing_viewmodel.cj
 
-
     ```cangjie
     package ohos_app_cangjie_entry.view_model
 
@@ -830,7 +822,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - todolist_viewmodel.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.view_model

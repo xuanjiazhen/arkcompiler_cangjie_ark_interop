@@ -8,7 +8,6 @@ Text可通过以下两种方式来创建：
 
 - string字符串。
 
-
   ```cangjie
   Text('我是一段文本')
   ```
@@ -18,7 +17,6 @@ Text可通过以下两种方式来创建：
 - 引用AppResource资源。
 
   资源引用类型可以通过@r创建AppResource类型对象，文件位置为/resources/base/element/string.json，具体内容如下：
-
 
   ```cangjie
   {
@@ -30,7 +28,6 @@ Text可通过以下两种方式来创建：
     ]
   }
   ```
-
 
   ```cangjie
   Text(@r(app.string.module_desc))

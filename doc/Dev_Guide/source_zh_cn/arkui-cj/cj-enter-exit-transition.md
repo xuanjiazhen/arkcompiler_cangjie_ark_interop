@@ -21,7 +21,6 @@
 
 1. 创建TransitionEffect。
 
-
     ```cangjie
     // 出现时会是所有转场效果的出现效果叠加，消失时会是所有消失转场效果的叠加
     // 用于说明各个effect跟随的动画参数
@@ -60,14 +59,12 @@
 
 2. 将转场效果通过[transition](../../../API_Reference/source_zh_cn/arkui-cj/cj-animation-transition.md#func-transition)接口设置到组件。
 
-
     ```cangjie
     Text("test")
     .transition(this.effect)
     ```
 
 3. 新增或者删除组件触发转场。
-
 
     ```cangjie
     @State var isPresent: Bool = false

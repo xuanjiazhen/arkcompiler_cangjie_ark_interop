@@ -16,13 +16,11 @@
 ],
 ```
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func expandSafeArea(?Array\<SafeAreaType>, ?Array\<SafeAreaEdge>)
 

@@ -6,13 +6,11 @@
 >
 > popup弹窗的显示状态在onStateChange事件回调中反馈，其显隐与组件的创建或销毁无强对应关系。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func bindPopup(Bool, CustomPopupOptions)
 
@@ -32,8 +30,6 @@ public func bindPopup(show: Bool, popup: CustomPopupOptions): This
 |:---|:---|:---|:---|:---|
 |show|Bool|是|-|是否显示。|
 |popup|[CustomPopupOptions](#)|是|-|自定义弹出框选项。|
-
-
 
 ## func bindPopup(Bool, PopupOptions)
 
@@ -582,7 +578,6 @@ public init(
 |onWillDismiss|([DismissPopupAction](#class-dismisspopupaction))->Unit|否|None|**命名参数。**   拦截退出事件且执行回调函数。<br>**说明：** 在onWillDismiss回调中，不能再做onWillDismiss拦截。|
 |followTransformOfTarget|Bool|否|false|**命名参数。**   气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，气泡是否能显示在对应变化后的位置上。|
 
-
 ### class DismissPopupAction
 
 ```cangjie
@@ -687,7 +682,6 @@ public init(textColor!: ResourceColor = Color(0x000000), font!: Font = Font())
 |:---|:---|:---|:---|:---|
 |textColor|[ResourceColor](cj-common-types.md#interface-resourcecolor)|否|Color(0x000000)|弹窗信息文本颜色。|
 |font|[Font](cj-common-types.md#class-font)|否|Font()|弹窗信息字体属性。|
-
 
 ### class PopupOptions
 

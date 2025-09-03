@@ -9,7 +9,6 @@
 
 ## 使用animateTo产生属性动画
 
-
 ```cangjie
 public func animateTo(animation: AnimateParam, callback: () -> Unit): Unit
 ```

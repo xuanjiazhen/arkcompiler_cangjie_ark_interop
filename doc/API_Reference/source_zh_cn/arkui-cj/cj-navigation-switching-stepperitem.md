@@ -94,7 +94,6 @@ public func status(status!: ItemState = ItemState.Normal): This
 |:---|:---|:---|:---|:---|
 |status|ItemState|否|ItemState.Normal|步骤导航器nextLabel的显示状态。|
 
-
 ## enum ItemState
 
 ```cangjie

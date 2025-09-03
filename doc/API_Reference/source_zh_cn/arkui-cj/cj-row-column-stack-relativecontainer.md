@@ -87,7 +87,6 @@ public class BarrierStyle {
     public var direction: BarrierDirection
     public var referencedId: Array<String>
 
-
     public init(id: String, direction: BarrierDirection, referencedId: Array<String>)
 }
 ```
@@ -174,7 +173,6 @@ public class GuideLinePosition {
     public var start:?Length = None
     public var end:?Length = None
 
-
     public init(start!: ?Length = None, end!: ?Length = None)
 }
 ```
@@ -244,7 +242,6 @@ public class GuideLineStyle {
     public var id: String
     public var direction: Axis
     public var position: GuideLinePosition
-
 
     public init(id: String, direction: Axis, position: GuideLinePosition)
 }

@@ -42,13 +42,11 @@
 
 - 针对断点位置，开发者根据实际使用场景，通过一个单调递增数组设置。由于breakpoints最多支持六个断点，单调递增数组长度最大为5。
 
-
     ```cangjie
     breakpoints: BreakPoints(value: [100.vp, 200.vp])
     ```
 
     表示启用xs、sm、md共3个断点，小于100.vp为xs，100.vp-200.vp为sm，大于200.vp为md。
-
 
     ```cangjie
     breakpoints: BreakPoints(value: [320.vp, 520.vp, 840.vp, 1080.vp])
@@ -266,7 +264,6 @@ GridRow中通过columns设置栅格布局的总列数。
 
 - 子组件默认从左往右排列。
 
-
     ```cangjie
     GridRow(direction: GridRowDirection.Row ){}
     ```
@@ -274,7 +271,6 @@ GridRow中通过columns设置栅格布局的总列数。
     ![Grid4](figures/Grid4.png)
 
 - 子组件从右往左排列。
-
 
     ```cangjie
     GridRow(direction: GridRowDirection.RowReverse ){}
@@ -288,7 +284,6 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
 - 当gutter类型为Length时，同时设置栅格子组件间水平和垂直方向边距且相等。下例中，设置子组件水平与垂直方向距离相邻元素的间距为10。
 
-
     ```cangjie
     GridRow( gutter: 10.vp ){}
     ```
@@ -296,7 +291,6 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
     ![Grid6](figures/Grid6.png)
 
 - 当gutter类型为GutterOption时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
-
 
     ```cangjie
     GridRow( gutter: GutterOption(x: 20.vp, y: 50.vp) ){}
@@ -310,7 +304,6 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 设置span。
 
-
     ```cangjie
     GridCol( span: 2 ){}
     GridCol(){}.span(2)
@@ -319,14 +312,12 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 设置offset。
 
-
     ```cangjie
     GridCol( offset: 2 ){}
     GridCol(){}.gridColOffset((GridColColumnOption(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12)))
     ```
 
 - 设置order。
-
 
     ```cangjie
     GridCol( order: 2 ){}

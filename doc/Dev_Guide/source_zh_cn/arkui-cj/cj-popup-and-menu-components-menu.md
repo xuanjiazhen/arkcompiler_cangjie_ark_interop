@@ -19,7 +19,6 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 菜单需要调用bindMenu接口来实现。bindMenu响应绑定组件的点击事件，绑定组件后手势点击对应组件后即可弹出。
 
-
 ```cangjie
 Button("click for Menu").bindMenu(
     Action(
@@ -124,7 +123,6 @@ class EntryView {
 
 ### bindMenu属性绑定组件
 
-
 ```cangjie
 Button('click for Menu')
     .bindMenu(builder: this.MyMenu)
@@ -138,7 +136,6 @@ Button('click for Menu')
 
 - @Builder开发菜单内的内容与上文写法相同。
 - 确认菜单的弹出方式，使用bindContextMenu属性绑定组件。示例中为右键弹出菜单。
-
 
 ```cangjie
 Button('click for Menu')

@@ -109,13 +109,11 @@
 
 ## 获焦/失焦事件
 
-
 ```cangjie
 public func onFocus(callback: ()->Unit): This
 ```
 
 获焦事件回调，绑定该接口的组件获焦时，回调响应。
-
 
 ```cangjie
 public func onBlur(callback: ()->Unit): This
@@ -195,7 +193,6 @@ class EntryView {
 
 ## 设置组件是否可获焦
 
-
 ```cangjie
 public func focusable(isFocusable: Bool): This
 ```
@@ -210,20 +207,17 @@ public func focusable(isFocusable: Bool): This
 
 - 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
 
-
 ```cangjie
 public func enabled(value: Bool): This
 ```
 
 设置组件可交互性属性[enabled](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-enable.md#func-enabledbool)为`false`，则组件不可交互，无法获焦。
 
-
 ```cangjie
 public func visibility(value: Visibility): This
 ```
 
 设置组件可见性属性[visibility](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-visibility.md#func-visibilityvisibility)为`Visibility.None`或`Visibility.Hidden`，则组件不可见，无法获焦。
-
 
 ```cangjie
 public func focusOnTouch(isFocusOnTouch: Bool): This
@@ -344,7 +338,6 @@ class EntryView {
 
 ### 页面的默认焦点
 
-
 ```cangjie
 public func defaultFocus(isDefaultFocus: Bool): This
 ```
@@ -450,7 +443,6 @@ class EntryView {
 ## 主动获焦/失焦
 
 使用focusControl中的方法：
-
 
 ```cangjie
 public static func requestFocus(keyValue: String): Bool

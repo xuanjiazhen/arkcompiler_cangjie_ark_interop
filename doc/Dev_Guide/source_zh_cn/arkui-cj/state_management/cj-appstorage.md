@@ -117,7 +117,6 @@ AppStorage中的属性可以被双向同步，数据可以是存在于本地或�
 
 1. @StorageProp/@StorageLink的参数必须为string类型，否则编译期会报错。
 
-
     ```cangjie
     let storage = AppStorage.setOrCreate("PropA", 47)
     let temp = AppStorage.get<Int64>("PropA").getOrThrow() // 47
@@ -148,7 +147,6 @@ AppStorage中的属性可以被双向同步，数据可以是存在于本地或�
 ### 从应用逻辑使用AppStorage和LocalStorage
 
 AppStorage是单例，它的所有API都是静态的，使用方法类似于LocalStorage中对应的非静态方法。
-
 
 ```cangjie
 let temp1 = AppStorage.setOrCreate<Int64>("PropA", 47)

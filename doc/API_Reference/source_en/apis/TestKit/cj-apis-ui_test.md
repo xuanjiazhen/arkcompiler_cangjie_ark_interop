@@ -4231,7 +4231,6 @@ let window: UiWindow = driver.findWindow(WindowFilter(active: true))
 let mode = window.getWindowMode()
 ```
 
-
 ### func isActive()
 
 ```cangjie

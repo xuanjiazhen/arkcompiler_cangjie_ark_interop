@@ -295,7 +295,6 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldStat
 |listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_STATUS_CHANGE'，表示折叠设备折叠状态发生变化。|
 |callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
 
-
 **异常：**
 
 - BusinessException：对应错误码如下表，详见[通用错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)。
@@ -394,7 +393,6 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatu
 |:---|:---|:---|:---|:---|
 |listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_STATUS_CHANGE'，表示折叠设备折叠状态发生变化。|
 |callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
-
 
 **异常：**
 

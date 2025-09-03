@@ -8,7 +8,6 @@
 
 - 绘制组件使用Shape作为父组件，实现类似SVG的效果。接口调用为以下形式：
 
-
   ```cangjie
   init()
 
@@ -16,7 +15,6 @@
   ```
 
   该接口用于创建带有父组件的绘制组件，其中target用于设置绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则在当前绘制目标中进行绘制。
-
 
   ```cangjie
   Shape() {
@@ -26,7 +24,6 @@
 
 - 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-circle.md)（圆形）、[Ellipse](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-ellipse.md)（椭圆形）、[Line](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-line.md)（直线）、[Path](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-path.md)（路径）、[Rect](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-rect.md)（矩形）。以Circle的接口调用为例：
 
-
   ```cangjie
   Circle()
 
@@ -35,7 +32,6 @@
 
   该接口用于在页面绘制圆形，其中width用于设置圆形的宽度，height用于设置圆形的高度，圆形直径由宽高最小值确定。
 
-
   ```cangjie
   Circle(width: 150, height: 150)
   ```
@@ -43,7 +39,6 @@
   ![create2](figures/create2.jpg)
 
 ## 形状视口viewport
-
 
 ```cangjie
 viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
@@ -182,7 +177,6 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
 
 - 通过fill可以设置组件填充区域颜色。
 
-
   ```cangjie
   Path()
       .width(100)
@@ -196,7 +190,6 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
 
 - 通过stroke可以设置组件边框颜色。
 
-
   ```cangjie
   Path()
       .width(100)
@@ -209,7 +202,6 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   ![stroke](figures/stroke.png)
 
 - 通过strokeOpacity可以设置边框透明度。
-
 
   ```cangjie
   Path()
@@ -226,7 +218,6 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
 
 - 通过antiAlias设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
-
   ```cangjie
   // 开启抗锯齿
   Circle()
@@ -238,7 +229,6 @@ viewPort(x!: Length, y!: Length, width!: Length, height!: Length)
   ```
 
   ![antiAliasTrue](figures/antiAliasTrue.png)
-
 
   ```cangjie
   // 关闭抗锯齿

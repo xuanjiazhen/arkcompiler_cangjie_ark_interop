@@ -6,13 +6,11 @@ Progress是进度条显示组件，显示内容通常为目标操作的当前进
 
 Progress通过调用接口来创建，接口调用形式如下：
 
-
 ```cangjie
 Progress(value!: Float64, total!: Float64 = 100.0, progressType!: ProgressType = ProgressType.Linear)
 ```
 
 其中，value用于设置初始进度值，total用于设置进度总长度，ProgressType用于设置ProgressType样式。
-
 
 ```cangjie
 Progress(value: 24.0, total: 100.0, progressType: ProgressType.Linear) // 创建一个进度总长为100，初始进度值为24的线性进度条
@@ -26,7 +24,6 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式，Pr
 
 - 线性样式进度条（默认类型）
 
-
   ```cangjie
   Progress(value: 20.0, total: 100.0, progressType: ProgressType.Linear)
       .width(200)
@@ -39,7 +36,6 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式，Pr
   ![progress_linear](figures/progress_linear.png)
 
 - 环形无刻度样式进度条
-
 
   ```cangjie
   // 从左往右，1号环形进度条，默认前景色为蓝色渐变，默认strokeWidth进度条宽度为2.vp
@@ -57,7 +53,6 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式，Pr
   ![progress_ring](figures/progress_ring.png)
 
 - 环形有刻度样式进度条
-
 
   ```cangjie
   Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
@@ -80,7 +75,6 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式，Pr
   ![progress_scalering](figures/progress_scalering.png)
 
 - 圆形样式进度条
-
 
   ```cangjie
   // 从左往右，1号圆形进度条，默认前景色为蓝色
@@ -105,7 +99,6 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式，Pr
 > - 中段处的进度展示效果为矩形状长条，与ProgressType.Linear线性样式相似。
 >
 > - 组件高度大于宽度的时候自适应垂直显示。
-
 
   ```cangjie
   Progress(value: 10.0, total: 150.0, progressType: ProgressType.Capsule)

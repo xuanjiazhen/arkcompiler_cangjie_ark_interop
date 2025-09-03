@@ -301,7 +301,6 @@ public class Config {
     public var priority: UInt32
     public var extras: HashMap<String, String>
 
-
     public init(action: Action, url: String, title!: ?String = None, description!: String = "",
         mode!: Mode = Mode.Background, overwrite!: Bool = false, method!: ?String = None,
         headers!: HashMap<String, String> = HashMap<String, String>(), data!: ?ConfigData = None, saveas!: ?String = None,
@@ -746,7 +745,6 @@ public class FileSpec {
     public var filename:?String
     public var extras: HashMap<String, String>
 
-
     public init(
         path: String,
         mimeType!: ?String = None,
@@ -863,7 +861,6 @@ public class Filter {
     public var state:?State
     public var action:?Action
     public var mode:?Mode
-
 
     public init(before!: ?Int64 = None, after!: ?Int64 = None, state!: ?State = None,
         action!: ?Action = None, mode!: ?Mode = None
@@ -988,7 +985,6 @@ public init(before!: ?Int64 = None, after!: ?Int64 = None, state!: ?State = None
 public class FormItem {
     public var name: String
     public var value: FormItemValue
-
 
     public init(name: String, value: FormItemValue)
 }
@@ -1237,7 +1233,6 @@ public let state: State
 public class Task {
     public let tid: String
     public var config: Config
-
 
     public init(tid: String, config: Config)
 }

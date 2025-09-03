@@ -280,7 +280,6 @@ public class DecorationStyleResult {
     public var decorationType: TextDecorationType
     public var color: ResourceColor
 
-
     public init(
         decorationType: TextDecorationType,
         color: ResourceColor
@@ -382,7 +381,6 @@ public class RichEditorDeleteValue {
     public var direction: RichEditorDeleteDirection
     public var length: Int32
     public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
-
 
     public init(
         offset: Int32,
@@ -499,7 +497,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     public var valueResourceStr: String = ""
     public var imageStyle: RichEditorImageSpanStyleResult = RichEditorImageSpanStyleResult()
     public var offsetInSpan:(Int32, Int32) =(0, 0)
-
 
     public init(
         spanPosition: RichEditorSpanPosition,
@@ -714,7 +711,6 @@ public class RichEditorInsertValue {
     public var insertOffset: Int32
     public var insertValue: String
 
-
     public init(
         insertOffset: Int32,
         insertValue: String
@@ -741,7 +737,6 @@ public var insertOffset: Int32
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 
 **起始版本：** 21
 
@@ -800,7 +795,6 @@ public interface RichEditorSpanResult {}
 public class RichEditorSelection {
     public var selection:(Int32, Int32)
     public var spans: ArrayList<RichEditorSpanResult>
-
 
     public init(selection: (Int32, Int32), spans: ArrayList<RichEditorSpanResult>)
 }
@@ -870,7 +864,6 @@ public init(selection: (Int32, Int32), spans: ArrayList<RichEditorSpanResult>)
 public class RichEditorSpanPosition {
     public var spanIndex: Int32
     public var spanRange:(Int32, Int32)
-
 
     public init(
         spanIndex: Int32,
@@ -948,7 +941,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
     public var value: String
     public var textStyle: RichEditorTextStyleResult
     public var offsetInSpan:(Int32, Int32)
-
 
     public init(
         spanPosition: RichEditorSpanPosition,
@@ -1066,7 +1058,6 @@ public class RichEditorTextStyleResult {
     public var fontWeight: Int32
     public var fontFamily: String
     public var decoration: DecorationStyleResult
-
 
     public init(
         fontColor: String,
@@ -1274,7 +1265,6 @@ public let radius: Float64
 public class TextRange {
     public var start: Int32
     public var end: Int32
-
 
     public init(start: Int32, end: Int32)
 }

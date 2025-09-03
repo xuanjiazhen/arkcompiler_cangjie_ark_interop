@@ -392,7 +392,6 @@ public static func keys(): Array<String>
 ```cangjie
 public class LocalStorage {
 
-
     public init()
 }
 ```

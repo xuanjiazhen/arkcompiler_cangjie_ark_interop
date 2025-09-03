@@ -260,8 +260,6 @@ import ohos.resource_manager.AppResource
 import std.collection.ArrayList
 import kit.PerformanceAnalysisKit.Hilog
 
-
-
 let storage: LocalStorage = LocalStorage()
 
 class PostData{

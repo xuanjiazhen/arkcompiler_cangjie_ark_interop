@@ -560,7 +560,6 @@ public init(value: AppResource, icon!: AppResource)
 |value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|下拉选项内容。|
 |icon|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|**命名参数。** 下拉选项图标。|
 
-
 ### enum ArrowPosition
 
 ```cangjie

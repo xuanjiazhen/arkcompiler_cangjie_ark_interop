@@ -16,7 +16,6 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 - loop为true
 
-
   ```cangjie
   Swiper() {
   Text('0')
@@ -49,7 +48,6 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 - loop为false
 
-
   ```cangjie
   Swiper() {
     // ...
@@ -66,7 +64,6 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 Swiper通过设置autoPlay属性，控制是否自动轮播子组件。该属性默认值为false。
 
 autoPlay为true时，会自动切换播放子组件，子组件与子组件之间的播放间隔通过interval属性设置。interval属性默认值为3000，单位毫秒。
-
 
 ```cangjie
 Swiper() {
@@ -86,7 +83,6 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
 通过indicator属性，开发者可以设置导航点相对于Swiper组件上下左右四个方位的位置，同时也可以设置每个导航点的尺寸、颜色、蒙层和被选中导航点的颜色。
 
 - 导航点使用默认样式
-
 
   ```cangjie
   Swiper() {
@@ -120,7 +116,6 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
 - 自定义导航点样式
 
   导航点直径设为30.vp，左边距为0，导航点颜色设为红色。
-
 
   ```cangjie
   Swiper() {
@@ -227,7 +222,6 @@ Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控
 
 - 设置水平方向上轮播。
 
-
   ```cangjie
   Swiper() {
     // ...
@@ -239,7 +233,6 @@ Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控
   ![verticalFalse](figures/verticalFalse.PNG)
 
 - 设置垂直方向轮播。
-
 
   ```cangjie
   Swiper() {

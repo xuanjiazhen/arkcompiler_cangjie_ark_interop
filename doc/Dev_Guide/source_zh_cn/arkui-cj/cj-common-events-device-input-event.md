@@ -29,7 +29,6 @@
 
 ### onHover
 
-
 ```cangjie
 public func onHover(callback: (Bool)->Unit): This
 ```
@@ -93,7 +92,6 @@ class EntryView {
 ![onHover](./figures/onHover.gif)
 
 ### onMouse
-
 
 ```cangjie
 public func onMouse(callback: (MouseEvent)->Unit): This
@@ -166,7 +164,6 @@ class EntryView {
 ## 按键事件
 
 ### onKeyEvent
-
 
 ```cangjie
 public func onKeyEvent(callback: (KeyEvent)->Unit): This

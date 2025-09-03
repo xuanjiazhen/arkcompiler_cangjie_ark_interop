@@ -6,7 +6,6 @@
 
 pageTransition的函数为：
 
-
 ```cangjie
 protected func pageTransition(): Unit {
     PageTransitionEnter()
@@ -16,13 +15,11 @@ protected func pageTransition(): Unit {
 
 PageTransitionEnter的接口为：
 
-
 ```cangjie
 PageTransitionEnter(routeType: RouteType.None, duration: 1000)
 ```
 
 PageTransitionExit的接口为：
-
 
 ```cangjie
 PageTransitionExit(routeType: RouteType.None, duration: 1000)
@@ -36,7 +33,6 @@ PageTransitionExit(routeType: RouteType.None, duration: 1000)
 
 type为RouteType.None表示对页面栈的push、pop操作均生效，type的默认值为RouteType.None。
 
-
 ```cangjie
 // page A
 protected func pageTransition(): Unit {
@@ -48,7 +44,6 @@ protected func pageTransition(): Unit {
         .slide(SlideEffect.Left)
 }
 ```
-
 
 ```cangjie
 // page B
@@ -77,7 +72,6 @@ protected func pageTransition(): Unit {
 
 type为RouteType.Push表示仅对页面栈的push操作生效，type为RouteType.Pop表示仅对页面栈的pop操作生效。
 
-
 ```cangjie
 // page A
 protected func pageTransition(): Unit {
@@ -95,7 +89,6 @@ protected func pageTransition(): Unit {
         .slide(SlideEffect.Right)
 }
 ```
-
 
 ```cangjie
 // page B
@@ -132,7 +125,6 @@ protected func pageTransition(): Unit {
 ## 禁用某页面的页面转场
 
 通过设置页面转场的时长为0，可使该页面无页面转场动画。
-
 
 ```cangjie
 protected func pageTransition(): Unit {

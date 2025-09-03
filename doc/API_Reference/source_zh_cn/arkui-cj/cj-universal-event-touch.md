@@ -141,7 +141,6 @@ public var touches: Array<TouchObject>
 
 **起始版本：** 21
 
-
 ### class TouchObject
 
 ```cangjie

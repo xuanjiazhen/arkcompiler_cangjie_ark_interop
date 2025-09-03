@@ -114,7 +114,6 @@ import std.collection.*
 import std.runtime.*
 import std.sync.*
 
-
 //下载的函数
 func Download(): Unit {
     // 获取应用文件路径
@@ -156,7 +155,6 @@ func Download(): Unit {
     //结束任务
     rRemove(task.tid)
 }
-
 
 class HttpResponseCallback <: Callback1Argument<HttpResponse> {
     public HttpResponseCallback() {}

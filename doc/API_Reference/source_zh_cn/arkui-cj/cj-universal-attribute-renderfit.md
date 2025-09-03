@@ -2,13 +2,11 @@
 
 用于决定在组件的宽高动画过程中，如何将动画最终的组件内容绘制在组件上。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func renderFit(RenderFit)
 

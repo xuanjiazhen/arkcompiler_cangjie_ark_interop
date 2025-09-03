@@ -263,7 +263,6 @@ public func onSubmit(callback: (String) -> Unit): This
 ```cangjie
 public class SearchController <: RemoteDataLite & TextContentControllerBase{
 
-
     public init()
 }
 ```

@@ -2,13 +2,11 @@
 
 设置组件边框样式。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func border(Length, ResourceColor, Length, BorderStyle)
 
@@ -32,7 +30,6 @@ public func border(width!: Length, color!: ResourceColor = Color.Black, radius!:
 |radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|否|0.vp|边框圆角半径。|
 |style|[BorderStyle](#)|否|BorderStyle.Solid|边框样式。|
 
-
 ## func borderColor(ResourceColor)
 
 ```cangjie
@@ -51,7 +48,6 @@ public func borderColor(value: ResourceColor): This
 |:---|:---|:---|:---|:---|
 |value|[ResourceColor](#)|是|-|边框颜色。|
 
-
 ## func borderRadius(Length)
 
 ```cangjie
@@ -69,7 +65,6 @@ public func borderRadius(value: Length): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|是|-|圆角半径。|
-
 
 ## func borderRadius(Length, Length, Length, Length)
 
@@ -93,7 +88,6 @@ public func borderRadius(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bott
 |bottomLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|否|0.vp|左下角圆角半径。|
 |bottomRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|否|0.vp|右下角圆角半径。|
 
-
 ## func borderStyle(BorderStyle)
 
 ```cangjie
@@ -112,7 +106,6 @@ public func borderStyle(value: BorderStyle): This
 |:---|:---|:---|:---|:---|
 |value|[BorderStyle](#)|是|-|边框样式值。|
 
-
 ## func borderWidth(EdgeWidths)
 
 ```cangjie
@@ -130,8 +123,6 @@ public func borderWidth(value: EdgeWidths): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[EdgeWidths](#)|是|-|边缘宽度。|
-
-
 
 ## func borderWidth(Length)
 

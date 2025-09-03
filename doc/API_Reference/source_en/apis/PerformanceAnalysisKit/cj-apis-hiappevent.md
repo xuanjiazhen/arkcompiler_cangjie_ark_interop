@@ -1196,7 +1196,6 @@ public struct AppEventInfo {
 }
 ```
 
-
 **Function:** Provides parameter options for application event information.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent

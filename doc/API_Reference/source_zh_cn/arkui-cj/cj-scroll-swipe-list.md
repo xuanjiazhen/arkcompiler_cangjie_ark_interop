@@ -319,7 +319,6 @@ public func onScrollIndex(event: (Int32, Int32, Int32) -> Unit): This
 public class onScrollFrameBeginHandleResult {
     public var offsetRemain: Float64
 
-
     public init(offsetRemain!: Float64)
 }
 ```

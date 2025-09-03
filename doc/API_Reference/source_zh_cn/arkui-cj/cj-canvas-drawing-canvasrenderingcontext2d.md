@@ -44,7 +44,6 @@ public init(settings: RenderingContextSettings)
 |:---|:---|:---|:---|:---|
 |settings|[RenderingContextSettings](./cj-canvas-drawing-canvas.md#class-renderingcontextsettings)|是|-|用来配置CanvasRenderingContext2D对象的参数。|
 
-
 ### func arc(Float64, Float64, Float64, Float64, Float64, Bool)
 
 ```cangjie

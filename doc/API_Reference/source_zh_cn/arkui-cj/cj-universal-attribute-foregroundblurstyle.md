@@ -2,13 +2,11 @@
 
 为当前组件添加内容模糊效果。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func foregroundBlurStyle(BlurStyle)
 
@@ -27,7 +25,6 @@ public func foregroundBlurStyle(value: BlurStyle): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)|是|-|内容模糊样式。|
-
 
 ## func foregroundBlurStyle(BlurStyle, ForegroundBlurStyleOptions)
 
@@ -98,7 +95,6 @@ public init(grayscale: VArray<Float32, $2>)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |grayscale|VArray\<Float32,$2>|是|-|灰阶模糊参数，参数取值范围[0, 127]。|
-
 
 ### class ForegroundBlurStyleOptions
 

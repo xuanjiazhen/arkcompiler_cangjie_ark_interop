@@ -44,7 +44,6 @@
 
 - 当装饰的数据类型为基础数据类型时，可以观察到数值的变化。
 
-
     ```cangjie
     // 简单类型
     @Prop var count: Int
@@ -55,7 +54,6 @@
 - 当装饰的数据类型为struct时，内部无法修改。
 
     声明Person。
-
 
     ```cangjie
     struct Person {
@@ -70,7 +68,6 @@
 
     \@Prop装饰的是struct Person。
 
-
     ```cangjie
     // struct类型
     @Prop var person: Person
@@ -78,14 +75,12 @@
 
     对\@Prop装饰变量的整体赋值可行。
 
-
     ```cangjie
     // struct类型赋值
     this.person = Person(2, "muller")
     ```
 
     对\@Prop装饰变量的赋值，编译器显示无法修改。
-
 
     ```cangjie
     // struct属性的赋值
@@ -95,7 +90,6 @@
 - 当装饰的数据类型为class时，需要被[@Observed](./cj-macro-observed-and-publish.md)修饰，内部需要感知变化的属性用[@Publish](./cj-macro-observed-and-publish.md)修饰，如果不使用[@Observed](./cj-macro-observed-and-publish.md)则无法感知成员变量等内部变化。详情请参见[@Prop嵌套场景](#prop嵌套场景)。
 
     声明Person和Model类。
-
 
     ```cangjie
     @Observed
@@ -112,13 +106,11 @@
 
     \@Prop装饰的类型是Model。
 
-
     ```cangjie
     @Prop var title: Model
     ```
 
     对\@Prop装饰变量的赋值。
-
 
     ```cangjie
     // class属性的赋值
@@ -126,7 +118,6 @@
     ```
 
     对\@Prop装饰变量的属性和嵌套属性的赋值都可以感知。
-
 
     ```cangjie
     // class属性的赋值
@@ -139,13 +130,11 @@
 
     \@Prop装饰的对象为ArrayList类型数组时。
 
-
     ```cangjie
     @Prop var arrlist: ArrayList<Int16>
     ```
 
     数组整体的变化可以感知。
-
 
     ```cangjie
     this.arrlist = ArrayList<Int16>([10,9,8])
@@ -153,13 +142,11 @@
 
     数组项的赋值感知不到。
 
-
     ```cangjie
     this.arrlist[0] = 10
     ```
 
     声明Model类。
-
 
     ```cangjie
     @Observed
@@ -170,14 +157,12 @@
 
     \@Prop装饰的对象为ObservedArray\<Model\>类型数组时。
 
-
     ```cangjie
     // ObservedArray数组类型
     @Prop var title: ObservedArrayList<Model>
     ```
 
     数组自身的赋值可以感知。
-
 
     ```cangjie
     // 数组赋值
@@ -186,14 +171,12 @@
 
     数组项的赋值可以感知。
 
-
     ```cangjie
     // 数组项赋值
     this.title[0] = Model(value: 2)
     ```
 
     数组项中属性的赋值可以感知。
-
 
     ```cangjie
     // 嵌套的属性赋值可以感知
@@ -204,14 +187,12 @@
 
     删除数组项可以感知。
 
-
     ```cangjie
     // 数组项更改
     this.title.remove(0)
     ```
 
     新增数组项可以感知。
-
 
     ```cangjie
     // 数组项更改
@@ -228,7 +209,6 @@
 - 当装饰的变量是其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。
     以HashSet为例。
 
-
     ```cangjie
     //@Prop装饰的对象为HashSet时
     @Prop var message: HashSet<Int64>
@@ -236,13 +216,11 @@
 
     HashSet整体的变化可以感知。
 
-
     ```cangjie
     this.message = HashSet<Int64>(1,2,3)
     ```
 
     HashSet内部的变化不能感知。
-
 
     ```cangjie
     this.message.add(5)

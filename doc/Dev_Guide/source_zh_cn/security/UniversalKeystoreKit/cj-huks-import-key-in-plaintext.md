@@ -30,7 +30,6 @@ import kit.CoreFileKit.*
 import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
-
 func loggerInfo(str: String) {
     Hilog.info(0, "CangjieTest", str)
 }

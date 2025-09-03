@@ -21,7 +21,6 @@ import kit.CoreFileKit.*
 import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
-
 /* 1. 确定密钥别名 */
 let keyAlias = "test_is_key_item_exist"
 

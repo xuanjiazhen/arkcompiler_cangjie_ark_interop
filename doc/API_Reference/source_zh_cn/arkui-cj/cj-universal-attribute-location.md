@@ -2,13 +2,11 @@
 
 设置组件的对齐方式、布局方向和显示位置。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func align(Alignment)
 
@@ -28,7 +26,6 @@ public func align(value: Alignment): This
 |:---|:---|:---|:---|:---|
 |value|[Alignment](#)|是|-|对齐方式。|
 
-
 ## func alignRules(AlignRuleOption)
 
 ```cangjie
@@ -47,7 +44,6 @@ public func alignRules(value: AlignRuleOption): This
 |:---|:---|:---|:---|:---|
 |value|[AlignRuleOption](#)|是|-|对齐规则选项。|
 
-
 ## func direction(Direction)
 
 ```cangjie
@@ -65,7 +61,6 @@ public func direction(value: Direction): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[Direction](#)|是|-|布局方向。|
-
 
 ## func markAnchor(Length, Length)
 
@@ -86,7 +81,6 @@ public func markAnchor(x!: Length, y!: Length): This
 |x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** x轴坐标。|
 |y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** y轴坐标。|
 
-
 ## func offset(Length, Length)
 
 ```cangjie
@@ -105,7 +99,6 @@ public func offset(x!: Length, y!: Length): This
 |:---|:---|:---|:---|:---|
 |x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** x轴坐标。|
 |y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** y轴坐标。|
-
 
 ## func position(Length, Length)
 
@@ -292,7 +285,6 @@ public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = N
 |bottom|?[VerticalAlignment](#class-verticalalignment)|否|None|设置组件底部对齐方式。|
 |center|?[VerticalAlignment](#class-verticalalignment)|否|None|设置组件垂直居中对齐方式。|
 |bias|[Bias](#class-bias)|否|Bias()|设置组件对齐的偏移量。|
-
 
 ### class Bias
 

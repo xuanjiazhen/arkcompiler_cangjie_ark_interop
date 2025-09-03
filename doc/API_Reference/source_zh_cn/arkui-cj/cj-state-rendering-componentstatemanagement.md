@@ -13,9 +13,7 @@ import kit.ArkUI.*
 ```cangjie
 public class ObservedArrayList<T> <: ObservedComplexAbstract {
 
-
     public init(initValue: ArrayList<T>)
-
 
     public init(initValue: Array<T>)
 }
@@ -104,8 +102,6 @@ public func append(element: T): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |element|T|是|-|插入的元素。|
-
-
 
 ### func appendAll(Collection\<T>)
 

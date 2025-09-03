@@ -269,7 +269,6 @@ public class DateTimeOptions {
     public var localeMatcher: String
     public var formatMatcher: String
 
-
     public init(locale!: String = "zh-Hans-CN", dateStyle!: String = "long", timeStyle!: String = "long",
         hourCycle!: String = "h11", timeZone!: String = "", numberingSystem!: String = "adlm", hour12!: Bool = false,
         weekday!: String = "long", era!: String = "long", year!: String = "numeric", month!: String = "numeric",
@@ -635,7 +634,6 @@ public init(locale!: String = "zh-Hans-CN", dateStyle!: String = "long", timeSty
 
 ```cangjie
 public class TextClockController <: RemoteDataLite {
-
 
     public init()
 }

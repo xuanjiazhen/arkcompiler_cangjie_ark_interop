@@ -536,7 +536,6 @@ public enum CalendarType {
 
 **起始版本：** 21
 
-
 ### Buddhist
 
 ```cangjie
@@ -573,7 +572,6 @@ Coptic
 
 **起始版本：** 21
 
-
 ### Ethiopic
 
 ```cangjie
@@ -585,7 +583,6 @@ Ethiopic
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 21
-
 
 ### Hebrew
 
@@ -670,7 +667,6 @@ Japanese
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 21
-
 
 ### Persian
 

@@ -65,7 +65,6 @@
     import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
     import kit.ArkUI.{WindowStage}
 
-
     let storeConfig_ = StoreConfig(
     RelationalStoreSecurityLevel.S3,// 数据库安全级别
     name: "RdbTest.db", // 数据库文件名

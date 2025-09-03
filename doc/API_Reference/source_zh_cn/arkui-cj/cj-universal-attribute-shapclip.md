@@ -230,4 +230,3 @@ public func radius(value: Length): This
 |:---|:---|:---|:---|:---|
 |value|[Length](./cj-common-types.md#interface-length)|是|-|圆角的半径大小。</br>初始值：0.vp。|
 
-

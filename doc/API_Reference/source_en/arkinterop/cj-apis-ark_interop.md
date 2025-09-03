@@ -5694,7 +5694,6 @@ public func asExternal(): JSExternal
 |:----|:----|
 | [JSExternal](#class-jsexternal) | A reference to an ArkTS reference to a Cangjie object. |
 
-
 ### func asFunction()
 
 ```cangjie

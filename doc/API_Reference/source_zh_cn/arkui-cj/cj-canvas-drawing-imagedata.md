@@ -71,7 +71,6 @@ public prop width: Int32
 
 **起始版本：** 21
 
-
 ### init(Float64, Float64, Array\<UInt8>, LengthMetricsUnit)
 
 ```cangjie

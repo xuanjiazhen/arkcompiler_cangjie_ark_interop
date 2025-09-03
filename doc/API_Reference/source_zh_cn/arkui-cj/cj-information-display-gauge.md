@@ -5,7 +5,6 @@
 ```cangjie
 public class Gauge <: ContainerBase {
 
-
     public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!: () -> Unit = { => })
 }
 ```

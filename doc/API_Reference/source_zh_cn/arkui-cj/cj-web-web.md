@@ -396,7 +396,6 @@ public var headerValue: String
 public class OnLoadInterceptEvent {
     public var data: WebResourceRequest
 
-
     public init(data: WebResourceRequest)
 }
 ```
@@ -447,7 +446,6 @@ public init(data: WebResourceRequest)
 ```cangjie
 public class OnPageBeginEvent {
     public var url: String
-
 
     public init(url: String)
 }
@@ -500,7 +498,6 @@ public init(url: String)
 public class OnPageEndEvent {
     public var url: String
 
-
     public init(url: String)
 }
 ```
@@ -551,7 +548,6 @@ public init(url: String)
 ```cangjie
 public class OnPermissionRequestEvent {
     public var request: PermissionRequest
-
 
     public init(request: PermissionRequest)
 }

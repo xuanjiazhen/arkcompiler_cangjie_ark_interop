@@ -7,13 +7,11 @@
 > - 不支持横竖屏切换。
 > - 不支持路由跳转。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func bindContentCover(Bool, CustomBuilder, ContentCoverOptions)
 

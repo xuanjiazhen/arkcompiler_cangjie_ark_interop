@@ -10,13 +10,11 @@ ui_test提供模拟UI操作的能力，供开发者在测试场景使用，主�
 - [Driver](#class-driver)：入口类，提供控件匹配、查找、按键注入、坐标点击或滑动、截图等能力。
 - [UiWindow](#class-uiwindow)：入口类，提供窗口属性获取、窗口拖动、调整窗口大小等能力。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.TestKit.*
 ```
-
 
 ## 使用说明
 
@@ -26,7 +24,6 @@ API示例代码使用说明：
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
-
 
 ## 运行测试
 
@@ -598,7 +595,6 @@ public func scrollToTop(speed!: Int64 = 600): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
   | 17000004 | The window or component is invisible or destroyed. |
-
 
 ## class Driver
 
@@ -1437,7 +1433,6 @@ public func mouseDoubleClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key
 import kit.TestKit.*
 import ohos.ui_test.Point as PT
 
-
 let driver: Driver = Driver.create()
 driver.mouseDoubleClick(PT(248, 194), MouseButton.MouseButtonLeft, key1: 2072)
 ```
@@ -2129,7 +2124,6 @@ import kit.TestKit.*
 let driver: Driver = Driver.create()
 driver.wakeUpDisplay()
 ```
-
 
 ## class On
 
@@ -3018,7 +3012,6 @@ class TestExample00 {
 }
 ```
 
-
 ## class Point
 
 ```cangjie
@@ -3103,7 +3096,6 @@ public init(x: Int32, y: Int32, displayId!: ?Int32 = None)
 |x|Int32|是|-|坐标点的横坐标。|
 |y|Int32|是|-|坐标点的纵坐标。|
 |displayId|?Int32|否|None| **命名参数。** 坐标点所属的屏幕ID，取值范围：大于等于0的整数。|
-
 
 ## class PointerMatrix
 
@@ -3209,7 +3201,6 @@ pointerMatrix.setPoint(1, 0, PT(230, 680))
 pointerMatrix.setPoint(1, 1, PT(240, 580))
 pointerMatrix.setPoint(1, 2, PT(250, 480))
 ```
-
 
 ## class Rect
 
@@ -3395,7 +3386,6 @@ public let text: String
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
-
 
 ## class UIEventObserver
 
@@ -4016,7 +4006,6 @@ let window: Option<UiWindow> = driver.findWindow(WindowFilter(active: true))
 window?.split()
 ```
 
-
 ## class WindowFilter
 
 ```cangjie
@@ -4138,7 +4127,6 @@ public init(bundleName!: ?String = "", title!: ?String = "", focused!: ?Bool = f
 |active|Bool|否|false| **命名参数。** 窗口是否正与用户进行交互。|
 |displayId|?Int32|否|None| **命名参数。** 控件边框所属的屏幕ID，取值大于或等于0的整数。|
 
-
 ## enum DisplayRotation
 
 ```cangjie
@@ -4204,7 +4192,6 @@ Rotation90
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
-
 
 ## enum MatchPattern
 
@@ -4272,7 +4259,6 @@ StartsWith
 
 **起始版本：** 21
 
-
 ## enum MouseButton
 
 ```cangjie
@@ -4325,7 +4311,6 @@ MouseButtonRight
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
-
 
 ## enum OnceType
 
@@ -4420,7 +4405,6 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的说明。|
-
 
 ## enum ResizeDirection
 
@@ -4540,7 +4524,6 @@ Up
 
 **起始版本：** 21
 
-
 ## enum UiDirection
 
 ```cangjie
@@ -4606,7 +4589,6 @@ Up
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
-
 
 ## enum WindowMode
 

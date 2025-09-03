@@ -2,13 +2,11 @@
 
 该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.CoreFileKit.*
 ```
-
 
 ## 使用说明
 
@@ -19,7 +17,6 @@ API示例代码使用说明：
 - 获取当前应用沙箱所在路径可通过UIAbilityContext.[filesDir](../AbilityKit/cj-apis-app-ability-ui_ability.md#prop-filesdir)获取。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
-
 
 ## class ConflictFiles
 
@@ -67,7 +64,6 @@ public var srcFile: String
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
-
 
 ## class File
 
@@ -1879,7 +1875,6 @@ public static func write(fd: Int32, buffer: String, options!: WriteOptions = Wri
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
-
 ## class Filter
 
 ```cangjie
@@ -2041,7 +2036,6 @@ public init(
   | :---- | :--- |
   | 13900020 | Invalid argument |
 
-
 ## class ListFileOptions
 
 ```cangjie
@@ -2134,7 +2128,6 @@ public init(
 |recursion|Bool|否|false|是否递归子目录下文件名。默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及文件夹名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。|
 |listNum|Int32|否|0|列出文件名数量。当设置0时，列出所有文件，默认为0。|
 |filter|[Filter](#class-filter)|否|Filter()|文件过滤选项。当前仅支持后缀名匹配、文件名模糊查询、文件大小过滤、最近修改时间过滤。|
-
 
 ## class OpenMode
 
@@ -2299,7 +2292,6 @@ public static const WRITE_ONLY: Int64 = 0o1
 
 **起始版本：** 21
 
-
 ## class Options
 
 ```cangjie
@@ -2352,7 +2344,6 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |encoding|String|否|"utf-8"|用于指定字符串的编码方式。|
-
 
 ## class RandomAccessFile
 
@@ -2648,7 +2639,6 @@ let bytesWritten = randomAccessFile.write(arr, options: option)
 randomAccessFile.close()
 ```
 
-
 ## class RandomAccessFileOptions
 
 ```cangjie
@@ -2722,7 +2712,6 @@ public init(
 |start|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件的位置。可选，默认从当前位置开始读。|
 |end|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取结束的位置。可选，默认文件末尾。|
 
-
 ## class ReaderIterator
 
 ```cangjie
@@ -2762,7 +2751,6 @@ public func next(): ReaderIteratorResult
   | 13900005 | I/O error |
   | 13900037 | No data available |
   | 13900042 | Unknown error |
-
 
 ## class ReaderIteratorResult
 
@@ -2810,7 +2798,6 @@ public var value: String
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
-
 
 ## class ReadOptions
 
@@ -2885,7 +2872,6 @@ public init(
 |offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
 |length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
 
-
 ## class ReadTextOptions
 
 ```cangjie
@@ -2948,7 +2934,6 @@ public init(
 |offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
 |length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
 |encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
-
 
 ## class Stat
 
@@ -3325,7 +3310,6 @@ let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取
 let isSymbolicLink = FileIo.stat(filePath).isSymbolicLink()
 ```
 
-
 ## class Stream
 
 ```cangjie
@@ -3691,7 +3675,6 @@ public init(
 |offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。|
 |encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
 
-
 ## enum AccessFlagType
 
 ```cangjie
@@ -3718,7 +3701,6 @@ Local
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
-
 
 ## enum AccessModeType
 
@@ -3785,7 +3767,6 @@ Write
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
-
 
 ## enum WhenceType
 

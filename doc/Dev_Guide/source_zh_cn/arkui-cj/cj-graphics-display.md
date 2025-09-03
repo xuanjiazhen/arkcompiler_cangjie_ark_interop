@@ -4,7 +4,6 @@
 
 Image通过调用接口来创建，接口调用形式如下：
 
-
 ```cangjie
 Image(src: String | AppResource | PixelMap | ImageContent)
 ```
@@ -25,7 +24,6 @@ Image支持加载存档图、多媒体像素图两种类型。
 
   Image组件引入本地图片路径，即可显示图片（根目录为cangjie文件夹）。
 
-
   ```cangjie
   Image('file://media/images/view.jpg')
   .width(200)
@@ -41,7 +39,6 @@ Image支持加载存档图、多媒体像素图两种类型。
 
   网络图片必须支持RFC 9113标准，否则会导致加载失败。如果下载的网络图片大于10MB或一次下载的网络图片数量较多，建议使用[HTTP](../network/cj-http-request.md)工具提前预下载，提高图片加载性能，方便应用侧管理数据。
 
-
   ```cangjie
   Image("https://www.example.com/example.jpg") // 实际使用时请替换为真实地址
   ```
@@ -54,7 +51,6 @@ Image支持加载存档图、多媒体像素图两种类型。
 
   调用方式：
 
-
   ```cangjie
   Image(@r(app.media.startIcon))
   ```
@@ -64,7 +60,6 @@ Image支持加载存档图、多媒体像素图两种类型。
   支持file://路径前缀的字符串
 
   从媒体库获取的url格式通常如下。
-
 
   ```cangjie
   Image('file://media/Photos/5')
@@ -76,7 +71,6 @@ Image支持加载存档图、多媒体像素图两种类型。
 Image组件可显示矢量图（svg格式的图片），svg标签文档请参考[svg说明](../../../API_Reference/source_zh_cn/apis/ImageKit/cj-apis-image.md#svg标签说明)。
 
 svg格式的图片可以使用fillColor属性改变图片的绘制颜色。
-
 
 ```cangjie
 Image(@r(app.media.cloud))
@@ -98,7 +92,6 @@ svg格式的原始图片如图：
 
 Image加载的Svg图源路径设置方法如下所示：
 
-
 ```cangjie
 Image('resource://rawfile/icon.svg')
   .width(50)
@@ -106,7 +99,6 @@ Image('resource://rawfile/icon.svg')
 ```
 
 Svg图源通过`<image>`标签的`xmlns:xlink`属性指定本地位图路径，本地位图路径设置为跟Svg图源同级的相对路径：
-
 
 ```cangjie
 <svg width="200" height="200">
@@ -451,7 +443,6 @@ class EntryView {
 ### 同步加载图片
 
 一般情况下，图片加载流程会异步进行，以避免阻塞主线程，影响UI交互。但是特定情况下，图片刷新时会出现闪烁，这时可以使用syncLoad属性，使图片同步加载，从而避免出现闪烁。不建议图片加载较长时间时使用，会导致页面无法响应。
-
 
 ```cangjie
 Image(@r(app.media.icon))

@@ -333,7 +333,6 @@
         Hilog.info(0, "CangjieTest", str)
     }
 
-
     func StringToUint8Array(str: String) {
         return str.toArray()
     }

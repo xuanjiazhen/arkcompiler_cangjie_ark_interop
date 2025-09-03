@@ -499,7 +499,6 @@ class EntryView {
 
 正确渲染并保证效率的ForEach写法是：
 
-
 ```cangjie
 ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>ChildItem(item: item)}, keyGeneratorFunc: {item: String, index: Int64 => item})
 ```

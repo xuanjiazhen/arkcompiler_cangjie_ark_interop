@@ -78,7 +78,6 @@ List组件主轴默认是垂直方向，即默认情况下不需要手动设置L
 
 若是水平滚动列表场景，将List的listDirection属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
 
-
 ```cangjie
 List() {
   // ...
@@ -92,7 +91,6 @@ List组件的交叉轴布局可以通过lanes和alignListItem属性进行设置�
 
 List组件的lanes属性通常用于在不同尺寸的设备自适应构建不同行数或列数的列表，即一次开发、多端部署的场景。lanes属性的声明方式见[声明方式](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-list.md#func-lanesint32)。以垂直列表为例，如果将lanes属性设为2，表示构建的是一个两列的垂直列表，如图2中右图所示。lanes的默认值为1，即默认情况下，垂直列表的列数是1。
 
-
 ```cangjie
 List() {
   // ...
@@ -101,7 +99,6 @@ List() {
 ```
 
 当使用".lanes(minLength: Length, maxLength: Length)"声明属性时，表示会根据minLength和maxLength与List组件的尺寸自适应决定行或列数。
-
 
 ```cangjie
 List() {
@@ -117,7 +114,6 @@ List() {
 - 当List组件宽度变化至400.vp时，符合两倍的minLength，则此时列表自适应为两列。
 
 同样以垂直列表为例，当alignListItem属性设置为ListItemAlign.Center表示列表项在水平方向上居中对齐。alignListItem的默认值是ListItemAlign.Start，即列表项在列表交叉轴方向上默认按首部对齐。
-
 
 ```cangjie
 List() {
@@ -172,7 +168,6 @@ public class EntryView {
 ![List7](figures/List7.png)
 
 如上图8所示，联系人列表的列表项中，每个联系人都有头像和名称。此时，需要将Image和Text封装到一个Row容器内。
-
 
 ```cangjie
 List() {
@@ -254,7 +249,6 @@ public class EntryView {
 
 在初始化列表时，如需在列表项之间添加间距，可以使用space参数。例如，在每个列表项之间沿主轴方向添加10.vp的间距：
 
-
 ```cangjie
 List(space: 10) {
   // ...
@@ -272,7 +266,6 @@ List(space: 10) {
 List提供了divider属性用于给列表项之间添加分隔线。在设置divider属性时，可以通过strokeWidth和color属性设置分隔线的粗细和颜色。
 
 startMargin和endMargin属性分别用于设置分隔线距离列表侧边起始端的距离和距离列表侧边结束端的距离。
-
 
 ```cangjie
 List() {
@@ -300,7 +293,6 @@ List() {
 ![List9](figures/List9.gif)
 
 在使用List组件时，可通过scrollBar属性控制列表滚动条的显示。scrollBar的取值类型为[BarState](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-barstate)，当取值为BarState.Auto表示按需显示滚动条。此时，当触摸到滚动条区域时显示控件，可上下拖拽滚动条快速浏览内容，拖拽时会变粗。若不进行任何操作，2秒后滚动条自动消失。
-
 
 ```cangjie
 List() {
@@ -461,13 +453,11 @@ List组件初始化时，可以通过scroller参数绑定一个[Scroller](../../
 
 首先，需要创建一个Scroller的对象listScroller。
 
-
 ```cangjie
 var listScroller: Scroller = Scroller()
 ```
 
 然后，通过将listScroller用于初始化List组件的scroller参数，完成listScroller与列表的绑定。在需要跳转的位置指定scrollToIndex的参数为0，表示返回列表顶部。
-
 
 ```cangjie
 Stack(alignContent: Alignment.Bottom) {
@@ -547,7 +537,6 @@ ListItem的[swipeAction属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-s
 
 - 实现尾端滑出组件的构建。
 
-
     ```cangjie
     @Builder
     func itemEnd(index: Int64) {
@@ -565,7 +554,6 @@ ListItem的[swipeAction属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-s
     ```
 
 - 绑定swipeAction属性到可左滑的ListItem上。
-
 
     ```cangjie
     // 构建List时，通过ForEach基于数据源this.messages循环渲染ListItem。
@@ -588,7 +576,6 @@ ListItem的[swipeAction属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-s
 在消息列表中，若希望在联系人头像右上角添加标记，可在实现消息列表项ListItem的联系人头像时，将头像Image组件作为Badge的子组件。
 
 在Badge组件中，count和position参数用于设置需要展示的消息数量和提示点显示位置，还可以通过style参数灵活设置标记的样式。
-
 
 ```cangjie
 ListItem(){
@@ -630,7 +617,6 @@ ListItem(){
 
 当使用懒加载方式渲染列表时，为了更好的列表滚动体验，减少列表滑动时出现白块，List组件提供了cachedCount参数用于设置列表项缓存数，只在懒加载LazyForEach中生效。
 
-
 ```cangjie
 List() {
   // ...
@@ -661,7 +647,6 @@ List() {
 
 1. 定义列表项数据结构。
 
-
     ```cangjie
     open class ItemInfo {
         var index: Int64
@@ -688,7 +673,6 @@ List() {
     ```
 
 2. 构造列表结构。
-
 
     ```cangjie
     @State var routes: Array<ItemGroupInfo> = [
@@ -757,7 +741,6 @@ List() {
     ```
 
 3. 通过改变ListItem的状态，来控制每个列表项是否展开，并通过animation和animateTo来实现展开与折叠过程中的动效效果。
-
 
     ```cangjie
     @Builder

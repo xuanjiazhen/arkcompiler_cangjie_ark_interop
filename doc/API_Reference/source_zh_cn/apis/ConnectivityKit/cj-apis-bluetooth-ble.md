@@ -2567,7 +2567,6 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 
 **异常：**
 
-
 **异常：**
 
 - BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
@@ -4024,7 +4023,6 @@ public func sendResponse(serverResponse: ServerResponse): Unit
 |callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<Array\<[GattService](#class-gattservice)>>|是|-|client进行服务发现。|
 
 **异常：**
-
 
 - BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 

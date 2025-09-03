@@ -193,7 +193,6 @@
     import kit.LocalizationKit.*
     import kit.AbilityKit.*
 
-
     // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
     var abilityContext = Global.abilityContext
     // 获取resourceManager资源管理器。

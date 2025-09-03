@@ -2,13 +2,11 @@
 
 设置组件的背景样式。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func backdropBlur(Float64)
 
@@ -28,7 +26,6 @@ public func backdropBlur(value: Float64): This
 |:---|:---|:---|:---|:---|
 |value|Float64|是|-|模糊半径。|
 
-
 ## func backgroundColor(ResourceColor)
 
 ```cangjie
@@ -47,7 +44,6 @@ public func backgroundColor(value: ResourceColor): This
 |:---|:---|:---|:---|:---|
 |value|[ResourceColor](#)|是|-|背景颜色。|
 
-
 ## func backgroundImage(ResourceStr)
 
 ```cangjie
@@ -65,7 +61,6 @@ public func backgroundImage(src: ResourceStr): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |src|[ResourceStr](#)|是|-|图片资源路径。|
-
 
 ## func backgroundImage(ResourceStr, ImageRepeat)
 
@@ -86,7 +81,6 @@ public func backgroundImage(src: ResourceStr, repeat: ImageRepeat): This
 |src|[ResourceStr](#)|是|-|图片资源路径。|
 |repeat|[ImageRepeat](#)|是|-|图片重复方式。|
 
-
 ## func backgroundImagePosition(Alignment)
 
 ```cangjie
@@ -104,7 +98,6 @@ public func backgroundImagePosition(value: Alignment): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[Alignment](#)|是|-|对齐方式。|
-
 
 ## func backgroundImagePosition(Length, Length)
 
@@ -125,7 +118,6 @@ public func backgroundImagePosition(x!: Length = 0.vp, y!: Length = 0.vp): This
 |x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|X轴位置。|
 |y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Y轴位置。|
 
-
 ## func backgroundImageSize(ImageSize)
 
 ```cangjie
@@ -143,7 +135,6 @@ public func backgroundImageSize(value: ImageSize): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[ImageSize](#)|是|-|图片尺寸。|
-
 
 ## func backgroundImageSize(Length, Length)
 

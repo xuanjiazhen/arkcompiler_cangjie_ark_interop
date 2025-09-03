@@ -239,7 +239,6 @@ public func fetchFrameByTime(timeUs: Int64, options: AVImageQueryOptions, param:
 
 import kit.MediaKit.*
 
-
 let timeUs = 0
 let queryOption = AVImageQueryOptions.AvImageQueryNextSync
 let param = PixelMapParams(width: 300, height: 300)

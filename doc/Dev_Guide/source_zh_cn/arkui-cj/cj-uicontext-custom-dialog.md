@@ -31,7 +31,6 @@
 
    Customdialog用于定义自定义弹出框的内容。
 
-
     ```cangjie
     @Builder
     func CustomDialog() {

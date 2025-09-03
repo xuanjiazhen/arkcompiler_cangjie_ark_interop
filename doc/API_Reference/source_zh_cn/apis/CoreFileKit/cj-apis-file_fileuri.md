@@ -56,7 +56,6 @@ public static func getUriFromPath(path: String): String
 ```cangjie
 public class FileUri <: Uri {
 
-
     public init(uriOrPath: String)
 }
 ```

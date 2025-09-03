@@ -16,7 +16,6 @@
 
 - \@Provide 和 \@Consume 可以通过相同的变量名或者相同的变量别名绑定，需要类型相同，否则会发生类型隐式转换，从而导致应用行为异常。
 
-
 ```cangjie
 // 通过相同的变量名绑定
 @Provide
@@ -259,7 +258,6 @@ class Child{
 
     【反例】
 
-
     ```cangjie
 
     let change: Int64 = 10;
@@ -274,7 +272,6 @@ class Child{
 
     【正例】
 
-
     ```cangjie
 
     @Provide["10"]
@@ -284,7 +281,6 @@ class Child{
 2. \@Consume 装饰的变量不能本地初始化，也不能在构造参数中传入初始化，\@Consume 装饰的变量初始化不会起作用。\@Consume 仅能通过key来匹配对应的 \@Provide 变量进行初始化。
 
     【反例】
-
 
     ```cangjie
     // 父组件
@@ -315,7 +311,6 @@ class Child{
     ```
 
     【正例】
-
 
     ```cangjie
     @Component
@@ -350,7 +345,6 @@ class Child{
 
 3. \@Provide的key（变量名与别名）重复定义时，\@Consume 会根据组件树向上查找并绑定最近的 \@Provide
 
-
     ```cangjie
     // 如果变量名重复，\@Consume 会绑定最后一个 \@Provide 修饰的变量。
     // 需类型一致，若类型不一致，框架会弹出运行时错误。
@@ -370,7 +364,6 @@ class Child{
 4. 在初始化 \@Consume 变量时，如果开发者没有定义对应key的 \@Provide 变量，框架会抛出运行时错误，提示开发者初始化 \@Consume 变量失败，原因是无法找到其对应key（变量名或别名）的 \@Provide 变量。
 
     【反例】
-
 
     ```cangjie
     @Component
@@ -402,7 +395,6 @@ class Child{
     ```
 
     【正例】
-
 
     ```cangjie
     @Component

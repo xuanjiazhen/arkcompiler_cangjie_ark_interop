@@ -188,7 +188,6 @@ public static func deletePreferences(context: UIAbilityContext, name: String): U
 import kit.ArkData.*
 import ohos.base.*
 
-
 // 获取 Preferences 实例
 let preferences = Preferences.getPreferences(Global.abilityContext, "myStore")  // 需获取Context应用上下文，详见本文使用说明
 try {
@@ -247,7 +246,6 @@ public static func deletePreferences(context: UIAbilityContext, options: Options
 
 import kit.ArkData.*
 import ohos.base.*
-
 
 // 获取 Preferences 实例
 let preferences = Preferences.getPreferences(Global.abilityContext, "myStore")  // 需获取Context应用上下文，详见本文使用说明
@@ -315,7 +313,6 @@ import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
 
-
 let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
@@ -381,7 +378,6 @@ import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
 
-
 let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
@@ -434,7 +430,6 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-
 
 let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
@@ -498,7 +493,6 @@ import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
 
-
 let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
@@ -541,7 +535,6 @@ import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.data.preferences.ValueType as PreferencesValueType
 
-
 let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("myKey", PreferencesValueType.StringData("myValue"))
 preferences.clear()
@@ -583,7 +576,6 @@ public func delete(key: String): Unit
 
 import kit.ArkData.*
 
-
 // 获取 Preferences 实例
 let preferences = Preferences.getPreferences(Global.abilityContext, "myStore") // 需获取Context应用上下文，详见本文使用说明
 preferences.delete("startup")
@@ -621,7 +613,6 @@ public func flush(): Unit
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.data.preferences.ValueType as PreferencesValueType
-
 
 let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("myKey", PreferencesValueType.StringData("myValue"))
@@ -942,7 +933,6 @@ public func put(key: String, value: ValueType): Unit
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.data.preferences.ValueType as PreferencesValueType
-
 
 var preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("Monday", PreferencesValueType.StringData("今天天气真好"))

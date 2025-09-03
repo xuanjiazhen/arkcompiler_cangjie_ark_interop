@@ -84,7 +84,6 @@ func GenerateHMACKey() {
     generateKeyItem(HmackeyAlias, options)
 }
 
-
 /*
  * 模拟HMAC场景
  */

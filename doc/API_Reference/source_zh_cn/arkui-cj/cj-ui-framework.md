@@ -2247,7 +2247,6 @@ public func unsubscribeInner(observer: Observer): Unit
 ```cangjie
 public abstract class ObservedPropertyAbstract <: Observable {
 
-
     public init(info: String)
 }
 ```
@@ -2885,7 +2884,6 @@ public open func update(): Unit
 
 **起始版本：** 21
 
-
 ## class ViewBuilder
 
 ```cangjie
@@ -3051,7 +3049,6 @@ func update(): Unit
 ```
 
 **功能：** UI框架使用。
-
 
 ## interface CStringExtend
 

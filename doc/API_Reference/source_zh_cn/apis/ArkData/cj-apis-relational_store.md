@@ -199,7 +199,6 @@ public class Asset {
     public var size: String
     public var status: AssetStatus
 
-
     public init(name: String, uri: String, path: String, createTime: String, modifyTime: String, size: String,
         status!: AssetStatus = AssetStatus.AssetNormal)
 }
@@ -360,7 +359,6 @@ public class CryptoParam {
     public var kdfAlgo:?KdfAlgo
     public var cryptoPageSize: UInt32
 
-
     public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
         encryptionAlgo!: EncryptionAlgo = EncryptionAlgo.Aes256Gcm,
         hmacAlgo!: HmacAlgo = HmacAlgo.Sha256, kdfAlgo!: ?KdfAlgo = None,
@@ -500,7 +498,6 @@ public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
 
 ```cangjie
 public class RdbPredicates <: RemoteDataLite {
-
 
     public init(name: String)
 }
@@ -3420,7 +3417,6 @@ public class StoreConfig {
     public var tokenizer: Tokenizer
     public var persist: Bool
     public var enableSemanticIndex: Bool
-
 
     public init(securityLevel: SecurityLevel, name!: String = "",
         encrypt!: Bool = false, dataGroupId!: String = "",

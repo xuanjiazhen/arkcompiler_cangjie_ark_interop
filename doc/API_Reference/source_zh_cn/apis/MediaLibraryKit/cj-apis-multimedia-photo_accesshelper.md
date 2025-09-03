@@ -282,7 +282,6 @@ public func close(): Unit
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -327,7 +326,6 @@ public func getAllObjects(): Array<T>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -375,7 +373,6 @@ public func getCount(): Int32
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -421,7 +418,6 @@ public func getFirstObject(): T
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -466,7 +462,6 @@ public func getLastObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -514,7 +509,6 @@ public func getNextObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -567,7 +561,6 @@ public func getObjectByPosition(index: Int32): T
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -612,7 +605,6 @@ public func isAfterLast(): Bool
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -684,7 +676,6 @@ public init(album: Album)
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -732,7 +723,6 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -783,7 +773,6 @@ public func getAlbum(): Album
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -832,7 +821,6 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -890,7 +878,6 @@ public func setAlbumName(name: String): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -959,7 +946,6 @@ public init(asset: PhotoAsset)
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -1015,7 +1001,6 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 import kit.MediaLibraryKit.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let photoType = PhotoType.Image
 let extension = "jpg"
@@ -1069,7 +1054,6 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -1125,7 +1109,6 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
 import kit.MediaLibraryKit.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.mp4"
@@ -1174,7 +1157,6 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -1227,7 +1209,6 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -1275,7 +1256,6 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -1326,7 +1306,6 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 
 import kit.MediaLibraryKit.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let photoType = PhotoType.Image
@@ -1368,7 +1347,6 @@ public func discardCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -1417,7 +1395,6 @@ public func getAsset(): PhotoAsset
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -1470,7 +1447,6 @@ public func getWriteCacheHandler(): Int32
 import kit.MediaLibraryKit.*
 import kit.CoreFileKit.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx,
@@ -1510,7 +1486,6 @@ public func saveCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -1559,7 +1534,6 @@ public func setTitle(title: String): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -1665,7 +1639,6 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -1720,7 +1693,6 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -1773,7 +1745,6 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetR
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -1885,7 +1856,6 @@ public func release(): Unit
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
 
-
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
@@ -1949,7 +1919,6 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
@@ -2029,7 +1998,6 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-
 
 let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)

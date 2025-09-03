@@ -35,7 +35,6 @@
 
 如果开发者希望在面板内容的builder中定义滚动容器，如List、Scroll，并结合半模态的上述交互能力，那么需要在垂直方向上为滚动容器设置嵌套滚动属性。
 
-
 ```cangjie
 .nestedScroll(
     NestedScrollOptions(
@@ -137,7 +136,6 @@ class EntryView {
 
 推荐使用onWillDismiss接口，此接口支持在回调中处理二次确认，或自定义关闭行为。
 
-
 ```cangjie
 // 第一步：声明onWillDismiss回调
 onWillDismiss: {
@@ -181,7 +179,6 @@ onWillDismiss: {
 
 下述示例显示半模态页面只在下滑的时候关闭。
 
-
 ```cangjie
 onWillDismiss: {
     dismissSheetAction: DismissSheetAction => {
@@ -197,7 +194,6 @@ onWillDismiss: {
 类比onWillDismiss，在声明了onWillSpringBackWhenDismiss后，半模态下滑时的回弹操作需要使用 SpringBackAction.springBack()处理，无此逻辑则不会回弹。
 
 具体代码如下，在半模态下滑的时候无需回弹。
-
 
 ```cangjie
 onWillDismiss: {

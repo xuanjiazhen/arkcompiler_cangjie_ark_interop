@@ -123,7 +123,6 @@ LocalStorage根据与@Component装饰的组件的同步类型不同，提供了�
 
 1. @LocalStorageProp/@LocalStorageLink的参数必须为string类型，否则编译期会报错。
 
-
     ```cangjie
     let storage =  LocalStorage()
     let temp = storage.setOrCreate("PropA", 48)
@@ -144,7 +143,6 @@ LocalStorage根据与@Component装饰的组件的同步类型不同，提供了�
 ## 使用场景
 
 ### 应用逻辑使用LocalStorage
-
 
 ```cangjie
 let storage =  LocalStorage()

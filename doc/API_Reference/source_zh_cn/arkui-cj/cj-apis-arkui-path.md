@@ -8,8 +8,6 @@
 import kit.UIKit.*
 ```
 
-
-
 ## class PathShape
 
 ```cangjie

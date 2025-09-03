@@ -52,7 +52,6 @@ class EntryView {
 
 使用方法：
 
-
 ```cangjie
 this.showTextBuilder()
 ```
@@ -95,7 +94,6 @@ class EntryView {
 ```
 
 使用方法：
-
 
 ```cangjie
 showTextBuilder()
@@ -152,7 +150,6 @@ class EntryView {
 ### 按引用传递参数
 
 按引用传递参数时，传递的参数可为状态变量，且状态变量的改变会引起@Builder方法内的UI刷新。
-
 
 ```cangjie
 package ohos_app_cangjie_entry
