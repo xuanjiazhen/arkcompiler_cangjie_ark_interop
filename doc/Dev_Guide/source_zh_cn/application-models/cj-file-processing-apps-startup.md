@@ -19,7 +19,7 @@
     <!-- compile -->
 
     ```cangjie
-    // xxx.cj
+
     import kit.AbilityKit.{UIAbility, Want, LaunchParam, Flags}
     import kit.ArkUI.WindowStage
     import kit.CoreFileKit.FileUri
@@ -31,7 +31,7 @@
     <!-- compile -->
 
     ```cangjie
-    // xxx.ets
+
     // 假设应用bundleName值为com.example.demo
     class MainAbility <: UIAbility {
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
@@ -52,7 +52,7 @@
     <!-- compile -->
 
     ```cangjie
-    // xxx.ets
+
     // 假设应用bundleName值为com.example.demo
     class MainAbility <: UIAbility {
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
@@ -80,7 +80,7 @@
     <!-- compile -->
 
     ```cangjie
-    // xxx.cj
+
     class MainAbility <: UIAbility {
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
             AppLog.info("MainAbility onWindowStageCreate.")
@@ -151,7 +151,7 @@
     <!-- compile -->
 
     ```cangjie
-    // xxx.cj
+
     import kit.AbilityKit.{UIAbility, Want, LaunchParam}
     import kit.ArkUI.{WindowStage}
     import kit.CoreFileKit.{FileFs, OpenMode}
