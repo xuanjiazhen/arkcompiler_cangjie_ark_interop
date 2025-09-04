@@ -158,7 +158,7 @@ public func fontFamily(value: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-字体列表。默认字体'HarmonyOS Sans'。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md#注册自定义字体)。|      |
+|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。默认字体'HarmonyOS Sans'。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md#注册自定义字体)。|      
 
 ### func fontSize(Length)
 

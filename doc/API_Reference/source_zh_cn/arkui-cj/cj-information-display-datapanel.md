@@ -345,7 +345,7 @@ public var offsetX: Length = 5.vp
 
 **功能：** 设置阴影的水平偏移量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -361,7 +361,7 @@ public var offsetY: Length = 5.vp
 
 **功能：** 设置阴影的垂直偏移量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -377,7 +377,7 @@ public var radius: Length = 20.vp
 
 **功能：** 设置阴影的模糊半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 

@@ -32,7 +32,7 @@ public func bindContextMenu(builder!: CustomBuilder, responseType!: ResponseType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[CustomBuilder](#type-custombuilder)|是|-|内容构建器。|
+|builder|[CustomBuilder](#type-custombuilder)|是|-|内容构建器。|
 |responseType|[ResponseType](#)|是|-|响应类型。|
 |options|[ContextMenuOptions](#)|否|ContextMenuOptions()|上下文菜单选项。|
 
@@ -70,7 +70,7 @@ public func bindMenu(builder!: CustomBuilder): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[CustomBuilder](#type-custombuilder)|是|-|内容构建器。|
+|builder|[CustomBuilder](#type-custombuilder)|是|-|内容构建器。|
 
 ## 基础类型定义
 
@@ -231,7 +231,7 @@ public var arrowOffset: Length = 0.vp
 
 **功能：** 箭头在菜单处的偏移。偏移量必须合法且转换为具体数值时大于0才会生效，另外该值生效时不会导致箭头超出菜单四周的安全距离。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -433,7 +433,7 @@ public init(
 |offset|[Position](cj-common-types.md#class-position)|否|Position()| **命名参数。** 菜单弹出位置的偏移量，不会导致菜单显示超出屏幕范围。<br> **说明：**<br> 菜单类型为相对⽗组件区域弹出时，⾃动根据菜单位置属性 (placement)将区域的宽或⾼计⼊偏移量中。<br> 当菜单相对父组件出现在上侧时（placement设置为Placement.TopLeft，Placement.Top，Placement.TopRight），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向上进行偏移。<br> 当菜单相对父组件出现在下侧时（placement设置为Placement.BottomLeft，Placement.Bottom，Placement.BottomRight），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 当菜单相对父组件出现在左侧时（placement设置为Placement.LeftTop，Placement.Left，Placement.LeftBottom），x为正值，菜单相对组件向左进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 当菜单相对父组件出现在右侧时（placement设置为Placement.RightTop，Placement.Right，Placement.RightBottom），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 如果菜单调整了显示位置（与placement初始值主方向不⼀致），则偏移值 (offset) 失效。|
 |placement|[Option](#initposition-optionplacement-bool-length-option---unit----unit----unit----unit----unit-resourcecolor-blurstyle-transitioneffect-borderradiuses-margin)\<[Placement](cj-common-types.md#enum-placement)>|否|Option.None| **命名参数。** 菜单组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br> **说明：**<br> placement值设置为undefined、null或没有设置此选项时，按未设置placement处理，当使用bindMenu，按初始值：Placement.BottomLeft设置。|
 |enableArrow|Bool|否|false| **命名参数。** 是否显示箭头。如果菜单的大小和位置不足以放置箭头时，不会显示箭头。<br> **说明：** <br> enableArrow为true时，placement未设置或者值为非法值，默认在目标物上方显示，否则按照placement的位置优先显示。当前位置显示不下时，会自动调整位置，enableArrow为undefined时，不显示箭头。|
-|arrowOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp| **命名参数。** 箭头在菜单处的偏移。偏移量必须合法且转换为具体数值时大于0才会生效，另外该值生效时不会导致箭头超出菜单四周的安全距离。<br> 单位：vp<br> **说明：**<br> 箭头距菜单四周的安全距离为菜单圆角大小与箭头宽度的一半之和。<br> 根据配置的placement来计算是在水平还是垂直方向上偏移。<br> 箭头在菜单水平方向时，偏移量为箭头至最左侧箭头安全距离处的距离。箭头在菜单垂直方向时，偏移量为箭头至最上侧箭头安全距离处的距离。<br> 根据配置的placement的不同，箭头展示的默认位置不同：<br> 在菜单不发生避让的情况下，placement设置为Placement.Top、Placement.Bottom时，箭头显示在水平方向且默认居中；<br> placement设置为Placement.Left、Placement.Right时，箭头显示在垂直方向且默认居中；<br> placement设置为Placement.TopLeft、Placement.BottomLeft时，箭头默认显示在水平方向，且距离菜单左侧边缘距离为箭头安全距离；<br> placement设置为Placement.TopRight、Placement.BottomRight时，箭头默认显示在水平方向，且距离菜单右侧距离为箭头安全距离；<br> placement设置为Placement.LeftTop、Placement.RightTop时，箭头默认显示在垂直方向，且距离菜单上侧距离为箭头安全距离；<br> placement设置为Placement.LeftBottom、Placement.RightBottom时，箭头默认显示在垂直方向，且距离菜单下侧距离为箭头安全距离。|
+|arrowOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 箭头在菜单处的偏移。偏移量必须合法且转换为具体数值时大于0才会生效，另外该值生效时不会导致箭头超出菜单四周的安全距离。<br> 单位：vp<br> **说明：**<br> 箭头距菜单四周的安全距离为菜单圆角大小与箭头宽度的一半之和。<br> 根据配置的placement来计算是在水平还是垂直方向上偏移。<br> 箭头在菜单水平方向时，偏移量为箭头至最左侧箭头安全距离处的距离。箭头在菜单垂直方向时，偏移量为箭头至最上侧箭头安全距离处的距离。<br> 根据配置的placement的不同，箭头展示的默认位置不同：<br> 在菜单不发生避让的情况下，placement设置为Placement.Top、Placement.Bottom时，箭头显示在水平方向且默认居中；<br> placement设置为Placement.Left、Placement.Right时，箭头显示在垂直方向且默认居中；<br> placement设置为Placement.TopLeft、Placement.BottomLeft时，箭头默认显示在水平方向，且距离菜单左侧边缘距离为箭头安全距离；<br> placement设置为Placement.TopRight、Placement.BottomRight时，箭头默认显示在水平方向，且距离菜单右侧距离为箭头安全距离；<br> placement设置为Placement.LeftTop、Placement.RightTop时，箭头默认显示在垂直方向，且距离菜单上侧距离为箭头安全距离；<br> placement设置为Placement.LeftBottom、Placement.RightBottom时，箭头默认显示在垂直方向，且距离菜单下侧距离为箭头安全距离。|
 |preview|[Option](#initposition-optionplacement-bool-length-option---unit----unit----unit----unit----unit-resourcecolor-blurstyle-transitioneffect-borderradiuses-margin)\<()->Unit>|否|Option.None| **命名参数。** 长按悬浮菜单或使用bindContextMenu显示菜单的预览内容样式，为用户自定义的内容。<br> **说明：** <br> - 不支持responseType为ResponseType.RightClick时触发，如果responseType为ResponseType.RightClick，则不会显示预览内容。<br> - 当未设置preview参数时，enableArrow参数生效。<br> - 当preview参数设置为CustomBuilder时，enableArrow为true时也不显示箭头。|
 |onAppear|?()->Unit|否|None| **命名参数。** 菜单弹出时的事件回调。|
 |onDisappear|?()->Unit|否|None| **命名参数。** 菜单消失时的事件回调。|

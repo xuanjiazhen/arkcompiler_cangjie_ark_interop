@@ -45,7 +45,7 @@ public init(direction!: FlexDirection = FlexDirection.Row, wrap!: FlexWrap = Fle
 |justifyContent|[FlexAlign](cj-common-types.md#enum-flexalign)|否|FlexAlign.Start| **命名参数。** 所有子组件在Flex容器主轴上的对齐格式。|
 |alignItems|[ItemAlign](cj-common-types.md#enum-itemalign)|否|ItemAlign.Start| **命名参数。** 所有子组件在Flex容器交叉轴上的对齐格式。|
 |alignContent|[FlexAlign](cj-common-types.md#enum-flexalign)|否|FlexAlign.Start| **命名参数。** 交叉轴中有额外的空间时，多行内容的对齐方式。仅在wrap为Wrap或WrapReverse下生效。|
-|child|()->Unit|否|-| **命名参数。** 声明容器内的子组件。|
+|child|()->Unit|否|{=>}| **命名参数。** 声明容器内的子组件。|
 
 ## 通用属性/通用事件
 

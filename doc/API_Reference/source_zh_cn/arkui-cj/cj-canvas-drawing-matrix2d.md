@@ -18,6 +18,8 @@ public class Matrix2D {
 
 **功能：** 矩阵对象类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
 ### prop rotateX
@@ -119,7 +121,7 @@ public mut prop translateY: Float64
 ### init(LengthMetricsUnit)
 
 ```cangjie
-public init(unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
+public init(unit!: LengthMetricsUnit = LengthMetricsUnit.Default)
 ```
 
 **功能：** 创建Matrix2D类型的矩阵对象。
@@ -132,7 +134,7 @@ public init(unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|unit|[LengthMetricsUnit](./cj-common-types.md#enum-lengthmetricsunit)|否|LengthMetricsUnit.DEFAULT|**命名参数。** 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)。|
+|unit|[LengthMetricsUnit](./cj-common-types.md#enum-lengthmetricsunit)|否|LengthMetricsUnit.Default|**命名参数。** 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)。|
 
 ### func identity()
 

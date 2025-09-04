@@ -59,8 +59,8 @@ public func scale(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, cente
 |x|Float32|否|1.0|X轴缩放分量。|
 |y|Float32|否|1.0|Y轴缩放分量。|
 |z|Float32|否|1.0|Z轴缩放分量。|
-|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|50.percent|变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
-|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|50.percent|变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
+|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
+|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
 
 ## func translate(Length, Length, Length)
 
@@ -78,7 +78,7 @@ public func translate(x!: Length = 0.vp, y!: Length = 0.vp, z!: Length = 0.vp): 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|X轴平移距离。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|Y轴平移距离。|
-|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|Z轴平移距离。|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|X轴平移距离。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Y轴平移距离。|
+|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Z轴平移距离。|
 

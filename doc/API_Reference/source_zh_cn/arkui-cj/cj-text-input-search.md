@@ -109,7 +109,7 @@ public func placeholderFont(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|DEFAULT_SIZE.fp| **命名参数。** placeholder的文本尺寸。Length为Int64、Float64类型时，使用fp单位。支持设置百分比字符串。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.fp| **命名参数。** placeholder的文本尺寸。Length为Int64、Float64类型时，使用fp单位。支持设置百分比字符串。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.W400| **命名参数。** placeholder字体的目标粗细。|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal| **命名参数。** placeholder字体的目标样式。|
 |family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。** placeholder字体的样式族。|
@@ -154,7 +154,7 @@ public func textFont(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|DEFAULT_SIZE.fp| **命名参数。** 文本尺寸。Length为Int64、Float64类型时，使用fp单位。支持设置百分比字符串。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.fp| **命名参数。** 文本尺寸。Length为Int64、Float64类型时，使用fp单位。支持设置百分比字符串。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.W400| **命名参数。** 输入字体的目标粗细。|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal| **命名参数。** 输入字体的目标样式。|
 |family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。** 输入字体的样式族。|

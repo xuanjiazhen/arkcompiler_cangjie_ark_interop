@@ -103,10 +103,10 @@ public func viewPort(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点x坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点y坐标。|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口宽度。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口高度。|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点x坐标。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点y坐标。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口宽度。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口高度。|
 
 ## 基础类型定义
 
@@ -232,7 +232,7 @@ public func strokeDashArray(value: Array<Length>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|虚线模式的长度数组，每个元素表示线段或间隔长度，支持长度单位。|
+|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|虚线模式的长度数组，每个元素表示线段或间隔长度，支持长度单位。|
 
 #### func strokeDashOffset(Length)
 
@@ -250,7 +250,7 @@ public func strokeDashOffset(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|起始偏移量，支持长度单位。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|起始偏移量，支持长度单位。|
 
 #### func strokeLineCap(LineCapStyle)
 
@@ -358,7 +358,7 @@ public func strokeWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|描边宽度（如 vp/px 等）。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|描边宽度（如 vp/px 等）。|
 
 ## 示例代码
 

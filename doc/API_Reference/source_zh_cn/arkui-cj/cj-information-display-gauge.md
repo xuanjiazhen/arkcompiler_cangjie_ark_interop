@@ -235,7 +235,7 @@ public func strokeWidth(length: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|length|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值：4.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
+|length|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值：4.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
 
 ### func trackShadow(Float64, Float64, Float64)
 

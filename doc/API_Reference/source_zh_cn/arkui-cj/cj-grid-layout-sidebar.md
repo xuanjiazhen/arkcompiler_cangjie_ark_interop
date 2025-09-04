@@ -36,8 +36,8 @@ public init(sideBarType!: SideBarContainerType = SideBarContainerType.Embed, chi
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|sideBarType|[SideBarContainerType](./cj-grid-layout-sidebar.md#enum-sidebarcontainertype)|是|-|设置侧边栏的显示类型。<br/>初始值：SideBarContainerType.Embed。|
-|child|()->Unit|否||定义侧边栏和内容区。|
+|sideBarType|[SideBarContainerType](./cj-grid-layout-sidebar.md#enum-sidebarcontainertype)|否|SideBarContainerType.Embed|设置侧边栏的显示类型。<br/>初始值：SideBarContainerType.Embed。|
+|child|() -> Unit|{=>}|否||定义侧边栏和内容区。|
 
 ## 通用属性/通用事件
 

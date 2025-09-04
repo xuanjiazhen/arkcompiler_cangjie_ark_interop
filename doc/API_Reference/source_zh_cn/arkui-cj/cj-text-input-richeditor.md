@@ -514,6 +514,10 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
 
 **起始版本：** 21
 
+**父类型：**
+
+- RichEditorSpanResult
+
 #### var imageStyle
 
 ```cangjie
@@ -956,6 +960,10 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+**父类型：**
+
+- RichEditorSpanResult
 
 #### var offsetInSpan
 

@@ -284,7 +284,6 @@ public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
-|参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |x|Float64|是|-|指定矩形的左上角x坐标值。<br>默认单位：vp。|
 |y|Float64|是|-|指定矩形的左上角y坐标值。<br>默认单位：vp。|

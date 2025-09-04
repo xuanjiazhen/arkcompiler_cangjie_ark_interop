@@ -36,7 +36,7 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 ### init(ResourceStr, TextController, () -> Unit)
 
 ```cangjie
-public init(content: ResourceStr, controller!: TextController = TextController(), chid!: () -> Unit)
+public init(content: ResourceStr, controller!: TextController = TextController(), child!: () -> Unit)
 ```
 
 **功能：** 创建Text组件。
@@ -51,7 +51,7 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 |:---|:---|:---|:---|:---|
 |content|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。包含子组件Span且未设置属性字符串时不生效，显示Span内容，并且此时text组件的样式不生效。<br/>初始值：''。|
 |controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
-|chid|()->Unit|是|-|Text的子组件。|
+|child|()->Unit|是|-|Text的子组件。|
 
 ### init(TextController, () -> Unit)
 
@@ -125,7 +125,7 @@ public func baselineOffset(value: Length): This
 
 ```cangjie
 public func decoration(decorationType!: TextDecorationType, color!: ResourceColor,
-    decorationStyle!: TextDecorationStyle = TextDecorationStyle.SOLID): This
+    decorationStyle!: TextDecorationStyle = TextDecorationStyle.Solid): This
 ```
 
 **功能：** 设置文本装饰线样式及其颜色。
@@ -140,7 +140,7 @@ public func decoration(decorationType!: TextDecorationType, color!: ResourceColo
 |:---|:---|:---|:---|:---|
 |decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
 |color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|**命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
-|decorationStyle|[TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle)|否|TextDecorationStyle.SOLID|**命名参数。** 文本装饰线样式。|
+|decorationStyle|[TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle)|否|TextDecorationStyle.Solid|**命名参数。** 文本装饰线样式。|
 
 ### func fontColor(ResourceColor)
 
