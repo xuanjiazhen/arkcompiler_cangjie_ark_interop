@@ -6,7 +6,7 @@ Image为图片组件，常用于在应用中显示图片。支持png、jpg、jpe
 >
 > - 使用快捷组合键对Image组件复制时，Image组件必须处于[获焦状态](./cj-universal-attribute-focus.md#func-focusontouchbool)。Image组件默认不获焦，需将[focusable](cj-apis-window.md#var-focusable)属性设置为true，即可使用TAB键将焦点切换到组件上，再将[focusOnTouch](./cj-universal-attribute-focus.md#func-focusontouchbool)  属性设置为true，即可实现点击获焦。
 > - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](../apis/ImageKit/cj-apis-image.md#svg标签说明)。
-> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
+> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit)事件触发的，当可见阈值raitos大于0时，表明Image处于可见状态。
 
 ## 导入模块
 
@@ -128,7 +128,7 @@ public func autoResize(value: Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|autoResize|Bool|是|-|图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br/>初始值：false。|
+|value|Bool|是|-|图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br/>初始值：false。|
 
 ### func fillColor(ResourceColor)
 
@@ -191,7 +191,7 @@ public func interpolation(value: ImageInterpolation): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|interpolation|[ImageInterpolation](#enum-imageinterpolation)|是|-|图片的插值效果。<br/>初始值：ImageInterpolation.Low。|
+|value|[ImageInterpolation](#enum-imageinterpolation)|是|-|图片的插值效果。<br/>初始值：ImageInterpolation.Low。|
 
 ### func matchTextDirection(Bool)
 
@@ -357,7 +357,7 @@ public func onError(callback: ImageErrorCallback): This
 ### func onFinish(() -> Unit)
 
 ```cangjie
-public func onFinish(value: () -> Unit): This
+public func onFinish(event: () -> Unit): This
 ```
 
 **功能：** 当加载的源文件为带动效的svg图片时，当svg动效播放完成时会触发该事件，如果动效为无限循环动效，则不会触发这个事件。
@@ -370,7 +370,7 @@ public func onFinish(value: () -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|()->Unit|是|-|回调函数，svg动效播放完成时触发。|
+|event|()->Unit|是|-|回调函数，svg动效播放完成时触发。|
 
 ## 基础类型定义
 
@@ -404,7 +404,7 @@ public init(value: Array<Float32>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|array|Array\<Float32>|是|-|4x5的滤镜矩阵。|
+|value|Array\<Float32>|是|-|4x5的滤镜矩阵。|
 
 ### class ImageLoadResult
 

@@ -30,7 +30,7 @@ public init(value: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|ResourceStr|是|-|文本内容。|
+|value|ResourceStr|是|-|文本内容。|
 
 ## 通用属性/通用事件
 

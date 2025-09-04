@@ -79,7 +79,7 @@ public func divider(value: Option<ListDividerOptions>): This
 
 | 参数名   | 类型                                                                                                               | 必填  | 默认值 | 说明     |
 |:----- |:---------------------------------------------------------------------------------------------------------------- |:--- |:--- |:------ |
-| value | [ListDividerOptions](#class-listdivideroptions) | 是   | -   | 分割线样式。 |
+| value |Option<ListDividerOptions> | 是   | -   | 分割线样式。 |
 
 ## 基础类型定义
 

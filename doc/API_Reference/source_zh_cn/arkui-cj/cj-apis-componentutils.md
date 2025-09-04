@@ -184,7 +184,7 @@ public init(size: Size, localOffset: Offset, windowOffset: Offset, screenOffset:
 |translate|[TranslateResult](#class-translateresult)|是|-|组件平移信息。|
 |scale|[ScaleResult](#class-scaleresult)|是|-|组件缩放信息。|
 |rotate|[RotateResult](#class-rotateresult)|是|-|组件旋转信息。|
-|transform|Array\<Float32>|是|-|仿射矩阵信息，根据入参创建的四阶矩阵对象。|
+|transform|VArray<Float32, $16>|是|-|仿射矩阵信息，根据入参创建的四阶矩阵对象。|
 
 ## class ComponentUtils
 

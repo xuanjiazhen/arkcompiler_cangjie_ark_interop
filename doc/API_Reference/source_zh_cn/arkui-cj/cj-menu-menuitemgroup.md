@@ -30,8 +30,8 @@ public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit =
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|header|ResourceStr|是|-|**命名参数。** 设置对应group的标题显示信息。|
-|footer|ResourceStr|是|-|**命名参数。** 设置对应group的尾部显示信息。|
+|header|ResourceStr|False|""|**命名参数。** 设置对应group的标题显示信息。|
+|footer|ResourceStr|False|""|**命名参数。** 设置对应group的尾部显示信息。|
 |child|()->Unit|否|{ => }|**命名参数。** 声明容器内的子组件。|
 
 ### init(CustomBuilder, CustomBuilder, () -> Unit)

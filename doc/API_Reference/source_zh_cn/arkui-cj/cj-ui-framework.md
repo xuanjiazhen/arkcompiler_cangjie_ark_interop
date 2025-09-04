@@ -239,6 +239,10 @@ public class CJPageEntry {}
 
 **功能：** 用于提供被Native调用的全局函数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ### static func getInstance()
 
 ```cangjie
@@ -252,6 +256,10 @@ public static func getInstance(): CJPageEntry
 |类型|说明|
 |:----|:----|
 |[CJPageEntry](#class-cjpageentry)|对应的CJPageEntry对象。|
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 
 ### func registerHybridPage(String, CustomView)
 
@@ -268,6 +276,10 @@ public func registerHybridPage(name: String, cjPage: CustomView): Unit
 |name|String|是|-|注册名称。|
 |cjPage|[CustomView](#class-customview)|是|-|回调函数。|
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ### func removeHybridPage(String)
 
 ```cangjie
@@ -281,6 +293,10 @@ public func removeHybridPage(name: String): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |name|String|是|-|混合页面名称|
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 
 ## class ContainerBase
 
@@ -325,6 +341,11 @@ public abstract class CustomView <: RemoteView & Observer {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+**父类型：**
+
+- RemoteView
+- Observer
 
 ### var isReusable
 
@@ -925,6 +946,10 @@ public class ForEach <: UINodeBase {
 
 **起始版本：** 21
 
+**父类型：**
+
+- UINodeBase
+
 ### init(() -> Unit)
 
 ```cangjie
@@ -970,7 +995,7 @@ keyGeneratorFunc!: KeyGenFuncType<T> = {
 |parentView|[CustomView](#class-customview)|是|-|父组件。|
 |dataSource|[CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|是|-|数据源。|
 |itemGeneratorFunc|ItemGenFuncType\<T>|是|-|**命名参数。** 组件生成函数。|
-|keyGeneratorFunc|KeyGenFuncType\<T>|否|{ realData: T, idx: Int64 => match(realData) {<br/>case realDataStr: ToString => realDataStr.toString()<br/>case _ => idx.toString()<br/>} }|**命名参数。** 键值生成函数。|
+|keyGeneratorFunc|KeyGenFuncType\<T>|否|{ realData: T, idx: Int64 =>}|**命名参数。** 键值生成函数。|
 
 ### static func create()
 
@@ -1028,6 +1053,10 @@ public open class HybridComponentBase <: SharedObject {}
 
 **功能：** 混合组件基础类，供混合框架使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 **父类型：**
 
 - [SharedObject](../arkinterop/cj-apis-ark_interop.md#class-sharedobject)
@@ -1062,6 +1091,10 @@ public class If <: UINodeBase {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+**父类型：**
+
+- UINodeBase
 
 ### init(() -> Unit)
 
@@ -2859,6 +2892,7 @@ public open class ViewBase <: InteractableView & UINodeBase {}
 **父类型：**
 
 - [InteractableView](#class-interactableview)
+- UINodeBase
 
 ### func initial()
 

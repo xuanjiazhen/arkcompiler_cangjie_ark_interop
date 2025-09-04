@@ -469,7 +469,7 @@ public operator func [](index: Int64, value!: T): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|index|Int64|是|-|要设置的索引值。
+|index|Int64|是|-|要设置的索引值。|
 |value|T|是|-| **命名参数。** 要设置的 T 类型的值。|
 
 ### 示例代码
@@ -540,6 +540,10 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+**父类型：**
+
+- [ObservedPropertyAbstract](./cj-ui-framework.md#class-observedpropertyabstract)
 
 ### init(String, T)
 

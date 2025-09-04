@@ -473,7 +473,7 @@ public func clip(fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.nonzero|指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。<br>初始值：nonzero。|
+|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.NonZero|指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。<br>初始值：nonzero。|
 
 ### func clip(Path2D, CanvasFillRule)
 
@@ -887,7 +887,7 @@ public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.NonZer
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |path|[Path2D](./cj-canvas-drawing-path2d.md#class-path2d)|是|-| Path2D剪切路径。|
-|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.nonzero| **命名参数。**  指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。|
+|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.NonZero| **命名参数。**  指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。|
 
 ### func fillRect(Float64, Float64, Float64, Float64)
 
@@ -983,7 +983,7 @@ public func fillText(text: String, x: Float64, y: Float64, maxWidth!: Option<Flo
 |text|String|是|-|需要绘制的文本内容。|
 |x|Float64|是|-|需要绘制的文本的左下角x坐标。<br>默认单位：vp。|
 |y|Float64|是|-|需要绘制的文本的左下角y坐标。<br>默认单位：vp。|
-|maxWidth|Float64|否|Option.None|指定文本允许的最大宽度。<br>默认单位：vp。<br>初始值：不限制宽度。|
+|maxWidth|Option<Float64>|否|Option.None|指定文本允许的最大宽度。<br>默认单位：vp。<br>初始值：不限制宽度。|
 
 ### func font(FontStyle, FontWeight, Length, String)
 
@@ -1400,7 +1400,7 @@ public func setPixelMap(pixelMap: Option<PixelMap>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|包含像素值的PixelMap对象。<br>初始值：None。|
+|pixelMap|Option<PixelMap>|是|-|包含像素值的PixelMap对象。<br>初始值：None。|
 
 ### func setTransform(Float64, Float64, Float64, Float64, Float64, Float64)
 
@@ -1448,7 +1448,7 @@ public func setTransform(matrix: Option<Matrix2D>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|matrix|[Matrix2D](./cj-canvas-drawing-matrix2d.md#class-matrix2d)|是|-|变换矩阵。|
+|matrix|Option<Matrix2D>|是|-|变换矩阵。|
 
 ### func stroke()
 
@@ -1592,7 +1592,7 @@ public func toDataURL(imageType!: ImageType = ImageType.Png, quality!: Float64 =
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|imageType|[ImageType](./cj-common-types.md#enum-imagetype)|否|ImageType.png|**命名参数。** 用于指定图像格式。|
+|imageType|[ImageType](./cj-common-types.md#enum-imagetype)|否|ImageType.Png|**命名参数。** 用于指定图像格式。|
 |quality|Float64|否|0.92|**命名参数。** 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量。如果超出取值范围，将会使用默认值0.92。|
 
 **返回值：**

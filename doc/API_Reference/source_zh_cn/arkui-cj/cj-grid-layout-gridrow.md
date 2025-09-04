@@ -243,7 +243,7 @@ public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|否|[320.vp, 600.vp, 840.vp]| **命名参数。** 断点位置的单调递增数组设置
+|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|否|[320.vp, 600.vp, 840.vp]| **命名参数。** 断点位置的单调递增数组设置|
 |reference|[BreakpointsReference](#enum-breakpointsreference)|否|BreakpointsReference.WindowSize| **命名参数。** 断点切换参照物。|
 
 ### class GridRowSizeOption

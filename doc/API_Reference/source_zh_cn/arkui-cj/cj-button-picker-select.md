@@ -81,7 +81,7 @@ public func font(
 |:---|:---|:---|:---|:---|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 用于指定字体样式。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Medium|**命名参数。** 用于指定字体的粗细。|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 指定字号和行高，不支持百分比设置。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 指定字号和行高，不支持百分比设置。|
 |family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"sans-serif"|**命名参数。** 指定字体系列。|
 
 ### func fontColor(ResourceColor)
@@ -198,7 +198,7 @@ public func optionFont(
 |:---|:---|:---|:---|:---|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 用于指定字体样式。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Medium|**命名参数。** 用于指定字体的粗细。|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 指定字号和行高，不支持百分比设置。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 指定字号和行高，不支持百分比设置。|
 |family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"sans-serif"|**命名参数。** 指定字体系列。|
 
 ### func optionFontColor(ResourceColor)
@@ -239,7 +239,7 @@ public func optionHeight(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单显示的最大高度。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单显示的最大高度。|
 
 ### func optionWidth(OptionWidthMode)
 
@@ -277,7 +277,7 @@ public func optionWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的宽度。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的宽度。|
 
 ### func selected(Int32)
 
@@ -338,7 +338,7 @@ public func selectedOptionFont(
 |:---|:---|:---|:---|:---|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 用于指定字体样式。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Medium|**命名参数。** 用于指定字体的粗细。|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 文本尺寸。不支持百分比设置。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 文本尺寸。不支持百分比设置。|
 |family|String|否|"sans-serif"|**命名参数。** 指定字体列表。|
 
 ### func selectedOptionFontColor(ResourceColor)
@@ -375,7 +375,7 @@ public func space(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的文本与箭头之间的间距。<br>初始值：8|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的文本与箭头之间的间距。<br>初始值：8|
 
 ### func value(ResourceStr)
 

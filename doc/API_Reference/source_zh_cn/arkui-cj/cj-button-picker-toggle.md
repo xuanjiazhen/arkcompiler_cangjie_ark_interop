@@ -30,7 +30,7 @@ public init(toggleType: ToggleType, isOn!: Bool = false)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|toggleType|[ToggleType](#enum-toggletype)|是|ToggleType.Switch|开关类型。|
+|toggleType|[ToggleType](#enum-toggletype)|是|-|开关类型。|
 |isOn|Bool|否|false|**命名参数。** 开关是否打开。true：打开，false：关闭。|
 
 ### init(ToggleType, Bool, () -> Unit)
@@ -49,8 +49,8 @@ public init(toggleType: ToggleType, isOn: Bool, subcomponent: () -> Unit)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|toggleType|[ToggleType](#enum-toggletype)|是|ToggleType.Switch|开关类型。|
-|isOn|Bool|是|false|开关是否打开。true：打开，false：关闭。|
+|toggleType|[ToggleType](#enum-toggletype)|是|-|开关类型。|
+|isOn|Bool|是|-|开关是否打开。true：打开，false：关闭。|
 |subcomponent|()->Unit|是|-|声明子组件。|
 
 ## 通用属性/通用事件

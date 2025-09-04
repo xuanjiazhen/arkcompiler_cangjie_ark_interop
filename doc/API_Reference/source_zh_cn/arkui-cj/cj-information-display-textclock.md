@@ -2,7 +2,7 @@
 
 TextClock 组件通过文本将当前系统时间显示在设备上。支持不同时区的时间显示，最高精度到秒级。
 
-在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange]处理，可见阈值ratios大于0即视为可见状态。
+在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange]处理，可见阈值raitos大于0即视为可见状态。
 
 ## 导入模块
 
@@ -99,7 +99,7 @@ public func fontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|字体大小。fontSize为Int64、Float64类型时，使用fp单位。初始值：16.fp，不支持设置百分比。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。fontSize为Int64、Float64类型时，使用fp单位。初始值：16.fp，不支持设置百分比。|
 
 ### func fontStyle(FontStyle)
 

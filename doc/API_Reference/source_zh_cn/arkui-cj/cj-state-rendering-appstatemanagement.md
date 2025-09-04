@@ -52,7 +52,7 @@ public static func `prop`<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|返回单向绑定的数据，如果AppStorage中不存在对应的属性值，则返回None。|
+|?ObservedProperty<T>|返回单向绑定的数据，如果AppStorage中不存在对应的属性值，则返回None。|
 
 ### static func clear()
 
@@ -165,7 +165,7 @@ public static func keys(): EquatableCollection<String>
 
 |类型|说明|
 |:----|:----|
-|[EquatableCollection](./cj-common-types.md#interface-equatablecollection)|AppStorage中所有的属性名。|
+|EquatableCollection<String>|AppStorage中所有的属性名。|
 
 ### static func link\<T>(String)
 
@@ -194,7 +194,7 @@ public static func link<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|Option\<ObservedProperty\<T>>的实例，与AppStorage中propName对应属性的双向绑定的数据，如果AppStorage中不存在对应的propName，则返回None。|
+|?ObservedProperty<T>|Option\<ObservedProperty\<T>>的实例，与AppStorage中propName对应属性的双向绑定的数据，如果AppStorage中不存在对应的propName，则返回None。|
 
 ### static func set\<T>(String, T)
 
@@ -246,7 +246,7 @@ public static func setAndLink<T>(propName: String, defaultValue: T): ObservedPro
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例，与AppStorage中propName对应属性的双向绑定的数据。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例，与AppStorage中propName对应属性的双向绑定的数据。|
 
 ### static func setAndProp\<T>(String, T)
 
@@ -272,7 +272,7 @@ public static func setAndProp<T>(propName: String, defaultValue: T): ObservedPro
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例。|
 
 ### static func setOrCreate\<T>(String, T)
 
@@ -437,7 +437,7 @@ public func `prop`<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。如果LocalStorage中不存在对应的propName，则返回None。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。如果LocalStorage中不存在对应的propName，则返回None。|
 
 ### func aboutToBeDeleted()
 
@@ -571,7 +571,7 @@ public func keys(): EquatableCollection<String>
 
 |类型|说明|
 |:----|:----|
-|[EquatableCollection](./cj-common-types.md#interface-equatablecollection)|LocalStorage中所有的属性名。|
+|EquatableCollection<String>|LocalStorage中所有的属性名。|
 
 ### func link\<T>(String)
 
@@ -600,7 +600,7 @@ public func link<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)| Option\<ObservedProperty\<T>>的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回None。|
+|ObservedProperty<T>| Option\<ObservedProperty\<T>>的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回None。|
 
 ### func set\<T>(String, T)
 
@@ -652,7 +652,7 @@ public func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例，与LocalStorage中propName对应属性的双向绑定的数据。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例，与LocalStorage中propName对应属性的双向绑定的数据。|
 
 ### func setAndProp\<T>(String, T)
 
@@ -678,7 +678,7 @@ public func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。|
 
 ### func setOrCreate\<T>(String, T)
 
