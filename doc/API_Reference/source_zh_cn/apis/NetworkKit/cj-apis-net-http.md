@@ -1931,7 +1931,7 @@ Http3
 ## enum HttpRequestEvent
 
 ```cangjie
-public enum HttpRequestEvent {
+public enum HttpRequestEvent <: Equatable<HttpRequestEvent> & Hashable & ToString {
     | HeadersReceive
     | DataReceive
     | DataEnd
@@ -2160,6 +2160,139 @@ Trace
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
+
+## enum RequestMethod
+
+```cangjie
+public enum RequestMethod {
+    | OPTIONS
+    | GET
+    | HEAD
+    | POST
+    | PUT
+    | DELETE
+    | TRACE
+    | CONNECT
+    | ...
+}
+```
+
+**功能：** HTTP请求方法。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 12
+
+### CONNECT
+
+```cangjie
+CONNECT
+```
+
+**功能：** HTTP请求CONNECT。
+
+**起始版本：** 12
+
+### DELETE
+
+```cangjie
+DELETE
+```
+
+**功能：** HTTP请求DELETE。
+
+**起始版本：** 12
+
+### GET
+
+```cangjie
+GET
+```
+
+**功能：** HTTP请求GET。
+
+**起始版本：** 12
+
+### HEAD
+
+```cangjie
+HEAD
+```
+
+**功能：** HTTP请求HEAD。
+
+**起始版本：** 12
+
+### OPTIONS
+
+```cangjie
+OPTIONS
+```
+
+**功能：** HTTP请求OPTIONS。
+
+**起始版本：** 12
+
+### POST
+
+```cangjie
+POST
+```
+
+**功能：** HTTP请求POST。
+
+**起始版本：** 12
+
+### PUT
+
+```cangjie
+PUT
+```
+
+**功能：** HTTP请求PUT。
+
+**起始版本：** 12
+
+### TRACE
+
+```cangjie
+TRACE
+```
+
+**功能：** HTTP请求TRACE。
+
+**起始版本：** 12
+
+### func getValue()
+
+```cangjie
+public func getValue(): String
+```
+
+**功能：** 获取RequestMethod枚举对应的字符串。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 12
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|返回RequestMethod枚举对应的字符串。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.NetworkKit.*
+
+let getMethod = RequestMethod.GET.getValue()
+```
 
 ## enum UsingProxy
 

@@ -1737,7 +1737,7 @@ public var value: Array<Byte>
 ## class GattClientDevice
 
 ```cangjie
-public class GattClientDevice <: RemoteDataLite {}
+public class GattClientDevice {}
 ```
 
 **功能：** client端类。使用client端方法之前需要创建该类的实例进行操作，通过[createGattClientDevice(String)](#func-creategattclientdevicestring)方法构造此实例。
@@ -2562,7 +2562,7 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |characteristic|[BLECharacteristic](#class-blecharacteristic)|是|-|蓝牙设备特征对应的二进制值及其它参数。|
-|writeType|[GattWriteType](#enum-gattwritetype)|是|-|蓝牙设备特征的写入类型。|
+|enable|Bool|是|-|蓝牙设备特征的写入类型。|
 |callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<Unit>|是|-|回调函数。|
 
 **异常：**
@@ -2866,7 +2866,7 @@ try {
 ## class GattPermissions
 
 ```cangjie
-public class GattPermissions {
+public class GattPermissions <: Equatable<GattPermissions> {
     public var read: Bool
     public var readEncrypted: Bool
     public var readEncryptedMitm: Bool
@@ -3240,7 +3240,7 @@ public init(
 ## class GattServer
 
 ```cangjie
-public class GattServer <: RemoteDataLite {}
+public class GattServer {}
 ```
 
 **功能：** server端类。使用server端方法之前需要创建该类的实例进行操作，通过[createGattServer()](#func-creategattserver)方法构造此实例。
@@ -3465,7 +3465,7 @@ public func off(eventType: BluetoothBleGattServerCallbackType, callback!: ?Callb
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|-|回调事件。|
+|eventType|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|回调事件。|
 |callback|?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|否|None|**命名参数。**  表示取消订阅BLE事件。不填该参数则取消订阅该type对应的所有回调。|
 
 **异常：**
@@ -4020,7 +4020,7 @@ public func sendResponse(serverResponse: ServerResponse): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<Array\<[GattService](#class-gattservice)>>|是|-|client进行服务发现。|
+|serverResponse|ServerResponse|是|-|client进行服务发现。|
 
 **异常：**
 
@@ -4168,7 +4168,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|serviceUuid|String|是|-|<font color="red" face="bold">特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
+|serviceUuid|String|是|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
 |isPrimary|Bool|是|-|如果是主服务设置为true，否则设置为false。|
 |characteristics|Array\<[BLECharacteristic](#class-blecharacteristic)>|是|-|当前服务包含的特征列表。|
 |includeServices|Array\<[GattService](#class-gattservice)>|否|[]|当前服务依赖的其它服务。|
@@ -5035,7 +5035,7 @@ public init(
 ## enum AdvertisingState
 
 ```cangjie
-public enum AdvertisingState {
+public enum AdvertisingState <: Equatable<AdvertisingState> & ToString {
     | Started
     | Enabled
     | Disabled
@@ -5155,7 +5155,7 @@ public func toString(): String
 ## enum BluetoothBleCallbackType
 
 ```cangjie
-public enum BluetoothBleCallbackType {
+public enum BluetoothBleCallbackType <: Equatable<BluetoothBleCallbackType> & Hashable & ToString {
     | AdvertisingStateChange
     | BleDeviceFind
     | ...
@@ -5269,7 +5269,7 @@ public func toString(): String
 ## enum BluetoothBleGattClientDeviceCallbackType
 
 ```cangjie
-public enum BluetoothBleGattClientDeviceCallbackType {
+public enum BluetoothBleGattClientDeviceCallbackType <: Equatable<BluetoothBleGattClientDeviceCallbackType> & Hashable & ToString {
     | BleCharacteristicChange
     | BleConnectionStateChange
     | ClientBleMtuChange
@@ -5398,7 +5398,7 @@ public func toString(): String
 ## enum BluetoothBleGattServerCallbackType
 
 ```cangjie
-public enum BluetoothBleGattServerCallbackType {
+public enum BluetoothBleGattServerCallbackType <: Equatable<BluetoothBleGattServerCallbackType> & Hashable & ToString {
     | CharacteristicRead
     | CharacteristicWrite
     | DescriptorRead
@@ -5572,7 +5572,7 @@ public func toString(): String
 ## enum GattWriteType
 
 ```cangjie
-public enum GattWriteType {
+public enum GattWriteType <: Equatable<GattWriteType> & ToString {
     | Write
     | WriteNoResponse
     | ...
@@ -5666,7 +5666,7 @@ public func toString(): String
 ## enum MatchMode
 
 ```cangjie
-public enum MatchMode {
+public enum MatchMode <: Equatable<MatchMode> & ToString {
     | MatchModeAggressive
     | MatchModeSticky
     | ...
@@ -5760,7 +5760,7 @@ public func toString(): String
 ## enum PhyType
 
 ```cangjie
-public enum PhyType {
+public enum PhyType <: Equatable<PhyType> & ToString {
     | PhyLe1M
     | PhyLeAllSupported
     | ...
@@ -5854,7 +5854,7 @@ public func toString(): String
 ## enum ScanDuty
 
 ```cangjie
-public enum ScanDuty {
+public enum ScanDuty <: Equatable<ScanDuty> & ToString {
     | ScanModeLowPower
     | ScanModeBalanced
     | ScanModeLowLatency
@@ -5961,7 +5961,7 @@ public func toString(): String
 ## enum ScanReportMode
 
 ```cangjie
-public enum ScanReportMode {
+public enum ScanReportMode <: Equatable<ScanReportMode> & ToString {
     | Normal
     | Batch
     | FenceSensitivityLow

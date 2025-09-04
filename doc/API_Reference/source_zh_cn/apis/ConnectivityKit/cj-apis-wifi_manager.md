@@ -719,7 +719,7 @@ public let timestamp: Int64
 ## enum DeviceAddressType
 
 ```cangjie
-public enum DeviceAddressType {
+public enum DeviceAddressType <: Equatable<DeviceAddressType> & ToString {
     | RandomDeviceAddress
     | RealDeviceAddress
     | ...
@@ -817,7 +817,7 @@ public func toString(): String
 ## enum GroupOwnerBand
 
 ```cangjie
-public enum GroupOwnerBand {
+public enum GroupOwnerBand <: Equatable<GroupOwnerBand> & ToString {
     | GoBandAuto
     | GoBand2GHz
     | GoBand5GHz
@@ -928,7 +928,7 @@ public func toString(): String
 ## enum WifiCallbackType
 
 ```cangjie
-public enum WifiCallbackType {
+public enum WifiCallbackType <: Equatable<WifiCallbackType> & Hashable & ToString {
     | WifiScanStateChange
     | ...
 }
@@ -1019,7 +1019,7 @@ public func toString(): String
 ## enum WifiCategory
 
 ```cangjie
-public enum WifiCategory {
+public enum WifiCategory <: Equatable<WifiCategory> & ToString {
     | Default
     | Wifi6
     | Wifi6Plus
@@ -1130,7 +1130,7 @@ public func toString(): String
 ## enum WifiSecurityType
 
 ```cangjie
-public enum WifiSecurityType {
+public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
     | WifiSecTypeInvalid
     | WifiSecTypeOpen
     | WifiSecTypeWep

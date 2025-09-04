@@ -389,7 +389,7 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|传入[CONNECTION_STATE_CHANGE](./cj-apis-bluetooth-base_profile.md#connectionstatechange)，表示连接状态变化事件类型。|
-|callback|[Callback1Argument][StateChangeParam](cj-apis-bluetooth-base_profile.md#class-statechangeparam)|是|-|表示回调函数的入参。|
+|callback|Callback1Argument\<[StateChangeParam](cj-apis-bluetooth-base_profile.md#class-statechangeparam)>|是|-|表示回调函数的入参。|
 
 **异常：**
 
@@ -516,7 +516,7 @@ public var codecType: CodecType
 ## enum CodecBitsPerSample
 
 ```cangjie
-public enum CodecBitsPerSample {
+public enum CodecBitsPerSample <: Equatable<CodecBitsPerSample> & ToString {
     | CodecBitsPerSampleNone
     | CodecBitsPerSample16
     | CodecBitsPerSample24
@@ -636,7 +636,7 @@ public func toString(): String
 ## enum CodecChannelMode
 
 ```cangjie
-public enum CodecChannelMode {
+public enum CodecChannelMode <: Equatable<CodecChannelMode> & ToString {
     | CodecChannelModeNone
     | CodecChannelModeMono
     | CodecChannelModeStereo
@@ -743,7 +743,7 @@ public func toString(): String
 ## enum CodecSampleRate
 
 ```cangjie
-public enum CodecSampleRate {
+public enum CodecSampleRate <: Equatable<CodecSampleRate> & ToString {
     | CodecSampleRateNone
     | CodecSampleRate44100
     | CodecSampleRate48000
@@ -902,7 +902,7 @@ public func toString(): String
 ## enum CodecType
 
 ```cangjie
-public enum CodecType {
+public enum CodecType <: Equatable<CodecType> & ToString {
     | CodecTypeInvalid
     | CodecTypeSbc
     | CodecTypeAac
@@ -1022,7 +1022,7 @@ public func toString(): String
 ## enum PlayingState
 
 ```cangjie
-public enum PlayingState {
+public enum PlayingState <: Equatable<PlayingState> & ToString {
     | StateNotPlaying
     | StatePlaying
     | ...

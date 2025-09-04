@@ -318,7 +318,7 @@ public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: L
 ## class TransitionEffect
 
 ```cangjie
-public class TransitionEffect <: RemoteDataLite {
+public class TransitionEffect {
     public static let IDENTITY: TransitionEffect = unsafe {    TransitionEffect(FfiOHOSAceFrameworkTransitionEffectIdentity())}
     public static let OPACITY: TransitionEffect = TransitionEffect.opacity(0.0)
     public static let SLIDE: TransitionEffect = TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.Start), TransitionEffect.move(TransitionEdge.End))

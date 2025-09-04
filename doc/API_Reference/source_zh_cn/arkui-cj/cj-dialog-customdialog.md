@@ -11,7 +11,7 @@ import kit.ArkUI.*
 ## class CustomDialogController
 
 ```cangjie
-public class CustomDialogController <: RemoteDataLite {
+public class CustomDialogController {
     public init(value: CustomDialogControllerOptions)
 }
 ```

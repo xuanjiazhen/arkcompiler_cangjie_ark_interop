@@ -209,7 +209,7 @@ public func onPatternComplete(callback: (Array<Int32>) -> Unit): This
 ### class PatternLockController
 
 ```cangjie
-public class PatternLockController <: RemoteDataLite {
+public class PatternLockController {
     public init()
 }
 ```

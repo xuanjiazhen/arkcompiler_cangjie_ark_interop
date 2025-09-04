@@ -948,23 +948,190 @@ public let uid: Int32
 
 ```cangjie
 public class BundleFlag {
-    | GetBundleInfoDefault
-    | GetBundleInfoWithApplication
-    | GetBundleInfoWithHapModule
-    | GetBundleInfoWithAbility
-    | GetBundleInfoWithExtensionAbility
-    | GetBundleInfoWithRequestedPermission
-    | GetBundleInfoWithMetadata
-    | GetBundleInfoWithDisable
-    | GetBundleInfoWithSignatureInfo
-    | GetBundleInfoWithMenu
-    | GetBundleInfoWithRouterMap
-    | GetBundleInfoWithSkill
-    | ...
+    public static const GET_BUNDLE_INFO_DEFAULT: Int32 = 0x00000000
+    public static const GET_BUNDLE_INFO_WITH_APPLICATION: Int32 = 0x00000001
+    public static const GET_BUNDLE_INFO_WITH_HAP_MODULE: Int32 = 0x00000002
+    public static const GET_BUNDLE_INFO_WITH_ABILITY: Int32 = 0x00000004
+    public static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY: Int32 = 0x00000008
+    public static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION: Int32 = 0x00000010
+    public static const GET_BUNDLE_INFO_WITH_METADATA: Int32 = 0x00000020
+    public static const GET_BUNDLE_INFO_WITH_DISABLE: Int32 = 0x00000040
+    public static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO: Int32 = 0x00000080
+    public static const GET_BUNDLE_INFO_WITH_MENU: Int32 = 0x00000100
+    public static const GET_BUNDLE_INFO_WITH_ROUTER_MAP: Int32 = 0x00000200
+    public static const GET_BUNDLE_INFO_WITH_SKILL: Int32 = 0x00000800
 }
 ```
 
 **功能：** 包信息标志，指示需要获取的包信息的内容。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_DEFAULT
+
+```cangjie
+public static const GET_BUNDLE_INFO_DEFAULT: Int32 = 0x00000000
+```
+
+**功能：** 只获取最基础的应用包信息。获取到的应用包信息中不包含HAP模块信息、应用信息、签名信息和权限申请信息。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_ABILITY
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_ABILITY: Int32 = 0x00000004
+```
+
+**功能：** 必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`同时指定，使得获取到的HAP模块信息中包含能力信息，但不包含能力信息中的元数据。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_APPLICATION
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_APPLICATION: Int32 = 0x00000001
+```
+
+**功能：** 在最基础的应用包信息的基础上，附带上应用信息，但不包含应用信息中的元数据。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_DISABLE
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_DISABLE: Int32 = 0x00000040
+```
+
+**功能：** 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY: Int32 = 0x00000008
+```
+
+**功能：** 必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`同时指定，使得获取到的HAP模块信息中包含拓展能力信息，但不包含拓展能力信息中的元数据。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_HAP_MODULE
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_HAP_MODULE: Int32 = 0x00000002
+```
+
+**功能：** 在最基础的应用包信息的基础上，附带上HAP模块信息，但不包含HAP模块信息中的能力信息、拓展能力信息和元数据。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_MENU
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_MENU: Int32 = 0x00000100
+```
+
+**功能：** 用于获取包含fileContextMenuConfig的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_METADATA
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_METADATA: Int32 = 0x00000020
+```
+
+**功能：** 获取所有的元数据，包括HAP模块信息、能力信息、拓展能力信息和应用信息中的元数据，因此必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`、`GET_BUNDLE_INFO_WITH_ABILITY`、`GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY`和`GET_BUNDLE_INFO_WITH_APPLICATION`同时指定。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION: Int32 = 0x00000010
+```
+
+**功能：** 在最基础的应用包信息的基础上，附带上权限申请信息。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_ROUTER_MAP
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_ROUTER_MAP: Int32 = 0x00000200
+```
+
+**功能：** 用于获取包含routerMap的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO: Int32 = 0x00000080
+```
+
+**功能：** 用于获取包含signatureInfo的bundleInfo。获取的bundleInfo不包含applicationInfo、hapModuleInfo、extensionAbility、ability和permission的信息。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_SKILL
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_SKILL: Int32 = 0x00000800
+```
+
+**功能：** 用于获取包含skills的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。
+
+**类型：** Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

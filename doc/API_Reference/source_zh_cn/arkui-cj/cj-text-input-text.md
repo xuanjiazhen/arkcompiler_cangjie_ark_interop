@@ -564,7 +564,7 @@ public init(
 ### class TextController
 
 ```cangjie
-public class TextController <: RemoteDataLite {
+public class TextController {
     public init()
 }
 ```

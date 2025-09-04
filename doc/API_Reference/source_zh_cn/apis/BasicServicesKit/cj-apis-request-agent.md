@@ -80,7 +80,7 @@ public func create(context: UIAbilityContext, config: Config): Task
 
 ```cangjie
 
-public func getTask(context: UIAbilityContext, id: String, token!: String = "null"): Task
+public func getTask(context: UIAbilityContext, id: String, token!: ?String): Task
 ```
 
 **功能：** 根据任务id查询任务。
@@ -95,7 +95,7 @@ public func getTask(context: UIAbilityContext, id: String, token!: String = "nul
 |:---|:---|:---|:---|:---|
 |context|[UIAbilityContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|基于应用程序的上下文。|
 |id|String|是|-|任务id。|
-|token|String|否|"null"| **命名参数。** 任务查询token。|
+|token|?String|否|-| **命名参数。** 任务查询token。|
 
 **返回值：**
 
@@ -1334,7 +1334,7 @@ public func on(event: EventCallbackType, callback: Callback1Argument<HttpRespons
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[EventCallbackType](#enum-eventcallbacktype)|是|-|订阅的事件类型。<br>- 取值为'response'，表示任务响应。 |
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)>|是|-|发生相关的事件时触发该回调方法，返回任务响应头的数据结构。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<HttpResponse>|是|-|发生相关的事件时触发该回调方法，返回任务响应头的数据结构。|
 
 **异常：**
 
@@ -1821,7 +1821,7 @@ public let url: String
 ## enum Action
 
 ```cangjie
-public enum Action {
+public enum Action <: Equatable<Action> & ToString {
     | Download
     | Upload
     | ...
@@ -2001,7 +2001,7 @@ StringValue(String)
 ## enum EventCallbackType
 
 ```cangjie
-public enum EventCallbackType {
+public enum EventCallbackType <: Equatable<EventCallbackType> & Hashable & ToString {
     | Progress
     | Completed
     | Failed
@@ -2174,7 +2174,7 @@ public func toString(): String
 ## enum Faults
 
 ```cangjie
-public enum Faults {
+public enum Faults <: ToString {
     | Others
     | Disconnected
     | Timeout
@@ -2320,7 +2320,7 @@ StringItem(String)
 ## enum Mode
 
 ```cangjie
-public enum Mode {
+public enum Mode <: Equatable<Mode> & ToString{
     | Background
     | Foreground
     | ...
@@ -2413,7 +2413,7 @@ public func toString(): String
 ## enum Network
 
 ```cangjie
-public enum Network {
+public enum Network <: Equatable<Network> & ToString {
     | AnyType
     | Wifi
     | Cellular
@@ -2520,7 +2520,7 @@ public func toString(): String
 ## enum State
 
 ```cangjie
-public enum State {
+public enum State <: ToString {
     | Initialized
     | Waiting
     | Running

@@ -221,7 +221,6 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |subscriber|[CommonEventSubscriber](cj-apis-common_event_subscriber.md#class-commoneventsubscriber)|是|-|表示订阅者对象。|
-|callback|[AsyncCallback](cj-apis-base.md#type-asynccallback)\<[CommonEventData](cj-apis-common_event_data.md#class-commoneventdata)>|是|-|表示接收公共事件数据的回调函数。|
 
 **异常：**
 

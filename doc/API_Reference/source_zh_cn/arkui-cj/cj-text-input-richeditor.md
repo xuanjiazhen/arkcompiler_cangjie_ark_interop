@@ -351,7 +351,7 @@ public init(
 ### class PasteEvent
 
 ```cangjie
-public class PasteEvent <: RemoteDataLite {}
+public class PasteEvent {}
 ```
 
 **功能：** 定义用户粘贴事件。

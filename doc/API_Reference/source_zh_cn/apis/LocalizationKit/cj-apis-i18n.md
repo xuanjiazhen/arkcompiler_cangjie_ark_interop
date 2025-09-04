@@ -55,7 +55,7 @@ let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist)// 获�
 ## class Calendar
 
 ```cangjie
-public class Calendar <: RemoteDataLite {}
+public class Calendar {}
 ```
 
 **功能：** 实体日历对象。
@@ -324,10 +324,10 @@ public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, mi
 |:---|:---|:---|:---|:---|
 |year|Int32|是|-|设置的年。|
 |month|Int32|是|-|设置的月。说明：月份从0开始计数，如0表示一月。|
-|day|Int32|是|-|设置的日。|
-|hour|Int32|否|None|**命名参数。** 设置的小时。-1代表系统小时。|
-|minute|Int32|否|None|**命名参数。** 设置的分钟。-1代表系统分钟。|
-|second|Int32|否|None|**命名参数。** 设置的秒。-1代表系统秒。|
+|date|Int32|是|-|设置的日。|
+|hour|?Int32|否|None|**命名参数。** 设置的小时。-1代表系统小时。|
+|minute|?Int32|否|None|**命名参数。** 设置的分钟。-1代表系统分钟。|
+|second|?Int32|否|None|**命名参数。** 设置的秒。-1代表系统秒。|
 
 **示例：**
 

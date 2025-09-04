@@ -166,7 +166,7 @@ public init(
 ## class AVImageGenerator
 
 ```cangjie
-public class AVImageGenerator <: RemoteDataLite {}
+public class AVImageGenerator {}
 ```
 
 **功能：** 视频缩略图获取类，用于从视频资源中获取缩略图。在调用AVImageGenerator的方法前，需要先通过[createAVImageGenerator()](#func-createavimagegenerator)构建一个AVImageGenerator实例。
@@ -366,7 +366,7 @@ public init(width!: Int32 = -1, height!: Int32 = -1)
 ## enum AVImageQueryOptions
 
 ```cangjie
-public enum AVImageQueryOptions {
+public enum AVImageQueryOptions <: Equatable<AVImageQueryOptions> & ToString {
     | AvImageQueryNextSync
     | AvImageQueryPreviousSync
     | AvImageQueryClosestSync

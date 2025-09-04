@@ -160,4 +160,4 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |onUnhandledException|(String)->Unit|是|-|应用产生未捕获的异常时的回调。|
-|onException|[Option]\<([ErrorObject](#class-errorobject))->Unit>|否|None|应用产生异常，上报js层时的回调。|
+|onException|Option\<([ErrorObject](#class-errorobject))->Unit>|否|None|应用产生异常，上报js层时的回调。|

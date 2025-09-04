@@ -1233,7 +1233,7 @@ public var netHandle: NetHandle
 ## class NetConnection
 
 ```cangjie
-public class NetConnection <: RemoteDataLite {}
+public class NetConnection {}
 ```
 
 **功能：** 网络连接的句柄；设备从无网络到有网络会触发netAvailable事件、netCapabilitiesChange事件和netConnectionPropertiesChange事件； 设备从有网络到无网络状态会触发netLost事件； 设备从WiFi到蜂窝会触发netLost事件（WiFi丢失）之后触发 netAvaliable事件（蜂窝可用）。
@@ -1949,7 +1949,7 @@ NetCapabilityValidated
 ## enum NetConnectionEvent
 
 ```cangjie
-public enum NetConnectionEvent {
+public enum NetConnectionEvent <: Equatable<NetConnectionEvent> {
     | NetAvailable
     | NetBlockStatusChange
     | NetCapabilitiesChange

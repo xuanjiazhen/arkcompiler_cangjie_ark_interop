@@ -1373,4 +1373,4 @@ class EntryView {
 
 ```
 
-![alertdialog2](<font color="red" face="bold">please add link</font>)
+!alertdialog2

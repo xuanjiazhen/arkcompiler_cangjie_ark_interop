@@ -325,10 +325,10 @@ let key = generator.generateSymKey()
 let encodedKey = key.getEncoded()
 ```
 
-## interface ParamsSpec
+## class ParamsSpec
 
 ```cangjie
-public interface ParamsSpec {
+public class ParamsSpec {
     mut prop algName: String
     mut prop iv: DataBlob
 }
@@ -346,10 +346,10 @@ public interface ParamsSpec {
 
 **起始版本：** 21
 
-### prop algName
+### var algName
 
 ```cangjie
-mut prop algName: String
+mut var algName: String
 ```
 
 **功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
@@ -1418,38 +1418,6 @@ public init(data: Array<UInt8>)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |data|Array\<UInt8>|是|-|存储的数组。|
-
-### DataBlob(Array\<UInt8>)
-
-```cangjie
-public DataBlob(
-    public let data: Array<UInt8>
-)
-```
-
-**功能：** 创建DataBlob实例。
-
-**系统能力：** SystemCapability.Security.CryptoFramework
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|data|Array\<UInt8>|是|-|数据。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CryptoArchitectureKit.*
-
-let blob = DataBlob("test".toArray())
-```
 
 ## struct GcmParamsSpec
 

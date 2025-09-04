@@ -601,7 +601,7 @@ public init(name: String, nullable: Bool, default: String, nodeType: Int32)
 ## class KVManager
 
 ```cangjie
-public class KVManager <: RemoteDataLite {}
+public class KVManager {}
 ```
 
 **功能：** 分布式键值数据库管理实例，用于获取分布式键值数据库的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](#static-func-createkvmanagerkvmanagerconfig)构建一个KVManager实例。
@@ -827,7 +827,7 @@ public init(context: BaseContext, bundleName: String)
 ## class KVStoreResultSet
 
 ```cangjie
-public class KVStoreResultSet <: RemoteDataLite {}
+public class KVStoreResultSet {}
 ```
 
 **功能：** 提供获取数据库结果集的相关方法，包括查询和移动数据读取位置等。允许打开的结果集最大数量为8个。
@@ -1001,7 +1001,7 @@ public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt
 ## class Query
 
 ```cangjie
-public class Query <: RemoteDataLite {
+public class Query {
 
     public init()
 }
@@ -1134,7 +1134,7 @@ public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 ## class SingleKVStore
 
 ```cangjie
-public open class SingleKVStore <: RemoteDataLite {}
+public open class SingleKVStore {}
 ```
 
 **功能：** SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据变更、订阅数据同步完成的方法。

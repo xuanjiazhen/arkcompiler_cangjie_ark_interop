@@ -122,7 +122,7 @@ public var isSticky: Bool
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Notification.CommonEvent,
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 21
 

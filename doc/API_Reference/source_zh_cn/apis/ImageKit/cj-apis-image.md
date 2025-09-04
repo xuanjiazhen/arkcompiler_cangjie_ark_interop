@@ -674,12 +674,6 @@ public func getComponent(componentType: ComponentType): Component
 
 **起始版本：** 21
 
-<!-- compile -->
-
-```cangjie
-// removed
-```
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -703,12 +697,6 @@ public func release(): Unit
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 21
-
-<!-- compile -->
-
-```cangjie
-// removed
-```
 
 ## class ImageInfo
 
@@ -845,7 +833,7 @@ public var stride: Int32
 ## class ImagePacker
 
 ```cangjie
-public class ImagePacker <: RemoteDataLite {}
+public class ImagePacker {}
 ```
 
 **功能：** 图片打包器类，用于图片压缩和打包。在调用ImagePacker的方法前，需要先通过[createImagePacker](#func-createimagepacker)构建一个ImagePacker实例，当前支持格式有：jpeg、webp、png。
@@ -1202,7 +1190,7 @@ public init(index!: UInt32 = 0, defaultValue!: String = "")
 ## class ImageReceiver
 
 ```cangjie
-public class ImageReceiver <: RemoteDataLite {}
+public class ImageReceiver {}
 ```
 
 **功能：** 图像接收类，用于获取组件surface id，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
@@ -1974,7 +1962,7 @@ public init(format: String, quality: UInt8, bufferSize!: UInt64 = 0,
 |:---|:---|:---|:---|:---|
 |format|String|是|-|目标格式。</br>当前只支持"image/jpeg"、"image/webp"、"image/png"和"image/heif"（不同硬件设备支持情况不同）。|
 |quality|UInt8|是|-|JPEG编码中设定输出图片质量的参数，取值范围为0-100。0质量最低，100质量最高，质量越高生成图片所占空间越大。|
-|bufferSize|UInt64|否|25 * 1024 * 1024|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-intnative-packingoption)不受此参数限制。|
+|bufferSize|UInt64|否|0|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-intnative-packingoption)不受此参数限制。|
 |desiredDynamicRange|[PackingDynamicRange](#enum-packingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。|
 |needsPackProperties|Bool|否|false|**命名参数。** 是否需要编码图片属性信息，例如EXIF。|
 

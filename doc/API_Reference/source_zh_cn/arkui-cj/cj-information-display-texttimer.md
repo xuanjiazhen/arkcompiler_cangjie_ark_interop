@@ -214,7 +214,7 @@ public func onTimer(event: (Int64, Int64) -> Unit): This
 ### class TextTimerController
 
 ```cangjie
-public class TextTimerController <: RemoteDataLite {
+public class TextTimerController {
     public init()
 }
 ```

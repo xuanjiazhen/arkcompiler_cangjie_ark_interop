@@ -22,7 +22,7 @@ API示例代码使用说明：
 ## class DataSharePredicates
 
 ```cangjie
-public class DataSharePredicates <: RemoteDataLite {
+public class DataSharePredicates {
     public init()
 }
 ```

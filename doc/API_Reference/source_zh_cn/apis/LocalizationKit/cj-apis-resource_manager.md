@@ -199,7 +199,7 @@ public let screenDensity: ScreenDensity
 ## class ResourceManager
 
 ```cangjie
-public class ResourceManager <: RemoteDataLite {}
+public class ResourceManager {}
 ```
 
 **功能：** 提供访问应用资源的能力。
@@ -1423,25 +1423,19 @@ public func getString(resId: UInt32, args: Array<ArgsValueType>): String
 
 - BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-  | 9001007 | Failed to format the resource obtained based on the resource ID.
- |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | If the input parameter invalid.|
+| 9001001 | Invalid resource ID.|
+| 9001002 | No matching resource is found based on the resource ID.|
+| 9001006 | The resource is referenced cyclically.|
+| 9001007 | Failed to format the resource obtained based on the resource ID.|
 
 - IllegalStateException：
 
 | 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+| :---- | :--- | :--- |
+| If the instance id invallid.| todo | todo |
 
 ### func getString(AppResource, Array\<ArgsValueType>)
 
@@ -1473,25 +1467,19 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 - BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-  | 9001007 | Failed to format the resource obtained based on the resource ID.
- |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+| 9001001 | Invalid resource ID.|
+| 9001002 | No matching resource is found based on the resource ID.|
+| 9001006 | The resource is referenced cyclically.|
+| 9001007 | Failed to format the resource obtained based on the resource ID.|
 
 - IllegalStateException：
 
 | 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+| :---- | :--- | :--- |
+| If the instance id invallid.| todo | todo |
 
  ### func getStringArrayByName(String)
  

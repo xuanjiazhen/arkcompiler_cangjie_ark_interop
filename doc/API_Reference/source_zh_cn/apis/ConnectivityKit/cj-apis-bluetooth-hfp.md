@@ -70,6 +70,10 @@ public class HandsFreeAudioGatewayProfile <: BaseProfile {}
 
 **起始版本：** 21
 
+**父类型：**
+
+- [BaseProfile](cj-apis-bluetooth-base_profile.md#interface-baseprofile)
+
 ### func getConnectedDevices()
 
 ```cangjie
@@ -345,7 +349,7 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType]|是|-|填写CONNECTIONSTATECHANGE，表示连接状态变化事件类型。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#type-callback1argument)\<[StateChangeParam]>|是|-|表示回调函数的入参。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[StateChangeParam](cj-apis-bluetooth-base_profile.md#class-statechangeparam)>|是|-|表示回调函数的入参。|
 
 **异常：**
 

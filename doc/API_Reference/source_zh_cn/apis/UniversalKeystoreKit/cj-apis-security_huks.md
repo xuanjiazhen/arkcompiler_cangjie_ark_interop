@@ -242,7 +242,7 @@ public func exportKeyItem(keyAlias: String, _: HuksOptions): Bytes
 
 |类型|说明|
 |:----|:----|
-|[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)|<返回从密钥中导出的公钥。|
+|Bytes|<返回从密钥中导出的公钥。|
 
 **异常：**
 
@@ -292,13 +292,13 @@ public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: By
 |:---|:---|:---|:---|:---|
 |handle|[HuksHandleId](#class-hukshandleid)|是|-|finishSession操作的handle。|
 |options|[HuksOptions](#class-huksoptions)|是|-|finishSession的参数集合。|
-|token|[Bytes](#class-huksoptions)|是|-|表示USER IAM服务的AuthToken的值。|
+|token|Bytes|否|Bytes\<Uint8>()|表示USER IAM服务的AuthToken的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[Option]\<[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|表示USER IAM服务的AuthToken的值。|
+|Option\<Bytes>|表示USER IAM服务的AuthToken的值。|
 
 **异常：**
 
@@ -667,13 +667,13 @@ public func updateSession(handle: HuksHandleId, options: HuksOptions, token!: By
 |:---|:---|:---|:---|:---|
 |handle|[HuksHandleId](#class-hukshandleid)|是|-|updateSession操作的handle。|
 |options|[HuksOptions](#class-huksoptions)|是|-|updateSession的参数集合。|
-|token|[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)|是|-|表示USER IAM服务的AuthToken的值。|
+|token|Bytes|否|Bytes\<Uint8>()|表示USER IAM服务的AuthToken的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)|输出密钥更新结果。|
+|Option\<Bytes>|输出密钥更新结果。|
 
 **异常：**
 
@@ -2237,7 +2237,7 @@ public var inData: Bytes
 
 **功能：** 输入数据。
 
-**类型：** [Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)
+**类型：** Bytes
 
 **读写能力：** 可读写
 
@@ -2279,7 +2279,7 @@ public init(properties!: Array<HuksParam> = Array<HuksParam>(), inData!: Bytes =
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |properties|Array\<[HuksParam](#class-huksparam)>|否|Array<HuksParam>()|属性，用于存HuksParam的数组。|
-|inData|[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)|否|Bytes()|输入数据。|
+|inData|Bytes|否|Bytes\<Uint8>()|输入数据。|
 
 ## class HuksParam
 
@@ -2487,7 +2487,7 @@ public var challenge: Bytes
 
 **功能：** 表示[initSession](#func-initsessionstring-huksoptions)操作之后获取到的challenge信息。
 
-**类型：** [Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)
+**类型：** Bytes
 
 **读写能力：** 可读写
 

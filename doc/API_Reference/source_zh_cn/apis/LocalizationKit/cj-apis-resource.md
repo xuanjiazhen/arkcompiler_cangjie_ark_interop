@@ -42,6 +42,12 @@ public class AppResource <: Length & ResourceColor & ResourceStr {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Length
+- ResourceColor
+- ResourceStr
+
 ### let bundleName
 
 ```cangjie

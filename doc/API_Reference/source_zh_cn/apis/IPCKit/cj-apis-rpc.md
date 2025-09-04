@@ -87,7 +87,7 @@ func unmarshalling(dataIn: MessageSequence): Bool
 ## class Ashmem
 
 ```cangjie
-public class Ashmem <: RemoteDataLite {
+public class Ashmem {
     public static const PROT_EXEC: UInt32 = 4
     public static const PROT_NONE: UInt32 = 0
     public static const PROT_READ: UInt32 = 1
@@ -431,7 +431,7 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buf|Array\<[Byte]>|是|-|写入Ashmem对象的数据。|
+|buf|Array\<Byte>|是|-|写入Ashmem对象的数据。|
 |size|Int64|是|-|要写入的数据大小。|
 |offset|Int64|是|-|要写入的数据在此Ashmem对象关联的内存区间的起始位置。|
 
@@ -452,7 +452,7 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
 ## class MessageSequence
 
 ```cangjie
-public class MessageSequence <: RemoteDataLite {}
+public class MessageSequence {}
 ```
 
 **功能：**  在RPC或IPC过程中，发送方可以使用MessageSequence提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageSequence提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。
@@ -1300,7 +1300,7 @@ public func readRawDataBuffer(size: Int64): Array<Byte>
 
 |类型|说明|
 |:----|:----|
-|Array\<[Byte]>|返回原始数据（以字节为单位）。|
+|Array\<Byte>|返回原始数据（以字节为单位）。|
 
 **异常：**
 
@@ -2364,7 +2364,7 @@ public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|rawData|Array\<[Byte]>|是|-|要写入的原始数据。|
+|rawData|Array\<Byte>|是|-|要写入的原始数据。|
 |size|Int64|是|-|发送的原始数据大小，以字节为单位。|
 
 **异常：**

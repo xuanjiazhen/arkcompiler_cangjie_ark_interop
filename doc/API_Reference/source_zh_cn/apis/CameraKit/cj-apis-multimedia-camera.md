@@ -1979,7 +1979,7 @@ func setSmoothZoom(targetRatio: Float64, mode: SmoothZoomMode): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|targetRatio|Float32|是|-|目标值。|
+|targetRatio|Float64|是|-|目标值。|
 |mode|[SmoothZoomMode](#enum-smoothzoommode)|是|-|模式。|
 
 **示例：**
@@ -2016,7 +2016,7 @@ func setSmoothZoom(targetRatio: Float64): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|targetRatio|Float32|是|-|目标值。|
+|targetRatio|Float64|是|-|目标值。|
 
 **示例：**
 
@@ -2240,7 +2240,7 @@ public let connectionType: ConnectionType
 ## class CameraInput
 
 ```cangjie
-public class CameraInput <: RemoteDataLite {}
+public class CameraInput {}
 ```
 
 **功能：** 相机设备输入对象。会话中Session使用的相机信息。
@@ -2533,7 +2533,7 @@ let handle = cameraInput.open(isSecureEnabled)
 ## class CameraManager
 
 ```cangjie
-public class CameraManager <: RemoteDataLite {}
+public class CameraManager {}
 ```
 
 **功能：** 相机管理器类，使用前需要通过[getCameraManager](#func-getcameramanageruiabilitycontext)获取相机管理实例。
@@ -4211,7 +4211,7 @@ public init(
 ## class PhotoOutput
 
 ```cangjie
-public class PhotoOutput <: RemoteDataLite CameraOutput {}
+public class PhotoOutput CameraOutput {}
 ```
 
 **功能：** 拍照会话中使用的输出信息。
@@ -5437,7 +5437,7 @@ output.setMovingPhotoVideoCodecType(VideoCodecType.Avc)
 ## class PhotoSession
 
 ```cangjie
-public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & Focus & Zoom & ColorManagement {}
+public class PhotoSession  Session & Flash & AutoExposure & Focus & Zoom & ColorManagement {}
 ```
 
 **功能：** 普通拍照模式会话类，提供了对闪光灯、曝光、对焦、变焦、色彩空间的操作。
@@ -5930,7 +5930,7 @@ public init(x: Float64, y: Float64)
 ## class PreviewOutput
 
 ```cangjie
-public class PreviewOutput <: RemoteDataLite & CameraOutput {}
+public class PreviewOutput  CameraOutput {}
 ```
 
 **功能：** 预览输出类。
@@ -6754,7 +6754,7 @@ public let torchLevel: Float64
 ## class VideoOutput
 
 ```cangjie
-public class VideoOutput <: RemoteDataLite & <:  CameraOutput {}
+public class VideoOutput  <:  CameraOutput {}
 ```
 
 **功能：** 录像会话中使用的输出信息。
@@ -7380,7 +7380,7 @@ public let frameRateRange: FrameRateRange
 ## class VideoSession
 
 ```cangjie
-public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & Focus & Zoom & Stabilization & ColorManagement {}
+public class VideoSession  Session & Flash & AutoExposure & Focus & Zoom & Stabilization & ColorManagement {}
 ```
 
 **功能：** 普通录像模式会话类，提供了对闪光灯、曝光、对焦、变焦、视频防抖、色彩空间的操作。

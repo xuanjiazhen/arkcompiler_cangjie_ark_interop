@@ -133,12 +133,12 @@ public init(name: String, dataGroupId!: String = String.empty,
 |:---|:---|:---|:---|:---|
 |name|String|是|-|Preferences实例的名称。|
 |dataGroupId|String|否|String.empty|应用组ID，需要向应用市场获取。|
-|storageType|[StorageType](#enum-storagetype)|否|StorageType.StorageTypeXml|存储模式，为可选参数。|
+|storageType|[StorageType](#enum-storagetype)|否|StorageType.Xml|存储模式，为可选参数。|
 
 ## class Preferences
 
 ```cangjie
-public class Preferences <: RemoteDataLite {}
+public class Preferences {}
 ```
 
 **功能：** 首选项类，提供获取和修改存储数据的接口。

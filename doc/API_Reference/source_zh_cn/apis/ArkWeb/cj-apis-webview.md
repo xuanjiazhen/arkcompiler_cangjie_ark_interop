@@ -30,7 +30,7 @@ API示例代码使用说明：
 ## class BackForwardList
 
 ```cangjie
-public class BackForwardList <: RemoteDataLite {}
+public class BackForwardList {}
 ```
 
 **功能：** 当前Webview的历史信息列表。
@@ -677,7 +677,7 @@ public init(headerKey: String, headerValue: String)
 ## class WebviewController
 
 ```cangjie
-public class WebviewController <: RemoteDataLite {
+public class WebviewController {
     public init(webTag!: ?String = None)
 }
 ```
@@ -2980,7 +2980,7 @@ public enum SecurityLevel <: Equatable<SecurityLevel> & ToString {
     | NoneLevel
     | Secure
     | Warning
-    | Danger
+    | Dangerous
     | ...
 }
 ```

@@ -937,7 +937,8 @@ public init(
 |:---|:---|:---|:---|:---|
 |top|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black|组件上边框颜色。|
 |right|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black|组件右边框颜色。|
-|bottom|[ResourceColor](<font color="red" face="
+|bottom|[ResourceColor](./cj-common-types.md#interface-resourcecolor)| 否 | Option.None| 下侧边框颜色。|
+|right|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black|组件左边框颜色。|
 
 ## class PromptActionInner
 

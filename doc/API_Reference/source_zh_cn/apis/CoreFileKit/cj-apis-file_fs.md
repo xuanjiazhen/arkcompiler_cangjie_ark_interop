@@ -68,7 +68,7 @@ public var srcFile: String
 ## class File
 
 ```cangjie
-public class File <: RemoteDataLite {}
+public class File {}
 ```
 
 **功能：** 由open接口打开的File对象。
@@ -2348,7 +2348,7 @@ public init(
 ## class RandomAccessFile
 
 ```cangjie
-public class RandomAccessFile <: RemoteDataLite {}
+public class RandomAccessFile {}
 ```
 
 **功能：** 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过[createRandomAccessFile](#func-createrandomaccessfilestring-string)方法来构建一个RandomAccessFile实例。
@@ -2433,7 +2433,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|用于读取文件的缓冲区。|
+|buffer|Array\<Byte>|是|-|用于读取文件的缓冲区。|
 |options|[ReadOptions](#class-readoptions)|否|ReadOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br>- offset，?Int64类型，表示期望读取文件的位置。可选，默认从当前位置开始读。|
 
 **返回值：**
@@ -2496,7 +2496,7 @@ public func setFilePointer(filePointer: Int64): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fileOointer|Int64|是|-|RandomAccessFile对象的偏置指针。|
+|filePointer|Int64|是|-|RandomAccessFile对象的偏置指针。|
 
 **示例：**
 
@@ -2715,7 +2715,7 @@ public init(
 ## class ReaderIterator
 
 ```cangjie
-public class ReaderIterator <: RemoteDataLite {}
+public class ReaderIterator {}
 ```
 
 **功能：** 文件读取迭代器。在调用ReaderIterator的方法前，需要先通过readLines方法来构建一个ReaderIterator实例。
@@ -2938,7 +2938,7 @@ public init(
 ## class Stat
 
 ```cangjie
-public class Stat <: RemoteDataLite {}
+public class Stat {}
 ```
 
 **功能：** 文件具体信息。在调用Stat的方法前，需要先通过[FileIo.stat()](#func-statstring-string)方法来构建一个Stat实例。
@@ -3313,7 +3313,7 @@ let isSymbolicLink = FileIo.stat(filePath).isSymbolicLink()
 ## class Stream
 
 ```cangjie
-public class Stream <: RemoteDataLite {}
+public class Stream {}
 ```
 
 **功能：** 文件流。在调用Stream的方法前，需要先通过[FileIo.createStream](#func-createstreamstring-string)方法或者[FileIo.fdopenStream](#func-fdopenstreamint32-string)来构建一个Stream实例。

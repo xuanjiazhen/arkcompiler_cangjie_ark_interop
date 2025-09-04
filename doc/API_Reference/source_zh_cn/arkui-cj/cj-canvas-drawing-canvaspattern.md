@@ -11,7 +11,7 @@ import kit.ArkUI.*
 ## class CanvasPattern
 
 ```cangjie
-public class CanvasPattern <: RemoteDataLite {
+public class CanvasPattern {
     public init()
 }
 ```

@@ -242,7 +242,7 @@ public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 ## class FetchResult
 
 ```cangjie
-public class FetchResult<T> <: RemoteDataLite {}
+public class FetchResult<T> {}
 ```
 
 **功能：** 文件检索结果集。
@@ -290,51 +290,6 @@ let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 ```
 
-### func getAllObjects()
-
-```cangjie
-public func getAllObjects(): Array<T>
-```
-
-**功能：** 获取文件检索结果中的所有文件资产。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<[T](#generic-type-t)>|返回结果集中所有文件资产数组。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
-let photoAssetArray = fetchResult.getAllObjects()
-```
-
 ### func getCount()
 
 ```cangjie
@@ -379,194 +334,6 @@ let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let count = fetchResult.getCount()
-```
-
-### func getFirstObject()
-
-```cangjie
-public func getFirstObject(): T
-```
-
-**功能：** 获取文件检索结果中的第一个文件资产。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[T](#generic-type-t)|返回结果集中第一个对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-```
-
-### func getLastObject()
-
-```cangjie
-public func getLastObject(): T
-```
-
-**功能：** 获取文件检索结果中的最后一个文件资产。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[T](#generic-type-t)|返回结果集中最后一个对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getLastObject()
-```
-
-### func getNextObject()
-
-```cangjie
-public func getNextObject(): T
-```
-
-**功能：** 获取文件检索结果中的下一个文件资产。
-
-在调用此方法之前，必须使用[isAfterLast()](#func-isafterlast)来检查当前位置是否为最后一行。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[T](#generic-type-t)|返回结果集中下一个对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getNextObject()
-```
-
-### func getObjectByPosition(Int32)
-
-```cangjie
-public func getObjectByPosition(index: Int32): T
-```
-
-**功能：** 获取文件检索结果中具有指定索引的文件资产。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|index|Int32|是|-|要获取的文件的索引，从0开始。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[T](#generic-type-t)|返回结果集中指定索引的一个对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
-let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 ```
 
 ### func isAfterLast()
@@ -617,7 +384,7 @@ let isAfterLast = fetchResult.isAfterLast()
 ## class MediaAlbumChangeRequest
 
 ```cangjie
-public class MediaAlbumChangeRequest <: RemoteDataLite & MediaChangeRequest {
+public class MediaAlbumChangeRequest MediaChangeRequest {
     /**
      * The constructor to create a MediaAlbumChangeRequest instance.
      *
@@ -752,7 +519,7 @@ public func getAlbum(): Album
 
 |类型|说明|
 |:----|:----|
-|?[Album](#class-album)|返回当前相册变更请求中的相册。|
+|[Album](#class-album)|返回当前相册变更请求中的相册。|
 
 **异常：**
 
@@ -894,7 +661,7 @@ albumChangeRequest.setAlbumName(newAlbumName)
 ## class MediaAssetChangeRequest
 
 ```cangjie
-public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
+public class MediaAssetChangeRequest MediaChangeRequest {
     public init(asset: PhotoAsset)
 }
 ```
@@ -1375,7 +1142,7 @@ public func getAsset(): PhotoAsset
 
 |类型|说明|
 |:----|:----|
-|?[PhotoAsset](#class-photoasset)|返回当前资产变更请求中的资产。|
+|[PhotoAsset](#class-photoasset)|返回当前资产变更请求中的资产。|
 
 **异常：**
 
@@ -1550,7 +1317,7 @@ phAccessHelper.applyChanges(assetChangeRequest)
 ## class PhotoAccessHelper
 
 ```cangjie
-public class PhotoAccessHelper <: RemoteDataLite {}
+public class PhotoAccessHelper {}
 ```
 
 **功能：** 获取图片和视频资源。
@@ -1616,7 +1383,7 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 |类型|说明|
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[Album](#class-album)>|返回获取相册的结果集。|
+|AlbumResult|返回获取相册的结果集。|
 
 **异常：**
 
@@ -1671,7 +1438,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 |类型|说明|
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回获取连拍照片的结果集。|
+|PhotoAssetResult|返回获取连拍照片的结果集。|
 
 **异常：**
 
@@ -1725,7 +1492,7 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetR
 
 |类型|说明|
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回获取连拍照片的结果集。|
+|PhotoAssetResult|返回获取连拍照片的结果集。|
 
 **异常：**
 
@@ -3270,6 +3037,21 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的说明。|
+
+## enum ReceiveType
+
+```cangjie
+public enum ReceiveType {
+    | ImageArrival
+    | ...
+}
+```
+
+**功能：** 接收类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**起始版本：** 21
 
 ## enum PhotoSubtype
 

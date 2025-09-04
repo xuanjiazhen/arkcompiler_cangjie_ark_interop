@@ -497,7 +497,7 @@ public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
 ## class RdbPredicates
 
 ```cangjie
-public class RdbPredicates <: RemoteDataLite {
+public class RdbPredicates {
 
     public init(name: String)
 }
@@ -1432,7 +1432,7 @@ public func orderByDesc(field: String): RdbPredicates
 ## class RdbStore
 
 ```cangjie
-public class RdbStore <: RemoteDataLite {}
+public class RdbStore {}
 ```
 
 **功能：** 提供管理关系数据库（RDB）方法的接口。
@@ -1807,7 +1807,7 @@ public func emit(event: String): Unit
 
 ```cangjie
 
-public func executeSql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType> = []): Unit
+public func executeSql(sql: String, bindArgs!: Array<ValueType> = []): Unit
 ```
 
 **功能：**  执行包含指定参数但不返回值的SQL语句。
@@ -1821,7 +1821,7 @@ public func executeSql(sql: String, bindArgs!: Array<ValueType> = Array<ValueTyp
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |sql|String|是|-|指定要执行的SQL语句。|
-|bindArgs|Array\<[ValueType](#enum-valuetype)>|否|Array<ValueType>()|SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。|
+|bindArgs|Array\<[ValueType](#enum-valuetype)>|否|[]|SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。|
 
 **异常：**
 
@@ -2047,7 +2047,7 @@ public func query(predicates: RdbPredicates, columns!: Array<String> = []): Resu
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |predicates|[RdbPredicates](#class-rdbpredicates)|是|-|RdbPredicates的实例对象指定的查询条件。|
-|columns|Array\<String>|否|-|表示要查询的列。如果值为空，则查询应用于所有列。|
+|columns|Array\<String>|否|[]|表示要查询的列。如果值为空，则查询应用于所有列。|
 
 **返回值：**
 
@@ -2075,7 +2075,7 @@ public func query(predicates: RdbPredicates, columns!: Array<String> = []): Resu
 
 ```cangjie
 
-public func querySql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType> = []): ResultSet
+public func querySql(sql: String, bindArgs!: Array<ValueType> = []): ResultSet
 ```
 
 **功能：** 根据指定SQL语句查询数据库中的数据。
@@ -2089,7 +2089,7 @@ public func querySql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |sql|String|是|-|指定要执行的SQL语句。|
-|bindArgs|Array\<[ValueType](#enum-valuetype)>|否|Array<ValueType>()| **命名参数。** SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。|
+|bindArgs|Array\<[ValueType](#enum-valuetype)>|否|[]| **命名参数。** SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。|
 
 **返回值：**
 
@@ -2104,7 +2104,7 @@ public func querySql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType>
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-2. Incorrect parameter types.
+1. Incorrect parameter types.
  |
   | 14800000 | Inner error.
  |
@@ -2318,7 +2318,7 @@ Possible causes: Insert failed or the updated data does not exist.
 ## class ResultSet
 
 ```cangjie
-public class ResultSet <: RemoteDataLite {}
+public class ResultSet {}
 ```
 
 **功能：** 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -3709,7 +3709,7 @@ public init(securityLevel: SecurityLevel, name!: String = "",
 |allowRebuild|Bool|否|false|指定数据库是否支持异常时自动删除，并重建一个空库空表，默认不删除。<br>true：自动删除。<br>false：不自动删除。<br>从API version 12开始，支持此可选参数。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
 |isReadOnly|Bool|否|false|指定数据库是否只读，默认为数据库可读写。<br>true：只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。<br>false：允许对数据库进行读写操作。<br>从API version 12开始，支持此可选参数。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
 |pluginLibs|Array\<String>|否|Array<String>()|表示包含有fts（Full-Text Search，即全文搜索引擎）等能力的动态库名的数组。<br>使用约束：<br>1. 动态库名的数量限制最多为16个，如果超过该数量会开库失败，返回错误。<br>2. 动态库名需为本应用沙箱路径下或系统路径下的动态库，如果动态库无法加载会开库失败，返回错误。<br>3. 动态库名需为完整路径，用于被sqlite加载。<br>样例：[context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]，其中context.bundleCodeDir是应用沙箱对应的路径，"/libs/arm64/"表示子目录，libtokenizer.so表示动态库的文件名。当此参数不填时，默认不加载动态库。<br>4. 动态库需要包含其全部依赖，避免依赖项丢失导致无法运行。<br>例如：在ndk工程中，使用默认编译参数构建libtokenizer.so，此动态库依赖c++标准库。在加载此动态库时，由于namespace与编译时不一致，链接到了错误的libc++_shared.so，导致__emutls_get_address符号找不到。要解决此问题，需在编译时静态链接c++标准库，具体请参见NDK工程构建概述。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
-|cryptoParam|[CryptoParam](#class-cryptoparam)|否|-|**命名参数。**指定用户自定义的加密参数。<br>当此参数不填时，使用默认的加密参数，见CryptoParam各参数默认值。<br>此配置只有在encrypt选项设置为真时才有效。<br>从API version 14开始，支持此可选参数。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|cryptoParam|[CryptoParam](#class-cryptoparam)|否|CryptoParam([])|**命名参数。**指定用户自定义的加密参数。<br>当此参数不填时，使用默认的加密参数，见CryptoParam各参数默认值。<br>此配置只有在encrypt选项设置为真时才有效。<br>从API version 14开始，支持此可选参数。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
 |vector|Bool|否|false|指定数据库是否是向量数据库，true表示向量数据库，false表示关系型数据库，默认为false。<br>向量数据库适用于存储和处理高维向量数据，关系型数据库适用于存储和处理结构化数据。<br>当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
 |tokenizer|[Tokenizer](#enum-tokenizer)|否|Tokenizer.NoneTokenizer|指定用户在fts场景下使用哪种分词器。<br>当此参数不填时，则在fts下不支持中文以及多国语言分词，但仍可支持英文分词。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
 |persist|Bool|否|true|指定数据库是否需要持久化。true表示持久化，false表示不持久化，即内存数据库。默认为true。<br>内存数据库不支持加密、backup、restore、跨进程访问及分布式能力，securityLevel属性会被忽略。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|

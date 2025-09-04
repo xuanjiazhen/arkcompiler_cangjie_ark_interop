@@ -11,7 +11,7 @@ import kit.ArkUI.*
 ## class ImageData
 
 ```cangjie
-public class ImageData <: RemoteDataLite {
+public class ImageData {
     public init(width: Float64, height: Float64, data!: Array<UInt8>, unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
     public init(width: Float64, height: Float64, unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
 }
