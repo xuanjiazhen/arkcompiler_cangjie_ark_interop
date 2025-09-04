@@ -117,66 +117,6 @@ public func anonAttestKeyItem(keyAlias: String, options: HuksOptions): Array<Str
   | 12000014 | memory is insufficient
  |
 
-## func attestKeyItem(String, HuksOptions)
-
-```cangjie
-
-public func attestKeyItem(keyAlias: String, options: HuksOptions): Array<String>
-```
-
-**功能：** 获取密钥证书。
-
-**需要权限：** ohos.permission.ATTEST_KEY
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|keyAlias|String|是|-|密钥别名，存放待获取证书的密钥别名。|
-|options|[HuksOptions](#class-huksoptions)|是|-|用于获取证书时指定所需参数与数据。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<String>|返回密钥证书链。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[HUKS错误码](../../errorcodes/cj-errorcode-huks.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 201 | check permission failed
- |
-  | 401 | argument is invalid
- |
-  | 801 | api is not supported
- |
-  | 12000001 | algorithm mode is not supported
- |
-  | 12000002 | algorithm param is missing
- |
-  | 12000003 | algorithm param is invalid
- |
-  | 12000004 | operating file failed
- |
-  | 12000005 | IPC communication failed
- |
-  | 12000006 | error occured in crypto engine
- |
-  | 12000011 | queried entity does not exist
- |
-  | 12000012 | external error
- |
-  | 12000014 | memory is insufficient
-@permission ohos.permission.ATTEST_KEY
- |
-
 ## func deleteKeyItem(String, HuksOptions)
 
 ```cangjie
@@ -717,8 +657,8 @@ public func updateSession(handle: HuksHandleId, options: HuksOptions, token!: By
 
 ```cangjie
 public class HuksAuthAccessType {
-    public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = HuksParamValue.Uint32Value(1 << 0)
-    public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = HuksParamValue.Uint32Value(1 << 1)
+    public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: UInt32 = 1 << 0
+    public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: UInt32 = 1 << 1
 }
 ```
 
@@ -731,12 +671,12 @@ public class HuksAuthAccessType {
 ### static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD
 
 ```cangjie
-public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = HuksParamValue.Uint32Value(1 << 0)
+public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: UInt32 = 1 << 0
 ```
 
 **功能：** 表示安全访问控制类型为该密钥总是有效。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -745,12 +685,12 @@ public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = Hu
 ### static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL
 
 ```cangjie
-public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = HuksParamValue.Uint32Value(1 << 1)
+public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: UInt32 = 1 << 1
 ```
 
 **功能：** 表示安全访问控制类型为清除密码后密钥无效。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -760,9 +700,9 @@ public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = Hu
 
 ```cangjie
 public class HuksAuthStorageLevel {
-    public static const HUKS_AUTH_STORAGE_LEVEL_DE: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_AUTH_STORAGE_LEVEL_CE: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_AUTH_STORAGE_LEVEL_ECE: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_AUTH_STORAGE_LEVEL_DE: UInt32 = 0
+    public static const HUKS_AUTH_STORAGE_LEVEL_CE: UInt32 = 1
+    public static const HUKS_AUTH_STORAGE_LEVEL_ECE: UInt32 = 2
 }
 ```
 
@@ -775,12 +715,12 @@ public class HuksAuthStorageLevel {
 ### static const HUKS_AUTH_STORAGE_LEVEL_CE
 
 ```cangjie
-public static const HUKS_AUTH_STORAGE_LEVEL_CE: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_AUTH_STORAGE_LEVEL_CE: UInt32 = 1
 ```
 
 **功能：** 表示密钥仅在首次解锁后可访问。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -789,12 +729,12 @@ public static const HUKS_AUTH_STORAGE_LEVEL_CE: HuksParamValue = HuksParamValue.
 ### static const HUKS_AUTH_STORAGE_LEVEL_DE
 
 ```cangjie
-public static const HUKS_AUTH_STORAGE_LEVEL_DE: HuksParamValue = HuksParamValue.Uint32Value(0)
+public static const HUKS_AUTH_STORAGE_LEVEL_DE: UInt32 = 0
 ```
 
 **功能：** 表示密钥仅在开机后可访问。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -803,12 +743,12 @@ public static const HUKS_AUTH_STORAGE_LEVEL_DE: HuksParamValue = HuksParamValue.
 ### static const HUKS_AUTH_STORAGE_LEVEL_ECE
 
 ```cangjie
-public static const HUKS_AUTH_STORAGE_LEVEL_ECE: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_AUTH_STORAGE_LEVEL_ECE: UInt32 = 2
 ```
 
 **功能：** 表示密钥仅在解锁状态时可访问。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -818,10 +758,10 @@ public static const HUKS_AUTH_STORAGE_LEVEL_ECE: HuksParamValue = HuksParamValue
 
 ```cangjie
 public class HuksChallengePosition {
-    public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.Uint32Value(2)
-    public static const HUKS_CHALLENGE_POS_3: HuksParamValue = HuksParamValue.Uint32Value(3)
+    public static const HUKS_CHALLENGE_POS_0: UInt32 = 0
+    public static const HUKS_CHALLENGE_POS_1: UInt32 = 1
+    public static const HUKS_CHALLENGE_POS_2: UInt32 = 2
+    public static const HUKS_CHALLENGE_POS_3: UInt32 = 3
 }
 ```
 
@@ -834,12 +774,12 @@ public class HuksChallengePosition {
 ### static const HUKS_CHALLENGE_POS_0
 
 ```cangjie
-public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.Uint32Value(0)
+public static const HUKS_CHALLENGE_POS_0: UInt32 = 0
 ```
 
 **功能：** 表示0~7字节为当前密钥的有效challenge。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -848,12 +788,12 @@ public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.Uint32
 ### static const HUKS_CHALLENGE_POS_1
 
 ```cangjie
-public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_CHALLENGE_POS_1: UInt32 = 1
 ```
 
 **功能：** 表示8~15字节为当前密钥的有效challenge。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -862,12 +802,12 @@ public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.Uint32
 ### static const HUKS_CHALLENGE_POS_2
 
 ```cangjie
-public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_CHALLENGE_POS_2: UInt32 = 2
 ```
 
 **功能：** 表示16~23字节为当前密钥的有效challenge。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -876,12 +816,12 @@ public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.Uint32
 ### static const HUKS_CHALLENGE_POS_3
 
 ```cangjie
-public static const HUKS_CHALLENGE_POS_3: HuksParamValue = HuksParamValue.Uint32Value(3)
+public static const HUKS_CHALLENGE_POS_3: UInt32 = 3
 ```
 
 **功能：** 表示24~31字节为当前密钥的有效challenge。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -891,9 +831,9 @@ public static const HUKS_CHALLENGE_POS_3: HuksParamValue = HuksParamValue.Uint32
 
 ```cangjie
 public class HuksChallengeType {
-    public static const HUKS_CHALLENGE_TYPE_NORMAL: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_CHALLENGE_TYPE_CUSTOM: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_CHALLENGE_TYPE_NONE: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_CHALLENGE_TYPE_NORMAL: UInt32 = 0
+    public static const HUKS_CHALLENGE_TYPE_CUSTOM: UInt32 = 1
+    public static const HUKS_CHALLENGE_TYPE_NONE: UInt32 = 2
 }
 ```
 
@@ -906,12 +846,12 @@ public class HuksChallengeType {
 ### static const HUKS_CHALLENGE_TYPE_CUSTOM
 
 ```cangjie
-public static const HUKS_CHALLENGE_TYPE_CUSTOM: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_CHALLENGE_TYPE_CUSTOM: UInt32 = 1
 ```
 
 **功能：** 表示challenge为用户自定义类型。支持使用多个密钥仅一次认证。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -920,12 +860,12 @@ public static const HUKS_CHALLENGE_TYPE_CUSTOM: HuksParamValue = HuksParamValue.
 ### static const HUKS_CHALLENGE_TYPE_NONE
 
 ```cangjie
-public static const HUKS_CHALLENGE_TYPE_NONE: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_CHALLENGE_TYPE_NONE: UInt32 = 2
 ```
 
 **功能：** 表示免challenge类型。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -934,12 +874,11 @@ public static const HUKS_CHALLENGE_TYPE_NONE: HuksParamValue = HuksParamValue.Ui
 ### static const HUKS_CHALLENGE_TYPE_NORMAL
 
 ```cangjie
-public static const HUKS_CHALLENGE_TYPE_NORMAL: HuksParamValue = HuksParamValue.Uint32Value(0)
-```
+public static const HUKS_CHALLENGE_TYPE_NORMAL: UInt32 = 0
 
 **功能：** 表示challenge为普通类型，默认32字节。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -949,12 +888,12 @@ public static const HUKS_CHALLENGE_TYPE_NORMAL: HuksParamValue = HuksParamValue.
 
 ```cangjie
 public class HuksCipherMode {
-    public static const HUKS_MODE_ECB: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_MODE_CBC: HuksParamValue = HuksParamValue.Uint32Value(2)
-    public static const HUKS_MODE_CTR: HuksParamValue = HuksParamValue.Uint32Value(3)
-    public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.Uint32Value(4)
-    public static const HUKS_MODE_CCM: HuksParamValue = HuksParamValue.Uint32Value(31)
-    public static const HUKS_MODE_GCM: HuksParamValue = HuksParamValue.Uint32Value(32)
+    public static const HUKS_MODE_ECB: UInt32 = 1
+    public static const HUKS_MODE_CBC: UInt32 = 2
+    public static const HUKS_MODE_CTR: UInt32 = 3
+    public static const HUKS_MODE_OFB: UInt32 = 4
+    public static const HUKS_MODE_CCM: UInt32 = 31
+    public static const HUKS_MODE_GCM: UInt32 = 32
 }
 ```
 
@@ -967,12 +906,12 @@ public class HuksCipherMode {
 ### static const HUKS_MODE_CBC
 
 ```cangjie
-public static const HUKS_MODE_CBC: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_MODE_CBC: UInt32 = 2
 ```
 
 **功能：** 表示使用CBC加密模式。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：**  UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -981,12 +920,12 @@ public static const HUKS_MODE_CBC: HuksParamValue = HuksParamValue.Uint32Value(2
 ### static const HUKS_MODE_CCM
 
 ```cangjie
-public static const HUKS_MODE_CCM: HuksParamValue = HuksParamValue.Uint32Value(31)
+public static const HUKS_MODE_CCM: UInt32 = 31
 ```
 
 **功能：** 表示使用CCM加密模式。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：**  UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -995,12 +934,12 @@ public static const HUKS_MODE_CCM: HuksParamValue = HuksParamValue.Uint32Value(3
 ### static const HUKS_MODE_CTR
 
 ```cangjie
-public static const HUKS_MODE_CTR: HuksParamValue = HuksParamValue.Uint32Value(3)
+public static const HUKS_MODE_CTR: UInt32 = 3
 ```
 
 **功能：** 表示使用CTR加密模式。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1009,12 +948,12 @@ public static const HUKS_MODE_CTR: HuksParamValue = HuksParamValue.Uint32Value(3
 ### static const HUKS_MODE_ECB
 
 ```cangjie
-public static const HUKS_MODE_ECB: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_MODE_ECB: UInt32 = 1
 ```
 
 **功能：** 表示使用ECB加密模式。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1023,12 +962,12 @@ public static const HUKS_MODE_ECB: HuksParamValue = HuksParamValue.Uint32Value(1
 ### static const HUKS_MODE_GCM
 
 ```cangjie
-public static const HUKS_MODE_GCM: HuksParamValue = HuksParamValue.Uint32Value(32)
+public static const HUKS_MODE_GCM: UInt32 = 32
 ```
 
 **功能：** 表示使用GCM加密模式。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1037,12 +976,12 @@ public static const HUKS_MODE_GCM: HuksParamValue = HuksParamValue.Uint32Value(3
 ### static const HUKS_MODE_OFB
 
 ```cangjie
-public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.Uint32Value(4)
+public static const HUKS_MODE_OFB: UInt32 = 4
 ```
 
 **功能：** 表示使用OFB加密模式。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1064,9 +1003,9 @@ public class HuksHandleId {}
 
 ```cangjie
 public class HuksImportKeyType {
-    public static const HUKS_KEY_TYPE_PUBLIC_KEY: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_KEY_TYPE_PRIVATE_KEY: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_KEY_TYPE_KEY_PAIR: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_KEY_TYPE_PUBLIC_KEY: UInt32 = 0
+    public static const HUKS_KEY_TYPE_PRIVATE_KEY: UInt32 = 1
+    public static const HUKS_KEY_TYPE_KEY_PAIR: UInt32 = 2
 }
 ```
 
@@ -1079,12 +1018,12 @@ public class HuksImportKeyType {
 ### static const HUKS_KEY_TYPE_KEY_PAIR
 
 ```cangjie
-public static const HUKS_KEY_TYPE_KEY_PAIR: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_KEY_TYPE_KEY_PAIR: UInt32 = 2
 ```
 
 **功能：** 表示导入的密钥类型为公私钥对。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1093,12 +1032,12 @@ public static const HUKS_KEY_TYPE_KEY_PAIR: HuksParamValue = HuksParamValue.Uint
 ### static const HUKS_KEY_TYPE_PRIVATE_KEY
 
 ```cangjie
-public static const HUKS_KEY_TYPE_PRIVATE_KEY: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_KEY_TYPE_PRIVATE_KEY: UInt32 = 1
 ```
 
 **功能：** 表示导入的密钥类型为私钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1107,12 +1046,12 @@ public static const HUKS_KEY_TYPE_PRIVATE_KEY: HuksParamValue = HuksParamValue.U
 ### static const HUKS_KEY_TYPE_PUBLIC_KEY
 
 ```cangjie
-public static const HUKS_KEY_TYPE_PUBLIC_KEY: HuksParamValue = HuksParamValue.Uint32Value(0)
+public static const HUKS_KEY_TYPE_PUBLIC_KEY: UInt32 = 0
 ```
 
 **功能：** 表示导入的密钥类型为公钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1122,20 +1061,20 @@ public static const HUKS_KEY_TYPE_PUBLIC_KEY: HuksParamValue = HuksParamValue.Ui
 
 ```cangjie
 public class HuksKeyAlg {
-    public static const HUKS_ALG_RSA: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_ALG_ECC: HuksParamValue = HuksParamValue.Uint32Value(2)
-    public static const HUKS_ALG_DSA: HuksParamValue = HuksParamValue.Uint32Value(3)
-    public static const HUKS_ALG_AES: HuksParamValue = HuksParamValue.Uint32Value(20)
-    public static const HUKS_ALG_HMAC: HuksParamValue = HuksParamValue.Uint32Value(50)
-    public static const HUKS_ALG_HKDF: HuksParamValue = HuksParamValue.Uint32Value(51)
-    public static const HUKS_ALG_PBKDF2: HuksParamValue = HuksParamValue.Uint32Value(52)
-    public static const HUKS_ALG_ECDH: HuksParamValue = HuksParamValue.Uint32Value(100)
-    public static const HUKS_ALG_X25519: HuksParamValue = HuksParamValue.Uint32Value(101)
-    public static const HUKS_ALG_ED25519: HuksParamValue = HuksParamValue.Uint32Value(102)
-    public static const HUKS_ALG_DH: HuksParamValue = HuksParamValue.Uint32Value(103)
-    public static const HUKS_ALG_SM2: HuksParamValue = HuksParamValue.Uint32Value(150)
-    public static const HUKS_ALG_SM3: HuksParamValue = HuksParamValue.Uint32Value(151)
-    public static const HUKS_ALG_SM4: HuksParamValue = HuksParamValue.Uint32Value(152)
+    public static const HUKS_ALG_RSA: UInt32 = 1
+    public static const HUKS_ALG_ECC: UInt32 = 2
+    public static const HUKS_ALG_DSA: UInt32 = 3
+    public static const HUKS_ALG_AES: UInt32 = 20
+    public static const HUKS_ALG_HMAC: UInt32 = 50
+    public static const HUKS_ALG_HKDF: UInt32 = 51
+    public static const HUKS_ALG_PBKDF2: UInt32 = 52
+    public static const HUKS_ALG_ECDH: UInt32 = 100
+    public static const HUKS_ALG_X25519: UInt32 = 101
+    public static const HUKS_ALG_ED25519: UInt32 = 102
+    public static const HUKS_ALG_DH: UInt32 = 103
+    public static const HUKS_ALG_SM2: UInt32 = 150
+    public static const HUKS_ALG_SM3: UInt32 = 151
+    public static const HUKS_ALG_SM4: UInt32 = 152
 }
 ```
 
@@ -1148,12 +1087,12 @@ public class HuksKeyAlg {
 ### static const HUKS_ALG_AES
 
 ```cangjie
-public static const HUKS_ALG_AES: HuksParamValue = HuksParamValue.Uint32Value(20)
+public static const HUKS_ALG_AES: UInt32 = 20
 ```
 
 **功能：** 表示使用AES算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1162,12 +1101,12 @@ public static const HUKS_ALG_AES: HuksParamValue = HuksParamValue.Uint32Value(20
 ### static const HUKS_ALG_DH
 
 ```cangjie
-public static const HUKS_ALG_DH: HuksParamValue = HuksParamValue.Uint32Value(103)
+public static const HUKS_ALG_DH: UInt32 = 103
 ```
 
 **功能：** 表示使用DH算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1176,12 +1115,12 @@ public static const HUKS_ALG_DH: HuksParamValue = HuksParamValue.Uint32Value(103
 ### static const HUKS_ALG_DSA
 
 ```cangjie
-public static const HUKS_ALG_DSA: HuksParamValue = HuksParamValue.Uint32Value(3)
+public static const HUKS_ALG_DSA: UInt32 = 3
 ```
 
 **功能：** 表示使用DSA算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1190,12 +1129,12 @@ public static const HUKS_ALG_DSA: HuksParamValue = HuksParamValue.Uint32Value(3)
 ### static const HUKS_ALG_ECC
 
 ```cangjie
-public static const HUKS_ALG_ECC: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_ALG_ECC: UInt32 = 2
 ```
 
 **功能：** 表示使用ECC算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1204,12 +1143,12 @@ public static const HUKS_ALG_ECC: HuksParamValue = HuksParamValue.Uint32Value(2)
 ### static const HUKS_ALG_ECDH
 
 ```cangjie
-public static const HUKS_ALG_ECDH: HuksParamValue = HuksParamValue.Uint32Value(100)
+public static const HUKS_ALG_ECDH: UInt32 = 100
 ```
 
 **功能：** 表示使用ECDH算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1218,12 +1157,12 @@ public static const HUKS_ALG_ECDH: HuksParamValue = HuksParamValue.Uint32Value(1
 ### static const HUKS_ALG_ED25519
 
 ```cangjie
-public static const HUKS_ALG_ED25519: HuksParamValue = HuksParamValue.Uint32Value(102)
+public static const HUKS_ALG_ED25519: UInt32 = 102
 ```
 
 **功能：** 表示使用ED25519算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1232,12 +1171,12 @@ public static const HUKS_ALG_ED25519: HuksParamValue = HuksParamValue.Uint32Valu
 ### static const HUKS_ALG_HKDF
 
 ```cangjie
-public static const HUKS_ALG_HKDF: HuksParamValue = HuksParamValue.Uint32Value(51)
+public static const HUKS_ALG_HKDF: UInt32 = 51
 ```
 
 **功能：** 表示使用HKDF算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1246,12 +1185,12 @@ public static const HUKS_ALG_HKDF: HuksParamValue = HuksParamValue.Uint32Value(5
 ### static const HUKS_ALG_HMAC
 
 ```cangjie
-public static const HUKS_ALG_HMAC: HuksParamValue = HuksParamValue.Uint32Value(50)
+public static const HUKS_ALG_HMAC: UInt32 = 50
 ```
 
 **功能：** 表示使用HMAC算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1260,12 +1199,12 @@ public static const HUKS_ALG_HMAC: HuksParamValue = HuksParamValue.Uint32Value(5
 ### static const HUKS_ALG_PBKDF2
 
 ```cangjie
-public static const HUKS_ALG_PBKDF2: HuksParamValue = HuksParamValue.Uint32Value(52)
+public static const HUKS_ALG_PBKDF2: UInt32 = 52
 ```
 
 **功能：** 表示使用PBKDF2算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1274,12 +1213,12 @@ public static const HUKS_ALG_PBKDF2: HuksParamValue = HuksParamValue.Uint32Value
 ### static const HUKS_ALG_RSA
 
 ```cangjie
-public static const HUKS_ALG_RSA: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_ALG_RSA: UInt32 = 1
 ```
 
 **功能：** 表示使用RSA算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1288,12 +1227,12 @@ public static const HUKS_ALG_RSA: HuksParamValue = HuksParamValue.Uint32Value(1)
 ### static const HUKS_ALG_SM2
 
 ```cangjie
-public static const HUKS_ALG_SM2: HuksParamValue = HuksParamValue.Uint32Value(150)
+public static const HUKS_ALG_SM2: UInt32 = 150
 ```
 
 **功能：** 表示使用SM2算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1302,12 +1241,12 @@ public static const HUKS_ALG_SM2: HuksParamValue = HuksParamValue.Uint32Value(15
 ### static const HUKS_ALG_SM3
 
 ```cangjie
-public static const HUKS_ALG_SM3: HuksParamValue = HuksParamValue.Uint32Value(151)
+public static const HUKS_ALG_SM3: UInt32 = 151
 ```
 
 **功能：** 表示使用SM3算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1316,12 +1255,12 @@ public static const HUKS_ALG_SM3: HuksParamValue = HuksParamValue.Uint32Value(15
 ### static const HUKS_ALG_SM4
 
 ```cangjie
-public static const HUKS_ALG_SM4: HuksParamValue = HuksParamValue.Uint32Value(152)
+public static const HUKS_ALG_SM4: UInt32 = 152
 ```
 
 **功能：** 表示使用SM4算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1330,12 +1269,12 @@ public static const HUKS_ALG_SM4: HuksParamValue = HuksParamValue.Uint32Value(15
 ### static const HUKS_ALG_X25519
 
 ```cangjie
-public static const HUKS_ALG_X25519: HuksParamValue = HuksParamValue.Uint32Value(101)
+public static const HUKS_ALG_X25519: UInt32 = 101
 ```
 
 **功能：** 表示使用X25519算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1345,14 +1284,14 @@ public static const HUKS_ALG_X25519: HuksParamValue = HuksParamValue.Uint32Value
 
 ```cangjie
 public class HuksKeyDigest {
-    public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_DIGEST_MD5: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.Uint32Value(2)
-    public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.Uint32Value(10)
-    public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.Uint32Value(11)
-    public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.Uint32Value(12)
-    public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.Uint32Value(13)
-    public static const HUKS_DIGEST_SHA512: HuksParamValue = HuksParamValue.Uint32Value(14)
+    public static const HUKS_DIGEST_NONE: UInt32 = 0
+    public static const HUKS_DIGEST_MD5: UInt32 = 1
+    public static const HUKS_DIGEST_SM3: UInt32 = 2
+    public static const HUKS_DIGEST_SHA1: UInt32 = 10
+    public static const HUKS_DIGEST_SHA224: UInt32 = 11
+    public static const HUKS_DIGEST_SHA256: UInt32 = 12
+    public static const HUKS_DIGEST_SHA384: UInt32 = 13
+    public static const HUKS_DIGEST_SHA512: UInt32 = 14
 }
 ```
 
@@ -1365,12 +1304,12 @@ public class HuksKeyDigest {
 ### static const HUKS_DIGEST_MD5
 
 ```cangjie
-public static const HUKS_DIGEST_MD5: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_DIGEST_MD5: UInt32 = 1
 ```
 
 **功能：** 表示MD5摘要算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1379,12 +1318,12 @@ public static const HUKS_DIGEST_MD5: HuksParamValue = HuksParamValue.Uint32Value
 ### static const HUKS_DIGEST_NONE
 
 ```cangjie
-public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.Uint32Value(0)
+public static const HUKS_DIGEST_NONE: UInt32 = 0
 ```
 
 **功能：** 表示无摘要算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1393,12 +1332,12 @@ public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.Uint32Valu
 ### static const HUKS_DIGEST_SHA1
 
 ```cangjie
-public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.Uint32Value(10)
+public static const HUKS_DIGEST_SHA1: UInt32 = 10
 ```
 
 **功能：** 表示SHA1摘要算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1407,12 +1346,12 @@ public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.Uint32Valu
 ### static const HUKS_DIGEST_SHA224
 
 ```cangjie
-public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.Uint32Value(11)
+public static const HUKS_DIGEST_SHA224: UInt32 = 11
 ```
 
 **功能：** 表示SHA224摘要算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1421,12 +1360,12 @@ public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.Uint32Va
 ### static const HUKS_DIGEST_SHA256
 
 ```cangjie
-public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.Uint32Value(12)
+public static const HUKS_DIGEST_SHA256: UInt32 = 12
 ```
 
 **功能：** 表示SHA256摘要算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1435,12 +1374,12 @@ public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.Uint32Va
 ### static const HUKS_DIGEST_SHA384
 
 ```cangjie
-public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.Uint32Value(13)
+public static const HUKS_DIGEST_SHA384: UInt32 = 13
 ```
 
 **功能：** 表示SHA384摘要算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1449,12 +1388,12 @@ public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.Uint32Va
 ### static const HUKS_DIGEST_SHA512
 
 ```cangjie
-public static const HUKS_DIGEST_SHA512: HuksParamValue = HuksParamValue.Uint32Value(14)
+public static const HUKS_DIGEST_SHA512: UInt32 = 14
 ```
 
 **功能：** 表示SHA512摘要算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1463,12 +1402,12 @@ public static const HUKS_DIGEST_SHA512: HuksParamValue = HuksParamValue.Uint32Va
 ### static const HUKS_DIGEST_SM3
 
 ```cangjie
-public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_DIGEST_SM3: UInt32 = 2
 ```
 
 **功能：** 表示SM3摘要算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1478,10 +1417,10 @@ public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.Uint32Value
 
 ```cangjie
 public class HuksKeyFlag {
-    public static const HUKS_KEY_FLAG_IMPORT_KEY: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_KEY_FLAG_GENERATE_KEY: HuksParamValue = HuksParamValue.Uint32Value(2)
-    public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.Uint32Value(3)
-    public static const HUKS_KEY_FLAG_DERIVE_KEY: HuksParamValue = HuksParamValue.Uint32Value(4)
+    public static const HUKS_KEY_FLAG_IMPORT_KEY: UInt32 = 1
+    public static const HUKS_KEY_FLAG_GENERATE_KEY: UInt32 = 2
+    public static const HUKS_KEY_FLAG_AGREE_KEY: UInt32 = 3
+    public static const HUKS_KEY_FLAG_DERIVE_KEY: UInt32 = 4
 }
 ```
 
@@ -1494,12 +1433,12 @@ public class HuksKeyFlag {
 ### static const HUKS_KEY_FLAG_AGREE_KEY
 
 ```cangjie
-public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.Uint32Value(3)
+public static const HUKS_KEY_FLAG_AGREE_KEY: UInt32 = 3
 ```
 
 **功能：** 表示通过生成密钥协商接口生成的密钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1508,12 +1447,12 @@ public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.Uin
 ### static const HUKS_KEY_FLAG_DERIVE_KEY
 
 ```cangjie
-public static const HUKS_KEY_FLAG_DERIVE_KEY: HuksParamValue = HuksParamValue.Uint32Value(4)
+public static const HUKS_KEY_FLAG_DERIVE_KEY: UInt32 = 4
 ```
 
 **功能：** 表示通过生成密钥派生接口生成的密钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1522,12 +1461,12 @@ public static const HUKS_KEY_FLAG_DERIVE_KEY: HuksParamValue = HuksParamValue.Ui
 ### static const HUKS_KEY_FLAG_GENERATE_KEY
 
 ```cangjie
-public static const HUKS_KEY_FLAG_GENERATE_KEY: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_KEY_FLAG_GENERATE_KEY: UInt32 = 2
 ```
 
 **功能：** 表示通过生成密钥接口生成的密钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1536,12 +1475,12 @@ public static const HUKS_KEY_FLAG_GENERATE_KEY: HuksParamValue = HuksParamValue.
 ### static const HUKS_KEY_FLAG_IMPORT_KEY
 
 ```cangjie
-public static const HUKS_KEY_FLAG_IMPORT_KEY: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_KEY_FLAG_IMPORT_KEY: UInt32 = 1
 ```
 
 **功能：** 表示通过导入公钥接口导入的密钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1551,9 +1490,9 @@ public static const HUKS_KEY_FLAG_IMPORT_KEY: HuksParamValue = HuksParamValue.Ui
 
 ```cangjie
 public class HuksKeyGenerateType {
-    public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_KEY_GENERATE_TYPE_DERIVE: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_KEY_GENERATE_TYPE_AGREE: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: UInt32 = 0
+    public static const HUKS_KEY_GENERATE_TYPE_DERIVE: UInt32 = 1
+    public static const HUKS_KEY_GENERATE_TYPE_AGREE: UInt32 = 2
 }
 ```
 
@@ -1566,12 +1505,12 @@ public class HuksKeyGenerateType {
 ### static const HUKS_KEY_GENERATE_TYPE_AGREE
 
 ```cangjie
-public static const HUKS_KEY_GENERATE_TYPE_AGREE: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_KEY_GENERATE_TYPE_AGREE: UInt32 = 2
 ```
 
 **功能：** 协商生成的密钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1580,12 +1519,12 @@ public static const HUKS_KEY_GENERATE_TYPE_AGREE: HuksParamValue = HuksParamValu
 ### static const HUKS_KEY_GENERATE_TYPE_DEFAULT
 
 ```cangjie
-public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: HuksParamValue = HuksParamValue.Uint32Value(0)
+public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: UInt32 = 0
 ```
 
 **功能：** 默认生成的密钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1594,12 +1533,12 @@ public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: HuksParamValue = HuksParamVa
 ### static const HUKS_KEY_GENERATE_TYPE_DERIVE
 
 ```cangjie
-public static const HUKS_KEY_GENERATE_TYPE_DERIVE: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_KEY_GENERATE_TYPE_DERIVE: UInt32 = 1
 ```
 
 **功能：** 派生生成的密钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1609,12 +1548,12 @@ public static const HUKS_KEY_GENERATE_TYPE_DERIVE: HuksParamValue = HuksParamVal
 
 ```cangjie
 public class HuksKeyPadding {
-    public static const HUKS_PADDING_NONE: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_PADDING_OAEP: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_PADDING_PSS: HuksParamValue = HuksParamValue.Uint32Value(2)
-    public static const HUKS_PADDING_PKCS1_V1_5: HuksParamValue = HuksParamValue.Uint32Value(3)
-    public static const HUKS_PADDING_PKCS5: HuksParamValue = HuksParamValue.Uint32Value(4)
-    public static const HUKS_PADDING_PKCS7: HuksParamValue = HuksParamValue.Uint32Value(5)
+    public static const HUKS_PADDING_NONE: UInt32 = 0
+    public static const HUKS_PADDING_OAEP: UInt32 = 1
+    public static const HUKS_PADDING_PSS: UInt32 = 2
+    public static const HUKS_PADDING_PKCS1_V1_5: UInt32 = 3
+    public static const HUKS_PADDING_PKCS5: UInt32 = 4
+    public static const HUKS_PADDING_PKCS7: UInt32 = 5
 }
 ```
 
@@ -1627,12 +1566,12 @@ public class HuksKeyPadding {
 ### static const HUKS_PADDING_NONE
 
 ```cangjie
-public static const HUKS_PADDING_NONE: HuksParamValue = HuksParamValue.Uint32Value(0)
+public static const HUKS_PADDING_NONE: UInt32 = 0
 ```
 
 **功能：** 表示不使用补齐算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1641,12 +1580,12 @@ public static const HUKS_PADDING_NONE: HuksParamValue = HuksParamValue.Uint32Val
 ### static const HUKS_PADDING_OAEP
 
 ```cangjie
-public static const HUKS_PADDING_OAEP: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_PADDING_OAEP: UInt32 = 1
 ```
 
 **功能：** 表示使用OAEP补齐算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1655,12 +1594,12 @@ public static const HUKS_PADDING_OAEP: HuksParamValue = HuksParamValue.Uint32Val
 ### static const HUKS_PADDING_PKCS1_V1_5
 
 ```cangjie
-public static const HUKS_PADDING_PKCS1_V1_5: HuksParamValue = HuksParamValue.Uint32Value(3)
+public static const HUKS_PADDING_PKCS1_V1_5: UInt32 = 3
 ```
 
 **功能：** 表示使用PKCS1_V1_5补齐算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1669,12 +1608,12 @@ public static const HUKS_PADDING_PKCS1_V1_5: HuksParamValue = HuksParamValue.Uin
 ### static const HUKS_PADDING_PKCS5
 
 ```cangjie
-public static const HUKS_PADDING_PKCS5: HuksParamValue = HuksParamValue.Uint32Value(4)
+public static const HUKS_PADDING_PKCS5: UInt32 = 4
 ```
 
 **功能：** 表示使用PKCS5补齐算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1683,12 +1622,12 @@ public static const HUKS_PADDING_PKCS5: HuksParamValue = HuksParamValue.Uint32Va
 ### static const HUKS_PADDING_PKCS7
 
 ```cangjie
-public static const HUKS_PADDING_PKCS7: HuksParamValue = HuksParamValue.Uint32Value(5)
+public static const HUKS_PADDING_PKCS7: UInt32 = 5
 ```
 
 **功能：** 表示使用PKCS7补齐算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1697,12 +1636,12 @@ public static const HUKS_PADDING_PKCS7: HuksParamValue = HuksParamValue.Uint32Va
 ### static const HUKS_PADDING_PSS
 
 ```cangjie
-public static const HUKS_PADDING_PSS: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_PADDING_PSS: UInt32 = 2
 ```
 
 **功能：** 表示使用PSS补齐算法。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1712,15 +1651,15 @@ public static const HUKS_PADDING_PSS: HuksParamValue = HuksParamValue.Uint32Valu
 
 ```cangjie
 public class HuksKeyPurpose {
-    public static const HUKS_KEY_PURPOSE_ENCRYPT: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_KEY_PURPOSE_DECRYPT: HuksParamValue = HuksParamValue.Uint32Value(2)
-    public static const HUKS_KEY_PURPOSE_SIGN: HuksParamValue = HuksParamValue.Uint32Value(4)
-    public static const HUKS_KEY_PURPOSE_VERIFY: HuksParamValue = HuksParamValue.Uint32Value(8)
-    public static const HUKS_KEY_PURPOSE_DERIVE: HuksParamValue = HuksParamValue.Uint32Value(16)
-    public static const HUKS_KEY_PURPOSE_WRAP: HuksParamValue = HuksParamValue.Uint32Value(32)
-    public static const HUKS_KEY_PURPOSE_UNWRAP: HuksParamValue = HuksParamValue.Uint32Value(64)
-    public static const HUKS_KEY_PURPOSE_MAC: HuksParamValue = HuksParamValue.Uint32Value(128)
-    public static const HUKS_KEY_PURPOSE_AGREE: HuksParamValue = HuksParamValue.Uint32Value(256)
+    public static const HUKS_KEY_PURPOSE_ENCRYPT: UInt32 = 1
+    public static const HUKS_KEY_PURPOSE_DECRYPT: UInt32 = 2
+    public static const HUKS_KEY_PURPOSE_SIGN: UInt32 = 4
+    public static const HUKS_KEY_PURPOSE_VERIFY: UInt32 = 8
+    public static const HUKS_KEY_PURPOSE_DERIVE: UInt32 = 16
+    public static const HUKS_KEY_PURPOSE_WRAP: UInt32 = 32
+    public static const HUKS_KEY_PURPOSE_UNWRAP: UInt32 = 64
+    public static const HUKS_KEY_PURPOSE_MAC: UInt32 = 128
+    public static const HUKS_KEY_PURPOSE_AGREE: UInt32 = 256
 }
 ```
 
@@ -1733,12 +1672,12 @@ public class HuksKeyPurpose {
 ### static const HUKS_KEY_PURPOSE_AGREE
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_AGREE: HuksParamValue = HuksParamValue.Uint32Value(256)
+public static const HUKS_KEY_PURPOSE_AGREE: UInt32 = 256
 ```
 
 **功能：** 表示密钥用于进行密钥协商。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1747,12 +1686,12 @@ public static const HUKS_KEY_PURPOSE_AGREE: HuksParamValue = HuksParamValue.Uint
 ### static const HUKS_KEY_PURPOSE_DECRYPT
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_DECRYPT: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_KEY_PURPOSE_DECRYPT: UInt32 = 2
 ```
 
 **功能：** 表示密钥用于对密文进行解密操作。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1761,12 +1700,12 @@ public static const HUKS_KEY_PURPOSE_DECRYPT: HuksParamValue = HuksParamValue.Ui
 ### static const HUKS_KEY_PURPOSE_DERIVE
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_DERIVE: HuksParamValue = HuksParamValue.Uint32Value(16)
+public static const HUKS_KEY_PURPOSE_DERIVE: UInt32 = 16
 ```
 
 **功能：** 表示密钥用于派生密钥。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1775,12 +1714,12 @@ public static const HUKS_KEY_PURPOSE_DERIVE: HuksParamValue = HuksParamValue.Uin
 ### static const HUKS_KEY_PURPOSE_ENCRYPT
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_ENCRYPT: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_KEY_PURPOSE_ENCRYPT: UInt32 = 1
 ```
 
 **功能：** 表示密钥用于对明文进行加密操作。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1789,12 +1728,12 @@ public static const HUKS_KEY_PURPOSE_ENCRYPT: HuksParamValue = HuksParamValue.Ui
 ### static const HUKS_KEY_PURPOSE_MAC
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_MAC: HuksParamValue = HuksParamValue.Uint32Value(128)
+public static const HUKS_KEY_PURPOSE_MAC: UInt32 = 128
 ```
 
 **功能：** 表示密钥用于生成mac消息验证码。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1803,12 +1742,12 @@ public static const HUKS_KEY_PURPOSE_MAC: HuksParamValue = HuksParamValue.Uint32
 ### static const HUKS_KEY_PURPOSE_SIGN
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_SIGN: HuksParamValue = HuksParamValue.Uint32Value(4)
+public static const HUKS_KEY_PURPOSE_SIGN: UInt32 = 4
 ```
 
 **功能：** 表示密钥加密导入。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1817,12 +1756,12 @@ public static const HUKS_KEY_PURPOSE_SIGN: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_KEY_PURPOSE_UNWRAP
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_UNWRAP: HuksParamValue = HuksParamValue.Uint32Value(64)
+public static const HUKS_KEY_PURPOSE_UNWRAP: UInt32 = 64
 ```
 
 **功能：** 表示密钥加密导入。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1831,12 +1770,12 @@ public static const HUKS_KEY_PURPOSE_UNWRAP: HuksParamValue = HuksParamValue.Uin
 ### static const HUKS_KEY_PURPOSE_VERIFY
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_VERIFY: HuksParamValue = HuksParamValue.Uint32Value(8)
+public static const HUKS_KEY_PURPOSE_VERIFY: UInt32 = 8
 ```
 
 **功能：** 表示密钥用于验证签名后的数据。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1845,12 +1784,12 @@ public static const HUKS_KEY_PURPOSE_VERIFY: HuksParamValue = HuksParamValue.Uin
 ### static const HUKS_KEY_PURPOSE_WRAP
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_WRAP: HuksParamValue = HuksParamValue.Uint32Value(32)
+public static const HUKS_KEY_PURPOSE_WRAP: UInt32 = 32
 ```
 
 **功能：** 表示密钥用于加密导出。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1860,26 +1799,25 @@ public static const HUKS_KEY_PURPOSE_WRAP: HuksParamValue = HuksParamValue.Uint3
 
 ```cangjie
 public class HuksKeySize {
-    public static const HUKS_RSA_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint32Value(512)
-    public static const HUKS_RSA_KEY_SIZE_768: HuksParamValue = HuksParamValue.Uint32Value(768)
-    public static const HUKS_RSA_KEY_SIZE_1024: HuksParamValue = HuksParamValue.Uint32Value(1024)
-    public static const HUKS_RSA_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint32Value(2048)
-    public static const HUKS_RSA_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint32Value(3072)
-    public static const HUKS_RSA_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint32Value(4096)
-    public static const HUKS_ECC_KEY_SIZE_224: HuksParamValue = HuksParamValue.Uint32Value(224)
-    public static const HUKS_ECC_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
-    public static const HUKS_ECC_KEY_SIZE_384: HuksParamValue = HuksParamValue.Uint32Value(384)
-    public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.Uint32Value(521)
-    public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint32Value(128)
-    public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.Uint32Value(192)
-    public static const HUKS_AES_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
-    public static const HUKS_AES_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint32Value(512)
-    public static const HUKS_CURVE25519_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
-    public static const HUKS_DH_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint32Value(2048)
-    public static const HUKS_DH_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint32Value(3072)
-    public static const HUKS_DH_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint32Value(4096)
-    public static const HUKS_SM2_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
-    public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint32Value(128)
+    public static const HUKS_RSA_KEY_SIZE_512: UInt32 = 512
+    public static const HUKS_RSA_KEY_SIZE_768: UInt32 = 768
+    public static const HUKS_RSA_KEY_SIZE_1024: UInt32 = 1024
+    public static const HUKS_RSA_KEY_SIZE_2048: UInt32 = 2048
+    public static const HUKS_RSA_KEY_SIZE_3072: UInt32 = 3072
+    public static const HUKS_RSA_KEY_SIZE_4096: UInt32 = 4096
+    public static const HUKS_ECC_KEY_SIZE_224: UInt32 = 224
+    public static const HUKS_ECC_KEY_SIZE_256: UInt32 = 256
+    public static const HUKS_ECC_KEY_SIZE_384: UInt32 = 384
+    public static const HUKS_ECC_KEY_SIZE_521: UInt32 = 521
+    public static const HUKS_AES_KEY_SIZE_128: UInt32 = 128
+    public static const HUKS_AES_KEY_SIZE_192: UInt32 = 192
+    public static const HUKS_AES_KEY_SIZE_256: UInt32 = 256
+    public static const HUKS_CURVE25519_KEY_SIZE_256: UInt32 = 256
+    public static const HUKS_DH_KEY_SIZE_2048: UInt32 = 2048
+    public static const HUKS_DH_KEY_SIZE_3072: UInt32 = 3072
+    public static const HUKS_DH_KEY_SIZE_4096: UInt32 = 4096
+    public static const HUKS_SM2_KEY_SIZE_256: UInt32 = 256
+    public static const HUKS_SM4_KEY_SIZE_128: UInt32 = 128
 }
 ```
 
@@ -1892,12 +1830,12 @@ public class HuksKeySize {
 ### static const HUKS_AES_KEY_SIZE_128
 
 ```cangjie
-public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint32Value(128)
+public static const HUKS_AES_KEY_SIZE_128: UInt32 = 128
 ```
 
 **功能：** 表示3DES算法的密钥长度为128bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1906,12 +1844,12 @@ public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_AES_KEY_SIZE_192
 
 ```cangjie
-public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.Uint32Value(192)
+public static const HUKS_AES_KEY_SIZE_192: UInt32 = 192
 ```
 
 **功能：** 表示3DES算法的密钥长度为192bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1920,26 +1858,12 @@ public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_AES_KEY_SIZE_256
 
 ```cangjie
-public static const HUKS_AES_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
+public static const HUKS_AES_KEY_SIZE_256: UInt32 = 256
 ```
 
 **功能：** 表示使用AES算法的密钥长度为256bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_AES_KEY_SIZE_512
-
-```cangjie
-public static const HUKS_AES_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint32Value(512)
-```
-
-**功能：** 表示使用AES算法的密钥长度为512bit。
-
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1948,12 +1872,12 @@ public static const HUKS_AES_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_CURVE25519_KEY_SIZE_256
 
 ```cangjie
-public static const HUKS_CURVE25519_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
+public static const HUKS_CURVE25519_KEY_SIZE_256: UInt32 = 256
 ```
 
 **功能：** 表示使用CURVE25519算法的密钥长度为256bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1962,12 +1886,12 @@ public static const HUKS_CURVE25519_KEY_SIZE_256: HuksParamValue = HuksParamValu
 ### static const HUKS_DH_KEY_SIZE_2048
 
 ```cangjie
-public static const HUKS_DH_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint32Value(2048)
+public static const HUKS_DH_KEY_SIZE_2048: UInt32 = 2048
 ```
 
 **功能：** 表示使用DH算法的密钥长度为2048bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1976,12 +1900,12 @@ public static const HUKS_DH_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_DH_KEY_SIZE_3072
 
 ```cangjie
-public static const HUKS_DH_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint32Value(3072)
+public static const HUKS_DH_KEY_SIZE_3072: UInt32 = 3072
 ```
 
 **功能：** 表示使用DH算法的密钥长度为3072bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1990,12 +1914,12 @@ public static const HUKS_DH_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_DH_KEY_SIZE_4096
 
 ```cangjie
-public static const HUKS_DH_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint32Value(4096)
+public static const HUKS_DH_KEY_SIZE_4096: UInt32 = 4096
 ```
 
 **功能：** 表示使用DH算法的密钥长度为4096bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2004,12 +1928,12 @@ public static const HUKS_DH_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_ECC_KEY_SIZE_224
 
 ```cangjie
-public static const HUKS_ECC_KEY_SIZE_224: HuksParamValue = HuksParamValue.Uint32Value(224)
+public static const HUKS_ECC_KEY_SIZE_224: UInt32 = 224
 ```
 
 **功能：** 表示使用ECC算法的密钥长度为224bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2018,12 +1942,12 @@ public static const HUKS_ECC_KEY_SIZE_224: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_ECC_KEY_SIZE_256
 
 ```cangjie
-public static const HUKS_ECC_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
+public static const HUKS_ECC_KEY_SIZE_256: UInt32 = 256
 ```
 
 **功能：** 表示使用ECC算法的密钥长度为256bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2032,12 +1956,12 @@ public static const HUKS_ECC_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_ECC_KEY_SIZE_384
 
 ```cangjie
-public static const HUKS_ECC_KEY_SIZE_384: HuksParamValue = HuksParamValue.Uint32Value(384)
+public static const HUKS_ECC_KEY_SIZE_384: UInt32 = 384
 ```
 
 **功能：** 表示使用ECC算法的密钥长度为384bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2046,12 +1970,12 @@ public static const HUKS_ECC_KEY_SIZE_384: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_ECC_KEY_SIZE_521
 
 ```cangjie
-public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.Uint32Value(521)
+public static const HUKS_ECC_KEY_SIZE_521: UInt32 = 521
 ```
 
 **功能：** 表示使用ECC算法的密钥长度为521bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2060,12 +1984,12 @@ public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_RSA_KEY_SIZE_1024
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_1024: HuksParamValue = HuksParamValue.Uint32Value(1024)
+public static const HUKS_RSA_KEY_SIZE_1024: UInt32 = 1024
 ```
 
 **功能：** 表示使用RSA算法的密钥长度为1024bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2074,12 +1998,12 @@ public static const HUKS_RSA_KEY_SIZE_1024: HuksParamValue = HuksParamValue.Uint
 ### static const HUKS_RSA_KEY_SIZE_2048
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint32Value(2048)
+public static const HUKS_RSA_KEY_SIZE_2048: UInt32 = 2048
 ```
 
 **功能：** 表示使用RSA算法的密钥长度为2048bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2088,12 +2012,12 @@ public static const HUKS_RSA_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint
 ### static const HUKS_RSA_KEY_SIZE_3072
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint32Value(3072)
+public static const HUKS_RSA_KEY_SIZE_3072: UInt32 = 3072
 ```
 
 **功能：** 表示使用RSA算法的密钥长度为3072bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2102,12 +2026,12 @@ public static const HUKS_RSA_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint
 ### static const HUKS_RSA_KEY_SIZE_4096
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint32Value(4096)
+public static const HUKS_RSA_KEY_SIZE_4096: UInt32 = 4096
 ```
 
 **功能：** 表示使用RSA算法的密钥长度为4096bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2116,12 +2040,12 @@ public static const HUKS_RSA_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint
 ### static const HUKS_RSA_KEY_SIZE_512
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint32Value(512)
+public static const HUKS_RSA_KEY_SIZE_512: UInt32 = 512
 ```
 
 **功能：** 表示使用RSA算法的密钥长度为512bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2130,12 +2054,12 @@ public static const HUKS_RSA_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_RSA_KEY_SIZE_768
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_768: HuksParamValue = HuksParamValue.Uint32Value(768)
+public static const HUKS_RSA_KEY_SIZE_768: UInt32 = 768
 ```
 
 **功能：** 表示使用RSA算法的密钥长度为768bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2144,12 +2068,12 @@ public static const HUKS_RSA_KEY_SIZE_768: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_SM2_KEY_SIZE_256
 
 ```cangjie
-public static const HUKS_SM2_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
+public static const HUKS_SM2_KEY_SIZE_256: UInt32 = 256
 ```
 
 **功能：** 表示SM2算法的密钥长度为256bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2158,12 +2082,12 @@ public static const HUKS_SM2_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint3
 ### static const HUKS_SM4_KEY_SIZE_128
 
 ```cangjie
-public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint32Value(128)
+public static const HUKS_SM4_KEY_SIZE_128: UInt32 = 128
 ```
 
 **功能：** 表示SM4算法的密钥长度为128bit。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2173,8 +2097,8 @@ public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint3
 
 ```cangjie
 public class HuksKeyStorageType {
-    public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: HuksParamValue = HuksParamValue.Uint32Value(2)
-    public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: HuksParamValue = HuksParamValue.Uint32Value(3)
+    public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: UInt32 = 2
+    public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: UInt32 = 3
 }
 ```
 
@@ -2187,12 +2111,12 @@ public class HuksKeyStorageType {
 ### static const HUKS_STORAGE_KEY_EXPORT_ALLOWED
 
 ```cangjie
-public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: HuksParamValue = HuksParamValue.Uint32Value(3)
+public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: UInt32 = 3
 ```
 
 **功能：** 表示主密钥派生的密钥直接导出给业务方，HUKS不对其进行托管服务。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2201,12 +2125,12 @@ public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: HuksParamValue = HuksParamV
 ### static const HUKS_STORAGE_ONLY_USED_IN_HUKS
 
 ```cangjie
-public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: UInt32 = 2
 ```
 
 **功能：** 表示主密钥派生的密钥存储于huks中，由HUKS进行托管。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2285,10 +2209,10 @@ public init(properties!: Array<HuksParam> = Array<HuksParam>(), inData!: Bytes =
 
 ```cangjie
 public class HuksParam {
-    public var tag: HuksTag
+    public var tag: UInt32
     public var value: HuksParamValue
 
-    public init(tag: HuksTag, value: HuksParamValue)
+    public init(tag: UInt32, value: HuksParamValue)
 }
 ```
 
@@ -2301,12 +2225,12 @@ public class HuksParam {
 ### var tag
 
 ```cangjie
-public var tag: HuksTag
+public var tag: UInt32
 ```
 
 **功能：** 标签。
 
-**类型：** [HuksTag](#enum-hukstag)
+**类型：** UInt32
 
 **读写能力：** 可读写
 
@@ -2322,7 +2246,7 @@ public var value: HuksParamValue
 
 **功能：** 标签对应值。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **读写能力：** 可读写
 
@@ -2330,11 +2254,11 @@ public var value: HuksParamValue
 
 **起始版本：** 21
 
-### init(HuksTag, HuksParamValue)
+### init(UInt32, HuksParamValue)
 
 ```cangjie
 
-public init(tag: HuksTag, value: HuksParamValue)
+public init(tag: UInt32, value: HuksParamValue)
 ```
 
 **功能：** 构造[HuksOptions](#class-huksoptions)中properties数组中的元素实例。
@@ -2347,15 +2271,15 @@ public init(tag: HuksTag, value: HuksParamValue)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|tag|[HuksTag](#enum-hukstag)|是|-|标签。|
+|tag|UInt32|是|-|标签。|
 |value|[HuksParamValue](#enum-huksparamvalue)|是|-|标签对应值。|
 
 ## class HuksRsaPssSaltLenType
 
 ```cangjie
 public class HuksRsaPssSaltLenType {
-    public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_RSA_PSS_SALT_LEN_MAX: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: UInt32 = 0
+    public static const HUKS_RSA_PSS_SALT_LEN_MAX: UInt32 = 1
 }
 ```
 
@@ -2368,12 +2292,12 @@ public class HuksRsaPssSaltLenType {
 ### static const HUKS_RSA_PSS_SALT_LEN_DIGEST
 
 ```cangjie
-public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: HuksParamValue = HuksParamValue.Uint32Value(0)
+public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: UInt32 = 0
 ```
 
 **功能：** 表示以摘要长度设置salt_len。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2382,12 +2306,12 @@ public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: HuksParamValue = HuksParamValu
 ### static const HUKS_RSA_PSS_SALT_LEN_MAX
 
 ```cangjie
-public static const HUKS_RSA_PSS_SALT_LEN_MAX: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_RSA_PSS_SALT_LEN_MAX: UInt32 = 1
 ```
 
 **功能：** 表示以最大长度设置salt_len。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2397,7 +2321,7 @@ public static const HUKS_RSA_PSS_SALT_LEN_MAX: HuksParamValue = HuksParamValue.U
 
 ```cangjie
 public class HuksSecureSignType {
-    public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: UInt32 = 1
 }
 ```
 
@@ -2410,57 +2334,14 @@ public class HuksSecureSignType {
 ### static const HUKS_SECURE_SIGN_WITH_AUTHINFO
 
 ```cangjie
-public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: UInt32 = 1
 ```
 
 **功能：** 表示签名类型为携带认证信息。生成或导入密钥时指定该字段，则在使用密钥进行签名时，对待签名的数据添加认证信息后进行签名。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
-
-**起始版本：** 21
-
-## class HuksSendType
-
-```cangjie
-public class HuksSendType {
-    public static const HUKS_SEND_TYPE_ASYNC: HuksParamValue = HuksParamValue.Uint32Value(0)
-    public static const HUKS_SEND_TYPE_SYNC: HuksParamValue = HuksParamValue.Uint32Value(1)
-}
-```
-
-**功能：** 表示发送Tag的方式。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_SEND_TYPE_ASYNC
-
-```cangjie
-public static const HUKS_SEND_TYPE_ASYNC: HuksParamValue = HuksParamValue.Uint32Value(0)
-```
-
-**功能：** 表示异步发送Tag。
-
-**类型：** [HuksParamValue](#enum-huksparamvalue)
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_SEND_TYPE_SYNC
-
-```cangjie
-public static const HUKS_SEND_TYPE_SYNC: HuksParamValue = HuksParamValue.Uint32Value(1)
-```
-
-**功能：** 表示同步发送Tag。
-
-**类型：** [HuksParamValue](#enum-huksparamvalue)
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
@@ -2618,8 +2499,8 @@ public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28
 
 ```cangjie
 public class HuksUnwrapSuite {
-    public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.Uint32Value(1)
-    public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: UInt32 = 1
+    public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: UInt32 = 2
 }
 ```
 
@@ -2632,12 +2513,12 @@ public class HuksUnwrapSuite {
 ### static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
 
 ```cangjie
-public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.Uint32Value(2)
+public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: UInt32 = 2
 ```
 
 **功能：** 导入加密密钥时，ECDH密钥协商后使用AES-256 GCM加密。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2646,12 +2527,12 @@ public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: HuksParamValue
 ### static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
 
 ```cangjie
-public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.Uint32Value(1)
+public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: UInt32 = 1
 ```
 
 **功能：** 导入加密密钥时，X25519密钥协商后使用AES-256 GCM加密。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -2661,9 +2542,9 @@ public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: HuksParamVal
 
 ```cangjie
 public class HuksUserAuthType {
-    public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: HuksParamValue = HuksParamValue.Uint32Value(1 << 0)
-    public static const HUKS_USER_AUTH_TYPE_FACE: HuksParamValue = HuksParamValue.Uint32Value(1 << 1)
-    public static const HUKS_USER_AUTH_TYPE_PIN: HuksParamValue = HuksParamValue.Uint32Value(1 << 2)
+    public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: UInt32 = 1 << 0
+    public static const HUKS_USER_AUTH_TYPE_FACE: UInt32 = 1 << 1
+    public static const HUKS_USER_AUTH_TYPE_PIN: UInt32 = 1 << 2
 }
 ```
 
@@ -2676,12 +2557,12 @@ public class HuksUserAuthType {
 ### static const HUKS_USER_AUTH_TYPE_FACE
 
 ```cangjie
-public static const HUKS_USER_AUTH_TYPE_FACE: HuksParamValue = HuksParamValue.Uint32Value(1 << 1)
+public static const HUKS_USER_AUTH_TYPE_FACE: UInt32 = 1 << 1
 ```
 
 **功能：** 表示用户认证类型为人脸。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -2690,12 +2571,12 @@ public static const HUKS_USER_AUTH_TYPE_FACE: HuksParamValue = HuksParamValue.Ui
 ### static const HUKS_USER_AUTH_TYPE_FINGERPRINT
 
 ```cangjie
-public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: HuksParamValue = HuksParamValue.Uint32Value(1 << 0)
+public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: UInt32 = 1 << 0
 ```
 
 **功能：** 表示用户认证类型为指纹。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -2704,12 +2585,12 @@ public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: HuksParamValue = HuksParamV
 ### static const HUKS_USER_AUTH_TYPE_PIN
 
 ```cangjie
-public static const HUKS_USER_AUTH_TYPE_PIN: HuksParamValue = HuksParamValue.Uint32Value(1 << 2)
+public static const HUKS_USER_AUTH_TYPE_PIN: UInt32 = 1 << 2
 ```
 
 **功能：** 表示用户认证类型为PIN码。
 
-**类型：** [HuksParamValue](#enum-huksparamvalue)
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -2878,94 +2759,51 @@ Uint64Value(UInt64)
 ## enum HuksTag
 
 ```cangjie
-public enum HuksTag {
-    | HuksTagInvalid
-    | HuksTagAlgorithm
-    | HuksTagPurpose
-    | HuksTagKeySize
-    | HuksTagDigest
-    | HuksTagPadding
-    | HuksTagBlockMode
-    | HuksTagKeyType
-    | HuksTagAssociatedData
-    | HuksTagNonce
-    | HuksTagIv
-    | HuksTagInfo
-    | HuksTagSalt
-    | HuksTagPwd
-    | HuksTagIteration
-    | HuksTagKeyGenerateType
-    | HuksTagDeriveMainKey
-    | HuksTagDeriveFactor
-    | HuksTagDeriveAlg
-    | HuksTagAgreeAlg
-    | HuksTagAgreePublicKeyIsKeyAlias
-    | HuksTagAgreePrivateKeyAlias
-    | HuksTagAgreePublicKey
-    | HuksTagKeyAlias
-    | HuksTagDeriveKeySize
-    | HuksTagImportKeyType
-    | HuksTagUnwrapAlgorithmSuite
-    | HuksTagDerivedAgreedKeyStorageFlag
-    | HuksTagRsaPssSaltLenType
-    | HuksTagActiveDatetime
-    | HuksTagOriginationExpireDatetime
-    | HuksTagUsageExpireDatetime
-    | HuksTagCreationDatetime
-    | HuksTagAllUsers
-    | HuksTagUserId
-    | HuksTagNoAuthRequired
-    | HuksTagUserAuthType
-    | HuksTagAuthTimeout
-    | HuksTagAuthToken
-    | HuksTagKeyAuthAccessType
-    | HuksTagKeySecureSignType
-    | HuksTagChallengeType
-    | HuksTagChallengePos
-    | HuksTagKeyAuthPurpose
-    | HuksTagAttestationChallenge
-    | HuksTagAttestationApplicationId
-    | HuksTagAttestationIdBrand
-    | HuksTagAttestationIdDevice
-    | HuksTagAttestationIdProduct
-    | HuksTagAttestationIdSerial
-    | HuksTagAttestationIdImei
-    | HuksTagAttestationIdMeid
-    | HuksTagAttestationIdManufacturer
-    | HuksTagAttestationIdModel
-    | HuksTagAttestationIdAlias
-    | HuksTagAttestationIdSocid
-    | HuksTagAttestationIdUdid
-    | HuksTagAttestationIdSecLevelInfo
-    | HuksTagAttestationIdVersionInfo
-    | HuksTagAttestationBase64
-    | HuksTagIsKeyAlias
-    | HuksTagKeyStorageFlag
-    | HuksTagIsAllowedWrap
-    | HuksTagKeyWrapType
-    | HuksTagKeyAuthId
-    | HuksTagKeyRole
-    | HuksTagKeyFlag
-    | HuksTagIsAsynchronized
-    | HuksTagSecureKeyAlias
-    | HuksTagSecureKeyUuid
-    | HuksTagKeyDomain
-    | HuksTagProcessName
-    | HuksTagPackageName
-    | HuksTagAccessTime
-    | HuksTagUsesTime
-    | HuksTagCryptoCtx
-    | HuksTagKey
-    | HuksTagKeyVersion
-    | HuksTagPayloadLen
-    | HuksTagAeTag
-    | HuksTagIsKeyHandle
-    | HuksTagOsVersion
-    | HuksTagOsPatchlevel
-    | HuksTagSymmetricKeyData
-    | HuksTagAsymmetricPublicKeyData
-    | HuksTagAsymmetricPrivateKeyData
-    | ...
+public class HuksTag {
+    public static const HUKS_TAG_ALGORITHM: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT | 1
+    public static const HUKS_TAG_PURPOSE: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT | 2
+    public static const HUKS_TAG_KEY_SIZE: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT | 3
+    public static const HUKS_TAG_DIGEST: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 4
+    public static const HUKS_TAG_PADDING: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 5
+    public static const HUKS_TAG_BLOCK_MODE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 6
+    public static const HUKS_TAG_KEY_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 7
+    public static const HUKS_TAG_ASSOCIATED_DATA: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 8
+    public static const HUKS_TAG_NONCE: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 9
+    public static const HUKS_TAG_IV: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 10
+    public static const HUKS_TAG_INFO: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 11
+    public static const HUKS_TAG_SALT: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 12
+    public static const HUKS_TAG_ITERATION: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 14
+    public static const HUKS_TAG_KEY_GENERATE_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 15
+    public static const HUKS_TAG_AGREE_ALG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 19
+    public static const HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BOOL | 20
+    public static const HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 21
+    public static const HUKS_TAG_AGREE_PUBLIC_KEY: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 22
+    public static const HUKS_TAG_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 23
+    public static const HUKS_TAG_DERIVE_KEY_SIZE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 24
+    public static const HUKS_TAG_IMPORT_KEY_TYPE: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT | 25
+    public static const HUKS_TAG_UNWRAP_ALGORITHM_SUITE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 26
+    public static const HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 29
+    public static const HUKS_TAG_RSA_PSS_SALT_LEN_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 30
+    public static const HUKS_TAG_USER_ID: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 302
+    public static const HUKS_TAG_NO_AUTH_REQUIRED: UInt32 = HuksTagType.HUKS_TAG_TYPE_BOOL | 303
+    public static const HUKS_TAG_USER_AUTH_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 304
+    public static const HUKS_TAG_AUTH_TIMEOUT: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 305
+    public static const HUKS_TAG_AUTH_TOKEN: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 306
+    public static const HUKS_TAG_KEY_AUTH_ACCESS_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 307
+    public static const HUKS_TAG_KEY_SECURE_SIGN_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 308
+    public static const HUKS_TAG_CHALLENGE_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 309
+    public static const HUKS_TAG_CHALLENGE_POS: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 310
+    public static const HUKS_TAG_KEY_AUTH_PURPOSE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 311
+    public static const HUKS_TAG_AUTH_STORAGE_LEVEL: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 316
+    public static const HUKS_TAG_ATTESTATION_CHALLENGE: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 501
+    public static const HUKS_TAG_IS_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BOOL | 1001
+    public static const HUKS_TAG_KEY_STORAGE_FLAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 1002
+    public static const HUKS_TAG_IS_ALLOWED_WRAP: UInt32 = HuksTagType.HUKS_TAG_TYPE_BOOL | 1003
+    public static const HUKS_TAG_KEY_WRAP_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 1004
+    public static const HUKS_TAG_KEY_AUTH_ID: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 1005
+    public static const HUKS_TAG_KEY_FLAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 1007
+    public static const HUKS_TAG_KEY: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 10006
+    public static const HUKS_TAG_AE_TAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 10009
 }
 ```
 
@@ -2975,1033 +2813,617 @@ public enum HuksTag {
 
 **起始版本：** 21
 
-### HuksTagAccessTime
+### static const HUKS_TAG_AE_TAG
 
 ```cangjie
-HuksTagAccessTime
-```
-
-**功能：** 原为预留字段，已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagActiveDatetime
-
-```cangjie
-HuksTagActiveDatetime
-```
-
-**功能：** 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAeTag
-
-```cangjie
-HuksTagAeTag
+public static const HUKS_TAG_AE_TAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 10009
 ```
 
 **功能：** 用于传入GCM模式中的AEAD数据的字段。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAgreeAlg
+### static const HUKS_TAG_AGREE_ALG
 
 ```cangjie
-HuksTagAgreeAlg
+public static const HUKS_TAG_AGREE_ALG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 19
 ```
 
 **功能：** 表示密钥协商时的算法类型。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAgreePrivateKeyAlias
+### static const HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS
 
 ```cangjie
-HuksTagAgreePrivateKeyAlias
+public static const HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 21
 ```
 
 **功能：** 表示密钥协商时的私钥别名。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAgreePublicKey
+### static const HUKS_TAG_AGREE_PUBLIC_KEY
 
 ```cangjie
-HuksTagAgreePublicKey
+public static const HUKS_TAG_AGREE_PUBLIC_KEY: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 22
 ```
 
 **功能：** 表示密钥协商时的公钥。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAgreePublicKeyIsKeyAlias
+### static const HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS
 
 ```cangjie
-HuksTagAgreePublicKeyIsKeyAlias
+public static const HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BOOL | 20
 ```
 
 **功能：** 表示密钥协商时的公钥别名。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAlgorithm
+### static const HUKS_TAG_ALGORITHM
 
 ```cangjie
-HuksTagAlgorithm
+public static const HUKS_TAG_ALGORITHM: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT | 1
 ```
 
 **功能：** 表示算法的Tag。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAllUsers
-
-```cangjie
-HuksTagAllUsers
-```
-
-**功能：** SystemCapability.Security.Huks.Extension
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAssociatedData
+### static const HUKS_TAG_ASSOCIATED_DATA
 
 ```cangjie
-HuksTagAssociatedData
+public static const HUKS_TAG_ASSOCIATED_DATA: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 8
 ```
 
 **功能：** 表示附加身份验证数据的Tag。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAsymmetricPrivateKeyData
-
-```cangjie
-HuksTagAsymmetricPrivateKeyData
-```
-
-**功能：** SystemCapability.Security.Huks.Extension
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAsymmetricPublicKeyData
+### static const HUKS_TAG_ATTESTATION_CHALLENGE
 
 ```cangjie
-HuksTagAsymmetricPublicKeyData
-```
-
-**功能：** 预留。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationApplicationId
-
-```cangjie
-HuksTagAttestationApplicationId
-```
-
-**功能：** 表示attestation时拥有该密钥的application的ID。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationBase64
-
-```cangjie
-HuksTagAttestationBase64
-```
-
-**功能：** 预留。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationChallenge
-
-```cangjie
-HuksTagAttestationChallenge
+public static const HUKS_TAG_ATTESTATION_CHALLENGE: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 501
 ```
 
 **功能：** 表示attestation时的挑战值。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdAlias
-
-```cangjie
-HuksTagAttestationIdAlias
-```
-
-**功能：** 表示attestation时的密钥别名。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAttestationIdBrand
+### static const HUKS_TAG_AUTH_TIMEOUT
 
 ```cangjie
-HuksTagAttestationIdBrand
-```
-
-**功能：** 表示设备的品牌。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdDevice
-
-```cangjie
-HuksTagAttestationIdDevice
-```
-
-**功能：** 表示设备的设备ID。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdImei
-
-```cangjie
-HuksTagAttestationIdImei
-```
-
-**功能：** 表示设备的IMEI号。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdManufacturer
-
-```cangjie
-HuksTagAttestationIdManufacturer
-```
-
-**功能：** 表示设备的制造商。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdMeid
-
-```cangjie
-HuksTagAttestationIdMeid
-```
-
-**功能：** 表示设备的MEID号。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdModel
-
-```cangjie
-HuksTagAttestationIdModel
-```
-
-**功能：** 表示设备的型号。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdProduct
-
-```cangjie
-HuksTagAttestationIdProduct
-```
-
-**功能：** 表示设备的产品名。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdSecLevelInfo
-
-```cangjie
-HuksTagAttestationIdSecLevelInfo
-```
-
-**功能：** 表示attestation时的安全凭据。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdSerial
-
-```cangjie
-HuksTagAttestationIdSerial
-```
-
-**功能：** 表示设备的SN号。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdSocid
-
-```cangjie
-HuksTagAttestationIdSocid
-```
-
-**功能：** 表示设备的SOCID。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdUdid
-
-```cangjie
-HuksTagAttestationIdUdid
-```
-
-**功能：** 表示设备的UDID。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAttestationIdVersionInfo
-
-```cangjie
-HuksTagAttestationIdVersionInfo
-```
-
-**功能：** 表示attestation时的版本号。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagAuthTimeout
-
-```cangjie
-HuksTagAuthTimeout
+public static const HUKS_TAG_AUTH_TIMEOUT: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 305
 ```
 
 **功能：** 表示authtoken单次有效期。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagAuthToken
+### static const HUKS_TAG_AUTH_TOKEN
 
 ```cangjie
-HuksTagAuthToken
+public static const HUKS_TAG_AUTH_TOKEN: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 306
 ```
 
 **功能：** 用于传入authToken的字段。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagBlockMode
+### static const HUKS_TAG_BLOCK_MODE
 
 ```cangjie
-HuksTagBlockMode
+public static const HUKS_TAG_BLOCK_MODE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 6
 ```
 
 **功能：** 表示加密模式的Tag。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagChallengePos
+### static const HUKS_TAG_CHALLENGE_POS
 
 ```cangjie
-HuksTagChallengePos
+public static const HUKS_TAG_CHALLENGE_POS: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 310
 ```
 
 **功能：** 表示challenge类型为用户自定义类型时，huks产生的challenge有效长度仅为8字节连续的数据。从[HuksChallengePosition](#class-hukschallengeposition)中选择。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagChallengeType
+### static const HUKS_TAG_CHALLENGE_TYPE
 
 ```cangjie
-HuksTagChallengeType
+public static const HUKS_TAG_CHALLENGE_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 309
 ```
 
 **功能：** 表示密钥使用时生成的challenge类型。从[HuksChallengeType](#class-hukschallengetype)中选择。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagCreationDatetime
-
-```cangjie
-HuksTagCreationDatetime
-```
-
-**功能：** 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagCryptoCtx
+### static const HUKS_TAG_DERIVE_KEY_SIZE
 
 ```cangjie
-HuksTagCryptoCtx
-```
-
-**功能：** 原为预留字段，已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagDeriveAlg
-
-```cangjie
-HuksTagDeriveAlg
-```
-
-**功能：** 表示密钥派生时的算法类型。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagDeriveFactor
-
-```cangjie
-HuksTagDeriveFactor
-```
-
-**功能：** 表示密钥派生时的派生因子。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagDeriveKeySize
-
-```cangjie
-HuksTagDeriveKeySize
+public static const HUKS_TAG_DERIVE_KEY_SIZE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 24
 ```
 
 **功能：** 表示派生密钥的大小。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagDeriveMainKey
-
-```cangjie
-HuksTagDeriveMainKey
-```
-
-**功能：** 表示密钥派生时的主密钥。已废弃。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagDerivedAgreedKeyStorageFlag
+### static const HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG
 
 ```cangjie
-HuksTagDerivedAgreedKeyStorageFlag
+public static const HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 29
 ```
 
 **功能：** 表示派生密钥/协商密钥的存储类型。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagDigest
+### static const HUKS_TAG_DIGEST
 
 ```cangjie
-HuksTagDigest
+public static const HUKS_TAG_DIGEST: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 4
 ```
 
 **功能：** 表示摘要算法的Tag。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagImportKeyType
+### static const HUKS_TAG_IMPORT_KEY_TYPE
 
 ```cangjie
-HuksTagImportKeyType
+public static const HUKS_TAG_IMPORT_KEY_TYPE: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT | 25
 ```
 
 **功能：** 表示导入的密钥类型。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagInfo
+### static const HUKS_TAG_INFO
 
 ```cangjie
-HuksTagInfo
+public static const HUKS_TAG_INFO: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 11
 ```
 
 **功能：** 表示密钥派生时的info。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagInvalid
-
-```cangjie
-HuksTagInvalid
-```
-
-**功能：** 表示非法的Tag。已废弃。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagIsAllowedWrap
+### static const HUKS_TAG_IS_ALLOWED_WRAP
 
 ```cangjie
-HuksTagIsAllowedWrap
+public static const HUKS_TAG_IS_ALLOWED_WRAP: UInt32 = HuksTagType.HUKS_TAG_TYPE_BOOL | 1003
 ```
 
 **功能：** 预留。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagIsAsynchronized
-
-```cangjie
-HuksTagIsAsynchronized
-```
-
-**功能：** 预留。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagIsKeyAlias
+### static const HUKS_TAG_IS_KEY_ALIAS
 
 ```cangjie
-HuksTagIsKeyAlias
+public static const HUKS_TAG_IS_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BOOL | 1001
 ```
 
 **功能：** 表示是否使用生成key时传入的别名的Tag。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagIsKeyHandle
-
-```cangjie
-HuksTagIsKeyHandle
-```
-
-**功能：** 原为预留字段，已废弃。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagIteration
+### static const HUKS_TAG_ITERATION
 
 ```cangjie
-HuksTagIteration
+public static const HUKS_TAG_ITERATION: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 14
 ```
 
 **功能：** 表示密钥派生时的迭代次数。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagIv
+### static const HUKS_TAG_IV
 
 ```cangjie
-HuksTagIv
+public static const HUKS_TAG_IV: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 10
 ```
 
 **功能：** 表示密钥初始化的向量。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKey
+### static const HUKS_TAG_KEY
 
 ```cangjie
-HuksTagKey
+public static const HUKS_TAG_KEY: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 10006
 ```
 
 **功能：** 预留。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyAlias
+### static const HUKS_TAG_KEY_ALIAS
 
 ```cangjie
-HuksTagKeyAlias
+public static const HUKS_TAG_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 23
 ```
 
 **功能：** 表示密钥别名。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyAuthAccessType
+### static const HUKS_TAG_KEY_AUTH_ACCESS_TYPE
 
 ```cangjie
-HuksTagKeyAuthAccessType
+public static const HUKS_TAG_KEY_AUTH_ACCESS_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 307
 ```
 
 **功能：** 表示安全访问控制类型。从[HuksAuthAccessType](#class-huksauthaccesstype)中选择，需要和用户认证类型同时设置。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyAuthId
+### static const HUKS_TAG_KEY_AUTH_ID
 
 ```cangjie
-HuksTagKeyAuthId
+public static const HUKS_TAG_KEY_AUTH_ID: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 1005
 ```
 
 **功能：** 预留。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyAuthPurpose
+### static const HUKS_TAG_KEY_AUTH_PURPOSE
 
 ```cangjie
-HuksTagKeyAuthPurpose
+public static const HUKS_TAG_KEY_AUTH_PURPOSE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 311
 ```
 
 **功能：** 表示密钥认证用途的tag。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagKeyDomain
-
-```cangjie
-HuksTagKeyDomain
-```
-
-**功能：** 预留。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyFlag
+### static const HUKS_TAG_KEY_FLAG
 
 ```cangjie
-HuksTagKeyFlag
+public static const HUKS_TAG_KEY_FLAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 1007
 ```
 
 **功能：** 表示密钥标志的Tag。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyGenerateType
+### static const HUKS_TAG_KEY_GENERATE_TYPE
 
 ```cangjie
-HuksTagKeyGenerateType
+public static const HUKS_TAG_KEY_GENERATE_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 15
 ```
 
 **功能：** 表示生成密钥类型的Tag。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagKeyRole
-
-```cangjie
-HuksTagKeyRole
-```
-
-**功能：** 预留。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeySecureSignType
+### static const HUKS_TAG_KEY_SECURE_SIGN_TYPE
 
 ```cangjie
-HuksTagKeySecureSignType
+public static const HUKS_TAG_KEY_SECURE_SIGN_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 308
 ```
 
 **功能：** 表示生成或导入密钥时，指定该密钥的签名类型。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeySize
+### static const HUKS_TAG_KEY_SIZE
 
 ```cangjie
-HuksTagKeySize
+public static const HUKS_TAG_KEY_SIZE: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT | 3
 ```
 
 **功能：** 表示密钥长度的Tag。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyStorageFlag
+### static const HUKS_TAG_KEY_STORAGE_FLAG
 
 ```cangjie
-HuksTagKeyStorageFlag
+public static const HUKS_TAG_KEY_STORAGE_FLAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 1002
 ```
 
 **功能：** 表示密钥存储方式的Tag。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyType
+### static const HUKS_TAG_KEY_TYPE
 
 ```cangjie
-HuksTagKeyType
+public static const HUKS_TAG_KEY_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 7
 ```
 
 **功能：** 表示密钥类型的Tag。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagKeyVersion
-
-```cangjie
-HuksTagKeyVersion
-```
-
-**功能：** 表示密钥版本的Tag。已废弃。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagKeyWrapType
+### static const HUKS_TAG_KEY_WRAP_TYPE
 
 ```cangjie
-HuksTagKeyWrapType
+public static const HUKS_TAG_KEY_WRAP_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 1004
 ```
 
 **功能：** 预留。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagNoAuthRequired
+### static const HUKS_TAG_NO_AUTH_REQUIRED
 
 ```cangjie
-HuksTagNoAuthRequired
+public static const HUKS_TAG_NO_AUTH_REQUIRED: UInt32 = HuksTagType.HUKS_TAG_TYPE_BOOL | 303
 ```
 
 **功能：** 预留。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagNonce
+### static const HUKS_TAG_NONCE
 
 ```cangjie
-HuksTagNonce
+public static const HUKS_TAG_NONCE: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 9
 ```
 
 **功能：** 表示密钥加解密的NONCE字段。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagOriginationExpireDatetime
-
-```cangjie
-HuksTagOriginationExpireDatetime
-```
-
-**功能：** 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagOsPatchlevel
+### static const HUKS_TAG_PADDING
 
 ```cangjie
-HuksTagOsPatchlevel
-```
-
-**功能：** 表示操作系统补丁级别的Tag。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagOsVersion
-
-```cangjie
-HuksTagOsVersion
-```
-
-**功能：** 表示操作系统版本的Tag。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagPackageName
-
-```cangjie
-HuksTagPackageName
-```
-
-**功能：** 原为预留字段，已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagPadding
-
-```cangjie
-HuksTagPadding
+public static const HUKS_TAG_PADDING: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 5
 ```
 
 **功能：** 表示补齐算法的Tag。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagPayloadLen
-
-```cangjie
-HuksTagPayloadLen
-```
-
-**功能：** 原为预留字段，已废弃。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagProcessName
+### static const HUKS_TAG_PURPOSE
 
 ```cangjie
-HuksTagProcessName
-```
-
-**功能：** 表示进程名称的Tag。已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagPurpose
-
-```cangjie
-HuksTagPurpose
+public static const HUKS_TAG_PURPOSE: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT | 2
 ```
 
 **功能：** 表示密钥用途的Tag。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagPwd
-
-```cangjie
-HuksTagPwd
-```
-
-**功能：** 表示密钥派生时的password。已废弃。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagRsaPssSaltLenType
+### static const HUKS_TAG_RSA_PSS_SALT_LEN_TYPE
 
 ```cangjie
-HuksTagRsaPssSaltLenType
+public static const HUKS_TAG_RSA_PSS_SALT_LEN_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 30
 ```
 
 **功能：** 表示rsa_pss_salt_length的类型。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagSalt
+### static const HUKS_TAG_SALT
 
 ```cangjie
-HuksTagSalt
+public static const HUKS_TAG_SALT: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 12
 ```
 
 **功能：** 表示密钥派生时的盐值。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagSecureKeyAlias
-
-```cangjie
-HuksTagSecureKeyAlias
-```
-
-**功能：** 原为预留字段，已废弃。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagSecureKeyUuid
+### static const HUKS_TAG_UNWRAP_ALGORITHM_SUITE
 
 ```cangjie
-HuksTagSecureKeyUuid
-```
-
-**功能：** 原为预留字段，已废弃。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagSymmetricKeyData
-
-```cangjie
-HuksTagSymmetricKeyData
-```
-
-**功能：** 预留。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagUnwrapAlgorithmSuite
-
-```cangjie
-HuksTagUnwrapAlgorithmSuite
+public static const HUKS_TAG_UNWRAP_ALGORITHM_SUITE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 26
 ```
 
 **功能：** 表示导入加密密钥的套件。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### HuksTagUsageExpireDatetime
-
-```cangjie
-HuksTagUsageExpireDatetime
-```
-
-**功能：** 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagUserAuthType
+### static const HUKS_TAG_USER_AUTH_TYPE
 
 ```cangjie
-HuksTagUserAuthType
+public static const HUKS_TAG_USER_AUTH_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 304
 ```
 
 **功能：** 表示用户认证类型。从[HuksUserAuthType](#class-huksuserauthtype)中选择，需要与安全访问控制类型同时设置。支持同时指定两种用户认证类型，如：安全访问控制类型指定为HUKS_SECURE_ACCESS_INVALID_NEW_BIO_ENROLL时，密钥访问认证类型可以指定以下三种： HUKS_USER_AUTH_TYPE_FACE 、HUKS_USER_AUTH_TYPE_FINGERPRINT、HUKS_USER_AUTH_TYPE_FACE MagIc_StrINg HUKS_USER_AUTH_TYPE_FINGERPRINT。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagUserId
+### static const HUKS_TAG_USER_ID
 
 ```cangjie
-HuksTagUserId
+public static const HUKS_TAG_USER_ID: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 302
 ```
 
 **功能：** 表示当前密钥属于哪个userID。
 
+**类型：** UInt32
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 21
 
-### HuksTagUsesTime
+### static const HUKS_TAG_AUTH_STORAGE_LEVEL
 
 ```cangjie
-HuksTagUsesTime
+public static const HUKS_TAG_AUTH_STORAGE_LEVEL: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 316
 ```
 
-**功能：** 原为预留字段，已废弃。
+**功能：** 密钥存储安全级别，即HuksAuthStorageLevel的一个取值。
+
+**类型：** UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
