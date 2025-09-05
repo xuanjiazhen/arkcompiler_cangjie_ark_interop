@@ -161,49 +161,6 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncC
   | 1500008 | If Common Event Service does not complete initialization. |
   | 1500010 | The count of subscriber exceed system specification. |
 
-**示例：**
-
-<!-- compile only -->
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.BasicServicesKit.ValueType as CMEValueType
-import kit.BasicServicesKit.*
-import kit.PerformanceAnalysisKit.Hilog
-import ohos.base.*
-import ohos.business_exception.*
-import std.collection.*
-import kit.PerformanceAnalysisKit.Hilog
-
-// 订阅事件：亮屏
-let events = [Support.COMMON_EVENT_SCREEN_ON]
-// 订阅者信息
-let info = CommonEventSubscribeInfo(events)
-// 订阅者
-let sub = CommonEventManager.createSubscriber(info)
-let strV = CMEValueType.StringValue("Hello")
-let intV = CMEValueType.Int32Value(11)
-let parameter = HashMap<String, CMEValueType>()
-parameter.add("1", strV)
-parameter.add("2", intV)
-// 订阅事件回调函数
-func callback(err: ?BusinessException, c: ?CommonEventData): Unit {
-    Hilog.info(0, "cangjieTest", "Callback")
-}
-// 发布数据
-let pData = CommonEventPublishData(bundleName: "com.example.myapplication", data: "123321", code: 123321)
-try {
-    // 订阅
-    CommonEventManager.subscribe(sub, callback)
-    // 发布
-    CommonEventManager.publish(Support.COMMON_EVENT_SCREEN_ON, options: pData)
-} catch (e: BusinessException) {
-    Hilog.error(0, "AppLogCj", "errorCode = ${e.code}, errorMsg = ${e.message}")
-}
-```
-
 ### static func unsubscribe(CommonEventSubscriber)
 
 ```cangjie

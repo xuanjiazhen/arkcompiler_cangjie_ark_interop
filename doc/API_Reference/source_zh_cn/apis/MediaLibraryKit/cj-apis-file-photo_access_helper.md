@@ -213,6 +213,24 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
+### init(Int64)
+
+```cangjie
+public protected init(id: Int64)
+```
+
+**功能：** 构造AbsAlbum对象。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|id|Int64|是|-|需要构建的AbsAlbum对象id。|
+
 ## class Album
 
 ```cangjie
@@ -606,6 +624,24 @@ let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let isAfterLast = fetchResult.isAfterLast()
 ```
+
+### init(Int64)
+
+```cangjie
+public protected init(id: Int64)
+```
+
+**功能：** 构造FetchResult对象。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|id|Int64|是|-|需要构建的FetchResult对象id。|
 
 ## class PhotoAsset
 
