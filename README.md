@@ -7,51 +7,46 @@ The Cangjie ArkTS Interop Library API is used to provide cross-language interope
 Framework architecture:
 ![cangjie interop API](./figures/cangjie-interop_eng.png)
 
-For interop scenarios, Cangjie provides ark_interop libraries to achieve interop with ArkTS. The library mainly provides the following key data structures:
+For interop scenarios, Cangjie provides ark_interop libraries to achieve interop with ArkTS. The library mainly provides the following types of mappings.
+
+| **Cangjie type**                                                 | **Cangjie Interop type** | **ArkTS  Typ** |
+| ------------------------------------------------------------ | -------------------- | --------------- |
+| Unit                                                         | JSUndefined          | undefined       |
+| NA                                                           | JSNull               | null            |
+| Bool                                                         | JSBoolean            | boolean         |
+| Int8、Int16、Int32、Int64、UInt8、UInt16、UInt32、UInt64、Float16、Float32、Float64 | JSNumber             | number          |
+| String                                                       | JSString             | string          |
+| class、interface                                             | JSObject             | object          |
+| Array                                                        | JSArray              | Array           |
+| BigInt                                                       | JSBigInt             | bigint          |
+| func                                                         | JSFunction           | function        |
+| NA                                                           | JSSymbol             | symbol          |
+
+The library also provides the following key data structures:
 
 - JSValue: It is used to represent objects (such as numbers, strings, objects, functions) from ArkTS, which is a bridge between Cangjie and ArkTS type conversion;
 - JSContext: Used to represent context interoperable with ArkTS, providing module loading, JSValue creation, and more;
 - JSCallInfo: Used to represent a set of parameters that are called when an ArkTS interop call occurs;
 
+Finally, this interop library completes the interoperability function by calling the interface provided by the ArkTS virtual machine through CFFI.
+
 ## Directory
 
 ```text
-.
-├── api                  # Public repository code for Cangjie Interop API
-├── doc                   # Cangjie documentation including API reference, development guide and user manual
-├── bundle.json
-└── LICENSE
+arkcompiler/cangjie_ark_interop
+├── ohos                 # Public repository code for Cangjie Interop API
+├── doc                  # Cangjie documentation including API reference, development guide and user manual
+    ├── API_Reference    # Cangjie api reference
+    └── Dev_Guide        # Cangjie developer guide
+    └── release-notes    # Cangjie release notes
+    └── User_Manual      # Cangjie user manual
+├── figures              # Images used in the README
+├── test                 # Cangjie interop testcases
 ```
 
 ## Constraints
 
 - The security cangjie interface currently under development only supports standard devices.
-
-## Build Guide
-
-1. Initialize
-
-    ```text
-    repo init -u https://gitcode.com/openharmony-sig/manifest.git -b master -m cangjie_oh.xml --no-repo-verify
-    repo sync -c
-    ```
-
-2. Pre-download
-
-    ```text
-    bash build/prebuilts_download.sh
-    ```
-
-3. Build products
-
-    ```text
-    // build rom
-    ./build.sh --product-name rk3568 -ccache --target-cpu=arm64
-
-    // build oh-sdk：
-    ./build.sh --product-name ohos-sdk --ccache --build-target out/sdk/gen/build/ohos/sdk:cangjie
-
-Build products are typically found at: out/generic_generic_arm_64only/hisi_newbaltimore_hmscore_standard/packages/hmos-sdk directory.
 
 ## Usage Scenarios
 
@@ -74,6 +69,11 @@ Module Description:
 - Interop Libraries: Developers can call APIs provided by Interop to achieve cross-language parameter passing, function calling, and other capabilities.
 - Interop macros: Developers use interoperability macros to mark Cangjie interfaces that need to be called by ArkTS code, and can automatically generate interop "glue" code and ArkTS interface declarations.
 
+## Developer Document
+
+[API Document](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)
+
+[Develop Guide](hhttps://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/summary_cjnative_ohos.md)
 
 ## Code Contribution
 
