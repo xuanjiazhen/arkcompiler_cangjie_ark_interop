@@ -8,10 +8,21 @@
 
 ## 创建组件
 
+### init()
+
+```cangjie
+public init()
+```
+
+**功能：** 创建按钮。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ### init(() -> Unit)
 
 ```cangjie
-
 public init(child: () -> Unit)
 ```
 

@@ -30,6 +30,10 @@ public class ClickEvent {
 
 **起始版本：** 21
 
+**父类型：**
+
+- BaseEvent
+
 ### var displayX
 
 ```cangjie

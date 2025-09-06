@@ -79,7 +79,7 @@ public func sweepGradient(center: (Length, Length), start!: Float64 = 0.0, end!:
 |start|Float64|否|0.0| **命名参数。** 角度渐变的起点。|
 |end|Float64|否|0.0| **命名参数。** 角度渐变的终点。|
 |rotation|Float64|否|0.0| **命名参数。** 角度渐变的旋转角度。|
-|colors|Array\<([Color](./cj-common-types.md#class-color),Float64)>|否|[(Color.Transparent, 0.0)]| **命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。|
+|colors|Array\<([ResourceColor](./cj-common-types.md),Float64)>|否|[(Color.Transparent, 0.0)]| **命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。|
 |repeating|Bool|否|false| **命名参数。** 为渐变的颜色重复着色。|
 
 > **说明：**

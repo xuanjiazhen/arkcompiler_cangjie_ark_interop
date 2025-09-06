@@ -1467,6 +1467,191 @@ public operator func ==(other: AdaptiveColor): Bool
 |:----|:----|
 |Bool|如果两个AdaptiveColor相等则返回true，否则返回false|
 
+## enum LengthType
+
+```cangjie
+public enum LengthType <: Length & Equatable<LengthType> {
+    | px(Float64)
+    | vp(Float64)
+    | fp(Float64)
+    | percent(Float64)
+    | lpx(Float64)
+}
+```
+
+**功能：** 长度类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<LengthType\>
+- Length
+
+### fp(Float64)
+
+```cangjie
+fp(Float64)
+```
+
+**功能：** 字体像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### lpx(Float64)
+
+```cangjie
+lpx(Float64)
+```
+
+**功能：** 逻辑像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### percent(Float64)
+
+```cangjie
+percent(Float64)
+```
+
+**功能：** 百分比。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### px(Float64)
+
+```cangjie
+px(Float64)
+```
+
+**功能：** 基本像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### vp(Float64)
+
+```cangjie
+vp(Float64)
+```
+
+**功能：** 屏幕密度单位。
+
+### prop value
+
+```cangjie
+public prop value: Float64
+```
+
+**功能：** 像素值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop unitType
+
+```cangjie
+public prop unitType: LengthType
+```
+
+**功能：** 像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**功能：** 获取LengthType对应的整数值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Int32|LengthType对应的整数值|
+
+### static func parse(Int32): LengthType
+
+```cangjie
+public static func parse(value: Int32): LengthType
+```
+
+**功能：** 解析LengthType。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|Int32|是|-|LengthType的整数值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|LengthType|LengthType的枚举值。|
+
+### func !=(LengthType)
+
+```cangjie
+public operator func !=(other: LengthType): Bool
+```
+
+**功能：** 判断两个LengthType是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[LengthType](#enum-lengthtype)|是|-|要比较的另一个LengthType值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果不相等返回true，否则返回false。|
+
+### func ==(LengthType)
+
+```cangjie
+public operator func ==(other: LengthType): Bool
+```
+
+**功能：** 判断两个LengthType是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[LengthType](#enum-lengthtype)|是|-|要比较的另一个LengthType值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果相等返回true，否则返回false。|
+
 ## enum Alignment
 
 ```cangjie
