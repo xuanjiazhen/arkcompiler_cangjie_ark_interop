@@ -232,7 +232,7 @@ public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: By
 |:---|:---|:---|:---|:---|
 |handle|[HuksHandleId](#class-hukshandleid)|是|-|finishSession操作的handle。|
 |options|[HuksOptions](#class-huksoptions)|是|-|finishSession的参数集合。|
-|token|Bytes|否|Bytes\<Uint8>()|表示USER IAM服务的AuthToken的值。|
+|token|Bytes|否|Bytes\<UInt8>()|表示USER IAM服务的AuthToken的值。|
 
 **返回值：**
 
@@ -607,7 +607,7 @@ public func updateSession(handle: HuksHandleId, options: HuksOptions, token!: By
 |:---|:---|:---|:---|:---|
 |handle|[HuksHandleId](#class-hukshandleid)|是|-|updateSession操作的handle。|
 |options|[HuksOptions](#class-huksoptions)|是|-|updateSession的参数集合。|
-|token|Bytes|否|Bytes\<Uint8>()|表示USER IAM服务的AuthToken的值。|
+|token|Bytes|否|Bytes\<UInt8>()|表示USER IAM服务的AuthToken的值。|
 
 **返回值：**
 
@@ -2203,7 +2203,7 @@ public init(properties!: Array<HuksParam> = Array<HuksParam>(), inData!: Bytes =
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |properties|Array\<[HuksParam](#class-huksparam)>|否|Array<HuksParam>()|属性，用于存HuksParam的数组。|
-|inData|Bytes|否|Bytes\<Uint8>()|输入数据。|
+|inData|Bytes|否|Bytes\<UInt8>()|输入数据。|
 
 ## class HuksParam
 
@@ -2595,6 +2595,87 @@ public static const HUKS_USER_AUTH_TYPE_PIN: UInt32 = 1 << 2
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **起始版本：** 21
+
+## enum CipherSpecItem
+
+```cangjie
+public enum CipherSpecItem <: Equatable<CipherSpecItem> & ToString {
+    | OaepMdNameStr
+    | OaepMgfNameStr
+    | OaepMgf1MdStr
+    | OaepMgf1PsrcUint8Arr
+    | ...
+}
+```
+
+**功能：** 表示加解密参数的枚举，这些加解密参数支持通过setCipherSpec接口设置/通过getCipherSpec接口获取。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<CipherSpecItem>
+- ToString
+
+### func !=(CipherSpecItem)
+
+```cangjie
+public operator func !=(other: CipherSpecItem): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(CipherSpecItem)
+
+```cangjie
+public operator func ==(other: CipherSpecItem): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取枚举的值。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|枚举的说明。|
 
 ## enum HuksParamValue
 

@@ -948,6 +948,10 @@ WifiScanStateChange
 
 **功能：** 注册WLAN状态改变事件类型。
 
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**起始版本：** 21
+
 ### func !=(WifiCallbackType)
 
 ```cangjie
