@@ -8379,7 +8379,7 @@ public enum CameraStatus {
     | CameraStatusAppear
     | CameraStatusDisappear
     | CameraStatusAvailable
-    | CameraStatusUnavailabl
+    | CameraStatusUnavailable
     | ...
 }
 ```
@@ -8426,10 +8426,10 @@ CameraStatusDisappear
 
 **起始版本：** 21
 
-### CameraStatusUnavailabl
+### CameraStatusUnavailable
 
 ```cangjie
-CameraStatusUnavailabl
+CameraStatusUnavailable
 ```
 
 **功能：** 相机不可用。

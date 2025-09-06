@@ -2065,114 +2065,18 @@ public func hashCode(): Int64
 |:----|:----|
 |Int64|返回HttpRequestEvent的哈希值。|
 
-### Connect
-
-```cangjie
-Connect
-```
-
-**功能：** HTTP请求CONNECT。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### Delete
-
-```cangjie
-Delete
-```
-
-**功能：** HTTP请求DELETE。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### Get
-
-```cangjie
-Get
-```
-
-**功能：** HTTP请求GET。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### Head
-
-```cangjie
-Head
-```
-
-**功能：** HTTP请求HEAD。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### Options
-
-```cangjie
-Options
-```
-
-**功能：** HTTP请求OPTIONS。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### Post
-
-```cangjie
-Post
-```
-
-**功能：** HTTP请求POST。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### Put
-
-```cangjie
-Put
-```
-
-**功能：** HTTP请求PUT。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### Trace
-
-```cangjie
-Trace
-```
-
-**功能：** HTTP请求TRACE。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
 ## enum RequestMethod
 
 ```cangjie
 public enum RequestMethod {
-    | OPTIONS
-    | GET
-    | HEAD
-    | POST
-    | PUT
-    | DELETE
-    | TRACE
-    | CONNECT
+    | Options
+    | Get
+    | Head
+    | Post
+    | Put
+    | Delete
+    | Trace
+    | Connect
     | ...
 }
 ```
@@ -2183,80 +2087,80 @@ public enum RequestMethod {
 
 **起始版本：** 12
 
-### CONNECT
+### Connect
 
 ```cangjie
-CONNECT
+Connect
 ```
 
 **功能：** HTTP请求CONNECT。
 
 **起始版本：** 12
 
-### DELETE
+### Delete
 
 ```cangjie
-DELETE
+Delete
 ```
 
 **功能：** HTTP请求DELETE。
 
 **起始版本：** 12
 
-### GET
+### Get
 
 ```cangjie
-GET
+Get
 ```
 
 **功能：** HTTP请求GET。
 
 **起始版本：** 12
 
-### HEAD
+### Head
 
 ```cangjie
-HEAD
+Head
 ```
 
 **功能：** HTTP请求HEAD。
 
 **起始版本：** 12
 
-### OPTIONS
+### Options
 
 ```cangjie
-OPTIONS
+Options
 ```
 
 **功能：** HTTP请求OPTIONS。
 
 **起始版本：** 12
 
-### POST
+### Post
 
 ```cangjie
-POST
+Post
 ```
 
 **功能：** HTTP请求POST。
 
 **起始版本：** 12
 
-### PUT
+### Put
 
 ```cangjie
-PUT
+Put
 ```
 
 **功能：** HTTP请求PUT。
 
 **起始版本：** 12
 
-### TRACE
+### Trace
 
 ```cangjie
-TRACE
+Trace
 ```
 
 **功能：** HTTP请求TRACE。

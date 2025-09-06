@@ -2028,7 +2028,7 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
     | Favorite
     | Video
     | Image
-    | Any
+    | AnyAlbum
     | ...
 }
 ```
@@ -2039,10 +2039,10 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
 
 **起始版本：** 21
 
-### Any
+### AnyAlbum
 
 ```cangjie
-Any
+AnyAlbum
 ```
 
 **功能：** 任意相册。
@@ -2702,7 +2702,7 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
     | Title
     | DateAddedMs
     | DateModifiedMs
-    | PhotoSubType
+    | PhotoSubtype
     | DynamicRangeType
     | CoverPosition
     | BurstKey
@@ -2894,10 +2894,10 @@ Orientation
 
 **起始版本：** 21
 
-### PhotoSubType
+### PhotoSubtype
 
 ```cangjie
-PhotoSubType
+PhotoSubtype
 ```
 
 **功能：** 媒体文件的动态范围类型。
@@ -3037,21 +3037,6 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的说明。|
-
-## enum ReceiveType
-
-```cangjie
-public enum ReceiveType {
-    | ImageArrival
-    | ...
-}
-```
-
-**功能：** 接收类型。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
-**起始版本：** 21
 
 ## enum PhotoSubtype
 
@@ -3287,7 +3272,7 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
     | QrOrBarCode
     | QrCode
     | BarCode
-    | IDCard
+    | IdCard
     | ProfilePicture
     | PassPort
     | BankCard
@@ -3364,10 +3349,10 @@ FeaturedSinglePortrait
 
 **起始版本：** 21
 
-### IDCard
+### IdCard
 
 ```cangjie
-IDCard
+IdCard
 ```
 
 **功能：** 身份证。

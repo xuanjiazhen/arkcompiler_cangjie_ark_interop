@@ -3777,17 +3777,17 @@ public enum PropertyKey <: ToString & Equatable<PropertyKey> {
     | PhotoMode
     | ExposureTime
     | FNumber
-    | GPSLatitudeRef
-    | GPSLatitude
-    | GPSLongitudeRef
-    | GPSLongitude
-    | GPSTimeStamp
-    | GPSDateStamp
-    | ISOSpeedRatings
+    | GpsLatitudeRef
+    | GpsLatitude
+    | GpsLongitudeRef
+    | GpsLongitude
+    | GpsTimeStamp
+    | GpsDateStamp
+    | IsoSpeedRatings
     | SensitivityType
     | StandardOutputSensitivity
     | RecommendedExposureIndex
-    | ISOSpeed
+    | IsoSpeed
     | DateTimeOriginal
     | ApertureValue
     | ExposureBiasValue
@@ -3987,10 +3987,10 @@ FocusMode
 
 **起始版本：** 21
 
-### GPSDateStamp
+### GpsDateStamp
 
 ```cangjie
-GPSDateStamp
+GpsDateStamp
 ```
 
 **功能：** GPS日期戳。
@@ -3999,10 +3999,10 @@ GPSDateStamp
 
 **起始版本：** 21
 
-### GPSLatitude
+### GpsLatitude
 
 ```cangjie
-GPSLatitude
+GpsLatitude
 ```
 
 **功能：** 图片纬度。修改时应按"度,分,秒"格式传入，如"39,54,7.542"。
@@ -4011,10 +4011,10 @@ GPSLatitude
 
 **起始版本：** 21
 
-### GPSLatitudeRef
+### GpsLatitudeRef
 
 ```cangjie
-GPSLatitudeRef
+GpsLatitudeRef
 ```
 
 **功能：** 纬度引用，例如N或S。
@@ -4023,10 +4023,10 @@ GPSLatitudeRef
 
 **起始版本：** 21
 
-### GPSLongitude
+### GpsLongitude
 
 ```cangjie
-GPSLongitude
+GpsLongitude
 ```
 
 **功能：** 图片经度。修改时应按"度,分,秒"格式传入，如"116,19,42.16"。
@@ -4035,10 +4035,10 @@ GPSLongitude
 
 **起始版本：** 21
 
-### GPSLongitudeRef
+### GpsLongitudeRef
 
 ```cangjie
-GPSLongitudeRef
+GpsLongitudeRef
 ```
 
 **功能：** 经度引用，例如W或E。
@@ -4047,10 +4047,10 @@ GPSLongitudeRef
 
 **起始版本：** 21
 
-### GPSTimeStamp
+### GpsTimeStamp
 
 ```cangjie
-GPSTimeStamp
+GpsTimeStamp
 ```
 
 **功能：** GPS时间戳。
@@ -4059,10 +4059,10 @@ GPSTimeStamp
 
 **起始版本：** 21
 
-### ISOSpeed
+### IsoSpeed
 
 ```cangjie
-ISOSpeed
+IsoSpeed
 ```
 
 **功能：** ISO速度等级。
@@ -4071,10 +4071,10 @@ ISOSpeed
 
 **起始版本：** 21
 
-### ISOSpeedRatings
+### IsoSpeedRatings
 
 ```cangjie
-ISOSpeedRatings
+IsoSpeedRatings
 ```
 
 **功能：** ISO感光度，例如400。
@@ -4508,6 +4508,33 @@ public func toString(): String
 | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The type is not supported yet. |枚举值错误，不支持该枚举值。|请检查传入的枚举值是否正确。|
+
+## enum ReceiveType
+
+```cangjie
+public enum ReceiveType {
+    | ImageArrival
+    | ...
+}
+```
+
+**功能：** 接收图片时注册回调类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### ImageArrival
+
+```cangjie
+ImageArrival
+```
+
+**功能：** 接收图片时事件类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
 
 ## enum ScaleMode
 

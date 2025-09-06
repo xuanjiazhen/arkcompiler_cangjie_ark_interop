@@ -1710,11 +1710,11 @@ public func toString(): String
 
 ```cangjie
 public enum Result <: ToString {
-    | INVALID_PARAMS
-    | NOT_SUPPORT
-    | ERR_OUT_OF_MEMORY
-    | ERR_RUNTIME_ERROR
-    | ERR_CRYPTO_OPERATION
+    | InvalidParams
+    | NotSupport
+    | ErrOutOfMemory
+    | ErrRuntimeError
+    | ErrCryptoOperation
     | ...
 }
 ```
@@ -1729,10 +1729,10 @@ public enum Result <: ToString {
 
 - ToString
 
-### ERR_CRYPTO_OPERATION
+### ErrCryptoOperation
 
 ```cangjie
-ERR_CRYPTO_OPERATION
+ErrCryptoOperation
 ```
 
 **功能：** 调用三方算法库API出错。
@@ -1741,10 +1741,10 @@ ERR_CRYPTO_OPERATION
 
 **起始版本：** 21
 
-### ERR_OUT_OF_MEMORY
+### ErrOutOfMemory
 
 ```cangjie
-ERR_OUT_OF_MEMORY
+ErrOutOfMemory
 ```
 
 **功能：** 内存错误。
@@ -1753,10 +1753,10 @@ ERR_OUT_OF_MEMORY
 
 **起始版本：** 21
 
-### ERR_RUNTIME_ERROR
+### ErrRuntimeError
 
 ```cangjie
-ERR_RUNTIME_ERROR
+ErrRuntimeError
 ```
 
 **功能：** 运行时外部错误。
@@ -1765,10 +1765,10 @@ ERR_RUNTIME_ERROR
 
 **起始版本：** 21
 
-### INVALID_PARAMS
+### InvalidParams
 
 ```cangjie
-INVALID_PARAMS
+InvalidParams
 ```
 
 **功能：** 非法入参。
@@ -1777,10 +1777,10 @@ INVALID_PARAMS
 
 **起始版本：** 21
 
-### NOT_SUPPORT
+### NotSupport
 
 ```cangjie
-NOT_SUPPORT
+NotSupport
 ```
 
 **功能：** 操作不支持。

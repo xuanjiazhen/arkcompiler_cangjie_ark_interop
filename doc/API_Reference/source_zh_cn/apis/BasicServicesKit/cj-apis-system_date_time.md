@@ -154,7 +154,7 @@ try {
 
 ```cangjie
 public enum TimeType {
-    | StartUp
+    | Startup
     | Active
     | ...
 }
@@ -178,10 +178,10 @@ Active
 
 **起始版本：** 21
 
-### StartUp
+### Startup
 
 ```cangjie
-StartUp
+Startup
 ```
 
 **功能：** 自系统启动以来经过的毫秒数，包括深度睡眠时间。

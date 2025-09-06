@@ -1816,8 +1816,8 @@ public enum DeviceType {
     | DeviceTypePhone
     | DeviceTypeTablet
     | DeviceTypeCar
-    | DeviceTypePC
-    | DeviceTypeTV
+    | DeviceTypePc
+    | DeviceTypeTv
     | DeviceTypeWearable
     | DeviceType2In1
     | ...
@@ -1854,10 +1854,10 @@ DeviceTypeCar
 
 **起始版本：** 21
 
-### DeviceTypePC
+### DeviceTypePc
 
 ```cangjie
-DeviceTypePC
+DeviceTypePc
 ```
 
 **功能：** 电脑。
@@ -1878,10 +1878,10 @@ DeviceTypePhone
 
 **起始版本：** 21
 
-### DeviceTypeTV
+### DeviceTypeTv
 
 ```cangjie
-DeviceTypeTV
+DeviceTypeTv
 ```
 
 **功能：** 电视。
@@ -1998,12 +1998,12 @@ Int32Value(Int32)
 
 ```cangjie
 public enum ScreenDensity {
-    | ScreenSDPI
-    | ScreenMDPI
-    | ScreenLDPI
-    | ScreenXLDPI
-    | ScreenXXLDPI
-    | ScreenXXXLDPI
+    | ScreenSdpi
+    | ScreenMdpi
+    | ScreenLdpi
+    | ScreenXldpi
+    | ScreenXxldpi
+    | ScreenXxxldpi
     | ...
 }
 ```
@@ -2014,10 +2014,10 @@ public enum ScreenDensity {
 
 **起始版本：** 21
 
-### ScreenLDPI
+### ScreenLdpi
 
 ```cangjie
-ScreenLDPI
+ScreenLdpi
 ```
 
 **功能：** 大规模的屏幕密度。
@@ -2026,10 +2026,10 @@ ScreenLDPI
 
 **起始版本：** 21
 
-### ScreenMDPI
+### ScreenMdpi
 
 ```cangjie
-ScreenMDPI
+ScreenMdpi
 ```
 
 **功能：** 中规模的屏幕密度。
@@ -2038,10 +2038,10 @@ ScreenMDPI
 
 **起始版本：** 21
 
-### ScreenSDPI
+### ScreenSdpi
 
 ```cangjie
-ScreenSDPI
+ScreenSdpi
 ```
 
 **功能：** 小规模的屏幕密度。
@@ -2050,10 +2050,10 @@ ScreenSDPI
 
 **起始版本：** 21
 
-### ScreenXLDPI
+### ScreenXldpi
 
 ```cangjie
-ScreenXLDPI
+ScreenXldpi
 ```
 
 **功能：** 特大规模的屏幕密度。
@@ -2062,10 +2062,10 @@ ScreenXLDPI
 
 **起始版本：** 21
 
-### ScreenXXLDPI
+### ScreenXxldpi
 
 ```cangjie
-ScreenXXLDPI
+ScreenXxldpi
 ```
 
 **功能：** 超大规模的屏幕密度。
@@ -2074,10 +2074,10 @@ ScreenXXLDPI
 
 **起始版本：** 21
 
-### ScreenXXXLDPI
+### ScreenXxxldpi
 
 ```cangjie
-ScreenXXXLDPI
+ScreenXxxldpi
 ```
 
 **功能：** 超特大规模的屏幕密度。

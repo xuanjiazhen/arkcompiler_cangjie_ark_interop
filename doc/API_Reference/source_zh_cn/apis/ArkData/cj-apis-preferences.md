@@ -56,7 +56,7 @@ public class Options {
     public var dataGroupId: String
     public var storageType: StorageType
     public init(name: String, dataGroupId!: String = String.empty,
-        storageType!: StorageType = StorageType.StorageTypeXml)
+        storageType!: StorageType = StorageType.Xml)
 }
 ```
 
@@ -981,8 +981,8 @@ PreferencesMultiProcessChange
 
 ```cangjie
 public enum StorageType {
-    | StorageTypeXml
-    | StorageTypeGskv
+    | Xml
+    | Gskv
 }
 ```
 
@@ -992,10 +992,10 @@ public enum StorageType {
 
 **起始版本：** 21
 
-### StorageTypeGskv
+### Gskv
 
 ```cangjie
-StorageTypeGskv
+Gskv
 ```
 
 **功能：** 表示GSKV存储模式。
@@ -1006,10 +1006,10 @@ StorageTypeGskv
 
 **起始版本：** 21
 
-### StorageTypeXml
+### Xml
 
 ```cangjie
-StorageTypeXml
+Xml
 ```
 
 **功能：** 表示XML存储模式，这是Preferences的默认存储模式。

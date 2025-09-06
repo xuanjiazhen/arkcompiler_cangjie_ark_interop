@@ -302,114 +302,6 @@ public interface ResourceStr {}
 
 **起始版本：** 21
 
-## class BusinessException
-
-```cangjie
-public open class BusinessException <: Exception {
-    public let code: Int32
-    public init(code: Int32, msg: String)
-}
-```
-
-**功能：** 业务异常类，继承了Exception。
-
-**起始版本：** 21
-
-**父类型：**
-
-- Exception
-
-### let code
-
-```cangjie
-public let code: Int32
-```
-
-**功能：** 错误码。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**起始版本：** 21
-
-### init(Int32, String)
-
-```cangjie
-public init(code: Int32, msg: String)
-```
-
-**功能：** 创建业务异常类实例。
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|code|Int32|是|-|错误码。|
-|msg|String|是|-|错误信息。|
-
-### func toString()
-
-```cangjie
-public open func toString(): String
-```
-
-**功能：** 获取错误信息。
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|错误信息。|
-
-## class CallbackObject
-
-```cangjie
-public abstract class CallbackObject {}
-```
-
-**功能：** 回调函数抽象基类。
-
-**系统能力：** SystemCapability.Base
-
-**起始版本：** 21
-
-## class Callback0Argument
-
-```cangjie
-public abstract class Callback0Argument <: CallbackObject {}
-```
-
-**功能：** 无参数的回调函数抽象类。
-
-**系统能力：** SystemCapability.Base
-
-**起始版本：** 12
-
-**父类型：**
-
-- [CallbackObject](#class-callbackobject)
-
-## class Callback1Argument
-
-```cangjie
-public abstract class Callback1Argument<A> <: CallbackObject {}
-```
-
-**功能：** 单参数的回调函数抽象类。
-
-**系统能力：** SystemCapability.Base
-
-**起始版本：** 21
-
-**父类型：**
-
-- [CallbackObject](#class-callbackobject)
-
 ## class Color
 
 ```cangjie
@@ -860,14 +752,6 @@ public func getValue(): Int32
 |类型|说明|
 |:----|:----|
 |Int32|枚举的值。|
-
-## type AsyncCallback
-
-```cangjie
-public type AsyncCallback<T>=(Option<BusinessException>, Option<T>) -> Unit
-```
-
-**功能：** [AsyncCallback](#type-asynccallback)是[(Option < BusinessException >, Option < T >) -> Unit](#class-businessexception)类型的别名。
 
 ## type Callback
 
