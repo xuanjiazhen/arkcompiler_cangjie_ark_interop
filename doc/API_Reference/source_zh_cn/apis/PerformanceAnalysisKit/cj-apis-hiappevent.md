@@ -822,7 +822,7 @@ public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 
 |类型|说明|
 |:----|:----|
-|Option\<[AppEventPackage](#class-appeventpackage)>|订阅数据持有者，订阅失败时返回None。|
+|Option\<[AppEventPackageHolder](#class-appeventpackage)>|订阅数据持有者，订阅失败时返回None。|
 
 **异常：**
 

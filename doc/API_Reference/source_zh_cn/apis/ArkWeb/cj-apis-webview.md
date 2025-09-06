@@ -2991,6 +2991,54 @@ public enum SecurityLevel <: Equatable<SecurityLevel> & ToString {
 
 **起始版本：** 21
 
+### NoneLevel
+
+```cangjie
+NoneLevel
+```
+
+**功能：** 页面既不绝对安全，也不是不安全，即是中立。例如，部分scheme非http/https的URL。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Secure
+
+```cangjie
+Secure
+```
+
+**功能：** 页面安全，页面使用的是HTTPS协议，且使用了信任的证书。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Warning
+
+```cangjie
+Warning
+```
+
+**功能：** 页面不安全。例如，使用HTTP协议或使用HTTPS协议但使用旧版TLS版本。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Dangerous
+
+```cangjie
+Dangerous
+```
+
+**功能：** 页面不安全。尝试HTTPS并失败、页面未通过身份验证、页面上包含不安全活动内容的HTTPS、恶意软件、网络钓鱼或任何其他可能危险的严重安全问题。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
 ### func !=(SecurityLevel)
 
 ```cangjie
@@ -3061,6 +3109,42 @@ public enum WebHitTestType <: Equatable<WebHitTestType> & ToString {
 ```
 
 **功能：** [getHitTest](#func-gethittest)用于指示游标节点。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### EditText
+
+```cangjie
+EditText
+```
+
+**功能：** 可编辑的区域。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Email
+
+```cangjie
+Email
+```
+
+**功能：** 电子邮件地址。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Unknown
+
+```cangjie
+Unknown
+```
+
+**功能：** 未知内容。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

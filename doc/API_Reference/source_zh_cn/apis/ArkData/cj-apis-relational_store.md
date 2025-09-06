@@ -3962,7 +3962,7 @@ DistributedCloud
 
 **功能：** 表示在设备和云端之间分布式的数据库表。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4413,7 +4413,7 @@ SubscribeTypeCloud
 
 **功能：** 订阅云端数据更改。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4425,7 +4425,7 @@ SubscribeTypeCloudDetails
 
 **功能：** 订阅云端数据更改详情。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4468,7 +4468,7 @@ SyncModeCloudFirst
 
 **功能：** 表示数据从云端同步到本地设备。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4480,7 +4480,7 @@ SyncModeNativeFirst
 
 **功能：** 表示数据从本地设备同步到云端。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
@@ -4516,7 +4516,7 @@ SyncModeTimeFirst
 
 **功能：** 表示数据从修改时间较近的一端同步到修改时间较远的一端。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 

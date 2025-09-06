@@ -80,7 +80,7 @@ public func create(context: UIAbilityContext, config: Config): Task
 
 ```cangjie
 
-public func getTask(context: UIAbilityContext, id: String, token!: ?String): Task
+public func getTask(context: UIAbilityContext, id: String, token!: ?String = None): Task
 ```
 
 **功能：** 根据任务id查询任务。
@@ -95,7 +95,7 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String): Tas
 |:---|:---|:---|:---|:---|
 |context|[UIAbilityContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|基于应用程序的上下文。|
 |id|String|是|-|任务id。|
-|token|?String|否|-| **命名参数。** 任务查询token。|
+|token|?String|否|None| **命名参数。** 任务查询token。|
 
 **返回值：**
 

@@ -453,7 +453,7 @@ public func getNextObject(): Album
 ### func getObjectByPosition(Int32)
 
 ```cangjie
-public func getObjectByPosition(index: Int32): PhotoAsset
+public func getObjectByPosition(index: Int32): Album
 ```
 
 **功能：** 获取文件检索结果中具有指定索引的文件资产。
@@ -472,7 +472,7 @@ public func getObjectByPosition(index: Int32): PhotoAsset
 
 |类型|说明|
 |:----|:----|
-|[PhotoAsset](#class-photoasset)|获取的文件资产。|
+|[Album](#class-album)|获取的文件资产。|
 
 **异常：**
 

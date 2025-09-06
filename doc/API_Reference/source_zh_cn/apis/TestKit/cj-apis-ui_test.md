@@ -4015,7 +4015,7 @@ public class WindowFilter {
     public var focused:?Bool
     public var active:?Bool
     public var displayId:?Int32
-    public init(bundleName!: String = "", title!: String = "", focused!: Bool = false, active!: Bool = false, displayId!: ?Int32 = None)
+    public init(bundleName!: ?String = None, title!: ?String = None, focused!: ?Bool = None, active!: ?Bool = None, displayId!: ?Int32 = None)
 }
 ```
 
@@ -4108,7 +4108,7 @@ public var title:?String
 ### init(?String, ?String, ?Bool, ?Bool, ?Int32)
 
 ```cangjie
-public init(bundleName!: ?String = "", title!: ?String = "", focused!: ?Bool = false, active!: ?Bool = false, displayId!: ?Int32 = None)
+public init(bundleName!: ?String = None, title!: ?String = None, focused!: ?Bool = None, active!: ?Bool = None, displayId!: ?Int32 = None)
 ```
 
 **功能：** 创建[WindowFilter](#class-windowfilter)实例。
@@ -4121,10 +4121,10 @@ public init(bundleName!: ?String = "", title!: ?String = "", focused!: ?Bool = f
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|bundleName|?String|否|""| **命名参数。** 窗口归属应用的包名。|
-|title|?String|否|""| **命名参数。** 窗口的标题信息。|
-|focused|?Bool|否|false| **命名参数。** 窗口是否处于获焦状态。|
-|active|?Bool|否|false| **命名参数。** 窗口是否正与用户进行交互。|
+|bundleName|?String|否|None| **命名参数。** 窗口归属应用的包名。|
+|title|?String|否|None| **命名参数。** 窗口的标题信息。|
+|focused|?Bool|否|None| **命名参数。** 窗口是否处于获焦状态。|
+|active|?Bool|否|None| **命名参数。** 窗口是否正与用户进行交互。|
 |displayId|?Int32|否|None| **命名参数。** 控件边框所属的屏幕ID，取值大于或等于0的整数。|
 
 ## enum DisplayRotation
