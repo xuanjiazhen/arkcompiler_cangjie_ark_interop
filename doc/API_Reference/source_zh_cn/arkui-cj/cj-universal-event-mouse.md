@@ -38,6 +38,10 @@ public class MouseEvent {
 
 **起始版本：** 21
 
+**父类型：**
+
+- BaseEvent
+
 ### var action
 
 ```cangjie

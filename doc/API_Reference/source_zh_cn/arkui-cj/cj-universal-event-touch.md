@@ -45,6 +45,10 @@ public class TouchEvent {
 
 **起始版本：** 21
 
+**父类型：**
+
+- BaseEvent
+
 #### var changedTouches
 
 ```cangjie

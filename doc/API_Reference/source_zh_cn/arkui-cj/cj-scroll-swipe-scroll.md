@@ -1453,7 +1453,7 @@ public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: ScrollAnima
 |:---|:---|:---|:---|:---|
 |xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|水平滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
 |yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|垂直滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
-|animation|[ScrollAnimationOptions](#class-scrollanimationoptions)|否|True|默认值： ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } boolean: false动画配置。 - ScrollAnimationOptions: 自定义滚动动效。 - boolean: 使能默认弹簧动效。|
+|animation|[ScrollAnimationOptions](#class-scrollanimationoptions)|是|-|自定义滚动动效，初始值：ScrollAnimationOptions(duration: 1000, curve: Curve.Ease, canOverScroll: false)|
 
 #### func scrollTo(Length, Length, Bool)
 
