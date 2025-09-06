@@ -437,7 +437,7 @@ public func `prop`<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|ObservedProperty<T>|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。如果LocalStorage中不存在对应的propName，则返回None。|
+|?ObservedProperty<T>|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。如果LocalStorage中不存在对应的propName，则返回None。|
 
 ### func aboutToBeDeleted()
 
@@ -600,7 +600,7 @@ public func link<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|ObservedProperty<T>| Option\<ObservedProperty\<T>>的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回None。|
+|?ObservedProperty<T>| Option\<ObservedProperty\<T>>的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回None。|
 
 ### func set\<T>(String, T)
 

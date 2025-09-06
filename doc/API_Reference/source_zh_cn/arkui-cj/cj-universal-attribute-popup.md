@@ -575,8 +575,8 @@ public init(
 |shadow|[ShadowStyle](cj-common-types.md#enum-shadowstyle)|否|ShadowStyle.OuterDefaultMD|**命名参数。**  气泡阴影。|
 |backgroundBlurStyle|[BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick|**命名参数。**  气泡模糊背景参数。|
 |focusable|Bool|否|false|**命名参数。**   设置气泡弹出后是否获焦。|
-|transition|[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|Option.None|**命名参数。**   自定义popup弹窗显示和退出的动画效果。<br/>**说明：**<br/>1.如果不设置，则使用默认的显示/退出动效。<br/>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/>3.退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。|
-|onWillDismiss|([DismissPopupAction](#class-dismisspopupaction))->Unit|否|None|**命名参数。**   拦截退出事件且执行回调函数。<br>**说明：** 在onWillDismiss回调中，不能再做onWillDismiss拦截。|
+|transition|Option<[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)>|否|Option.None|**命名参数。**   自定义popup弹窗显示和退出的动画效果。<br/>**说明：**<br/>1.如果不设置，则使用默认的显示/退出动效。<br/>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/>3.退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。|
+|onWillDismiss|Option<([DismissPopupAction](#class-dismisspopupaction))->Unit>|否|None|**命名参数。**   拦截退出事件且执行回调函数。<br>**说明：** 在onWillDismiss回调中，不能再做onWillDismiss拦截。|
 |followTransformOfTarget|Bool|否|false|**命名参数。**   气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，气泡是否能显示在对应变化后的位置上。|
 
 ### class DismissPopupAction
@@ -1185,7 +1185,7 @@ public init(
 |message|String|是|-|设置弹窗信息内容|
 |primaryButton|[PopupButton](#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第一个按钮|
 |secondaryButton|[PopupButton](#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第二个按钮|
-|onStateChange|(Option<(PopupStateChangeParam) -> Unit>|否|Option.None|设置弹窗状态变化事件回调|
+|onStateChange|Option<(PopupStateChangeParam) -> Unit>|否|Option.None|设置弹窗状态变化事件回调|
 |arrowOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|设置popup箭头在弹窗处的偏移|
 |showInSubWindow|Bool|是|-|设置是否在子窗口显示气泡|
 |messageOptions|[PopupMessageOptions](#class-popupmessageoptions)|否|PopupMessageOptions()|设置弹窗信息文本参数|

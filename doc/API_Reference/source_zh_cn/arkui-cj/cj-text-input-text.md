@@ -51,12 +51,12 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 |:---|:---|:---|:---|:---|
 |content|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。包含子组件Span且未设置属性字符串时不生效，显示Span内容，并且此时text组件的样式不生效。<br/>初始值：''。|
 |controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
-|child|()->Unit|是|-|Text的子组件。|
+|child|()->Unit|否|{ =>}|Text的子组件。|
 
 ### init(TextController, () -> Unit)
 
 ```cangjie
-public init(controller!: TextController = TextController(), chid!: () -> Unit)
+public init(controller!: TextController = TextController(), child!: () -> Unit)
 ```
 
 **功能：** 创建Text组件。
@@ -70,7 +70,7 @@ public init(controller!: TextController = TextController(), chid!: () -> Unit)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
-|chid|()->Unit|是|-|Text的子组件。|
+|child|()->Unit|是|-|Text的子组件。|
 
 ### init(TextController)
 
