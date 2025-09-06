@@ -53,7 +53,7 @@ Radio(value: 'Radio2', group: 'radioGroup')
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import ohhos.prompt_action.*
+import ohos.prompt_action.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
