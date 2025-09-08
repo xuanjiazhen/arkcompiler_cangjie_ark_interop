@@ -1706,10 +1706,10 @@ public func toString(): String
 |:----|:----|
 |String|枚举的说明。|
 
-## enum CipherSpecltem
+## enum CipherSpecItem
 
 ```cangjie
-public enum CipherSpecltem <: Equatable<CipherSpecltem> & ToString {
+public enum CipherSpecItem <: Equatable<CipherSpecItem> & ToString {
     | OaepMdNameStr
     | OaepMgfNameStr
     | OaepMgf1MdStr
@@ -1726,7 +1726,7 @@ public enum CipherSpecltem <: Equatable<CipherSpecltem> & ToString {
 
 **父类型：**
 
-- Equatable\<CipherSpecltem>
+- Equatable\<CipherSpecItem>
 - ToString
 
 ### OaepMdNameStr
@@ -1777,10 +1777,10 @@ OaepMgf1PsrcUint8Arr
 
 **起始版本：** 21
 
-### func !=(CipherSpecltem)
+### func !=(CipherSpecItem)
 
 ```cangjie
-public operator func !=(other: CipherSpecltem): Bool
+public operator func !=(other: CipherSpecItem): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -1793,7 +1793,7 @@ public operator func !=(other: CipherSpecltem): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CipherSpecltem](#enum-cipherspecltem)|是|-|另一个枚举值。|
+|other|[CipherSpecItem](#enum-CipherSpecItem)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -1801,10 +1801,10 @@ public operator func !=(other: CipherSpecltem): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
-### func ==(CipherSpecltem)
+### func ==(CipherSpecItem)
 
 ```cangjie
-public operator func ==(other: CipherSpecltem): Bool
+public operator func ==(other: CipherSpecItem): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -1817,7 +1817,7 @@ public operator func ==(other: CipherSpecltem): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CipherSpecltem](#enum-cipherspecltem)|是|-|另一个枚举值。|
+|other|[CipherSpecItem](#enum-CipherSpecItem)|是|-|另一个枚举值。|
 
 **返回值：**
 

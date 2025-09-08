@@ -4520,7 +4520,7 @@ public enum ReceiveType {
 
 **功能：** 接收图片时注册回调类型。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 21
 
@@ -4532,7 +4532,7 @@ ImageArrival
 
 **功能：** 接收图片时事件类型。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 21
 

@@ -1110,6 +1110,42 @@ public enum MemberType {
 
 **起始版本：** 21
 
+### Int64Value
+
+```cangjie
+Int64Value(Int64)
+```
+
+**功能：** Int64类型。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+### StringValue
+
+```cangjie
+StringValue(String)
+```
+
+**功能：** String类型。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+### BoolValue
+
+```cangjie
+BoolValue(Bool)
+```
+
+**功能：** Bool类型。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
 ## enum PhotoType
 
 ```cangjie
@@ -1130,6 +1166,30 @@ public enum PhotoType <: Equatable<PhotoType> & ToString {
 
 - Equatable\<PhotoType>
 - ToString
+
+### Image
+
+```cangjie
+Image
+```
+
+**功能：** 图片。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+### Video
+
+```cangjie
+Video
+```
+
+**功能：** 视频。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
 
 ### func !=(PhotoType)
 

@@ -1642,7 +1642,7 @@ class EntryView {
                     case SecurityLevel.NoneLevel => Hilog.info(0, "cangjieTest", "getSecurityLevel returns NONE")
                     case SecurityLevel.Secure => Hilog.info(0, "cangjieTest", "getSecurityLevel returns SECURE")
                     case SecurityLevel.Warning => Hilog.info(0, "cangjieTest", "getSecurityLevel returns WARNING")
-                    case SecurityLevel.Dangerous => Hilog.info(0, "cangjieTest", "getSecurityLevel returns DANGEROUS")
+                    case SecurityLevel.Danger => Hilog.info(0, "cangjieTest", "getSecurityLevel returns DANGEROUS")
                     case _ => throw IllegalArgumentException("The type is not supported.")
                  }
             }.width(400.px).height(150.px)
@@ -2980,7 +2980,7 @@ public enum SecurityLevel <: Equatable<SecurityLevel> & ToString {
     | NoneLevel
     | Secure
     | Warning
-    | Dangerous
+    | Danger
     | ...
 }
 ```
@@ -3027,10 +3027,10 @@ Warning
 
 **起始版本：** 21
 
-### Dangerous
+### Danger
 
 ```cangjie
-Dangerous
+Danger
 ```
 
 **功能：** 页面不安全。尝试HTTPS并失败、页面未通过身份验证、页面上包含不安全活动内容的HTTPS、恶意软件、网络钓鱼或任何其他可能危险的严重安全问题。

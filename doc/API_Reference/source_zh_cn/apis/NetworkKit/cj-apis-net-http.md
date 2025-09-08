@@ -2085,7 +2085,7 @@ public enum RequestMethod {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 12
+**起始版本：** 21
 
 ### Connect
 
@@ -2094,6 +2094,8 @@ Connect
 ```
 
 **功能：** HTTP请求CONNECT。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
@@ -2105,7 +2107,9 @@ Delete
 
 **功能：** HTTP请求DELETE。
 
-**起始版本：** 12
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
 
 ### Get
 
@@ -2115,7 +2119,9 @@ Get
 
 **功能：** HTTP请求GET。
 
-**起始版本：** 12
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
 
 ### Head
 
@@ -2125,7 +2131,9 @@ Head
 
 **功能：** HTTP请求HEAD。
 
-**起始版本：** 12
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
 
 ### Options
 
@@ -2135,7 +2143,9 @@ Options
 
 **功能：** HTTP请求OPTIONS。
 
-**起始版本：** 12
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
 
 ### Post
 
@@ -2145,7 +2155,9 @@ Post
 
 **功能：** HTTP请求POST。
 
-**起始版本：** 12
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
 
 ### Put
 
@@ -2155,7 +2167,9 @@ Put
 
 **功能：** HTTP请求PUT。
 
-**起始版本：** 12
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
 
 ### Trace
 
@@ -2165,38 +2179,9 @@ Trace
 
 **功能：** HTTP请求TRACE。
 
-**起始版本：** 12
-
-### func getValue()
-
-```cangjie
-public func getValue(): String
-```
-
-**功能：** 获取RequestMethod枚举对应的字符串。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 12
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回RequestMethod枚举对应的字符串。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let getMethod = RequestMethod.GET.getValue()
-```
+**起始版本：** 21
 
 ## enum UsingProxy
 
