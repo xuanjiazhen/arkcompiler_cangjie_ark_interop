@@ -1937,6 +1937,7 @@ public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
 **父类型：**
 
 - ToString
+- Equatable\<AlbumKeys>
 
 ### AlbumName
 
@@ -2038,6 +2039,11 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<AlbumSubtype>
+- ToString
 
 ### AnyAlbum
 
@@ -2169,6 +2175,11 @@ public enum AlbumType <: Equatable<AlbumType> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<AlbumType>
+- ToString
+
 ### System
 
 ```cangjie
@@ -2266,6 +2277,7 @@ public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
 **父类型：**
 
 - ToString
+- Equatable\<DefaultChangeUri>
 
 ### DefaultAlbumUri
 
@@ -2365,6 +2377,11 @@ public enum DeliveryMode <: Equatable<DeliveryMode> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<DeliveryMode>
+- ToString
 
 ### BalanceMode
 
@@ -2472,6 +2489,11 @@ public enum DynamicRangeType <: Equatable<DynamicRangeType> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<DynamicRangeType>
+- ToString
+
 ### Hdr
 
 ```cangjie
@@ -2568,6 +2590,11 @@ public enum NotifyType <: Equatable<NotifyType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<NotifyType>
+- ToString
 
 ### NotifyAdd
 
@@ -2721,6 +2748,7 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
 **父类型：**
 
 - ToString
+- Equatable\<PhotoKeys>
 
 ### BurstKey
 
@@ -3055,6 +3083,11 @@ public enum PhotoSubtype <: Equatable<PhotoSubtype> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<PhotoSubtype>
+- ToString
+
 ### Burst
 
 ```cangjie
@@ -3162,6 +3195,11 @@ public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<PhotoViewMIMETypes>
+- ToString
 
 ### ImageType
 
@@ -3288,6 +3326,11 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<RecommendationType>
+- ToString
 
 ### BankCard
 
@@ -3478,6 +3521,11 @@ public enum ResourceType <: Equatable<ResourceType> & ToString {
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<ResourceType>
+- ToString
 
 ### ImageResource
 

@@ -381,6 +381,11 @@ public enum AVImageQueryOptions <: Equatable<AVImageQueryOptions> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<AVImageQueryOptions>
+- ToString
+
 ### AvImageQueryClosest
 
 ```cangjie

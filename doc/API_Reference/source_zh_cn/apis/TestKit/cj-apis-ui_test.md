@@ -4328,6 +4328,11 @@ public enum OnceType <: Equatable<OnceType> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<OnceType>
+- ToString
+
 ### DialogShow
 
 ```cangjie

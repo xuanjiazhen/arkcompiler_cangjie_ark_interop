@@ -1947,6 +1947,12 @@ public enum HttpRequestEvent <: Equatable<HttpRequestEvent> & Hashable & ToStrin
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<HttpRequestEvent>
+- Hashable
+- ToString
+
 ### DataEnd
 
 ```cangjie

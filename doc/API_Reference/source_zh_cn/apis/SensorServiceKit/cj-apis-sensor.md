@@ -1855,6 +1855,11 @@ public enum IntervalOption <: Equatable<IntervalOption> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- [Equatable\<IntervalOption>](../BasicServicesKit/cj-apis-base.md#class-equatable)
+- ToString
+
 ### GameMode
 
 ```cangjie
@@ -1974,6 +1979,11 @@ public enum SensorAccuracy  <: Equatable<SensorAccuracy> & ToString {
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**父类型：**
+
+- [Equatable\<SensorAccuracy>](../BasicServicesKit/cj-apis-base.md#class-equatable)
+- ToString
 
 ### AccuracyHigh
 
@@ -2111,6 +2121,11 @@ public enum SensorId <: Equatable<SensorId> & ToString {
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**父类型：**
+
+- [Equatable\<SensorId>](../BasicServicesKit/cj-apis-base.md#class-equatable)
+- ToString
 
 ### Accelerometer
 

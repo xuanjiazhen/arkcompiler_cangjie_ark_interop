@@ -440,6 +440,11 @@ public enum ColorSpace <: Equatable<ColorSpace> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<ColorSpace>
+- ToString
+
 ### AdobeRgb1998
 
 ```cangjie

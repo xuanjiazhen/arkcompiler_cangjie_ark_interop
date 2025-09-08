@@ -3021,6 +3021,11 @@ public enum AlphaType <: Equatable<AlphaType> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<AlphaType>
+- ToString
+
 ### Opaque
 
 ```cangjie
@@ -3141,6 +3146,11 @@ public enum ComponentType <: Equatable<ComponentType> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<ComponentType>
+- ToString
+
 ### Jpeg
 
 ```cangjie
@@ -3260,6 +3270,11 @@ public enum DecodingDynamicRange <: Equatable<DecodingDynamicRange> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<DecodingDynamicRange>
+- ToString
+
 ### Auto
 
 ```cangjie
@@ -3366,6 +3381,11 @@ public enum ImageFormat <: Equatable<ImageFormat> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<ImageFormat>
+- ToString
+
 ### Jpeg
 
 ```cangjie
@@ -3459,6 +3479,11 @@ public enum PackingDynamicRange <: Equatable<PackingDynamicRange> & ToString {
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<PackingDynamicRange>
+- ToString
 
 ### Auto
 
@@ -3563,6 +3588,11 @@ public enum PixelMapFormat <: Equatable<PixelMapFormat> & ToString {
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<PixelMapFormat>
+- ToString
 
 ### Alpha8
 
@@ -3830,6 +3860,7 @@ public enum PropertyKey <: ToString & Equatable<PropertyKey> {
 **父类型：**
 
 - ToString
+- Equatable\<PropertyKey>
 
 ### ApertureValue
 
@@ -4551,6 +4582,11 @@ public enum ScaleMode <: Equatable<ScaleMode> & ToString {
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<ScaleMode>
+- ToString
 
 ### CenterCrop
 

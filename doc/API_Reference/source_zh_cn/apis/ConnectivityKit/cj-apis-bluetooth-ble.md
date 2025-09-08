@@ -2894,6 +2894,10 @@ public class GattPermissions <: Equatable<GattPermissions> {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<GattPermissions>
+
 ### var read
 
 ```cangjie
@@ -5050,6 +5054,11 @@ public enum AdvertisingState <: Equatable<AdvertisingState> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<AdvertisingState>
+- ToString
+
 ### Disabled
 
 ```cangjie
@@ -5170,6 +5179,12 @@ public enum BluetoothBleCallbackType <: Equatable<BluetoothBleCallbackType> & Ha
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<BluetoothBleCallbackType>
+- Hashable
+- ToString
+
 ### AdvertisingStateChange
 
 ```cangjie
@@ -5284,6 +5299,12 @@ public enum BluetoothBleGattClientDeviceCallbackType <: Equatable<BluetoothBleGa
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<BluetoothBleGattClientDeviceCallbackType>
+- Hashable
+- ToString
 
 ### BleCharacteristicChange
 
@@ -5416,6 +5437,12 @@ public enum BluetoothBleGattServerCallbackType <: Equatable<BluetoothBleGattServ
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<BluetoothBleGattServerCallbackType>
+- Hashable
+- ToString
 
 ### CharacteristicRead
 
@@ -5585,6 +5612,11 @@ public enum GattWriteType <: Equatable<GattWriteType> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<GattWriteType>
+- ToString
+
 ### Write
 
 ```cangjie
@@ -5678,6 +5710,11 @@ public enum MatchMode <: Equatable<MatchMode> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<MatchMode>
+- ToString
 
 ### MatchModeAggressive
 
@@ -5773,6 +5810,11 @@ public enum PhyType <: Equatable<PhyType> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<PhyType>
+- ToString
+
 ### PhyLe1M
 
 ```cangjie
@@ -5867,6 +5909,11 @@ public enum ScanDuty <: Equatable<ScanDuty> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<ScanDuty>
+- ToString
 
 ### ScanModeBalanced
 
@@ -5978,6 +6025,11 @@ public enum ScanReportMode <: Equatable<ScanReportMode> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<ScanReportMode>
+- ToString
 
 ### Batch
 

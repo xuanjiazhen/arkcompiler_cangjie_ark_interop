@@ -420,6 +420,11 @@ public enum DisconnectCause <: Equatable<DisconnectCause> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<DisconnectCause>
+- ToString
+
 ### ConnectFailInternal
 
 ```cangjie
@@ -560,6 +565,12 @@ public enum ProfileCallbackType <: Equatable<ProfileCallbackType> & Hashable & T
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<ProfileCallbackType>
+- Hashable
+- ToString
 
 ### ConnectionStateChange
 

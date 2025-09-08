@@ -2991,6 +2991,11 @@ public enum SecurityLevel <: Equatable<SecurityLevel> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<SecurityLevel>
+- ToString
+
 ### NoneLevel
 
 ```cangjie
@@ -3113,6 +3118,11 @@ public enum WebHitTestType <: Equatable<WebHitTestType> & ToString {
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- [Equatable\<WebHitTestType>]
+- ToString
 
 ### EditText
 

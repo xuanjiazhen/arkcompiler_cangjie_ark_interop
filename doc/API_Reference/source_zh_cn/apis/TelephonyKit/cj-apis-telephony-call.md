@@ -392,6 +392,11 @@ public enum CallState <: Equatable<CallState> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<CallState>
+- ToString
+
 ### CallStateAnswered
 
 ```cangjie

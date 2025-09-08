@@ -1834,6 +1834,11 @@ public enum Action <: Equatable<Action> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<Action>
+- ToString
+
 ### Download
 
 ```cangjie
@@ -1927,6 +1932,10 @@ public enum BroadcastEvent <: ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- ToString
+
 ### Complete
 
 ```cangjie
@@ -2018,6 +2027,12 @@ public enum EventCallbackType <: Equatable<EventCallbackType> & Hashable & ToStr
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<EventCallbackType>
+- Hashable
+- ToString
 
 ### Completed
 
@@ -2190,6 +2205,10 @@ public enum Faults <: ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- ToString
+
 ### Disconnected
 
 ```cangjie
@@ -2333,6 +2352,11 @@ public enum Mode <: Equatable<Mode> & ToString{
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<Mode>
+- ToString
+
 ### Background
 
 ```cangjie
@@ -2426,6 +2450,11 @@ public enum Network <: Equatable<Network> & ToString {
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<Network>
+- ToString
 
 ### AnyType
 
@@ -2539,6 +2568,10 @@ public enum State <: ToString {
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **起始版本：** 21
+
+**父类型：**
+
+- ToString
 
 ### Completed
 

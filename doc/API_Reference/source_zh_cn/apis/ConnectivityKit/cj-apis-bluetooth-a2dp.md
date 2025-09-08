@@ -531,6 +531,11 @@ public enum CodecBitsPerSample <: Equatable<CodecBitsPerSample> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<CodecBitsPerSample>
+- ToString
+
 ### CodecBitsPerSample16
 
 ```cangjie
@@ -650,6 +655,11 @@ public enum CodecChannelMode <: Equatable<CodecChannelMode> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<CodecChannelMode>
+- ToString
+
 ### CodecChannelModeMono
 
 ```cangjie
@@ -760,6 +770,11 @@ public enum CodecSampleRate <: Equatable<CodecSampleRate> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<CodecSampleRate>
+- ToString
 
 ### CodecSampleRate176400
 
@@ -917,6 +932,11 @@ public enum CodecType <: Equatable<CodecType> & ToString {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<CodecType>
+- ToString
+
 ### CodecTypeAac
 
 ```cangjie
@@ -1034,6 +1054,11 @@ public enum PlayingState <: Equatable<PlayingState> & ToString {
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<PlayingState>
+- ToString
 
 ### StateNotPlaying
 
