@@ -1011,6 +1011,46 @@ Stretch
 
 **起始版本：** 21
 
+### func !=(SwiperDisplayMode)
+
+```cangjie
+public operator func !=(other: SwiperDisplayMode): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SwiperDisplayMode](#enum-swiperdisplaymode)|是|-|比较的枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(SwiperDisplayMode)
+
+```cangjie
+public operator func ==(other: SwiperDisplayMode): Bool
+```
+
+**功能：** 判断两个枚举值是否相等
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SwiperDisplayMode](#enum-swiperdisplaymode)|是|-|比较的枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## 示例代码
 
 ### 示例代码1（设置导航点交互及翻页动效）

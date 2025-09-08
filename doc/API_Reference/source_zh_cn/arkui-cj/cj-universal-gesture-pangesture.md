@@ -7,6 +7,95 @@
 ```cangjie
 import kit.ArkUI.*
 ```
+
+## func !=(PanDirection)
+
+```cangjie
+public operator func !=(other: PanDirection): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[PanDirection](#enum-pandirection)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+## func ==(PanDirection)
+
+```cangjie
+public operator func ==(other: PanDirection): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[PanDirection](#enum-pandirection)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+## func &(PanDirection)
+
+```cangjie
+public operator func &(right: PanDirection): PanDirection
+```
+
+**功能：** 对PanDirection进行逻辑与(&)运算。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|right|[PanDirection](#enum-pandirection)|是|-|滑动方向|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[PanDirection](#enum-pandirection)|滑动方向|
+
+## func |(PanDirection)
+
+```cangjie
+public operator func |(right: PanDirection): PanDirection
+```
+
+**功能：** 对PanDirection进行逻辑或(|)运算。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|right|[PanDirection](#enum-pandirection)|是|-|滑动方向|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[PanDirection](#enum-pandirection)|滑动方向|
+
 ## 基础类型定义
 
 ### enum PanDirection

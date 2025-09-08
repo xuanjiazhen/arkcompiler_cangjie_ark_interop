@@ -688,7 +688,7 @@ public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp)
 ## enum TransitionEdge
 
 ```cangjie
-public enum TransitionEdge {
+public enum TransitionEdge <: Equatable<TransitionEdge> {
     | Top
     | Bottom
     | Start

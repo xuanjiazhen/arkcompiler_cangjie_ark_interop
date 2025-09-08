@@ -217,7 +217,7 @@ public init(
 ## enum RouterMode
 
 ```cangjie
-public enum RouterMode {
+public enum RouterMode <: Equatable<RouterMode> {
     | Standard
     | Single
     | ...
@@ -257,6 +257,54 @@ Standard
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+### func !=(RouterMode)
+
+```cangjie
+public operator func !=(other: RouterMode): Bool
+```
+
+**功能：** 对授权状态进行判不等。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[RouterMode](#enum-routermode)|是|-|授权状态。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果授权状态不同，返回true，否则返回false。|
+
+### func ==(RouterMode)
+
+```cangjie
+public operator func ==(other: RouterMode): Bool
+```
+
+**功能：** 对授权状态进行判等。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[RouterMode](#enum-routermode)|是|-|授权状态。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果授权状态相同，返回true，否则返回false。|
 
 ## 示例代码
 

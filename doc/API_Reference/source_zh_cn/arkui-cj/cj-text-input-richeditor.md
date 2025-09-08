@@ -1423,7 +1423,7 @@ public operator func ==(other: RichEditorDeleteDirection): Bool
 ### enum RichEditorSpanType
 
 ```cangjie
-public enum RichEditorSpanType {
+public enum RichEditorSpanType <: Equatable<RichEditorSpanType> {
     | TEXT
     | IMAGE
     | MIXED

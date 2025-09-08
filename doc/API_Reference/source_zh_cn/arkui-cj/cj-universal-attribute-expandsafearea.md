@@ -41,6 +41,86 @@ public func expandSafeArea(types!: ?Array<SafeAreaType> = None, edges!: ?Array<S
 |types|?Array\<[SafeAreaType](#)>|否|None|安全区域类型数组。|
 |edges|?Array\<[SafeAreaEdge](#)>|否|None|安全区域边缘数组。|
 
+## func !=(SafeAreaEdge)
+
+```cangjie
+public operator func !=(other: SafeAreaEdge): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SafeAreaEdge](#enum-safeareaedge)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+## func ==(SafeAreaEdge)
+
+```cangjie
+public operator func ==(other: SafeAreaEdge): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SafeAreaEdge](#enum-safeareaedge)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+## func !=(SafeAreaType)
+
+```cangjie
+public operator func !=(other: SafeAreaType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SafeAreaType](#enum-safeareatype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+## func ==(SafeAreaType)
+
+```cangjie
+public operator func ==(other: SafeAreaType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SafeAreaType](#enum-safeareatype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## 基础类型定义
 
 ### enum SafeAreaEdge

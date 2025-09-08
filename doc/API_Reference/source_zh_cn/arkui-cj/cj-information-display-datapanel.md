@@ -388,7 +388,7 @@ public var radius: Length = 20.vp
 ## enum DataPanelType
 
 ```cangjie
-public enum DataPanelType {
+public enum DataPanelType <: Equatable<DataPanelType> {
     | Circle
     | Line
     | ...
@@ -428,6 +428,46 @@ Line
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+### func !=(DataPanelType)
+
+```cangjie
+public operator func !=(other: DataPanelType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[DataPanelType](#enum-datapaneltype)|是|-|比较的枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。
+
+### func ==(DataPanelType)
+
+```cangjie
+public operator func ==(other: DataPanelType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[DataPanelType](#enum-datapaneltype)|是|-|比较的枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## 示例代码
 

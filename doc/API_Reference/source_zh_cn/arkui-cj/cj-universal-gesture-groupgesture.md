@@ -12,6 +12,46 @@ import kit.UIkit.*
 
 无
 
+## func !=(GestureMode)
+
+```cangjie
+public operator func !=(other: GestureMode): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GestureMode](#enum-gesturemode)|是|-|传入的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等时，返回true，否则返回false。|
+
+## func ==(GestureMode)
+
+```cangjie
+public operator func ==(other: GestureMode): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GestureMode](#enum-gesturemode)|是|-|传入的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等时返回true，否则返回false。|
+
 ## 基础类型定义
 
 ### enum GestureMode

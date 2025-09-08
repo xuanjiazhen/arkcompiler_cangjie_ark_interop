@@ -32,6 +32,166 @@ public func bindSheet(isShow: Bool, builder: CustomBuilder, options!: SheetOptio
 |builder|[CustomBuilder](#type-custombuilder)|是|-|自定义构建器。|
 |options|[SheetOptions](#)|否|SheetOptions()|底部面板选项。|
 
+## func !=(ScrollSizeMode)
+
+```cangjie
+public operator func !=(other: ScrollSizeMode): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ScrollSizeMode](#enum-scrollsizemode)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
+
+## func ==(ScrollSizeMode)
+
+```cangjie
+public operator func ==(other: ScrollSizeMode): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ScrollSizeMode](#enum-scrollsizemode)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等，则返回true，否则返回false。|
+
+## func !=(SheetMode)
+
+```cangjie
+public operator func !=(other: SheetMode): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SheetMode](#enum-sheetmode)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
+
+## func ==(SheetMode)
+
+```cangjie
+public operator func ==(other: SheetMode): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SheetMode](#enum-sheetmode)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等，则返回true，否则返回false。|
+
+## func !=(SheetSize)
+
+```cangjie
+public operator func !=(other: SheetSize): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SheetSize](#enum-sheetsize)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
+
+## func ==(SheetSize)
+
+```cangjie
+public operator func ==(other: SheetSize): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SheetSize](#enum-sheetsize)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等，则返回true，否则返回false。|
+
+## func !=(SheetType)
+
+```cangjie
+public operator func !=(other: SheetType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SheetType](#enum-sheettype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
+
+## func ==(SheetType)
+
+```cangjie
+public operator func ==(other: SheetType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SheetType](#enum-sheettype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等，则返回true，否则返回false。|
+
 ## 基础类型定义
 
 ### class BindOptions

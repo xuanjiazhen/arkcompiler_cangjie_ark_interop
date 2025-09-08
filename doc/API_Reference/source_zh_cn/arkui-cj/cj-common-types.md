@@ -1655,7 +1655,7 @@ public operator func ==(other: LengthType): Bool
 ## enum Alignment
 
 ```cangjie
-public enum Alignment {
+public enum Alignment <: Equatable<Alignment> {
     | TopStart
     | Top
     | TopEnd
@@ -2896,6 +2896,46 @@ Xor
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+### func !=(CompositeOperation)
+
+```cangjie
+public operator func !=(other: CompositeOperation): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[CompositeOperation](#enum-compositeoperation)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
+
+### func ==(CompositeOperation)
+
+```cangjie
+public operator func ==(other: CompositeOperation): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[CompositeOperation](#enum-compositeoperation)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等，则返回true，否则返回false。|
 
 ## enum ContentType
 
@@ -4409,7 +4449,7 @@ public operator func ==(other: FinishCallbackType): Bool
 ## enum FlexAlign
 
 ```cangjie
-public enum FlexAlign {
+public enum FlexAlign <: Equatable<FlexAlign> {
     | Start
     | Center
     | End
@@ -4545,7 +4585,7 @@ public operator func ==(other: FlexAlign): Bool
 ## enum FlexDirection
 
 ```cangjie
-public enum FlexDirection {
+public enum FlexDirection <: Equatable<FlexDirection> {
     | Row
     | Column
     | RowReverse
@@ -4655,7 +4695,7 @@ public operator func ==(other: FlexDirection): Bool
 ## enum FlexWrap
 
 ```cangjie
-public enum FlexWrap {
+public enum FlexWrap <: Equatable<FlexWrap> {
     | NoWrap
     | Wrap
     | WrapReverse
@@ -4752,7 +4792,7 @@ public operator func ==(other: FlexWrap): Bool
 ## enum FontStyle
 
 ```cangjie
-public enum FontStyle {
+public enum FontStyle <: Equatable<FontStyle> {
     | Normal
     | Italic
     | ...
@@ -6298,7 +6338,7 @@ public operator func ==(other: ImageType): Bool
 ## enum ItemAlign
 
 ```cangjie
-public enum ItemAlign {
+public enum ItemAlign <: Equatable<ItemAlign> {
     | Auto
     | Start
     | Center
@@ -6655,6 +6695,46 @@ TOP
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+### func !=(LayoutSafeAreaEdge)
+
+```cangjie
+public operator func !=(other: LayoutSafeAreaEdge): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[LayoutSafeAreaEdge](#enum-layoutsafeareaedge)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(LayoutSafeAreaEdge)
+
+```cangjie
+public operator func ==(other: LayoutSafeAreaEdge): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[LayoutSafeAreaEdge](#enum-layoutsafeareaedge)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## enum LengthMetricsUnit
 
@@ -8486,6 +8566,46 @@ Medium
 
 **起始版本：** 21
 
+### func !=(QualityType)
+
+```cangjie
+public operator func !=(other: QualityType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[QualityType](#enum-qualitytype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(QualityType)
+
+```cangjie
+public operator func ==(other: QualityType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[QualityType](#enum-qualitytype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum RefreshStatus
 
 ```cangjie
@@ -10138,6 +10258,64 @@ Spring
 
 **起始版本：** 21
 
+### func !=(SwipeEdgeEffect)
+
+```cangjie
+public operator func !=(other: SwipeEdgeEffect): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SwipeEdgeEffect](#enum-swipeedgeeffect)|是|-|比较的枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(SwipeEdgeEffect)
+
+```cangjie
+public operator func ==(other: SwipeEdgeEffect): Bool
+```
+
+**功能：** 判断两个枚举值是否相等
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SwipeEdgeEffect](#enum-swipeedgeeffect)|是|-|比较的枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**功能：** 获取当前枚举的所表示的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Int32|当前枚举所表示的值。|
+
 ## enum TextAlign
 
 ```cangjie
@@ -10425,6 +10603,46 @@ Top
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+### func !=(TextBaseline)
+
+```cangjie
+public operator func !=(other: TextBaseline): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[TextBaseline](#enum-textbaseline)|是|-|比较的枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(TextBaseline)
+
+```cangjie
+public operator func ==(other: TextBaseline): Bool
+```
+
+**功能：** 判断两个枚举值是否相等
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[TextBaseline](#enum-textbaseline)|是|-|比较的枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## enum TextCase
 

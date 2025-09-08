@@ -344,3 +344,43 @@ Thin
 
 **起始版本：** 21
 
+#### func !=(BlurStyle)
+
+```cangjie
+public operator func !=(other: BlurStyle): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BlurStyle](#enum-blurstyle)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不相等，则返回true，否则返回false。|
+
+#### func ==(BlurStyle)
+
+```cangjie
+public operator func ==(other: BlurStyle): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BlurStyle](#enum-blurstyle)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等，则返回true，否则返回false。|
+
