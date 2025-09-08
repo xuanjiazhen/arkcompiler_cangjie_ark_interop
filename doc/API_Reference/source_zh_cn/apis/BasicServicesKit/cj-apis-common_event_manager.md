@@ -1268,7 +1268,7 @@ public static const COMMON_EVENT_DISK_UNMOUNTED: String = "usual.event.data.DISK
 public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN: String = "common.event.DISTRIBUTED_ACCOUNT_LOGIN"
 ```
 
-**功能：** （预留事件，暂未支持）表示分布式帐号登录成功的公共事件。
+**功能：** （预留事件，暂未支持）表示分布式账号登录成功的公共事件。
 
 **类型：** String
 
@@ -1282,7 +1282,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN: String = "common.eve
 public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF: String = "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
 ```
 
-**功能：** （预留事件，暂未支持）表示分布式帐号注销的公共事件。
+**功能：** （预留事件，暂未支持）表示分布式账号注销的公共事件。
 
 **类型：** String
 
@@ -1296,7 +1296,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF: String = "common.ev
 public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT: String = "common.event.DISTRIBUTED_ACCOUNT_LOGOUT"
 ```
 
-**功能：** （预留事件，暂未支持）表示分布式帐号登出成功的公共事件。
+**功能：** （预留事件，暂未支持）表示分布式账号登出成功的公共事件。
 
 **类型：** String
 
@@ -1310,7 +1310,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT: String = "common.ev
 public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID: String = "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
 ```
 
-**功能：** （预留事件，暂未支持）表示分布式帐号token令牌无效的公共事件。
+**功能：** （预留事件，暂未支持）表示分布式账号token令牌无效的公共事件。
 
 **类型：** String
 
