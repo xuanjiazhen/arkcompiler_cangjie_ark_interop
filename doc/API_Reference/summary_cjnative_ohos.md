@@ -351,7 +351,7 @@
     - [Media Library Kit（媒体文件管理服务）]()
         - [仓颉API]()
             - [ohos.file.photo_access_helper（相册管理模块）](source_zh_cn/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md)
-            - [ohos.file.photo_access_helper（相册管理模块）](source_zh_cn/apis/MediaLibraryKit/cj-apis-file-photo_accesshelper.md)
+            - [ohos.file.photo_access_helper（相册管理模块）](source_zh_cn/apis/MediaLibraryKit/cj-apis-file-photo_access_helper.md)
 - [图形]()
     - [ArkGraphics2D（方舟2D图形服务）]()
         - [仓颉API]()
