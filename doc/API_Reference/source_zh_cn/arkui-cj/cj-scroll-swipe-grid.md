@@ -42,8 +42,8 @@ public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>}
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|scroller|[Option](#initoptionscroller-option---unit)\<[Scroller](./cj-common-types.md#class-scroller)>|否|Option.None|可滚动组件的控制器，与可滚动组件绑定。<br> **说明：** <br>不允许和其他滚动类组件，如：[List](cj-scroll-swipe-list.md)、[Grid](cj-scroll-swipe-grid.md)、[Scroll](cj-scroll-swipe-scroll.md)等绑定同一个滚动控制对象。|
-|child|[Option](#initoptionscroller-option---unit)\<()->Unit>|否|Option.None|网格容器的子组件。|
+|scroller|Option<[Scroller](./cj-scroll-swipe-scroll.md#class-scroller)>|否|Option.None|可滚动组件的控制器，与可滚动组件绑定。<br> **说明：** <br>不允许和其他滚动类组件，如：[List](cj-scroll-swipe-list.md)、[Grid](cj-scroll-swipe-grid.md)、[Scroll](cj-scroll-swipe-scroll.md)等绑定同一个滚动控制对象。|
+|child|Option<()->Unit>|否|Option.None|网格容器的子组件。|
 
 ## 通用属性/通用事件
 
@@ -133,7 +133,7 @@ columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为tr
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。<br/>
 auto-stretch模式只支持track-size为一个有效列宽值，并且track-size只支持px、vp和有效数字，不支持%。
 
-使用效果可以参考[示例3](#示例3grid拖拽场景)。
+使用效果可以参考[示例3](#示例代码)。
 
 设置为'0fr'时，该列的列宽为0，不显示GridItem。设置为其他非法值时，GridItem显示为固定1列。
 

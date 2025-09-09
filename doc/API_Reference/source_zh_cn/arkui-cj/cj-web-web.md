@@ -200,7 +200,7 @@ public func mixedMode(mixedMode: MixedMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|mixedMode|[MixedMode](#enum-mixmode)|是|-|混合内容。<br> 初始值：MixedMode.None，表示不允许安全来源（secure origin）加载不安全来源（insecure origin）的内容。|
+|mixedMode|[MixedMode](#enum-mixedmode)|是|-|混合内容。<br> 初始值：MixedMode.None，表示不允许安全来源（secure origin）加载不安全来源（insecure origin）的内容。|
 
 ### func nestedScroll(NestedScrollMode, NestedScrollMode)
 
@@ -682,7 +682,7 @@ public func grant(resources: Array<String>): Unit
 public class WebResourceRequest {}
 ```
 
-**功能：** Web组件资源响应对象。示例代码参考[onHttpErrorReceive](#class-onhttperrorreceiveevent)事件。
+**功能：** Web组件资源响应对象。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

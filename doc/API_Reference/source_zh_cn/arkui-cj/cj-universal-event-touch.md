@@ -24,6 +24,24 @@ public func stopPropagation(): Unit
 
 无
 
+## func onTouch((TouchEvent) -> Unit)
+
+```cangjie
+public func onTouch(event: (TouchEvent) -> Unit): This
+```
+
+**功能：** 手指触摸动作触发该事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|([TouchEvent](#class-touchevent))->Unit|是|-|回调函数，手指触摸动作触发该回调。|
+
 ## 基础类型定义
 
 ### class TouchEvent
@@ -279,4 +297,3 @@ public init(touchType: TouchType, id: Int32, screenX: Float64, screenY: Float64,
 |screenY|Float64|是|-|触摸点相对于设备屏幕上边沿的Y坐标。|
 |x|Float64|是|-|触摸点相对于被触摸元素左边沿的X坐标。|
 |y|Float64|是|-|触摸点相对于被触摸元素上边沿的Y坐标。|
-

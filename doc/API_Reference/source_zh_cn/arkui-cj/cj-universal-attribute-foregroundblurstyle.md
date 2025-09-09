@@ -43,7 +43,7 @@ public func foregroundBlurStyle(value: BlurStyle, options: ForegroundBlurStyleOp
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)|是|-|内容模糊样式。|
-|options|[ForegroundBlurStyleOptions](#)|是|-|内容模糊选项。|
+|options|[ForegroundBlurStyleOptions](#class-foregroundblurstyleoptions)|是|-|内容模糊选项。|
 
 ## 基础类型定义
 

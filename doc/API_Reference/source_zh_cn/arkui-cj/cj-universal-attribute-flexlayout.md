@@ -26,7 +26,7 @@ public func alignSelf(value: ItemAlign): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ItemAlign](#)|是|-|项目对齐方式。|
+|value|[ItemAlign](./cj-common-types.md#enum-itemalign)|是|-|项目对齐方式。|
 
 ## func flexBasis(Length)
 

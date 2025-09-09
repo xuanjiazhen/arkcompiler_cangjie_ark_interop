@@ -42,7 +42,7 @@ public func backgroundColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](#)|是|-|背景颜色。|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|背景颜色。|
 
 ## func backgroundImage(ResourceStr)
 
@@ -60,7 +60,7 @@ public func backgroundImage(src: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](#)|是|-|图片资源路径。|
+|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|图片资源路径。|
 
 ## func backgroundImage(ResourceStr, ImageRepeat)
 
@@ -78,8 +78,8 @@ public func backgroundImage(src: ResourceStr, repeat: ImageRepeat): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](#)|是|-|图片资源路径。|
-|repeat|[ImageRepeat](#)|是|-|图片重复方式。|
+|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|图片资源路径。|
+|repeat|[ImageRepeat](./cj-common-types.md#enum-imagerepeat)|是|-|图片重复方式。|
 
 ## func backgroundImagePosition(Alignment)
 
@@ -97,7 +97,7 @@ public func backgroundImagePosition(value: Alignment): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Alignment](#)|是|-|对齐方式。|
+|value|[Alignment](./cj-common-types.md#enum-alignment)|是|-|对齐方式。|
 
 ## func backgroundImagePosition(Length, Length)
 
@@ -134,7 +134,7 @@ public func backgroundImageSize(value: ImageSize): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ImageSize](#)|是|-|图片尺寸。|
+|value|[ImageSize](./cj-common-types.md#enum-imagesize)|是|-|图片尺寸。|
 
 ## func backgroundImageSize(Length, Length)
 

@@ -24,7 +24,7 @@ public func renderFit(fitMode: RenderFit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fitMode|[RenderFit](#)|是|-|渲染适配模式。|
+|fitMode|[RenderFit](#enum-renderfit)|是|-|渲染适配模式。|
 
 ## func !=(RenderFit)
 

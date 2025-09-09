@@ -1,4 +1,4 @@
-# ohos.arkui.ui_context
+# ohos.arkui.ui_context（UIContext）
 
 提供UI上下文相关的功能。
 

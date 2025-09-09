@@ -12,6 +12,24 @@ import kit.ArkUI.*
 
 无
 
+## func onKeyEvent((KeyEvent) -> Unit)
+
+```cangjie
+public func onKeyEvent(event: (KeyEvent) -> Unit): This
+```
+
+**功能：** 绑定该方法的组件获焦后，按键动作触发该事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|([KeyEvent](#class-keyevent))->Unit|是|-|绑定该方法的组件获焦后，按键动作触发该回调。|
+
 ## 基础类型定义
 
 ### class KeyEvent

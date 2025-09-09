@@ -15,7 +15,7 @@ import kit.ArkUI.*
 > **说明：**
 >
 > - Tabs子组件的visibility属性设置为None，或者visibility属性设置为Hidden时，对应子组件不显示，但依然会在视窗内占位。
-> - Tabs子组件TabContent显示之后不会销毁，若需要页面懒加载和释放，请参见[示例12](#示例12（页面懒加载和释放）)。
+> - Tabs子组件TabContent显示之后不会销毁，若需要页面懒加载和释放，请参见[示例2](#示例2页面懒加载和释放)。
 
 ## 创建组件
 
@@ -175,7 +175,7 @@ public func onChange(event: Callback<Int32, Unit>): This
 
 1、滑动页面进行页面切换时，组件滑动动画结束后触发。<br>
 
-2、通过[控制器](#class-tabscontroller)调用[changeIndex](#func-changeindexint)接口，Tab页签切换后触发。<br>
+2、通过[控制器](#class-tabscontroller)调用[changeIndex](#func-changeindexint32)接口，Tab页签切换后触发。<br>
 
 3、动态修改[状态变量](./cj-state-rendering-appstatemanagement.md)构造的index属性值，Tab页签切换后触发。<br>
 

@@ -6,8 +6,6 @@ ohos.window提供管理窗口的一些基础能力，包括对当前窗口的创
 
 - [Window](#class-window)：当前窗口实例，窗口管理器管理的基本单元。
 
-- [WindowStage](#class-windowstage)：窗口管理器。管理各个基本窗口单元。
-
 > **说明：**
 >
 > ohos.window仅支持纯仓颉场景，不支持用于ArkTS与仓颉混合开发场景。
@@ -1394,7 +1392,7 @@ public func setWindowBackgroundColor(color: String): Unit
 
 > **说明：**
 >
-> 该接口需要在[loadContent()](#func-loadcontentstring)调用生效后使用。
+> 该接口需要loadContent()调用生效后使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

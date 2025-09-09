@@ -16,7 +16,7 @@ AppStorage可以和UI组件同步，且可以在应用业务逻辑中被访问�
 
 AppStorage支持应用的主线程内多个UIAbility实例间的状态共享。
 
-AppStorage中的属性可以被双向同步，数据可以是存在于本地或远程设备上，并具有不同的功能，比如数据持久化（详见[PersistentStorage](#persistentstorage持久化存储ui状态)）。这些数据是通过业务逻辑中实现，与UI解耦，如果希望这些数据在UI中使用，需要用到@StorageProp和@StorageLink。
+AppStorage中的属性可以被双向同步，数据可以是存在于本地或远程设备上，并具有不同的功能，比如数据持久化（详见[PersistentStorage](#class-persistentstorage)）。这些数据是通过业务逻辑中实现，与UI解耦，如果希望这些数据在UI中使用，需要用到@StorageProp和@StorageLink。
 
 ## class AppStorage
 
