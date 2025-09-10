@@ -362,7 +362,7 @@ public func onSelect(callback: OnAlphabetIndexerSelectCallback): This
 |:---|:---|:---|:---|:---|
 |callback|[OnAlphabetIndexerSelectCallback](./cj-common-types.md#class-onalphabetindexerselectcallback)|是|-|回调函数，索引条选中时触发。|
 
-# 基础类型定义
+## 基础类型定义
 
 ### enum IndexerAlign
 

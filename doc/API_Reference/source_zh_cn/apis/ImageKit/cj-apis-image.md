@@ -4536,7 +4536,7 @@ public func toString(): String
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The type is not supported yet. |枚举值错误，不支持该枚举值。|请检查传入的枚举值是否正确。|
 

@@ -47,7 +47,7 @@ public class AbilityInfo {
 }
 ```
 
-**功能：** Ability信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取Ability信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ABILITY。
+**功能：** Ability信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取Ability信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ABILITY。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -75,7 +75,7 @@ public let appIndex: Int32
 public let applicationInfo: ApplicationInfo
 ```
 
-**功能：** 应用程序的配置信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_APPLICATION的值。
+**功能：** 应用程序的配置信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_APPLICATION的值。
 
 **类型：** [ApplicationInfo](#class-applicationinfo)
 
@@ -283,9 +283,9 @@ public let launchType: LaunchType
 public let metadata: Array<Metadata>
 ```
 
-**功能：** Ability的元信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_METADATA的值。
+**功能：** Ability的元信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_METADATA的值。
 
-**类型：** Array\<[Metadata]>
+**类型：** Array\<[Metadata](./cj-apis-metadata.md#class-metadata)>
 
 **读写能力：** 只读
 
@@ -347,7 +347,7 @@ public let orientation: DisplayOrientation
 public let permissions: Array<String>
 ```
 
-**功能：** 被其他应用Ability调用时需要申请的权限集合。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
+**功能：** 被其他应用Ability调用时需要申请的权限集合。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
 
 **类型：** Array\<String>
 
@@ -381,7 +381,7 @@ public let skills: Array<Skill>
 
 **功能：** Ability的Skills信息。
 
-**类型：** Array\<[Skill]>
+**类型：** Array\<[Skill](./cj-apis-skill.md#class-skill)>
 
 **读写能力：** 只读
 
@@ -458,7 +458,7 @@ public class ApplicationInfo {
 }
 ```
 
-**功能：** 应用程序的配置信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取自身的应用程序信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_APPLICATION。
+**功能：** 应用程序的配置信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取自身的应用程序信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_APPLICATION。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -646,7 +646,7 @@ public let descriptionId: Int32
 public let descriptionResource: AppResource
 ```
 
-**功能：** 应用程序的描述资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
+**功能：** 应用程序的描述资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-screendensity)来获取详细的资源数据信息。
 
 **类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
@@ -710,7 +710,7 @@ public let iconId: Int32
 public let iconResource: AppResource
 ```
 
-**功能：** 应用程序的图标资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
+**功能：** 应用程序的图标资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-screendensity)来获取详细的资源数据信息。
 
 **类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
@@ -774,7 +774,7 @@ public let labelId: Int32
 public let labelResource: AppResource
 ```
 
-**功能：** 应用程序的标签资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
+**功能：** 应用程序的标签资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-screendensity)来获取详细的资源数据信息。
 
 **类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
@@ -790,7 +790,7 @@ public let labelResource: AppResource
 public let metadataArray: Array<ModuleMetadata>
 ```
 
-**功能：** 应用程序的元信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA的值。
+**功能：** 应用程序的元信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA的值。
 
 **类型：** Array\<[ModuleMetadata](#class-modulemetadata)>
 
@@ -854,7 +854,7 @@ public let nativeLibraryPath: String
 public let permissions: Array<String>
 ```
 
-**功能：** 访问应用程序所需的权限。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
+**功能：** 访问应用程序所需的权限。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
 
 **类型：** Array\<String>
 
@@ -1159,7 +1159,7 @@ public class BundleInfo {
 }
 ```
 
-**功能：** 包信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取自身的应用包信息，其中入参bundleFlags指定所返回的BundleInfo中所包含的信息。
+**功能：** 包信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取自身的应用包信息，其中入参bundleFlags指定所返回的BundleInfo中所包含的信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1187,7 +1187,7 @@ public let appIndex: Int32
 public let appInfo: ApplicationInfo
 ```
 
-**功能：** 应用程序的配置信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION的值。
+**功能：** 应用程序的配置信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION的值。
 
 **类型：** [ApplicationInfo](#class-applicationinfo)
 
@@ -1203,7 +1203,7 @@ public let appInfo: ApplicationInfo
 public let hapModulesInfo: Array<HapModuleInfo>
 ```
 
-**功能：** 模块的配置信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE的值。
+**功能：** 模块的配置信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE的值。
 
 **类型：** Array\<[HapModuleInfo](#class-hapmoduleinfo)>
 
@@ -1267,7 +1267,7 @@ public let name: String
 public let permissionGrantStates: Array<PermissionGrantState>
 ```
 
-**功能：** 申请权限的授予状态。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
+**功能：** 申请权限的授予状态。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
 
 **类型：** Array\<[PermissionGrantState](#enum-permissiongrantstate)>
 
@@ -1283,7 +1283,7 @@ public let permissionGrantStates: Array<PermissionGrantState>
 public let reqPermissionDetails: Array<ReqPermissionDetail>
 ```
 
-**功能：** 应用运行时需向系统申请的权限集合的详细信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
+**功能：** 应用运行时需向系统申请的权限集合的详细信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
 
 **类型：** Array\<[ReqPermissionDetail](#class-reqpermissiondetail)>
 
@@ -1299,7 +1299,7 @@ public let reqPermissionDetails: Array<ReqPermissionDetail>
 public let routerMap: Array<RouterItem>
 ```
 
-**功能：** 应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP的值。
+**功能：** 应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP的值。
 
 **类型：** Array\<[RouterItem](#class-routeritem)>
 
@@ -1315,7 +1315,7 @@ public let routerMap: Array<RouterItem>
 public let signatureInfo: SignatureInfo
 ```
 
-**功能：** 应用包的签名信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_SIGNATURE_INFO的值。
+**功能：** 应用包的签名信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_SIGNATURE_INFO的值。
 
 **类型：** [SignatureInfo](#class-signatureinfo)
 
@@ -1481,7 +1481,7 @@ public static func getBundleInfoForSelf(bundleFlags: Int32): BundleInfo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|bundleFlags|Int32|是|-|指定返回的BundleInfo所包含的信息，具体可参考[BundleFlag](#enum-bundleflag)。|
+|bundleFlags|Int32|是|-|指定返回的BundleInfo所包含的信息，具体可参考[BundleFlag](#class-bundleflag)。|
 
 **返回值：**
 
@@ -1808,7 +1808,7 @@ public class ExtensionAbilityInfo {
 }
 ```
 
-**功能：** ExtensionAbilityInfo信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取自身的ExtensionAbility信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY。
+**功能：** ExtensionAbilityInfo信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取自身的ExtensionAbility信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1982,7 +1982,7 @@ public let metadata: Array<Metadata>
 
 **功能：** ExtensionAbility的元信息。
 
-**类型：** Array\<[Metadata]>
+**类型：** Array\<[Metadata](./cj-apis-metadata.md#class-metadata)>
 
 **读写能力：** 只读
 
@@ -2062,7 +2062,7 @@ public let skills: Array<Skill>
 
 **功能：** ExtensionAbility的Skills信息。
 
-**类型：** Array\<[Skill]>
+**类型：** Array\<[Skill](./cj-apis-skill.md#class-skill)>
 
 **读写能力：** 只读
 
@@ -2114,7 +2114,7 @@ public class HapModuleInfo {
 }
 ```
 
-**功能：** HAP信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取自身的HAP信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE。
+**功能：** HAP信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取自身的HAP信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2368,7 +2368,7 @@ public let metadata: Array<Metadata>
 
 **功能：** Ability的元信息。
 
-**类型：** Array\<[Metadata]>
+**类型：** Array\<[Metadata](./cj-apis-metadata.md#class-metadata)>
 
 **读写能力：** 只读
 
@@ -2446,7 +2446,7 @@ public let preloads: Array<PreloadItem>
 public let routerMap: Array<RouterItem>
 ```
 
-**功能：** 模块的路由表配置。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP的值。
+**功能：** 模块的路由表配置。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP的值。
 
 **类型：** Array\<[RouterItem](#class-routeritem)>
 
@@ -2479,7 +2479,7 @@ public let metadata: Array<Metadata>
 
 **功能：** 该模块下的元数据信息列表。
 
-**类型：** Array\<[Metadata]>
+**类型：** Array\<[Metadata](./cj-apis-metadata.md#class-metadata)>
 
 **读写能力：** 只读
 

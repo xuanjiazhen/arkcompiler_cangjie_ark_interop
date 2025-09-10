@@ -45,13 +45,13 @@ public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Co
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|subscribeInfo|[CommonEventSubscribeInfo](#class-commoneventsubscribeinfo)|是|-|表示订阅信息。|
+|subscribeInfo|[CommonEventSubscribeInfo](./cj-apis-common_event_subscribe_info.md#class-commoneventsubscribeinfo)|是|-|表示订阅信息。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[CommonEventSubscriber](#class-commoneventsubscriber)|订阅者对象。|
+|[CommonEventSubscriber](./cj-apis-common_event_subscriber.md#class-commoneventsubscriber)|订阅者对象。|
 
 **示例：**
 
@@ -94,7 +94,7 @@ public static func publish(event: String, options!: CommonEventPublishData =  Co
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|String|是|-|表示要发送的公共事件。|
-|options|[CommonEventPublishData](#struct-commoneventpublishdata)|否|CommonEventPublishData()|**命名参数。**表示发布公共事件的属性。|
+|options|[CommonEventPublishData](./cj-apis-common_event_publish_data.md#class-commoneventpublishdata)|否|CommonEventPublishData()|**命名参数。**表示发布公共事件的属性。|
 
 **异常：**
 
@@ -148,7 +148,7 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncC
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |subscriber|[CommonEventSubscriber](cj-apis-common_event_subscriber.md#class-commoneventsubscriber)|是|-|表示订阅者对象。|
-|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[CommonEventData](cj-apis-common_event_data.md#class-commoneventdata)>|是|-|表示接收公共事件数据的回调函数。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[CommonEventData](cj-apis-common_event_data.md#class-commoneventdata)>|是|-|表示接收公共事件数据的回调函数。|
 
 **异常：**
 

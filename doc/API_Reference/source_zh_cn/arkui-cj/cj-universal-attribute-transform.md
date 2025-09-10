@@ -34,7 +34,7 @@ public func rotate(x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 1.0, angl
 |:---|:---|:---|:---|:---|
 |x|Float32|否|0.0|**命名参数。** 旋转轴向量x坐标。|
 |y|Float32|否|0.0|**命名参数。** 旋转轴向量y坐标。|
-|z|Float32|否|1.0|**命名参数。** 旋转轴向量z坐标。||
+|z|Float32|否|1.0|**命名参数。** 旋转轴向量z坐标。|
 |angle|Float32|否|0.0|**命名参数。** 旋转角度。取值为正时相对于旋转轴方向顺时针转动，取值为负时相对于旋转轴方向逆时针转动。|
 |centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|**命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
 |centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|**命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|

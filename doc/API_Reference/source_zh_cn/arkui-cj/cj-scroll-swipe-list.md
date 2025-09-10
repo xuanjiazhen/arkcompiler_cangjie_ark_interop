@@ -42,7 +42,7 @@ public init(
 |:---|:---|:---|:---|:---|
 |space|Int64|否|0| **命名参数。** 子组件主轴方向的间隔。<br/>初始值：0。<br/>单位为vp。<br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按初始值显示。<br/>space参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/>List子组件的visibility属性设置为None时不显示，但该子组件上下的space还会生效。|
 |initialIndex|Int32|否|0|**命名参数。** 设置当前List初次加载时视口起始位置显示的item，即显示第一个item，如果设置的值超过了当前List最后一个item的索引值，则设置为不生效。<br/>初始值：0。<br/>**说明：**<br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按初始值显示。|
-|scroller|?[Scroller](cj-scroll-swipe-scroll.md#class-scroller)|否|Option < Scroller >.None| **命名参数。** 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：**<br/>不允许和其他滚动类组件，如：[List](./cj-scroll-swipe-list.md)、[Grid](./cj-scroll-swipe-grid.md)和[Scroll](./cj-scroll-swipe-scroll.md)绑定同一个滚动控制对象。|
+|scroller|?[Scroller](cj-scroll-swipe-scroll.md#class-scroller)|否|Option\<Scroller>.None| **命名参数。** 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：**<br/>不允许和其他滚动类组件，如：[List](./cj-scroll-swipe-list.md)、[Grid](./cj-scroll-swipe-grid.md)和[Scroll](./cj-scroll-swipe-scroll.md)绑定同一个滚动控制对象。|
 |child|()->Unit|是|-| **命名参数。** 声明容器内的List子组件。|
 
 ## 通用属性/通用事件
@@ -144,7 +144,7 @@ List的分割线画在主轴方向两个子组件之间，第一个子组件上�
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |strokeWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 分割线的线宽。<br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按0处理。|
-|color|[ResourceColor](cj-common-types.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 分割线的颜色。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 分割线的颜色。|
 |startMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 分割线距离列表侧边起始端的距离。<br/>**说明：**<br/>设置为负数时，按初始值处理。|
 |endMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 分割线距离列表侧边结束端的距离。<br/>**说明：**<br/>设置为负数时，按初始值处理。|
 
@@ -323,7 +323,7 @@ public class onScrollFrameBeginHandleResult {
 }
 ```
 
-**功能：** 	返回实际滑动量。
+**功能：** 返回实际滑动量。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

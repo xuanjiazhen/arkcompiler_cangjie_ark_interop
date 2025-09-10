@@ -10,18 +10,18 @@
 
 1. 导入模块。
 
-   <!-- compile -->
+    <!-- compile -->
 
-   ```cangjie
-   import kit.LocalizationKit.*
-   ```
+    ```cangjie
+    import kit.LocalizationKit.*
+    ```
 
 2. 公历相关用法。
 
-   <!-- compile -->
+    <!-- compile -->
 
-   ```cangjie
-	let calendar: Calendar = getCalendar('zh-Hans', calendarType:  CalendarType.Chinese)
+    ```cangjie
+    let calendar: Calendar = getCalendar('zh-Hans', calendarType:  CalendarType.Chinese)
     // 设置日历对象的时间
     calendar.setTime(10540800000.0)
 
@@ -62,7 +62,7 @@
 
    <!-- compile -->
 
-   ```cangjie
+    ```cangjie
     import std.time.DateTime as d
 
     let calendar: Calendar = getCalendar('zh-Hans', calendarType: CalendarType.Chinese)
@@ -72,7 +72,7 @@
     let year: Int32 = calendar.get('year') // year = 40，指干支纪年40，范围1-60
     let month: Int32 = calendar.get('month') // month = 5，指6月
     let day: Int32 = calendar.get('date') // day = 8，指8日
-   ```
+    ```
 
 支持的日历类型如下：
 

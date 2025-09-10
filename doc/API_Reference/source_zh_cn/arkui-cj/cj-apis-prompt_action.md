@@ -274,7 +274,7 @@ public var maskColor: ResourceColor
 
 **功能：** 表示自定义蒙层颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -448,7 +448,7 @@ public init(
 |isModal|Bool|否|true|弹窗是否为模态窗口，模态窗口有蒙层，非模态窗口无蒙层。默认弹窗有蒙层。|
 |showInSubWindow|Bool|否|false|某弹框需要显示在主窗口之外时，是否在子窗口显示此弹窗。默认弹窗显示在应用内，而非独立子窗口。|
 |autoCancel|Bool|否|true|点击遮障层时，是否关闭弹窗，true表示关闭弹窗。false表示不关闭弹窗。|
-|maskColor|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color(0x33000000)|自定义蒙层颜色。|
+|maskColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color(0x33000000)|自定义蒙层颜色。|
 |transition|[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|TransitionEffect.OPACITY|设置弹窗显示和退出的过渡效果。|
 |onDidAppear|()->Unit|否|{ => }|弹窗弹出时的事件回调。|
 |onDidDisappear|()->Unit|否|{ => }|弹窗消失时的事件回调。|
@@ -483,7 +483,7 @@ public var color: ResourceColor
 
 **功能：** 表示按钮文本颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -540,7 +540,7 @@ public init(text!: ResourceStr, color!: ResourceColor, primary!: Bool = false)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |text|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|按钮文本内容。|
-|color|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|按钮文本颜色。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|按钮文本颜色。|
 |primary|Bool|否|false|在弹窗获焦且未进行tab键走焦时，按钮是否默认响应Enter键。|
 
 ## class CustomDialogOptions
@@ -622,7 +622,7 @@ public var backgroundColor: ResourceColor
 
 **功能：** 表示弹窗背板颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -808,7 +808,7 @@ public init(
 |isModal|Bool|否|true|弹窗是否为模态窗口，模态窗口有蒙层，非模态窗口无蒙层。默认弹窗有蒙层。|
 |showInSubWindow|Bool|否|false|某弹框需要显示在主窗口之外时，是否在子窗口显示此弹窗。默认弹窗显示在应用内，而非独立子窗口。|
 |autoCancel|Bool|否|true|点击遮障层时，是否关闭弹窗，true表示关闭弹窗。false表示不关闭弹窗。|
-|maskColor|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color(0x33000000)|自定义蒙层颜色。|
+|maskColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color(0x33000000)|自定义蒙层颜色。|
 |transition|[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|TransitionEffect.OPACITY|设置弹窗显示和退出的过渡效果。|
 |onDidAppear|()->Unit|否|{ => }|弹窗弹出时的事件回调。|
 |onDidDisappear|()->Unit|否|{ => }|弹窗消失时的事件回调。|
@@ -817,7 +817,7 @@ public init(
 |keyboardAvoidMode|[KeyboardAvoidMode](#enum-keyboardavoidmode)|否|KeyboardAvoidMode.Default|用于设置弹窗是否在拉起软键盘时进行自动避让。|
 |enableHoverMode|Bool|否|false|是否响应悬停态。|
 |hoverModeArea|[HoverModeAreaType](#enum-hovermodeareatype)|否|HoverModeAreaType.BottomScreen|悬停态下弹窗默认展示区域。|
-|backgroundColor|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Transparent|设置弹窗背板颜色。|
+|backgroundColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Transparent|设置弹窗背板颜色。|
 |cornerRadius|[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|否|BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp)|设置背板的圆角半径。|
 |borderWidth|EdgeWidths|否|EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp)|设置弹窗背板的边框宽度。|
 |borderColor|[EdgeColors](#class-edgecolors)|否|EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black)|设置弹窗背板的边框颜色。|
@@ -858,7 +858,7 @@ public var bottom: ResourceColor
 
 **功能：** 设置组件下边框颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -874,7 +874,7 @@ public var left: ResourceColor
 
 **功能：** 设置组件左边框颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -890,7 +890,7 @@ public var right: ResourceColor
 
 **功能：** 设置组件右边框颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -906,7 +906,7 @@ public var top: ResourceColor
 
 **功能：** 设置组件上边框颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -935,10 +935,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black|组件上边框颜色。|
-|right|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black|组件右边框颜色。|
-|bottom|[ResourceColor](./cj-common-types.md#interface-resourcecolor)| 否 | Option.None| 下侧边框颜色。|
-|right|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black|组件左边框颜色。|
+|top|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|组件上边框颜色。|
+|right|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|组件右边框颜色。|
+|bottom|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)| 否 | Option.None| 下侧边框颜色。|
+|right|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|组件左边框颜色。|
 
 ## class PromptActionInner
 
@@ -1029,7 +1029,7 @@ public var backgroundColor: ResourceColor
 
 **功能：** 表示弹窗背板颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -1320,7 +1320,7 @@ public var backgroundColor: ResourceColor
 
 **功能：** 表示文本提示框背板颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -1464,7 +1464,7 @@ public var textColor: ResourceColor
 
 **功能：** 表示文本提示框的文本颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -1772,7 +1772,7 @@ public operator func ==(other: ToastShowMode): Bool
 public type ShowActionMenuCallBack = AsyncCallback<Int32>
 ```
 
-**功能：** [ShowActionMenuCallBack](#type-showactionmenucallback)是[AsyncCallback < Int32 >](../apis/BasicServicesKit/cj-apis-base.md#type-asynccallback)类型的别名。
+**功能：** [ShowActionMenuCallBack](#type-showactionmenucallback)是[AsyncCallback\<Int32>](../apis/BasicServicesKit/cj-apis-base.md#type-asynccallback)类型的别名。
 
 ## type ShowDialogCallBack
 
@@ -1780,4 +1780,4 @@ public type ShowActionMenuCallBack = AsyncCallback<Int32>
 public type ShowDialogCallBack = AsyncCallback<Int32>
 ```
 
-**功能：** [ShowDialogCallBack](#type-showdialogcallback)是[AsyncCallback < Int32 >](../apis/BasicServicesKit/cj-apis-base.md#type-asynccallback)类型的别名。
+**功能：** [ShowDialogCallBack](#type-showdialogcallback)是[AsyncCallback\<Int32>](../apis/BasicServicesKit/cj-apis-base.md#type-asynccallback)类型的别名。

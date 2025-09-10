@@ -171,7 +171,7 @@ func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|回调事件类型。|
-|callback|[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|是|-|回调事件。|
+|callback|[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 
@@ -294,7 +294,7 @@ func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeP
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|传入`CONNECTIONSTATECHANGE`，表示连接状态变化事件类型。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callbackobject)\<[StateChangeParam](#class-statechangeparam)>|是|-|表示回调函数的入参。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)\<[StateChangeParam](#class-statechangeparam)>|是|-|表示回调函数的入参。|
 
 **异常：**
 

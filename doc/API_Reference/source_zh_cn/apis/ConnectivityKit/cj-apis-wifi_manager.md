@@ -99,7 +99,7 @@ public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None):
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[WifiCallbackType](#enum-wificallbacktype)|是|-|回调事件。|
-|callback|?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|否|None| **命名参数。** 状态改变回调函数。如果callback没有传入参数，将取消注册该事件关联的所有回调函数。|
+|callback|?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|否|None| **命名参数。** 状态改变回调函数。如果callback没有传入参数，将取消注册该事件关联的所有回调函数。|
 
 **异常：**
 
@@ -130,7 +130,7 @@ public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>):
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[WifiCallbackType](#enum-wificallbacktype)|是|-|回调事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Int32>|是|-|状态改变回调函数。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Int32>|是|-|状态改变回调函数。|
 
 **异常：**
 
@@ -783,7 +783,7 @@ public operator func !=(other: DeviceAddressType): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(DeviceAddressType)
 
@@ -899,7 +899,7 @@ public operator func !=(other: GroupOwnerBand): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(GroupOwnerBand)
 
@@ -986,7 +986,7 @@ public operator func !=(other: WifiCallbackType): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(WifiCallbackType)
 
@@ -1116,7 +1116,7 @@ public operator func !=(other: WifiCategory): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(WifiCategory)
 
@@ -1323,7 +1323,7 @@ public operator func !=(other: WifiSecurityType): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(WifiSecurityType)
 

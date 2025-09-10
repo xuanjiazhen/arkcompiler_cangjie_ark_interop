@@ -21,7 +21,7 @@ ohos.permission.PRIVACY_WINDOW
 API示例代码使用说明：
 
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
-- 若示例需获取[Context](#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](./cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -42,7 +42,7 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|是|-|ArkTS统一类型。|
+|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
 
 **返回值：**
 
@@ -56,7 +56,7 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext
 ```
 
-**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)转换为[ApplicationContext](#class-applicationcontext)类型。
+**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[ApplicationContext](#class-applicationcontext)类型。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -67,7 +67,7 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-| ArkTS互操作上下文。|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|是|-|ArkTS统一类型。|
+|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
 
 **返回值：**
 
@@ -81,7 +81,7 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 public func createContextFromJSValue(context: JSContext, input: JSValue): Context
 ```
 
-**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)转换为[Context](#class-context)类型。
+**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[Context](./cj-apis-app-ability-ui_ability.md#class-context)类型。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -92,13 +92,13 @@ public func createContextFromJSValue(context: JSContext, input: JSValue): Contex
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-| ArkTS互操作上下文。|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|是|-| ArkTS统一类型。|
+|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-| ArkTS统一类型。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[Context](#class-context)|返回Context类型实例。|
+|[Context](./cj-apis-app-ability-ui_ability.md#class-context)|返回Context类型实例。|
 
 ## func createUIAbilityContextFromJSValue(JSContext, JSValue)
 
@@ -106,7 +106,7 @@ public func createContextFromJSValue(context: JSContext, input: JSValue): Contex
 public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext
 ```
 
-**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)转换为[AbilityContext](#class-abilitycontext)类型。
+**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[UIAbilityContext](#class-uiabilitycontext)类型。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -117,7 +117,7 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|是|-|ArkTS统一类型。|
+|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
 
 **返回值：**
 
@@ -133,7 +133,7 @@ public interface SystemObjectInteropTypeToJS {
 }
 ```
 
-**功能：** 系统对象专用的拓展接口，以实现与[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)的互转。
+**功能：** 系统对象专用的拓展接口，以实现与[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)的互转。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -145,7 +145,7 @@ public interface SystemObjectInteropTypeToJS {
 func toJSValue(context: JSContext): JSValue
 ```
 
-**功能：** 将仓颉对象转换成[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)。
+**功能：** 将仓颉对象转换成[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -161,12 +161,12 @@ func toJSValue(context: JSContext): JSValue
 
 |类型|说明|
 |:----|:----|
-|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|ArkTS统一类型。|
+|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|ArkTS统一类型。|
 
 ## class Ability
 
 ```cangjie
-abstract sealed class Ability <: FFIData {}
+abstract sealed class Ability {}
 ```
 
 **功能：** [UIAbility](#class-uiability)和ExtensionAbility的基类，提供系统配置更新回调和系统内存调整回调。不支持开发者直接继承该基类。
@@ -174,10 +174,6 @@ abstract sealed class Ability <: FFIData {}
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **起始版本：** 21
-
-**父类型：**
-
-- [FFIData](../../arkinterop/cj-apis-ark_interop.md#type-ffidata)
 
 ### static func registerCreator(String, () -> Ability)
 
@@ -214,7 +210,7 @@ public class AbilityStageContext <: Context {
 
 **父类型：**
 
-- [Context](#class-context)
+- [Context](./cj-apis-app-ability-ui_ability.md#class-context)
 
 ### var currentHapModuleInfo
 
@@ -246,7 +242,7 @@ public class ApplicationContext <: Context {}
 
 **父类型：**
 
-- [Context](#class-context)
+- [Context](./cj-apis-app-ability-ui_ability.md#class-context)
 
 ## class Context
 
@@ -262,7 +258,7 @@ public open class Context <: BaseContext {}
 
 **父类型：**
 
-- [BaseContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)
+- [BaseContext](./cj-apis-app-ability.md#class-basecontext)
 
 ### prop applicationInfo
 
@@ -288,7 +284,7 @@ public mut prop area: AreaMode
 
 **功能：** 文件分区信息。
 
-**类型：** [AreaMode](#enum-areamode)
+**类型：** [AreaMode](./cj-apis-app-ability-context_constant.md#enum-areamode)
 
 **读写能力：** 可读写
 
@@ -372,7 +368,7 @@ public mut prop lastRequestWant: Want
 
 **功能：** UIAbility最后请求时的参数。
 
-**类型：** [Want](#class-want)
+**类型：** [Want](./cj-apis-app-ability-want.md#class-want)
 
 **读写能力：** 可读写
 
@@ -388,7 +384,7 @@ public mut prop launchWant: Want
 
 **功能：** UIAbility启动时的参数。
 
-**类型：** [Want](#class-want)
+**类型：** [Want](./cj-apis-app-ability-want.md#class-want)
 
 **读写能力：** 可读写
 
@@ -424,8 +420,8 @@ public open func onCreate(want: Want, launchParam: LaunchParam): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|want|[Want](#class-want)|是|-|当前UIAbility的Want类型信息，包括UIAbility名称、Bundle名称等。|
-|launchParam|[LaunchParam](#class-launchparam)|是|-|创建 ability、上次异常退出的原因信息。|
+|want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|当前UIAbility的Want类型信息，包括UIAbility名称、Bundle名称等。|
+|launchParam|[LaunchParam](./cj-apis-app-ability-ability_constant.md#class-launchparam)|是|-|创建 ability、上次异常退出的原因信息。|
 
 ### func onDestroy()
 
@@ -467,8 +463,8 @@ public open func onNewWant(want: Want, launchParam: LaunchParam): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|want|[Want](#class-want)|是|-|当前UIAbility的Want类型信息，包括ability名称、bundle名称等。|
-|launchParam|[LaunchParam](#class-launchparam)|是|-|Ability启动的原因、上次异常退出的原因信息。|
+|want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|当前UIAbility的Want类型信息，包括ability名称、bundle名称等。|
+|launchParam|[LaunchParam](./cj-apis-app-ability-ability_constant.md#class-launchparam)|是|-|Ability启动的原因、上次异常退出的原因信息。|
 
 ### func onWindowStageCreate(WindowStage)
 
@@ -514,7 +510,7 @@ public open class UIAbilityContext <: Context {}
 
 **父类型：**
 
-- [Context](#class-context)
+- [Context](./cj-apis-app-ability-ui_ability.md#class-context)
 
 ### func isTerminating()
 
@@ -558,8 +554,8 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|want|[Want](#class-want)|是|-|需要启动的目标ServiceExtensionAbility的want信息。|
-|result|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[RequestResult](#class-requestresult)>|是|-| 用于返回结果的回调。|
+|want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|需要启动的目标ServiceExtensionAbility的want信息。|
+|result|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[RequestResult](./cj-apis-app-ability-dialog_request.md#class-requestresult)>|是|-| 用于返回结果的回调。|
 
 **异常：**
 
@@ -601,8 +597,8 @@ public func startAbility(want: Want, options!: ?StartOptions = None): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|want|[Want](#class-want)|是|-|启动Ability的want信息。|
-|options|?[StartOptions](#class-startoptions)|否|None|启动Ability所携带的参数。|
+|want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|启动Ability的want信息。|
+|options|?[StartOptions](./cj-apis-app-ability-start_options.md#class-startoptions)|否|None|启动Ability所携带的参数。|
 
 **异常：**
 
@@ -658,8 +654,8 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|want|[Want](#class-want)|是|-|启动Ability的want信息。|
-|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[AbilityResult](#class-abilityresult)>|是|-| 执行结果回调函数。|
+|want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|启动Ability的want信息。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[AbilityResult](./cj-apis-ability-ability_result.md#class-abilityresult)>|是|-| 执行结果回调函数。|
 
 **异常：**
 
@@ -711,9 +707,9 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|want|[Want](#class-want)|是|-|启动Ability的want信息。|
+|want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|启动Ability的want信息。|
 |options|StartOptions|是|-|启动Ability所携带的参数。|
-|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<AbilityResult>|是|-|执行结果回调函数。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<AbilityResult>|是|-|执行结果回调函数。|
 
 **异常：**
 
@@ -785,7 +781,7 @@ public func terminateSelfWithResult(parameter: AbilityResult): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|parameter|[AbilityResult](#class-abilityresult)|是|-|停止Ability，配合startAbilityForResult使用，返回给接口调用方AbilityResult信息。|
+|parameter|[AbilityResult](./cj-apis-ability-ability_result.md#class-abilityresult)|是|-|停止Ability，配合startAbilityForResult使用，返回给接口调用方AbilityResult信息。|
 
 **异常：**
 

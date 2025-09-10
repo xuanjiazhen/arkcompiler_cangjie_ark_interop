@@ -208,7 +208,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 201 | Permission denied |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
@@ -299,7 +299,7 @@ public func commitModify(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 201 | Permission denied |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
@@ -558,7 +558,7 @@ public func getCount(): Int32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
@@ -723,7 +723,7 @@ public func commitModify(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 201 | Permission denied |
   | 13900020 | Invalid argument |
   | 14000001 | Invalid display name |
@@ -788,7 +788,7 @@ public func get(member: String): MemberType
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900020 | Invalid argument |
   | 14000014 | The provided member must be a property name of PhotoKey. |
 
@@ -850,7 +850,7 @@ public func getThumbnail(size!: ?Size = Size(256, 256)): PixelMap
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900012 | Permission denied |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
@@ -904,7 +904,7 @@ public func set(member: String, value: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900020 | Invalid argument |
   | 14000014 | The provided member must be a property name of PhotoKey. |
 

@@ -118,7 +118,7 @@ public func menuAlign(alignType!: MenuAlignType, offset!: Offset): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|alignType|[MenuAlignType](#enum-menualigntype)|是|-|| **命名参数。** 对齐方式类型。<br/>初始值：MenuAlignType.START。|
+|alignType|[MenuAlignType](#enum-menualigntype)|是|-| **命名参数。** 对齐方式类型。<br/>初始值：MenuAlignType.START。|
 |offset|[Offset](./cj-common-types.md#class-offset)|是|-| **命名参数。** 按照对齐类型对齐后，下拉菜单相对下拉按钮的偏移量。<br>初始值：MenuOffset(0, 0)。|
 
 ### func menuBackgroundBlurStyle(BlurStyle)
@@ -417,7 +417,7 @@ public func onSelect(callback: OnSelectCallback): This
 
 ## 基础类型定义
 
-## class SelectOption
+### class SelectOption
 
 ```cangjie
 public class SelectOption {
@@ -465,7 +465,7 @@ public var value: ResourceStr
 
 **起始版本：** 21
 
-### init(ResourceStr, ResourceStr)
+#### init(ResourceStr, ResourceStr)
 
 ```cangjie
 public init(value!: ResourceStr, icon!: ResourceStr)

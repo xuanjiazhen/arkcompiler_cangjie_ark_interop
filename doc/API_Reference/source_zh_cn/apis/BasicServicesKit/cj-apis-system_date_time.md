@@ -87,7 +87,7 @@ public static func getTimezone(): String
 
 |类型|说明|
 |:----|:----|
-|String|返回系统时区。具体可见[支持的系统时区](#支持的系统时区) 。|
+|String|返回系统时区。|
 
 **示例：**
 

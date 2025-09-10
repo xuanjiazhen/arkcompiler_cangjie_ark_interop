@@ -48,8 +48,7 @@ public static func getUriFromPath(path: String): String
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | The input parameter is invalid.
- |
+  | 401 | The input parameter is invalid.|
 
 ## class FileUri
 
@@ -127,16 +126,11 @@ public init(uriOrPath: String)
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 13900005 | I/O error
- |
-  | 13900011 | Out of memory
- |
-  | 13900020 | Invalid argument
- |
-  | 13900042 | Unknown error
- |
-  | 14300002 | Invalid uri
- |
+  | 13900005 | I/O error |
+  | 13900011 | Out of memory |
+  | 13900020 | Invalid argument |
+  | 13900042 | Unknown error |
+  | 14300002 | Invalid uri |
 
 ### func toString()
 
@@ -194,7 +188,7 @@ public override prop path: String
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The prop is not supported. | 直接使用。 | 使用子类的函数。 |
 
@@ -220,6 +214,6 @@ public open func toString(): String
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The function is not supported. | 直接使用。 | 使用子类的函数。 |

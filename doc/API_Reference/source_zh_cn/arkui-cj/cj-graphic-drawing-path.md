@@ -145,8 +145,8 @@ public init(width!: Length, height!: Length, commands!: ResourceStr = "")
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 路径所在矩形的宽度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的宽度处理。|
-|height|[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 路径所在矩形的高度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的高度处理。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的宽度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的宽度处理。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的高度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的高度处理。|
 |commands|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。** 路径绘制的命令字符串。|
 
 ## SVG路径描述规范

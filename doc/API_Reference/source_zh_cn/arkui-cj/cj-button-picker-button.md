@@ -115,7 +115,7 @@ public init(label: ResourceStr, options: ButtonOptions)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|label|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置文本内容。<br>**说明：**<br>当文本字符的长度超过按钮本身的宽度时，文本将会被截断。
+|label|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置文本内容。<br>**说明：**<br>当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
 |options|[ButtonOptions](#class-buttonoptions)|是|-|配置按钮的显示样式。|
 
 ## 通用属性/通用事件
@@ -162,7 +162,7 @@ public func fontColor(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor]|是|-|按钮文本颜色。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|按钮文本颜色。|
 
 ### func fontFamily(ResourceStr)
 
@@ -200,7 +200,7 @@ public func fontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length]|是|-|按钮文本大小。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|按钮文本大小。|
 
 ### func fontStyle(FontStyle)
 
@@ -411,7 +411,7 @@ public init(
 |:---|:---|:---|:---|:---|
 |shape|[ButtonType](#enum-buttontype)|否|ButtonType.Capsule| **命名参数。** 按钮的形状。|
 |stateEffect|Bool|否|true| **命名参数。**  按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。<br>**说明：**<br>当开启按压态显示效果，开发者设置状态样式时，会基于状态样式设置完成后的背景色再进行颜色叠加。|
-|buttonStyle|[ButtonStyleMode](#enum-buttonstylemode)|否|ButtonStyleMode.Emphasized|| **命名参数。** 描述按钮的样式和重要程度。<br/>**说明：**<br/>按钮重要程度：强调按钮>普通按钮>文字按钮。|
+|buttonStyle|[ButtonStyleMode](#enum-buttonstylemode)|否|ButtonStyleMode.Emphasized| **命名参数。** 描述按钮的样式和重要程度。<br/>**说明：**<br/>按钮重要程度：强调按钮>普通按钮>文字按钮。|
 |controlSize|[ControlSize](./cj-common-types.md#enum-controlsize)|否|ControlSize.Normal| **命名参数。**  描述按钮的尺寸。|
 |role|[ButtonRole](#enum-buttonrole)|否|ButtonRole.Normal| **命名参数。** 描述按钮的角色。|
 

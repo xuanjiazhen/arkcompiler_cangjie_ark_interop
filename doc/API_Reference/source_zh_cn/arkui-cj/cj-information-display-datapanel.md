@@ -32,7 +32,7 @@ public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPane
 |:---|:---|:---|:---|:---|
 |values|Array\<Float64>|是|-|**命名参数。** 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。|
 |max|Float64|否|100.0|**命名参数。** \- max大于0，表示数据的最大值。 <br> \- max小于等于0，max等于value数组各项的和，按比例显示。|
-|panelType|[DataPanelType](./cj-common-types.md#enum-datapaneltype)|否|DataPanelType.Circle|**命名参数。** 数据面板的类型（不支持动态修改）。|
+|panelType|[DataPanelType](./cj-information-display-datapanel.md#enum-datapaneltype)|否|DataPanelType.Circle|**命名参数。** 数据面板的类型（不支持动态修改）。|
 
 ## 通用属性/通用事件
 
@@ -226,7 +226,7 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
 
 **父类型：**
 
-- [MultiShadowOptions](./cj-common-types.md#class-multishadowoptions)
+- [MultiShadowOptions](./cj-information-display-datapanel.md#class-multishadowoptions)
 
 #### var colors
 
@@ -301,7 +301,7 @@ public init(colorStops: Array<ColorStop>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|colorStops|Array\<[ColorStop](#class-colorstop)>|是|-|	存储渐变颜色和渐变点。|
+|colorStops|Array\<[ColorStop](#class-colorstop)>|是|-| 存储渐变颜色和渐变点。|
 
 #### init(ResourceColor)
 
@@ -447,7 +447,7 @@ public operator func !=(other: DataPanelType): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func ==(DataPanelType)
 

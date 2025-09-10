@@ -2,7 +2,7 @@
 
 TextClock 组件通过文本将当前系统时间显示在设备上。支持不同时区的时间显示，最高精度到秒级。
 
-在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange]处理，可见阈值raitos大于0即视为可见状态。
+在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit)处理，可见阈值raitos大于0即视为可见状态。
 
 ## 导入模块
 
@@ -61,7 +61,7 @@ public func fontColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|字体颜色。|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
 
 ### func fontFamily(ResourceStr)
 
@@ -220,7 +220,7 @@ public func textShadow(value: ShadowOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ShadowOptions](./cj-common-types.md#interface-shadowoptions)|是|-|阴影选项。|
+|value|[ShadowOptions](./cj-text-input-text.md#class-shadowoptions)|是|-|阴影选项。|
 
 ## 组件事件
 
@@ -628,7 +628,7 @@ public init(locale!: String = "zh-Hans-CN", dateStyle!: String = "long", timeSty
 |timeZoneName|String|否|"long"| **命名参数。** 时区名称的本地化表示, 取值包括："long", "short", "auto"。|
 |dayPeriod|String|否|"long"| **命名参数。** 时段的显示格式，取值包括："long", "short", "narrow", "auto"。|
 |localeMatcher|String|否|"lookup"| **命名参数。** 要使用的区域匹配算法，取值包括：<br/>"lookup"：精确匹配；<br/>"best fit"：最佳匹配。|
-|formatMatcher|String|否| **命名参数。** 要使用的格式匹配算法，取值包括：<br/>"basic"：精确匹配；<br/>"best fit"：最佳匹配。|
+|formatMatcher|String|否|"basic"| **命名参数。** 要使用的格式匹配算法，取值包括：<br/>"basic"：精确匹配；<br/>"best fit"：最佳匹配。|
 
 ### class TextClockController
 

@@ -201,7 +201,7 @@ public func labelFontColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|菜单项中标签信息的字体颜色。<br/>初始值：'0x99000000'|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|菜单项中标签信息的字体颜色。<br/>初始值：'0x99000000'|
 
 ### func selectIcon(Bool)
 

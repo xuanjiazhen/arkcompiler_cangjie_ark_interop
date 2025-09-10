@@ -1177,7 +1177,7 @@ public func update(): Unit
 ## class InteractableView
 
 ```cangjie
-abstract sealed class InteractableView <: RemoteData {}
+abstract sealed class InteractableView {}
 ```
 
 **功能：** 组件基类，更多方法详见仓颉组件的通用事件相关章节。

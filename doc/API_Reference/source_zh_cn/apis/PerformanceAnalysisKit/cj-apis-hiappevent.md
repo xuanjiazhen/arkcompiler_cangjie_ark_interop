@@ -229,7 +229,7 @@ public var params: HashMap<String, EventValueType>
 
 参数个数需在32个以内。
 
-**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[EventValueType](#enum-eventvaluetype)>
+**类型：** HashMap\<String,[EventValueType](#enum-eventvaluetype)>
 
 **读写能力：** 可读写
 
@@ -256,7 +256,7 @@ public init(domain: String, name: String, event: EventType, params: HashMap<Stri
 |domain|String|是|-|事件领域。事件领域名称支持数字、字母、下划线字符，需要以字母开头且不能以下划线结尾，长度非空且不超过32个字符。|
 |name|String|是|-|事件名称。首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过48个字符。|
 |event|[EventType](#enum-eventtype)|是|-|事件类型。|
-|params|[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[EventValueType](#enum-eventvaluetype)>|是|-|事件参数对象，每个事件参数包括参数名和参数值，其规格定义如下：<br>参数名为String类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>参数值支持String、Int32、Float64、Bool、数组类型，String类型参数长度需在8*1024个字符以内；数组类型参数中的元素类型只能全为String、Int32、Float64、Bool中的一种，且元素个数需在100以内。<br>参数个数需在32个以内。|
+|params|HashMap\<String,[EventValueType](#enum-eventvaluetype)>|是|-|事件参数对象，每个事件参数包括参数名和参数值，其规格定义如下：<br>参数名为String类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>参数值支持String、Int32、Float64、Bool、数组类型，String类型参数长度需在8*1024个字符以内；数组类型参数中的元素类型只能全为String、Int32、Float64、Bool中的一种，且元素个数需在100以内。<br>参数个数需在32个以内。|
 
 ## class AppEventPackage
 

@@ -1376,7 +1376,7 @@ public var size:(Length, Length)
 
 **功能：** 图片大小，不支持设置百分比。
 
-**类型：** ([Length](./cj-common-types.md#interface-length),[Length](./cj-common-types.md#interface-length))
+**类型：** ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length), [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))
 
 **读写能力：** 可读写
 
@@ -1401,7 +1401,7 @@ public init(pixelMap!: PixelMap, size!: (Length, Length))
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片内容。|
-|size|([Length](./cj-common-types.md#interface-length),[Length](./cj-common-types.md#interface-length))|是|-|图片大小，不支持设置百分比。|
+|size|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|是|-|图片大小，不支持设置百分比。|
 
 ### class RichEditorBaseController
 
@@ -1528,7 +1528,7 @@ public func addImageSpan(value!: AppResource, options!: RichEditorImageSpanOptio
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](../apis/LocalizationKit/cj-apis-resource_manager.md#class-appresource)|是|-|图片内容。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|图片内容。|
 |options|[RichEditorImageSpanOptions](#class-richeditorimagespanoptions)|否|RichEditorImageSpanOptions()|图片选项。|
 
 **返回值：**
@@ -1553,7 +1553,7 @@ public func addTextSpan(value!: ResourceStr, options!: RichEditorTextSpanOptions
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/LocalizationKit/cj-apis-resource_manager.md#class-resourcestr)|是|-|文本内容。|
+|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。|
 |options|[RichEditorTextSpanOptions](#class-richeditortextspanoptions)|否|RichEditorTextSpanOptions()|文本选项。|
 
 **返回值：**
@@ -1800,7 +1800,7 @@ public var size: Option <(Length, Length)>
 
 **功能：** 图片宽度和高度。
 
-**类型：** [Option](../apis/BasicDataTypeKit/cj-apis-container.md#class-option)\<([Length](./cj-common-types.md#interface-length),[Length](./cj-common-types.md#interface-length))>
+**类型：** Option\<([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))>
 
 **读写能力：** 可读写
 
@@ -1844,7 +1844,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|([Length](./cj-common-types.md#interface-length),[Length](./cj-common-types.md#interface-length))|是|-|图片宽度和高度。|
+|size|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|是|-|图片宽度和高度。|
 |verticalAlign|[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)|否|ImageSpanAlignment.Baseline|图片垂直对齐方式。|
 |objectFit|[ImageFit](./cj-common-types.md#enum-imagefit)|否|ImageFit.Cover|图片缩放类型。|
 
@@ -1946,8 +1946,8 @@ public init(margin!: Length, borderRadius!: Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|margin|[Length](./cj-common-types.md#interface-length)|是|-|外边距值。|
-|borderRadius|[Length](./cj-common-types.md#interface-length)|是|-|圆角半径值。|
+|margin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|外边距值。|
+|borderRadius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径值。|
 
 ### class RichEditorParagraphStyle
 
@@ -2034,7 +2034,7 @@ public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: Length)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |textAlign|[TextAlign](./cj-common-types.md#enum-textalign)|否|TextAlign.Start|文本段落在水平方向的对齐方式。|
-|leadingMargin|[Length](./cj-common-types.md#interface-length)|是|-|文本段落缩进，不支持设置百分比。|
+|leadingMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本段落缩进，不支持设置百分比。|
 
 #### init(TextAlign, LeadingMarginPlaceholder)
 
@@ -2173,7 +2173,7 @@ public var fontColor: ResourceColor
 
 **功能：** 文本颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -2189,7 +2189,7 @@ public var fontFamily: ResourceStr
 
 **功能：** 字体列表。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -2205,7 +2205,7 @@ public var fontSize: Length
 
 **功能：** 字体大小，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。
 
-**类型：** [Length](./cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -2268,11 +2268,11 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fontColor|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black|文本颜色。|
-|fontSize|[Length](./cj-common-types.md#interface-length)|否|16.vp|字体大小，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
+|fontColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|文本颜色。|
+|fontSize|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|字体大小，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
 |fontStyle|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|字体样式。|
 |fontWeight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|字体粗细。|
-|fontFamily|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|DEFAULT_FONT|字体列表。|
+|fontFamily|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|DEFAULT_FONT|字体列表。|
 |decoration|[TextDecorationOptions](#class-textdecorationoptions)|否|TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)|文本装饰线样式及其颜色。|
 
 ### class SelectionMenuOptions
@@ -2299,7 +2299,7 @@ public var onAppear: VoidCallback
 
 **功能：** 回调函数，自定义选择菜单弹出时触发回调函数。
 
-**类型：** [VoidCallback](../apis/BasicDataTypeKit/cj-apis-container.md#class-voidcallback)
+**类型：** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-voidcallback)
 
 **读写能力：** 可读写
 
@@ -2315,7 +2315,7 @@ public var onDisappear: VoidCallback
 
 **功能：** 回调函数，自定义选择菜单关闭时触发回调函数。
 
-**类型：** [VoidCallback](../apis/BasicDataTypeKit/cj-apis-container.md#class-voidcallback)
+**类型：** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-voidcallback)
 
 **读写能力：** 可读写
 
@@ -2364,9 +2364,9 @@ public class TextDecorationOptions {
 public var color: ResourceColor
 ```
 
-**功能：** 	设置文本装饰线颜色。
+**功能：**  设置文本装饰线颜色。
 
-**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -2380,7 +2380,7 @@ public var color: ResourceColor
 public var decorationType: TextDecorationType
 ```
 
-**功能：** 	设置文本装饰线类型。
+**功能：**  设置文本装饰线类型。
 
 **类型：** [TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
 
@@ -2407,7 +2407,7 @@ public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.B
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|装饰线类型。|
-|color|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black|装饰颜色。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|装饰颜色。|
 
 ### enum LeadingMarginType
 

@@ -266,7 +266,7 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|回调事件类型。|
-|callback|[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|是|-|回调事件。|
+|callback|[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 

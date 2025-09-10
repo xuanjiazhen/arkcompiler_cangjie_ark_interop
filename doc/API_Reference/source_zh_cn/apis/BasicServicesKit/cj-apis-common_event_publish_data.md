@@ -13,7 +13,7 @@ import kit.BasicServicesKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -134,7 +134,7 @@ public var parameters: HashMap<String, ValueType>
 
 **功能：** 表示公共事件的附加信息。
 
-**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[ValueType](#enum-valuetype)>
+**类型：** HashMap\<String, ValueType>
 
 **读写能力：** 可读写
 
@@ -185,7 +185,7 @@ public init(
 |bundleName|String|否|""|表示订阅者包名称，只有包名为bundleName的订阅者才能收到该公共事件。|
 |data|String|否|""|表示公共事件的自定义结果数据。|
 |code|Int32|否|0|表示公共事件的结果代码。|
-|subscriberPermissions|Array\<String>|否|Array < String >()| **命名参数。** 表示订阅者的权限。|
+|subscriberPermissions|Array\<String>|否|Array\<String>()| **命名参数。** 表示订阅者的权限。|
 |isOrdered|Bool|否|false| **命名参数。** 表示是否是有序事件。|
 |isSticky|Bool|否|false| **命名参数。** 表示是否是粘性事件。仅系统应用或系统服务允许发送粘性事件。|
-|parameters|HashMap\<String, [ValueType](#enum-valuetype)>|否|HashMap<String, ValueType>()| **命名参数。** 表示公共事件的附加信息|
+|parameters|HashMap\<String, ValueType>|否|HashMap<String, ValueType>()| **命名参数。** 表示公共事件的附加信息|

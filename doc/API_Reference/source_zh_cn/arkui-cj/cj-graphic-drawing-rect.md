@@ -30,7 +30,7 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|| **命名参数。** 矩形宽度，取值范围≥0。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 矩形宽度，取值范围≥0。|
 |height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 矩形高度，取值范围≥0。|
 
 ## 通用属性/通用事件

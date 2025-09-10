@@ -49,7 +49,7 @@ public func getSensorList(): Array<Sensor>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
+  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例：**
 
@@ -139,7 +139,7 @@ public func off(sensorType: SensorId, callback!: ?CallbackObject = None): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
-|callback|?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|否|None|**命名参数。** 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
+|callback|?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|否|None|**命名参数。** 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
 
 **示例：**
 
@@ -193,7 +193,7 @@ public func on<T>(sensorType: SensorId, callback: Callback1Argument<T>, option!:
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<T>|是|-|回调函数。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T>|是|-|回调函数。|
 |option|?[Options](#class-options)|否|None|可选参数列表，用于设置传感器上报频率，默认值为200000000ns。|
 
 ## func once\<T>(SensorId, Callback1Argument\<T>) where T \<: Response
@@ -213,7 +213,7 @@ public func once<T>(sensorType: SensorId, callback: Callback1Argument<T>): Unit 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<T>|是|-|回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T>|是|-|回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
 
 ## class AccelerometerResponse
 

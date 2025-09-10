@@ -1,6 +1,6 @@
 # 不依赖UI组件的全局自定义弹出框 (openCustomDialog)
 
-由于[CustomDialogController](../../../API_Reference/source_zh_cn/arkui-cj/cj-dialog-customdialog.md/#class-customdialogcontroller)在使用上存在诸多限制，不支持动态创建也不支持动态刷新。
+由于[CustomDialogController](../../../API_Reference/source_zh_cn/arkui-cj/cj-dialog-customdialog.md#class-customdialogcontroller)在使用上存在诸多限制，不支持动态创建也不支持动态刷新。
 
 > **说明：**
 >
@@ -47,7 +47,7 @@
 
    通过调用openCustomDialog接口打开的弹出框,弹出框内容为CustomDialogOptions类型，其中this.CustomDialog为自定义弹出框的内容。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -93,7 +93,7 @@
 
    由于closeCustomDialog接口需要传入待关闭弹出框对应的CustomDialogId。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry

@@ -135,7 +135,7 @@ public init(
 |action|[VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-| Button选中时的回调。 |
 |enabled|Bool|否|true| **命名参数。**  点击Button是否响应，true表示Button可以响应，false表示Button不可以响应 |
 |defaultFocus|Bool|否|false| **命名参数。**  设置Button是否是默认焦点，true表示Button是默认焦点，false表示Button不是默认焦点。 |
-|style|[DialogButtonStyle](./cj-common-types.md#enum-dialogbuttonstyle)|否|DialogButtonStyle.Default| DialogButtonStyle.DEFAULT | **命名参数。**  设置Button的风格样式。 |
+|style|[DialogButtonStyle](./cj-common-types.md#enum-dialogbuttonstyle)|否|DialogButtonStyle.Default| **命名参数。**  设置Button的风格样式。 |
 
 ## class ActionSheetOffset
 
@@ -503,7 +503,7 @@ public var maskRect: Rectangle
 
 **功能：** 弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。
 
-**类型：** [Rectangle](./cj-common-types.md#class-rectangle>)
+**类型：** [Rectangle](./cj-common-types.md#class-rectangle)
 
 **读写能力：** 可读写
 
@@ -758,7 +758,7 @@ public init(
 |borderWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。**  设置弹窗背板的边框宽度。<br>百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。<br>当弹窗左边框和右边框大于弹窗宽度，弹窗上边框和下边框大于弹窗高度，显示可能不符合预期。<br>**说明:**<br> 当borderWidth属性类型为LocalizedEdgeWidths时，支持随语言习惯改变布局顺序。|
 |borderColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。**  设置弹窗背板的边框颜色。如果使用borderColor属性，需要和borderWidth属性一起使用。<br/>**说明：**<br/>当borderColor属性类型为LocalizedEdgeColors时，支持随语言习惯改变布局顺序。 |
 |borderStyle|[EdgeStyles](./cj-common-types.md#class-edgestyles)|否|EdgeStyles()| **命名参数。**  设置弹窗背板的边框样式 。 如果使用borderStyle属性，需要和borderWidth属性一起使用。 |
-|width|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|Option\<Length>.None| **命名参数。**  设置弹窗背板的宽度。<br>**说明:**<br>1. 弹窗宽度默认最大值：400.vp。<br>2. 百分比参数方式：弹窗参考宽度为所在窗口的宽度，在此基础上调小或调大。 |
+|width|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。**  设置弹窗背板的宽度。<br>**说明:**<br>1. 弹窗宽度默认最大值：400.vp。<br>2. 百分比参数方式：弹窗参考宽度为所在窗口的宽度，在此基础上调小或调大。 |
 |height|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。**  设置弹窗背板的高度。<br>**说明:**<br>1. 弹窗高度默认最大值：0.9 *（窗口高度 - 安全区域） 。<br>2. 百分比参数方式：弹窗参考高度为（窗口高度 - 安全区域），在此基础上调小或调大。 |
 |transition|?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|None| **命名参数。**  设置弹窗显示和退出的过渡效果。 <br>**说明:**<br> 1.如果不设置，则使用默认的显示/退出动效。 <br>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br> 3.退出动效中按back键，不会打断退出动效，退出动效继续执行，继续按back键退出应用。 |
 
