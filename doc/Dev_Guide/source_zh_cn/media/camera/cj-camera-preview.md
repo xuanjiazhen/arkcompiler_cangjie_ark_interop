@@ -24,6 +24,7 @@
     XComponent组件为预览流提供的Surface，而XComponent的能力由UI提供。
 
     > **说明：**
+    >
     > 预览流与录像输出流的分辨率的宽高比要保持一致，如果设置XComponent组件中的Surface显示区域宽高比为1920:1080 = 16:9，则需要预览流中的分辨率的宽高比也为16:9，如分辨率选择640:360，或960:540，或1920:1080，以此类推。
 
 3. 通过[CameraOutputCapability](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#struct-cameraoutputcapability)类中的previewProfiles属性获取当前设备支持的预览能力，返回previewProfilesArray数组 。通过[createPreviewOutput](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-createpreviewoutputprofile-string)方法创建预览输出流，其中，[createPreviewOutput](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-createpreviewoutputprofile-string)方法中的两个参数分别是previewProfilesArray数组中的第一项和步骤二中获取的surfaceId。
