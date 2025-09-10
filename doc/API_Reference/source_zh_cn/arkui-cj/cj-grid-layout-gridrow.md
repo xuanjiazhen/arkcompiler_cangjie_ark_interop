@@ -121,7 +121,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|[GridRowColumnOption](#class-gridrowcolumnoption)|是|-|| **命名参数。** 布局列数设置。|
+|columns|[GridRowColumnOption](#class-gridrowcolumnoption)|是|-| **命名参数。** 布局列数设置。|
 |gutter|[GutterOption](#class-gutteroption)|是|-| **命名参数。** 栅格布局间距，x代表水平方向。|
 |breakpoints|[BreakPoints](#class-breakpoints)|否|BreakPoints()| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>}|
 |direction|[GridRowDirection](#enum-gridrowdirection)|否|GridRowDirection.Row| **命名参数。** 栅格布局排列方向。|

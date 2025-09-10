@@ -88,7 +88,7 @@ func totalCount(): Int64
 ## class DataChangeListener
 
 ```cangjie
-public class DataChangeListener <: RemoteData {
+public class DataChangeListener {
     public DataChangeListener(id: Int64)
 }
 ```
@@ -223,7 +223,7 @@ public class LazyForEach <: UINodeBase {
 }
 ```
 
-**功能：** 用于创建[LazyForEach](#LazyForEach)组件。
+**功能：** 用于创建[LazyForEach](#lazyforeach)组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

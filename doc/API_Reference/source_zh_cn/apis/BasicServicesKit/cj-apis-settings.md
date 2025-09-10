@@ -45,7 +45,7 @@ public func getValue<T>(context: UIAbilityContext, name: T, defValue: String): S
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The context is invalid. | context初始化失败 | 重启应用 |
 
@@ -81,7 +81,7 @@ public func getValue<T, P>(context: UIAbilityContext, name: T, defValue: String,
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The context is invalid. | context初始化失败 | 重启应用 |
 

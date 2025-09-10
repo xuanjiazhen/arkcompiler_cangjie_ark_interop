@@ -21,7 +21,7 @@ ohos.permission.PRIVACY_WINDOW
 API示例代码使用说明：
 
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
-- 若示例需获取[Context](#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](./cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -181,7 +181,7 @@ public var parameters: HashMap<String, WantValueType>
 
 **功能：** 参数。
 
-**类型：** [HashMap](#class-hashmap)\<String,[WantValueType](#enum-wantvaluetype)>
+**类型：** HashMap\<String,[WantValueType](#enum-wantvaluetype)>
 
 **读写能力：** 可读写
 
@@ -258,8 +258,8 @@ public init(
 |action|String|否|""|动作。|
 |entities|Array\<String>|否|[]|实体。|
 |wantType|String|否|""|Want类型。|
-|parameters|[HashMap](#class-hashmap)\<String,[WantValueType](#enum-wantvaluetype)>|否|HashMap < String, WantValueType >()|参数。|
-|fds|[HashMap](#class-hashmap)\<String,Int32>|否|HashMap < String, Int32 >()|文件描述符。|
+|parameters|HashMap\<String,[WantValueType](#enum-wantvaluetype)>|否|HashMap<String, WantValueType>()|参数。|
+|fds|HashMap\<String,Int32>|否|HashMap<String, Int32>()|文件描述符。|
 
 ## enum WantValueType
 

@@ -57,15 +57,11 @@ public class TouchEvent {
 }
 ```
 
-**功能：** 继承于BaseEvent。非事件注入场景下，changedTouches是按屏幕显示刷新率重采样的点，touches是按器件刷新率报上来的点，changedTouches的数据可能会和touches里面的不相同。
+**功能：** 非事件注入场景下，changedTouches是按屏幕显示刷新率重采样的点，touches是按器件刷新率报上来的点，changedTouches的数据可能会和touches里面的不相同。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- BaseEvent
 
 #### var changedTouches
 

@@ -4660,4 +4660,3 @@ Secondary
 **系统能力：** SystemCapability.Test.UiTest
 
 **起始版本：** 21
-

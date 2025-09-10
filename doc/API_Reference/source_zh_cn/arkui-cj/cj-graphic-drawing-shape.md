@@ -388,7 +388,7 @@ public func fill(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|填充区域颜色。初始值：Color.BLACK。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|填充区域颜色。初始值：Color.BLACK。|
 
 #### func height(Length)
 
@@ -406,7 +406,7 @@ public func height(height: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|height|[Length](./cj-common-types.md#interface-length)|是|-|组件高度。<br>单位：vp。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件高度。<br>单位：vp。|
 
 #### func offset(Length, Length)
 
@@ -424,8 +424,8 @@ public func offset(x!: Length, y!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** x轴偏移量。<br>单位：vp。|
-|y|[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** y轴偏移量。<br>单位：vp。|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴偏移量。<br>单位：vp。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴偏移量。<br>单位：vp。|
 
 #### func size(Length, Length)
 
@@ -443,8 +443,8 @@ public func size(width!: Length, height!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 组件宽度。<br>单位：vp。|
-|height|[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 组件高度。<br>单位：vp。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件宽度。<br>单位：vp。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件高度。<br>单位：vp。|
 
 #### func width(Length)
 
@@ -462,7 +462,7 @@ public func width(width: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](./cj-common-types.md#interface-length)|是|-|组件宽度。</br>单位：vp。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件宽度。</br>单位：vp。|
 
 ## 示例代码
 

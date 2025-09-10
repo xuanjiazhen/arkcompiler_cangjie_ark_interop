@@ -383,7 +383,7 @@ public var additionsMap: ?Map<String, String>
 
 **功能：** 附加信息。具体内容和顺序与additions一致。
 
-**类型：** [Map](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
+**类型：** Map
 
 **读写能力：** 可读写
 

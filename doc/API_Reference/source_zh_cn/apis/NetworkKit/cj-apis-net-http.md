@@ -346,13 +346,13 @@ public func off(event: HttpRequestEvent, callback!: ?CallbackObject = None): Uni
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|要取消订阅的HTTP请求事件类型。|
-|callback|?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|否|None|回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。|
+|callback|?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|否|None|回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
 
@@ -373,13 +373,13 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<HashMap<Stri
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持HeadersReceive事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[HashMap](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>>|是|-|回调函数，返回HTTP响应头对象。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HashMap\<String,String>>|是|-|回调函数，返回HTTP响应头对象。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
 
@@ -400,13 +400,13 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<Array<Byte>>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataReceive事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<Byte>>|是|-|回调函数，用于接收HTTP流式响应数据。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<Byte>>|是|-|回调函数，用于接收HTTP流式响应数据。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataReceive事件类型。 |
 
@@ -427,13 +427,13 @@ public func on(event: HttpRequestEvent, callback: Callback0Argument): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataEnd事件。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
+|callback|[Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument)|是|-|回调函数。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataEnd事件类型。 |
 
@@ -454,13 +454,13 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataReceiveP
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataReceiveProgress事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[DataReceiveProgressInfo](#class-datareceiveprogressinfo)>|是|-|回调函数，用于接收数据接收进度信息，参数为DataReceiveProgressInfo对象。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DataReceiveProgressInfo](#class-datareceiveprogressinfo)>|是|-|回调函数，用于接收数据接收进度信息，参数为DataReceiveProgressInfo对象。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataReceiveProgress事件类型。 |
 
@@ -481,13 +481,13 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataSendProg
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataSendProgress事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[DataSendProgressInfo](#class-datasendprogressinfo)>|是|-|回调函数，用于接收数据发送进度信息，参数为DataSendProgressInfo对象。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DataSendProgressInfo](#class-datasendprogressinfo)>|是|-|回调函数，用于接收数据发送进度信息，参数为DataSendProgressInfo对象。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataSendProgress事件类型。 |
 
@@ -508,13 +508,13 @@ public func once(event: HttpRequestEvent, callback: Callback1Argument<HashMap<St
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持HeadersReceive事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>>|是|-|回调函数。返回HTTP响应头对象。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HashMap\<String,String>>|是|-|回调函数。返回HTTP响应头对象。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
 
@@ -542,7 +542,7 @@ public func request(url: String, options: HttpRequestOptions, callback: AsyncCal
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
 |options|[HttpRequestOptions](#class-httprequestoptions)|是|-|参考[HttpRequestOptions](#class-httprequestoptions)。|
-|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
 
 **异常：**
 
@@ -632,7 +632,7 @@ public func request(url: String, callback: AsyncCallback<HttpResponse>): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
-|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
 
 **异常：**
 
@@ -717,7 +717,7 @@ public func requestInStream(url: String, options: HttpRequestOptions, callback: 
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
 |options|[HttpRequestOptions](#class-httprequestoptions)|是|-|参考[HttpRequestOptions](#class-httprequestoptions)。|
-|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<UInt32>|是|-|回调函数。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<UInt32>|是|-|回调函数。|
 
 **异常：**
 
@@ -801,7 +801,7 @@ public func requestInStream(url: String, callback: AsyncCallback<UInt32>): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
-|callback|[AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<UInt32>|是|-|回调函数。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<UInt32>|是|-|回调函数。|
 
 **异常：**
 
@@ -1010,11 +1010,11 @@ public var extraData: HttpData
 **功能：** 发送请求的额外数据，默认无此字段。
 
 - 当HTTP请求为POST、PUT等方法时，此字段为HTTP请求的content，以UTF-8编码形式作为请求体。
-    - 当'content-Type'为'application/x-www-form-urlencoded'时，请求提交的信息主体数据应在key和value进行URL转码后按照键值对"key1=value1&key2=value2&key3=value3"的方式进行编码，该字段对应的类型通常为String。
-    - 当'content-Type'为'text/xml'时，该字段对应的类型通常为String。
-    - 当'content-Type'为'application/json'时，该字段对应的类型通常为Object。
-    - 当'content-Type'为'application/octet-stream'时，该字段对应的类型通常为ArrayBuffer。
-    - 当'content-Type'为'multipart/form-data'且需上传的字段为文件时，该字段对应的类型通常为ArrayBuffer。
+  - 当'content-Type'为'application/x-www-form-urlencoded'时，请求提交的信息主体数据应在key和value进行URL转码后按照键值对"key1=value1&key2=value2&key3=value3"的方式进行编码，该字段对应的类型通常为String。
+  - 当'content-Type'为'text/xml'时，该字段对应的类型通常为String。
+  - 当'content-Type'为'application/json'时，该字段对应的类型通常为Object。
+  - 当'content-Type'为'application/octet-stream'时，该字段对应的类型通常为ArrayBuffer。
+  - 当'content-Type'为'multipart/form-data'且需上传的字段为文件时，该字段对应的类型通常为ArrayBuffer。
 - 当HTTP请求为GET、OPTIONS、DELETE、TRACE、CONNECT等方法时，此字段为HTTP请求参数的补充。开发者需传入Encode编码后的string类型参数，Object类型的参数无需预编码，参数内容会拼接到URL中进行发送；ArrayBuffer类型的参数不会做拼接处理。
 
 以上信息仅供参考，并可能根据具体情况有所不同。
@@ -1035,7 +1035,7 @@ public var header: HashMap<String, String>
 
 **功能：** HTTP请求头字段。默认{'content-Type': 'application/json'}。
 
-**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
+**类型：** HashMap\<String,String>
 
 **读写能力：** 可读写
 
@@ -1231,7 +1231,7 @@ public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = H
 |expectDataType|?[HttpDataType](#enum-httpdatatype)|否|None|**命名参数。** 指定返回数据的类型，默认无此字段。|
 |usingCache|Bool|否|true|**命名参数。** 是否使用缓存，默认为true。|
 |priority|UInt32|否|1|**命名参数。** 优先级，范围[1,1000]，默认是1。|
-|header|[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>|否|HashMap<String,String>()|**命名参数。** HTTP请求头字段。|
+|header|HashMap\<String,String>|否|HashMap<String,String>()|**命名参数。** HTTP请求头字段。|
 |readTimeout|UInt32|否|60000|**命名参数。** 读取超时时间，单位为毫秒。|
 |connectTimeout|UInt32|否|60000|**命名参数。** 连接超时时间，单位为毫秒。|
 |usingProtocol|?[HttpProtocol](#enum-httpprotocol)|否|None|**命名参数。** 使用协议，默认值由系统自动指定。|
@@ -1288,7 +1288,7 @@ public var header: HashMap<String, String>
 
 **功能：** 发起HTTP请求返回来的响应头。
 
-**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
+**类型：** HashMap\<String,String>
 
 **读写能力：** 可读写
 

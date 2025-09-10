@@ -172,7 +172,7 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. | 入参错误。 | 修改入参。 |
 
@@ -215,8 +215,8 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType]|是|-|回调事件类型。|
-|callback|[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|是|-|回调事件。|
+|eventType|[ProfileCallbackType](./cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|回调事件类型。|
+|callback|[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 
@@ -229,7 +229,7 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. | 入参错误。 | 修改入参。 |
 
@@ -282,7 +282,7 @@ public func off(eventType: ProfileCallbackType): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType]|是|-|回调事件类型。|
+|eventType|[ProfileCallbackType](./cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|回调事件类型。|
 
 **异常：**
 
@@ -295,7 +295,7 @@ public func off(eventType: ProfileCallbackType): Unit
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. | 入参错误。 | 修改入参。 |
 
@@ -348,8 +348,8 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType]|是|-|填写CONNECTIONSTATECHANGE，表示连接状态变化事件类型。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[StateChangeParam](cj-apis-bluetooth-base_profile.md#class-statechangeparam)>|是|-|表示回调函数的入参。|
+|eventType|[ProfileCallbackType](./cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|填写CONNECTIONSTATECHANGE，表示连接状态变化事件类型。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[StateChangeParam](cj-apis-bluetooth-base_profile.md#class-statechangeparam)>|是|-|表示回调函数的入参。|
 
 **异常：**
 
@@ -362,7 +362,7 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. | 入参错误。 | 修改入参。 |
 

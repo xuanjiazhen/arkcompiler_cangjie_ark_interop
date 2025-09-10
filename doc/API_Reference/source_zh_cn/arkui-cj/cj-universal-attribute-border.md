@@ -146,7 +146,7 @@ public func borderWidth(value: Length): This
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Percentage values are not supported. | todo | todo |
 

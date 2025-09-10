@@ -233,7 +233,7 @@ public static func deletePreferences(context: UIAbilityContext, options: Options
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
 | :---- | :--- | :--- |
 | The context is invalid. | todo | todo |
 
@@ -265,7 +265,7 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](#static-func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
@@ -297,7 +297,7 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
 | :---- | :--- | :--- |
 | The context is invalid. | todo | todo |
 
@@ -330,7 +330,7 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](#static-func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
@@ -362,7 +362,7 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
 | :---- | :--- | :--- |
 | The context is invalid. | todo | todo |
 
@@ -395,7 +395,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](#static-func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
@@ -448,7 +448,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](#static-func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
@@ -477,7 +477,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
 | :---- | :--- | :--- |
 | The context is invalid. | todo | todo |
 
@@ -642,7 +642,7 @@ public func get(key: String, defValue: ValueType): ValueType
 
 |类型|说明|
 |:----|:----|
-|[ValueType](#enum-valuetype)|返回键对应的值。
+|[ValueType](#enum-valuetype)|返回键对应的值。|
 
 **异常：**
 
@@ -692,7 +692,7 @@ public func getAll(): HashMap<String, ValueType>
 
 |类型|说明|
 |:----|:----|
-|[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[ValueType](#enum-valuetype)>|HashMap对象，返回含有所有键值数据。|
+|HashMap\<String,[ValueType](#enum-valuetype)>|HashMap对象，返回含有所有键值数据。|
 
 **异常：**
 
@@ -802,7 +802,7 @@ public func off(event :PreferencesEvent, callback!: ?Callback1Argument<String> =
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[PreferencesEvent](#enum-preferencesevent)|是|-|事件类型，表示取消订阅数据变更，或表示取消订阅进程间数据变更|
-|callback|?[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argumentex)\<String>|否|None|需要取消的回调函数，不填写则全部取消。<br> String: 发生变化的Key的类型。|
+|callback|?[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<String>|否|None|需要取消的回调函数，不填写则全部取消。<br> String: 发生变化的Key的类型。|
 
 **异常：**
 
@@ -862,7 +862,7 @@ public func on(event :PreferencesEvent, callback: Callback1Argument<String>): Un
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[PreferencesEvent](#enum-preferencesevent)|是|-|事件类型。<br> PreferencesChange 时，表示订阅数据变更，订阅的Key的值发生变更后，在执行flush方法后，触发callback回调。<br> PreferencesMultiProcessChange 时，表示订阅进程间数据变更，多个进程持有同一个首选项文件时，订阅的Key的值在任意一个进程发生变更后，执行flush方法后，触发callback回调。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argumentex)\<String>|是|-|回调函数。<br>String: 发生变化的Key的类型。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<String>|是|-|回调函数。<br>String: 发生变化的Key的类型。|
 
 **示例：**
 

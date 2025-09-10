@@ -18,8 +18,8 @@
 
 假设应用中有两个Ability：EntryAbility和FuncAbility（可以在同一个Module中，也可以在不同的Module中），需要从EntryAbility的页面中启动FuncAbility。
 
-1. 在EntryAbility中，通过调用[startAbility()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilitywant)方法启动Ability，[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-want)为Ability实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的Ability属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
-    
+1. 在EntryAbility中，通过调用[startAbility()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilitywant-startoptions)方法启动Ability，[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)为Ability实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的Ability属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
+
     <!-- compile -->
 
     ```cangjie
@@ -70,7 +70,7 @@
     ```
 
 2. 在FuncAbility的[onCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)或者[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)生命周期回调文件中接收EntryAbility传递过来的参数。
-    
+
     <!-- compile -->
 
     ```cangjie
@@ -90,10 +90,10 @@
 
     > **说明：**
     >
-    > 在被拉起的FuncAbility中，可以通过获取传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-want)参数的`parameters`来获取拉起方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)的PID、Bundle Name等信息。
+    > 在被拉起的FuncAbility中，可以通过获取传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)参数的`parameters`来获取拉起方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)的PID、Bundle Name等信息。
 
 3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例，在FuncAbility中通过调用[terminateSelf()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself)方法实现。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
-    
+
     <!-- compile -->
 
     ```cangjie
@@ -147,8 +147,7 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 
 ### 调用方UIAbility指定启动页面
 
-调用方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，FuncA对应功能A页面），此时需要在传入的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-want)参数中配置指定的页面信息，可以通过want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息]
-(cj-uiability-usage.md#获取uiability的上下文信息)。
+调用方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，FuncA对应功能A页面），此时需要在传入的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)参数中配置指定的页面信息，可以通过want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
 
 <!-- compile -->
 
@@ -197,7 +196,7 @@ class PageAbilityComponentsInteractive {
 
 ### 目标UIAbility冷启动
 
-目标[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)冷启动时，在目标Ability的[onCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)生命周期回调中，接收调用方传过来的参数。然后在目标Ability的[onWindowStageCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage)生命周期回调中，解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-want)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-window.md#class-windowstage)方法。
+目标[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)冷启动时，在目标Ability的[onCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)生命周期回调中，接收调用方传过来的参数。然后在目标Ability的[onWindowStageCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage)生命周期回调中，解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-window.md#class-windowstage)方法。
 
 <!-- compile -->
 
@@ -239,7 +238,7 @@ class FuncAbilityA <: UIAbility {
 开发步骤如下所示。
 
 1. 冷启动短信应用的UIAbility实例。
-    
+
     <!-- compile -->
 
     ```cangjie
@@ -268,8 +267,8 @@ class FuncAbilityA <: UIAbility {
     }
     ```
 
-2. 在短信应用UIAbility的[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)回调中解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-want)参数，通过[Router](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#class-router)对象，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
-    
+2. 在短信应用UIAbility的[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)回调中解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)参数，通过[Router](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#class-router)对象，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
+
     <!-- compile -->
 
     ```cangjie

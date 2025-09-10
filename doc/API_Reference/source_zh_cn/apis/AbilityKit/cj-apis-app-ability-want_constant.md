@@ -21,7 +21,7 @@ ohos.permission.PRIVACY_WINDOW
 API示例代码使用说明：
 
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
-- 若示例需获取[Context](#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](./cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -38,7 +38,7 @@ public enum Flags <: Equatable<Flags> & ToString {
 }
 ```
 
-**功能：** Flags说明。用于表示处理[Want](#class-want)的方式。
+**功能：** Flags说明。用于表示处理[Want](./cj-apis-app-ability-want.md#class-want)的方式。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -163,7 +163,7 @@ public operator func ==(other: Flags): Bool
 public func getValue(): UInt32
 ```
 
-**功能：** 获取当前枚举的所表示的值。用于表示处理[Want](#class-want)的方式。
+**功能：** 获取当前枚举的所表示的值。用于表示处理[Want](./cj-apis-app-ability-want.md#class-want)的方式。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -179,7 +179,7 @@ public func getValue(): UInt32
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The type is not supported. | todo | todo |
 
@@ -216,7 +216,7 @@ public enum Params <: Equatable<Params> & ToString {
 }
 ```
 
-**功能：** [Want](#class-want)的Params操作。
+**功能：** [Want](./cj-apis-app-ability-want.md#class-want)的Params操作。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -365,7 +365,7 @@ public operator func ==(other: Params): Bool
 public func getValue(): String
 ```
 
-**功能：**  获取当前枚举的所表示的值。供[Want](#class-want)的Params操作使用。
+**功能：**  获取当前枚举的所表示的值。供[Want](./cj-apis-app-ability-want.md#class-want)的Params操作使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -381,7 +381,7 @@ public func getValue(): String
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The type is not supported. | todo | todo |
 

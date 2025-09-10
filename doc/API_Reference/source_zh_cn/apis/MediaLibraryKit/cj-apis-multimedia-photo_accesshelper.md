@@ -314,7 +314,7 @@ public func getCount(): Int32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
@@ -477,7 +477,7 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
 
@@ -527,7 +527,7 @@ public func getAlbum(): Album
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -575,7 +575,7 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
 
@@ -633,7 +633,7 @@ public func setAlbumName(name: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -700,7 +700,7 @@ public init(asset: PhotoAsset)
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -756,7 +756,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -809,7 +809,7 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
   | 14000011 | System inner fail |
 
@@ -863,7 +863,7 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
   | 14000011 | System inner fail |
 
@@ -912,7 +912,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 201 | Permission denied |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -962,7 +962,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 201 | Permission denied |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000002 | The uri format is incorrect or does not exist. |
   | 14000011 | System inner fail |
 
@@ -1010,7 +1010,7 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
@@ -1060,7 +1060,7 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
 
@@ -1150,7 +1150,7 @@ public func getAsset(): PhotoAsset
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -1200,7 +1200,7 @@ public func getWriteCacheHandler(): Int32
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 201 | Permission denied |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
 
@@ -1289,7 +1289,7 @@ public func setTitle(title: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -1353,7 +1353,7 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 201 | Permission denied |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 ### func getAlbums(AlbumType, AlbumSubtype, FetchOptions)
@@ -1391,7 +1391,7 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 201 | Permission denied |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
@@ -1539,7 +1539,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
 |forChildUris|Bool|是|-|是否模糊监听，uri为相册uri时，forChildUris为true能监听到相册中文件的变化，如果是false只能监听相册本身变化。uri为photoAsset时，forChildUris为true、false没有区别，uri为DefaultChangeUri时，forChildUris必须为true，如果为false将找不到该uri，收不到任何消息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)>|是|-|返回要监听的[ChangeData](#class-changedata)。注：uri可以注册多个不同的callback监听，[unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata)可以关闭该uri所有监听，也可以关闭指定callback的监听。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)>|是|-|返回要监听的[ChangeData](#class-changedata)。注：uri可以注册多个不同的callback监听，[unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata)可以关闭该uri所有监听，也可以关闭指定callback的监听。|
 
 **异常：**
 
@@ -1547,7 +1547,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900012 | Permission denied |
   | 13900020 | Invalid argument |
 
@@ -1609,7 +1609,7 @@ public func release(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
@@ -1651,7 +1651,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 |:---|:---|:---|:---|:---|
 |srcFileUris|Array\<String>|是|-|需保存到媒体库中的图片/视频文件对应的媒体库uri。<br>**注意：**  仅支持处理图片、视频uri。|
 |photoCreationConfigs|Array\<[PhotoCreationConfig](#class-photocreationconfig)>|是|-|保存图片/视频到媒体库的配置，包括保存的文件名等，与srcFileUris保持一一对应。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
 
 **异常：**
 
@@ -1659,7 +1659,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | Internal system error |
 
 **示例：**
@@ -1729,7 +1729,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
-|callback|?[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
+|callback|?[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
 
 **异常：**
 
@@ -1737,7 +1737,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900012 | Permission denied |
   | 13900020 | Invalid argument |
 

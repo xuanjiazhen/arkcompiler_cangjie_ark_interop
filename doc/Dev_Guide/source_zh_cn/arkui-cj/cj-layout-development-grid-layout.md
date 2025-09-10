@@ -217,7 +217,7 @@ GridRow中通过columns设置栅格布局的总列数。
 
 - 当columns类型为GridRowColumnOption时，支持下面六种不同尺寸（xs, sm, md, lg, xl, xxl）设备的总列数设置，各个尺寸下数值可不同。
 
-         <!-- run-->
+    <!-- run-->
 
     ```cangjie
     package ohos_app_cangjie_entry

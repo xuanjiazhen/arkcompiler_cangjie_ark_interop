@@ -299,8 +299,7 @@ public func mapReadonlyAshmem(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900001 | Failed to call mmap.
- |
+  | 1900001 | Failed to call mmap.|
 
 ### func mapTypedAshmem(UInt32)
 
@@ -364,10 +363,8 @@ public func readDataFromAshmem(size: Int64, offset: Int64): Array<Byte>
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900004 | Failed to read data from the shared memory.
- |
+2.The parameter type does not match.|
+  | 1900004 | Failed to read data from the shared memory.|
 
 ### func setProtectionType(UInt32)
 
@@ -396,10 +393,8 @@ public func setProtectionType(protectionType: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900002 | Failed to call ioctl.
- |
+2.The parameter type does not match.|
+  | 1900002 | Failed to call ioctl.|
 
 ### func unmapAshmem()
 
@@ -444,10 +439,8 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
 2.The parameter type does not match;
-3.Failed to obtain arrayBuffer information.
- |
-  | 1900003 | Failed to write data to the shared memory.
- |
+3.Failed to obtain arrayBuffer information.|
+  | 1900003 | Failed to write data to the shared memory.|
 
 ## class MessageSequence
 
@@ -488,8 +481,7 @@ public static func closeFileDescriptor(fd: Int32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
+2.The parameter type does not match.|
 
 ### static func create()
 
@@ -552,10 +544,8 @@ public static func dupFileDescriptor(fd: Int32): Int32
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900013 | Failed to call dup.
- |
+2.The parameter type does not match.|
+  | 1900013 | Failed to call dup.|
 
 ### func containFileDescriptors()
 
@@ -736,8 +726,7 @@ public func readAshmem(): Ashmem
   | :---- | :--- |
   | 401 | check param failed
  |
-  | 1900004 | Failed to read data from the shared memory.
- |
+  | 1900004 | Failed to read data from the shared memory.|
 
 ### func readBoolean()
 
@@ -764,8 +753,7 @@ public func readBoolean(): Bool
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readBooleanArray()
 
@@ -819,8 +807,7 @@ public func readByte(): Int8
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readByteArray()
 
@@ -874,8 +861,7 @@ public func readChar(): UInt8
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readCharArray()
 
@@ -902,8 +888,7 @@ public func readCharArray(): Array<UInt8>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readDouble()
 
@@ -930,8 +915,7 @@ public func readDouble(): Float64
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readDoubleArray()
 
@@ -958,8 +942,7 @@ public func readDoubleArray(): Array<Float64>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readException()
 
@@ -980,8 +963,7 @@ public func readException(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readFileDescriptor()
 
@@ -1008,8 +990,7 @@ public func readFileDescriptor(): Int32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readFloat()
 
@@ -1036,8 +1017,7 @@ public func readFloat(): Float32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readFloatArray()
 
@@ -1064,8 +1044,7 @@ public func readFloatArray(): Array<Float32>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readInt()
 
@@ -1092,8 +1071,7 @@ public func readInt(): Int32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readIntArray()
 
@@ -1120,8 +1098,7 @@ public func readIntArray(): Array<Int32>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readInterfaceToken()
 
@@ -1148,8 +1125,7 @@ public func readInterfaceToken(): String
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readLong()
 
@@ -1176,8 +1152,7 @@ public func readLong(): Int64
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readLongArray()
 
@@ -1204,8 +1179,7 @@ public func readLongArray(): Array<Int64>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readParcelable\<T>(T) where T \<: Parcelable
 
@@ -1233,12 +1207,9 @@ public func readParcelable<T>(dataIn: T): Unit where T <: Parcelable
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
-1.The number of parameters is incorrect.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
-  | 1900012 | Failed to call the JS callback function.
- |
+1.The number of parameters is incorrect.|
+  | 1900010 | Failed to read data from the message sequence.|
+  | 1900012 | Failed to call the JS callback function.|
 
 ### func readParcelableArray\<T>(Array\<T>) where T \<: Parcelable
 
@@ -1270,12 +1241,9 @@ public func readParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: P
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The length of the array passed when reading is not equal to the length passed when writing to the array;
-5.The element does not exist in the array.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
-  | 1900012 | Failed to call the JS callback function.
- |
+5.The element does not exist in the array.|
+  | 1900010 | Failed to read data from the message sequence.|
+  | 1900012 | Failed to call the JS callback function.|
 
 ### func readRawDataBuffer(Int64)
 
@@ -1310,10 +1278,8 @@ public func readRawDataBuffer(size: Int64): Array<Byte>
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readShort()
 
@@ -1340,8 +1306,7 @@ public func readShort(): Int16
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readShortArray()
 
@@ -1368,8 +1333,7 @@ public func readShortArray(): Array<Int16>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readString()
 
@@ -1396,8 +1360,7 @@ public func readString(): String
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readStringArray()
 
@@ -1424,8 +1387,7 @@ public func readStringArray(): Array<String>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readUInt16Array()
 
@@ -1457,8 +1419,7 @@ public func readUInt16Array(): Array<UInt16>
 2.The parameter type does not match;
 3.The obtained value of typeCode is incorrect;
  |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readUInt32Array()
 
@@ -1490,8 +1451,7 @@ public func readUInt32Array(): Array<UInt32>
 2.The parameter type does not match;
 3.The obtained value of typeCode is incorrect;
  |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readUInt64Array()
 
@@ -1523,8 +1483,7 @@ public func readUInt64Array(): Array<UInt64>
 2.The parameter type does not match;
 3.The obtained value of typeCode is incorrect;
  |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func readUInt8Array()
 
@@ -1556,8 +1515,7 @@ public func readUInt8Array(): Array<UInt8>
 2.The parameter type does not match;
 3.The obtained value of typeCode is incorrect;
  |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence.|
 
 ### func reclaim()
 
@@ -1599,8 +1557,7 @@ public func rewindRead(pos: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
+2.The parameter type does not match.|
 
 ### func rewindWrite(UInt32)
 
@@ -1629,8 +1586,7 @@ public func rewindWrite(pos: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
+2.The parameter type does not match.|
 
 ### func setCapacity(UInt32)
 
@@ -1659,10 +1615,8 @@ public func setCapacity(size: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900011 | Memory allocation failed.
- |
+2.The parameter type does not match.|
+  | 1900011 | Memory allocation failed.|
 
 ### func setSize(UInt32)
 
@@ -1691,8 +1645,7 @@ public func setSize(size: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
+2.The parameter type does not match.|
 
 ### func writeAshmem(Ashmem)
 
@@ -1721,10 +1674,8 @@ public func writeAshmem(ashmem: Ashmem): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter is not an instance of the Ashmem object.
- |
-  | 1900003 | Failed to write data to the shared memory.
- |
+2.The parameter is not an instance of the Ashmem object.|
+  | 1900003 | Failed to write data to the shared memory.|
 
 ### func writeBoolean(Bool)
 
@@ -1753,10 +1704,8 @@ public func writeBoolean(val: Bool): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeBooleanArray(Array\<Bool>)
 
@@ -1787,10 +1736,8 @@ public func writeBooleanArray(booleanArray: Array<Bool>): Unit
 1.The parameter is an empty array;
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
-4.The element does not exist in the array.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+4.The element does not exist in the array.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeByte(Int8)
 
@@ -1819,10 +1766,8 @@ public func writeByte(val: Int8): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeByteArray(Array\<Int8>)
 
@@ -1854,10 +1799,8 @@ public func writeByteArray(byteArray: Array<Int8>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The element does not exist in the array.
-5.The type of the element in the array is incorrect.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.The type of the element in the array is incorrect.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeChar(UInt8)
 
@@ -1886,10 +1829,8 @@ public func writeChar(val: UInt8): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeCharArray(Array\<UInt8>)
 
@@ -1920,10 +1861,8 @@ public func writeCharArray(charArray: Array<UInt8>): Unit
 1.The parameter is an empty array;
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
-4.The element does not exist in the array.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+4.The element does not exist in the array.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeDouble(Float64)
 
@@ -1952,10 +1891,8 @@ public func writeDouble(val: Float64): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeDoubleArray(Array\<Float64>)
 
@@ -1987,10 +1924,8 @@ public func writeDoubleArray(doubleArray: Array<Float64>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The element does not exist in the array;
-5.The type of the element in the array is incorrect.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.The type of the element in the array is incorrect.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeFileDescriptor(Int32)
 
@@ -2019,10 +1954,8 @@ public func writeFileDescriptor(fd: Int32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeFloat(Float32)
 
@@ -2051,10 +1984,8 @@ public func writeFloat(val: Float32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeFloatArray(Array\<Float32>)
 
@@ -2086,10 +2017,8 @@ public func writeFloatArray(floatArray: Array<Float32>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The element does not exist in the array;
-5.The type of the element in the array is incorrect.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.The type of the element in the array is incorrect.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeInt(Int32)
 
@@ -2118,10 +2047,8 @@ public func writeInt(val: Int32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeIntArray(Array\<Int32>)
 
@@ -2153,10 +2080,8 @@ public func writeIntArray(intArray: Array<Int32>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The element does not exist in the array;
-5.The type of the element in the array is incorrect.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.The type of the element in the array is incorrect.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeInterfaceToken(String)
 
@@ -2187,10 +2112,8 @@ public func writeInterfaceToken(token: String): Unit
 1.The number of parameters is incorrect;
 2.The parameter type does not match;
 3.The String length exceeds 40960 bytes;
-4.The number of bytes copied to the buffer is different from the length of the obtained String.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+4.The number of bytes copied to the buffer is different from the length of the obtained String.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeLong(Int64)
 
@@ -2219,10 +2142,8 @@ public func writeLong(val: Int64): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeLongArray(Array\<Int64>)
 
@@ -2254,10 +2175,8 @@ public func writeLongArray(longArray: Array<Int64>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The element does not exist in the array;
-5.The type of the element in the array is incorrect.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.The type of the element in the array is incorrect.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeNoException()
 
@@ -2278,8 +2197,7 @@ public func writeNoException(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeParcelable\<T>(T) where T \<: Parcelable
 
@@ -2308,10 +2226,8 @@ public func writeParcelable<T>(val: T): Unit where T <: Parcelable
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeParcelableArray\<T>(Array\<T>) where T \<: Parcelable
 
@@ -2342,10 +2258,8 @@ public func writeParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: 
 1.The parameter is an empty array;
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
-4.The element does not exist in the array.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+4.The element does not exist in the array.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeRawDataBuffer(Array\<Byte>, Int64)
 
@@ -2379,10 +2293,8 @@ public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit
 3.Failed to obtain array information;
 4.The transferred size cannot be obtained;
 5.The transferred size is less than or equal to 0;
-6.The transferred size is greater than the byte length of rawData.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+6.The transferred size is greater than the byte length of rawData.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeShort(Int16)
 
@@ -2411,10 +2323,8 @@ public func writeShort(val: Int16): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes:
 1.The number of parameters is incorrect;
-2.The parameter type does not match.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+2.The parameter type does not match.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeShortArray(Array\<Int16>)
 
@@ -2446,10 +2356,8 @@ public func writeShortArray(shortArray: Array<Int16>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The element does not exist in the array;
-5.The type of the element in the array is incorrect.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.The type of the element in the array is incorrect.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeString(String)
 
@@ -2480,10 +2388,8 @@ public func writeString(val: String): Unit
 1.The number of parameters is incorrect;
 2.The parameter type does not match;
 3.The String length exceeds 40960 bytes;
-4.The number of bytes copied to the buffer is different from the length of the obtained String.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+4.The number of bytes copied to the buffer is different from the length of the obtained String.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeStringArray(Array\<String>)
 
@@ -2515,10 +2421,8 @@ public func writeStringArray(stringArray: Array<String>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The String length exceeds 40960 bytes;
-5.The number of bytes copied to the buffer is different from the length of the obtained String.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.The number of bytes copied to the buffer is different from the length of the obtained String.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeUInt16Array(Array\<UInt16>)
 
@@ -2550,10 +2454,8 @@ public func writeUInt16Array(buf: Array<UInt16>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The obtained value of typeCode is incorrect;
-5.Failed to obtain array information.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.Failed to obtain array information.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeUInt32Array(Array\<UInt32>)
 
@@ -2585,10 +2487,8 @@ public func writeUInt32Array(buf: Array<UInt32>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The obtained value of typeCode is incorrect;
-5.Failed to obtain array information.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.Failed to obtain array information.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeUInt64Array(Array\<UInt64>)
 
@@ -2620,10 +2520,8 @@ public func writeUInt64Array(buf: Array<UInt64>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The obtained value of typeCode is incorrect;
-5.Failed to obtain array information.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.Failed to obtain array information.|
+  | 1900009 | Failed to write data to the message sequence.|
 
 ### func writeUInt8Array(Array\<UInt8>)
 
@@ -2655,7 +2553,5 @@ public func writeUInt8Array(buf: Array<UInt8>): Unit
 2.The number of parameters is incorrect;
 3.The parameter type does not match;
 4.The obtained value of typeCode is incorrect;
-5.Failed to obtain array information.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+5.Failed to obtain array information.|
+  | 1900009 | Failed to write data to the message sequence.|

@@ -20,7 +20,7 @@ public class Font {}
 
 **起始版本：** 21
 
-###  func getFontByName(String)
+### func getFontByName(String)
 
 ```cangjie
 public func getFontByName(fontName: String): ?FontInfo

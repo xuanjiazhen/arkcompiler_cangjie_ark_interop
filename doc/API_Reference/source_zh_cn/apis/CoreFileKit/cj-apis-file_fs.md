@@ -608,7 +608,7 @@ public static func createRandomAccessFile(file: String, mode!: Int64 = OpenMode.
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |file|String|是|-|已打开的File对象。|
-|mode|Int64|否|OpenMode.READ_ONLY|**命名参数。** 创建文件RandomAccessFile对象的[选项](#enum-openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。|
+|mode|Int64|否|OpenMode.READ_ONLY|**命名参数。** 创建文件RandomAccessFile对象的[选项](#class-openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。|
 |options|[RandomAccessFileOptions](#class-randomaccessfileoptions)|否|RandomAccessFileOptions()|支持如下选项：<br/>- start，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置。可选，默认文件末尾。|
 
 **返回值：**
@@ -1342,7 +1342,7 @@ public static func read(fd: Int32, buffer: Array<Byte>, options!: ReadOptions = 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|用于保存读取到的文件数据的缓冲区。|
+|buffer|Array\<Byte>|是|-|用于保存读取到的文件数据的缓冲区。|
 |options|[ReadOptions](#class-readoptions)|否|ReadOptions()|支持如下选项：<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。默认从当前位置开始读。<br/>-&nbsp;length，UIntNative类型，表示期望读取数据的长度。默认缓冲区长度。|
 
 **返回值：**
@@ -1802,7 +1802,7 @@ public static func write(fd: Int32, buffer: Array<Byte>, options!: WriteOptions 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据，来自字符串。|
+|buffer|Array\<Byte>|是|-|待写入文件的数据，来自字符串。|
 |options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|支持如下选项：<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。当前仅支持&nbsp;"utf-8"。|
 
 **返回值：**
@@ -2593,7 +2593,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据。|
+|buffer|Array\<Byte>|是|-|待写入文件的数据。|
 |options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br>- offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br>- encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。|
 **返回值：**
 
@@ -2666,7 +2666,7 @@ public var end: Option<Int64>
 
 **功能：** 期望读取结束的位置。可选，默认文件末尾。
 
-**类型：** [Option](#initoptionint-optionint)\<Int64>
+**类型：** Option\<Int64>
 
 **读写能力：** 可读写
 
@@ -2682,7 +2682,7 @@ public var start: Option<Int64>
 
 **功能：** 期望读取文件的位置。可选，默认从当前位置开始读。
 
-**类型：** [Option](#initoptionint-optionint)\<Int64>
+**类型：** Option\<Int64>
 
 **读写能力：** 可读写
 
@@ -2709,8 +2709,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件的位置。可选，默认从当前位置开始读。|
-|end|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取结束的位置。可选，默认文件末尾。|
+|start|Option\<Int64>|否|None|期望读取文件的位置。可选，默认从当前位置开始读。|
+|end|Option\<Int64>|否|None|期望读取结束的位置。可选，默认文件末尾。|
 
 ## class ReaderIterator
 
@@ -2826,7 +2826,7 @@ public var length: Option<UIntNative>
 
 **功能：** 期望读取数据的长度。默认缓冲区长度。
 
-**类型：** [Option](#initoptionint-optionint)\<UIntNative>
+**类型：** Option\<UIntNative>
 
 **读写能力：** 可读写
 
@@ -2842,7 +2842,7 @@ public var offset: Option<Int64>
 
 **功能：** 期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。
 
-**类型：** [Option](#initoptionint-optionint)\<Int64>
+**类型：** Option\<Int64>
 
 **读写能力：** 可读写
 
@@ -2869,8 +2869,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
-|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
+|offset|Option\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
+|length|Option\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
 
 ## class ReadTextOptions
 
@@ -2931,8 +2931,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
-|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
+|offset|Option\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
+|length|Option\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
 |encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
 
 ## class Stat
@@ -3427,7 +3427,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|	用于读取文件的缓冲区。
+|buffer|Array\<Byte>|是|-| 用于读取文件的缓冲区。
 |options|[ReadOptions](#class-readoptions)|否|ReadOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，UIntNative类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>|
 
 **返回值：**
@@ -3549,7 +3549,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据。|
+|buffer|Array\<Byte>|是|-|待写入文件的数据。|
 |options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。仅支持&nbsp;"utf-8"。|
 
 **返回值：**
@@ -3627,7 +3627,7 @@ public var length: Option<UIntNative>
 
 **功能：** 期望写入数据的长度。默认缓冲区长度。
 
-**类型：** [Option](#initoptionint-optionint)\<UIntNative>
+**类型：** Option\<UIntNative>
 
 **读写能力：** 可读写
 
@@ -3643,7 +3643,7 @@ public var offset: Option<Int64>
 
 **功能：** 期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。
 
-**类型：** [Option](#initoptionint-optionint)\<Int64>
+**类型：** Option\<Int64>
 
 **读写能力：** 可读写
 
@@ -3671,8 +3671,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望写入数据的长度。默认缓冲区长度。|
-|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。|
+|length|Option\<UIntNative>|否|None|期望写入数据的长度。默认缓冲区长度。|
+|offset|Option\<Int64>|否|None|期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。|
 |encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
 
 ## enum AccessFlagType

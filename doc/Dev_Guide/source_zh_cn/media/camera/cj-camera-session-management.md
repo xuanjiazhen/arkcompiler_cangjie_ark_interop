@@ -118,5 +118,6 @@
     } catch (error: BusinessException) {
         Hilog.error(0,"","Failed to add videoOutput. error: ${error.message}")
     }
+
 }
     ```

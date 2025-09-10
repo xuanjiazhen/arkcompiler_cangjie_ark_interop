@@ -17,7 +17,7 @@ public class Gauge <: ContainerBase {
 
 **父类型：**
 
-- [ContainerBase](./cj-ui-framework.md#containerbase)
+- [ContainerBase](./cj-ui-framework.md#class-containerbase)
 
 ### init(Float64, Float64, Float64, () -> Unit)
 
@@ -106,7 +106,7 @@ public func colors(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|量规图的颜色，支持分段颜色设置。
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|量规图的颜色，支持分段颜色设置。|
 
 API version 9 默认值：Color.Black
 
@@ -135,7 +135,7 @@ public func colors(value: LinearGradient): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[LinearGradient](./cj-common-types.md#class-lineargradient)|是|-|量规图的渐变色，支持分段颜色设置，最多9组。|
+|value|[LinearGradient](./cj-information-display-datapanel.md#class-lineargradient)|是|-|量规图的渐变色，支持分段颜色设置，最多9组。|
 
 ### func description(() -> Unit)
 

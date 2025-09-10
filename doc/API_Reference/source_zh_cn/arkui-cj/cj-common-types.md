@@ -75,7 +75,7 @@ public var curve: Curve
 
 **功能：** 动画曲线。
 
-**类型：** [Curve]
+**类型：** [Curve](#enum-curve)
 
 **读写能力：** 可读写
 
@@ -123,7 +123,7 @@ public var expectedFrameRateRange: Option<ExpectedFrameRateRange>
 
 **功能：** 设置动画的期望帧率。
 
-**类型：** [Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>
+**类型：** Option\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>
 
 **读写能力：** 可读写
 
@@ -139,7 +139,7 @@ public var finishCallbackType: FinishCallbackType
 
 **功能：** 在动画中定义onFinish回调的类型。
 
-**类型：** [FinishCallbackType]
+**类型：** [FinishCallbackType](#enum-finishcallbacktype)
 
 **读写能力：** 可读写
 
@@ -171,7 +171,7 @@ public var onFinish: Option <() -> Unit>
 
 **功能：** 动画播放完成回调。
 
-**类型：** [Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<()->Unit>
+**类型：** Option\<()->Unit>
 
 **读写能力：** 可读写
 
@@ -187,7 +187,7 @@ public var playMode: PlayMode
 
 **功能：** 动画播放模式，默认播放完成后重头开始播放。
 
-**类型：** [PlayMode]
+**类型：** [PlayMode](#enum-playmode)
 
 **读写能力：** 可读写
 
@@ -239,13 +239,13 @@ public init(
 |:---|:---|:---|:---|:---|
 |duration|Int32|否|1000|动画持续时间，单位为毫秒。设置小于0的值时按0处理。|
 |tempo|Float32|否|1.0|动画播放速度，值越大动画播放越快，值越小播放越慢，为0时无动画效果。|
-|curve|[Curve]|否|Curve.EaseInOut|动画曲线。|
+|curve|Curve|否|Curve.EaseInOut|动画曲线。|
 |delay|Int32|否|0|动画延迟播放时间，单位为ms(毫秒)，默认不延时播放。|
 |iterations|Int32|否|1|动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。|
-|playMode|[PlayMode]|否|PlayMode.Normal|动画播放模式，默认播放完成后重头开始播放。|
-|onFinish|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<()->Unit>|否|Option.None|动画播放完成回调。|
-|finishCallbackType|[FinishCallbackType]|否|FinishCallbackType.Removed|在动画中定义onFinish回调的类型。|
-|expectedFrameRateRange|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>|否|Option.None|设置动画的期望帧率。|
+|playMode|[PlayMode](#enum-playmode)|否|PlayMode.Normal|动画播放模式，默认播放完成后重头开始播放。|
+|onFinish|Option\<()->Unit>|否|Option.None|动画播放完成回调。|
+|finishCallbackType|[FinishCallbackType](#enum-finishcallbacktype)|否|FinishCallbackType.Removed|在动画中定义onFinish回调的类型。|
+|expectedFrameRateRange|Option\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>|否|Option.None|设置动画的期望帧率。|
 
 ## class Area
 
@@ -538,7 +538,7 @@ public var bottom: BorderStyle
 
 **功能：** 设置组件下边框样式。
 
-**类型：** [BorderStyle]
+**类型：** [BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -554,7 +554,7 @@ public var left: BorderStyle
 
 **功能：** 设置组件左边框样式。
 
-**类型：** [BorderStyle]
+**类型：** [BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -570,7 +570,7 @@ public var right: BorderStyle
 
 **功能：** 设置组件右边框样式。
 
-**类型：** [BorderStyle]
+**类型：** [BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -586,7 +586,7 @@ public var top: BorderStyle
 
 **功能：** 设置组件上边框样式。
 
-**类型：** [BorderStyle]
+**类型：** [BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -615,10 +615,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[BorderStyle]|否|BorderStyle.Solid|组件上边框样式。|
-|right|[BorderStyle]|否|BorderStyle.Solid|组件右边框样式。|
-|bottom|[BorderStyle]|否|BorderStyle.Solid|组件下边框样式。|
-|left|[BorderStyle]|否|BorderStyle.Solid|组件左边框样式。|
+|top|[BorderStyle](#enum-borderstyle)|否|BorderStyle.Solid|组件上边框样式。|
+|right|[BorderStyle](#enum-borderstyle)|否|BorderStyle.Solid|组件右边框样式。|
+|bottom|[BorderStyle](#enum-borderstyle)|否|BorderStyle.Solid|组件下边框样式。|
+|left|[BorderStyle](#enum-borderstyle)|否|BorderStyle.Solid|组件左边框样式。|
 
 ## class Font
 
@@ -678,7 +678,7 @@ public var style:?FontStyle
 
 **功能：** 设置文本的字体样式。
 
-**类型：** ?[FontStyle]
+**类型：** ?[FontStyle](#enum-fontstyle)
 
 **读写能力：** 可读写
 
@@ -694,7 +694,7 @@ public var weight:?FontWeight
 
 **功能：** 设置文本的字体粗细。
 
-**类型：** ?[FontWeight]
+**类型：** ?[FontWeight](#enum-fontweight)
 
 **读写能力：** 可读写
 
@@ -719,9 +719,9 @@ public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?Resour
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |size|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
-|weight|?[FontWeight]|否|None|设置文本的字体粗细。|
+|weight|?[FontWeight](#enum-fontweight)|否|None|设置文本的字体粗细。|
 |family|?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。|
-|style|?[FontStyle]|否|None|设置文本的字体样式。|
+|style|?[FontStyle](#enum-fontstyle)|否|None|设置文本的字体样式。|
 
 ## class Fonts
 
@@ -782,7 +782,7 @@ public var style: FontStyle
 
 **功能：** 设置文本的字体样式。
 
-**类型：** [FontStyle]
+**类型：** [FontStyle](#enum-fontstyle)
 
 **读写能力：** 可读写
 
@@ -798,7 +798,7 @@ public var weight: FontWeight
 
 **功能：** 设置文本的字体粗细。
 
-**类型：** [FontWeight]
+**类型：** [FontWeight](#enum-fontweight)
 
 **读写能力：** 可读写
 
@@ -824,9 +824,9 @@ public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, fami
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.fp|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
-|weight|[FontWeight]|否|FontWeight.Normal|设置文本的字体粗细。|
+|weight|[FontWeight](#enum-fontweight)|否|FontWeight.Normal|设置文本的字体粗细。|
 |family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。|
-|style|[FontStyle]|否|FontStyle.Normal|设置文本的字体样式。|
+|style|[FontStyle](#enum-fontstyle)|否|FontStyle.Normal|设置文本的字体样式。|
 
 ## class HorizontalAlignment
 
@@ -852,7 +852,7 @@ public var align: HorizontalAlign
 
 **功能：** 设置组件水平方向对齐方式。
 
-**类型：** [HorizontalAlign]
+**类型：** [HorizontalAlign](#enum-horizontalalign)
 
 **读写能力：** 可读写
 
@@ -893,7 +893,7 @@ public init(anchor: String, align: HorizontalAlign)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |anchor|String|是|-|设置组件水平对齐的锚点。|
-|align|[HorizontalAlign]|是|-|设置组件水平方向对齐方式。|
+|align|[HorizontalAlign](#enum-horizontalalign)|是|-|设置组件水平方向对齐方式。|
 
 ## class Margin
 
@@ -1340,7 +1340,7 @@ public var align: VerticalAlign
 
 **功能：** 设置组件垂直方向对齐方式。
 
-**类型：** [VerticalAlign]
+**类型：** [VerticalAlign](#enum-verticalalign)
 
 **读写能力：** 可读写
 
@@ -1381,7 +1381,7 @@ public init(anchor: String, align: VerticalAlign)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |anchor|String|是|-|设置组件垂直对齐的锚点。|
-|align|[VerticalAlign]|是|-|设置组件垂直方向对齐方式。|
+|align|[VerticalAlign](#enum-verticalalign)|是|-|设置组件垂直方向对齐方式。|
 
 ## enum AdaptiveColor
 
@@ -1401,7 +1401,7 @@ public enum AdaptiveColor <: Equatable<AdaptiveColor> {
 
 **父类型：**
 
-- Equatable\<AdaptiveColor\>
+- Equatable\<AdaptiveColor>
 
 ### Average
 
@@ -1487,7 +1487,7 @@ public enum LengthType <: Length & Equatable<LengthType> {
 
 **父类型：**
 
-- Equatable\<LengthType\>
+- Equatable\<LengthType>
 - Length
 
 ### fp(Float64)
@@ -1677,7 +1677,7 @@ public enum Alignment <: Equatable<Alignment> {
 
 **父类型：**
 
-- Equatable\<Alignment\>
+- Equatable\<Alignment>
 
 ### Bottom
 
@@ -3832,7 +3832,7 @@ public operator func !=(other: DialogAlignment): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[DialogAlignment](#enum-dialogalignment)|是|-|比较的枚举值
+|other|[DialogAlignment](#enum-dialogalignment)|是|-|比较的枚举值。|
 
 **返回值：**
 
@@ -3852,7 +3852,7 @@ public operator func ==(other: DialogAlignment): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[DialogAlignment](#enum-dialogalignment)|是|-|两个枚举值相等返回true，否则返回false。
+|other|[DialogAlignment](#enum-dialogalignment)|是|-|两个枚举值相等返回true，否则返回false。|
 
 **返回值：**
 
@@ -7805,7 +7805,7 @@ Push
 Replace
 ```
 
-**功能：** 	用应用内的某个页面替换当前页面，并销毁被替换的页面。
+**功能：**  用应用内的某个页面替换当前页面，并销毁被替换的页面。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11547,6 +11547,7 @@ public operator func ==(other: TouchType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
+
     |other|[TouchType](#enum-touchtype)|是|-|传入的另一个枚举值。|
 
 **返回值：**

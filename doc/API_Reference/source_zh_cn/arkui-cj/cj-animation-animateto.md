@@ -7,6 +7,7 @@
 ```cangjie
 import kit.ArkUI.*
 ```
+
 ## func animateTo(AnimateParam, VoidCallback)
 
 ```cangjie
