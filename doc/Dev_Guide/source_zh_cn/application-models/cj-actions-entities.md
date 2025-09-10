@@ -13,7 +13,7 @@
 
 ## entities
 
-表示目标应用组件的类别信息（如浏览器、视频播放器）。在被调用方应用配置文件的[skills字段](../cj-start/basic-knowledge/module-configuration-file.md#skills标签)内声明entites表示该应用支持的类别。常见的entities如下。
+表示目标应用组件的类别信息（如浏览器、视频播放器）。在被调用方应用配置文件的[skills字段](../cj-start/basic-knowledge/module-configuration-file.md#skills标签)内声明entities表示该应用支持的类别。常见的entities如下。
 
 **常见entities:**
 

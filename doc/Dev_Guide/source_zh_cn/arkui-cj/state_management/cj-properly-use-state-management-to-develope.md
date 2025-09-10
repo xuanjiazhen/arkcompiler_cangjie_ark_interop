@@ -22,7 +22,7 @@
 
 ### 在ForEach中使用ObservedArrayList
 
-开发过程中经常会使用对象数组和ForEach结合起来使用，但是写法不当的话会出现UI不刷新的情况。
+开发过程中常将对象数组与 ForEach 结合使用，但写法不当会导致 UI 不刷新。
 
  <!-- run -->
 
@@ -79,7 +79,7 @@ class EntryView {
 
 ![developguide51](./figures/developguide51.gif)
 
-由于ForEach中生成的item是一个常量，因此当点击改变item中的内容时，没有办法观测到UI刷新，尽管日志表面item中的值已经改变了(这体现在打印了“change font size”的日志)。因此，需要使用ObservedArrayList，配合 \@Publish 修饰自定义类属性来实现观测的能力。
+由于 ForEach 中生成的 item 是常量，因此在点击改变 item 内容时，无法触发 UI 刷新，尽管日志显示 item 的值已经改变（打印了“change font size”）。因此，需要使用 ObservedArrayList，配合 \@Publish 修饰自定义类属性来实现可观测能力。
 
  <!-- run -->
 
@@ -135,6 +135,6 @@ class EntryView {
 
 ![developguide52](./figures/developguide52.gif)
 
-使用\@Publish修饰的自定义类属性，使得Text组件内的textStyles变量具有了被观测的能力。在更改styleList中的值时，会观测到styleList每一个textStyles对应item的fontSize值被改变，因此触发UI的刷新。
+使用 \@Publish 修饰的自定义类属性，使 Text 组件内的 textStyles 变量具有可观测能力。更改 styleList 中的值时，会观测到 styleList 每一个 textStyles 对应 item 的 fontSize 值被改变，从而触发 UI 刷新。
 
 这是一个较为实用的使用状态管理进行刷新的开发方式。

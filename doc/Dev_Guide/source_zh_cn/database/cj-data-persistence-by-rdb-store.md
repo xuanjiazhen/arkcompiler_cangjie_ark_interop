@@ -30,7 +30,7 @@
 - 为保证数据的准确性，数据库同一时间只能支持一个写操作。
 - 当应用被卸载完成后，设备上的相关数据库文件及临时文件会被自动清除。
 - 仓颉侧支持的基本数据类型：Int64、Float64、String、二进制类型数据、Bool。
-- 为保证插入并读取数据成功，建议一条数据不要超过2M。超出该大小，插入成功，读取失败。
+- 为保证插入并读取数据成功，建议单条数据不要超过2M。超出该大小，可能出现插入成功但读取失败的情况。
 
 ## 接口说明
 
@@ -38,7 +38,7 @@
 
 | 接口名称 | 描述 |
 | -------- | -------- |
-| getRdbStore(context: StageContext, config: StoreConfig): RdbStore | 获得一个RdbStore，操作关系型数据库，开发者可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作。 |
+| getRdbStore(context: StageContext, config: StoreConfig): RdbStore | 获取一个RdbStore用于操作关系型数据库。开发者可按需配置RdbStore的参数，并通过RdbStore调用相关接口执行数据操作。 |
 | executeSql(sql: String, bindArgs: Array\<RelationalStoreValueType>): Unit | 执行包含指定参数但不返回值的SQL语句。 |
 | insert(table: String, values: Map\<String, RelationalStoreValueType>): Int64 | 向目标表中插入一行数据。 |
 | update(values: Map\<String, RelationalStoreValueType>, predicates: RdbPredicates): Int64 | 根据predicates的指定实例对象更新数据库中的数据。 |
@@ -48,7 +48,7 @@
 
 ## 开发步骤
 
-关系库数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发。
+关系型数据库在操作或存储过程中，可能由于各种原因发生非预期异常（抛出14800011）。此时需要对数据库进行重建并恢复数据，以保障正常的应用开发。
 
 1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。示例代码如下所示：
 
