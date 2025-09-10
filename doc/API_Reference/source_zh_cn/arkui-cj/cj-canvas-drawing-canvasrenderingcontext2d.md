@@ -18,11 +18,314 @@ import kit.ArkUI.*
 ```cangjie
 public class CanvasRenderingContext2D {
     public init(settings: RenderingContextSettings)
-    public init(settings: RenderingContextSettings, unit: LengthMetricsUnit)
 }
 ```
 
 **功能：** 表示使用RenderingContext在Canvas组件上进行绘制的类型，绘制对象可以是矩形、文本、图片等。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop direction
+
+```cangjie
+public mut prop direction: Option<CanvasDirection>
+```
+
+**功能：** 文字绘制方向
+
+**类型：** [Option < CanvasDirection >](./cj-common-types.md#enum-canvasdirection)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop filter
+
+```cangjie
+public mut prop filter: Option<String>
+```
+
+**功能：** 提供模糊、灰度等滤镜效果
+
+**类型：** Option<String>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop globalAlpha
+
+```cangjie
+public mut prop globalAlpha: Option<Float64>
+```
+
+**功能：** 透明度
+
+**类型：** Option < Float64 >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop globalCompositeOperation
+
+```cangjie
+public mut prop globalCompositeOperation: Option<GlobalCompositeOperation>
+```
+
+**功能：** 绘制新形状时应用的合成作类型
+
+**类型：** Option < GlobalCompositeOperation >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop height
+
+```cangjie
+public prop height: Float64
+```
+
+**功能：** 默认值为 0，与指定画布的高度绑定。
+
+**类型：** Float64
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop imageSmoothingEnabled
+
+```cangjie
+public mut prop imageSmoothingEnabled: Option<Bool>
+```
+
+**功能：** 指定是否平滑图像。
+
+**类型：** Option < Bool >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop imageSmoothingQuality
+
+```cangjie
+public mut prop imageSmoothingQuality: Option<ImageSmoothingQuality>
+```
+
+**功能：** 当前图像的平滑度级别
+
+**类型：** Option < ImageSmoothingQuality >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop lineCap
+
+```cangjie
+public mut prop lineCap: Option<LineCapStyle>
+```
+
+**功能：** 线段端点属性。
+
+**类型：** Option < LineCapStyle >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop lineDashOffset
+
+```cangjie
+public mut prop lineDashOffset: Option<Float64>
+```
+
+**功能：** 虚线偏移属性。
+
+**类型：** Option < Float64 >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop lineJoin
+
+```cangjie
+public mut prop lineJoin: Option<LineJoinStyle>
+```
+
+**功能：** 线段连接点属性
+
+**类型：** Option < LineJoinStyle >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop lineWidth
+
+```cangjie
+public mut prop lineWidth: Option<Float64>
+```
+
+**功能：** 线粗细属性。
+
+**类型：**[Option < Float64 >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop miterLimit
+
+```cangjie
+public mut prop miterLimit: Option<Float64>
+```
+
+**功能：** 此参数的值不能是0或负数。
+
+**类型：** Option < Float64 >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop shadowBlur
+
+```cangjie
+public mut prop shadowBlur: Option<Float64>
+```
+
+**功能：** 阴影模糊半径
+
+**类型：** Option < Float64 >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop shadowColor
+
+```cangjie
+public mut prop shadowColor: Option<ResourceColor>
+```
+
+**功能：** 阴影颜色。
+
+**类型：** Option < ResourceColor >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop shadowOffsetX
+
+```cangjie
+public mut prop shadowOffsetX: Option<Float64>
+```
+
+**功能：** 阴影的水平偏移距离。
+
+**类型：** Option < Float64 >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop shadowOffsetY
+
+```cangjie
+public mut prop shadowOffsetY: Option<Float64>
+```
+
+**功能：** 阴影的垂直偏移距离
+
+**类型：** Option < Float64 >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop textAlign
+
+```cangjie
+public mut prop textAlign: Option<CanvasTextAlign>
+```
+
+**功能：** 文本对齐模式
+
+**类型：** Option < CanvasTextAlign >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop textBaseline
+
+```cangjie
+public mut prop textBaseline: Option<CanvasTextBaseline>
+```
+
+**功能：** 文本基线
+
+**类型：** Option < CanvasTextBaseline >
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop width
+
+```cangjie
+public prop width: Float64
+```
+
+**功能：** 默认值为 0，与指定画布的宽度绑定。
+
+**类型：** Float64
+
+**读写能力：** 只读
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +442,7 @@ public func bezierCurveTo(cp1x: Float64, cp1y: Float64, cp2x: Float64, cp2y: Flo
 public func clearRect(x: Float64, y: Float64, width: Float64, height: Float64): Unit
 ```
 
-**功能：** 删除指定区域内的绘制内容。
+**功能：** 清除矩形区域的绘图内容
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,7 +473,7 @@ public func clip(fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.NonZero|指定要剪切对象的规则。<br/>可选参数为：CanvasFillRule.NonZero, CanvasFillRule.EvenOdd。<br>初始值：CanvasFillRule.NonZero。|
+|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.NonZero|指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。<br>初始值：nonzero。|
 
 ### func clip(Path2D, CanvasFillRule)
 
@@ -189,7 +492,7 @@ public func clip(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.NonZer
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |path|[Path2D](./cj-canvas-drawing-path2d.md#class-path2d)|是|-|Path2D剪切路径。|
-|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.NonZero|**命名参数。** 指定要剪切对象的规则。<br/>可选参数为：CanvasFillRule.NonZero, CanvasFillRule.EvenOdd。<br>初始值：CanvasFillRule.NonZero。|
+|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.nonzero|**命名参数。** 指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。|
 
 ### func closePath()
 
@@ -260,7 +563,7 @@ public func createImageData(sw: Float64, sh: Float64): ImageData
 public func createImageData(imageData: ImageData): ImageData
 ```
 
-**功能：** 根据一个现有的ImageData对象重新创建一个宽、高相同的ImageData对象（不会复制图像数据），请参考[ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata)，该接口存在内存拷贝行为，高耗时，应避免频繁使用。createImageData示例同[putImageData](#func-putimagedataimagedata-float64-float64)。
+**功能：** 根据一个现有的ImageData对象重新创建一个宽、高相同的ImageData对象（不会复制图像数据），请参考[ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata)，该接口存在内存拷贝行为，高耗时，应避免频繁使用。createImageData示例同[putImageData](#func-putimagedataimagedata-float64-float64-float64-float64-float64-float64)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -547,12 +850,12 @@ public func ellipse(
 |rotation|Float64|是|-|椭圆的旋转角度，单位为弧度。|
 |startAngle|Float64|是|-|椭圆绘制的起始点角度，以弧度表示。|
 |endAngle|Float64|是|-|椭圆绘制的结束点角度，以弧度表示。|
-|counterclockwise|Bool|否|false| **命名参数。** 是否以逆时针方向绘制椭圆。</br>true:逆时针方向绘制椭圆。</br>false:顺时针方向绘制椭圆。|
+|anticlockwise|Bool|否|false| **命名参数。** 是否以逆时针方向绘制椭圆。</br>true:逆时针方向绘制椭圆。</br>false:顺时针方向绘制椭圆。|
 
 ### func fill(CanvasFillRule)
 
 ```cangjie
-public func fill(fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
+public func fill(fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit
 ```
 
 **功能：** 对封闭路径进行填充。
@@ -570,7 +873,7 @@ public func fill(fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
 ### func fill(Path2D, CanvasFillRule)
 
 ```cangjie
-public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
+public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit
 ```
 
 **功能：** 对封闭路径进行填充。
@@ -584,7 +887,7 @@ public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzer
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |path|[Path2D](./cj-canvas-drawing-path2d.md#class-path2d)|是|-| Path2D剪切路径。|
-|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.NonZero| **命名参数。**  指定要剪切对象的规则。<br/>NonZero, EvenOdd。|
+|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.NonZero| **命名参数。**  指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。|
 
 ### func fillRect(Float64, Float64, Float64, Float64)
 
@@ -986,12 +1289,6 @@ public func restore(): Unit
 
 **功能：** 对保存的绘图上下文进行恢复。
 
-> **说明：**
->
-> - 当restore()次数未超出save()次数时，从栈中弹出存储的绘制状态并恢复CanvasRenderingContext2D对象的属性、剪切路径和变换矩阵的值。
-> - 当restore()次数超出save()次数时，此方法不做任何改变。
-> - 当没有保存状态时，此方法不做任何改变。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
@@ -1093,7 +1390,7 @@ public func setLineDash(dashArr: Array<Float64>): Unit
 public func setPixelMap(pixelMap: Option<PixelMap>): Unit
 ```
 
-**功能：** 将当前传入[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)对象绘制在画布上。setPixelMap示例同[getPixelMap](#func-getpixelmapfloat-float-float-float)。
+**功能：** 将当前传入[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)对象绘制在画布上。setPixelMap示例同[getPixelMap](#func-getpixelmapfloat64-float64-float64-float64)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1103,7 +1400,7 @@ public func setPixelMap(pixelMap: Option<PixelMap>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|Option<[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)>|是|-|包含像素值的PixelMap对象。<br>初始值：None。|
+|pixelMap|Option<PixelMap>|是|-|包含像素值的PixelMap对象。<br>初始值：None。|
 
 ### func setTransform(Float64, Float64, Float64, Float64, Float64, Float64)
 
@@ -1151,7 +1448,7 @@ public func setTransform(matrix: Option<Matrix2D>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|matrix|Option<[Matrix2D](./cj-canvas-drawing-matrix2d.md#class-matrix2d)>|是|-|变换矩阵。|
+|matrix|Option<Matrix2D>|是|-|变换矩阵。|
 
 ### func stroke()
 
@@ -1277,7 +1574,7 @@ public func strokeText(text: String, x: Float64, y: Float64, maxWidth!: Option<F
 |text|String|是|-|需要绘制的文本内容。|
 |x|Float64|是|-|需要绘制的文本的左下角x坐标。<br>默认单位：vp。|
 |y|Float64|是|-|需要绘制的文本的左下角y坐标。<br>默认单位：vp。|
-|maxWidth|Option<Float64>|否|Option.None|需要绘制的文本的最大宽度。<br>默认单位：vp。|
+|maxWidth|Float64|否|Option.None|需要绘制的文本的最大宽度。<br>默认单位：vp。|
 
 ### func toDataURL(ImageType, Float64)
 
@@ -1401,4 +1698,5 @@ class EntryView {
             }.width(100.percent).height(100.percent)
     }
 }
+
 ```

@@ -38,8 +38,8 @@ public func expandSafeArea(types!: ?Array<SafeAreaType> = None, edges!: ?Array<S
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|types|?Array\<[SafeAreaType](#)>|否|None|安全区域类型数组。|
-|edges|?Array\<[SafeAreaEdge](#)>|否|None|安全区域边缘数组。|
+|types|?Array\<[SafeAreaType](#enum-safeareaedge)>|否|None|安全区域类型数组。|
+|edges|?Array\<[SafeAreaEdge](#enum-safeareaedge)>|否|None|安全区域边缘数组。|
 
 ## func !=(SafeAreaEdge)
 

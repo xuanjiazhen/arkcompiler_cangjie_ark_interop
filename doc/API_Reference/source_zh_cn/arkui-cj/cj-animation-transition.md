@@ -830,7 +830,7 @@ public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallb
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[TransitionEffect](#class-transitioneffect)|是|-|以函数的形式指定转场效果。|
-|onFinish|?[TransitionFinishCallback](#type-transitionfinishcallback)|是|-|组件转场动画的结束回调函数。|
+|onFinish|?[TransitionFinishCallback](./cj-common-types.md#type-transitionfinishcallback)|是|-|组件转场动画的结束回调函数。|
 
 ## 示例代码
 

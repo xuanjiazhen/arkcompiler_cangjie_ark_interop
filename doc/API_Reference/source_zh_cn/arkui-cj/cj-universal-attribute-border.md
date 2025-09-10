@@ -26,9 +26,9 @@ public func border(width!: Length, color!: ResourceColor = Color.Black, radius!:
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。|
-|color|[ResourceColor](#)|否|Color.Black|边框颜色。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|边框颜色。|
 |radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|边框圆角半径。|
-|style|[BorderStyle](#)|否|BorderStyle.Solid|边框样式。|
+|style|[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|BorderStyle.Solid|边框样式。|
 
 ## func borderColor(ResourceColor)
 
@@ -46,7 +46,7 @@ public func borderColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](#)|是|-|边框颜色。|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|边框颜色。|
 
 ## func borderRadius(Length)
 
@@ -104,7 +104,7 @@ public func borderStyle(value: BorderStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[BorderStyle](#)|是|-|边框样式值。|
+|value|[BorderStyle](./cj-common-types.md#enum-borderstyle)|是|-|边框样式值。|
 
 ## func borderWidth(EdgeWidths)
 
@@ -122,7 +122,7 @@ public func borderWidth(value: EdgeWidths): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[EdgeWidths](#)|是|-|边缘宽度。|
+|value|[EdgeWidths](./cj-universal-attribute-border.md#class-edgewidths)|是|-|边缘宽度。|
 
 ## func borderWidth(Length)
 

@@ -41,7 +41,7 @@ func getData(index: Int64): T
 
 |类型|说明|
 |:----|:----|
-|[T](#generic-type-t)|索引值index对应的数据。|
+|T|索引值index对应的数据。|
 
 ### func onRegisterDataChangeListener(DataChangeListener)
 

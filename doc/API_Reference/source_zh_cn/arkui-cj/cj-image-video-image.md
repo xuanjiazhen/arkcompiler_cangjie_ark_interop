@@ -782,6 +782,22 @@ public operator func ==(other: ImageRenderMode): Bool
 |:----|:----|
 |Bool|两个枚举值相等时，返回true，否则返回false。|
 
+## type ImageCompleteCallback
+
+```cangjie
+public type ImageCompleteCallback =(ImageLoadResult) -> Unit
+```
+
+**功能：** 图片加载完成回调函数类型。
+
+## type ImageErrorCallback
+
+```cangjie
+public type ImageErrorCallback =(ImageError) -> Unit
+```
+
+**功能：** 图片加载错误回调函数类型。
+
 ## 示例代码
 
 ### 示例1（加载基本类型图片）

@@ -24,7 +24,7 @@ public func align(value: Alignment): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Alignment](#)|是|-|对齐方式。|
+|value|[Alignment](./cj-common-types.md#enum-alignment)|是|-|对齐方式。|
 
 ## func alignRules(AlignRuleOption)
 
@@ -42,7 +42,7 @@ public func alignRules(value: AlignRuleOption): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AlignRuleOption](#)|是|-|对齐规则选项。|
+|value|[AlignRuleOption](./cj-universal-attribute-location.md#class-alignruleoption)|是|-|对齐规则选项。|
 
 ## func direction(Direction)
 
@@ -60,7 +60,7 @@ public func direction(value: Direction): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Direction](#)|是|-|布局方向。|
+|value|[Direction](./cj-common-types.md#enum-direction)|是|-|布局方向。|
 
 ## func markAnchor(Length, Length)
 
@@ -170,7 +170,7 @@ public var bottom:?VerticalAlignment
 
 **功能：** 设置组件底部对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -186,7 +186,7 @@ public var center:?VerticalAlignment
 
 **功能：** 设置组件垂直居中对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -202,7 +202,7 @@ public var left:?HorizontalAlignment
 
 **功能：** 设置组件左侧对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -218,7 +218,7 @@ public var middle:?HorizontalAlignment
 
 **功能：** 设置组件水平居中对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -234,7 +234,7 @@ public var right:?HorizontalAlignment
 
 **功能：** 设置组件右侧对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -250,7 +250,7 @@ public var top:?VerticalAlignment
 
 **功能：** 设置组件顶部对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -278,12 +278,12 @@ public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = N
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|left|?[HorizontalAlignment](#class-horizontalalignment)|否|None|设置组件左侧对齐方式。|
-|right|?[HorizontalAlignment](#class-horizontalalignment)|否|None|设置组件右侧对齐方式。|
-|middle|?[HorizontalAlignment](#class-horizontalalignment)|否|None|设置组件水平居中对齐方式。|
-|top|?[VerticalAlignment](#class-verticalalignment)|否|None|设置组件顶部对齐方式。|
-|bottom|?[VerticalAlignment](#class-verticalalignment)|否|None|设置组件底部对齐方式。|
-|center|?[VerticalAlignment](#class-verticalalignment)|否|None|设置组件垂直居中对齐方式。|
+|left|?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)|否|None|设置组件左侧对齐方式。|
+|right|?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)|否|None|设置组件右侧对齐方式。|
+|middle|?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)|否|None|设置组件水平居中对齐方式。|
+|top|?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)|否|None|设置组件顶部对齐方式。|
+|bottom|?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)|否|None|设置组件底部对齐方式。|
+|center|?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)|否|None|设置组件垂直居中对齐方式。|
 |bias|[Bias](#class-bias)|否|Bias()|设置组件对齐的偏移量。|
 
 ### class Bias

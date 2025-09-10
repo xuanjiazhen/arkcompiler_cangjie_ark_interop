@@ -29,7 +29,7 @@ public func bindPopup(show: Bool, popup: CustomPopupOptions): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |show|Bool|是|-|是否显示。|
-|popup|[CustomPopupOptions](#)|是|-|自定义弹出框选项。|
+|popup|[CustomPopupOptions](#class-custompopupoptions)|是|-|自定义弹出框选项。|
 
 ## func bindPopup(Bool, PopupOptions)
 
@@ -48,7 +48,7 @@ public func bindPopup(show: Bool, popup: PopupOptions): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |show|Bool|是|-|是否显示。|
-|popup|[PopupOptions](#)|是|-|弹出框选项。|
+|popup|[PopupOptions](#class-popupoptions)|是|-|弹出框选项。|
 
 ## 基础类型定义
 
@@ -351,7 +351,7 @@ public var onStateChange: Option <(PopupStateChangeParam) -> Unit>= Option.None
 
 **功能：** 设置弹窗状态变化事件回调，参数为弹窗当前的显示状态。
 
-**类型：** ([PopupStateChangeParam](#class-popupstatechangeparam))->Unit
+**类型：** ([PopupStateChangeParam](./cj-common-types.md#class-popupstatechangeparam))->Unit
 
 **读写能力：** 可读写
 
@@ -947,7 +947,7 @@ public var onStateChange:?(PopupStateChangeParam) -> Unit = Option.None
 
 **功能：** 设置弹窗状态变化事件回调，参数为弹窗当前的显示状态。
 
-**类型：** ?([PopupStateChangeParam](#class-popupstatechangeparam))->Unit
+**类型：** ?([PopupStateChangeParam](./cj-common-types.md#class-popupstatechangeparam))->Unit
 
 **读写能力：** 可读写
 
@@ -1015,7 +1015,7 @@ public var primaryButton: PopupButton = PopupButton(value: "", action: { => })
 
 **功能：** 设置第一个按钮。value: 弹窗里主按钮的文本。action: 点击主按钮的回调函数。
 
-**类型：** [PopupButton](#class-popupbutton)
+**类型：** [PopupButton](./cj-common-types.md#class-popupbutton)
 
 **读写能力：** 可读写
 
@@ -1047,7 +1047,7 @@ public var secondaryButton: PopupButton = PopupButton(value: "", action: { => })
 
 **功能：** 设置第二个按钮。 value: 弹窗里辅助按钮的文本。action: 点击辅助按钮的回调函数。
 
-**类型：** [PopupButton](#class-popupbutton)
+**类型：** [PopupButton](./cj-common-types.md#class-popupbutton)
 
 **读写能力：** 可读写
 
@@ -1183,18 +1183,18 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |message|String|是|-|设置弹窗信息内容|
-|primaryButton|[PopupButton](#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第一个按钮|
-|secondaryButton|[PopupButton](#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第二个按钮|
+|primaryButton|[PopupButton](./cj-common-types.md#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第一个按钮|
+|secondaryButton|[PopupButton](./cj-common-types.md#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第二个按钮|
 |onStateChange|Option<(PopupStateChangeParam) -> Unit>|否|Option.None|设置弹窗状态变化事件回调|
 |arrowOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|设置popup箭头在弹窗处的偏移|
 |showInSubWindow|Bool|是|-|设置是否在子窗口显示气泡|
 |messageOptions|[PopupMessageOptions](#class-popupmessageoptions)|否|PopupMessageOptions()|设置弹窗信息文本参数|
-|mask|[Color](cj-common-types.md#class-color)|否|Color(0x1000000)|设置遮罩层的颜色|
+|mask|[Color](../apis/BasicServicesKit/cj-apis-base.md#class-color)|否|Color(0x1000000)|设置遮罩层的颜色|
 |targetSpace|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|设置popup与目标的间隙|
 |placement|[Placement](cj-common-types.md#enum-placement)|否|Placement.BottomLeft|设置popup组件相对于目标的显示位置|
 |offset|[Position](cj-common-types.md#class-position)|否|Position(x: 0.0, y: 0.0)|设置popup组件相对于placement设置的显示位置的偏移|
 |enableArrow|Bool|否|true|设置是否显示箭头|
-|popupColor|[Color](cj-common-types.md#class-color)|否|Color(0x1000000)|设置提示气泡的颜色|
+|popupColor|[Color](../apis/BasicServicesKit/cj-apis-base.md#class-color)|否|Color(0x1000000)|设置提示气泡的颜色|
 |autoCancel|Bool|否|true|页面有操作时，设置是否自动关闭气泡|
 |width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|设置弹窗宽度|
 |arrowPointPosition|?[ArrowPointPosition](cj-common-types.md#enum-arrowpointposition)|否|None|设置气泡尖角相对于父组件显示位置|

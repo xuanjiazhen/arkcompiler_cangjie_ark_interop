@@ -29,8 +29,8 @@ public func bindSheet(isShow: Bool, builder: CustomBuilder, options!: SheetOptio
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |isShow|Bool|是|-|是否显示。|
-|builder|[CustomBuilder](#type-custombuilder)|是|-|自定义构建器。|
-|options|[SheetOptions](#)|否|SheetOptions()|底部面板选项。|
+|builder|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|自定义构建器。|
+|options|[SheetOptions](#class-sheetoptions)|否|SheetOptions()|底部面板选项。|
 
 ## func !=(ScrollSizeMode)
 

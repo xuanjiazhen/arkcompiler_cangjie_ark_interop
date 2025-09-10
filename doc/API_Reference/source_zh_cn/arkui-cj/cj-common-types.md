@@ -123,7 +123,7 @@ public var expectedFrameRateRange: Option<ExpectedFrameRateRange>
 
 **功能：** 设置动画的期望帧率。
 
-**类型：** [Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](#class-expectedframeraterange)>
+**类型：** [Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>
 
 **读写能力：** 可读写
 
@@ -245,7 +245,7 @@ public init(
 |playMode|[PlayMode]|否|PlayMode.Normal|动画播放模式，默认播放完成后重头开始播放。|
 |onFinish|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<()->Unit>|否|Option.None|动画播放完成回调。|
 |finishCallbackType|[FinishCallbackType]|否|FinishCallbackType.Removed|在动画中定义onFinish回调的类型。|
-|expectedFrameRateRange|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](#class-expectedframeraterange)>|否|Option.None|设置动画的期望帧率。|
+|expectedFrameRateRange|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>|否|Option.None|设置动画的期望帧率。|
 
 ## class Area
 
@@ -487,7 +487,7 @@ public let reason: DismissReason
 
 **功能：** 关闭原因类型。
 
-**类型：** [DismissReason](#enum-dismissreason)
+**类型：** [DismissReason](./cj-dialog-actionsheet.md#enum-dismissreason)
 
 **读写能力：** 只读
 
@@ -2761,10 +2761,6 @@ public enum GlobalCompositeOperation {
 
 **起始版本：** 21
 
-**父类型：**
-
-- Equatable\<CompositeOperation>
-
 ### Copy
 
 ```cangjie
@@ -2897,10 +2893,10 @@ Xor
 
 **起始版本：** 21
 
-### func !=(CompositeOperation)
+### func !=(GlobalCompositeOperation)
 
 ```cangjie
-public operator func !=(other: CompositeOperation): Bool
+public operator func !=(other: GlobalCompositeOperation): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -2909,7 +2905,7 @@ public operator func !=(other: CompositeOperation): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CompositeOperation](#enum-compositeoperation)|是|-|另一个枚举值。|
+|other|[GlobalCompositeOperation](#enum-globalcompositeoperation)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -2917,10 +2913,10 @@ public operator func !=(other: CompositeOperation): Bool
 |:----|:----|
 |Bool|如果两个枚举值不相等，则返回true，否则返回false。|
 
-### func ==(CompositeOperation)
+### func ==(GlobalCompositeOperation)
 
 ```cangjie
-public operator func ==(other: CompositeOperation): Bool
+public operator func ==(other: GlobalCompositeOperation): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -2929,7 +2925,7 @@ public operator func ==(other: CompositeOperation): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CompositeOperation](#enum-compositeoperation)|是|-|另一个枚举值。|
+|other|[GlobalCompositeOperation](#enum-globalcompositeoperation)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6670,7 +6666,7 @@ public enum SafeAreaEdge {
 
 **父类型：**
 
-- Equatable\<LayoutSafeAreaEdge>
+- Equatable\<SafeAreaEdge>
 
 ### BOTTOM
 
@@ -6696,10 +6692,10 @@ TOP
 
 **起始版本：** 21
 
-### func !=(LayoutSafeAreaEdge)
+### func !=(SafeAreaEdge)
 
 ```cangjie
-public operator func !=(other: LayoutSafeAreaEdge): Bool
+public operator func !=(other: SafeAreaEdge): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -6708,7 +6704,7 @@ public operator func !=(other: LayoutSafeAreaEdge): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaEdge](#enum-layoutsafeareaedge)|是|-|另一个枚举值。|
+|other|[SafeAreaEdge](#enum-safeareaedge)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6716,10 +6712,10 @@ public operator func !=(other: LayoutSafeAreaEdge): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
-### func ==(LayoutSafeAreaEdge)
+### func ==(SafeAreaEdge)
 
 ```cangjie
-public operator func ==(other: LayoutSafeAreaEdge): Bool
+public operator func ==(other: SafeAreaEdge): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -6728,7 +6724,7 @@ public operator func ==(other: LayoutSafeAreaEdge): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaEdge](#enum-layoutsafeareaedge)|是|-|另一个枚举值。|
+|other|[SafeAreaEdge](#enum-safeareaedge)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -8528,7 +8524,7 @@ public enum ImageSmoothingQuality {
 
 **父类型：**
 
-- Equatable\<QualityType>
+- Equatable\<ImageSmoothingQuality>
 
 ### High
 
@@ -8566,10 +8562,10 @@ Medium
 
 **起始版本：** 21
 
-### func !=(QualityType)
+### func !=(ImageSmoothingQuality)
 
 ```cangjie
-public operator func !=(other: QualityType): Bool
+public operator func !=(other: ImageSmoothingQuality): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -8578,7 +8574,7 @@ public operator func !=(other: QualityType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[QualityType](#enum-qualitytype)|是|-|另一个枚举值。|
+|other|[ImageSmoothingQuality](#enum-imagesmoothingquality)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -8586,10 +8582,10 @@ public operator func !=(other: QualityType): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
-### func ==(QualityType)
+### func ==(ImageSmoothingQuality)
 
 ```cangjie
-public operator func ==(other: QualityType): Bool
+public operator func ==(other: ImageSmoothingQuality): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -8598,7 +8594,7 @@ public operator func ==(other: QualityType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[QualityType](#enum-qualitytype)|是|-|另一个枚举值。|
+|other|[ImageSmoothingQuality](#enum-imagesmoothingquality)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -10530,7 +10526,7 @@ public enum CanvasTextBaseline {
 
 **父类型：**
 
-- Equatable\<TextBaseline>
+- Equatable\<CanvasTextBaseline>
 
 ### Alphabetic
 
@@ -10604,10 +10600,10 @@ Top
 
 **起始版本：** 21
 
-### func !=(TextBaseline)
+### func !=(CanvasTextBaseline)
 
 ```cangjie
-public operator func !=(other: TextBaseline): Bool
+public operator func !=(other: CanvasTextBaseline): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等
@@ -10616,7 +10612,7 @@ public operator func !=(other: TextBaseline): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[TextBaseline](#enum-textbaseline)|是|-|比较的枚举值|
+|other|[CanvasTextBaseline](#enum-canvastextbaseline)|是|-|比较的枚举值|
 
 **返回值：**
 
@@ -10624,10 +10620,10 @@ public operator func !=(other: TextBaseline): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
-### func ==(TextBaseline)
+### func ==(CanvasTextBaseline)
 
 ```cangjie
-public operator func ==(other: TextBaseline): Bool
+public operator func ==(other: CanvasTextBaseline): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等
@@ -10636,7 +10632,7 @@ public operator func ==(other: TextBaseline): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[TextBaseline](#enum-textbaseline)|是|-|比较的枚举值|
+|other|[CanvasTextBaseline](#enum-canvastextbaseline)|是|-|比较的枚举值|
 
 **返回值：**
 
@@ -11953,7 +11949,7 @@ public operator func ==(other: WordBreak): Bool
 public type CustomBuilder = () -> Unit
 ```
 
-**功能：** [CustomBuilder](#type-custombuilder)是[() -> Unit](#)类型的别名。
+**功能：** [CustomBuilder](#type-custombuilder)是() -> Unit类型的别名。
 
 ## type TransitionFinishCallback
 
@@ -11961,5 +11957,5 @@ public type CustomBuilder = () -> Unit
 public type TransitionFinishCallback = (Bool) -> Unit
 ```
 
-**功能：** [TransitionFinishCallback](#type-transitionfinishcallback)是[(Bool) -> Unit](#)类型的别名。
+**功能：** [TransitionFinishCallback](#type-transitionfinishcallback)是(Bool) -> Unit类型的别名。
 

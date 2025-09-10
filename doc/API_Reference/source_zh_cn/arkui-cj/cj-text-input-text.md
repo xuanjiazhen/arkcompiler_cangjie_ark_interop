@@ -278,7 +278,7 @@ public func maxFontSize(value: Length): This
 
 > **说明：**
 >
-> - 需配合[minFontSize](#func-minfontsizelength)以及[maxLines](#func-maxlinesint)或布局大小限制使用，单独设置不生效，对子组件和属性字符串不生效。
+> - 需配合[minFontSize](#func-minfontsizelength)以及[maxLines](#func-maxfontsizelength)或布局大小限制使用，单独设置不生效，对子组件和属性字符串不生效。
 > - 自适应字号生效时，fontSize设置不生效。
 > - maxFontSize小于或等于0时，自适应字号不生效，此时按照[fontSize](#func-fontsizelength)属性的值生效，未设置时按照其默认值生效。
 

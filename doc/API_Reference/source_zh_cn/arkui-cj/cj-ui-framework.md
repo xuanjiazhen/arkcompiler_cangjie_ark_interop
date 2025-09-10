@@ -1242,24 +1242,6 @@ public func onBlur(event: () -> Unit): This
 |:---|:---|:---|:---|:---|
 |event|()->Unit|是|-|组件失去焦点时触发的回调函数。|
 
-### func onClick((ClickEvent) -> Unit)
-
-```cangjie
-public func onClick(event: (ClickEvent) -> Unit): This
-```
-
-**功能：** 组件被点击时触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([ClickEvent](#class-clickevent))->Unit|是|-|回调函数，组件被点击时触发该回调。|
-
 ### func onDisAppear(() -> Unit)
 
 ```cangjie
@@ -1278,139 +1260,6 @@ public func onDisAppear(event: () -> Unit): This
 |:---|:---|:---|:---|:---|
 |event|()->Unit|是|-|组件消失时触发的回调函数。|
 
-### func onDragEnter((DragInfo) -> Unit)
-
-```cangjie
-public func onDragEnter(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 拖拽进入组件范围内时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|拖拽进入组件范围回调函数。|
-
-### func onDragLeave((DragInfo) -> Unit)
-
-```cangjie
-public func onDragLeave(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 拖拽离开组件范围内时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|拖拽离开组件范围时触发的回调函数。|
-
-### func onDragMove((DragInfo) -> Unit)
-
-```cangjie
-public func onDragMove(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 拖拽在组件范围内移动时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|回调函数，拖拽进入组件范围移动时触发。|
-
-### func onDragStart((DragInfo) -> DragItemInfo)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> DragItemInfo): This
-```
-
-**功能：** 第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
-
-针对默认支持拖出能力的组件，如果开发者设置了onDragStart，优先执行开发者的onDragStart，并根据执行情况决定是否使用系统默认的拖出能力，具体为：
-
-- 如果开发者返回了自定义背板图，则不再使用系统默认的拖拽背板图。
-- 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
-
-文本类组件[Search](./cj-text-input-search.md)、[TextInput](./cj-text-input-textinput.md)、[TextArea](./cj-text-input-textarea.md)、[RichEditor](./cj-text-input-richeditor.md)对选中的文本内容进行拖拽时，不支持背板图的自定义。当onDragStart与菜单预览一起使用或使用了默认支持拖出能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->[DragItemInfo](#class-dragiteminfo)|是|-|回调函数，拖拽开始时触发。传入参数为拖拽事件信息，包括拖拽点坐标。返回参数为拖拽过程中显示的组件信息。|
-
-### func onDragStart((DragInfo) -> CustomBuilder)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> CustomBuilder): This
-```
-
-**功能：** 重载拖拽事件，第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|回调函数，拖拽开始时触发。传入参数为拖拽事件信息，包括拖拽点坐标。返回参数为拖拽过程中显示的组件信息，使用时结合@Builder和bind方法使用。|
-
-### func onDragStart((DragInfo) -> Unit)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 重载拖拽事件，第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|回调函数，拖拽开始时触发。传入参数为拖拽事件信息，包括拖拽点坐标。返回参数为拖拽过程中显示的组件信息。|
-
-### func onDrop((DragInfo) -> Unit)
-
-```cangjie
-public func onDrop(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|回调函数，本组件范围内停止拖拽行为时触发。传入参数为拖拽事件信息，包括拖拽点坐标。|
-
 ### func onFocus(() -> Unit)
 
 ```cangjie
@@ -1428,78 +1277,6 @@ public func onFocus(event: () -> Unit): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|()->Unit|是|-|组件获得焦点时触发的回调函数。|
-
-### func onHover((Bool) -> Unit)
-
-```cangjie
-public func onHover(event: (Bool) -> Unit): This
-```
-
-**功能：** 鼠标悬停在组件上时触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|(Bool)->Unit|是|-|鼠标悬停状态变化时触发的回调函数。|
-
-### func onKeyEvent((KeyEvent) -> Unit)
-
-```cangjie
-public func onKeyEvent(event: (KeyEvent) -> Unit): This
-```
-
-**功能：** 绑定该方法的组件获焦后，按键动作触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([KeyEvent](#class-keyevent))->Unit|是|-|绑定该方法的组件获焦后，按键动作触发该回调。|
-
-### func onMouse((MouseEvent) -> Unit)
-
-```cangjie
-public func onMouse(event: (MouseEvent) -> Unit): This
-```
-
-**功能：** 当前组件被鼠标按键点击时或者鼠标在组件上移动时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([MouseEvent](#class-mouseevent))->Unit|是|-|组件被鼠标按键点击时或者鼠标在组件上移动时触发该回调。MouseEvent参数包含触发事件时的时间戳、鼠标按键、动作、点击触点在整个屏幕上的坐标和点击触点相对于当前组件的坐标。|
-
-### func onTouch((TouchEvent) -> Unit)
-
-```cangjie
-public func onTouch(event: (TouchEvent) -> Unit): This
-```
-
-**功能：** 手指触摸动作触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([TouchEvent](#class-touchevent))->Unit|是|-|回调函数，手指触摸动作触发该回调。|
 
 ### func onVisibleAreaChange(Array\<Float64>, (Bool,Float64) -> Unit)
 
@@ -3083,3 +2860,93 @@ func update(): Unit
 ```
 
 **功能：** UI框架使用。
+
+## class RemoteView
+
+```cangjie
+public abstract class RemoteView <: FFIData {
+    public init()
+}
+```
+
+**功能：** UI框架使用的组件基础类。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**父类型：**
+
+- [FFIData](./cj-common-types.md#ffidata)
+
+### init()
+
+```cangjie
+public init()
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### func build()
+
+```cangjie
+public func build(): Unit // abstract
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### func forceCompleteRerender(Bool)
+
+```cangjie
+public open func forceCompleteRerender(deep: Bool): Unit
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deep|Bool|是|-|是否深度重新渲染。|
+
+### func purgeVariableDependenciesOnElmtId(Int64)
+
+```cangjie
+public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|_|Int64|是|-|待移除元素id。|
+
+### func rerender()
+
+```cangjie
+public open func rerender(): Unit
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21

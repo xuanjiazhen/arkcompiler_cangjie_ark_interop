@@ -580,7 +580,7 @@ public func setTextSelection(selectionStart: Int32, selectionEnd: Int32, options
 |:---|:---|:---|:---|:---|
 |selectionStart|Int32|是|-|文本选择区域起始位置，文本框中文字的起始位置为0。<br/>当selectionStart小于0时、按照0处理；当selectionStart大于文字最大长度时、按照文字最大长度处理。|
 |selectionEnd|Int32|是|-|文本选择区域结束位置。<br/>当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。|
-|options|[MenuPolicy](#enum-menupolicy)|否|MenuPolicy.Default|**命名参数。** 选中文字时的配置。|
+|options|[MenuPolicy](./cj-common-types.md#enum-menupolicy)|否|MenuPolicy.Default|**命名参数。** 选中文字时的配置。|
 
 #### func stopEditing()
 

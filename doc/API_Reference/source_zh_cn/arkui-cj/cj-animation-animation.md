@@ -36,7 +36,7 @@ public func animationStart(value: AnimateParam): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AnimateParam](#)|是|-|动画参数。|
+|value|[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|动画参数。|
 
 ## 示例代码
 

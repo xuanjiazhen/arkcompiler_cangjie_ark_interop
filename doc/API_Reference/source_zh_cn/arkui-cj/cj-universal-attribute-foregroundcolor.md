@@ -24,7 +24,7 @@ public func foregroundColor(value: ColoringStrategy): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ColoringStrategy](#)|是|-|颜色策略。|
+|value|[ColoringStrategy](./cj-common-types.md#enum-coloringstrategy)|是|-|颜色策略。|
 
 ## func foregroundColor(ResourceColor)
 

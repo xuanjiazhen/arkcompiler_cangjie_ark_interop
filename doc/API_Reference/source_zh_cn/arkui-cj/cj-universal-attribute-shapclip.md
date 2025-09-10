@@ -42,7 +42,7 @@ public func clipShape(value: BaseShape): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[BaseShape](#)|是|-|裁剪形状。|
+|value|[BaseShape](./cj-graphic-drawing-shape.md#class-baseshape)|是|-|裁剪形状。|
 
 ## func maskShape(BaseShape)
 
@@ -78,7 +78,7 @@ public class CircleShape <: BaseShape {
 
 **父类型：**
 
-[ShapeAbstract](#class-shapeabstract)
+[BaseShape](./cj-graphic-drawing-shape.md#class-baseshape)
 
 #### init(length, length)
 
@@ -115,7 +115,7 @@ public class EllipseShape <: BaseShape {
 
 **父类型：**
 
-[ShapeAbstract](#class-shapeabstract)
+[BaseShape](./cj-graphic-drawing-shape.md#class-baseshape)
 
 #### init(length, length)
 
@@ -155,7 +155,7 @@ public class RectShape <: BaseShape {
 
 **父类型：**
 
-[ShapeAbstract](#class-shapeabstract)
+[BaseShape](./cj-graphic-drawing-shape.md#class-baseshape)
 
 #### init(Length，Length)
 

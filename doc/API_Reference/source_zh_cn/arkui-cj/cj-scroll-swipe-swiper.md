@@ -949,7 +949,7 @@ public func finishAnimation(callback: VoidCallback): Unit
 public func showNext(): Unit
 ```
 
-**功能：** 翻至下一页。翻页带动效切换过程，时长通过Swiper的[duration](#func-durationuint)属性设置。
+**功能：** 翻至下一页。翻页带动效切换过程，时长通过Swiper的[duration](#func-durationuint32)属性设置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -961,7 +961,7 @@ public func showNext(): Unit
 public func showPrevious(): Unit
 ```
 
-**功能：** 翻至上一页。翻页带动效切换过程，时长通过Swiper的[duration](#func-durationuint)属性设置。
+**功能：** 翻至上一页。翻页带动效切换过程，时长通过Swiper的[duration](#func-durationuint32)属性设置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

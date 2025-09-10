@@ -32,9 +32,9 @@ public func bindContextMenu(builder!: CustomBuilder, responseType!: ResponseType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|builder|[CustomBuilder](#type-custombuilder)|是|-|内容构建器。|
-|responseType|[ResponseType](#)|是|-|响应类型。|
-|options|[ContextMenuOptions](#)|否|ContextMenuOptions()|上下文菜单选项。|
+|builder|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|内容构建器。|
+|responseType|[ResponseType](./cj-common-types.md#enum-responsetype)|是|-|响应类型。|
+|options|[ContextMenuOptions](#class-contextmenuoptions)|否|ContextMenuOptions()|上下文菜单选项。|
 
 ## func bindMenu(Array\<MenuElement>)
 
@@ -52,7 +52,7 @@ public func bindMenu(content: Array<MenuElement>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|Array\<[MenuElement](#)>|是|-|菜单元素数组。|
+|content|Array\<[MenuElement](#class-menuelement)>|是|-|菜单元素数组。|
 
 ## func bindMenu(CustomBuilder)
 
@@ -70,7 +70,7 @@ public func bindMenu(builder!: CustomBuilder): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|builder|[CustomBuilder](#type-custombuilder)|是|-|内容构建器。|
+|builder|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|内容构建器。|
 
 ## 基础类型定义
 

@@ -31,7 +31,7 @@ public func linearGradient(angle!: ?Float64 = None, direction!: GradientDirectio
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |angle|?Float64|否|None|**命名参数。** 线性渐变的起始角度。0点方向顺时针旋转为正向角度。|
-|direction|[GradientDirection](#)|否|GradientDirection.Bottom|**命名参数。**  线性渐变的方向，设置angle后不生效。|
+|direction|[GradientDirection](./cj-common-types.md#enum-gradientdirection|否|GradientDirection.Bottom|**命名参数。**  线性渐变的方向，设置angle后不生效。|
 |colors|Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)>|否|[(Color.Transparent, 0.0)]|**命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。|
 |repeating|Bool|否|false|**命名参数。** 为渐变的颜色重复着色。|
 
