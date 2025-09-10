@@ -134,7 +134,7 @@ public prop albumType: AlbumType
 public prop albumUri: String
 ```
 
-**功能：** 相册uri。
+**功能：** 相册URI。
 
 **类型：** String
 
@@ -166,7 +166,7 @@ public prop count: Int32
 public prop coverUri: String
 ```
 
-**功能：** 封面文件uri。
+**功能：** 封面文件URI。
 
 **类型：** String
 
@@ -269,7 +269,7 @@ public prop imageCount: Int32
 public prop videoCount: Int32
 ```
 
-**功能：** 获取相册中图片数量。
+**功能：** 获取相册中视频数量。
 
 **类型：** Int32
 

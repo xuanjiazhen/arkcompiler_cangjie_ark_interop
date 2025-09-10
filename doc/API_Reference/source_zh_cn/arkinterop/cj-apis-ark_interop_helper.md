@@ -14,7 +14,7 @@ import ohos.ark_interop_helper.*
 public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
 ```
 
-**功能：** 将 JSValue 类型转化为 napi_value 类型。
+**功能：** 将 JSValue 类型转换为 napi_value 类型。
 
 **起始版本：** 21
 
@@ -37,7 +37,7 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
 public func isStageMode(env: napi_env, context: napi_value): Bool
 ```
 
-**功能：** 判断是否处于应用模式。
+**功能：** 判断是否处于Stage应用模式。
 
 **起始版本：** 21
 
@@ -64,7 +64,7 @@ public func mapFromJSValue<T>(
 ): ?HashMap<String, T>
 ```
 
-**功能：** 把 JSValue 格式的数据转换成 HashMap 。
+**功能：** 将JSValue格式的数据转换为HashMap。
 
 **起始版本：** 21
 
@@ -91,8 +91,7 @@ public func mapToJSValue<T>(
     convert: (JSContext, T) -> JSValue
 ): JSValue
 ```
-
-**功能：** 把 HashMap 格式的数据转换成 JSValue 。
+**功能：** 将HashMap格式的数据转换为JSValue。
 
 **起始版本：** 21
 

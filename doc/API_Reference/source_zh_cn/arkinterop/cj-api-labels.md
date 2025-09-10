@@ -21,7 +21,7 @@ public interface PermissionValue {
 }
 ```
 
-**功能：** 用于处理权限之间的 “与 / 或” 关系。
+**功能：** 用于处理权限之间的“与/或”关系。
 
 **起始版本：** 21
 
@@ -31,7 +31,7 @@ public interface PermissionValue {
 operator func &(rhs: PermissionValue): PermissionValue
 ```
 
-**功能：** 与另一个权限集进行 “与” 运算。返回 “与” 运算后的权限集。
+**功能：** 与另一个权限集进行“与”运算，返回“与”运算后的权限集。
 
 **起始版本：** 21
 
@@ -39,7 +39,7 @@ operator func &(rhs: PermissionValue): PermissionValue
 
 |参数|类型|必填|默认值|描述|
 |:---|:---|:---|:---|:---|
-|rhs|[PermissionValue](#interface-permissionvalue)|是|-|用于 “与” 运算的另一个权限集。|
+|rhs|[PermissionValue](#interface-permissionvalue)|是|-|用于“与”运算的另一个权限集。|
 
 **返回值：**
 
@@ -53,7 +53,7 @@ operator func &(rhs: PermissionValue): PermissionValue
 operator func |(rhs: PermissionValue): PermissionValue
 ```
 
-**功能：** 与另一个权限集进行 “或” 运算。返回 “或” 运算后的权限集。
+**功能：** 与另一个权限集进行“或”运算，返回“或”运算后的权限集。
 
 **起始版本：** 21
 

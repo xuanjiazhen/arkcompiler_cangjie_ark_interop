@@ -13,7 +13,7 @@ import kit.TelephonyKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../../guide/cj-example-code-guide.md)。
 
@@ -40,7 +40,7 @@ public static func formatPhoneNumber(
 
 **功能：** 格式化电话号码，可设置格式化参数。
 
-电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
+电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”“0755 xxxx xxxx”。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -65,7 +65,7 @@ public static func formatPhoneNumber(
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -104,7 +104,7 @@ public static func formatPhoneNumberToE164(phoneNumber: String, countryCode: Str
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -181,7 +181,7 @@ public static func isEmergencyPhoneNumber(phoneNumber: String, options!: Emergen
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |phoneNumber|String|是|-|电话号码。|
-|options|[EmergencyNumberOptions](#class-emergencynumberoptions)|否|EmergencyNumberOptions(slotId: 0)|电话号码参数。|
+|options|[EmergencyNumberOptions](#class-emergencynumberoptions)|否|EmergencyNumberOptions(slotId: 0)| **命名参数。** 电话号码判断参数。|
 
 **返回值：**
 
@@ -195,7 +195,7 @@ public static func isEmergencyPhoneNumber(phoneNumber: String, options!: Emergen
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -225,7 +225,7 @@ public static func makeCall(phoneNumber: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -487,7 +487,7 @@ public operator func !=(other: CallState): Bool
 public operator func ==(other: CallState): Bool
 ```
 
-**功能：**  判断两个枚举值是否不相等。
+**功能：** 判断两个枚举值是否相等。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
