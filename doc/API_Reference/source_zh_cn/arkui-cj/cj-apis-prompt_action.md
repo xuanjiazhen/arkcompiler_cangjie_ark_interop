@@ -258,7 +258,7 @@ public var keyboardAvoidMode: KeyboardAvoidMode
 
 **功能：** 表示用于设置弹窗是否在拉起软键盘时进行自动避让。
 
-**类型:** [KeyboardAvoidMode](#enum-keyboardavoidmode)
+**类型：** [KeyboardAvoidMode](#enum-keyboardavoidmode)
 
 **读写能力：** 可读写
 
@@ -290,7 +290,7 @@ public var maskRect: Rectangle
 
 **功能：** 表示弹窗遮蔽层区域。
 
-**类型：** [Rectangle](./cj-common-types.md#class-rectangle>)
+**类型：** [Rectangle](./cj-common-types.md#class-rectangle)
 
 **读写能力：** 可读写
 
@@ -802,7 +802,7 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |builder|()->Unit|是|-|设置自定义弹窗的内容。|
-|maskRect|[Rectangle](./cj-common-types.md#class-rectangle>)|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)|弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。|
+|maskRect|[Rectangle](./cj-common-types.md#class-rectangle)|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)|弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。|
 |alignment|[DialogAlignment](./cj-common-types.md#enum-dialogalignment)|否|DialogAlignment.Default|弹窗在竖直方向上的对齐方式。|
 |offset|[Offset](./cj-apis-componentutils.md#class-offset)|否|Offset(0.vp, 0.vp)|弹窗相对alignment所在位置的偏移量。|
 |isModal|Bool|否|true|弹窗是否为模态窗口，模态窗口有蒙层，非模态窗口无蒙层。默认弹窗有蒙层。|
@@ -1109,7 +1109,7 @@ public var maskRect: Rectangle
 
 **功能：** 表示弹窗遮蔽层区域。
 
-**类型：** [Rectangle](./cj-common-types.md#class-rectangle>)
+**类型：** [Rectangle](./cj-common-types.md#class-rectangle)
 
 **读写能力：** 可读写
 
@@ -1232,7 +1232,7 @@ public init(
 |buttons|Array\<[ButtonInfo](#class-buttoninfo)>|否|[]|对话框中按钮的数组，支持1-3个按钮。|
 |alignment|[DialogAlignment](./cj-common-types.md#enum-dialogalignment)|否|DialogAlignment.Default|弹窗在竖直方向上的对齐方式。|
 |offset|[Offset](./cj-apis-componentutils.md#class-offset)|否|Offset(0.vp, 0.vp)|弹窗相对alignment所在位置的偏移量。|
-|maskRect|[Rectangle](./cj-common-types.md#class-rectangle>)|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)|弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。|
+|maskRect|[Rectangle](./cj-common-types.md#class-rectangle)|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)|弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。|
 |showInSubWindow|Bool|否|false|某弹框需要显示在主窗口之外时，是否在子窗口显示此弹窗。默认弹窗显示在应用内，而非独立子窗口。|
 |isModal|Bool|否|true|弹窗是否为模态窗口，模态窗口有蒙层，非模态窗口无蒙层。默认弹窗有蒙层。|
 |backgroundColor|[Color](./cj-common-types.md#class-color)|否|Color.Transparent|弹窗背板颜色。|
@@ -1288,7 +1288,7 @@ public var alignment: Alignment
 
 **功能：** 表示文本提示框的对齐方式。
 
-**类型：** [Alignment](cj-common-types.md#enum-alignment)
+**类型：** [Alignment](./cj-common-types.md#enum-alignment)
 
 **读写能力：** 可读写
 
@@ -1505,7 +1505,7 @@ public init(
 |duration|UInt32|否|1500|弹窗持续时间，取值区间：1500ms-10000ms。若小于1500ms则取默认值，若大于10000ms则取上限值10000ms。|
 |bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|80.vp|设置弹窗底部边框距离导航条的高度。|
 |showMode|[ToastShowMode](#enum-toastshowmode)|否|ToastShowMode.Default|设置弹窗是否显示在应用之上。默认显示在应用内。|
-|alignment|[Alignment](cj-common-types.md#enum-alignment)|否|Alignment.Bottom|设置弹窗对齐方式。默认底部位置。|
+|alignment|[Alignment](./cj-common-types.md#enum-alignment)|否|Alignment.Bottom|设置弹窗对齐方式。默认底部位置。|
 |offset|[Offset](./cj-apis-componentutils.md#class-offset)|否|Offset(0.vp, 0.vp)|设置弹窗在对齐方式上的偏移。默认没有偏移。|
 |backgroundColor|[Color](./cj-common-types.md#class-color)|否|Color.Transparent|设置文本提示框背板颜色。|
 |textColor|[Color](./cj-common-types.md#class-color)|否|Color.Black|设置文本提示框文本颜色。|

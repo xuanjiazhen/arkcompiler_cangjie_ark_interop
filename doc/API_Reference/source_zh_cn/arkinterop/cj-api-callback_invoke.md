@@ -75,8 +75,7 @@ public open func invoke(err: ?BusinessException, arg: A): Unit
 public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {}
 ```
 
-**功能：**
-带一个参数且有返回值的回调函数抽象类。
+**功能：** 带一个参数且有返回值的回调函数抽象类。
 
 **系统能力：** SystemCapability.Base
 
@@ -182,7 +181,7 @@ public open func invoke(err: ?BusinessException, arg1: A, arg2: B, arg3: C): D
 | err | ?BusinessException  | 是 | - | 异常信息。 |
 |arg1| A | 是  |-| 回调函数所需的第一个参数。|
 |arg2| B | 是  |-| 回调函数所需的第二个参数。|
-|arg3| B | 是  |-| 回调函数所需的第三个参数。|
+|arg3| C | 是  |-| 回调函数所需的第三个参数。|
 
 **返回值：**
 

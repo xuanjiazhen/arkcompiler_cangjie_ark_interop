@@ -60,7 +60,7 @@ public func backgroundImage(src: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|图片资源路径。|
+|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片资源路径。|
 
 ## func backgroundImage(ResourceStr, ImageRepeat)
 
@@ -78,7 +78,7 @@ public func backgroundImage(src: ResourceStr, repeat: ImageRepeat): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|图片资源路径。|
+|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片资源路径。|
 |repeat|[ImageRepeat](./cj-common-types.md#enum-imagerepeat)|是|-|图片重复方式。|
 
 ## func backgroundImagePosition(Alignment)
