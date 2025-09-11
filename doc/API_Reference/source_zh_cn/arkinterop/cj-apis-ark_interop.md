@@ -16,11 +16,11 @@ sealed interface JSInteropByte {}
 
 **功能：** 该接口用于为可用于声明式互操作宏的Array的泛型约束实现。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
+**起始版本：** 21
+
 如下类型扩展了此接口：
 
 * Byte
-* 
-**起始版本：** 21
 
 ## interface JSInteropType
 
@@ -34,13 +34,13 @@ public interface JSInteropType<T> {
 
 **功能：** 该接口用于为可用于声明式互操作宏的类型实现扩展方法。声明式互操作宏框架场景使用，开发者不需要使用此API。
 
+**起始版本：** 21
+
 如下类型扩展了此接口：
 
 * 被@Interop[ArkTS]修饰的用户自定义class
 
 * 被@Interop[ArkTS]修饰的用户自定义interface
-
-**起始版本：** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -116,8 +116,8 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 **父类型：**
 
-- ToString
-- ToJSValue
+* ToString
+* ToJSValue
 
 ## interface ToJSValue
 
@@ -1243,7 +1243,7 @@ public class JSArray <: JSHeapObject {}
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
+* [JSHeapObject](#class-jsheapobject)
 
 ### prop size
 
@@ -1362,7 +1362,7 @@ public class JSArrayBuffer <: JSHeapObject {}
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
+* [JSHeapObject](#class-jsheapobject)
 
 ### prop byteLength
 
@@ -1433,8 +1433,6 @@ public func toFloat32ArrayJSValue(): JSValue
 ```
 
 **功能：** 返回 ArkTS 的 Float32Array 的 JSValue 。
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -1760,7 +1758,7 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **父类型：**
 
-- [JSInteropType\<JSArrayEx\<T>>](#interface-jsinteroptype)
+* [JSInteropType\<JSArrayEx\<T>>](#interface-jsinteroptype)
 
 ### prop size
 
@@ -2013,7 +2011,7 @@ public class JSBigInt <: JSHeapObject {}
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
+* [JSHeapObject](#class-jsheapobject)
 
 ### func toBigInt()
 
@@ -2043,7 +2041,7 @@ public class JSClass <: JSHeapObject {}
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
+* [JSHeapObject](#class-jsheapobject)
 
 ### prop prototype
 
@@ -2364,11 +2362,11 @@ public class JSContext {}
 
 **功能：** 一个单线程执行的 ArkTS 互操作上下文。
 
+**起始版本：** 21
+
 JSContext和ArkTS运行时是一一对应的关系，其主要目标是创建JSValue和安全引用、管理ArkTS侧引用的仓颉对象的生命周期。
 
 一个JSContext持有一个ArkTS运行时的弱引用，这个JSContext不会影响ArkTS运行时的生命周期，当ArkTS运行时失效后使用这个JSContext会抛出仓颉异常。
-
-**起始版本：** 21
 
 ### prop env
 
@@ -3234,7 +3232,7 @@ public func string(value: Utf16String): JSString
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Utf16String](#class-utfstring)|是|-|源 Utf16String 对象。|
+|value|[Utf16String](#class-utf16string)|是|-|源 Utf16String 对象。|
 
 **返回值：**
 
@@ -3309,13 +3307,13 @@ public class JSExternal <: JSHeapObject {}
 
 **功能：** 一个可传递到ArkTS侧的仓颉对象引用。可以获取绑定的仓颉对象。
 
-JSExternal的目标是传递一个仓颉对象的强引用到ArkTS运行时，配合其他用户自定义的互操作接口可以访问这个仓颉对象。
-
 **起始版本：** 21
+
+JSExternal的目标是传递一个仓颉对象的强引用到ArkTS运行时，配合其他用户自定义的互操作接口可以访问这个仓颉对象。
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
+* [JSHeapObject](#class-jsheapobject)
 
 ### func cast\<T>() where T <: SharedObject
 
@@ -3400,7 +3398,7 @@ public class JSFunction <: JSHeapObject {}
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
+* [JSHeapObject](#class-jsheapobject)
 
 ### func call(JSValue)
 
@@ -3518,7 +3516,7 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **父类型：**
 
-- [JSInteropType\<JSHashMapEx\<K,V>>](#interface-jsinteroptype)
+* [JSInteropType\<JSHashMapEx\<K,V>>](#interface-jsinteroptype)
 
 ### prop size
 
@@ -3936,9 +3934,9 @@ sealed abstract class JSHeapObject {}
 
 **功能：** 一个 ArkTS 运行时对象的强引用（但不会超过 ArkTS 运行时的生命周期，也不会阻止 ArkTS 运行时的销毁）。可以转换为JSValue。
 
-它是所有安全引用的基类，用户不能创建它只能创建它的子类（隐藏构造函数），它的目标是让引用的 ArkTS 运行时对象持续时间超过这个仓颉对象本身。
-
 **起始版本：** 21
+
+它是所有安全引用的基类，用户不能创建它只能创建它的子类（隐藏构造函数），它的目标是让引用的 ArkTS 运行时对象持续时间超过这个仓颉对象本身。
 
 ### func toJSValue()
 
@@ -3964,9 +3962,9 @@ public class JSModule {}
 
 **功能：** 一个提供导出符号注册接口的静态类。
 
-JSModule的目标是提供符号导出能力（导出到ArkTS）。配合自定义静态初始化函数，在动态库被加载时把导出目标注册到全局表，并由ArkTS引擎来执行导出。
-
 **起始版本：** 21
+
+JSModule的目标是提供符号导出能力（导出到ArkTS）。配合自定义静态初始化函数，在动态库被加载时把导出目标注册到全局表，并由ArkTS引擎来执行导出。
 
 ### static func registerClass(String, ClassRegister)
 
@@ -4100,7 +4098,7 @@ public class JSObject <: JSObjectBase {}
 
 **父类型：**
 
-- [JSObjectBase](#class-jsobjectbase)
+* [JSObjectBase](#class-jsobjectbase)
 
 ## class JSObjectBase
 
@@ -4114,7 +4112,7 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
+* [JSHeapObject](#class-jsheapobject)
 
 ### func attachCJObject(JSExternal)
 
@@ -4245,7 +4243,6 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 |setter|?[JSLambda](#type-jslambda)|否|None| **命名参数。** setter 实现。|
 |isEnumerable|Bool|否|false| **命名参数。** 是否可枚举。|
 |isConfigurable|Bool|否|false| **命名参数。** 是否可重新定义。|
-
 
 **返回值：**
 
@@ -4578,7 +4575,7 @@ JSPromise的生命周期超过引用的 ArkTS 对象。
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
+* [JSHeapObject](#class-jsheapobject)
 
 ### func catchError(JSFunction)
 
@@ -4650,9 +4647,9 @@ public class JSPromiseCapability {
 
 **功能：** JSPromiseCapability 对应一个 Promise 对象，可以通过它来 resolve 和 reject 该 Promise。
 
-生命周期：JSPromiseCapability是一个弱引用，对应ArkTS对象的生命周期在首次 resolve 或 reject 时结束，结束后继续使用会抛出仓颉异常。
-
 **起始版本：** 21
+
+生命周期：JSPromiseCapability是一个弱引用，对应ArkTS对象的生命周期在首次 resolve 或 reject 时结束，结束后继续使用会抛出仓颉异常。
 
 ### func reject(JSValue)
 
@@ -4822,9 +4819,9 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
-- ToString
-- [JSKeyable](#interface-jskeyable)
+* [JSHeapObject](#class-jsheapobject)
+* ToString
+* [JSKeyable](#interface-jskeyable)
 
 ### func toJSValue(JSContext)
 
@@ -4890,7 +4887,7 @@ public func toUtf16String(): Utf16String
 
 |类型|说明|
 |:----|:----|
-|[Utf16String](#class-utfstring)|转换后的 Utf16String 对象。|
+|[Utf16String](#class-utf16string)|转换后的 Utf16String 对象。|
 
 ## class JSStringEx
 
@@ -4906,9 +4903,9 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **父类型：**
 
-- [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
-- Equatable\<JSStringEx>
-- ToString
+* [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
+* Equatable\<JSStringEx>
+* ToString
 
 ### init(String)
 
@@ -5059,8 +5056,8 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **父类型：**
 
-- [JSHeapObject](#class-jsheapobject)
-- [JSKeyable](#interface-jskeyable)
+* [JSHeapObject](#class-jsheapobject)
+* [JSKeyable](#interface-jskeyable)
 
 ### prop description
 
@@ -5214,9 +5211,9 @@ public struct JSCallInfo {}
 
 每次ArkTS函数调用会在ArkTS栈上保存参数列表和其他相关信息，JSCallInfo是一个指向这些信息的指针。
 
-生命周期：本次ArkTS函数调用结束这个JSCallInfo就会失效。
-
 **起始版本：** 21
+
+生命周期：本次ArkTS函数调用结束这个JSCallInfo就会失效。
 
 ### prop count
 
@@ -5380,9 +5377,9 @@ public struct JSType {
 
 **功能：** ArkTS 数据类型枚举。
 
-在 ArkTS 里，通过 typeof 操作符可枚举出某个数据的大致类型，JSType 罗列出这些类型并且加入 EXTERNAL 类型。
-
 **起始版本：** 21
+
+在 ArkTS 里，通过 typeof 操作符可枚举出某个数据的大致类型，JSType 罗列出这些类型并且加入 EXTERNAL 类型。
 
 ### static let BIGINT
 
@@ -5598,11 +5595,11 @@ public struct JSValue {}
 
 **功能：** 一个ArkTS变量（弱类型，短生命周期）。
 
+**起始版本：** 21
+
 JSValue是ArkTS运行时统一类型，也是直接与ArkTS运行时交互的数据类型。
 
 只有互操作接口可以创建JSValue，其生命周期在出栈（被创建时的栈）时结束，不能拷贝、捕获以及在非互操作函数返回。如果需要传递该变量，需要先转换，再以仓颉类型或是安全引用的形式传递。
-
-**起始版本：** 21
 
 ### func asArray()
 
@@ -5789,6 +5786,7 @@ public func asPromise(): JSPromise
 ```cangjie
 public func asString(): JSString
 ```
+
 **功能：** 把一个 JSValue 转换为 JSString 。
 
 **起始版本：** 21
@@ -6650,7 +6648,7 @@ public func toUtf16String(): Utf16String
 
 |类型|说明|
 |:----|:----|
-|[Utf16String](#class-utfstring)|转换后的 Utf16String 对象。|
+|[Utf16String](#class-utf16string)|转换后的 Utf16String 对象。|
 
 ### func typeof()
 
@@ -6767,11 +6765,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
 **父类型：**
 
-- ToString
-- Equatable\<Utf16String>
-- Hashable
-- [JSKeyable](#interface-jskeyable)
-- [JSInteropType\<Utf16String>](#interface-jsinteroptype)
+* ToString
+* Equatable\<Utf16String>
+* Hashable
+* [JSKeyable](#interface-jskeyable)
+* [JSInteropType\<Utf16String>](#interface-jsinteroptype)
 
 ### prop accessible
 
@@ -6866,7 +6864,7 @@ public static func fromJSValue(_: JSContext, value: JSValue): Utf16String
 
 |类型|说明|
 |:----|:----|
-|[Utf16String](#class-utfstring)|Utf16String 对象。|
+|[Utf16String](#class-utf16string)|Utf16String 对象。|
 
 ### static func toArkTsType()
 
@@ -6898,7 +6896,7 @@ public func compare(target: Utf16String): Ordering
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|比较的 Utf16String 对象。|
+|target|[Utf16String](#class-utf16string)|是|-|比较的 Utf16String 对象。|
 
 **返回值：**
 
@@ -6920,7 +6918,7 @@ public func contains(target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|目标字符串。|
 
 **返回值：**
 
@@ -6942,7 +6940,7 @@ public func count(src: Utf16String): Int64
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[Utf16String](#class-utfstring)|是|-|目标字符串。|
+|src|[Utf16String](#class-utf16string)|是|-|目标字符串。|
 
 **返回值：**
 
@@ -6974,7 +6972,7 @@ public func endsWith(target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|目标字符串。|
 
 **返回值：**
 
@@ -7012,7 +7010,7 @@ public func indexOf(target: Utf16String): ?Int64
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|目标字符串。|
 
 **返回值：**
 
@@ -7034,7 +7032,7 @@ public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|目标字符串。|
 |fromIndex|Int64|是|-|当前字符串的查找起始位置，不填是 0。|
 
 **返回值：**
@@ -7089,7 +7087,7 @@ public func lastIndexOf(target: Utf16String): ?Int64
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|目标字符串。|
 
 **返回值：**
 
@@ -7111,7 +7109,7 @@ public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|目标字符串。|
 |fromIndex|Int64|是|-|当前字符串的查找起始位置，不填是 size。|
 
 **返回值：**
@@ -7134,14 +7132,14 @@ public func lazySplit(separator: Utf16String, remoteEmpty!: Bool = false): Itera
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|separator|[Utf16String](#class-utfstring)|是|-|分隔符。当分隔符为空字符串时，每个字符都是单独的元素。|
+|separator|[Utf16String](#class-utf16string)|是|-|分隔符。当分隔符为空字符串时，每个字符都是单独的元素。|
 |remoteEmpty|Bool|否|false|是否删除空白元素。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Iterator\<[Utf16String](#class-utfstring)>|分割后的元素迭代器。|
+|Iterator\<[Utf16String](#class-utf16string)>|分割后的元素迭代器。|
 
 ### func lazySplit(Utf16String, Int64, Bool)
 
@@ -7157,7 +7155,7 @@ public func lazySplit(separator: Utf16String, maxSplit: Int64, remoteEmpty!: Boo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|separator|[Utf16String](#class-utfstring)|是|-|分隔符。当分隔符为空字符串时，每个字符都是单独的元素。|
+|separator|[Utf16String](#class-utf16string)|是|-|分隔符。当分隔符为空字符串时，每个字符都是单独的元素。|
 |maxSplit|Int64|是|-|分割最大数量。为 0 时无上限。|
 |remoteEmpty|Bool|否|false|是否删除空白元素。|
 
@@ -7165,7 +7163,7 @@ public func lazySplit(separator: Utf16String, maxSplit: Int64, remoteEmpty!: Boo
 
 |类型|说明|
 |:----|:----|
-|Iterator\<[Utf16String](#class-utfstring)>|分割后的元素迭代器。|
+|Iterator\<[Utf16String](#class-utf16string)>|分割后的元素迭代器。|
 
 ### func lines()
 
@@ -7181,7 +7179,7 @@ public func lines(): Iterator<Utf16String>
 
 |类型|说明|
 |:----|:----|
-|Iterator\<[Utf16String](#class-utfstring)>|行迭代器。|
+|Iterator\<[Utf16String](#class-utf16string)>|行迭代器。|
 
 ### func replace(Utf16String, Utf16String, Int64)
 
@@ -7197,15 +7195,15 @@ public func replace(old: Utf16String, new: Utf16String, count!: Int64 = Int64.Ma
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|old|[Utf16String](#class-utfstring)|是|-|替换前的元素|
-|new|[Utf16String](#class-utfstring)|是|-|替换后的元素|
+|old|[Utf16String](#class-utf16string)|是|-|替换前的元素|
+|new|[Utf16String](#class-utf16string)|是|-|替换后的元素|
 |count|Int64|否|Int64.Max|替换次数|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[Utf16String](#class-utfstring)| 替换完的字符串 |
+|[Utf16String](#class-utf16string)| 替换完的字符串 |
 
 ### func runes()
 
@@ -7237,14 +7235,14 @@ public func split(seperator: Utf16String, remoteEmpty!: Bool = false): Array<Utf
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|seperator|[Utf16String](#class-utfstring)|是|-|分隔符。当分隔符为空字符串时，每个字符都是单独的元素。|
+|seperator|[Utf16String](#class-utf16string)|是|-|分隔符。当分隔符为空字符串时，每个字符都是单独的元素。|
 |remoteEmpty|Bool|否|false|是否删除空白元素。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Array\<[Utf16String](#class-utfstring)>|分割后的元素数组。|
+|Array\<[Utf16String](#class-utf16string)>|分割后的元素数组。|
 
 ### func split(Utf16String, Int64, Bool)
 
@@ -7260,7 +7258,7 @@ public func split(seperator: Utf16String, maxSplit: Int64, remoteEmpty!: Bool = 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|seperator|[Utf16String](#class-utfstring)|是|-|分隔符。当分隔符为空字符串时，每个字符都是单独的元素。|
+|seperator|[Utf16String](#class-utf16string)|是|-|分隔符。当分隔符为空字符串时，每个字符都是单独的元素。|
 |maxSplit|Int64|是|-|分割最大数量。为 0 时无上限。|
 |remoteEmpty|Bool|否|false|是否删除空白元素。|
 
@@ -7268,7 +7266,7 @@ public func split(seperator: Utf16String, maxSplit: Int64, remoteEmpty!: Bool = 
 
 |类型|说明|
 |:----|:----|
-|Array\<[Utf16String](#class-utfstring)>|分割后的元素数组。|
+|Array\<[Utf16String](#class-utf16string)>|分割后的元素数组。|
 
 ### func startsWith(Utf16String)
 
@@ -7284,7 +7282,7 @@ public func startsWith(target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|目标字符串。|
 
 **返回值：**
 
@@ -7344,7 +7342,7 @@ public operator func != (target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|比较的目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|比较的目标字符串。|
 
 **返回值：**
 
@@ -7366,13 +7364,13 @@ public operator func + (right: Utf16String): Utf16String
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|right|[Utf16String](#class-utfstring)|是|-|拼接的目标字符串。|
+|right|[Utf16String](#class-utf16string)|是|-|拼接的目标字符串。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[Utf16String](#class-utfstring)|拼接后的字符串。|
+|[Utf16String](#class-utf16string)|拼接后的字符串。|
 
 ### func \<(Utf16String)
 
@@ -7388,7 +7386,7 @@ public operator func < (target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|比较的目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|比较的目标字符串。|
 
 **返回值：**
 
@@ -7410,7 +7408,7 @@ public operator func <= (target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|比较的目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|比较的目标字符串。|
 
 **返回值：**
 
@@ -7432,7 +7430,7 @@ public operator func == (target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|比较的目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|比较的目标字符串。|
 
 **返回值：**
 
@@ -7454,7 +7452,7 @@ public operator func > (target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|比较的目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|比较的目标字符串。|
 
 **返回值：**
 
@@ -7476,7 +7474,7 @@ public operator func >= (target: Utf16String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|target|[Utf16String](#class-utfstring)|是|-|比较的目标字符串。|
+|target|[Utf16String](#class-utf16string)|是|-|比较的目标字符串。|
 
 **返回值：**
 
@@ -7526,4 +7524,4 @@ public operator func [](range: Range<Int64>): Utf16String
 
 |类型|说明|
 |:----|:----|
-|[Utf16String](#class-utfstring)|截取后的 Utf16String 字串。|
+|[Utf16String](#class-utf16string)|截取后的 Utf16String 字串。|

@@ -11,7 +11,7 @@ public open class BusinessException <: Exception {
 }
 ```
 
-**功能：** 业务异常类，继承自 Exception 类。
+**功能：** 业务异常类，继承自Exception类。
 
 **系统能力：** SystemCapability.Base
 
@@ -60,7 +60,7 @@ public init(code: Int32, msg: String)
 public open func toString(): String
 ```
 
-**功能：** 获取错误信息。
+**功能：** 获取错误信息字符串。
 
 **系统能力：** SystemCapability.Base
 
@@ -81,7 +81,7 @@ public class BusinessError<T> <: BusinessException  {
 }
 ```
 
-**功能：** 业务错误类, 继承自 BusinessException。
+**功能：** 业务错误类，继承自BusinessException。
 
 **系统能力：** SystemCapability.Base
 
@@ -124,24 +124,6 @@ public init(data: T, code: Int32, msg: String)
  | data | T | 是 | 额外信息  |
 | code | Int32 | 是 | 错误码。 |
 | msg | String | 是 | 错误信息。|
-
-### getClassName()
-
-```cangjie
-protected override func getClassName(): String
-```
-
-**功能：** 获取异常类型名称。
-
-**系统能力：** SystemCapability.Base
-
-**起始版本：** 21
-
-**返回值：**
-
-| 类型     | 说明    |
-|:-------|:------|
-| String | 类型名称。 |
 
 ## type AsyncCallback
 
