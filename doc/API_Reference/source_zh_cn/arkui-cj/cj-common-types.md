@@ -11547,8 +11547,7 @@ public operator func ==(other: TouchType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-
-    |other|[TouchType](#enum-touchtype)|是|-|传入的另一个枚举值。|
+|other|[TouchType](#enum-touchtype)|是|-|传入的另一个枚举值。|
 
 **返回值：**
 

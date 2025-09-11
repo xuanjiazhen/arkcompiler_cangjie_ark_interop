@@ -1366,7 +1366,7 @@ public var resultType: HttpDataType
 public class HttpResponseCache {}
 ```
 
-**功能：** 存储HTTP访问请求响应的对象。在调用HttpResponseCache的方法前，需要先通过[createHttpResponseCache](#func-createhttpresponsecacheuint)创建一个任务。
+**功能：** 存储HTTP访问请求响应的对象。在调用HttpResponseCache的方法前，需要先通过[createHttpResponseCache](#func-createhttpresponsecacheuint32)创建一个任务。
 
 **系统能力：** SystemCapability.Communication.NetStack
 

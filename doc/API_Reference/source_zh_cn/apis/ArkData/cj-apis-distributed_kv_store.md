@@ -144,7 +144,7 @@ public class DeviceKVStore <: SingleKVStore {}
 
 比如，可以使用设备协同数据库实现设备间的图片分享，可以查看其他设备的图片，但无法修改和删除其他设备的图片。
 
-在调用DeviceKVStore的方法前，需要先通过[getDeviceKVStore](#func-getdevicekvstorestring-kvoptions)构建一个DeviceKVStore实例。
+在调用DeviceKVStore的方法前，需要先构建一个DeviceKVStore实例。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -645,7 +645,7 @@ public func deleteKVStore(appId: String, storeId: String): Unit
 public func getAllKVStoreId(appId: String): Array<String>
 ```
 
-**功能：** 获取所有通过[getSingleKVStore](#func-getsinglekvstorestring-kvoptions)或者[getDeviceKVStore](#func-getdevicekvstorestring-kvoptions)方法创建、且未调用[deleteKVStore](#func-deletekvstorestring-string)方法删除的分布式键值数据库的storeId。
+**功能：** 获取所有已创建且未调用[deleteKVStore](#func-deletekvstorestring-string)方法删除的分布式键值数据库的storeId。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 

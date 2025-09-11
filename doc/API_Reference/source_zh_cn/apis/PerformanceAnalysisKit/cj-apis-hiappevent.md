@@ -40,7 +40,7 @@ public class AppEventFilter {
 public var domain: String
 ```
 
-**功能：** 	需要订阅的事件领域。可以是系统事件领域（hiAppEvent.domain.OS）或开发者在使用Write接口时传入的自定义事件信息（AppEventInfo）中的事件领域。       
+**功能：** 需要订阅的事件领域。可以是系统事件领域（hiAppEvent.domain.OS）或开发者在使用Write接口时传入的自定义事件信息（AppEventInfo）中的事件领域。
 
 **类型：** String
 

@@ -33,7 +33,7 @@ public func restartApp(): Unit
 
 **功能：** 重启当前进程，并拉起应用启动时第一个Ability，如果该Ability存在已经保存的状态，这些状态数据会在Ability的OnCreate生命周期回调的want参数中作为wantParam属性传入。
 
-启动由[setRestartWant](#func-setrestartwantwant)指定的Ability。如果没有指定则按以下规则启动：
+按以下规则启动：
 
 如果当前应用前台的Ability支持恢复，则重新拉起该Ability。
 

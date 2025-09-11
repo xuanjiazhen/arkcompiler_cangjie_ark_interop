@@ -482,7 +482,7 @@ public open func onWindowStageCreate(windowStage: WindowStage): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|windowStage|[WindowStage](#class-windowstage)|是|-|[WindowStage](#class-windowstage)相关信息。|
+|windowStage|WindowStage|是|-|WindowStage相关信息。|
 
 ### func onWindowStageDestroy()
 

@@ -2257,7 +2257,7 @@ public func getAssets(columnIndex: Int32): Assets
 
 |类型|说明|
 |:----|:----|
-|[Assets](#type-assets)|以Array\<[Asset](#struct-asset)>形式返回指定列的值。|
+|Assets|以Array\<[Asset](#class-asset)>形式返回指定列的值。|
 
 **异常：**
 
@@ -4050,7 +4050,7 @@ public enum ValueType {
 AssetEnum(Asset)
 ```
 
-**功能：** 表示值类型为附件[Asset](#struct-asset)。
+**功能：** 表示值类型为附件[Asset](#type-assets)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4062,7 +4062,7 @@ AssetEnum(Asset)
 AssetsEnum(Array<Asset>)
 ```
 
-**功能：** 表示值类型为附件数组Array\<[Asset](#struct-asset)>。
+**功能：** 表示值类型为附件数组Array\<[Asset](#class-asset)>。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4139,3 +4139,19 @@ Uint8Array(Array<UInt8>)
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
+
+## type Assets
+
+```cangjie
+public type Assets = Array<Asset>
+```
+
+**功能：** [Assets](#type-assets)是[Array < Asset >](../../../../User_Manual/source_zh_cn/basic_data_type/array.md#array)类型的别名。
+
+## type ValuesBucket
+
+```cangjie
+public type ValuesBucket = Map<String, ValueType>
+```
+
+**功能：** [ValuesBucket](#type-valuesbucket)是[Map<String,ValueType>](../../../../User_Manual/source_zh_cn/generic/generic_class.md#泛型类)类型的别名。

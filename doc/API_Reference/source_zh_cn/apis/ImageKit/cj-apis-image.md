@@ -14,7 +14,7 @@ API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
-- 运行示例代码时，请先通过 [createImageSource](#func-createImageSourceString-SourceOptions) 构建正确的图片源，支持从raw数组、Uri、文件描述符等构建图片源。
+- 运行示例代码时，请先通过 [createImageSource](#func-createimagesourcestring-sourceoptions) 构建正确的图片源，支持从raw数组、Uri、文件描述符等构建图片源。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -258,7 +258,7 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|rawfile|[RawFileDescriptor](../LocalizationKit/cj-apis-resource_manager.md#class-rawfiledescriptor)|是|-|图像资源文件的RawFileDescriptor。|
+|rawfile|[RawFileDescriptor](../LocalizationKit/cj-apis-raw_file_descriptor.md#class-rawfiledescriptor)|是|-|图像资源文件的RawFileDescriptor。|
 |options|[SourceOptions](#class-sourceoptions)|否|SourceOptions(0)| **命名参数。** 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
@@ -416,7 +416,7 @@ public var desiredColorSpace:?ColorSpaceManager
 
 **功能：** 目标色彩空间。
 
-**类型：** ?[ColorSpaceManager](#class-colorspacemanager)
+**类型：** ?[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)
 
 **读写能力：** 可读写
 
@@ -431,8 +431,6 @@ public var desiredDynamicRange: DecodingDynamicRange
 ```
 
 **功能：** 目标动态范围，默认值为SDR。
-
-通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource不支持设置此属性，默认解码为SDR内容。
 
 如果平台不支持HDR，设置无效，默认解码为SDR内容。
 
@@ -599,8 +597,8 @@ public init(sampleSize!: UInt32 = 1, rotate!: UInt32 = 0, editable!: Bool = fals
 |desiredPixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|Unknown|**命名参数。** 解码的像素格式。|
 |index|UInt32|否|0|**命名参数。** 解码图片序号。|
 |fitDensity|Int32|否|0|**命名参数。** 图像像素密度，单位为ppi。|
-|desiredColorSpace|?[ColorSpaceManager](#class-colorspacemanager)|否|None|**命名参数。** 目标色彩空间。|
-|desiredDynamicRange|[DecodingDynamicRange](#enum-decodingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。<br>通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-sourceoptions)创建的imagesource不支持设置此属性，默认解码为SDR内容。<br>如果平台不支持HDR，设置无效，默认解码为SDR内容。|
+|desiredColorSpace|?[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|否|None|**命名参数。** 目标色彩空间。|
+|desiredDynamicRange|[DecodingDynamicRange](#enum-decodingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。<br>如果平台不支持HDR，设置无效，默认解码为SDR内容。|
 
 ## class Image
 
@@ -1869,7 +1867,7 @@ public class PackingOption {
 public var bufferSize: UInt64
 ```
 
-**功能：** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int-packingoption)不受此参数限制。
+**功能：** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int32-packingoption)不受此参数限制。
 
 **类型：** UInt64
 
@@ -1962,7 +1960,7 @@ public init(format: String, quality: UInt8, bufferSize!: UInt64 = 0,
 |:---|:---|:---|:---|:---|
 |format|String|是|-|目标格式。</br>当前只支持"image/jpeg"、"image/webp"、"image/png"和"image/heif"（不同硬件设备支持情况不同）。|
 |quality|UInt8|是|-|JPEG编码中设定输出图片质量的参数，取值范围为0-100。0质量最低，100质量最高，质量越高生成图片所占空间越大。|
-|bufferSize|UInt64|否|0|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-intnative-packingoption)不受此参数限制。|
+|bufferSize|UInt64|否|0|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int32-packingoption)不受此参数限制。|
 |desiredDynamicRange|[PackingDynamicRange](#enum-packingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。|
 |needsPackProperties|Bool|否|false|**命名参数。** 是否需要编码图片属性信息，例如EXIF。|
 
@@ -1972,11 +1970,11 @@ public init(format: String, quality: UInt8, bufferSize!: UInt64 = 0,
 public class PixelMap {}
 ```
 
-**功能：** 图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint-initializationoptions)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
+**功能：** 图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint8-initializationoptions)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
 
 PixelMap支持通过worker跨线程调用。当PixelMap通过Worker跨线程后，原线程的PixelMap的所有接口均不能调用，否则将报错501服务器不具备完成请求的功能。
 
-在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint-initializationoptions)构建一个PixelMap对象。
+在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint8-initializationoptions)构建一个PixelMap对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2030,7 +2028,7 @@ public func applyColorSpace(targetColorSpace: ColorSpaceManager): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|targetColorSpace|[ColorSpaceManager](#class-colorspacemanager)|是|-|目标色彩空间，支持Srgb、DCI_P3、DisplayP3、ADOBE_RGB_1998。|
+|targetColorSpace|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|是|-|目标色彩空间，支持Srgb、DCI_P3、DisplayP3、ADOBE_RGB_1998。|
 
 **异常：**
 
@@ -2203,7 +2201,7 @@ public func getColorSpace(): ColorSpaceManager
 
 |类型|说明|
 |:----|:----|
-|[ColorSpaceManager](#class-colorspacemanager)|图像广色域信息。|
+|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|图像广色域信息。|
 
 **异常：**
 
@@ -2533,7 +2531,7 @@ public func setColorSpace(colorSpace: ColorSpaceManager): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|colorSpace|[ColorSpaceManager](#class-colorspacemanager)|是|-|图像广色域信息。|
+|colorSpace|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|是|-|图像广色域信息。|
 
 **异常：**
 
@@ -3281,7 +3279,7 @@ public enum DecodingDynamicRange <: Equatable<DecodingDynamicRange> & ToString {
 Auto
 ```
 
-**功能：** 自适应，根据图片信息处理。即如果图片本身为HDR图片，则会按照HDR内容解码；反之按照SDR内容解码。通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource会解码为SDR内容。
+**功能：** 自适应，根据图片信息处理。即如果图片本身为HDR图片，则会按照HDR内容解码；反之按照SDR内容解码。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -3293,7 +3291,7 @@ Auto
 Hdr
 ```
 
-**功能：** 按照高动态范围处理图片。通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource会解码为SDR内容。
+**功能：** 按照高动态范围处理图片。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

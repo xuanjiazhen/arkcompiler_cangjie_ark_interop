@@ -110,6 +110,20 @@ public func onChange(callback: OnCheckboxChangeCallback): This
 |:---|:---|:---|:---|:---|
 |callback|[OnCheckboxChangeCallback](#type-oncheckboxchangecallback)|是|-|当选中状态发生变化时，触发该回调。<br>\- Bool值为true时，表示已选中。<br>\- Bool值为false时，表示未选中。|
 
+## 基础类型定义
+
+### type OnCheckboxChangeCallback
+
+```cangjie
+public type OnCheckboxChangeCallback = (Bool) -> Unit
+```
+
+**功能：** (Bool) -> Unit 的类型别名。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ## 示例代码
 
 ### 示例1（设置多选框形状）

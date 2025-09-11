@@ -32,7 +32,8 @@ public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Ca
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|locale|calendarType|是|-|表示区域信息的字符串，由语言、脚本、国家或地区组成。|日历类型。|
+|locale|String|是|-|表示区域信息的字符串，由语言、脚本、国家或地区组成。|
+|calendarType|?CalendarType|否|None|日历类型。|
 
 **返回值：**
 

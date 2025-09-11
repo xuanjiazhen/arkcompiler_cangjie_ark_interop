@@ -4,7 +4,6 @@ ui_test提供模拟UI操作的能力，供开发者在测试场景使用，主�
 
 该模块提供以下功能：
 
-- [UITest](#class-uitest): [UITest](#class-uitest)类只包含一个静态方法setup，用于初始化ui_test库。
 - [On](#class-on)：提供控件特征描述能力，用于控件筛选匹配查找。
 - [Component](#class-component)：代表UI界面上的指定控件，提供控件属性获取、控件点击、滑动查找、文本注入等能力。
 - [Driver](#class-driver)：入口类，提供控件匹配、查找、按键注入、坐标点击或滑动、截图等能力。
@@ -237,7 +236,7 @@ public func getText(): String
 
 |类型|说明|
 |:----|:----|
-|String|控件的文本信息。||
+|String|控件的文本信息。|
 
 ### func getType()
 

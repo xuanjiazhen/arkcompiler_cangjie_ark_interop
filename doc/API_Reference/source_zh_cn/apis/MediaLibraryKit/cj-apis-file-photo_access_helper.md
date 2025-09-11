@@ -19,7 +19,7 @@ ohos.permission.WRITE_IMAGEVIDEO
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -39,13 +39,13 @@ public func getPhotoAccessHelper(context: UIAbilityContext): PhotoAccessHelper
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[PhotoAccessHelper](#class-photoaccesshelper)|相册管理模块的实例。|
+|[PhotoAccessHelper](./cj-apis-multimedia-photo_accesshelper.md#class-photoaccesshelper)|相册管理模块的实例。|
 
 **异常：**
 
@@ -104,7 +104,7 @@ public prop albumSubtype: AlbumSubtype
 
 **功能：** 相册子类型。
 
-**类型：** [AlbumSubtype](#enum-albumsubtype)
+**类型：** [AlbumSubtype](./cj-apis-multimedia-photo_accesshelper.md#enum-albumsubtype)
 
 **读写能力：** 只读
 
@@ -120,7 +120,7 @@ public prop albumType: AlbumType
 
 **功能：** 相册类型。
 
-**类型：** [AlbumType](#enum-albumtype)
+**类型：** [AlbumType](./cj-apis-multimedia-photo_accesshelper.md#enum-albumtype)
 
 **读写能力：** 只读
 
@@ -194,7 +194,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|[FetchOptions](#class-fetchoptions)|是|-|	检索选项。|
+|options|[FetchOptions](./cj-apis-multimedia-photo_accesshelper.md#class-fetchoptions)|是|-| 检索选项。|
 
 **返回值：**
 
@@ -774,7 +774,7 @@ public func get(member: String): MemberType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|member|String|是|-|成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要get的[PhotoKeys](#enum-photokeys)，例如：get title属性fetchColumns: ['title']。|
+|member|String|是|-|成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要get的[PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys)，例如：get title属性fetchColumns: ['title']。|
 
 **返回值：**
 
@@ -836,7 +836,7 @@ public func getThumbnail(size!: ?Size = Size(256, 256)): PixelMap
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?[Size](../ImageKit/cj-apis-image.md#struct-size)|否|Size(256, 256)|**命名参数。** 缩略图尺寸。|
+|size|?[Size](../ImageKit/cj-apis-image.md#class-size)|否|Size(256, 256)|**命名参数。** 缩略图尺寸。|
 
 **返回值：**
 
@@ -895,8 +895,8 @@ public func set(member: String, value: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|member|String|是|-|成员参数名称例如：[PhotoKeys](#enum-photokeys).TITLE。|
-|value|String|是|-|设置成员参数名称，只能修改[PhotoKeys](#enum-photokeys).TITLE的值。|
+|member|String|是|-|成员参数名称例如：[PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys).TITLE。|
+|value|String|是|-|设置成员参数名称，只能修改[PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys).TITLE的值。|
 
 **异常：**
 

@@ -2745,6 +2745,18 @@ public operator func ==(other: SpanType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+### type OnDidChangeCallback
+
+```cangjie
+public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) -> Unit
+```
+
+**功能：** (rangeBefore: TextRange, rangeAfter: TextRange) -> Unit 的类型别名。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ## 示例代码
 
 <!-- run -->
