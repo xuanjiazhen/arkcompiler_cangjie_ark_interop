@@ -107,7 +107,7 @@ public func getLastWindow(ctx: BaseContext): Window
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|ctx|[BaseContext](./../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|当前应用上下文信息。|
+|ctx|[BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|当前应用上下文信息。|
 
 **返回值：**
 
@@ -340,7 +340,7 @@ public var ctx: BaseContext
 
 **功能：** 表示当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。
 
-**类型：** [BaseContext](./../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)
+**类型：** [BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext)
 
 **读写能力：** 可读写
 
@@ -436,7 +436,7 @@ public init(
 |:---|:---|:---|:---|:---|
 |name|String|是|-|窗口名字。|
 |windowType|[WindowType](#enum-windowtype)|是|-|窗口类型。|
-|ctx|[BaseContext](./../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。|
+|ctx|[BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。|
 |displayId|Int64|否|- 1|当前物理屏幕id。|
 |parentId|Int64|否|- 1|父窗口id。|
 
@@ -1196,7 +1196,7 @@ public func off(callbackType: WindowCallbackType, callback: Callback1Argument<UI
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |callbackType|[WindowCallbackType](#enum-windowcallbacktype)|是|-|监听事件，固定为WindowCallbackType.KeyboardHeightChange，即键盘高度变化事件。|
-|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<UInt32>|是|-|回调函数实例对象。返回当前的键盘高度，单位为px。|
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<UInt32>|是|-|回调函数实例对象。返回当前的键盘高度，单位为px。|
 
 **异常：**
 
@@ -1249,7 +1249,7 @@ public func on(callbackType: WindowCallbackType, callback: Callback1Argument<UIn
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |callbackType|[WindowCallbackType](#enum-windowcallbacktype)|是|-|监听事件，固定为WindowCallbackType.KeyboardHeightChange，即键盘高度变化事件。|
-|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<UInt32>|是|-|回调函数。返回当前的键盘高度，单位为px。|
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<UInt32>|是|-|回调函数。返回当前的键盘高度，单位为px。|
 
 **异常：**
 
@@ -1997,6 +1997,120 @@ public init(
 |isTransparent|Bool|是|-|窗口是否透明。默认为false。true表示透明；false表示不透明。|
 |id|UInt32|是|-|窗口ID。<br>初始值：0|
 
+## class WindowStage
+
+```cangjie
+public class WindowStage {}
+```
+
+**功能：** 窗口管理器。管理各个基本窗口单元，即Window实例。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 21
+
+### func createSubWindow(String)
+
+```cangjie
+public func createSubWindow(name: String): Window
+```
+
+**功能：** 创建该WindowStage实例下的子窗口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|name|String|是|-|子窗口的名字。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[Window](#class-window)|返回当前WindowStage下的子窗口对象。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 1300002 | This window state is abnormal. |
+
+### func getMainWindow()
+
+```cangjie
+public func getMainWindow(): Window
+```
+
+**功能：** 获取该WindowStage实例下的主窗口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[Window](#class-window)|返回当前WindowStage下的主窗口对象。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 1300002 | This window state is abnormal. |
+
+### func getSubWindow()
+
+```cangjie
+public func getSubWindow(): Array<Window>
+```
+
+**功能：** 获取该WindowStage实例下的所有子窗口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Array\<[Window](#class-window)>|返回当前WindowStage下的所有子窗口对象。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 1300002 | This window state is abnormal. |
+
+### func loadContent(String)
+
+```cangjie
+public func loadContent(path: String): Unit
+```
+
+**功能：** 为当前WindowStage的主窗口加载具体页面内容。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|path|String|是|-|要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。|
+
 ## enum AvoidAreaType
 
 ```cangjie
@@ -2694,7 +2808,7 @@ public operator func !=(other: WindowCallbackType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[WindowCallbackType]#enum-windowcallbacktype)|是|-|另一个枚举值。|
+|other|[WindowCallbackType](#enum-windowcallbacktype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -2714,7 +2828,7 @@ public operator func ==(other: WindowCallbackType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[WindowCallbackType]#enum-windowcallbacktype)|是|-|另一个枚举值。|
+|other|[WindowCallbackType](#enum-windowcallbacktype)|是|-|另一个枚举值。|
 
 **返回值：**
 

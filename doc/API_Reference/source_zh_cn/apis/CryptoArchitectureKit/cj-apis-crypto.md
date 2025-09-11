@@ -249,7 +249,7 @@ public interface Key {
 }
 ```
 
-**功能：** 密钥（接口），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#class-cipher)实例的[init()](#func-initkey-paramsspec-asynccallbackcipher)方法。
+**功能：** 密钥（接口），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#class-cipher)实例的[createCipher(String)](#func-createcipherstring)方法。
 
 密钥可以通过密钥生成器来生成。
 
@@ -334,13 +334,13 @@ public class ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法。
+**功能：** 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[createCipher(String)](#func-createcipherstring)方法。
 
-适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[init()](#func-initkey-paramsspec-asynccallbackcipher)中传入None即可）。
+适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[createCipher(String)](#func-createcipherstring)中传入None即可）。
 
 > **说明：**
 >
-> 由于[init()](#func-initkey-paramsspec-asynccallbackcipher)的params参数是ParamsSpec类型（父类），而实际需要传入具体的子类对象（如IvParamsSpec），因此在构造子类对象时应设置其父类ParamsSpec的algName参数，使算法库在init()时知道传入的是哪种子类对象。
+> 由于[createCipher(String)](#func-createcipherstring)的params参数是ParamsSpec类型（父类），而实际需要传入具体的子类对象（如IvParamsSpec），因此在构造子类对象时应设置其父类ParamsSpec的algName参数，使算法库在init()时知道传入的是哪种子类对象。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -368,7 +368,7 @@ mut var algName: String
 public class Cipher {}
 ```
 
-**功能：** 提供加解密的算法操作功能，按序调用本类中的[init()](#func-initkey-paramsspec-asynccallbackcipher)、[update()](#func-updatedatablob)、[doFinal()](#func-dofinaldatablob)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
+**功能：** 提供加解密的算法操作功能，按序调用本类中的[createCipher(String)](#func-createcipherstring)、[update()](#func-updatedatablob)、[doFinal()](#func-dofinaldatablob)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
 
 一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
@@ -415,7 +415,7 @@ public func initialize(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 |:---|:---|:---|:---|:---|
 |opMode|[CryptoMode](#enum-cryptomode)|是|-|加密或者解密模式。|
 |key|[Key](#interface-key)|是|-|指定加密或解密的密钥。|
-|params|?[ParamsSpec](#interface-paramsspec)|是|-|指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入None。|
+|params|?[ParamsSpec](#class-paramsspec)|是|-|指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入None。|
 
 **异常：**
 
@@ -531,7 +531,7 @@ public func update(data: DataBlob): DataBlob
 
 **功能：** 分段更新加密或者解密数据操作，获取加/解密数据。
 
-必须在对[Cipher](#class-cipher)实例使用[init()](#func-initkey-paramsspec-asynccallbackcipher)初始化后，才能使用本函数。
+必须在对[Cipher](#class-cipher)实例使用[createCipher(String)](#func-createcipherstring)初始化后，才能使用本函数。
 
 > **说明：**
 >
@@ -1032,7 +1032,7 @@ rand.setSeed(DataBlob("test".toArray()))
 public class SymKey <:  Key {}
 ```
 
-**功能：** 对称密钥，是[Key](#interface-key)的子类，在对称加解密时需要将其对象传入[Cipher](#class-cipher)实例的[init()](#func-initkey-paramsspec-asynccallbackcipher)方法使用。
+**功能：** 对称密钥，是[Key](#interface-key)的子类，在对称加解密时需要将其对象传入[Cipher](#class-cipher)实例的[createCipher(String)](#func-createcipherstring)方法使用。
 
 对称密钥可以通过对称密钥生成器[SymKeyGenerator](#class-symkeygenerator)来生成。
 
@@ -1272,13 +1272,13 @@ public struct CcmParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#class-paramsspec)的子类，用于在对称加解密时作为[createCipher(String)](#func-createcipherstring)方法的参数。
 
 适用于CCM模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[createCipher(String)](#func-createcipherstring)方法前需要指定其algName属性（来源于父类[ParamsSpec](#class-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1286,7 +1286,7 @@ public struct CcmParamsSpec <: ParamsSpec {
 
 **父类型：**
 
-- [ParamsSpec](#interface-paramsspec)
+- [ParamsSpec](#class-paramsspec)
 
 ### prop aad
 
@@ -1310,7 +1310,7 @@ public mut prop aad: DataBlob
 public mut prop authTag: DataBlob
 ```
 
-**功能：** 指明加解密参数authTag，长度为12字节。<br/>采用CCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾12字节作为解密时[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的入参[CcmParamsSpec](#struct-ccmparamsspec)中的authTag。
+**功能：** 指明加解密参数authTag，长度为12字节。<br/>采用CCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾12字节作为解密时[createCipher(String)](#func-createcipherstring)方法的入参[CcmParamsSpec](#struct-ccmparamsspec)中的authTag。
 
 **类型：** [DataBlob](#struct-datablob)
 
@@ -1427,13 +1427,13 @@ public struct GcmParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#class-paramsspec)的子类，用于在对称加解密时作为[createCipher(String)](#func-createcipherstring)方法的参数。
 
 适用于GCM模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[createCipher(String)](#func-createcipherstring)方法前需要指定其algName属性（来源于父类[ParamsSpec](#class-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1441,7 +1441,7 @@ public struct GcmParamsSpec <: ParamsSpec {
 
 **父类型：**
 
-- [ParamsSpec](#interface-paramsspec)
+- [ParamsSpec](#class-paramsspec)
 
 ### prop aad
 
@@ -1465,7 +1465,7 @@ public mut prop aad: DataBlob
 public mut prop authTag: DataBlob
 ```
 
-**功能：** 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。
+**功能：** 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[createCipher(String)](#func-createcipherstring)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。
 
 **类型：** [DataBlob](#struct-datablob)
 
@@ -1510,7 +1510,7 @@ public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 |algName|String|是|-|指明对称加解密参数的算法模式。可选值如下:<br/>- IvParamsSpec:适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。|
 |iv|[DataBlob](#struct-datablob)|是|-|指明加解密参数iv，长度为12字节。|
 |aad|[DataBlob](#struct-datablob)|是|-|指明加解密参数aad，长度为8字节。|
-|authTag|[DataBlob](#struct-datablob)|是|-|指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[init()](#func-initcryptomode-key-paramsspec)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。|
+|authTag|[DataBlob](#struct-datablob)|是|-|指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[createCipher(String)](#func-createcipherstring)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。|
 
 **示例：**
 
@@ -1532,13 +1532,13 @@ public struct IvParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#class-paramsspec)的子类，用于在对称加解密时作为[createCipher(String)](#func-createcipherstring)方法的参数。
 
 适用于CBC、CTR、OFB、CFB这些仅使用iv作为参数的加解密模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[createCipher(String)](#func-createcipherstring)方法前需要指定其algName属性（来源于父类[ParamsSpec](#class-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1546,7 +1546,7 @@ public struct IvParamsSpec <: ParamsSpec {
 
 **父类型：**
 
-- [ParamsSpec](#interface-paramsspec)
+- [ParamsSpec](#class-paramsspec)
 
 ### prop iv
 
@@ -1793,7 +1793,7 @@ public operator func !=(other: CipherSpecItem): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CipherSpecItem](#enum-CipherSpecItem)|是|-|另一个枚举值。|
+|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -1817,7 +1817,7 @@ public operator func ==(other: CipherSpecItem): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CipherSpecItem](#enum-CipherSpecItem)|是|-|另一个枚举值。|
+|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
 
 **返回值：**
 

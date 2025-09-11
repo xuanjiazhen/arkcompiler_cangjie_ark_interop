@@ -578,7 +578,7 @@ public let centerFrequency1: Int32
 public let channelWidth: Int32
 ```
 
-**功能：** WLAN接入点的带宽，具体定义参见[WifiChannelWidth](#enum-wifichannelwidth)。
+**功能：** WLAN接入点的带宽。
 
 **类型：** Int32
 

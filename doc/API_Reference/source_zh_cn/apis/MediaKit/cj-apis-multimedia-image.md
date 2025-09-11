@@ -13,7 +13,7 @@ import kit.ImageKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -47,7 +47,7 @@ public func off(eventType: ReceiveType): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[ReceiveType](#enum-receivetype)|是|-|注册事件的类型，固定为'imageArrival'，释放buffer时触发。|
+|eventType|[ReceiveType](../ImageKit/cj-apis-image.md#enum-receivetype)|是|-|注册事件的类型，固定为'imageArrival'，释放buffer时触发。|
 
 ### func on(ReceiveType, Callback0Argument)
 
@@ -65,7 +65,7 @@ public func on(eventType: ReceiveType, callback: Callback0Argument): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[ReceiveType](#enum-receivetype)|是|-|注册事件的类型，固定为'imageArrival'，接收图片时触发。|
+|eventType|[ReceiveType](../ImageKit/cj-apis-image.md#enum-receivetype)|是|-|注册事件的类型，固定为'imageArrival'，接收图片时触发。|
 |callback|[Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument)|是|-|回调函数，当注册事件触发成功，err为undefined，否则为错误对象。|
 
 ### func readLatestImage()
@@ -84,7 +84,7 @@ public func readLatestImage(): Image
 
 |类型|说明|
 |:----|:----|
-|[Image]|返回最新图片。|
+|[Image](../ImageKit/cj-apis-image.md#class-image)|返回最新图片。|
 
 **异常：**
 
@@ -110,7 +110,7 @@ public func readNextImage(): Image
 
 |类型|说明|
 |:----|:----|
-|[Image]|下一张图片|
+|[Image](../ImageKit/cj-apis-image.md#class-image)|下一张图片|
 
 **异常：**
 

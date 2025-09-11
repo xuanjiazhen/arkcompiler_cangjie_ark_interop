@@ -236,7 +236,7 @@ public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fetchColumns|Array\<String>|是|-| 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](#func-getstring)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。|
+|fetchColumns|Array\<String>|是|-| 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。|
 |predicates|[DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates)|是|-| 谓词查询，显示过滤条件。|
 
 ## class FetchResult
@@ -431,7 +431,7 @@ public init(album: Album)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|album|[Album](#class-album)|是|-|需要变更的相册。|
+|album|[Album](./cj-apis-file-photo_access_helper.md#class-album)|是|-|需要变更的相册。|
 
 **示例：**
 
@@ -469,7 +469,7 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待添加到相册中的资产数组。|
+|assets|Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)>|是|-|待添加到相册中的资产数组。|
 
 **异常：**
 
@@ -519,7 +519,7 @@ public func getAlbum(): Album
 
 |类型|说明|
 |:----|:----|
-|[Album](#class-album)|返回当前相册变更请求中的相册。|
+|[Album](./cj-apis-file-photo_access_helper.md#class-album)|返回当前相册变更请求中的相册。|
 
 **异常：**
 
@@ -567,7 +567,7 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待从相册中移除的资产数组。|
+|assets|Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)>|是|-|待从相册中移除的资产数组。|
 
 **异常：**
 
@@ -692,7 +692,7 @@ public init(asset: PhotoAsset)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|asset|[PhotoAsset](#class-photoasset)|是|-|需要变更的资产。|
+|asset|[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)|是|-|需要变更的资产。|
 
 **异常：**
 
@@ -740,7 +740,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
-|photoType|[PhotoType](#enum-phototype)|是|-|待创建的文件类型，IMAGE或者VIDEO类型。|
+|photoType|[PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype)|是|-|待创建的文件类型，IMAGE或者VIDEO类型。|
 |extension|String|是|-|文件扩展名，例如：'jpg'。|
 |options|[CreateOptions](#class-createoptions)|否|CreateOptions(title: "", subtype: Default)|**命名参数。** 创建选项，例如：{title: 'testPhoto'}。|
 
@@ -903,7 +903,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
-|assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待删除的媒体文件uri数组。|
+|assets|Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)>|是|-|待删除的媒体文件uri数组。|
 
 **异常：**
 
@@ -1142,7 +1142,7 @@ public func getAsset(): PhotoAsset
 
 |类型|说明|
 |:----|:----|
-|[PhotoAsset](#class-photoasset)|返回当前资产变更请求中的资产。|
+|[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)|返回当前资产变更请求中的资产。|
 
 **异常：**
 
@@ -1827,7 +1827,7 @@ public var photoType: PhotoType
 
 **功能：** 文件类型。
 
-**类型：** [PhotoType](#enum-phototype)
+**类型：** [PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype)
 
 **读写能力：** 可读写
 
@@ -1884,7 +1884,7 @@ public init(fileNameExtension: String, photoType: PhotoType, title!: String = ""
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fileNameExtension|String|是|-|文件扩展名，例如'jpg'。|
-|photoType|[PhotoType](#enum-phototype)|是|-|创建的文件类型，IMAGE或者VIDEO。|
+|photoType|[PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype)|是|-|创建的文件类型，IMAGE或者VIDEO。|
 |title|String|否|""| **命名参数。** 图片或者视频的标题。|
 |subtype|[PhotoSubtype](#enum-photosubtype)|否|Default| **命名参数。** 图片或者视频的文件子类型，Default或者MovingPhoto。|
 
