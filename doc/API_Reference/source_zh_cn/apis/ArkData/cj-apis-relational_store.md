@@ -4146,7 +4146,7 @@ Uint8Array(Array<UInt8>)
 public type Assets = Array<Asset>
 ```
 
-**功能：** [Assets](#type-assets)是[Array < Asset >](../../../../User_Manual/source_zh_cn/basic_data_type/array.md#array)类型的别名。
+**功能：** [Assets](#type-assets)是[Array\<Asset>](../../../../User_Manual/source_zh_cn/basic_data_type/array.md#array)类型的别名。
 
 ## type ValuesBucket
 
@@ -4154,4 +4154,4 @@ public type Assets = Array<Asset>
 public type ValuesBucket = Map<String, ValueType>
 ```
 
-**功能：** [ValuesBucket](#type-valuesbucket)是[Map<String,ValueType>](../../../../User_Manual/source_zh_cn/generic/generic_class.md#泛型类)类型的别名。
+**功能：** [ValuesBucket](#type-valuesbucket)是[Map\<String,ValueType>](../../../../User_Manual/source_zh_cn/generic/generic_class.md#泛型类)类型的别名。
