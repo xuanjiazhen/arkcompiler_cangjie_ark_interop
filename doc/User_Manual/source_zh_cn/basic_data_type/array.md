@@ -130,7 +130,7 @@ let arr3 = arr1[2..] // arr3 contains elements 2, 3, 4, 5, 6
 
 ### 修改 Array
 
-Array 是一种长度不变的 [Collection 类型](../../source_zh_cn/collections/collection_overview.md)，因此 Array 没有提供添加和删除元素的成员函数。
+Array 是一种长度不变的 [Collection 类型](../collections/collection_overview.md)，因此 Array 没有提供添加和删除元素的成员函数。
 
 但是 Array 允许对其中的元素进行修改，同样使用下标语法。
 
