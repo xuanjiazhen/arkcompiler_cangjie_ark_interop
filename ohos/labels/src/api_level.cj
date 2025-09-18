@@ -72,7 +72,7 @@ public class APILevel {
     public let atomicservice: Bool
     public let crossplatform: Bool
     // deprecated: 0 means the Api is not deprecated
-    public let deprecated: LevelValue
+    public let deprecated: ?LevelValue
     public let form: Bool
     public let permission: ?PermissionValue
     public let stagemodelonly: Bool
@@ -81,7 +81,7 @@ public class APILevel {
     public let workerthread: Bool
     public let systemapi: Bool
     public const init(since: LevelValue, atomicservice!: Bool = false, crossplatform!: Bool = false,
-        deprecated!: LevelValue = 0, form!: Bool = false, permission!: ?PermissionValue = None, stagemodelonly!: Bool = true,
+        deprecated!: ?LevelValue = None, form!: Bool = false, permission!: ?PermissionValue = None, stagemodelonly!: Bool = true,
         syscap!: String = "", throwexception!: Bool = false, workerthread!: Bool = false, systemapi!: Bool = false) {
         this.since = since
         this.atomicservice = atomicservice
