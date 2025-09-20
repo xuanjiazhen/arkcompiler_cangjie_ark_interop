@@ -2,7 +2,7 @@
 
 ## 简介
 
-仓颉ArkTS互操作库API，用于提供仓颉与ArkTS跨语言互操作能力，包含仓颉互操作库提供的公共接口、互操作宏接口和依赖的json和CFFI接口，期望给开发者提供兼顾开发效率和运行效率的跨语言互操作解决方案，提供简洁的互操作开发范式，降低跨语言互通开销。
+仓颉ArkTS互操作库API，用于提供仓颉与ArkTS跨语言互操作能力，包含仓颉互操作库提供的公共接口、互操作宏接口和依赖的json和C语言互操作(CFFI)接口，期望给开发者提供兼顾开发效率和运行效率的跨语言互操作解决方案，提供简洁的互操作开发范式，降低跨语言互通开销。
 
 其主要结构如下图所示：
 
@@ -26,23 +26,34 @@
 本库还提供以下的关键数据结构：
 
 - JSValue: 用于表示来自ArkTS中的对象（如数字、字符串、对象、函数），是仓颉与ArkTS类型转换的桥梁。
+- JSModule: JSModule的目标是提供符号导出能力（导出到ArkTS）。配合自定义静态初始化函数，在动态库被加载时把导出目标注册到全局表，并由ArkTS引擎来执行导出。
+- JSRuntime: 仓颉创建的 ArkTS 运行时。
 - JSContext: 用于表示与ArkTS互操作的上下文，提供模块加载、JSValue创建等能力。
 - JSCallInfo: 用于表示当发生来自于ArkTS互操作调用时 调用的参数集合。
 
-最后本互操作库通过CFFI调用ArkTS虚拟机提供的接口完成互操作功能。
+最后本互操作库通过C语言互操作调用ArkTS虚拟机提供的接口完成互操作功能。
 
 ## 目录
 
 ```text
 arkcompiler/cangjie_ark_interop
-├── ohos                 # 仓颉互操作API的公共仓代码
-├── doc                  # 仓颉文档，包括API参考、应用开发指南、仓颉编程语言用户手册
-    ├── API_Reference    # 仓颉API参考
-    └── Dev_Guide        # 仓颉开发指南
-    └── release-notes    # 仓颉发布说明
-    └── User_Manual      # 仓颉用户手册
-├── figures              # 本README需要使用的图片
-├── test                 # 仓颉互操作测试用例
+├── ohos                   # 仓颉互操作API的公共仓代码
+    ├── ark_interop        # 仓颉互操作库
+    └── ark_interop_helper # 仓颉互操作库工具类
+    └── ark_interop_macro  # 仓颉互操作库宏
+    └── business_exception # 仓颉互操作异常
+    └── callback_invoke    # 仓颉互操作回调工具类
+    └── encoding           # 仓颉json库
+    └── ffi                # 仓颉C语言互操作库
+    └── labels             # 仓颉互操作库api level标签
+    └── utf16string        # 仓颉互操作库提供的utf16字符串处理类
+├── doc                    # 仓颉文档，包括API参考、应用开发指南、仓颉编程语言用户手册
+    ├── API_Reference      # 仓颉API参考
+    └── Dev_Guide          # 仓颉开发指南
+    └── release-notes      # 仓颉发布说明
+    └── User_Manual        # 仓颉用户手册
+├── figures                # 本README需要使用的图片
+├── test                   # 仓颉互操作测试用例
 ```
 
 ## 约束
@@ -51,15 +62,80 @@ arkcompiler/cangjie_ark_interop
 
 ## 使用场景
 
-包含仓颉-ArkTS互操作库，用于仓颉-ArkTS互操作。json库/APILevel/CFFI库为基础功能库，提供给仓颉API/仓颉UI等子系统等公共能力。
+包含仓颉-ArkTS互操作库，用于仓颉-ArkTS互操作。json库/APILevel/C语言互操作库为基础功能库，提供给仓颉API/仓颉UI等子系统等公共能力。
 
 在OpenHarmony应用开发中，存在使用仓颉与ArkTS混合开发的诉求，例如以下场景：
 
 - 场景一：在使用ArkTS开发时，通过跨语言互操作调用仓颉开发的代码模块，发挥仓颉高性能高并发优势，提升应用性能体验；
 
+使用示例如下，更详细的例子请参考：[在 ArkTS 中加载仓颉模块](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/arkts_import_cangjie.md)
+
+```swift
+// 导入互操作库
+import ohos.ark_interop.*
+
+func addNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
+// 从JSCallInfo获取参数列表
+let arg0: JSValue = callInfo[0]
+let arg1: JSValue = callInfo[1]
+// 把JSValue转换为仓颉类型
+let a: Float64 = arg0.toNumber()
+let b: Float64 = arg1.toNumber()
+// 实际仓颉函数行为
+let value = a + b
+// 把结果转换为JSValue
+let result: JSValue = context.number(value).toJSValue()
+// 返回 JSValue
+return result
+}
+
+// 必须注册该函数到JSModule中
+let EXPORT_MODULE = JSModule.registerModule {
+runtime, exports =>
+exports["addNumber"] = runtime.function(addNumber).toJSValue()
+}
+```
+
+然后在ArkTS侧就可以加载仓颉模块，并调用该接口。
+
+```swift
+// 导入仓颉动态库，该动态库名称为仓颉包名的名称，该名称需要和互操作接口所在的包名一致
+import { addNumber } from "libohos_app_cangjie_entry.so";
+
+// 调用仓颉接口
+let result = addNumber(1, 2);
+```
+
 - 场景二：在使用仓颉开发时，通过跨语言互操作调用ArkTS库，复用ArkTS丰富的库生态；
 
+使用示例如下，更详细的例子请参考：[仓颉应用中使用 ArkTS 模块](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/using_arkts_module.md)
+
+```swift
+func callInterop(x: Float64, y: Float64): Float64 {
+    // 获取互操作上下文
+    let context: JSContext = JSRuntime().mainContext
+    // 加载目标ArkTS模块
+    let module: JSObject = context.loadArkTSModule(JSModules.Entry).asObject(context)
+
+    // 获取ArkTS模块导出函数
+    let addNumber = module["addNumber"].asFunction(context)
+    // 调用ArkTS函数
+    let result = addNumber.call([context.number(x).toJSValue(), context.number(y).toJSValue()])
+
+    return result.toFloat64()
+}
+```
+
 同时针对互操作带来的开发复杂度，仓颉提供声明式互操作宏ark_interop_macro，使开发者可以使用宏“@Interop[ArkTS]”标注仓颉代码中需要导出给ArkTS使用的函数或类型，在编译阶段自动生成互操作“胶水层”代码及ArkTS接口声明，减少开发者手写互操作代码的复杂度。
+
+上述场景一可以借助互操作宏简化开发，比如以上案例中仓颉侧代码可以简化成如下代码，更详细的例子请参考：[仓颉- ArkTS 声明式互操作宏](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/interoperability_macro.md)：
+
+```swift
+@Interop[ArkTS]
+public func addNumber(a: Float64, b: Float64): Float64 {
+a + b
+}
+```
 
 ![仓颉互操作流程图](./figures/api.png)
 
