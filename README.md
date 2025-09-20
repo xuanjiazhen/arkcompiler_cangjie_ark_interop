@@ -34,14 +34,23 @@ Finally, this interop library completes the interoperability function by calling
 
 ```text
 arkcompiler/cangjie_ark_interop
-├── ohos                 # Public repository code for Cangjie Interop API
-├── doc                  # Cangjie documentation including API reference, development guide and user manual
-    ├── API_Reference    # Cangjie api reference
-    └── Dev_Guide        # Cangjie developer guide
-    └── release-notes    # Cangjie release notes
-    └── User_Manual      # Cangjie user manual
-├── figures              # Images used in the README
-├── test                 # Cangjie interop testcases
+├── ohos                   # Public repository code for Cangjie Interop API
+    ├── ark_interop        # Cangjie Interop API
+    └── ark_interop_helper # Cangjie Interop library utility class
+    └── ark_interop_macro  # Cangjie Interop macro
+    └── business_exception # Cangjie Interop exception
+    └── callback_invoke    # Cagnejie Interop callback invoke
+    └── encoding           # Cangjie json encoding
+    └── ffi                # Cangjie C FFI Library
+    └── labels             # Cangjie Interop Labels
+    └── utf16string        # Cangjie UTF16 String
+├── doc                    # Cangjie documentation including API reference, development guide and user manual
+    ├── API_Reference      # Cangjie api reference
+    └── Dev_Guide          # Cangjie developer guide
+    └── release-notes      # Cangjie release notes
+    └── User_Manual        # Cangjie user manual
+├── figures                # Images used in the README
+├── test                   # Cangjie interop testcases
 ```
 
 ## Constraints
@@ -59,9 +68,64 @@ For the demands of scenario one, an interoperability library can be used to impl
 In OpenHarmony application development, there is a demand for hybrid development of Cangjie and ArkTS, such as the following scenarios:
 
 - Scenario one: When using ArkTS for development, the code modules developed by Cangjie are called through cross-language interop to give full play to Cangjie's high performance and high concurrency advantages and improve the application performance experience.
+
+An example of usage is as follows; for more detailed examples, please refer to[Loading Cangjie Modules in ArkTS](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/arkts_import_cangjie.md)
+
+```swift
+
+import ohos.ark_interop.*
+
+func addNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
+
+let arg0: JSValue = callInfo[0]
+let arg1: JSValue = callInfo[1]
+let a: Float64 = arg0.toNumber()
+let b: Float64 = arg1.toNumber()
+let value = a + b
+let result: JSValue = context.number(value).toJSValue()
+return result
+}
+
+let EXPORT_MODULE = JSModule.registerModule {
+runtime, exports =>
+exports["addNumber"] = runtime.function(addNumber).toJSValue()
+}
+```
+
+Then the Cangjie module can be loaded on the ArkTS side and the interface can be called.
+
+```swift
+import { addNumber } from "libohos_app_cangjie_entry.so";
+
+let result = addNumber(1, 2);
+```
+
 - Scenario two: When using Cangjie for development, call the ArkTS library through cross-language interoperability to reuse the rich library ecosystem of ArkTS.
 
+An example of usage is as follows; for more detailed examples, please refer to[Using ArkTS Modules in Cangjie Applications](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/using_arkts_module.md)
+
+```swift
+func callInterop(x: Float64, y: Float64): Float64 {
+    let context: JSContext = JSRuntime().mainContext
+    let module: JSObject = context.loadArkTSModule(JSModules.Entry).asObject(context)
+
+    let addNumber = module["addNumber"].asFunction(context)
+    let result = addNumber.call([context.number(x).toJSValue(), context.number(y).toJSValue()])
+
+    return result.toFloat64()
+}
+```
+
 At the same time, in response to the development complexity brought about by interop, Cangjie provides a declarative interoperability macro ark_interop_macro, which allows developers to use the macro "@Interop[ArkTS]" to mark the functions or types that need to be exported to ArkTS in the Cangjie code, and automatically generate the interoperability "glue layer" code and ArkTS interface declarations during the compilation stage, reducing the complexity of the developer's handwritten interoperability code.
+
+The above scenario one can simplify development using interoperation macros, for example, the Cangjie side code in the above case can be simplified to example as follows,for more detailed examples, please refer to[Cangjie-ArkTS Declarative Interop Macros](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/interoperability_macro.md)
+
+```swift
+@Interop[ArkTS]
+public func addNumber(a: Float64, b: Float64): Float64 {
+a + b
+}
+```
 
 ![Cangjie interoperability flow chart](./figures/api_eng.png)
 
@@ -83,3 +147,4 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 ## Related Repositories
 
 [arkui_napi](https://gitee.com/openharmony/arkui_napi)
+[ability_runtime](https://gitee.com/openharmony/ability_ability_runtime)
