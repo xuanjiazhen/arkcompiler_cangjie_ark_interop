@@ -47,8 +47,7 @@ struct JSCallInfoPrivate {
  * information on the ArkTS stack. JSCallInfo is a pointer to this information.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public struct JSCallInfo {
     JSCallInfo(
@@ -60,8 +59,7 @@ public struct JSCallInfo {
      * Number of input arguments.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public prop count: Int64 {
         get() {
@@ -73,8 +71,7 @@ public struct JSCallInfo {
      * `this` pointer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public prop thisArg: JSValue {
         get() {
@@ -89,8 +86,7 @@ public struct JSCallInfo {
      * @throws { BusinessException } 34300001 - Index is less than 0.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public operator func [](index: Int64): JSValue {
         if (index >= count) {
@@ -136,8 +132,7 @@ func cjLambdaDestructor(env: JSEnv, lambdaId: Int64): Unit {
  * A safe reference to the ArkTS function.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSFunction <: JSHeapObject {
     static func createFunction(context: JSContext, lambda: JSLambda): JSValue_ {
@@ -217,8 +212,7 @@ public class JSFunction <: JSHeapObject {
      * An ArkTS function call with None argument.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithNoneArg(context, innerValue, thisArg.value)
@@ -228,8 +222,7 @@ public class JSFunction <: JSHeapObject {
      * An ArkTS function call with one argument.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithOneArg(context, innerValue, thisArg.value, arg)
@@ -239,8 +232,7 @@ public class JSFunction <: JSHeapObject {
      * An ArkTS function call with multiple arguments.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithArr(context, innerValue, thisArg.value, args)

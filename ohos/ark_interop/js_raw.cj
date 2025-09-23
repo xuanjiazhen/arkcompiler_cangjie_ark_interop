@@ -69,8 +69,7 @@ protected struct JSValue_ {
  * ArkTs null.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public struct JSNull {
     let value: JSValue
@@ -83,8 +82,7 @@ public struct JSNull {
      * Convert JSNull to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(): JSValue {
         value
@@ -95,8 +93,7 @@ public struct JSNull {
  * ArkTs undefined.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public struct JSUndefined {
     let value: JSValue
@@ -109,8 +106,7 @@ public struct JSUndefined {
      * Convert JSUndefined to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(): JSValue {
         value
@@ -121,8 +117,7 @@ public struct JSUndefined {
  * ArkTs boolean.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public struct JSBoolean {
     let value: JSValue
@@ -135,8 +130,7 @@ public struct JSBoolean {
      * Convert JSBoolean to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(): JSValue {
         value
@@ -146,8 +140,7 @@ public struct JSBoolean {
      * Convert JSBoolean to Cangjie Bool.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toBool(): Bool {
         value.toBoolean()
@@ -158,8 +151,7 @@ public struct JSBoolean {
  * ArkTs number.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public struct JSNumber {
     let value: JSValue
@@ -172,8 +164,7 @@ public struct JSNumber {
      * Convert JSNumber to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(): JSValue {
         value
@@ -185,8 +176,7 @@ public struct JSNumber {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toFloat64(): Float64 {
         value.toNumber()
@@ -197,8 +187,7 @@ public struct JSNumber {
  * JSValue is unified type in the ArkTS runtime and alse the data type that directly interacts with the ArkTS runtime.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public struct JSValue {
     protected JSValue(
@@ -210,8 +199,7 @@ public struct JSValue {
      * Get the type of JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func typeof(): JSType {
         unsafe { ARKTS_GetValueType(context.env, value) }
@@ -221,8 +209,7 @@ public struct JSValue {
      * Perform a strict equality check (type consistency and value equality) on two JSValues.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func strictEqual(target: JSValue): Bool {
         unsafe { ARKTS_StrictEqual(context.env, value, target.value) }
@@ -232,8 +219,7 @@ public struct JSValue {
      * Check whether JSValue is null.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isNull(): Bool {
         unsafe { ARKTS_IsNull(value) }
@@ -243,8 +229,7 @@ public struct JSValue {
      * Check whether JSValue is undefined.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isUndefined(): Bool {
         unsafe { ARKTS_IsUndefined(value) }
@@ -254,8 +239,7 @@ public struct JSValue {
      * Check whether JSValue is boolean.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isBoolean(): Bool {
         unsafe { ARKTS_IsBool(value) }
@@ -265,8 +249,7 @@ public struct JSValue {
      * Check whether JSValue is number.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isNumber(): Bool {
         unsafe { ARKTS_IsNumber(value) }
@@ -276,8 +259,7 @@ public struct JSValue {
      * Check whether JSValue is string.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isString(): Bool {
         unsafe { ARKTS_IsString(context.env, value) }
@@ -287,8 +269,7 @@ public struct JSValue {
      * Check whether JSValue is function.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isFunction(): Bool {
         unsafe { ARKTS_IsCallable(context.env, value) }
@@ -298,8 +279,7 @@ public struct JSValue {
      * Check whether JSValue is object.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isObject(): Bool {
         unsafe { ARKTS_IsObject(context.env, value) }
@@ -309,8 +289,7 @@ public struct JSValue {
      * Check whether JSValue is array.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isArray(): Bool {
         unsafe { ARKTS_IsArray(context.env, value) }
@@ -320,8 +299,7 @@ public struct JSValue {
      * Check whether JSValue is Promise.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isPromise(): Bool {
         unsafe { ARKTS_IsPromise(context.env, value) }
@@ -331,8 +309,7 @@ public struct JSValue {
      * Check whether JSValue is ArkTS class.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isClass(): Bool {
         unsafe { ARKTS_IsClass(context.env, value) }
@@ -342,8 +319,7 @@ public struct JSValue {
      * Check whether JSValue is an external object (ArkTS reference of a Cangjie object).
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isExternal(): Bool {
         unsafe { ARKTS_IsExternal(context.env, value) }
@@ -353,8 +329,7 @@ public struct JSValue {
      * Check whether JSValue is symbol.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isSymbol(): Bool {
         unsafe { ARKTS_IsSymbol(context.env, value) }
@@ -364,8 +339,7 @@ public struct JSValue {
      * Check whether JSValue is ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isArrayBuffer(): Bool {
         unsafe { ARKTS_IsArrayBuffer(context.env, value) }
@@ -398,8 +372,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSNull.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asNull(): JSNull {
         if (!isNull()) {
@@ -414,8 +387,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSUndefined.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asUndefined(): JSUndefined {
         if (!isUndefined()) {
@@ -430,8 +402,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSBoolean.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asBoolean(): JSBoolean {
         if (!isBoolean()) {
@@ -446,8 +417,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSNumber.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asNumber(): JSNumber {
         if (!isNumber()) {
@@ -462,8 +432,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Bool.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toBoolean(): Bool {
         if (!isBoolean()) {
@@ -478,8 +447,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toNumber(): Float64 {
         if (!isNumber()) {
@@ -494,8 +462,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to String.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toString(): String {
         if (!isString()) {
@@ -508,8 +475,7 @@ public struct JSValue {
      * Convert JSValue to Utf16String.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toUtf16String(): Utf16String {
         JSString.readUtf16String(context, value)
@@ -521,8 +487,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSString.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asString(): JSString {
         if (!isString()) {
@@ -537,8 +502,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSObject.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asObject(): JSObject {
         if (!isObject()) {
@@ -553,8 +517,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSFunction.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asFunction(): JSFunction {
         if (!isFunction()) {
@@ -569,8 +532,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArray.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asArray(): JSArray {
         if (!isArray()) {
@@ -585,8 +547,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSClass.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asClass(): JSClass {
         if (!isClass()) {
@@ -601,8 +562,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSExternal.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asExternal(): JSExternal {
         if (!isExternal()) {
@@ -617,8 +577,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSPromise.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asPromise(): JSPromise {
         if (!isPromise()) {
@@ -633,8 +592,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSSymbol.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asSymbol(): JSSymbol {
         if (!isSymbol()) {
@@ -649,8 +607,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asArrayBuffer(): JSArrayBuffer {
         if (!isArrayBuffer()) {
@@ -675,8 +632,7 @@ public struct JSValue {
      * Check whether JSValue is BigInt.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isBigInt(): Bool {
         unsafe { ARKTS_IsBigInt(context.env, value) }
@@ -688,8 +644,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSBigInt.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func asBigInt(): JSBigInt {
         if (!isBigInt()) {
@@ -704,8 +659,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to BigInt.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toBigInt(): BigInt {
         if (!isBigInt()) {
@@ -722,8 +676,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue is not an array.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func getElement(index: Int64): JSValue {
         if (!isArray()) {
@@ -744,8 +697,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue is not an array.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func setElement(index: Int64, value: JSValue): Unit {
         if (!isArray()) {
@@ -764,8 +716,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue is not JSObject.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func getProperty(key: JSKeyable): JSValue {
         if (!isObject()) {
@@ -782,8 +733,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue is not JSObject.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
         if (!isObject()) {
@@ -799,8 +749,7 @@ public struct JSValue {
      * @throws { BusinessException } 34300005 - JSValue is not JSObject or external is not JSExternal.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func bindObject(external: JSValue): Unit {
         if (!isObject()) {
@@ -816,8 +765,7 @@ public struct JSValue {
      * Bind JSValue to an ArkTs external object.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func bindObject(data: SharedObject): Unit {
         bindObject(JSValue(context, JSExternal.createExternal(context, data)))
@@ -827,8 +775,7 @@ public struct JSValue {
      * Get the Cangjie object bound to the ArkTs object.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func getBindingObject(): ?SharedObject {
         let external = getProperty(context.constants.builtinText.__cj_object__)

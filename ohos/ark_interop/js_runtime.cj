@@ -59,8 +59,7 @@ protected func getGlobalContext(): JSContext {
  * The ArkTS runtime created by Cangjie. 
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSRuntime {
     static var globalRuntime_: ?JSRuntime = None
@@ -74,8 +73,7 @@ public class JSRuntime {
      * @throws { Exception } - ArkTS Engine is Null.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public init() {
         let engine = unsafe { CJ_MRT_ARKTS_CreateEngineStub() }
@@ -118,8 +116,7 @@ public class JSRuntime {
      * ArkTS interop context.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public prop mainContext: JSContext {
         get() {
@@ -132,8 +129,7 @@ public class JSRuntime {
      * Get napi environment pointer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func getNapiEnv(): CPointer<Unit> {
         unsafe { ARKTS_GetNAPIEnv(engine_) }

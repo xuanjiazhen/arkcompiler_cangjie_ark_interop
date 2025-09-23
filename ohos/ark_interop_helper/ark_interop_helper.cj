@@ -30,8 +30,7 @@ foreign func NapiValueToArkTsValue(value: CPointer<Unit>): JSValue_
  * Determine whether in application mode. 
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public func isStageMode(env: napi_env, context: napi_value): Bool {
     unsafe {
@@ -43,8 +42,7 @@ public func isStageMode(env: napi_env, context: napi_value): Bool {
  * Convert JSValue to napi_value.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value {
     unsafe {
@@ -56,8 +54,7 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
  * Convert HashMap to JSValue.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public func mapToJSValue<T>(
     context: JSContext,
@@ -79,8 +76,7 @@ public func mapToJSValue<T>(
  * Convert JSValue to HashMap.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public func mapFromJSValue<T>(
     context: JSContext,
