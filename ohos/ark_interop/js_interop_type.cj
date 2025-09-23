@@ -16,8 +16,7 @@
 package ohos.ark_interop
 
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 sealed interface JSInteropByte {}
 
@@ -25,8 +24,7 @@ sealed interface JSInteropByte {}
  * Byte extended JSInteropByte interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Byte <: JSInteropByte {}
 
@@ -34,16 +32,14 @@ extend Byte <: JSInteropByte {}
  * The interface is used to implement extension methods for types that can be utilized in declarative interop macros.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public interface JSInteropType<T> {
     /**
      * Init from JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     static func fromJSValue(context: JSContext, input: JSValue): T
 
@@ -51,8 +47,7 @@ public interface JSInteropType<T> {
      * Convert to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     func toJSValue(context: JSContext): JSValue
 
@@ -60,8 +55,7 @@ public interface JSInteropType<T> {
      * Get ArkTS type name corresponding to the Cangjie type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     static func toArkTsType(): String
 }
@@ -70,8 +64,7 @@ public interface JSInteropType<T> {
  * Int8 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Int8 <: JSInteropType<Int8> {
     /**
@@ -80,8 +73,7 @@ extend Int8 <: JSInteropType<Int8> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Int8 {
         return Int8(input.toNumber())
@@ -91,8 +83,7 @@ extend Int8 <: JSInteropType<Int8> {
      * Convert Int8 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Int32(this)).toJSValue()
@@ -102,8 +93,7 @@ extend Int8 <: JSInteropType<Int8> {
      * Get corresponding ArkTS type name of Int8.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -114,8 +104,7 @@ extend Int8 <: JSInteropType<Int8> {
  * Int16 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Int16 <: JSInteropType<Int16> {
     /**
@@ -124,8 +113,7 @@ extend Int16 <: JSInteropType<Int16> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Int16 {
         return Int16(input.toNumber())
@@ -135,8 +123,7 @@ extend Int16 <: JSInteropType<Int16> {
      * Convert Int16 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Int32(this)).toJSValue()
@@ -146,8 +133,7 @@ extend Int16 <: JSInteropType<Int16> {
      * Get corresponding ArkTS type name of Int16.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -158,8 +144,7 @@ extend Int16 <: JSInteropType<Int16> {
  * Int32 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Int32 <: JSInteropType<Int32> {
     /**
@@ -168,8 +153,7 @@ extend Int32 <: JSInteropType<Int32> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Int32 {
         return Int32(input.toNumber())
@@ -179,8 +163,7 @@ extend Int32 <: JSInteropType<Int32> {
      * Convert Int32 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         context.number(this).toJSValue()
@@ -190,8 +173,7 @@ extend Int32 <: JSInteropType<Int32> {
      * Get corresponding ArkTS type name of Int32.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -202,8 +184,7 @@ extend Int32 <: JSInteropType<Int32> {
  * Int64 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Int64 <: JSInteropType<Int64> {
     /**
@@ -212,8 +193,7 @@ extend Int64 <: JSInteropType<Int64> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Int64 {
         return Int64(input.toNumber())
@@ -223,8 +203,7 @@ extend Int64 <: JSInteropType<Int64> {
      * Convert Int64 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Float64(this)).toJSValue()
@@ -234,8 +213,7 @@ extend Int64 <: JSInteropType<Int64> {
      * Get corresponding ArkTS type name of Int64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -246,8 +224,7 @@ extend Int64 <: JSInteropType<Int64> {
  * UInt8 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend UInt8 <: JSInteropType<UInt8> {
     /**
@@ -256,8 +233,7 @@ extend UInt8 <: JSInteropType<UInt8> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): UInt8 {
         return UInt8(input.toNumber())
@@ -267,8 +243,7 @@ extend UInt8 <: JSInteropType<UInt8> {
      * Convert UInt8 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Int32(this)).toJSValue()
@@ -278,8 +253,7 @@ extend UInt8 <: JSInteropType<UInt8> {
      * Get corresponding ArkTS type name of UInt8.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -290,8 +264,7 @@ extend UInt8 <: JSInteropType<UInt8> {
  * UInt16 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend UInt16 <: JSInteropType<UInt16> {
     /**
@@ -300,8 +273,7 @@ extend UInt16 <: JSInteropType<UInt16> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): UInt16 {
         return UInt16(input.toNumber())
@@ -311,8 +283,7 @@ extend UInt16 <: JSInteropType<UInt16> {
      * Convert UInt16 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Int32(this)).toJSValue()
@@ -322,8 +293,7 @@ extend UInt16 <: JSInteropType<UInt16> {
      * Get corresponding ArkTS type name of UInt16.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -334,8 +304,7 @@ extend UInt16 <: JSInteropType<UInt16> {
  * UInt32 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend UInt32 <: JSInteropType<UInt32> {
     /**
@@ -344,8 +313,7 @@ extend UInt32 <: JSInteropType<UInt32> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     @OverflowWrapping
     public static func fromJSValue(_: JSContext, input: JSValue): UInt32 {
@@ -356,8 +324,7 @@ extend UInt32 <: JSInteropType<UInt32> {
      * Convert UInt32 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     @OverflowWrapping
     public func toJSValue(context: JSContext): JSValue {
@@ -368,8 +335,7 @@ extend UInt32 <: JSInteropType<UInt32> {
      * Get corresponding ArkTS type name of UInt32.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -380,8 +346,7 @@ extend UInt32 <: JSInteropType<UInt32> {
  * UInt64 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend UInt64 <: JSInteropType<UInt64> {
     /**
@@ -390,8 +355,7 @@ extend UInt64 <: JSInteropType<UInt64> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): UInt64 {
         return UInt64(input.toNumber())
@@ -401,8 +365,7 @@ extend UInt64 <: JSInteropType<UInt64> {
      * Convert UInt64 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Float64(this)).toJSValue()
@@ -412,8 +375,7 @@ extend UInt64 <: JSInteropType<UInt64> {
      * Get corresponding ArkTS type name of UInt64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -424,8 +386,7 @@ extend UInt64 <: JSInteropType<UInt64> {
  * Float16 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Float16 <: JSInteropType<Float16> {
     /**
@@ -434,8 +395,7 @@ extend Float16 <: JSInteropType<Float16> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Float16 {
         return Float16(input.toNumber())
@@ -445,8 +405,7 @@ extend Float16 <: JSInteropType<Float16> {
      * Convert Float16 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Float64(this)).toJSValue()
@@ -456,8 +415,7 @@ extend Float16 <: JSInteropType<Float16> {
      * Get corresponding ArkTS type name of Float16.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -468,8 +426,7 @@ extend Float16 <: JSInteropType<Float16> {
  * Float32 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Float32 <: JSInteropType<Float32> {
     /**
@@ -478,8 +435,7 @@ extend Float32 <: JSInteropType<Float32> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Float32 {
         return Float32(input.toNumber())
@@ -489,8 +445,7 @@ extend Float32 <: JSInteropType<Float32> {
      * Convert Float32 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Float64(this)).toJSValue()
@@ -500,8 +455,7 @@ extend Float32 <: JSInteropType<Float32> {
      * Get corresponding ArkTS type name of Float32.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -512,8 +466,7 @@ extend Float32 <: JSInteropType<Float32> {
  * Float64 extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Float64 <: JSInteropType<Float64> & JSKeyable {
     /**
@@ -522,8 +475,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Float64 {
         return input.toNumber()
@@ -533,8 +485,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
      * Convert Float64 to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(this).toJSValue()
@@ -544,8 +495,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
      * Get corresponding ArkTS type name of Float64.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -556,8 +506,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
  * Bool extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Bool <: JSInteropType<Bool> {
     /**
@@ -566,8 +515,7 @@ extend Bool <: JSInteropType<Bool> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to Bool.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Bool {
         return input.toBoolean()
@@ -577,8 +525,7 @@ extend Bool <: JSInteropType<Bool> {
      * Convert Bool to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.boolean(this).toJSValue()
@@ -588,8 +535,7 @@ extend Bool <: JSInteropType<Bool> {
      * Get corresponding ArkTS type name of Bool.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "boolean"
@@ -600,8 +546,7 @@ extend Bool <: JSInteropType<Bool> {
  * String extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend String <: JSInteropType<String> {
     /**
@@ -610,8 +555,7 @@ extend String <: JSInteropType<String> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to String.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): String {
         return input.toString()
@@ -621,8 +565,7 @@ extend String <: JSInteropType<String> {
      * Get corresponding ArkTS type name of String.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "string"
@@ -633,8 +576,7 @@ extend String <: JSInteropType<String> {
  * JSString extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend JSString <: JSInteropType<JSString> {
     /**
@@ -643,8 +585,7 @@ extend JSString <: JSInteropType<JSString> {
      * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSString.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): JSString {
         return input.asString()
@@ -654,8 +595,7 @@ extend JSString <: JSInteropType<JSString> {
      * Get corresponding ArkTS type name of JSString.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "string"
@@ -666,16 +606,14 @@ extend JSString <: JSInteropType<JSString> {
  * Unit extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend Unit <: JSInteropType<Unit> {
     /**
      * Convert JSValue to Unit.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, _: JSValue): Unit {}
 
@@ -683,8 +621,7 @@ extend Unit <: JSInteropType<Unit> {
      * Convert Unit to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.undefined().toJSValue()
@@ -694,8 +631,7 @@ extend Unit <: JSInteropType<Unit> {
      * Get corresponding ArkTS type name of Unit.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "undefined"
@@ -706,16 +642,14 @@ extend Unit <: JSInteropType<Unit> {
  * Option<T> extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
     /**
      * Convert JSValue to Option<T>.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(context: JSContext, input: JSValue): Option<T> {
         if (input.isUndefined()) {
@@ -729,8 +663,7 @@ extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
      * Convert Option<T> to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         match (this) {
@@ -743,8 +676,7 @@ extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
      * Get corresponding ArkTS type name of Option<T>.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "union"
@@ -755,8 +687,7 @@ extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
  * Array<T> extended JSInteropType interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte {
      /**
@@ -765,8 +696,7 @@ extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte {
      * @throws { Exception } - JSValue convert to Array error
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Array<T> {
         return (input.asArrayBuffer().readBytes() as Array<T>) ?? throw Exception("JSValue to buffer error.")
@@ -778,8 +708,7 @@ extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte {
      * @throws { Exception } - Array Buffer convert to JSValue error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.arrayBuffer((this as Array<Byte>) ?? throw Exception("Buffer to jsvalue error.")).toJSValue()
@@ -789,8 +718,7 @@ extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte {
      * Get corresponding ArkTS type name of Array.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static func toArkTsType(): String {
         "ArrayBuffer"

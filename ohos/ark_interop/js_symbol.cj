@@ -28,8 +28,7 @@ foreign func ARKTS_GetSymbolDesc(env: JSEnv, symbol: JSValue_): CString
  * The JSSymbol object is used to represent a safe reference to the ArkTS symbol type.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSSymbol <: JSHeapObject & JSKeyable {
     private var desc_: ?String = None
@@ -64,8 +63,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
      * Convert JSSymbol to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(_: JSContext): JSValue {
         JSValue(context, innerValue)
@@ -75,8 +73,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
      * The description of symbol.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public prop description: String {
         get() {
@@ -99,8 +96,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
      * Return a String that represents the JSSymbol.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toString(): String {
         let desc = description

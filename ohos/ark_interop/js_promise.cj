@@ -40,8 +40,7 @@ foreign func ARKTS_PromiseCatch(env: JSEnv, prom: JSValue_, callback: JSValue_):
  * referenced ArkTS object.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSPromise <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -56,8 +55,7 @@ public class JSPromise <: JSHeapObject {
      * Register result processing callback function.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func then(onFulfilled: JSFunction, onRejected!: ?JSFunction = None): Unit {
         let onFulfilledValue = onFulfilled.innerValue
@@ -75,8 +73,7 @@ public class JSPromise <: JSHeapObject {
      * Register exception processing callback function.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func catchError(callback: JSFunction): Unit {
         unsafe {
@@ -90,8 +87,7 @@ public class JSPromise <: JSHeapObject {
  * the main purpose is to enhance performance.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSPromiseCapability {
     static func create(context: JSContext): JSPromiseCap {
@@ -114,8 +110,7 @@ public class JSPromiseCapability {
      * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func resolve(value: JSValue): Unit {
         if (isComplete) {
@@ -133,8 +128,7 @@ public class JSPromiseCapability {
      * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func reject(value: JSValue): Unit {
         if (isComplete) {
@@ -152,8 +146,7 @@ public class JSPromiseCapability {
      * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(): JSValue {
         if (isComplete) {

@@ -38,8 +38,7 @@ foreign func ARKTS_BigIntReadBytes(env: JSEnv, value: JSValue_, isNegative: CPoi
  * It can be converted to Cangjie BigInt.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSBigInt <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -102,8 +101,7 @@ public class JSBigInt <: JSHeapObject {
      * Convert JSBigInt to Cangjie BigInt.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toBigInt(): BigInt {
         readAsBigInt(context.env, innerValue)

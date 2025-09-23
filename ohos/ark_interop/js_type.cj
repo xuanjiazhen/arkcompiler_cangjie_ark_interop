@@ -22,8 +22,7 @@ let JS_TYPE_NAMES_ = ["undefined", "null", "number", "bool", "bigint", "string",
  * The ArkTS data type enumeration.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 @C
 public struct JSType {
@@ -31,8 +30,7 @@ public struct JSType {
      * ArkTS undefined type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let UNDEFINED: JSType = JSType(0)
 
@@ -40,8 +38,7 @@ public struct JSType {
      * ArkTS null type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let NULL: JSType = JSType(1)
 
@@ -49,8 +46,7 @@ public struct JSType {
      * ArkTS number type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let NUMBER: JSType = JSType(2)
 
@@ -58,8 +54,7 @@ public struct JSType {
      * ArkTS boolean type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let BOOLEAN: JSType = JSType(3)
 
@@ -67,8 +62,7 @@ public struct JSType {
      * ArkTS bigint type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let BIGINT: JSType = JSType(4)
 
@@ -76,8 +70,7 @@ public struct JSType {
      * ArkTS string type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let STRING: JSType = JSType(5)
 
@@ -85,8 +78,7 @@ public struct JSType {
      * ArkTS symbol type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let SYMBOL: JSType = JSType(6)
 
@@ -94,8 +86,7 @@ public struct JSType {
      * ArkTS object type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let OBJECT: JSType = JSType(7)
 
@@ -103,8 +94,7 @@ public struct JSType {
      * ArkTS function type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let FUNCTION: JSType = JSType(8)
 
@@ -112,8 +102,7 @@ public struct JSType {
      * ArkTS external type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public static let EXTERNAL: JSType = JSType(9)
 
@@ -123,8 +112,7 @@ public struct JSType {
      * Return true if and only if the two JSType are identical.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public operator func ==(target: JSType): Bool {
         value == target.value
@@ -134,8 +122,7 @@ public struct JSType {
      * Return true if and only if the two JSType are not identical.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public operator func !=(target: JSType): Bool {
         value != target.value
@@ -145,8 +132,7 @@ public struct JSType {
      * Get string description of JSType.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toString(): String {
         JS_TYPE_NAMES_[Int64(value)]

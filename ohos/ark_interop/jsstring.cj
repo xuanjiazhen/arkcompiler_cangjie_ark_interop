@@ -47,13 +47,11 @@ foreign func ARKTS_CreateString(env: JSEnv, isCompressed: Bool, length: UInt32, 
  * An interface that implements extension method to convert value to JSValue.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public interface ToJSValue {
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     func toJSValue(context: JSContext): JSValue
 }
@@ -62,8 +60,7 @@ public interface ToJSValue {
  * An interface that can be used as a JSObejct key. It implements extension methods for String type.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 sealed interface JSKeyable <: ToString & ToJSValue {}
 
@@ -71,16 +68,14 @@ sealed interface JSKeyable <: ToString & ToJSValue {}
  * String class that extends the JSKeyable interface.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 extend String <: JSKeyable {
     /**
      * Convert String to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(context: JSContext): JSValue {
         JSValue(context, JSString.createString(context, this))
@@ -92,8 +87,7 @@ extend String <: JSKeyable {
  * It can be converted to Cangjie String and Utf16String.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSString <: JSHeapObject & ToString & JSKeyable {
     static func createString(context: JSContext, source: String): JSValue_ {
@@ -160,8 +154,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
      * Convert JSString to JSValue.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toJSValue(_: JSContext): JSValue {
         JSValue(context, innerValue)
@@ -171,8 +164,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
      * Convert JSString to String.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toString(): String {
         match (cjStrCache_) {
@@ -185,8 +177,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
      * Convert JSString to Utf16String.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func toUtf16String(): Utf16String {
         JSString.readUtf16String(context, innerValue)

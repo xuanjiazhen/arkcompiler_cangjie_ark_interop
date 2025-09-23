@@ -102,8 +102,7 @@ func disposeJSContext(env: JSEnv): Unit {
  * referenced by ArkTS.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSContext {
     static let allRuntimes_ = HashMap<JSEnv, JSContext>()
@@ -167,8 +166,7 @@ public class JSContext {
      * Check whether the current thread can execute interop interface.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func isInBindThread(): Bool {
         bindTid_ == unsafe { ARKTS_GetPosixThreadId() }
@@ -190,8 +188,7 @@ public class JSContext {
      * ArkTS global environment variable.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public prop global: JSObject {
         get() {
@@ -210,8 +207,7 @@ public class JSContext {
      * ArkTS interop context.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public prop env: JSEnv {
         get() {
@@ -225,8 +221,7 @@ public class JSContext {
      * Get napi environment pointer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func getNapiEnv(): napi_env {
         unsafe {
@@ -246,8 +241,7 @@ public class JSContext {
      * Create an ArkTS undefined.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func undefined(): JSUndefined {
         JSUndefined(void)
@@ -257,8 +251,7 @@ public class JSContext {
      * Create an ArkTS null.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func null(): JSNull {
         JSNull(JSValue(this, unsafe { ARKTS_CreateNull() }))
@@ -268,8 +261,7 @@ public class JSContext {
      * Create an ArkTS boolean.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func boolean(value: Bool): JSBoolean {
         JSBoolean(JSValue(this, unsafe { ARKTS_CreateBool(value) }))
@@ -279,8 +271,7 @@ public class JSContext {
      * Create an ArkTS number.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func number(value: Float64): JSNumber {
         JSNumber(JSValue(this, unsafe { ARKTS_CreateF64(value) }))
@@ -290,8 +281,7 @@ public class JSContext {
      * Create an ArkTS number.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func number(value: Int32): JSNumber {
         JSNumber(JSValue(this, unsafe { ARKTS_CreateI32(value) }))
@@ -301,8 +291,7 @@ public class JSContext {
      * Create an ArkTS string.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func string(value: String): JSString {
         JSString(this, value)
@@ -312,8 +301,7 @@ public class JSContext {
      * Create an ArkTS string.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func string(value: Utf16String): JSString {
         JSString(this, value)
@@ -323,8 +311,7 @@ public class JSContext {
      * Create an empty ArkTS object reference.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func object(): JSObject {
         JSObject(this)
@@ -334,8 +321,7 @@ public class JSContext {
      * Create an ArkTS function.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func function(lambda: JSLambda): JSFunction {
         JSFunction(this, lambda)
@@ -345,8 +331,7 @@ public class JSContext {
      * Create an ArkTS array.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func array(arr: Array<JSValue>): JSArray {
         JSArray(this, arr)
@@ -356,8 +341,7 @@ public class JSContext {
      * Create an ArkTS class.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass {
         JSClass(this, ctor, superClass)
@@ -367,8 +351,7 @@ public class JSContext {
      * Create an ArkTS reference to Cangjie object.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func external(data: SharedObject): JSExternal {
         JSExternal(this, data)
@@ -378,8 +361,7 @@ public class JSContext {
      * Create an ArkTS Promise.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func promiseCapability(): JSPromiseCapability {
         JSPromiseCapability(this)
@@ -425,8 +407,7 @@ public class JSContext {
      * @throws {BusinessException} 34300001 - Length is thess than 0.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(length: Int32): JSArrayBuffer {
         if (length <= 0) {
@@ -439,8 +420,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<Byte>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -450,8 +430,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<Int8>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -461,8 +440,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<Int16>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -472,8 +450,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -483,8 +460,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -494,8 +470,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<Int32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -505,8 +480,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<Float32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -516,8 +490,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<Int64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -527,8 +500,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -538,8 +510,7 @@ public class JSContext {
      * Create an ArkTS ArrayBuffer.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func arrayBuffer(data: Array<Float64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -551,8 +522,7 @@ public class JSContext {
      * @throws {BusinessException} 34300001 - Length is thess than 0.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer: JSBufferFinalizer): JSArrayBuffer {
         if (length <= 0) {
@@ -565,8 +535,7 @@ public class JSContext {
      * Create an ArkTS symbol.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func symbol(description!: String = ""): JSSymbol {
         JSSymbol(this, description)
@@ -576,8 +545,7 @@ public class JSContext {
      * Create an ArkTS bigint.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func bigint(value: Int64): JSBigInt {
         JSBigInt(this, value)
@@ -587,8 +555,7 @@ public class JSContext {
      * Create an ArkTS bigint.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func bigint(value: BigInt): JSBigInt {
         JSBigInt(this, value)
@@ -598,8 +565,7 @@ public class JSContext {
      * Create a task to be executed in ArkTS thread.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func postJSTask(callback: () -> Unit): Unit {
         let id = asyncCallbacks_.append(callback)
@@ -612,8 +578,7 @@ public class JSContext {
      * Load the built-in ArkTS napi module of the system.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func requireSystemNativeModule(moduleName: String, prefix!: ?String = None): JSValue {
         unsafe {

@@ -37,8 +37,7 @@ func cjExternalDestructor(id: Int64, env: JSEnv): Unit {
  *  a global table. The id used to index the object.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public open class SharedObject {
     var nativeId_: Int64 = -1
@@ -48,8 +47,7 @@ public open class SharedObject {
      * Init SharedObject.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public init() {}
 
@@ -57,8 +55,7 @@ public open class SharedObject {
      * Id of the SharedObject in global table.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public prop nativeId: Int64 {
         get() {
@@ -71,8 +68,7 @@ public open class SharedObject {
  * The js presentation of a cj object. It holds the id of cj object, and affects the lifecycle of the cj object.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSExternal <: JSHeapObject {
     static func createExternal(context: JSContext, data: SharedObject): JSValue_ {
@@ -112,8 +108,7 @@ public class JSExternal <: JSHeapObject {
      * Get sharedObject by id.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func getData(): SharedObject {
         context.sharedObjects_[id]
@@ -123,8 +118,7 @@ public class JSExternal <: JSHeapObject {
      * Cast sharedObject to Option<T>.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public func cast<T>(): Option<T> where T <: SharedObject {
         getData() as T

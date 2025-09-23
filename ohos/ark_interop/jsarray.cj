@@ -35,8 +35,7 @@ foreign func ARKTS_GetElement(env: JSEnv, arr: JSValue_, index: UInt32): JSValue
  * It supports getting length, reading and writing elements.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "21"
 ]
 public class JSArray <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -71,8 +70,7 @@ public class JSArray <: JSHeapObject {
      * Array length.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public prop size: Int64 {
         get() {
@@ -86,8 +84,7 @@ public class JSArray <: JSHeapObject {
      * @throws { BusinessException } 34300001 - The index is out of range.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public operator func [](index: Int64): JSValue {
         if (index < 0 || index >= size) {
@@ -103,8 +100,7 @@ public class JSArray <: JSHeapObject {
      * @throws { BusinessException } 34300001 - The index is less than 0.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public operator func [](index: Int64, value!: JSValue): Unit {
         if (index < 0) {
@@ -119,8 +115,7 @@ public class JSArray <: JSHeapObject {
      * @throws { BusinessException } 34300001 - The index is less than 0.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "21"
     ]
     public operator func [](index: Int64, value!: JSHeapObject): Unit {
         if (index < 0) {
