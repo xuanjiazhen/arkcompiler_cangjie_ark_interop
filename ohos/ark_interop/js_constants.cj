@@ -51,6 +51,7 @@ class JSBuiltinText {
     let name: JSString
     let message: JSString
     let stack: JSString
+    let code: JSString
     let prototype: JSString
     let __proto__: JSString
     let __cj_object__: JSSymbol
@@ -77,6 +78,7 @@ class JSBuiltinText {
         next = context.string("next")
         done = context.string("done")
         value = context.string("value")
+        code = context.string("code")
     }
 }
 
@@ -102,6 +104,15 @@ class JSMapFuncs {
     }
 }
 
+func loadGlobalClass(context: JSContext, name: String): JSClass {
+    context.env // do lifecycle check and thread check here.
+    let value = context.global[name]
+    if (!value.isClass()) {
+        throw propertyError("global", name, "class")
+    }
+    value.asClass()
+}
+
 class JSTypedArrayFuncs {
     let arrayBuffer: LazyInit<JSClass>
     let dataView: LazyInit<JSClass>
@@ -119,43 +130,43 @@ class JSTypedArrayFuncs {
 
     init(context: JSContext) {
         arrayBuffer = LazyInit {
-            context.global["ArrayBuffer"].asClass()
+            loadGlobalClass("ArrayBuffer")
         }
         dataView = LazyInit {
-            context.global["DataView"].asClass()
+            loadGlobalClass("DataView")
         }
         uint8Array = LazyInit {
-            context.global["Uint8Array"].asClass()
+            loadGlobalClass("Uint8Array")
         }
         uint8Clamped = LazyInit {
-            context.global["Uint8ClampedArray"].asClass()
+            loadGlobalClass("Uint8ClampedArray")
         }
         int8Array = LazyInit {
-            context.global["Int8Array"].asClass()
+            loadGlobalClass("Int8Array")
         }
         uint16Array = LazyInit {
-            context.global["Uint16Array"].asClass()
+            loadGlobalClass("Uint16Array")
         }
         int16Array = LazyInit {
-            context.global["Int16Array"].asClass()
+            loadGlobalClass("Int16Array")
         }
         uint32Array = LazyInit {
-            context.global["Uint32Array"].asClass()
+            loadGlobalClass("Uint32Array")
         }
         int32Array = LazyInit {
-            context.global["Int32Array"].asClass()
+            loadGlobalClass("Int32Array")
         }
         int64Array = LazyInit {
-            context.global["BigInt64Array"].asClass()
+            loadGlobalClass("BigInt64Array")
         }
         uint64Array = LazyInit {
-            context.global["BigUint64Array"].asClass()
+            loadGlobalClass("BigUint64Array")
         }
         float32Array = LazyInit {
-            context.global["Float32Array"].asClass()
+            loadGlobalClass("Float32Array")
         }
         float64Array = LazyInit {
-            context.global["Float64Array"].asClass()
+            loadGlobalClass("Float64Array")
         }
     }
 }

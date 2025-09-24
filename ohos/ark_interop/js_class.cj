@@ -27,10 +27,7 @@ foreign func ARKTS_New(env: JSEnv, constructor: JSValue_, argCount: Int32, args:
  * The JSClass object is used to represent a safe reference to the ArkTS class (constructor).
  * Method and accessors can be added to this class, and instances of this class can be created.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[since: "22"]
 public class JSClass <: JSHeapObject {
     static func createClass(context: JSContext, constructor: JSLambda, superClass: ?JSClass): JSValue_ {
         let lambdaId = context.sharedLambda_.append(constructor)
@@ -38,7 +35,9 @@ public class JSClass <: JSHeapObject {
             case Some(v) => v.innerValue
             case None => context.undefined().toJSValue().value
         }
-        unsafe { ARKTS_CreateClass(context.env, lambdaId, baseValue) }
+        let result = unsafe { ARKTS_CreateClass(context.env, lambdaId, baseValue) }
+        context.checkJSException() // in case of ArkTS OOM
+        return result
     }
 
     private let prototype_: ?JSObject
@@ -68,75 +67,97 @@ public class JSClass <: JSHeapObject {
     }
 
     /**
-     * Prototype obejct of class.
+     * Prototype object of class.
      *
-     * @throws { NoneValueException } - The value of prototype is None.
+     * @throws { BusinessException } 34300011 - Property is not target type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public prop prototype: JSObject {
         get() {
-            prototype_.getOrThrow()
+            prototype_.getOrThrow {
+                propertyError("class", "prototype", "object")
+            }
         }
     }
 
     /**
      * Instantiate a new object through the ArkTS class.
+     *
+     * @throws { BusinessException } 34300002 - ArkTS error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func new(): JSValue {
-        let result = unsafe { ARKTS_New(context.env, innerValue, 0, CPointer<JSValue_>()) }
+        let env = context.env // do lifecycle check and thread check here.
+        let result = unsafe { ARKTS_New(env, innerValue, 0, CPointer<JSValue_>()) }
         JSValue(context, result)
     }
 
     /**
      * Instantiate a new object through the ArkTS class.
+     *
+     * @throws { BusinessException } 34300002 - ArkTS error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func new(arg: JSValue): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         var mutableArg = arg.value
-        let result = unsafe { ARKTS_New(context.env, innerValue, 1, inout mutableArg) }
+        let result = unsafe { ARKTS_New(env, innerValue, 1, inout mutableArg) }
         JSValue(context, result)
     }
 
     /**
      * Instantiate a new object through the ArkTS class.
+     *
+     * @throws { BusinessException } 34300002 - ArkTS error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func new(args: Array<JSValue>): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let result = if (args.size > 0) {
             let jsArr = Array<JSValue_>(args.size) {
                 index => args[index].value
             }
             unsafe {
                 let rawHandle = acquireArrayRawData(jsArr)
-                let result = ARKTS_New(context.env, innerValue, Int32(args.size), rawHandle.pointer)
+                let result = ARKTS_New(env, innerValue, Int32(args.size), rawHandle.pointer)
                 releaseArrayRawData(rawHandle)
                 result
             }
         } else {
-            unsafe { ARKTS_New(context.env, innerValue, 0, CPointer<JSValue_>()) }
+            unsafe { ARKTS_New(env, innerValue, 0, CPointer<JSValue_>()) }
         }
         JSValue(context, result)
     }
 
     /**
      * Add a data member to the ArkTS class, typically used to define immutable property.
+     *
+     * @throws { BusinessException } 34300002 - ArkTS error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300011 - Property is not target type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func addProperty(key: JSKeyable, value: JSValue): Unit {
         prototype.defineOwnProperty(key, value, isWritable: false, isEnumerable: false)
@@ -144,10 +165,15 @@ public class JSClass <: JSHeapObject {
 
     /**
      * Define a pair of getter and setter for the ArkTS class.
+     *
+     * @throws { BusinessException } 34300002 - ArkTS error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300011 - Property is not target type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func addAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?JSFunction = None): Unit {
         prototype.defineOwnAccessor(key, getter: getter, setter: setter, isEnumerable: false)
@@ -155,10 +181,15 @@ public class JSClass <: JSHeapObject {
 
     /**
      * Define a pair of getter and setter for the ArkTS class.
+     *
+     * @throws { BusinessException } 34300002 - ArkTS error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300011 - Property is not target type.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func addAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSLambda = None): Unit {
         prototype.defineOwnAccessor(key, getter: getter, setter: setter, isEnumerable: false)
@@ -166,10 +197,14 @@ public class JSClass <: JSHeapObject {
 
     /**
      * Define a method for the ArkTS class.
-     */
+     *
+     * @throws { BusinessException } 34300002 - ArkTS error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300011 - Property is not target type.
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func addMethod(key: JSKeyable, method: JSFunction): Unit {
         prototype.defineOwnProperty(key, method.toJSValue(), isWritable: false, isEnumerable: false)
@@ -177,10 +212,14 @@ public class JSClass <: JSHeapObject {
 
     /**
      * Define a method for the ArkTS class.
-     */
+     *
+     * @throws { BusinessException } 34300002 - ArkTS error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300011 - Property is not target type.
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func addMethod(key: JSKeyable, method: JSLambda): Unit {
         prototype.defineOwnProperty(key, JSValue(context, JSFunction.createFunction(context, method)), isWritable: false,
