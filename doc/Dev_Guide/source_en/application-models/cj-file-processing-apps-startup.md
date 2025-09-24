@@ -1,18 +1,16 @@
-# Launching File Handling Applications (startAbility)
+# Launching File Handler Applications (startAbility)
 
 ## Usage Scenario
 
-Developers can invoke the [startAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-startabilitywant) interface to allow the system to search for and launch an appropriate application from installed apps to open a specific file.
+For instance, when a browser application downloads a PDF file, this interface can be invoked to select a file handler application to open the PDF. Developers need to specify the URI path ([uri](#Key Parameter Specifications)) and file format ([type](#Key Parameter Specifications)) in the request, enabling the system to either directly launch a file-opening application or display a selection dialog for users to choose an appropriate application. The visual effect is illustrated below.
 
-For example, when a browser downloads a PDF file, this interface can be called to select a file-handling application to open the PDF. Developers need to set fields such as the URI path of the file to be opened ([uri](#Key Parameter Descriptions)) and the file format ([type](#Key Parameter Descriptions)) in the request, enabling the system to identify and either directly launch the file-opening application or display a selection dialog for the user to choose an appropriate application. The effect is illustrated in the figure below.
-
-Figure 1: Illustration of the Effect
+Figure 1 Visual Demonstration
 
 ![file-open](figures/file-open.jpeg)
 
-## Key Parameter Descriptions
+## Key Parameter Specifications
 
-Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-startabilitywant) interface to open files with installed vertical-domain applications.
+## Implementation Steps
 
 **Table 1** Description of [Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want) Parameters in startAbility Requests
 
@@ -43,11 +41,11 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
 ### Caller Integration Steps
 
 1. Import relevant modules.
-    
+
     <!-- compile -->
 
     ```cangjie
-    // xxx.cj
+
     import kit.AbilityKit.{UIAbility, Want, LaunchParam, Flags}
     import kit.ArkUI.WindowStage
     import kit.CoreFileKit.FileUri
@@ -55,44 +53,44 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
     ```
 
 2. Obtain the application file path.
-    
+
     <!-- compile -->
 
     ```cangjie
-    // xxx.ets
-    // Assume the application bundleName is com.example.demo
+
+    // Assuming the application bundleName is com.example.demo
     class MainAbility <: UIAbility {
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
             // Get the file sandbox path
             let filePath = this
             .context
             .filesDirectory + '/test1.txt'
-            // Convert the sandbox path to a URI
+            // Convert sandbox path to URI
             let uri = FileUri.getUriFromPath(filePath)
-            // The obtained URI is "file://com.example.demo/data/storage/el2/base/files/test.txt"
+            // The obtained URI will be "file://com.example.demo/data/storage/el2/base/files/test.txt"
         }
         // ...
     }
     ```
 
-3. Construct the request data.
-    
+3. Construct request data.
+
     <!-- compile -->
 
     ```cangjie
-    // xxx.ets
-    // Assume the application bundleName is com.example.demo
+
+    // Assuming the application bundleName is com.example.demo
     class MainAbility <: UIAbility {
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
             // Get the file sandbox path
             let filePath = this
             .context
             .filesDirectory + '/test1.txt'
-            // Convert the sandbox path to a URI
+            // Convert sandbox path to URI
             let uri = FileUri.getUriFromPath(filePath)
-            // Construct the request data
+            // Construct request data
             let want = Want(
-                action: "ohos.want.action.viewData", // Fixed value for file-opening scenarios
+                action: "ohos.want.action.viewData", // Fixed value for file opening scenarios, indicating data viewing operation
                 uri: uri,
                 `type`: 'general.plain-text', // File type to be opened
                 // Configure read/write permissions for the shared file
@@ -103,12 +101,12 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
     }
     ```
 
-4. Invoke the interface to launch.
-    
+4. Invoke the launch interface.
+
     <!-- compile -->
 
     ```cangjie
-    // xxx.cj
+
     class MainAbility <: UIAbility {
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
             AppLog.info("MainAbility onWindowStageCreate.")
@@ -116,12 +114,12 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
             let filePath = this
                 .context
                 .filesDirectory + '/test1.txt'
-            // Convert the sandbox path to a URI
+            // Convert sandbox path to URI
             let uri = FileUri.getUriFromPath(filePath)
-            // The obtained URI is "file://com.example.demo/data/storage/el2/base/files/test1.txt"
-            // Construct the request data
+            // The obtained URI will be "file://com.example.demo/data/storage/el2/base/files/test1.txt"
+            // Construct request data
             let want = Want(
-                action: "ohos.want.action.viewData", // Fixed value for file-opening scenarios
+                action: "ohos.want.action.viewData", // Fixed value for file opening scenarios, indicating data viewing operation
                 uri: uri,
                 `type`: 'general.plain-text', // File type to be opened
                 // Configure read/write permissions for the shared file
@@ -138,11 +136,11 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
     }
     ```
 
-### Target Application Integration Steps
+### Target Application Implementation Steps
 
-1. Declare file-opening capability.
+1. Declare file handling capability.
 
-    Applications supporting file opening must declare this capability in the [module.json5](../cj-start/basic-knowledge/module-configuration-file.md) configuration file. The `uris` field specifies the supported URI types, where `scheme` must be `file`. The `type` field indicates the supported file types (see [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)). In the example below, the type is `txt` files.
+    Applications supporting file opening must declare this capability in the [module.json5](../cj-start/basic-knowledge/module-configuration-file.md) configuration file. The `uris` field specifies supported URI types (with `scheme` fixed as `file`), while `type` indicates supported file formats (refer to [MIME type list](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)). The example below demonstrates support for TXT files.
 
     ```json
     {
@@ -154,14 +152,14 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
             "skills": [
             {
                 "actions": [
-                "ohos.want.action.viewData" // Required, declares data-handling capability
+                "ohos.want.action.viewData" // Required: Declares data handling capability
                 ],
                 "uris": [
                 {
-                    // Allows opening local files with URIs starting with file://
-                    "scheme": "file", // Required, declares the protocol type as file
-                    "type": "general.plain-text", // Required, declares the supported file type
-                    "linkFeature": "FileOpen" // Required and case-sensitive, indicates the URI's function is file opening
+                    // Allows opening local files with URI starting with file:// protocol
+                    "scheme": "file", // Required: Declares file protocol type
+                    "type": "general.plain-text", // Required: Specifies supported file type
+                    "linkFeature": "FileOpen" // Required (case-sensitive): Indicates URI functionality for file opening
                 }
                 // ...
                 ]
@@ -174,14 +172,12 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
     }
     ```
 
-2. Handle the file to be opened.
-
-    After being launched, the application retrieves the [Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want) parameter, extracts the file URI, and performs operations such as reading or writing the file.
+2. Process target files.
 
     <!-- compile -->
 
     ```cangjie
-    // xxx.cj
+
     import kit.AbilityKit.{UIAbility, Want, LaunchParam}
     import kit.ArkUI.{WindowStage}
     import kit.CoreFileKit.{FileFs, OpenMode}
@@ -189,14 +185,14 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
 
     class MainAbility <: UIAbility {
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            // Extract the URI from the Want parameter
+            // Extract URI from want information
             let uri = want.uri
             if (uri == "") {
                 AppLog.error('uri is invalid')
                 return
             }
             try {
-                // Perform operations based on the file URI. For example, open the file synchronously for reading/writing
+                // Perform operations based on the target file URI. Example: Open URI synchronously to obtain file object
                 let file = FileFs.open(uri, mode: OpenMode
                     .READ_WRITE
                     .mode)
