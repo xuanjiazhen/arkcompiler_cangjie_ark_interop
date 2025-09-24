@@ -35,8 +35,8 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
 
 | Parameter Name                       | Value       | Description                       |
 |--------------------------------------|-------------|-----------------------------------|
-| FLAG_AUTH_READ_URI_PERMISSION        | 0x00000001  | Grants read permission for the URI. |
-| FLAG_AUTH_WRITE_URI_PERMISSION       | 0x00000002  | Grants write permission for the URI. |
+| FlagAuthReadUriPermission        | 0x00000001  | Grants read permission for the URI. |
+| FlagAuthWriteUriPermission       | 0x00000002  | Grants write permission for the URI. |
 
 ## Integration Steps
 
@@ -96,7 +96,7 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
                 uri: uri,
                 `type`: 'general.plain-text', // File type to be opened
                 // Configure read/write permissions for the shared file
-                flags: Flags.FLAG_AUTH_WRITE_URI_PERMISSION.getValue() | Flags.FLAG_AUTH_READ_URI_PERMISSION.getValue()
+                flags: Flags.FlagAuthWriteUriPermission.getValue() | Flags.FlagAuthReadUriPermission.getValue()
             )
         }
         // ...
@@ -125,7 +125,7 @@ Developers can use the [startAbility](../../../API_Reference/source_zh_cn/apis/A
                 uri: uri,
                 `type`: 'general.plain-text', // File type to be opened
                 // Configure read/write permissions for the shared file
-                flags: Flags.FLAG_AUTH_WRITE_URI_PERMISSION.getValue() | Flags.FLAG_AUTH_READ_URI_PERMISSION.getValue()
+                flags: Flags.FlagAuthWriteUriPermission.getValue() | Flags.FlagAuthReadUriPermission.getValue()
             )
             try {
                 this

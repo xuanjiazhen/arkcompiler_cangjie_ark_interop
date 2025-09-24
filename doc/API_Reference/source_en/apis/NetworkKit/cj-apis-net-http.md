@@ -2213,7 +2213,7 @@ let option = HttpRequestOptions(
         "/path/to/client.pem", // Default: no client certificate
         "/path/to/client.key", // If certificate includes Key info, pass empty string
         certType: CertType.PEM, // Optional, defaults to PEM
-        keyPassword: "passwordToKey" // Optional, password for key file
+        keyPassword: "PASSWORD_TO_KEY" // Optional, password for key file
     ),
     multiFormDataList: [ // Optional, only effective when 'content-Type' in Header is 'multipart/form-data'
         MultiFormData (

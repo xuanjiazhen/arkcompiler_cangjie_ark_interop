@@ -1724,7 +1724,7 @@ let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Con
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
+let burstKey = YOUR_UUID //The UUID of the submitted photo.
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
 
