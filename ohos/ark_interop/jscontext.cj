@@ -79,6 +79,9 @@ foreign func ARKTS_CloseScope(env: JSEnv, scope: JSScope): Unit
 @FastNative
 foreign func ARKTS_GetGlobalNapiEnv(env: JSEnv): napi_env
 
+@FastNative
+foreign func ARKTS_GetExceptionAndClear(env: JSEnv): JSValue_
+
 @C
 func asyncCallbackExecutor(env: JSEnv, id: Int64): Unit {
     let context = JSContext.getOrCreate(env)
@@ -101,10 +104,7 @@ func disposeJSContext(env: JSEnv): Unit {
  * Its main purpose is to create JSValues and safe references and manage the lifecycle of Cangjie objects 
  * referenced by ArkTS.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodeonly: true]
 public class JSContext {
     static let allRuntimes_ = HashMap<JSEnv, JSContext>()
     static let runtimesMutex = Mutex()
@@ -126,7 +126,7 @@ public class JSContext {
     var asyncCallbacks_ = SlabMT<() -> Unit>()
 
     let env_: JSEnv
-    private var disposed_: Bool = false
+    private var disposed_ = AtomicInt8(0)
     private let bindTid_: UInt64
     var global_: ?JSObject = None
     var constants_: ?JSConstants = None
@@ -148,7 +148,24 @@ public class JSContext {
     }
 
     func dispose(): Unit {
-        disposed_ = true
+        while (!disposed_.compareAndSwap(0, -1)) {
+            // wait for other thread to finish
+        }
+    }
+
+    func keepAlive(callback: ()->Unit): Bool {
+        while (true) {
+            let value = disposed_.load()
+            if (value == -1) {
+                return false
+            }
+            if (disposed_.compareAndSwap(0, 1)) {
+                break
+            }
+        }
+        callback()
+        disposed_.store(0)
+        return true
     }
 
     prop constants: JSConstants {
@@ -166,16 +183,13 @@ public class JSContext {
     /**
      * Check whether the current thread can execute interop interface.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodeonly: true]
     public func isInBindThread(): Bool {
         bindTid_ == unsafe { ARKTS_GetPosixThreadId() }
     }
 
     func checkAlive(): Unit {
-        if (disposed_) {
+        if (disposed_.load() < 0) {
             throw jsObjUseAfterFree("JSContext")
         }
     }
@@ -188,17 +202,21 @@ public class JSContext {
 
     /**
      * ArkTS global environment variable.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public prop global: JSObject {
         get() {
+            let env = this.env // do lifecycle check and thread check here.
             match (global_) {
                 case Some(data) => data
                 case None =>
-                    let local = JSValue(this, unsafe { ARKTS_GetGlobalConstant(env_) })
+                    let local = JSValue(this, unsafe { ARKTS_GetGlobalConstant(env) })
                     let result = local.asObject()
                     global_ = result
                     result
@@ -208,25 +226,35 @@ public class JSContext {
 
     /**
      * ArkTS interop context.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public prop env: JSEnv {
         get() {
-            checkAlive()
-            checkThread()
+            checkLifecycleAndThread()
             env_
         }
     }
 
+    func checkLifecycleAndThread(): Unit {
+        checkAlive()
+        checkThread()
+    }
+
     /**
      * Get napi environment pointer.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func getNapiEnv(): napi_env {
         unsafe {
@@ -244,65 +272,89 @@ public class JSContext {
 
     /**
      * Create an ArkTS undefined.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func undefined(): JSUndefined {
+        checkLifecycleAndThread()
         JSUndefined(void)
     }
 
     /**
      * Create an ArkTS null.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func null(): JSNull {
+        checkLifecycleAndThread()
         JSNull(JSValue(this, unsafe { ARKTS_CreateNull() }))
     }
 
     /**
      * Create an ArkTS boolean.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func boolean(value: Bool): JSBoolean {
+        checkLifecycleAndThread()
         JSBoolean(JSValue(this, unsafe { ARKTS_CreateBool(value) }))
     }
 
     /**
      * Create an ArkTS number.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func number(value: Float64): JSNumber {
+        checkLifecycleAndThread()
         JSNumber(JSValue(this, unsafe { ARKTS_CreateF64(value) }))
     }
 
     /**
      * Create an ArkTS number.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func number(value: Int32): JSNumber {
+        checkLifecycleAndThread()
         JSNumber(JSValue(this, unsafe { ARKTS_CreateI32(value) }))
     }
 
     /**
      * Create an ArkTS string.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func string(value: String): JSString {
         JSString(this, value)
@@ -310,10 +362,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS string.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func string(value: Utf16String): JSString {
         JSString(this, value)
@@ -321,10 +377,14 @@ public class JSContext {
 
     /**
      * Create an empty ArkTS object reference.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func object(): JSObject {
         JSObject(this)
@@ -332,10 +392,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS function.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func function(lambda: JSLambda): JSFunction {
         JSFunction(this, lambda)
@@ -343,10 +407,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS array.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func array(arr: Array<JSValue>): JSArray {
         JSArray(this, arr)
@@ -354,10 +422,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS class.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass {
         JSClass(this, ctor, superClass)
@@ -365,10 +437,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS reference to Cangjie object.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func external(data: SharedObject): JSExternal {
         JSExternal(this, data)
@@ -376,10 +452,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS Promise.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func promiseCapability(): JSPromiseCapability {
         JSPromiseCapability(this)
@@ -422,11 +502,14 @@ public class JSContext {
     /**
      * Create an ArkTS ArrayBuffer.
 	 *
-     * @throws {BusinessException} 34300001 - Length is thess than 0.
+     * @throws { BusinessException } 34300001 - The arrayBuffer length is invalid.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(length: Int32): JSArrayBuffer {
         if (length <= 0) {
@@ -437,10 +520,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<Byte>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -448,10 +535,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<Int8>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -459,10 +550,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<Int16>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -470,10 +565,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -481,10 +580,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -492,10 +595,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<Int32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -503,10 +610,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<Float32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -514,10 +625,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<Int64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -525,10 +640,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -536,10 +655,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func arrayBuffer(data: Array<Float64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -548,11 +671,14 @@ public class JSContext {
     /**
      * Create an ArkTS ArrayBuffer.
 	 *
-     * @throws {BusinessException} 34300001 - Length is thess than 0.
+     * @throws { BusinessException } 34300001 - The arrayBuffer length is invalid.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer: JSBufferFinalizer): JSArrayBuffer {
         if (length <= 0) {
@@ -563,10 +689,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS symbol.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func symbol(description!: String = ""): JSSymbol {
         JSSymbol(this, description)
@@ -574,10 +704,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS bigint.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func bigint(value: Int64): JSBigInt {
         JSBigInt(this, value)
@@ -585,10 +719,14 @@ public class JSContext {
 
     /**
      * Create an ArkTS bigint.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func bigint(value: BigInt): JSBigInt {
         JSBigInt(this, value)
@@ -597,25 +735,27 @@ public class JSContext {
     /**
      * Create a task to be executed in ArkTS thread.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodeonly: true]
     public func postJSTask(callback: () -> Unit): Unit {
-        let id = asyncCallbacks_.append(callback)
-        unsafe {
-            ARKTS_CreateAsyncTask(env_, id)
+        keepAlive {
+            let id = asyncCallbacks_.append(callback)
+            unsafe { ARKTS_CreateAsyncTask(env_, id) }
         }
     }
 
     /**
      * Load the built-in ArkTS napi module of the system.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        stagemodeonly: true
     ]
     public func requireSystemNativeModule(moduleName: String, prefix!: ?String = None): JSValue {
+        let env = this.env // do lifecycle check and thread check here.
         unsafe {
             let moduleNameC = LibC.mallocCString(moduleName)
             let result = if (let Some(p) <- prefix) {
@@ -627,7 +767,44 @@ public class JSContext {
                 ARKTS_Require(env, moduleNameC, true, false, CString(CPointer<UInt8>()))
             }
             LibC.free(moduleNameC)
+            checkJSException()
             return JSValue(this, result)
         }
+    }
+
+    func checkJSException(): Unit {
+        let error = unsafe {
+            let value_ = ARKTS_GetExceptionAndClear(env_)
+            let valueType = ARKTS_GetValueType(env_, value_)
+            if (valueType == JSType.UNDEFINED) {
+                return
+            }
+            if (valueType != JSType.OBJECT) {
+                throw Exception("unknown ArkTS error, addr: ${value_.value}")
+            }
+            JSObject(this, value_)
+        }
+        let rawMsg = error[constants.builtinText.message]
+        let message = "[${error.getClassName()}]" + if (rawMsg.isString()) {
+            rawMsg.toString()
+        } else {
+            "undefined"
+        }
+        let rawStack = error[constants.builtinText.stack]
+        let stack: Array<String> = if (rawStack.isArray()) {
+            let jStack = rawStack.asArray()
+            Array<String>(jStack.size) { idx =>
+                jStack[idx].toString()
+            }
+        } else {
+            []
+        }
+        let rawCode = error[constants.builtinText.code]
+        let code = if (rawCode.isNumber()) {
+            Int32(rawCode.toNumber())
+        } else {
+            Int32(0)
+        }
+        jsCodeError(code, message, stack)
     }
 }

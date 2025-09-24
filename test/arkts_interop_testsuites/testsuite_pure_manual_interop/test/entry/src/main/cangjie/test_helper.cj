@@ -25,7 +25,7 @@ func testInteropHelper() {
     let context = getJSContext()
     let env = context.getNapiEnv()
     let jsValue = context.boolean(true).toJSValue()
-    let napiValue = arkTsValuetoNapiValue(env, jsValue)
+    let napiValue = arktsValuetoNapiValue(env, jsValue)
     // let isStage = isStageMode(env, napiValue)
     // @Expect(!isStage)
 }
