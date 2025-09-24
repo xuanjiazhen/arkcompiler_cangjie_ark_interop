@@ -81,10 +81,7 @@ foreign func ARKTS_DefineAccessorsV2(env: JSEnv, object: JSValue_, key: JSValue_
 /**
  * Base class of a safe reference to ArkTS object.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22]
 abstract sealed class JSObjectBase <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
@@ -92,13 +89,17 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Check whether the current object is an instance of the target ArkTS class. 
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func instanceOf(clazz: JSClass): Bool {
-        instanceOfByValue(context.env, innerValue, clazz.innerValue)
+        let env = context.env // do lifecycle check and thread check here.
+        instanceOfByValue(env, innerValue, clazz.innerValue)
     }
 
     static func instanceOfByValue(env: JSEnv, object: JSValue_, clazz: JSValue_): Bool {
@@ -107,10 +108,13 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Check whether the current object has the target property. 
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func hasProperty(key: JSKeyable): Bool {
         let keyValue = key.toJSValue(context)
@@ -119,10 +123,14 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Get the property value of the current object. 
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func getProperty(key: JSKeyable): JSValue {
         let keyValue = key.toJSValue(context)
@@ -132,10 +140,14 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Get the property value of the current object. 
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public operator func [](key: JSKeyable): JSValue {
         getProperty(key)
@@ -144,26 +156,48 @@ abstract sealed class JSObjectBase <: JSHeapObject {
     /**
      * Call method corressponding to the key of the JSObject.
 	 *
-     * @throws {BusinessException} 34300005 - Object is not JSFunction.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue {
         let fun = getProperty(key)
         if (!fun.isFunction()) {
-            throw jsTypeMisMatch(JSType.FUNCTION, fun.typeof())
+            throw propertyError(getClassName(), key.toString(), "function")
         }
-        JSFunction.callWithArr(context, fun.value, innerValue, args)
+        let rawArgs = Array(args.size) { idx =>
+            args[idx].value
+        }
+        let value = JSFunction.callWithArr(context.env, fun.value, innerValue, rawArgs)
+        JSValue(context, value)
+    }
+
+    func getClassName(): String {
+        let ctor = this["constructor"]
+        if (!ctor.isObject() || !ctor.isFunction()) {
+            return "[unknown]"
+        }
+        let name = ctor.getProperty("name")
+        if (!name.isString()) {
+            return "[unknown]"
+        }
+        return "[${name.toString()}]"
     }
 
     /**
-     * Set property to the current object. 
+     * Set property to the current object.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
         let keyValue = key.toJSValue(context)
@@ -172,10 +206,14 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Set property to the current object. 
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public operator func [](key: JSKeyable, value!: JSValue): Unit {
         setProperty(key, value)
@@ -183,10 +221,14 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Define property on the current object. 
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func defineOwnProperty(key: JSKeyable, setValue: JSValue, isWritable!: Bool = true,
         isEnumerable!: Bool = true, isConfigurable!: Bool = true): Bool {
@@ -197,10 +239,14 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Define accessor on the current object. 
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func defineOwnAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?JSFunction = None,
         isEnumerable!: Bool = false, isConfigurable!: Bool = false): Bool {
@@ -221,10 +267,14 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Define accessor on the current object. 
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func defineOwnAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSLambda = None,
         isEnumerable!: Bool = false, isConfigurable!: Bool = false): Bool {
@@ -246,10 +296,13 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Get all property names of the current object. 
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func keys(): Array<String> {
         let keyJArr = JSValue(context, unsafe { ARKTS_EnumOwnProperties(context.env, innerValue) })
@@ -283,10 +336,13 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Attach target JSExternal to the current object. 
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func attachCJObject(target: JSExternal): Unit {
         setAttachInfo(target.toJSValue())
@@ -294,10 +350,13 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 
     /**
      * Get the target JSExternal attached to the current object. 
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        22,
+        throwexception: true
     ]
     public func getAttachInfo(): ?JSExternal {
         let jValue = this[context.constants.builtinText.__cj_object__]
@@ -311,10 +370,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 /**
  * A secure reference to ArkTS object.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22]
 public class JSObject <: JSObjectBase {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
