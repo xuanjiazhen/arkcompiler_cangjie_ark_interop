@@ -1,10 +1,10 @@
-# 在 ArkTS 中加载仓颉模块
+# ArkTS 侧使用互操作代码
 
-此章节介绍如何在 ArkTS 中加载仓颉模块。在 ArkTS 中加载仓颉模块有三种方式：
+此章节介绍如何在 ArkTS 中使用互操作代码，有三种方式：
 
-- 使用 import 语法加载仓颉模块：从 API version 18 开始支持。
-- 使用 loadNativeModule 接口加载仓颉模块：从 API version 18 开始支持。
-- 使用 requireCJLib 接口加载仓颉模块：从 API version 12 开始支持。
+- 使用 import 语法加载仓颉模块使用：从 API version 18 开始支持。
+- 使用 loadNativeModule 接口加载仓颉模块使用：从 API version 18 开始支持。
+- 使用 requireCJLib 接口加载仓颉模块使用：从 API version 12 开始支持。
 
 ## 方式一：使用 import 语法加载仓颉模块
 
@@ -101,7 +101,7 @@
     ```typescript
     // 导入仓颉动态库，该动态库名称为仓颉包名的名称，该名称需要和互操作接口所在的包名一致
     import { addNumber } from "libohos_app_cangjie_entry.so";
-
+    
     // 调用仓颉接口
     let result = addNumber(1, 2);
     console.log(`1 + 2 = ${result}`);
@@ -202,7 +202,7 @@
     ```typescript
     // 使用 loadNativeModule 接口加载仓颉动态库
     let module: ESObject = loadNativeModule("libohos_app_cangjie_entry.so");
-
+    
     // 调用仓颉接口
     let result: number = module.addNumber(1, 2);
     console.log(`1 + 2 = ${result}`);
@@ -311,15 +311,15 @@ export declare function requireCJLib(moduleName: string): Object
     ```typescript
     // 导入仓颉加载器模块，该动态库名称是确定的，为加载器默认库
     import {requireCJLib} from "libark_interop_loader.so";
-
+    
     // 定义仓颉互操作函数接口，addNumber函数名称必须与仓颉侧映射到ArkTS侧的函数声明一致
     interface CustomLib {
         addNumber(a: number, b: number): number;
     }
-
+    
     // 导入仓颉动态库，该动态库名称为仓颉包名的名称，该名称需要和互操作接口所在的包名一致
     const cjLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
-
+    
     // 调用仓颉接口
     let result = cjLib.addNumber(1, 2);
     console.log(`1 + 2 = ${result}`);
@@ -376,7 +376,7 @@ export declare function requireCJLib(moduleName: string): Object
     ```typescript
     // 导入仓颉动态库，该动态库名称为仓颉包名的名称，该名称需要和互操作接口所在的包名一致
     import { addNumber } from "libohos_app_cangjie_entry.so";
-
+    
     // 调用仓颉接口
     let result = addNumber(1, 2);
     console.log(`1 + 2 = ${result}`);
@@ -387,15 +387,15 @@ export declare function requireCJLib(moduleName: string): Object
     ```typescript
     // 导入仓颉加载器模块，该动态库名称是确定的，为加载器默认库
     import {requireCJLib} from "libark_interop_loader.so";
-
+    
     // 定义仓颉互操作函数接口，addNumber函数名称必须与仓颉侧映射到ArkTS侧的函数声明一致
     interface CustomLib {
         addNumber(a: number, b: number): number;
     }
-
+    
     // 导入仓颉动态库，该动态库名称为仓颉包名的名称，该名称需要和互操作接口所在的包名一致
     const cjLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
-
+    
     // 调用仓颉接口
     let result = cjLib.addNumber(1, 2);
     console.log(`1 + 2 = ${result}`);
