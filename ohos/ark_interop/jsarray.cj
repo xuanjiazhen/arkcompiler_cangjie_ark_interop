@@ -34,7 +34,7 @@ foreign func ARKTS_GetElement(env: JSEnv, arr: JSValue_, index: UInt32): JSValue
  * The JSArray object is used to represent a safe reference to the ArkTS array.
  * It supports getting length, reading and writing elements.
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[since: "22"]
 public class JSArray <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
@@ -71,8 +71,7 @@ public class JSArray <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public prop size: Int64 {
         get() {
@@ -89,8 +88,7 @@ public class JSArray <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public operator func [](index: Int64): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -109,8 +107,7 @@ public class JSArray <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public operator func [](index: Int64, value!: JSValue): Unit {
         let env = context.env // do lifecycle check and thread check here.
@@ -128,8 +125,7 @@ public class JSArray <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public operator func [](index: Int64, value!: JSHeapObject): Unit {
         let env = context.env // do lifecycle check and thread check here.
