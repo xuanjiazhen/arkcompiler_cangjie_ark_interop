@@ -81,7 +81,7 @@ foreign func ARKTS_DefineAccessorsV2(env: JSEnv, object: JSValue_, key: JSValue_
 /**
  * Base class of a safe reference to ArkTS object.
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[since: "22"]
 abstract sealed class JSObjectBase <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
@@ -94,8 +94,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func instanceOf(clazz: JSClass): Bool {
         let env = context.env // do lifecycle check and thread check here.
@@ -113,8 +112,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func hasProperty(key: JSKeyable): Bool {
         let keyValue = key.toJSValue(context)
@@ -129,8 +127,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func getProperty(key: JSKeyable): JSValue {
         let keyValue = key.toJSValue(context)
@@ -146,8 +143,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public operator func [](key: JSKeyable): JSValue {
         getProperty(key)
@@ -161,8 +157,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue {
         let fun = getProperty(key)
@@ -196,8 +191,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
         let keyValue = key.toJSValue(context)
@@ -212,8 +206,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public operator func [](key: JSKeyable, value!: JSValue): Unit {
         setProperty(key, value)
@@ -227,8 +220,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func defineOwnProperty(key: JSKeyable, setValue: JSValue, isWritable!: Bool = true,
         isEnumerable!: Bool = true, isConfigurable!: Bool = true): Bool {
@@ -245,8 +237,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func defineOwnAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?JSFunction = None,
         isEnumerable!: Bool = false, isConfigurable!: Bool = false): Bool {
@@ -273,8 +264,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func defineOwnAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSLambda = None,
         isEnumerable!: Bool = false, isConfigurable!: Bool = false): Bool {
@@ -301,8 +291,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func keys(): Array<String> {
         let keyJArr = JSValue(context, unsafe { ARKTS_EnumOwnProperties(context.env, innerValue) })
@@ -341,8 +330,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func attachCJObject(target: JSExternal): Unit {
         setAttachInfo(target.toJSValue())
@@ -355,8 +343,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func getAttachInfo(): ?JSExternal {
         let jValue = this[context.constants.builtinText.__cj_object__]
@@ -370,7 +357,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
 /**
  * A secure reference to ArkTS object.
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[since: "22"]
 public class JSObject <: JSObjectBase {
     init(context: JSContext, value: JSValue_) {
         super(context, value)

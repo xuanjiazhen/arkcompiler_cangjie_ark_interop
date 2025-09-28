@@ -53,7 +53,7 @@ func JSBufferFinalizerStub(buffer: CPointer<Byte>, hint: Int64): Unit {
 /**
  * ArrayBuffer relative operation class, interop ArrayBuffer, DataView and TypedArrays	
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[since: "22"]
 public class JSArrayBuffer <: JSHeapObject {
     static var bufferFinalizers_ = SlabMT<JSBufferFinalizer>()
 
@@ -147,8 +147,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public prop byteLength: Int32 {
         get() {
@@ -170,8 +169,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func readBytes(): Array<Byte> {
         let env = context.env // do lifecycle check and thread check here.
@@ -197,8 +195,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt8Array(): Array<UInt8> {
         let env = context.env // do lifecycle check and thread check here.
@@ -219,8 +216,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toInt8Array(): Array<Int8> {
         let env = context.env // do lifecycle check and thread check here.
@@ -242,8 +238,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt16Array(): Array<UInt16> {
         let env = context.env // do lifecycle check and thread check here.
@@ -268,8 +263,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toInt16Array(): Array<Int16> {
         let env = context.env // do lifecycle check and thread check here.
@@ -294,8 +288,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toInt32Array(): Array<Int32> {
         let env = context.env // do lifecycle check and thread check here.
@@ -320,8 +313,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt32Array(): Array<UInt32> {
         let env = context.env // do lifecycle check and thread check here.
@@ -346,8 +338,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toFloat32Array(): Array<Float32> {
         let env = context.env // do lifecycle check and thread check here.
@@ -372,8 +363,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt64Array(): Array<UInt64> {
         let env = context.env // do lifecycle check and thread check here.
@@ -398,8 +388,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toInt64Array(): Array<Int64> {
         let env = context.env // do lifecycle check and thread check here.
@@ -424,8 +413,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toFloat64Array(): Array<Float64> {
         let env = context.env // do lifecycle check and thread check here.
@@ -450,8 +438,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toArrayBufferJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -484,8 +471,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt8ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -504,8 +490,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt8ClampedArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -524,8 +509,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toInt8ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -544,8 +528,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt16ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -564,8 +547,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toInt16ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -584,8 +566,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt32ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -604,8 +585,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toInt32ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -624,8 +604,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toUInt64ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -644,8 +623,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toInt64ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -664,8 +642,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toFloat32ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -684,8 +661,7 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22"
     ]
     public func toFloat64ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
