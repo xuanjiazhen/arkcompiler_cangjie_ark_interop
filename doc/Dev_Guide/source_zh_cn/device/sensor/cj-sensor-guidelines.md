@@ -117,3 +117,7 @@
         }
     }
     ```
+
+## 备注：
+
+传感器的开发均同上述加速度传感器ACCELEROMETER。需要注意的是，传感器分为周期传感器和瞬时传感器。周期传感器按预先设定的固定时间间隔采集并输出数据。瞬时传感器受特定触发事件影响才采集并输出数据，如计步传感器PEDOMETER，步数有变化会上报。瞬时传感器有HALL、PROXIMITY、WEAR_DETECTION、PEDOMETER、PEDOMETER_DETECTION。
