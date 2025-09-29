@@ -117,3 +117,7 @@
         }
     }
     ```
+
+## 备注：
+
+其他传感器的开发同上述加速度传感器ACCELEROMETER。需要注意的是，触发式传感器不受传感器上报频率限制，如计步传感器PEDOMETER，步数有变化就上报。触发式传感器有HALL、PROXIMITY、WEAR_DETECTION、PEDOMETER、PEDOMETER_DETECTION。
