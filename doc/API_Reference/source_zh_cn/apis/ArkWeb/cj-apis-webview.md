@@ -324,7 +324,9 @@ try {
     // 获取指定url的cookie
     let value = WebCookieManager.fetchCookie("https://www.example.com")
     Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
-    // 删除cookie
+    // ... 
+    // 此处执行业务逻辑，如加载带有cookie的网页。
+    // 执行完后清除cookie
     WebCookieManager.clearAllCookies()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
@@ -362,8 +364,10 @@ try {
     // 获取指定url的cookie
     let value = WebCookieManager.fetchCookie("https://www.example.com")
     Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
-    // 删除cookie
-    WebCookieManager.clearSessionCookie()
+    // ... 
+    // 此处执行业务逻辑，如加载带有cookie的网页。
+    // 执行完后清除cookie
+    WebCookieManager.clearAllCookies()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
 }
@@ -418,7 +422,9 @@ try {
     // 获取指定url的cookie
     let value = WebCookieManager.fetchCookie("https://www.example.com")
     Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
-    // 删除cookie
+    // ... 
+    // 此处执行业务逻辑，如加载带有cookie的网页。
+    // 执行完后清除cookie
     WebCookieManager.clearAllCookies()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
@@ -517,7 +523,9 @@ try {
     // 获取指定url的cookie
     let value = WebCookieManager.fetchCookie("https://www.example.com")
     Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
-    // 删除cookie
+    // ... 
+    // 此处执行业务逻辑，如加载带有cookie的网页。
+    // 执行完后清除cookie
     WebCookieManager.clearAllCookies()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
