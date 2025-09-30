@@ -17,15 +17,16 @@ class Stub <: RemoteObject {
     public func onRemoteMessageRequest(code: Int32, data: MessageSequence, reply: MessageSequence, option: MessageOption): Bool {
         match(code) {
             case 1:
-            // 按照客户端写入顺序读取对应数据，具体看业务逻辑
-            // 此处是根据后面客户端发送消息给服务端做的示例
-            let ret = MyParcelable()
-            data.readParcelable(ret)
-            // 发送数据给客户端
-            let ashmem = Ashmem.create("ashmem", 1024)
-            ashmen.writeDataToAshmem([1, 2, 3], 3, 0)
-            let mes = MyParcelable(1, "this is stub", ashmem)
-            reply.writeParcelable(mes)
+                // 按照客户端写入顺序读取对应数据，具体看业务逻辑
+                // 此处是根据后面客户端发送消息给服务端做的示例
+                let ret = MyParcelable()
+                data.readParcelable(ret)
+                // 发送数据给客户端
+                let ashmem = Ashmem.create("ashmem", 1024)
+                ashmen.writeDataToAshmem([1, 2, 3], 3, 0)
+                let mes = MyParcelable(1, "this is stub", ashmem)
+                reply.writeParcelable(mes)
+            case ...
         }
     }
 }
@@ -37,9 +38,7 @@ class MyParcelable <: Parcelable {
     // 字符串数据
     var str: String = ''
     // 匿名共享内存对象
-    var ashmem = Ashmem.create("ashmem", 1024)
-
-    init() {}
+    var ashmem: Ashmem
 
     init(num: Int32, str: String, ashmem: Ashmem) {
         this.num = num
@@ -66,17 +65,19 @@ class MyParcelable <: Parcelable {
 ```cangjie
 import kit.IPCKit.*
 
+let option = MessageOption()
+let data = MessageSequence.create()
+let reply = MessageSequence.create()
+
+// 准备发送给服务端的数据
+let ashmem = Ashmem.create("ashmem", 1024)
+ashmen.writeDataToAshmem([3, 2, 1], 3, 0)
+let mes = MyParcelable(0, "this is proxy", ashmem)
+data.writeParcelable(parcelable)
+
 let proxy = IRemoteObject()
-proxy.sendMessageRequest(id, data, reply, option) {
-    // 发送数据给服务端
-    let ashmem = Ashmem.create("ashmem", 1024)
-    ashmen.writeDataToAshmem([3, 2, 1], 3, 0)
-    let mes = MyParcelable(0, "this is proxy", ashmem)
-    data.writeParcelable(parcelable)
-
-    // 从reply中读取服务端发送的数据
-    let ret = MyParcelable()
-    reply.readParcelable(ret)
-}
-
+proxy.sendMessageRequest(1, data, reply, option)
+// 从reply中读取服务端发送的数据
+let ret = MyParcelable()
+reply.readParcelable(ret)
 ```
