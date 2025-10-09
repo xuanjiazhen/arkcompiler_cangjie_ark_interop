@@ -1,0 +1,11 @@
+# Generic (Beta Feature)
+
+- [Generic Class](generic_class.md)
+- [Generic Constraint](generic_constraint.md)
+- [Generic Enum](generic_enum.md)
+- [Generic Function](generic_function.md)
+- [Generic Interface](generic_interface.md)
+- [Generic Overview](generic_overview.md)
+- [Generic Struct](generic_struct.md)
+- [Generic Subtype](generic_subtype.md)
+- [Type Alias](typealias.md)
