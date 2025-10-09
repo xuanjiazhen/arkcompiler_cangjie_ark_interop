@@ -1,0 +1,13 @@
+# Basic Data Type (Beta Feature)
+
+- [Array](array.md)
+- [Basic Operators](basic_operators.md)
+- [Bool](bool.md)
+- [Characters](characters.md)
+- [Float](float.md)
+- [Integer](integer.md)
+- [Nothing](nothing.md)
+- [Range](range.md)
+- [Strings](strings.md)
+- [Tuple](tuple.md)
+- [Unit](unit.md)
