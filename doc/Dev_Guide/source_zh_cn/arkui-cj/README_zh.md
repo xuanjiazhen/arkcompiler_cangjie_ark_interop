@@ -1,5 +1,6 @@
 # ArkUI（方舟UI框架）
 
+<<<<<<< HEAD
 - [ArkUI简介](cj-overview.md)
 - UI开发（仓颉声明式开发范式）
     - [UI开发（仓颉声明式开发范式）概述](cj-ui-development-overview.md)
@@ -118,3 +119,127 @@
     <!--RP1--><!--RP1End-->
     - 主题设置
         - [应用深浅色适配](cj-ui-dark-light-color-adaptation.md)
+=======
+- [ArkUI简介](source_zh_cn/arkui-cj/cj-overview.md)
+- UI开发（仓颉声明式开发范式）
+    - [UI开发（仓颉声明式开发范式）概述](source_zh_cn/arkui-cj/cj-ui-development-overview.md)
+    - 学习UI范式基本语法
+        - [基本语法概述](source_zh_cn/arkui-cj/paradigm/cj-basic-syntax-overview.md)
+        - [声明式UI描述](source_zh_cn/arkui-cj/paradigm/cj-declarative-ui-description.md)
+        - 自定义组件
+            - [创建自定义组件](source_zh_cn/arkui-cj/paradigm/cj-create-custom-components.md)
+            - [页面和自定义组件声明周期](source_zh_cn/arkui-cj/paradigm/cj-page-custom-components-lifecycle.md)
+            - [自定义组件成员属性访问限定符使用限制](source_zh_cn/arkui-cj/paradigm/cj-custom-components-access-restrictions.md)
+        - [@Builder宏：自定义构建函数](source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)
+        - [@BuilderParam宏：引用@Builder函数](source_zh_cn/arkui-cj/paradigm/cj-macro-builderparam.md)
+        - [@Reusable宏：组件复用](source_zh_cn/arkui-cj/paradigm/cj-macro-reusable.md)
+    - 学习UI范式状态管理
+        - [状态管理概](source_zh_cn/arkui-cj/state_management/cj-state-management-overview.md)
+        - 状态管理（V1）
+            - 管理组件拥有的状态
+                - [@State宏：组件内状态](source_zh_cn/arkui-cj/state_management/cj-macro-state.md)
+                - [@Prop宏：父子单向同步](source_zh_cn/arkui-cj/state_management/cj-macro-prop.md)
+                - [@Link宏：父子双向同步](source_zh_cn/arkui-cj/state_management/cj-macro-link.md)
+                - [@Provide宏和@Consume宏：与后代组件双向同步](source_zh_cn/arkui-cj/state_management/cj-macro-provide-and-consume.md)
+                - [@Observed宏和@Publish宏：嵌套类对象属性变化](source_zh_cn/arkui-cj/state_management/cj-macro-observed-and-publish.md)
+            - 管理应用拥有的状态
+                - [管理应用拥有的状态概述](source_zh_cn/arkui-cj/state_management/cj-application-state-management-overview.md)
+                - [LocalStorage：页面级UI状态存储](source_zh_cn/arkui-cj/state_management/cj-localstorage.md)
+                - [AppStorage：应用全局的UI状态存储](source_zh_cn/arkui-cj/state_management/cj-appstorage.md)
+                - [PersistentStorage：持久化存储UI状态](source_zh_cn/arkui-cj/state_management/cj-persiststorage.md)
+                - [Environment：设备环境查询](source_zh_cn/arkui-cj/state_management/cj-environment.md)
+            - 其他状态管理
+                - [其他状态管理概述](source_zh_cn/arkui-cj/state_management/cj-other-state-mgmt-functions-overview.md)
+                - [@Watch宏：状态变量更改通知](source_zh_cn/arkui-cj/state_management/cj-macro-watch.md)
+            - [MVVM模式](source_zh_cn/arkui-cj/state_management/cj-mvvm.md)
+            - [状态管理优秀实践](source_zh_cn/arkui-cj/state_management/cj-state-management-best-practices.md)
+            - [状态管理合理使用开发指导](source_zh_cn/arkui-cj/state_management/cj-properly-use-state-management-to-develope.md)
+    - 学习UI范式渲染控制
+        - [渲染控制概述](source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-overview.md)
+        - [if/else：条件渲染](source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)
+        - [ForEach：循环渲染](source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)
+        - [LazyForEach：数据懒加载](source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-lazyforeach.md)
+    - 开发布局
+        - [布局概述](source_zh_cn/arkui-cj/cj-layout-development-overview.md)
+        - 构建布局
+            - [线性布局（Row/Column）](source_zh_cn/arkui-cj/cj-layout-development-linear.md)
+            - [层叠布局（Stack）](source_zh_cn/arkui-cj/cj-layout-development-stack-layout.md)
+            - [弹性布局（Flex）](source_zh_cn/arkui-cj/cj-layout-development-flex-layout.md)
+            - [相对布局（RelativeContainer）](source_zh_cn/arkui-cj/cj-layout-development-relative-layout.md)
+            - [栅格布局（GridRow/GridCol）](source_zh_cn/arkui-cj/cj-layout-development-grid-layout.md)
+            - [创建列表（List）](source_zh_cn/arkui-cj/cj-layout-development-create-list.md)
+            - [创建网格（Grid/GridItem）](source_zh_cn/arkui-cj/cj-layout-development-create-grid.md)
+            - [创建轮播（Swiper）](source_zh_cn/arkui-cj/cj-layout-development-create-looping.md)
+            - [选项卡（Tabs）](source_zh_cn/arkui-cj/cj-layout-development-tabs.md)
+        <!--RP2--><!--RP2End-->
+    - 添加组件
+        - [按钮（Button）](source_zh_cn/arkui-cj/cj-common-components-button.md)
+        - [单选框（Radio）](source_zh_cn/arkui-cj/cj-common-components-radio-button.md)
+        - [切换按钮（Toggle）](source_zh_cn/arkui-cj/cj-common-components-switch.md)
+        - [进度条（Progress）](source_zh_cn/arkui-cj/cj-common-components-progress-indicator.md)
+        - [显示图片（Image）](source_zh_cn/arkui-cj/cj-graphics-display.md)
+        - [视频播放（Video）](source_zh_cn/arkui-cj/cj-common-components-video-player.md)
+    - 设置组件导航和页面路由
+        - [组件导航和页面路由概述](source_zh_cn/arkui-cj/cj-navigation-introduction.md)
+    - 使用文本
+        - [文本概述](source_zh_cn/arkui-cj/cj-text-introduction.md)
+        - [文本显示（Text/Span）](source_zh_cn/arkui-cj/cj-common-components-text-display.md)
+        - [文本输入（TextInput/TextArea）](source_zh_cn/arkui-cj/cj-common-components-text-input.md)
+        - [富文本（RichEditor）](source_zh_cn/arkui-cj/cj-common-components-richeditor.md)
+    - 使用弹窗
+        - [弹窗概述](source_zh_cn/arkui-cj/cj-dialog-overview.md)
+        - 使用弹出框（Dialog）
+            - [弹出框概述](source_zh_cn/arkui-cj/cj-dialog-base-overview.md)
+            - [不依赖UI组件的全局自定义弹出框（openCustomDialog）](source_zh_cn/arkui-cj/cj-uicontext-custom-dialog.md)
+            - [基础自定义弹出框（CustomDialog）（不推荐）](source_zh_cn/arkui-cj/cj-common-components-custom-dialog.md)
+            - [固定样式弹出框](source_zh_cn/arkui-cj/cj-fixes-style-dialog.md)
+        - [菜单控制（Menu）](source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md)
+        - [气泡提示（Popup）](source_zh_cn/arkui-cj/cj-popup-and-menu-components-popup.md)
+        - 绑定模态页面
+            - [绑定模态页面概述](source_zh_cn/arkui-cj/cj-modal-overview.md)
+            - [绑定半模态页面（bindSheet）](source_zh_cn/arkui-cj/cj-sheet-page.md)
+            - [绑定全模态页面（bindContentCover）](source_zh_cn/arkui-cj/cj-contentcover-page.md)
+        - [即时反馈（Toast）](source_zh_cn/arkui-cj/cj-create-toast.md)
+    - 显示图形
+        - [绘制几何图形（Shape）](source_zh_cn/arkui-cj/cj-shape-drawing.md)
+        - [使用画布绘制自定义图形（Canvas）](source_zh_cn/arkui-cj/cj-drawing-customization-on-canvas.md)
+    - 使用动画
+        - [动画概述](source_zh_cn/arkui-cj/cj-animation.md)
+        - 属性动画
+            - [属性动画概述](source_zh_cn/arkui-cj/cj-attribute-animation-overview.md)
+            - [实现属性动画](source_zh_cn/arkui-cj/cj-attribute-animation-apis.md)
+        - 转场动画
+            - [转场动画概述](source_zh_cn/arkui-cj/cj-transition-overview.md)
+            - [出现/消失转场](source_zh_cn/arkui-cj/cj-enter-exit-transition.md)
+            - [模态转场](source_zh_cn/arkui-cj/cj-modal-transition.md)
+            - [共享元素转场（一镜到底）](source_zh_cn/arkui-cj/cj-shared-element-transition.md)
+            - [旋转屏动画](source_zh_cn/arkui-cj/cj-rotation-transition-animation.md)
+            - [页面路由（不推荐）](source_zh_cn/arkui-cj/cj-page-routing.md)
+            - [页面转场动画（不推荐）](source_zh_cn/arkui-cj/cj-page-transition-animation.md)
+        - [组件动画](source_zh_cn/arkui-cj/cj-component-animation.md)
+        - 动画曲线
+            - [动画曲线概述](source_zh_cn/arkui-cj/cj-curve-overview.md)
+            - [传统曲线](source_zh_cn/arkui-cj/cj-traditional-curve.md)
+            - [弹簧曲线](source_zh_cn/arkui-cj/cj-spring-curve.md)
+        - [动画衔接](source_zh_cn/arkui-cj/cj-animation-smoothing.md)
+        - 动画效果
+            - [模糊](source_zh_cn/arkui-cj/cj-blur-effect.md)
+            - [阴影](source_zh_cn/arkui-cj/cj-shadow-effect.md)
+            - [色彩](source_zh_cn/arkui-cj/cj-color-effect.md)
+        - [帧动画（ohos.animator）](source_zh_cn/arkui-cj/cj-animator.md)
+    - 支持交互事件
+        - [交互事件概述](source_zh_cn/arkui-cj/cj-event-overview.md)
+        - 使用通用事件
+            - [事件分发](source_zh_cn/arkui-cj/cj-common-events-distribute.md)
+            - [触屏事件](source_zh_cn/arkui-cj/cj-common-events-touch-screen-event.md)
+            - [键鼠事件](source_zh_cn/arkui-cj/cj-common-events-device-input-event.md)
+            - [焦点事件](source_zh_cn/arkui-cj/cj-common-events-focus-event.md)
+    - [使用镜像能力](source_zh_cn/arkui-cj/cj-mirroring-display.md)
+    <!--RP1--><!--RP1End-->
+    - 主题设置
+        - [应用深浅色适配](source_zh_cn/arkui-cj/cj-ui-dark-light-color-adaptation.md)
+- 窗口管理
+    - [管理应用窗口](source_zh_cn/windowmanager/application-window-stage.md)
+- 屏幕管理
+    - [使用Display实现屏幕属性获取及状态监听](source_zh_cn/displaymanager/screenProperty-guideline.md)
+>>>>>>> f41823a448f3b605abb7303925412c0d35678e39
