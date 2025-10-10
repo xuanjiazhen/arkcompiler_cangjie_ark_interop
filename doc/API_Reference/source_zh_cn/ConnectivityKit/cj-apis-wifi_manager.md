@@ -45,7 +45,7 @@ public func getScanInfoList(): Array<WifiScanInfo>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -86,7 +86,7 @@ public func isWifiActive(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -129,7 +129,7 @@ public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None):
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -179,7 +179,7 @@ public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>):
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -222,7 +222,7 @@ public func p2pCancelConnect(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -266,7 +266,7 @@ public func p2pConnect(config: WifiP2PConfig): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -345,7 +345,7 @@ public func startDiscoverDevices(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -384,7 +384,7 @@ public func stopDiscoverDevices(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

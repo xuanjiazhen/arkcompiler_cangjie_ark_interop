@@ -44,7 +44,7 @@ public func createWindow(config: Configuration): Window
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -154,7 +154,7 @@ public func shiftAppWindowFocus(sourceWindowId: Int32, targetWindowId: Int32): U
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1004,7 +1004,7 @@ public func getWindowAvoidArea(areaType: AvoidAreaType): AvoidArea
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1139,7 +1139,7 @@ public func minimize(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1200,7 +1200,7 @@ public func off(callbackType: WindowCallbackType, callback: Callback1Argument<UI
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1226,7 +1226,7 @@ public func off(callbackType: WindowCallbackType): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1253,7 +1253,7 @@ public func on(callbackType: WindowCallbackType, callback: Callback1Argument<UIn
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1375,7 +1375,7 @@ public func setPreferredOrientation(orientation: Orientation): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1406,7 +1406,7 @@ public func setWindowBackgroundColor(color: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

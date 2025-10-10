@@ -310,7 +310,7 @@ public func getCount(): Int32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -473,7 +473,7 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -523,7 +523,7 @@ public func getAlbum(): Album
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -571,7 +571,7 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -646,7 +646,7 @@ public init(asset: PhotoAsset)
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -702,7 +702,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -755,7 +755,7 @@ Specifies the data source of the asset to be created via fileUri. Refer to [File
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -809,7 +809,7 @@ Specifies the data source of the asset to be created via fileUri. Refer to [File
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -857,7 +857,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -907,7 +907,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -956,7 +956,7 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1006,7 +1006,7 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1126,7 +1126,7 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1165,7 +1165,7 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1220,7 +1220,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1274,7 +1274,7 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetR
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1321,7 +1321,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1383,7 +1383,7 @@ public func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1433,7 +1433,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1511,7 +1511,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

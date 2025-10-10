@@ -45,7 +45,7 @@ public func getSensorList(): Array<Sensor>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../cj-errorcode-universal.md)。
   
   | 错误码ID    | 错误信息                                                                                                                                   |
   |:-------- |:-------------------------------------------------------------------------------------------------------------------------------------- |
@@ -97,7 +97,7 @@ public func getSingleSensor(sensorType: SensorId): Sensor
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../cj-errorcode-universal.md)。
   
   | 错误码ID    | 错误信息                                                                                                                                   |
   |:-------- |:-------------------------------------------------------------------------------------------------------------------------------------- |

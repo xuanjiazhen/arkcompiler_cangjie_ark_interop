@@ -546,7 +546,7 @@ public func request(url: String, options: HttpRequestOptions, callback: AsyncCal
 
 **异常：**
 
-- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../cj-errorcode-universal.md)。
 - HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
 
   | 错误码ID | 错误信息 |
@@ -634,7 +634,7 @@ public func request(url: String, callback: AsyncCallback<HttpResponse>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../cj-errorcode-universal.md)。
 - HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
 
   | 错误码ID | 错误信息 |
@@ -719,7 +719,7 @@ public func requestInStream(url: String, options: HttpRequestOptions, callback: 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../cj-errorcode-universal.md)。
 - HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
 
   | 错误码ID | 错误信息 |
@@ -803,7 +803,7 @@ public func requestInStream(url: String, callback: AsyncCallback<UInt32>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../cj-errorcode-universal.md)。
 - HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
 
   | 错误码ID | 错误信息 |

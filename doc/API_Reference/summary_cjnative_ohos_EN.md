@@ -5,7 +5,7 @@
         - [Smartphones](source_en/cj-phone-syscap-list.md)
         - [Tablets](source_en/cj-tablet-syscap-list.md)
     - [API Tag-based Management](source_en/cj-ifavailable.md)
-    - [Universal Error Codes](source_en/errorcodes/cj-errorcode-universal.md)
+    - [Universal Error Codes](source_en/cj-errorcode-universal.md)
 - [Application Framework]()
     - [Ability Kit (Application Framework Services)]()
         - [Cangjie APIs]()

@@ -48,7 +48,7 @@ public func createGattClientDevice(deviceId: String): GattClientDevice
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -130,7 +130,7 @@ public func off(eventType: BluetoothBleCallbackType, callback!: ?CallbackObject 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -193,7 +193,7 @@ public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -253,7 +253,7 @@ public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -316,7 +316,7 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -393,7 +393,7 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -471,7 +471,7 @@ public func startBLEScan(filters: Array<ScanFilter>, options!: ?ScanOptions = No
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -533,7 +533,7 @@ public func stopAdvertising(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -583,7 +583,7 @@ public func stopAdvertising(advertisingId: UInt32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -656,7 +656,7 @@ public func stopBLEScan(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1907,7 +1907,7 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1954,7 +1954,7 @@ public func connect(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2001,7 +2001,7 @@ public func disconnect(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2054,7 +2054,7 @@ public func getDeviceName(): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2108,7 +2108,7 @@ public func getRssiValue(callback: AsyncCallback<Int32>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2166,7 +2166,7 @@ public func getServices(callback: AsyncCallback<Array<GattService>>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2226,7 +2226,7 @@ public func off(eventType: BluetoothBleGattClientDeviceCallbackType, callback!: 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2292,7 +2292,7 @@ public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Ca
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2356,7 +2356,7 @@ public func on(
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2422,7 +2422,7 @@ public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Ca
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2486,7 +2486,7 @@ public func readCharacteristicValue(
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2576,7 +2576,7 @@ public func readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallba
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2658,7 +2658,7 @@ public func setBLEMtuSize(mtu: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2713,7 +2713,7 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2794,7 +2794,7 @@ public func setCharacteristicChangeNotification(characteristic: BLECharacteristi
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2876,7 +2876,7 @@ public func writeCharacteristicValue(characteristic: BLECharacteristic, writeTyp
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2959,7 +2959,7 @@ public func writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallb
 **异常：**
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3419,7 +3419,7 @@ public func addService(service: GattService): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3503,7 +3503,7 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3556,7 +3556,7 @@ public func notifyCharacteristicChanged(deviceId: String, notifyCharacteristic: 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3618,7 +3618,7 @@ public func off(eventType: BluetoothBleGattServerCallbackType, callback!: ?Callb
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3679,7 +3679,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3756,7 +3756,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3840,7 +3840,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3917,7 +3917,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3998,7 +3998,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4059,7 +4059,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4118,7 +4118,7 @@ public func removeService(serviceUuid: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4172,7 +4172,7 @@ public func sendResponse(serverResponse: ServerResponse): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

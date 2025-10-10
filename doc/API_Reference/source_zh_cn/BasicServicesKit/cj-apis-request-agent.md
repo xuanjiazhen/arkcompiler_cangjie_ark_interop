@@ -53,7 +53,7 @@ public func create(context: UIAbilityContext, config: Config): Task
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息                                                                                                                          |
   | :------- | :-------------------------------------------------------------------------------------------------------------------------------- |
@@ -126,7 +126,7 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String = Non
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息                                                                                                                          |
   | :------- | :-------------------------------------------------------------------------------------------------------------------------------- |
@@ -244,7 +244,7 @@ public func search(filter!: Filter = Filter()): Array<String>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../cj-errorcode-universal.md)
 
   | 错误码ID | 错误信息                                                                                        |
   | :------- | :---------------------------------------------------------------------------------------------- |
@@ -305,7 +305,7 @@ public func show(id: String): TaskInfo
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息                                                                                        |
   | :------- | :---------------------------------------------------------------------------------------------- |
@@ -365,7 +365,7 @@ public func touch(id: String, token: String): TaskInfo
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../cj-errorcode-universal.md)
 
   | 错误码ID | 错误信息                                                                                        |
   | :------- | :---------------------------------------------------------------------------------------------- |
@@ -1680,7 +1680,7 @@ public func on(event: EventCallbackType, callback: Callback1Argument<HttpRespons
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)
 
   | 错误码ID | 错误信息                       |
   | :------- | :----------------------------- |

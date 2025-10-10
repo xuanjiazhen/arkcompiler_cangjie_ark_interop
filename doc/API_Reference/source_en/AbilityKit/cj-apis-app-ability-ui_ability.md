@@ -530,7 +530,7 @@ public func isTerminating(): Bool
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -557,7 +557,7 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -600,7 +600,7 @@ public func startAbility(want: Want, options!: ?StartOptions = None): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -657,7 +657,7 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -711,7 +711,7 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -755,7 +755,7 @@ public func terminateSelf(): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -783,7 +783,7 @@ public func terminateSelfWithResult(parameter: AbilityResult): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

@@ -45,7 +45,7 @@ public func getSensorList(): Array<Sensor>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -97,7 +97,7 @@ public func getSingleSensor(sensorType: SensorId): Sensor
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

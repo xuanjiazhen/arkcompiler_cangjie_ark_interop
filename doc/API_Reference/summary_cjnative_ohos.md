@@ -5,7 +5,7 @@
         - [Phone](source_zh_cn/cj-phone-syscap-list.md)
         - [Tablet](source_zh_cn/cj-tablet-syscap-list.md)
     - [API标签化管控](source_zh_cn/cj-ifavailable.md)
-    - [通用错误码](source_zh_cn/errorcodes/cj-errorcode-universal.md)
+    - [通用错误码](source_zh_cn/cj-errorcode-universal.md)
 - [应用框架]()
     - [Ability Kit（程序框架服务）]()
         - [仓颉API]()

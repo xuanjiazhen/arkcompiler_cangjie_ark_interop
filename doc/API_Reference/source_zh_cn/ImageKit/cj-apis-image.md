@@ -76,7 +76,7 @@ public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -394,7 +394,7 @@ public func createPixelMap(colors: Array<UInt8>, options: InitializationOptions)
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1026,7 +1026,7 @@ public func packToData(source: ImageSource, options: PackingOption): Array<UInt8
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1086,7 +1086,7 @@ public func packToData(source: PixelMap, options: PackingOption): Array<UInt8>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1762,7 +1762,7 @@ public func getImageProperty(key: PropertyKey, options!: ImagePropertyOptions = 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1816,7 +1816,7 @@ public func modifyImageProperty(key: PropertyKey, value: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2249,7 +2249,7 @@ public func applyColorSpace(targetColorSpace: ColorSpaceManager): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2805,7 +2805,7 @@ public func setColorSpace(colorSpace: ColorSpaceManager): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

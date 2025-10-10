@@ -391,7 +391,7 @@ public func setSize(size: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown below. Refer to [Application Event Logging Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes as shown below. Refer to [Application Event Logging Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -824,7 +824,7 @@ public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Application Event Logging Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Application Event Logging Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1112,7 +1112,7 @@ public static func removeWatcher(watcher: Watcher): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes as follows, see [Application Event Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes as follows, see [Application Event Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
