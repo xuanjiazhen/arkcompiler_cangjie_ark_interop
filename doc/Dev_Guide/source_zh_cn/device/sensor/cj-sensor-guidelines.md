@@ -4,7 +4,7 @@
 
 当设备需要获取传感器数据时，可以使用sensor模块，例如：通过订阅方向传感器数据感知用户设备当前的朝向，通过订阅计步传感器数据统计用户的步数等。
 
-详细的API介绍请参见[Sensor API](../../../../API_Reference/source_zh_cn/apis/SensorServiceKit/cj-apis-sensor.md)。
+详细的API介绍请参见[Sensor API](../../../../API_Reference/source_zh_cn/SensorServiceKit/cj-apis-sensor.md)。
 
 ## 接口说明
 
@@ -68,6 +68,8 @@
     func onExample() {
         let callback = SensorCallback()
         try {
+            //周期传感器与瞬时传感器开发步骤相同。
+            //区别是周期传感器按设定的固定时间间隔option采集并输出数据,瞬时传感器受特定触发事件影响采集并输出数据,不受option约束。
             on(SensorId.ACCELEROMETER, callback, option: SensorOptions(SensorNumber(100000000)))
         } catch (e: BusinessException) {
             AppLog.error("Sensor on error code: ${e.code}, message: ${e.message}")
@@ -117,3 +119,7 @@
         }
     }
     ```
+
+## 备注
+
+传感器的开发均同上述加速度传感器ACCELEROMETER。需要注意的是，传感器按采集数据方式分为周期传感器和瞬时传感器。周期传感器按预先设定的固定时间间隔采集并输出数据，如环境温度传感器AMBIENT_TEMPERATURE，订阅后，传感器按设计的时间间隔上报数据。周期传感器有GRAVITY、AMBIENT_TEMPERATURE、HUMIDITY、BAROMETER等。瞬时传感器受特定触发事件影响才采集并输出数据，如计步传感器PEDOMETER，步数有变化会上报。瞬时传感器有HALL、PROXIMITY、WEAR_DETECTION、PEDOMETER、PEDOMETER_DETECTION。

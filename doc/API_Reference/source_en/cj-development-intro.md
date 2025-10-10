@@ -2,6 +2,10 @@
 
 The API reference is primarily intended for developers to consult various API descriptions related to application development. To facilitate the use of API documentation, common fields in the documentation are explained below.
 
+> **note：**
+>
+> The Cangjie API is currently in Beta. For the latest support details, please refer to the API Reference. 
+
 ## Version Information
 
 The version number from which a component or interface begins to be supported will be indicated in the corresponding description, e.g., **Initial Version:** 19.
@@ -64,7 +68,7 @@ The Cangjie samples in each Kit are not complete programs but rather key code sn
     }
     ```
 
-4. If the sample code involves the [Context](./apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) object, define a Global class and assign values in the "main_ability.cj" file of the Cangjie template project. The content of "main_ability.cj" is as follows:
+4. If the sample code involves the [Context](./AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) object, define a Global class and assign values in the "main_ability.cj" file of the Cangjie template project. The content of "main_ability.cj" is as follows:
 
     ```cangjie
     import kit.AbilityKit.*

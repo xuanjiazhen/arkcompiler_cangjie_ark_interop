@@ -4,7 +4,7 @@
 
 When a device needs to acquire sensor data, the sensor module can be utilized. For example: subscribing to orientation sensor data to perceive the current device orientation, or subscribing to step counter sensor data to track user step counts.
 
-For detailed API documentation, refer to [Sensor API](../../../../API_Reference/source_en/apis/SensorServiceKit/cj-apis-sensor.md).
+For detailed API documentation, refer to [Sensor API](../../../../API_Reference/source_en/SensorServiceKit/cj-apis-sensor.md).
 
 ## Interface Specifications
 
@@ -68,6 +68,8 @@ The development procedure is demonstrated using the accelerometer sensor (ACCELE
     func onExample() {
         let callback = SensorCallback()
         try {
+            // The development steps for periodic sensors and instantaneous sensors are the same. 
+            // The difference is that periodic sensors collect and output data at preset fixed time intervals defined by the option, whereas instantaneous sensors collect and output data when triggered by specific events, unaffected by the option.
             on(SensorId.ACCELEROMETER, callback, option: SensorOptions(SensorNumber(100000000)))
         } catch (e: BusinessException) {
             AppLog.error("Sensor on error code: ${e.code}, message: ${e.message}")
@@ -117,3 +119,7 @@ The development procedure is demonstrated using the accelerometer sensor (ACCELE
         }
     }
     ```
+
+## Notes
+
+The development of sensors is similar to the aforementioned accelerometer ACCELEROMETER. It should be noted that sensors are categorized into periodic sensors and instantaneous sensors based on their data collection methods. Periodic sensors collect and output data at preset fixed intervals, such as the ambient temperature sensor AMBIENT_TEMPERATURE. After subscription, the sensor reports data according to the designed time intervals. Periodic sensors include GRAVITY, AMBIENT_TEMPERATURE, HUMIDITY, BAROMETER, and others. Instantaneous sensors collect and output data only when triggered by specific events, such as the pedometer sensor PEDOMETER, which reports when there is a change in step count. Instantaneous sensors include HALL, PROXIMITY, WEAR_DETECTION, PEDOMETER, and PEDOMETER_DETECTION.

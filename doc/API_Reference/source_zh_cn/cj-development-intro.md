@@ -2,6 +2,10 @@
 
 API参考主要用于开发者查阅应用开发相关的各类API说明。为了方便开发者使用API文档，对文档描述中的常用字段进行说明。
 
+> **说明：**
+>
+> 仓颉API当前为Beta特性，当前支持情况请参见API参考。
+
 ## 版本说明
 
 对于组件或接口开始支持的版本号，会在对应的描述信息中进行说明，如：**起始版本：** 19。
@@ -64,7 +68,7 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
     }
     ```
 
-4. 若示例代码中涉及[Context](./apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)对象，需要在仓颉模板工程的“main_ability.cj”文件中定义Global类并对其赋值，“main_ability.cj”内容如下：
+4. 若示例代码中涉及[Context](./AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)对象，需要在仓颉模板工程的“main_ability.cj”文件中定义Global类并对其赋值，“main_ability.cj”内容如下：
 
     ```cangjie
     import kit.AbilityKit.*
