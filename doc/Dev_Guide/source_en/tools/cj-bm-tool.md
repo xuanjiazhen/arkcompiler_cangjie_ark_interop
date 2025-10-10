@@ -957,7 +957,7 @@ During debugging or runtime, HAP installation fails with the message "error: sig
 
 - Scenario 1:
   1. Use [auto-signing](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237). Re-sign the app after connecting the device.
-  2. For manual signing in OpenHarmony, refer to <!--RP2-->[OpenHarmony Manual Signing Guide](https://docs.openharmony.cn/pages/v4.1/en/application-dev/security/hapsigntool-guidelines.md)<!--RP2End--> and add the device's **UDID** to `UnsgnedDebugProfileTemplate.json`.
+  2. For manual signing in OpenHarmony, refer to <!--RP2-->[OpenHarmony Manual Signing Guide](https://docs.openharmony.cn/pages/v4.1/en/Dev_Guide/security/hapsigntool-guidelines.md)<!--RP2End--> and add the device's **UDID** to `UnsgnedDebugProfileTemplate.json`.
 
       a. Retrieve the device UDID:
       ```bash
@@ -1134,7 +1134,7 @@ Signature mismatch between installed and new apps or among HAPs/HSPs.
 **Resolution Steps:**
 
 1. Uninstall the app or disable "Keep Application Data."
-2. For HSPs, use [Integrated HSPs](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/quick-start/integrated-hsp.md) or ensure consistent signatures.
+2. For HSPs, use [Integrated HSPs](https://docs.openharmony.cn/pages/v5.1/zh-cn/Dev_Guide/quick-start/integrated-hsp.md) or ensure consistent signatures.
 3. Reinstall the old app and uninstall it without retaining data before installing the new one.
 
 ---

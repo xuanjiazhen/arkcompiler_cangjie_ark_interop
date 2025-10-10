@@ -952,7 +952,7 @@ error: signature verification failed due to not trusted app source.
 - 场景一：
 
     1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-    2. 如果使用的是手动签名，对于OpenHarmony应用，请参考<!--RP2-->[OpenHarmony应用手动签名](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/security/hapsigntool-guidelines.md)<!--RP2End-->，在UnsgnedDebugProfileTemplate.json文件中添加该调试设备的**UDID**。
+    2. 如果使用的是手动签名，对于OpenHarmony应用，请参考<!--RP2-->[OpenHarmony应用手动签名](https://docs.openharmony.cn/pages/v4.1/zh-cn/Dev_Guide/security/hapsigntool-guidelines.md)<!--RP2End-->，在UnsgnedDebugProfileTemplate.json文件中添加该调试设备的**UDID**。
 
         a. 获取当前设备的UDID。
 
@@ -1090,7 +1090,7 @@ error: install failed due to apptype not same.
 
 **错误描述**
 
-应用安装时，应用已安装HAP包和待安装HAP包的签名文件中[app-feature](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/security/app-provision-structure.md)配置不一致，导致安装失败。
+应用安装时，应用已安装HAP包和待安装HAP包的签名文件中[app-feature](https://docs.openharmony.cn/pages/v4.1/zh-cn/Dev_Guide/security/app-provision-structure.md)配置不一致，导致安装失败。
 
 **可能原因**
 
@@ -1167,7 +1167,7 @@ error: install sign info inconsistent.
 **处理步骤：**
 
 1. 请卸载设备上已安装的应用，或取消勾选“Keep Application Data”后，重新安装新的应用。
-2. 如果是因不同团队提供的HSP导致签名不一致问题，可以采用[集成态HSP](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/quick-start/integrated-hsp.md)的方式统一提供HSP；在多HAP包的情况下，必须确保所有HAP包的签名一致。
+2. 如果是因不同团队提供的HSP导致签名不一致问题，可以采用[集成态HSP](https://docs.openharmony.cn/pages/v5.1/zh-cn/Dev_Guide/quick-start/integrated-hsp.md)的方式统一提供HSP；在多HAP包的情况下，必须确保所有HAP包的签名一致。
 3. 如果某个应用被卸载但是保留了数据，后面安装相同包名但签名信息不一致的应用时，安装失败。如果出现这种情况，则需要把之前已卸载掉的应用重新安装之后，执行不保留数据地卸载，这样相同包名但签名信息不一致的应用才能安装成功。
 
 ### 9568329 签名信息验证失败
@@ -1184,7 +1184,7 @@ error: verify signature failed.
 
 **可能原因：**
 
-- 场景一：用户导入了三方提供的HSP模块，且该HSP既非[集成态HSP](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/quick-start/integrated-hsp.md)，又非同包名的HSP，造成包名不一致。
+- 场景一：用户导入了三方提供的HSP模块，且该HSP既非[集成态HSP](https://docs.openharmony.cn/pages/v5.1/zh-cn/Dev_Guide/quick-start/integrated-hsp.md)，又非同包名的HSP，造成包名不一致。
 - 场景二：用户使用了错误的签名文件（后缀为.p7b）进行签名，造成包名不一致。
 
 **处理步骤：**
