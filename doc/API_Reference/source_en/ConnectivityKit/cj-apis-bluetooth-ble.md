@@ -130,7 +130,7 @@ public func off(eventType: BluetoothBleCallbackType, callback!: ?CallbackObject 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -193,7 +193,7 @@ public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -253,7 +253,7 @@ public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -316,7 +316,7 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -355,7 +355,7 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -389,7 +389,7 @@ public func startBLESScan(filters: Array<ScanFilter>, options!: ?ScanOptions = N
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -449,7 +449,7 @@ public func stopAdvertising(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -481,7 +481,7 @@ public func stopAdvertising(advertisingId: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -508,7 +508,7 @@ public func stopBLESscan(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1753,7 +1753,7 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1800,7 +1800,7 @@ public func connect(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1847,7 +1847,7 @@ public func disconnect(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1900,7 +1900,7 @@ public func getDeviceName(): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1954,7 +1954,7 @@ public func getRssiValue(callback: AsyncCallback<Int32>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2012,7 +2012,7 @@ public func getServices(callback: AsyncCallback<Array<GattService>>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2072,7 +2072,7 @@ public func off(eventType: BluetoothBleGattClientDeviceCallbackType, callback!: 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2138,7 +2138,7 @@ public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Ca
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2202,7 +2202,7 @@ public func on(
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2268,7 +2268,7 @@ public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Ca
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2332,7 +2332,7 @@ public func readCharacteristicValue(
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2422,7 +2422,7 @@ public func readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallba
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2504,7 +2504,7 @@ public func setBLEMtuSize(mtu: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2558,7 +2558,7 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3009,7 +3009,7 @@ public func addService(service: GattService): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3091,7 +3091,7 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3144,7 +3144,7 @@ public func notifyCharacteristicChanged(deviceId: String, notifyCharacteristic: 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3704,7 +3704,7 @@ public func removeService(serviceUuid: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3758,7 +3758,7 @@ public func sendResponse(serverResponse: ServerResponse): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

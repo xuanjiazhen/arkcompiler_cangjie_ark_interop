@@ -1437,7 +1437,7 @@ public static func canOpenLink(link: String): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](./cj-errorcode-bundle.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1534,7 +1534,7 @@ If the configuration file information uses the resource reference format, the re
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](./cj-errorcode-bundle.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1598,7 +1598,7 @@ If the configuration file information uses the resource reference format, the re
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](./cj-errorcode-bundle.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1708,7 +1708,7 @@ public static func isDefaultApplication(appType: String): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](./cj-errorcode-bundle.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

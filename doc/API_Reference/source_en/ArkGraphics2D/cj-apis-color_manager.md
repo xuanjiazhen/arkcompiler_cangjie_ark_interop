@@ -43,7 +43,7 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -77,7 +77,7 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -120,7 +120,7 @@ public func getColorSpaceName(): ColorSpace
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -160,7 +160,7 @@ public func getGamma(): Float32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -200,7 +200,7 @@ public func getWhitePoint(): Array<Float32>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

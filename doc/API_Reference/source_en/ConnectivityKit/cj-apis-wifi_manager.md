@@ -45,7 +45,7 @@ public func getScanInfoList(): Array<WifiScanInfo>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -73,7 +73,7 @@ public func isWifiActive(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -103,7 +103,7 @@ public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None):
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -134,7 +134,7 @@ public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>):
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -158,7 +158,7 @@ public func p2pCancelConnect(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -189,7 +189,7 @@ public func p2pConnect(config: WifiP2PConfig): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -214,7 +214,7 @@ public func startDiscoverDevices(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -239,7 +239,7 @@ public func stopDiscoverDevices(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

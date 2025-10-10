@@ -50,7 +50,7 @@ public func create(context: UIAbilityContext, config: Config): Task
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](./cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -95,7 +95,7 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String = Non
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](./cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -129,7 +129,7 @@ public func remove(id: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](./cj-errorcode-request.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -163,7 +163,7 @@ public func search(filter!: Filter = Filter()): Array<String>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](./cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -196,7 +196,7 @@ public func show(id: String): TaskInfo
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](./cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -231,7 +231,7 @@ public func touch(id: String, token: String): TaskInfo
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Upload/Download Error Codes](./cj-errorcode-request.md) and [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1340,7 +1340,7 @@ public func on(event: EventCallbackType, callback: Callback1Argument<Progress>):
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](./cj-errorcode-request.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1361,7 +1361,7 @@ public func pause(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](./cj-errorcode-request.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1386,7 +1386,7 @@ public func resume(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](./cj-errorcode-request.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1412,7 +1412,7 @@ public func start(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](./cj-errorcode-request.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1435,7 +1435,7 @@ public func stop(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](../../errorcodes/cj-errorcode-request.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Upload/Download Error Codes](./cj-errorcode-request.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

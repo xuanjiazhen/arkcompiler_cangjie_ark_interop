@@ -1443,7 +1443,7 @@ public static func canOpenLink(link: String): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[包管理子系统通用错误码](../../errorcodes/cj-errorcode-bundle.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[包管理子系统通用错误码](./cj-errorcode-bundle.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1540,7 +1540,7 @@ public static func getProfileByAbility(moduleName: String, abilityName: String, 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[包管理子系统通用错误码](../../errorcodes/cj-errorcode-bundle.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[包管理子系统通用错误码](./cj-errorcode-bundle.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1604,7 +1604,7 @@ public static func getProfileByExtensionAbility(moduleName: String, extensionAbi
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[包管理子系统通用错误码](../../errorcodes/cj-errorcode-bundle.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[包管理子系统通用错误码](./cj-errorcode-bundle.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1714,7 +1714,7 @@ public static func isDefaultApplication(appType: String): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[包管理子系统通用错误码](../../errorcodes/cj-errorcode-bundle.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[包管理子系统通用错误码](./cj-errorcode-bundle.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

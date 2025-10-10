@@ -97,7 +97,7 @@ public func getItemAtIndex(index: Int32): HistoryItem
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -389,7 +389,7 @@ public static func configCookie(url: String, value: String, incognito!: Bool = f
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -488,7 +488,7 @@ public static func fetchCookie(url: String, incognito!: Bool = false): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2251,7 +2251,7 @@ public func loadUrl<T>(url: T, headers!: Array<WebHeader> = Array<WebHeader>()):
 
 **Exceptions:**
 
-- BusinessException: Error codes are shown in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are shown in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2318,7 +2318,7 @@ public func setCustomUserAgent(userAgent: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are shown in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are shown in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2374,7 +2374,7 @@ public func stop(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2438,7 +2438,7 @@ public func storeWebArchive(baseName: String, autoName: Bool, callback: AsyncCal
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2513,7 +2513,7 @@ public func zoom(factor: Float32): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2571,7 +2571,7 @@ public func zoomIn(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2628,7 +2628,7 @@ public func zoomOut(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2692,7 +2692,7 @@ public func runJavaScript(script: String, callback: AsyncCallback<String>): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2787,7 +2787,7 @@ public func scrollBy(deltaX: Float32, deltaY: Float32, duration!: ?Int32 = None)
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2875,7 +2875,7 @@ public func scrollTo(x: Float32, y: Float32, duration!: ?Int32 = None): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2962,7 +2962,7 @@ public func removeCache(clearRom: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

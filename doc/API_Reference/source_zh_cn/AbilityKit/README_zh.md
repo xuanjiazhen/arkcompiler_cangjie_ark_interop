@@ -24,4 +24,3 @@
     - [元能力子系统错误码](./cj-errorcode-ability.md)
     - [包管理子系统通用错误码](./cj-errorcode-bundle.md)
     - [访问控制错误码](./cj-errorcode-access-token.md)
-    - [锁屏敏感数据管理错误码](./cj-errorcode-screen_lock_file_manager.md)
