@@ -391,7 +391,7 @@ public func setSize(size: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[应用事件打点错误码](../../errorcodes/cj-errorcode-hiappevent.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[应用事件打点错误码](./cj-errorcode-hiappevent.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -826,7 +826,7 @@ public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[应用事件打点错误码](../../errorcodes/cj-errorcode-hiappevent.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[应用事件打点错误码](./cj-errorcode-hiappevent.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1116,7 +1116,7 @@ public static func removeWatcher(watcher: Watcher): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[应用事件打点错误码](../../errorcodes/cj-errorcode-hiappevent.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[应用事件打点错误码](./cj-errorcode-hiappevent.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

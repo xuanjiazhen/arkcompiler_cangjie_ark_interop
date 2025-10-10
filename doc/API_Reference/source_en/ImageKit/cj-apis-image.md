@@ -76,7 +76,7 @@ public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -294,7 +294,7 @@ public func createPixelMap(colors: Array<UInt8>, options: InitializationOptions)
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -874,7 +874,7 @@ public func packToData(source: ImageSource, options: PackingOption): Array<UInt8
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -934,7 +934,7 @@ public func packToData(source: PixelMap, options: PackingOption): Array<UInt8>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -988,7 +988,7 @@ public func packToFile(source: ImageSource, fd: Int32, options: PackingOption): 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1046,7 +1046,7 @@ public func packToFile(source: PixelMap, fd: Int32, options: PackingOption): Uni
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1399,7 +1399,7 @@ public func createPixelMapList(options!: DecodingOptions = DecodingOptions()): A
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1437,7 +1437,7 @@ public func getDelayTimeList(): Array<Int32>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1470,7 +1470,7 @@ public func getFrameCount(): UInt32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1551,7 +1551,7 @@ public func getImageProperty(key: PropertyKey, options!: ImagePropertyOptions = 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1605,7 +1605,7 @@ public func modifyImageProperty(key: PropertyKey, value: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2014,7 +2014,7 @@ public func applyColorSpace(targetColorSpace: ColorSpaceManager): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Error codes as shown below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2185,7 +2185,7 @@ public func getColorSpace(): ColorSpaceManager
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2515,7 +2515,7 @@ public func setColorSpace(colorSpace: ColorSpaceManager): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

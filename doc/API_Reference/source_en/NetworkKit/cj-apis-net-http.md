@@ -546,7 +546,7 @@ public func request(url: String, options: HttpRequestOptions, callback: AsyncCal
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](./cj-errorcode-net-http.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 - HTTP interface return error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
   | Error Code ID | Error Message |
@@ -634,7 +634,7 @@ public func request(url: String, callback: AsyncCallback<HttpResponse>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](./cj-errorcode-net-http.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 - HTTP interface return error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
   | Error Code ID | Error Message |
@@ -719,7 +719,7 @@ public func requestInStream(url: String, options: HttpRequestOptions, callback: 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](./cj-errorcode-net-http.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 - HTTP interface return error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
   | Error Code ID | Error Message |

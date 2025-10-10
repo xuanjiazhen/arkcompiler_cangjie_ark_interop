@@ -216,7 +216,7 @@ WLAN（Wireless Local Area Network）是一种无线局域网络技术，允许�
     let wifiP2PManager = WifiP2PManager()
     ```
 
-7. 错误码请参见[WLAN服务子系统错误码](../../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-wifi-manager.md)。
+7. 错误码请参见[WLAN服务子系统错误码](../../../../API_Reference/source_zh_cn/ConnectivityKit/cj-errorcode-wifi-manager.md)。
 
 ## 相关信息
 
