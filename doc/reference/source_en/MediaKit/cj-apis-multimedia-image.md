@@ -88,7 +88,7 @@ public func readLatestImage(): Image
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message                          |
   | :----------- | :------------------------------------- |
@@ -114,7 +114,7 @@ public func readNextImage(): Image
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](./cj-errorcode-image.md).
 
   | Error Code ID | Error Message                          |
   | :----------- | :------------------------------------- |
