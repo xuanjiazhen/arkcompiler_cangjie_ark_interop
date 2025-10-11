@@ -49,7 +49,7 @@ public func getCameraManager(context: UIAbilityContext): CameraManager
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -112,7 +112,7 @@ func getExposureMode(): ExposureMode
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -157,7 +157,7 @@ func getExposureValue(): Float64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -200,7 +200,7 @@ func getMeteringPoint(): Point
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -242,7 +242,7 @@ func setExposureBias(exposureBias: Float64): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -287,7 +287,7 @@ func setExposureMode(aeMode: ExposureMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -332,7 +332,7 @@ func setMeteringPoint(point: Point): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -392,7 +392,7 @@ func getExposureBiasRange(): Array<Float64>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -441,7 +441,7 @@ func isExposureModeSupported(aeMode: ExposureMode): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -494,7 +494,7 @@ func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -563,7 +563,7 @@ func getActiveColorSpace(): ColorSpace
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -628,7 +628,7 @@ func setColorSpace(colorSpace: ColorSpace): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -689,7 +689,7 @@ func getSupportedColorSpaces(): Array<ColorSpace>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -751,7 +751,7 @@ func getFlashMode(): FlashMode
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -799,7 +799,7 @@ func setFlashMode(flashMode: FlashMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -858,7 +858,7 @@ func hasFlash(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -908,7 +908,7 @@ func isFlashModeSupported(flashMode: FlashMode): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -973,7 +973,7 @@ func getFocalLength(): Float64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1017,7 +1017,7 @@ func getFocusMode(): FocusMode
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1061,7 +1061,7 @@ func getFocusPoint(): Point
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1106,7 +1106,7 @@ func setFocusMode(afMode: FocusMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1152,7 +1152,7 @@ func setFocusPoint(point: Point): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1216,7 +1216,7 @@ func isFocusModeSupported(afMode: FocusMode): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1285,7 +1285,7 @@ func addInput(cameraInput: CameraInput): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1330,7 +1330,7 @@ func addOutput(cameraOutput: CameraOutput): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1371,7 +1371,7 @@ func beginConfig(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1497,7 +1497,7 @@ func commitConfig(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1533,7 +1533,7 @@ func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1576,7 +1576,7 @@ func removeInput(cameraInput: CameraInput): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1621,7 +1621,7 @@ func removeOutput(cameraOutput: CameraOutput): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1668,7 +1668,7 @@ func start(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1705,7 +1705,7 @@ func stop(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1765,7 +1765,7 @@ func getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1809,7 +1809,7 @@ func setVideoStabilizationMode(mode: VideoStabilizationMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1873,7 +1873,7 @@ func isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1938,7 +1938,7 @@ func getZoomRatio(): Float64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2056,7 +2056,7 @@ func setZoomRatio(zoomRatio: Float64): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2114,7 +2114,7 @@ func getZoomRatioRange(): Array<Float64>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2263,7 +2263,7 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2307,7 +2307,7 @@ public func off(eventType: CameraEvents, camera: CameraDevice, callback: Callbac
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2351,7 +2351,7 @@ public func off(eventType: CameraEvents, camera: CameraDevice): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2400,7 +2400,7 @@ public func on(eventType: CameraEvents, camera: CameraDevice, callback: Callback
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2454,7 +2454,7 @@ public func open(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2505,7 +2505,7 @@ public func open(isSecureEnabled: Bool): UInt64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2570,7 +2570,7 @@ public func createCameraInput(camera: CameraDevice): CameraInput
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2625,7 +2625,7 @@ public func createCameraInput(position: CameraPosition, cameraType: CameraType):
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2677,7 +2677,7 @@ public func createPhotoOutput(?Profile = None): PhotoOutput
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2730,7 +2730,7 @@ public func createPreviewOutput(profile: Profile, surfaceId: String): PreviewOut
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2783,7 +2783,7 @@ public func createPreviewOutput(surfaceId: String): PreviewOutput
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2836,7 +2836,7 @@ public func createSession(mode: SceneMode): Session
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2887,7 +2887,7 @@ public func createVideoOutput(profile: VideoProfile, surfaceId: String): VideoOu
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2940,7 +2940,7 @@ public func createVideoOutput(surfaceId: String): VideoOutput
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3240,7 +3240,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CameraStatu
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3282,7 +3282,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FoldStatusI
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3324,7 +3324,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<TorchStatus
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3365,7 +3365,7 @@ public func off(eventType: CameraEvents): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3411,7 +3411,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CameraStatus
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3474,7 +3474,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FoldStatusIn
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3537,7 +3537,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<TorchStatusI
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3595,7 +3595,7 @@ public func setTorchMode(mode: TorchMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4238,7 +4238,7 @@ public func capture(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4283,7 +4283,7 @@ public func capture(setting: PhotoCaptureSetting): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4329,7 +4329,7 @@ public func enableMirror(enabled: Bool): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4376,7 +4376,7 @@ public func enableMovingPhoto(enabled: Bool): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4423,7 +4423,7 @@ public func getActiveProfile(): Profile
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4477,7 +4477,7 @@ public func getPhotoRotation(deviceDegree: Int32): ImageRotation
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4559,7 +4559,7 @@ public func isMirrorSupported(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4604,7 +4604,7 @@ public func isMovingPhotoSupported(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4650,7 +4650,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureStar
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4696,7 +4696,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutte
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4742,7 +4742,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureEndI
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4788,7 +4788,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutte
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4834,7 +4834,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4880,7 +4880,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<Float64>): 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4925,7 +4925,7 @@ public func off(eventType: CameraEvents): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4975,7 +4975,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureStart
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5042,7 +5042,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutter
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5109,7 +5109,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureEndIn
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5176,7 +5176,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutter
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5243,7 +5243,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5310,7 +5310,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<Float64>): U
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5366,7 +5366,7 @@ public func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5410,7 +5410,7 @@ public func setMovingPhotoVideoCodecType(codecType: VideoCodecType): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5482,7 +5482,7 @@ public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: Preconfi
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5630,7 +5630,7 @@ public func off(eventType: CameraEvents): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5838,7 +5838,7 @@ public func preconfig(
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5963,7 +5963,7 @@ public func getActiveFrameRate(): FrameRateRange
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6013,7 +6013,7 @@ public func getActiveProfile(): Profile
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6073,7 +6073,7 @@ public func getPreviewRotation(displayRotation: Int32): ImageRotation
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6124,7 +6124,7 @@ public func getSupportedFrameRates(): Array<FrameRateRange>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6175,7 +6175,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6226,7 +6226,7 @@ public func off(eventType: CameraEvents): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6282,7 +6282,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6344,7 +6344,7 @@ public func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6399,7 +6399,7 @@ public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6451,7 +6451,7 @@ public func setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked!:
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6787,7 +6787,7 @@ public func getActiveFrameRate(): FrameRateRange
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6837,7 +6837,7 @@ public func getActiveProfile(): VideoProfile
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6887,7 +6887,7 @@ public func getSupportedFrameRates(): Array<FrameRateRange>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6947,7 +6947,7 @@ public func getVideoRotation(deviceDegree: Int32): ImageRotation
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -6999,7 +6999,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7050,7 +7050,7 @@ public func off(eventType: CameraEvents): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7106,7 +7106,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7168,7 +7168,7 @@ public func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7223,7 +7223,7 @@ public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7268,7 +7268,7 @@ public func start(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7313,7 +7313,7 @@ public func stop(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7430,7 +7430,7 @@ public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: Preconfi
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7473,7 +7473,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7517,7 +7517,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7561,7 +7561,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomI
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7604,7 +7604,7 @@ public func off(eventType: CameraEvents): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7652,7 +7652,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7715,7 +7715,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FocusState>)
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7778,7 +7778,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomIn
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -7840,7 +7840,7 @@ public func preconfig(
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](./cj-errorcode-multimedia-camera.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

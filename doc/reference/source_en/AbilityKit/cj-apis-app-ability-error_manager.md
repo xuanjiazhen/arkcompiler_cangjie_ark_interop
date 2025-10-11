@@ -58,7 +58,7 @@ public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Ability Subsystem Error Codes](../../../source_en/errorcodes/cj-errorcode-ability.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Ability Subsystem Error Codes](./cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -92,7 +92,7 @@ public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): In
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Ability Subsystem Error Codes](../../../source_en/errorcodes/cj-errorcode-ability.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Ability Subsystem Error Codes](./cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

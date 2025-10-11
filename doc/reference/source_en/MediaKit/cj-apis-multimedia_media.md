@@ -46,7 +46,7 @@ public func createAVImageGenerator(): AVImageGenerator
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](../../errorcodes/cj-errorcode-multimedia-media.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](./cj-errorcode-multimedia-media.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -223,7 +223,7 @@ public func fetchFrameByTime(timeUs: Int64, options: AVImageQueryOptions, param:
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](../../errorcodes/cj-errorcode-multimedia-media.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](./cj-errorcode-multimedia-media.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -264,7 +264,7 @@ public func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](../../errorcodes/cj-errorcode-multimedia-media.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](./cj-errorcode-multimedia-media.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
