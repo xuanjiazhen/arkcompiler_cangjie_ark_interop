@@ -49,7 +49,7 @@ public func addAbilityMonitor(monitor: AbilityMonitor): Unit
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -95,7 +95,7 @@ public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -138,7 +138,7 @@ public func doAbilityBackground(ability: UIAbility): Unit
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -181,7 +181,7 @@ public func doAbilityForeground(ability: UIAbility): Unit
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -306,7 +306,7 @@ public func getAbilityState(ability: UIAbility): AbilityLifecycleState
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息|
   | :--- | :--- |
@@ -381,7 +381,7 @@ public func getCurrentTopAbility(): UIAbility
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -424,7 +424,7 @@ public func print(msg: String): Unit
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -466,7 +466,7 @@ public func removeAbilityMonitor(monitor: AbilityMonitor): Unit
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -512,7 +512,7 @@ public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -597,7 +597,7 @@ doc/reference/source_zh_cn/AbilityKit/
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |
@@ -651,7 +651,7 @@ public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int6
 
 **异常：**
 
-以下错误码详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+以下错误码详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[元能力子系统错误码](./cj-errorcode-ability.md)。
 
   | 错误码ID | 错误信息 |
   | :--- | :--- |

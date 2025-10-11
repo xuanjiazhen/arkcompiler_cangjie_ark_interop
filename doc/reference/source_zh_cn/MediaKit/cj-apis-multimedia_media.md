@@ -46,7 +46,7 @@ public func createAVImageGenerator(): AVImageGenerator
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Media错误码](../../errorcodes/cj-errorcode-multimedia-media.md)。
+- BusinessException：对应错误码如下表，详见[Media错误码](./cj-errorcode-multimedia-media.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -223,7 +223,7 @@ public func fetchFrameByTime(timeUs: Int64, options: AVImageQueryOptions, param:
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Media错误码](../../errorcodes/cj-errorcode-multimedia-media.md)。
+- BusinessException：对应错误码如下表，详见[Media错误码](./cj-errorcode-multimedia-media.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -264,7 +264,7 @@ public func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Media错误码](../../errorcodes/cj-errorcode-multimedia-media.md)。
+- BusinessException：对应错误码如下表，详见[Media错误码](./cj-errorcode-multimedia-media.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
