@@ -43,7 +43,7 @@ public static func getUriFromPath(path: String): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message                   |
   | :----------- | :------------------------------ |
@@ -122,7 +122,7 @@ public init(uriOrPath: String)
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](./cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message           |
   | :----------- | :---------------------- |

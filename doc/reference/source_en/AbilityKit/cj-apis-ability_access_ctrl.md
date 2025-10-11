@@ -98,7 +98,7 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](../../../source_en/errorcodes/cj-errorcode-access-token.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](./cj-errorcode-access-token.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -144,7 +144,7 @@ If the user denies the authorization, the dialog box cannot be displayed again. 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](../../../source_en/errorcodes/cj-errorcode-access-token.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](./cj-errorcode-access-token.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

@@ -98,7 +98,7 @@ public static func publish(event: String, options!: CommonEventPublishData =  Co
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](../../../source_en/errorcodes/cj-errorcode-common_event_service.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](./cj-errorcode-common_event_service.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -152,7 +152,7 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncC
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](../../../source_en/errorcodes/cj-errorcode-common_event_service.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](./cj-errorcode-common_event_service.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -181,7 +181,7 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](../../../source_en/errorcodes/cj-errorcode-common_event_service.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](./cj-errorcode-common_event_service.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
