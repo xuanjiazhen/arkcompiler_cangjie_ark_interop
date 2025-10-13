@@ -776,5 +776,3 @@ class EntryView {
     }
 }
 ```
-
-![text](figures/text.gif)
