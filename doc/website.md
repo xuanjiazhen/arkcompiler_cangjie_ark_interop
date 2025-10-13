@@ -481,7 +481,7 @@
             - [Smartphones](API_Reference/source_en/cj-phone-syscap-list.md)
             - [Tablets](API_Reference/source_en/cj-tablet-syscap-list.md)
         - [API Tag-based Management](API_Reference/source_en/cj-ifavailable.md)
-        - [Universal Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-universal.md)
+        - [Universal Error Codes](API_Reference/source_en/cj-errorcode-universal.md)
     - Application Framework
         - Ability Kit (Application Framework Services)
             - Cangjie APIs
@@ -506,10 +506,10 @@
                 - [ohos.security.skill](API_Reference/source_en/AbilityKit/cj-apis-skill.md)
                 - [ohos.app.ability.error_manager](API_Reference/source_en/AbilityKit/cj-apis-app-ability-error_manager.md)
             - Error Codes
-                - [Ability Subsystem Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-ability.md)
-                - [Bundle Management Subsystem Universal Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-bundle.md)
-                - [Access Control Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-access-token.md)
-                - [Screen Lock Sensitive Data Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-screen_lock_file_manager.md)
+                - [Ability Subsystem Error Codes](API_Reference/source_en/AbilityKit/cj-errorcode-ability.md)
+                - [Bundle Management Subsystem Universal Error Codes](API_Reference/source_en/AbilityKit/cj-errorcode-bundle.md)
+                - [Access Control Error Codes](API_Reference/source_en/AbilityKit/cj-errorcode-access-token.md)
+                - [Screen Lock Sensitive Data Management Error Codes](API_Reference/source_en/AbilityKit/cj-errorcode-screen_lock_file_manager.md)
         - ArkData (Ark Data Management)
             - Cangjie APIs
                 - [ohos.data_share_predicates (Data Share Predicates)](API_Reference/source_en/ArkData/cj-apis-data_share_predicates.md)
@@ -518,9 +518,9 @@
                 - [ohos.relational_store (Relational Database)](API_Reference/source_en/ArkData/cj-apis-relational_store.md)
                 - [ohos.values_bucket (Data Set)](API_Reference/source_en/ArkData/cj-apis-values_bucket.md)
             - Error Codes
-                - [Relational Database Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-data-rdb.md)
-                - [Distributed Key-Value Database Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-distributed_kv_store.md)
-                - [User Preferences Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-preferences.md)
+                - [Relational Database Error Codes](API_Reference/source_en/ArkData/cj-errorcode-data-rdb.md)
+                - [Distributed Key-Value Database Error Codes](API_Reference/source_en/ArkData/cj-errorcode-distributed_kv_store.md)
+                - [User Preferences Error Codes](API_Reference/source_en/ArkData/cj-errorcode-preferences.md)
         - ArkUI (Ark UI Framework)
             - Cangjie APIs
                 - UI Interface
@@ -688,26 +688,26 @@
                 - [Framework Interfaces](API_Reference/source_en/arkui-cj/cj-ui-framework.md)
             - Error Codes
                 - UI Interface
-                    - [Animation Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-animator.md)
+                    - [Animation Error Codes](API_Reference/source_en/arkui-cj/cj-errorcode-animator.md)
                 - Graphics
-                    - [Screen Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-display.md)
-                    - [Window Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-window.md)
+                    - [Screen Error Codes](API_Reference/source_en/arkui-cj/cj-errorcode-display.md)
+                    - [Window Error Codes](API_Reference/source_en/arkui-cj/cj-errorcode-window.md)
         - ArkWeb
             - Cangjie API
                 - [ohos.webview (Webview)](API_Reference/source_en/ArkWeb/cj-apis-webview.md)
             - Error Codes
-                - [Webview Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-webview.md)
+                - [Webview Error Codes](API_Reference/source_en/ArkWeb/cj-errorcode-webview.md)
         - Core File Kit
             - Cangjie API
                 - [ohos.file_fileuri (File URI)](API_Reference/source_en/CoreFileKit/cj-apis-file_fileuri.md)
                 - [ohos.file_fs (File Management)](API_Reference/source_en/CoreFileKit/cj-apis-file_fs.md)
             - Error Codes
-                - [File Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-filemanagement.md)
+                - [File Management Error Codes](API_Reference/source_en/CoreFileKit/cj-errorcode-filemanagement.md)
         - IPC Kit
             - Cangjie API
                 - [ohos.rpc (RPC Communication)](API_Reference/source_en/IPCKit/cj-apis-rpc.md)
             - Error Codes
-                - [IPC Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-rpc.md)
+                - [IPC Error Codes](API_Reference/source_en/IPCKit/cj-errorcode-rpc.md)
         - Localization Kit
             - Cangjie API
                 - [ohos.i18n (Internationalization-I18n)](API_Reference/source_en/LocalizationKit/cj-apis-i18n.md)
@@ -715,20 +715,20 @@
                 - [ohos.raw_file_descriptor](API_Reference/source_en/LocalizationKit/cj-apis-raw_file_descriptor.md)
                 - [ohos.resource](API_Reference/source_en/LocalizationKit/cj-apis-resource.md)
             - Error Codes
-                - [I18n Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-i18n.md)
-                - [Resource Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-resource-manager.md)
+                - [I18n Error Codes](API_Reference/source_en/LocalizationKit/cj-errorcode-i18n.md)
+                - [Resource Management Error Codes](API_Reference/source_en/LocalizationKit/cj-errorcode-resource-manager.md)
     - System
         - Security
             - Crypto Architecture Kit
                 - Cangjie API
                     - [ohos.crypto (Cryptography Algorithm Framework)](API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md)
                 - Error Codes
-                    - [Crypto Framework Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-crypto.md)
+                    - [Crypto Framework Error Codes](API_Reference/source_en/CryptoArchitectureKit/cj-errorcode-crypto.md)
             - Universal Keystore Kit
                 - Cangjie API
                     - [ohos.security_huks (Universal Keystore System)](API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md)
                 - Error Codes
-                    - [HUKS Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-huks.md)
+                    - [HUKS Error Codes](API_Reference/source_en/UniversalKeystoreKit/cj-errorcode-huks.md)
         - Network
             - Connectivity Kit
                 - Cangjie API
@@ -739,17 +739,17 @@
                     - [ohos.bluetooth.hfp (Bluetooth HFP Module)](API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-hfp.md)
                     - [ohos.wifi_manager (WLAN)](API_Reference/source_en/ConnectivityKit/cj-apis-wifi_manager.md)
                 - Error Codes
-                    - [Bluetooth Service Subsystem Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md)
-                    - [WIFI Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-wifi-manager.md)
-                    - [NFC Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-nfc.md)
-                    - [SE (Secure Element) Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-secure_element.md)
+                    - [Bluetooth Service Subsystem Error Codes](API_Reference/source_en/ConnectivityKit/cj-errorcode-bluetooth_manager.md)
+                    - [WIFI Error Codes](API_Reference/source_en/ConnectivityKit/cj-errorcode-wifi-manager.md)
+                    - [NFC Error Codes](API_Reference/source_en/ConnectivityKit/cj-errorcode-nfc.md)
+                    - [SE (Secure Element) Error Codes](API_Reference/source_en/ConnectivityKit/cj-errorcode-secure_element.md)
             - Network Kit
                 - Cangjie API
                     - [ohos.net.connection (Network Connection Management)](API_Reference/source_en/NetworkKit/cj-apis-net-connection.md)
                     - [ohos.net.http (Data Request)](API_Reference/source_en/NetworkKit/cj-apis-net-http.md)
                 - Error Codes
-                    - [HTTP Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-net-http.md)
-                    - [Network Connection Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-net-connection.md)
+                    - [HTTP Error Codes](API_Reference/source_en/NetworkKit/cj-errorcode-net-http.md)
+                    - [Network Connection Management Error Codes](API_Reference/source_en/NetworkKit/cj-errorcode-net-connection.md)
         - Basic Features
             - Basic Services Kit
                 - Cangjie API
@@ -770,17 +770,17 @@
                         - [ohos.common_event_publish_data](API_Reference/source_en/BasicServicesKit/cj-apis-common_event_publish_data.md)
                         - [ohos.value_type](API_Reference/source_en/BasicServicesKit/cj-apis-value_type.md)
                 - Error Codes
-                    - [Upload/Download Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-request.md)
-    - [Time and Timezone Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-time.md)
-    - [Event Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-common_event_service.md)
-    - [System Power Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-power.md)
-    - [Account Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-basic-account.md)
+                    - [Upload/Download Error Codes](API_Reference/source_en/BasicServicesKit/cj-errorcode-request.md)
+                    - [Time and Timezone Error Codes](API_Reference/source_en/BasicServicesKit/cj-errorcode-time.md)
+                    - [Event Error Codes](API_Reference/source_en/BasicServicesKit/cj-errorcode-common_event_service.md)
+                    - [System Power Management Error Codes](API_Reference/source_en/BasicServicesKit/cj-errorcode-power.md)
+                    - [Account Management Error Codes](API_Reference/source_en/BasicServicesKit/cj-errorcode-basic-account.md)
         - Hardware
             - Sensor Service Kit
                 - Cangjie API
                     - [ohos.sensor (Sensors)](API_Reference/source_en/SensorServiceKit/cj-apis-sensor.md)
                 - Error Codes
-                    - [Sensor Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-sensor.md)
+                    - [Sensor Error Codes](API_Reference/source_en/SensorServiceKit/cj-errorcode-sensor.md)
             - Telephony Kit
                 - Cangjie API
                     - [ohos.telephony.call](API_Reference/source_en/TelephonyKit/cj-apis-telephony-call.md)
@@ -791,31 +791,31 @@
                     - [ohos.hilog (HiLog Logging)](API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hilog.md)
                     - [ohos.hi_tracemeter (Performance Tracing)](API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hi_tracemeter.md)
                 - Error Codes
-                    - [Application Event Logging Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-hiappevent.md)
-                    - [Hidebug CpuUsage Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-hidebug-cpuusage.md)
+                    - [Application Event Logging Error Codes](API_Reference/source_en/PerformanceAnalysisKit/cj-errorcode-hiappevent.md)
+                    - [Hidebug CpuUsage Error Codes](API_Reference/source_en/PerformanceAnalysisKit/cj-errorcode-hidebug-cpuusage.md)
             - Test Kit
                 - Cangjie API
                     - [ohos.ability_delegator_registry (AbilityDelegatorRegistry)](API_Reference/source_en/TestKit/cj-apis-ability_delegator_registry.md)
                     - [ohos.ui_test (UI Testing)](API_Reference/source_en/TestKit/cj-apis-ui_test.md)
                 - Error Codes
-                    - [UITest Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-uitest.md)
+                    - [UITest Error Codes](API_Reference/source_en/TestKit/cj-errorcode-uitest.md)
     - Media
         - Camera Kit
             - Cangjie API
                 - [ohos.multimedia.camera (Camera Management)](API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md)
             - Error Codes
-                - [Camera Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md)
+                - [Camera Error Codes](API_Reference/source_en/CameraKit/cj-errorcode-multimedia-camera.md)
         - Image Kit
             - Cangjie API
                 - [ohos.multimedia.image (Image Processing)](API_Reference/source_en/ImageKit/cj-apis-image.md)
             - Error Codes
-                - [Image Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-image.md)
+                - [Image Error Codes](API_Reference/source_en/ImageKit/cj-errorcode-image.md)
         - Media Kit
             - Cangjie API
                 - [ohos.multimedia.media (Media Services)](API_Reference/source_en/MediaKit/cj-apis-multimedia_media.md)
                 - [ohos.multimedia.image](API_Reference/source_en/MediaKit/cj-apis-multimedia-image.md)
             - Error Codes
-                - [Media Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-multimedia-media.md)
+                - [Media Error Codes](API_Reference/source_en/MediaKit/cj-errorcode-multimedia-media.md)
         - Media Library Kit
             - Cangjie API
                 - [ohos.file.photo_access_helper (Photo Album Management Module)](API_Reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper)
@@ -824,17 +824,17 @@
             - Cangjie API
                 - [ohos.color_manager (Color Management)](API_Reference/source_en/ArkGraphics2D/cj-apis-color_manager.md)
             - Error Codes
-                - [Color Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-colorspace-manager.md)
+                - [Color Management Error Codes](API_Reference/source_en/ArkGraphics2D/cj-errorcode-colorspace-manager.md)
     - Application Services
         - Location Kit
             - Cangjie API
                 - [ohos.geo_location_manager (Location Services)](API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md)
             - Error Codes
-                - [Location Services Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-geo_location_manager.md)
+                - [Location Services Error Codes](API_Reference/source_en/LocationKit/cj-errorcode-geo_location_manager.md)
     - Cangjie and ArkTS Interoperability Library
         - [ohos.ark_interop (ArkTS Interoperability Library)](API_Reference/source_en/arkinterop/cj-apis-ark_interop.md)
             - Error Codes
-                - [ArkTS Interoperability Library Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-ark_interop.md)
+                - [ArkTS Interoperability Library Error Codes](API_Reference/source_en/arkinterop/cj-errorcode-ark_interop.md)
         - [ohos.ark_interop_helper (ArkTS Interoperability Common Utility Functions)](API_Reference/source_en/arkinterop/cj-apis-ark_interop_helper.md)
         - [ohos.business_exception (Common Exception Information)](API_Reference/source_en/arkinterop/cj-api-business_exception.md)
         - [ohos.callback_invoke (Common Callback Information)](API_Reference/source_en/arkinterop/cj-api-callback_invoke.md)
@@ -842,146 +842,146 @@
     - [Cangjie Programming Language Library API](API_Reference/source_en/cj-libs-api.md)
 
 - Cangjie Programming Language Development Guide
-    - [First Look at Cangjie Language](User_Manual/source_en/first_understanding/basic.md)
+    - [First Look at Cangjie Language](cj-user-manual/source_en/first_understanding/basic.md)
     - Basic Concepts
-        - [Identifiers](User_Manual/source_en/basic_programming_concepts/identifier.md)
-        - [Program Structure](User_Manual/source_en/basic_programming_concepts/program_structure.md)
-        - [Expressions](User_Manual/source_en/basic_programming_concepts/expression.md)
-        - [Functions](User_Manual/source_en/basic_programming_concepts/function.md)
+        - [Identifiers](cj-user-manual/source_en/basic_programming_concepts/identifier.md)
+        - [Program Structure](cj-user-manual/source_en/basic_programming_concepts/program_structure.md)
+        - [Expressions](cj-user-manual/source_en/basic_programming_concepts/expression.md)
+        - [Functions](cj-user-manual/source_en/basic_programming_concepts/function.md)
     - Basic Data Types
-        - [Basic Operators](User_Manual/source_en/basic_data_type/basic_operators.md)
-        - [Integer Types](User_Manual/source_en/basic_data_type/integer.md)
-        - [Floating-Point Types](User_Manual/source_en/basic_data_type/float.md)
-        - [Boolean Type](User_Manual/source_en/basic_data_type/bool.md)
-        - [Character Type](User_Manual/source_en/basic_data_type/characters.md)
-        - [String Type](User_Manual/source_en/basic_data_type/strings.md)
-        - [Tuple Type](User_Manual/source_en/basic_data_type/tuple.md)
-        - [Array Type](User_Manual/source_en/basic_data_type/array.md)
-        - [Range Type](User_Manual/source_en/basic_data_type/range.md)
-        - [Unit Type](User_Manual/source_en/basic_data_type/unit.md)
-        - [Nothing Type](User_Manual/source_en/basic_data_type/nothing.md)
+        - [Basic Operators](cj-user-manual/source_en/basic_data_type/basic_operators.md)
+        - [Integer Types](cj-user-manual/source_en/basic_data_type/integer.md)
+        - [Floating-Point Types](cj-user-manual/source_en/basic_data_type/float.md)
+        - [Boolean Type](cj-user-manual/source_en/basic_data_type/bool.md)
+        - [Character Type](cj-user-manual/source_en/basic_data_type/characters.md)
+        - [String Type](cj-user-manual/source_en/basic_data_type/strings.md)
+        - [Tuple Type](cj-user-manual/source_en/basic_data_type/tuple.md)
+        - [Array Type](cj-user-manual/source_en/basic_data_type/array.md)
+        - [Range Type](cj-user-manual/source_en/basic_data_type/range.md)
+        - [Unit Type](cj-user-manual/source_en/basic_data_type/unit.md)
+        - [Nothing Type](cj-user-manual/source_en/basic_data_type/nothing.md)
     - Functions
-        - [Defining Functions](User_Manual/source_en/function/define_functions.md)
-        - [Calling Functions](User_Manual/source_en/function/call_functions.md)
-        - [Function Types](User_Manual/source_en/function/first_class_citizen.md)
-        - [Nested Functions](User_Manual/source_en/function/nested_functions.md)
-        - [Lambda Expressions](User_Manual/source_en/function/lambda.md)
-        - [Closures](User_Manual/source_en/function/closure.md)
-        - [Function Call Syntax Sugar](User_Manual/source_en/function/function_call_desugar.md)
-        - [Function Overloading](User_Manual/source_en/function/function_overloading.md)
-        - [Operator Overloading](User_Manual/source_en/function/operator_overloading.md)
-        - [const Functions and Constant Evaluation](User_Manual/source_en/function/const_func_and_eval.md)
+        - [Defining Functions](cj-user-manual/source_en/function/define_functions.md)
+        - [Calling Functions](cj-user-manual/source_en/function/call_functions.md)
+        - [Function Types](cj-user-manual/source_en/function/first_class_citizen.md)
+        - [Nested Functions](cj-user-manual/source_en/function/nested_functions.md)
+        - [Lambda Expressions](cj-user-manual/source_en/function/lambda.md)
+        - [Closures](cj-user-manual/source_en/function/closure.md)
+        - [Function Call Syntax Sugar](cj-user-manual/source_en/function/function_call_desugar.md)
+        - [Function Overloading](cj-user-manual/source_en/function/function_overloading.md)
+        - [Operator Overloading](cj-user-manual/source_en/function/operator_overloading.md)
+        - [const Functions and Constant Evaluation](cj-user-manual/source_en/function/const_func_and_eval.md)
     - Struct Types
-        - [Defining Struct Types](User_Manual/source_en/struct/define_struct.md)
-        - [Creating Struct Instances](User_Manual/source_en/struct/create_instance.md)
-        - [mut Functions](User_Manual/source_en/struct/mut.md)
+        - [Defining Struct Types](cj-user-manual/source_en/struct/define_struct.md)
+        - [Creating Struct Instances](cj-user-manual/source_en/struct/create_instance.md)
+        - [mut Functions](cj-user-manual/source_en/struct/mut.md)
     - Enum Types and Pattern Matching
-        - [Enum Types](User_Manual/source_en/enum_and_pattern_match/enum.md)
-        - [Option Type](User_Manual/source_en/enum_and_pattern_match/option_type.md)
-        - [Pattern Overview](User_Manual/source_en/enum_and_pattern_match/pattern_overview.md)
-        - [Pattern Refutability](User_Manual/source_en/enum_and_pattern_match/pattern_refutability.md)
-        - [match Expressions](User_Manual/source_en/enum_and_pattern_match/match.md)
-        - [Other Pattern Usage Scenarios](User_Manual/source_en/enum_and_pattern_match/other.md)
+        - [Enum Types](cj-user-manual/source_en/enum_and_pattern_match/enum.md)
+        - [Option Type](cj-user-manual/source_en/enum_and_pattern_match/option_type.md)
+        - [Pattern Overview](cj-user-manual/source_en/enum_and_pattern_match/pattern_overview.md)
+        - [Pattern Refutability](cj-user-manual/source_en/enum_and_pattern_match/pattern_refutability.md)
+        - [match Expressions](cj-user-manual/source_en/enum_and_pattern_match/match.md)
+        - [Other Pattern Usage Scenarios](cj-user-manual/source_en/enum_and_pattern_match/other.md)
     - Classes and Interfaces
-        - [Classes](User_Manual/source_en/class_and_interface/class.md)
-        - [Interfaces](User_Manual/source_en/class_and_interface/interface.md)
-        - [Properties](User_Manual/source_en/class_and_interface/prop.md)
-        - [Subtype Relationships](User_Manual/source_en/class_and_interface/subtype.md)
-        - [Type Casting](User_Manual/source_en/class_and_interface/typecast.md)
+        - [Classes](cj-user-manual/source_en/class_and_interface/class.md)
+        - [Interfaces](cj-user-manual/source_en/class_and_interface/interface.md)
+        - [Properties](cj-user-manual/source_en/class_and_interface/prop.md)
+        - [Subtype Relationships](cj-user-manual/source_en/class_and_interface/subtype.md)
+        - [Type Casting](cj-user-manual/source_en/class_and_interface/typecast.md)
     - Generics
-        - [Generics Overview](User_Manual/source_en/generic/generic_overview.md)
-        - [Generic Functions](User_Manual/source_en/generic/generic_function.md)
-        - [Generic Interfaces](User_Manual/source_en/generic/generic_interface.md)
-        - [Generic Classes](User_Manual/source_en/generic/generic_class.md)
-        - [Generic Structs](User_Manual/source_en/generic/generic_struct.md)
-        - [Generic Enums](User_Manual/source_en/generic/generic_enum.md)
-        - [Subtype Relationships of Generic Types](User_Manual/source_en/generic/generic_subtype.md)
-        - [Type Aliases](User_Manual/source_en/generic/typealias.md)
-        - [Generic Constraints](User_Manual/source_en/generic/generic_constraint.md)
+        - [Generics Overview](cj-user-manual/source_en/generic/generic_overview.md)
+        - [Generic Functions](cj-user-manual/source_en/generic/generic_function.md)
+        - [Generic Interfaces](cj-user-manual/source_en/generic/generic_interface.md)
+        - [Generic Classes](cj-user-manual/source_en/generic/generic_class.md)
+        - [Generic Structs](cj-user-manual/source_en/generic/generic_struct.md)
+        - [Generic Enums](cj-user-manual/source_en/generic/generic_enum.md)
+        - [Subtype Relationships of Generic Types](cj-user-manual/source_en/generic/generic_subtype.md)
+        - [Type Aliases](cj-user-manual/source_en/generic/typealias.md)
+        - [Generic Constraints](cj-user-manual/source_en/generic/generic_constraint.md)
     - Extensions
-        - [Extensions Overview](User_Manual/source_en/extension/extend_overview.md)
-        - [Direct Extensions](User_Manual/source_en/extension/direct_extension.md)
-        - [Interface Extensions](User_Manual/source_en/extension/interface_extension.md)
-        - [Access Rules](User_Manual/source_en/extension/access_rules.md)
+        - [Extensions Overview](cj-user-manual/source_en/extension/extend_overview.md)
+        - [Direct Extensions](cj-user-manual/source_en/extension/direct_extension.md)
+        - [Interface Extensions](cj-user-manual/source_en/extension/interface_extension.md)
+        - [Access Rules](cj-user-manual/source_en/extension/access_rules.md)
     - Collection Types
-        - [Basic Collection Types Overview](User_Manual/source_en/collections/collection_overview.md)
-        - [ArrayList](User_Manual/source_en/collections/collection_arraylist.md)
-        - [HashSet](User_Manual/source_en/collections/collection_hashset.md)
-        - [HashMap](User_Manual/source_en/collections/collection_hashmap.md)
-        - [Iterable and Collections](User_Manual/source_en/collections/collection_iterable_collections.md)
+        - [Basic Collection Types Overview](cj-user-manual/source_en/collections/collection_overview.md)
+        - [ArrayList](cj-user-manual/source_en/collections/collection_arraylist.md)
+        - [HashSet](cj-user-manual/source_en/collections/collection_hashset.md)
+        - [HashMap](cj-user-manual/source_en/collections/collection_hashmap.md)
+        - [Iterable and Collections](cj-user-manual/source_en/collections/collection_iterable_collections.md)
     - Packages
-        - [Packages Overview](User_Manual/source_en/package/package_overview.md)
-        - [Package Declarations](User_Manual/source_en/package/package_name.md)
-        - [Top-Level Declaration Visibility](User_Manual/source_en/package/toplevel_access.md)
-        - [Package Imports](User_Manual/source_en/package/import.md)
-        - [Program Entry](User_Manual/source_en/package/entry.md)
+        - [Packages Overview](cj-user-manual/source_en/package/package_overview.md)
+        - [Package Declarations](cj-user-manual/source_en/package/package_name.md)
+        - [Top-Level Declaration Visibility](cj-user-manual/source_en/package/toplevel_access.md)
+        - [Package Imports](cj-user-manual/source_en/package/import.md)
+        - [Program Entry](cj-user-manual/source_en/package/entry.md)
     - Exception Handling
-        - [Defining Exceptions](User_Manual/source_en/error_handle/exception_overview.md)
-        - [Throwing and Handling Exceptions](User_Manual/source_en/error_handle/handle.md)
-        - [Common Runtime Exceptions](User_Manual/source_en/error_handle/common_runtime_exceptions.md)
-        - [Using Option](User_Manual/source_en/error_handle/use_option.md)
+        - [Defining Exceptions](cj-user-manual/source_en/error_handle/exception_overview.md)
+        - [Throwing and Handling Exceptions](cj-user-manual/source_en/error_handle/handle.md)
+        - [Common Runtime Exceptions](cj-user-manual/source_en/error_handle/common_runtime_exceptions.md)
+        - [Using Option](cj-user-manual/source_en/error_handle/use_option.md)
     - Concurrent Programming
-        - [Concurrency Overview](User_Manual/source_en/concurrency/concurrency_overview.md)
-        - [Creating Threads](User_Manual/source_en/concurrency/create_thread.md)
-        - [Accessing Threads](User_Manual/source_en/concurrency/use_thread.md)
-        - [Terminating Threads](User_Manual/source_en/concurrency/terminal_thread.md)
-        - [Synchronization Mechanisms](User_Manual/source_en/concurrency/sync.md)
-        - [Thread Sleep Duration (sleep)](User_Manual/source_en/concurrency/sleep.md)
+        - [Concurrency Overview](cj-user-manual/source_en/concurrency/concurrency_overview.md)
+        - [Creating Threads](cj-user-manual/source_en/concurrency/create_thread.md)
+        - [Accessing Threads](cj-user-manual/source_en/concurrency/use_thread.md)
+        - [Terminating Threads](cj-user-manual/source_en/concurrency/terminal_thread.md)
+        - [Synchronization Mechanisms](cj-user-manual/source_en/concurrency/sync.md)
+        - [Thread Sleep Duration (sleep)](cj-user-manual/source_en/concurrency/sleep.md)
     - Basic I/O Operations
-        - [I/O Stream Overview](User_Manual/source_en/Basic_IO/basic_IO_overview.md)
-        - [I/O Node Streams](User_Manual/source_en/Basic_IO/basic_IO_source_stream.md)
-        - [I/O Processing Streams](User_Manual/source_en/Basic_IO/basic_IO_process_stream.md)
+        - [I/O Stream Overview](cj-user-manual/source_en/Basic_IO/basic_IO_overview.md)
+        - [I/O Node Streams](cj-user-manual/source_en/Basic_IO/basic_IO_source_stream.md)
+        - [I/O Processing Streams](cj-user-manual/source_en/Basic_IO/basic_IO_process_stream.md)
     - Network Programming
-        - [Network Programming Overview](User_Manual/source_en/Net/net_overview.md)
-        - [Socket Programming](User_Manual/source_en/Net/net_socket.md)
-        - [HTTP Programming](User_Manual/source_en/Net/net_http.md)
-        - [WebSocket Programming](User_Manual/source_en/Net/net_websocket.md)
+        - [Network Programming Overview](cj-user-manual/source_en/Net/net_overview.md)
+        - [Socket Programming](cj-user-manual/source_en/Net/net_socket.md)
+        - [HTTP Programming](cj-user-manual/source_en/Net/net_http.md)
+        - [WebSocket Programming](cj-user-manual/source_en/Net/net_websocket.md)
     - Macros
-        - [Macro Introduction](User_Manual/source_en/Macro/macro_introduction.md)
-        - [Tokens-Related Types and Quote Expressions](User_Manual/source_en/Macro/Tokens_types_and_quote_expressions.md)
-        - [Syntax Nodes](User_Manual/source_en/Macro/syntax_node.md)
-        - [Macro Implementation](User_Manual/source_en/Macro/implementation_of_macros_ohos.md)
-        - [Compilation, Error Reporting, and Debugging](User_Manual/source_en/Macro/compiling_error_reporting_and_debugging_ohos.md)
-        - [Macro Package Definition and Import](User_Manual/source_en/Macro/defining_and_importing_macro_package.md)
-        - [Built-in Compilation Flags](User_Manual/source_en/Macro/builtin_compilation_flags.md)
-        - [Practical Cases](User_Manual/source_en/Macro/practical_case.md)
+        - [Macro Introduction](cj-user-manual/source_en/Macro/macro_introduction.md)
+        - [Tokens-Related Types and Quote Expressions](cj-user-manual/source_en/Macro/Tokens_types_and_quote_expressions.md)
+        - [Syntax Nodes](cj-user-manual/source_en/Macro/syntax_node.md)
+        - [Macro Implementation](cj-user-manual/source_en/Macro/implementation_of_macros_ohos.md)
+        - [Compilation, Error Reporting, and Debugging](cj-user-manual/source_en/Macro/compiling_error_reporting_and_debugging_ohos.md)
+        - [Macro Package Definition and Import](cj-user-manual/source_en/Macro/defining_and_importing_macro_package.md)
+        - [Built-in Compilation Flags](cj-user-manual/source_en/Macro/builtin_compilation_flags.md)
+        - [Practical Cases](cj-user-manual/source_en/Macro/practical_case.md)
     - Reflection and Annotations
-        - [Dynamic Features](User_Manual/source_en/reflect_and_annotation/dynamic_feature.md)
-        - [Annotations](User_Manual/source_en/reflect_and_annotation/anno.md)
+        - [Dynamic Features](cj-user-manual/source_en/reflect_and_annotation/dynamic_feature.md)
+        - [Annotations](cj-user-manual/source_en/reflect_and_annotation/anno.md)
     - Cross-Language Interoperability
-        - [Cangjie-C Interoperability](User_Manual/source_en/FFI/cangjie-c.md)
+        - [Cangjie-C Interoperability](cj-user-manual/source_en/FFI/cangjie-c.md)
         - Cangjie-ArkTS Interoperability
-            - [Overview](User_Manual/source_en/FFI/cangjie-arkts/cangjie_arkts_overview.md)
-            - [Scenarios](User_Manual/source_en/FFI/cangjie-arkts/interoperability_senario.md)
-                - [Using Cangjie in ArkTS Applications](User_Manual/source_en/FFI/cangjie-arkts/using_cangjie.md)
-                    - [Adding Cangjie Pages](User_Manual/source_en/FFI/cangjie-arkts/add_cangjie_page.md)
-                    - [Adding Cangjie Modules](User_Manual/source_en/FFI/cangjie-arkts/add_cangjie_module.md)
-                - [Using ArkTS in Cangjie Applications](User_Manual/source_en/FFI/cangjie-arkts/using_arkts_module.md)
+            - [Overview](cj-user-manual/source_en/FFI/cangjie-arkts/cangjie_arkts_overview.md)
+            - [Scenarios](cj-user-manual/source_en/FFI/cangjie-arkts/interoperability_senario.md)
+                - [Using Cangjie in ArkTS Applications](cj-user-manual/source_en/FFI/cangjie-arkts/using_cangjie.md)
+                    - [Adding Cangjie Pages](cj-user-manual/source_en/FFI/cangjie-arkts/add_cangjie_page.md)
+                    - [Adding Cangjie Modules](cj-user-manual/source_en/FFI/cangjie-arkts/add_cangjie_module.md)
+                - [Using ArkTS in Cangjie Applications](cj-user-manual/source_en/FFI/cangjie-arkts/using_arkts_module.md)
             - Cangjie-ArkTS Interoperability Usage
-                - [ArkTS Calling Cangjie](User_Manual/source_en/FFI/cangjie-arkts/method_of_ArkTS_calling_cangjie.md)
+                - [ArkTS Calling Cangjie](cj-user-manual/source_en/FFI/cangjie-arkts/method_of_ArkTS_calling_cangjie.md)
                     - realize interoperability code in cangjie side
-                        - [Declarative Interoperability Macros](User_Manual/source_en/FFI/cangjie-arkts/interoperability_macro.md)
-                        - [Interoperability Library](User_Manual/source_en/FFI/cangjie-arkts/interoperability_lib.md)
-                    - [use interoperability code in ArkTS side](User_Manual/source_en/FFI/cangjie-arkts/arkts_import_cangjie.md)
-                - [Cangjie Calling ArkTS](User_Manual/source_en/FFI/cangjie-arkts/using_arkts_module.md)
-            - [Using Example](User_Manual/source_en/FFI/cangjie-arkts/using_example.md)
-                - [Accessing ArkTS data in Cangjie](User_Manual/source_en/FFI/cangjie-arkts/operating_ArkTS_data.md)
-                - [Accessing Cangjie Data in ArkTS](User_Manual/source_en/FFI/cangjie-arkts/operating_cangjie_objects.md)
-                - [Using Interoperability Library in Cangjie Multithreading](User_Manual/source_en/FFI/cangjie-arkts/using_interoperability_lib_multithread.md)
-            - [Cangjie-ArkTS Interoperability Auxiliary Library](User_Manual/source_en/FFI/cangjie-arkts/auxiliary_lib.md)
-            - [Cangjie-ArkTS Interoperability Development Guidelines](User_Manual/source_en/FFI/cangjie-arkts/interop_guidelines.md)
+                        - [Declarative Interoperability Macros](cj-user-manual/source_en/FFI/cangjie-arkts/interoperability_macro.md)
+                        - [Interoperability Library](cj-user-manual/source_en/FFI/cangjie-arkts/interoperability_lib.md)
+                    - [use interoperability code in ArkTS side](cj-user-manual/source_en/FFI/cangjie-arkts/arkts_import_cangjie.md)
+                - [Cangjie Calling ArkTS](cj-user-manual/source_en/FFI/cangjie-arkts/using_arkts_module.md)
+            - [Using Example](cj-user-manual/source_en/FFI/cangjie-arkts/using_example.md)
+                - [Accessing ArkTS data in Cangjie](cj-user-manual/source_en/FFI/cangjie-arkts/operating_ArkTS_data.md)
+                - [Accessing Cangjie Data in ArkTS](cj-user-manual/source_en/FFI/cangjie-arkts/operating_cangjie_objects.md)
+                - [Using Interoperability Library in Cangjie Multithreading](cj-user-manual/source_en/FFI/cangjie-arkts/using_interoperability_lib_multithread.md)
+            - [Cangjie-ArkTS Interoperability Auxiliary Library](cj-user-manual/source_en/FFI/cangjie-arkts/auxiliary_lib.md)
+            - [Cangjie-ArkTS Interoperability Development Guidelines](cj-user-manual/source_en/FFI/cangjie-arkts/interop_guidelines.md)
     - Compilation and Building
-        - [cjc Usage](User_Manual/source_en/compile_and_build/cjc_usage_OHOS.md)
-        - [cjpm Introduction](User_Manual/source_en/compile_and_build/cjpm_usage_OHOS.md)
-        - [Conditional Compilation](User_Manual/source_en/compile_and_build/conditional_compilation.md)
-    - [Command Line Tools](User_Manual/source_en/cmd_tools/command_line_overview.md)
-        - [Package Management Tool](User_Manual/source_en/cmd_tools/cjpm_manual.md)
-        - [Debugging Tool](User_Manual/source_en/cmd_tools/cjdb_manual.md)
-        - [Formatting Tool](User_Manual/source_en/cmd_tools/cjfmt_manual.md)
-        - [HLE Tool](User_Manual/source_en/FFI/cangjie-arkts/HLE_usage.md)
+        - [cjc Usage](cj-user-manual/source_en/compile_and_build/cjc_usage_OHOS.md)
+        - [cjpm Introduction](cj-user-manual/source_en/compile_and_build/cjpm_usage_OHOS.md)
+        - [Conditional Compilation](cj-user-manual/source_en/compile_and_build/conditional_compilation.md)
+    - [Command Line Tools](cj-user-manual/source_en/cmd_tools/command_line_overview.md)
+        - [Package Management Tool](cj-user-manual/source_en/cmd_tools/cjpm_manual.md)
+        - [Debugging Tool](cj-user-manual/source_en/cmd_tools/cjdb_manual.md)
+        - [Formatting Tool](cj-user-manual/source_en/cmd_tools/cjfmt_manual.md)
+        - [HLE Tool](cj-user-manual/source_en/FFI/cangjie-arkts/HLE_usage.md)
     - Appendix
-        - [cjc Compilation Options](User_Manual/source_en/Appendix/compile_options_OHOS.md)
-        - [Keywords](User_Manual/source_en/Appendix/keyword.md)
-        - [Operators](User_Manual/source_en/Appendix/operator.md)
-        - [Operator Functions](User_Manual/source_en/Appendix/operator_function.md)
-        - [TokenKind Type](User_Manual/source_en/Appendix/tokenkind_type.md)
+        - [cjc Compilation Options](cj-user-manual/source_en/Appendix/compile_options_OHOS.md)
+        - [Keywords](cj-user-manual/source_en/Appendix/keyword.md)
+        - [Operators](cj-user-manual/source_en/Appendix/operator.md)
+        - [Operator Functions](cj-user-manual/source_en/Appendix/operator_function.md)
+        - [TokenKind Type](cj-user-manual/source_en/Appendix/tokenkind_type.md)

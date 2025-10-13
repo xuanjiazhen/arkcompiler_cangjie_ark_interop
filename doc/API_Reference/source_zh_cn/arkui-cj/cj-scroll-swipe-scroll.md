@@ -871,7 +871,7 @@ public func enableScrollInteraction(value: Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)的滚动接口。<br/>|
+|value|Bool|是|-|是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](https://docs.openharmony.cn/pages/v5.0/zh-cn/Dev_Guide/API_Reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)的滚动接口。<br/>|
 
 #### func fadingEdge(Option\<Bool>)
 

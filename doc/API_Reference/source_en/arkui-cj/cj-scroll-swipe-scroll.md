@@ -869,7 +869,7 @@ public func enableScrollInteraction(value: Bool): This
 
 | Parameter | Type | Required | Default | Description                                                                 |
 |:----------|:-----|:---------|:--------|:----------------------------------------------------------------------------|
-| value     | Bool | Yes      | -       | Whether scroll gestures are supported. When set to true, scrolling can be triggered via touch or mouse; when set to false, scrolling via touch or mouse is disabled, but scrolling via the [Scroller](https://docs.openharmony.cn/pages/v5.0/en/application-dev/reference/apis-arkui/arkui-ts/ts-container-scroll.md) controller remains unaffected. |
+| value     | Bool | Yes      | -       | Whether scroll gestures are supported. When set to true, scrolling can be triggered via touch or mouse; when set to false, scrolling via touch or mouse is disabled, but scrolling via the [Scroller](https://docs.openharmony.cn/pages/v5.0/en/Dev_Guide/API_Reference/apis-arkui/arkui-ts/ts-container-scroll.md) controller remains unaffected. |
 
 #### func fadingEdge(Option\<Bool>)
 
