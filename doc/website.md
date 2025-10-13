@@ -1,4 +1,4 @@
-# Application Development(Cangjie)
+# Application Development (Cangjie)
 
 - Getting Started
     - [Application Development Guide](Dev_Guide/source_en/cj-start/start/cj-start-application-development-overview.md)
