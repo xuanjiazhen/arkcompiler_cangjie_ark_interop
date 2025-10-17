@@ -114,12 +114,12 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
             Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
                 Text("我是内容").fontSize(20)
 
-                Button("cancel").onClick { evt =>
+                Button("cancel").onClick( { evt =>
                     controller?.closeDialog()
-                }
-                Button("confirm").onClick { evt =>
+                })
+                Button("confirm").onClick ({ evt =>
                     controller?.closeDialog()
-                }
+                })
             }.height(500.px)
         }
     }
@@ -180,9 +180,9 @@ class EntryView {
     ))
     func build() {
         Column {
-            Button("click me").onClick{evt =>
+            Button("click me").onClick({evt =>
                 dialogController.openDialog()
-            }
+            })
         }
     }
 }
@@ -218,15 +218,15 @@ class CustomDialogExampleTwo {
                 .fontSize(30)
                 .height(100)
             Button("Create Text")
-                .onClick{ evt =>
+                .onClick({ evt =>
                     this.showIf = true
-                }
+                })
             Button("Close Second Dialog Box")
-                .onClick{ evt =>
+                .onClick({ evt =>
                     if (let Some(v) <- this.controllerTwo) {
                         v.closeDialog()
                     }
-                }.margin(20)
+                }).margin(20)
         }
     }
 }
@@ -238,10 +238,10 @@ class MyDialog {
     func build() {
         Row(space: 600) {
             Button ("Open Second Box")
-                .onClick{ evt =>
+                .onClick({ evt =>
                     this.controller?.closeDialog()
                     this.openSecondBox()
-                }
+                })
                 .margin(20)
         }.borderRadius(10)
     }
@@ -273,9 +273,9 @@ class EntryView {
     func build() {
         Column() {
             Button(this.inputValue)
-                .onClick{ evt =>
+                .onClick({ evt =>
                     this.dialogController.openDialog()
-                }.backgroundColor(0x317aff)
+                }).backgroundColor(0x317aff)
         }.width(100.percent).margin(top:20)
     }
 }
