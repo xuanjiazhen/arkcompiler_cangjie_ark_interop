@@ -828,10 +828,10 @@ public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, fami
 | family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | Sets the font list for text. Multiple fonts can be specified using commas (e.g., 'Arial, HarmonyOS Sans'), with priority given in order. Currently supports 'HarmonyOS Sans' font. |
 | style | [FontStyle](#enum-fontstyle) | No | FontStyle.Normal | Sets the font style for text. |
 
-## class HorizontalAlignment
+## class HorizontalAlignParam
 
 ```cangjie
-public class HorizontalAlignment {
+public class HorizontalAlignParam {
     public var anchor: String
     public var align: HorizontalAlign
     public init(anchor: String, align: HorizontalAlign)
@@ -882,7 +882,7 @@ public var anchor: String
 public init(anchor: String, align: HorizontalAlign)
 ```
 
-**Function:** Constructs a HorizontalAlignment object.
+**Function:** Constructs a HorizontalAlignParam object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1313,10 +1313,10 @@ public init(x!: Length = 0.vp, y!: Length = 0.vp, width!: Length = 100.percent, 
 | x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** X-coordinate of the touch point relative to the top-left corner of the component. |
 | y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Y-coordinate of the touch point relative to the top-left corner of the component. |
 | width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Width of the touch hotspot. |
-| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Height of the touch hotspot. |## class VerticalAlignment
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Height of the touch hotspot. |## class VerticalAlignParam
 
 ```cangjie
-public class VerticalAlignment {
+public class VerticalAlignParam {
     public var anchor: String
     public var align: VerticalAlign
     public init(anchor: String, align: VerticalAlign)
@@ -1367,7 +1367,7 @@ public var anchor: String
 public init(anchor: String, align: VerticalAlign)
 ```
 
-**Function:** Constructs a VerticalAlignment object.
+**Function:** Constructs a VerticalAlignParam object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 

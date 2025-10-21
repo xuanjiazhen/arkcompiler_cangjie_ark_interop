@@ -2,7 +2,7 @@
 
 A component for displaying loading animations.
 
-The loading animation stops when the component is not visible. The visibility state of the component is determined by the [onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearea-area-raitos-raitos---unit) handler, where a visibility threshold ratio greater than 0 is considered as the visible state.
+The loading animation stops when the component is not visible. The visibility state of the component is determined by the [onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearea-area-ratios-ratios---unit) handler, where a visibility threshold ratio greater than 0 is considered as the visible state.
 
 ## Import Module
 

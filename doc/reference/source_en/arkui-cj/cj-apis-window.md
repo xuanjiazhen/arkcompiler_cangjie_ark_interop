@@ -132,7 +132,7 @@ public func getLastWindow(ctx: BaseContext): Window
 ## func shiftAppWindowFocus(Int32, Int32)
 
 ```cangjie
-public func shiftAppWindowFocus(sourceWindowId: Int32, targetWindowId: Int32): Unit
+public func shiftAppWindowFocus(sourceWindowID: Int32, targetWindowID: Int32): Unit
 ```
 
 **Function:** Transfers window focus from the source window to the target window within the same application.
@@ -149,8 +149,8 @@ public func shiftAppWindowFocus(sourceWindowId: Int32, targetWindowId: Int32): U
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| sourceWindowId | Int32 | Yes | - | Source window ID, which must be in focus. |
-| targetWindowId | Int32 | Yes | - | Target window ID. |
+| sourceWindowID | Int32 | Yes | - | Source window ID, which must be in focus. |
+| targetWindowID | Int32 | Yes | - | Target window ID. |
 
 **Exceptions:**
 
@@ -314,14 +314,14 @@ public class Configuration {
     public var name: String
     public var windowType: WindowType
     public var ctx: BaseContext
-    public var displayId: Int64 = - 1
-    public var parentId: Int64 = - 1
+    public var displayID: Int64 = - 1
+    public var parentID: Int64 = - 1
     public init(
         name!: String,
         windowType!: WindowType,
         ctx!: BaseContext,
-        displayId!: Int64 = -1,
-        parentId!: Int64 = -1
+        displayID!: Int64 = -1,
+        parentID!: Int64 = -1
     )
 }
 ```
@@ -348,10 +348,10 @@ public var ctx: BaseContext
 
 **Since Version:** 21
 
-### var displayId
+### var displayID
 
 ```cangjie
-public var displayId: Int64 = - 1
+public var displayID: Int64 = - 1
 ```
 
 **Function:** Sets the current physical screen ID. If not set, the default is -1.
@@ -380,10 +380,10 @@ public var name: String
 
 **Since Version:** 21
 
-### var parentId
+### var parentID
 
 ```cangjie
-public var parentId: Int64 = - 1
+public var parentID: Int64 = - 1
 ```
 
 **Function:** Sets the parent window ID. If not set, the default is -1.
@@ -419,8 +419,8 @@ public init(
     name!: String,
     windowType!: WindowType,
     ctx!: BaseContext,
-    displayId!: Int64 = -1,
-    parentId!: Int64 = -1
+    displayID!: Int64 = -1,
+    parentID!: Int64 = -1
 )
 ```
 
@@ -437,8 +437,8 @@ public init(
 | name | String | Yes | - | Window name. |
 | windowType | [WindowType](#enum-windowtype) | Yes | - | Window type. |
 | ctx | [BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext) | Yes | - | Current application context information. Used for creating floating windows, modal windows, or system windows. |
-| displayId | Int64 | No | -1 | Current physical screen ID. |
-| parentId | Int64 | No | -1 | Parent window ID. |## class Rect
+| displayID | Int64 | No | -1 | Current physical screen ID. |
+| parentID | Int64 | No | -1 | Parent window ID. |## class Rect
 
 ```cangjie
 public class Rect {
