@@ -5,7 +5,7 @@ The Component Visible Area Change Event is triggered when the display area of a 
 ## func onVisibleAreaChange(Array\<Float64>, (Bool, Float64)->Unit)
 
 ```cangjie
-public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -> Unit): This
+public func onVisibleAreaChange(ratios: Array<Float64>, event: (Bool, Float64) -> Unit): This
 ```
 
 **Function:** Event triggered when the visible area of a component changes.
@@ -18,7 +18,7 @@ public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| raitos | Array\<Float64> | Yes | - | Threshold array. Each threshold represents the ratio of the component's visible area (i.e., the area of the component displayed on the screen, calculated only within the parent component; areas outside the parent component are not counted) to the component's own area. The callback is triggered when the ratio of the component's visible area to its own area approaches any of the thresholds. Each threshold must be within the range [0.0, 1.0]. If a developer sets a threshold outside this range, it will be clamped to 0.0 or 1.0. **Note:** When the value approaches the boundaries 0 or 1, it will be rounded with an error tolerance of 0.001. For example, 0.9997 will be approximated as 1. |
+| ratios | Array\<Float64> | Yes | - | Threshold array. Each threshold represents the ratio of the component's visible area (i.e., the area of the component displayed on the screen, calculated only within the parent component; areas outside the parent component are not counted) to the component's own area. The callback is triggered when the ratio of the component's visible area to its own area approaches any of the thresholds. Each threshold must be within the range [0.0, 1.0]. If a developer sets a threshold outside this range, it will be clamped to 0.0 or 1.0. **Note:** When the value approaches the boundaries 0 or 1, it will be rounded with an error tolerance of 0.001. For example, 0.9997 will be approximated as 1. |
 | event | (Bool, Float64)->Unit | Yes | - | Callback for the component visible area change event. The first parameter indicates whether the ratio of the component's visible area to its own area has increased (true) or decreased (false) compared to the previous change. The second parameter is the ratio of the component's visible area to its own area when the callback is triggered. |
 
 > **Notes:**
@@ -68,7 +68,7 @@ class EntryView {
                 .height(200)
                 .margin(20)
                 .backgroundColor(Color.Green)
-                // By setting raitos to [0.0, 1.0], the callback is triggered when the component is fully displayed or completely disappears from the screen
+                // By setting ratios to [0.0, 1.0], the callback is triggered when the component is fully displayed or completely disappears from the screen
                 .onVisibleAreaChange([0.0, 1.0], {isVisible, currentRatio =>
                 this.sizeValue = isVisible.toString() + ", currentRatio:" + currentRatio.toString()
                 if (isVisible && currentRatio >= 1.0) {

@@ -8,10 +8,10 @@ Used to perform operations such as rotation, translation, scaling, and matrix tr
 import kit.ArkUI.*
 ```
 
-## func rotate(Float32, Float32, Float32, Float32, Length, Length)
+## func rotate(Float64, Float64, Float64, Float64, Length, Length)
 
 ```cangjie
-public func rotate(x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 1.0, angle!: Float32 = 0.0,
+public func rotate(x!: Float64 = 0.0, y!: Float64 = 0.0, z!: Float64 = 1.0, angle!: Float64 = 0.0,
     centerX!: Length = 50.percent, centerY!: Length = 50.percent): This
 ```
 
@@ -32,10 +32,10 @@ public func rotate(x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 1.0, angl
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | Float32 | No | 0.0 | **Named parameter.** X-coordinate of the rotation axis vector. |
-| y | Float32 | No | 0.0 | **Named parameter.** Y-coordinate of the rotation axis vector. |
-| z | Float32 | No | 1.0 | **Named parameter.** Z-coordinate of the rotation axis vector. |
-| angle | Float32 | No | 0.0 | **Named parameter.** Rotation angle. A positive value indicates clockwise rotation relative to the rotation axis direction, while a negative value indicates counterclockwise rotation. |
+| x | Float64 | No | 0.0 | **Named parameter.** X-coordinate of the rotation axis vector. |
+| y | Float64 | No | 0.0 | **Named parameter.** Y-coordinate of the rotation axis vector. |
+| z | Float64 | No | 1.0 | **Named parameter.** Z-coordinate of the rotation axis vector. |
+| angle | Float64 | No | 0.0 | **Named parameter.** Rotation angle. A positive value indicates clockwise rotation relative to the rotation axis direction, while a negative value indicates counterclockwise rotation. |
 | centerX | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Represents the x-coordinate of the component's transformation center point (i.e., the anchor point). |
 | centerY | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Represents the y-coordinate of the component's transformation center point (i.e., the anchor point). |
 

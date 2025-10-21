@@ -125,16 +125,16 @@ public func position(x!: Length, y!: Length): This
 
 ```cangjie
 public class AlignRuleOption {
-    public var left:?HorizontalAlignment
-    public var right:?HorizontalAlignment
-    public var middle:?HorizontalAlignment
-    public var top:?VerticalAlignment
-    public var bottom:?VerticalAlignment
-    public var center:?VerticalAlignment 
+    public var left:?HorizontalAlignParam
+    public var right:?HorizontalAlignParam
+    public var middle:?HorizontalAlignParam
+    public var top:?VerticalAlignParam
+    public var bottom:?VerticalAlignParam
+    public var center:?VerticalAlignParam
     public var bias: Bias
-    public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
-        middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None,
-        bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None,
+    public init(left!: ?HorizontalAlignParam = None, right!: ?HorizontalAlignParam = None,
+        middle!: ?HorizontalAlignParam = None, top!: ?VerticalAlignParam = None,
+        bottom!: ?VerticalAlignParam = None, center!: ?VerticalAlignParam = None,
         bias!: Bias = Bias()
     )
 }
@@ -165,12 +165,12 @@ public var bias: Bias = Bias()
 #### var bottom
 
 ```cangjie
-public var bottom:?VerticalAlignment
+public var bottom:?VerticalAlignParam
 ```
 
 **Function:** Sets the bottom alignment of the component.
 
-**Type:** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
+**Type:** ?[VerticalAlignParam](./cj-common-types.md#class-verticalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -181,12 +181,12 @@ public var bottom:?VerticalAlignment
 #### var center
 
 ```cangjie
-public var center:?VerticalAlignment
+public var center:?VerticalAlignParam
 ```
 
 **Function:** Sets the vertical center alignment of the component.
 
-**Type:** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
+**Type:** ?[VerticalAlignParam](./cj-common-types.md#class-verticalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -197,12 +197,12 @@ public var center:?VerticalAlignment
 #### var left
 
 ```cangjie
-public var left:?HorizontalAlignment
+public var left:?HorizontalAlignParam
 ```
 
 **Function:** Sets the left alignment of the component.
 
-**Type:** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
+**Type:** ?[HorizontalAlignParam](./cj-common-types.md#class-horizontalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -213,12 +213,12 @@ public var left:?HorizontalAlignment
 #### var middle
 
 ```cangjie
-public var middle:?HorizontalAlignment
+public var middle:?HorizontalAlignParam
 ```
 
 **Function:** Sets the horizontal center alignment of the component.
 
-**Type:** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
+**Type:** ?[HorizontalAlignParam](./cj-common-types.md#class-horizontalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -229,12 +229,12 @@ public var middle:?HorizontalAlignment
 #### var right
 
 ```cangjie
-public var right:?HorizontalAlignment
+public var right:?HorizontalAlignParam
 ```
 
 **Function:** Sets the right alignment of the component.
 
-**Type:** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
+**Type:** ?[HorizontalAlignParam](./cj-common-types.md#class-horizontalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -245,12 +245,12 @@ public var right:?HorizontalAlignment
 #### var top
 
 ```cangjie
-public var top:?VerticalAlignment
+public var top:?VerticalAlignParam
 ```
 
 **Function:** Sets the top alignment of the component.
 
-**Type:** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
+**Type:** ?[VerticalAlignParam](./cj-common-types.md#class-verticalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -258,12 +258,12 @@ public var top:?VerticalAlignment
 
 **Since:** 21
 
-#### init(?HorizontalAlignment, ?HorizontalAlignment, ?HorizontalAlignment, ?VerticalAlignment, ?VerticalAlignment, ?VerticalAlignment, Bias)
+#### init(?HorizontalAlignParam, ?HorizontalAlignParam, ?HorizontalAlignParam, ?VerticalAlignParam, ?VerticalAlignParam, ?VerticalAlignParam, Bias)
 
 ```cangjie
-public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
-    middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None,
-    bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None,
+public init(left!: ?HorizontalAlignParam = None, right!: ?HorizontalAlignParam = None,
+    middle!: ?HorizontalAlignParam = None, top!: ?VerticalAlignParam = None,
+    bottom!: ?VerticalAlignParam = None, center!: ?VerticalAlignParam = None,
     bias!: Bias = Bias()
 )
 ```
@@ -278,20 +278,20 @@ public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = N
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| left | ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the left alignment of the component. |
-| right | ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the right alignment of the component. |
-| middle | ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the horizontal center alignment of the component. |
-| top | ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment) | No | None | Sets the top alignment of the component. |
-| bottom | ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment) | No | None | Sets the bottom alignment of the component. |
-| center | ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment) | No | None | Sets the vertical center alignment of the component. |
+| left | ?[HorizontalAlignParam](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the left alignment of the component. |
+| right | ?[HorizontalAlignParam](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the right alignment of the component. |
+| middle | ?[HorizontalAlignParam](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the horizontal center alignment of the component. |
+| top | ?[VerticalAlignParam](./cj-common-types.md#class-verticalalignment) | No | None | Sets the top alignment of the component. |
+| bottom | ?[VerticalAlignParam](./cj-common-types.md#class-verticalalignment) | No | None | Sets the bottom alignment of the component. |
+| center | ?[VerticalAlignParam](./cj-common-types.md#class-verticalalignment) | No | None | Sets the vertical center alignment of the component. |
 | bias | [Bias](#class-bias) | No | Bias() | Sets the offset for component alignment. |
 
 ### class Bias
 
 ```cangjie
 public class Bias {
-    public var horizontal: Float32, 
-    public var vertical: Float32, 
+    public var horizontal: Float32,
+    public var vertical: Float32,
     public init(horizontal!: Float32, vertical!: Float32)
 }
 ```

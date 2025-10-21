@@ -2140,10 +2140,10 @@ public init(duration!: ?Int32 = None, tempo!: ?Float32 = None, curve!: ?Curve = 
 |finishCallbackType|?[FinishCallbackType](./cj-common-types.md#enum-finishcallbacktype)|否|None|**命名参数。** 在动画中定义onFinish回调的类型。初始值为FinishCallbackType.Removed。|
 |expectedFrameRateRange|Option<[ExpectedFrameRateRange](./cj-animation-animation.md#class-expectedframeraterange)>|否|Option.None|**命名参数。** 设置动画的期望帧率。|
 
-## class HorizontalAlignment
+## class HorizontalAlignParam
 
 ```cangjie
-public class HorizontalAlignment {
+public class HorizontalAlignParam {
     public var anchor: ?String
     public var align: ?HorizontalAlign
     public init(anchor: ?String, align: ?HorizontalAlign)
@@ -2207,10 +2207,10 @@ public init(anchor: ?String, align: ?HorizontalAlign)
 |anchor|?String|是|-|设置组件水平对齐的锚点。|
 |align|?[HorizontalAlign](#enum-horizontalalign)|是|-|设置组件水平方向对齐方式。|
 
-## class VerticalAlignment
+## class VerticalAlignParam
 
 ```cangjie
-public class VerticalAlignment {
+public class VerticalAlignParam {
     public var anchor: ?String
     public var align: ?VerticalAlign
     public init(anchor: ?String, align: ?VerticalAlign)
@@ -2877,14 +2877,14 @@ public init(min!: ?Int32, max!: ?Int32, expected!: ?Int32)
 
 ```cangjie
 public class AlignRuleOptions {
-    public var left: ?HorizontalAlignment
-    public var right: ?HorizontalAlignment
-    public var middle: ?HorizontalAlignment
-    public var top: ?VerticalAlignment
-    public var bottom: ?VerticalAlignment
-    public var center: ?VerticalAlignment
+    public var left: ?HorizontalAlignParam
+    public var right: ?HorizontalAlignParam
+    public var middle: ?HorizontalAlignParam
+    public var top: ?VerticalAlignParam
+    public var bottom: ?VerticalAlignParam
+    public var center: ?VerticalAlignParam
     public var bias: ?Bias
-    public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None, middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None, bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None, bias!: ?Bias = None)
+    public init(left!: ?HorizontalAlignParam = None, right!: ?HorizontalAlignParam = None, middle!: ?HorizontalAlignParam = None, top!: ?VerticalAlignParam = None, bottom!: ?VerticalAlignParam = None, center!: ?VerticalAlignParam = None, bias!: ?Bias = None)
 }
 ```
 
@@ -2897,12 +2897,12 @@ public class AlignRuleOptions {
 ### var left
 
 ```cangjie
-public var left: ?HorizontalAlignment
+public var left: ?HorizontalAlignParam
 ```
 
 **功能：** 设置组件左侧对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignParam](#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -2913,12 +2913,12 @@ public var left: ?HorizontalAlignment
 ### var right
 
 ```cangjie
-public var right: ?HorizontalAlignment
+public var right: ?HorizontalAlignParam
 ```
 
 **功能：** 设置组件右侧对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignParam](#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -2929,12 +2929,12 @@ public var right: ?HorizontalAlignment
 ### var middle
 
 ```cangjie
-public var middle: ?HorizontalAlignment
+public var middle: ?HorizontalAlignParam
 ```
 
 **功能：** 设置组件水平居中对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignParam](#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -2945,12 +2945,12 @@ public var middle: ?HorizontalAlignment
 ### var top
 
 ```cangjie
-public var top: ?VerticalAlignment
+public var top: ?VerticalAlignParam
 ```
 
 **功能：** 设置组件顶部对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignParam](#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -2961,12 +2961,12 @@ public var top: ?VerticalAlignment
 ### var bottom
 
 ```cangjie
-public var bottom: ?VerticalAlignment
+public var bottom: ?VerticalAlignParam
 ```
 
 **功能：** 设置组件底部对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignParam](#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -2977,12 +2977,12 @@ public var bottom: ?VerticalAlignment
 ### var center
 
 ```cangjie
-public var center: ?VerticalAlignment
+public var center: ?VerticalAlignParam
 ```
 
 **功能：** 设置组件垂直居中对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignParam](#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -3006,10 +3006,10 @@ public var bias: ?Bias
 
 **起始版本：** 22
 
-### init(?HorizontalAlignment, ?HorizontalAlignment, ?HorizontalAlignment, ?VerticalAlignment, ?VerticalAlignment, ?VerticalAlignment, ?Bias)
+### init(?HorizontalAlignParam, ?HorizontalAlignParam, ?HorizontalAlignParam, ?VerticalAlignParam, ?VerticalAlignParam, ?VerticalAlignParam, ?Bias)
 
 ```cangjie
-public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None, middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None, bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None, bias!: ?Bias = None)
+public init(left!: ?HorizontalAlignParam = None, right!: ?HorizontalAlignParam = None, middle!: ?HorizontalAlignParam = None, top!: ?VerticalAlignParam = None, bottom!: ?VerticalAlignParam = None, center!: ?VerticalAlignParam = None, bias!: ?Bias = None)
 ```
 
 **功能：** 构造一个AlignRuleOptions对象。
@@ -3022,12 +3022,12 @@ public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = N
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|left|?[HorizontalAlignment](#class-horizontalalignment)|否|None|**命名参数。** 设置组件左侧对齐方式。|
-|right|?[HorizontalAlignment](#class-horizontalalignment)|否|None|**命名参数。** 设置组件右侧对齐方式。|
-|middle|?[HorizontalAlignment](#class-horizontalalignment)|否|None|**命名参数。** 设置组件水平居中对齐方式。|
-|top|?[VerticalAlignment](#class-verticalalignment)|否|None|**命名参数。** 设置组件顶部对齐方式。|
-|bottom|?[VerticalAlignment](#class-verticalalignment)|否|None|**命名参数。** 设置组件顶部对齐方式。|
-|center|?[VerticalAlignment](#class-verticalalignment)|否|None|**命名参数。** 设置组件垂直居中对齐方式。|
+|left|?[HorizontalAlignParam](#class-horizontalalignment)|否|None|**命名参数。** 设置组件左侧对齐方式。|
+|right|?[HorizontalAlignParam](#class-horizontalalignment)|否|None|**命名参数。** 设置组件右侧对齐方式。|
+|middle|?[HorizontalAlignParam](#class-horizontalalignment)|否|None|**命名参数。** 设置组件水平居中对齐方式。|
+|top|?[VerticalAlignParam](#class-verticalalignment)|否|None|**命名参数。** 设置组件顶部对齐方式。|
+|bottom|?[VerticalAlignParam](#class-verticalalignment)|否|None|**命名参数。** 设置组件顶部对齐方式。|
+|center|?[VerticalAlignParam](#class-verticalalignment)|否|None|**命名参数。** 设置组件垂直居中对齐方式。|
 |bias|?[Bias](#class-bias)|否|None|**命名参数。** 设置组件对齐的偏移量。初始值为Bias()。|
 
 ## class EdgeStyles

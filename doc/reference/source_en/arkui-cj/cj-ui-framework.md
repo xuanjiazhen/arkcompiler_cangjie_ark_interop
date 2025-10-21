@@ -1277,7 +1277,7 @@ public func onFocus(event: () -> Unit): This
 ### func onVisibleAreaChange(Array\<Float64>, (Bool,Float64) -> Unit)
 
 ```cangjie
-public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -> Unit): This
+public func onVisibleAreaChange(ratios: Array<Float64>, event: (Bool, Float64) -> Unit): This
 ```
 
 **Function:** Triggered when the component's visible area changes.
@@ -1290,7 +1290,7 @@ public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| raitos | Array\<Float64> | Yes | - | Array of visible area ratios. |
+| ratios | Array\<Float64> | Yes | - | Array of visible area ratios. |
 | event | (Bool,Float64)->Unit | Yes | - | Callback function triggered when the visible area changes. |
 
 ## class LocalStorageInterOp
