@@ -2201,7 +2201,7 @@ public class RichEditorController <: RichEditorBaseController {
 
 **父类型：**
 
-- RichEditorBaseController
+- [RichEditorBaseController](#class-richeditorbasecontroller)
 
 #### init()
 

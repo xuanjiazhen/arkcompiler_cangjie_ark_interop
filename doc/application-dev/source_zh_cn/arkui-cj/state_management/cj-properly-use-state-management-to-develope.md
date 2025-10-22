@@ -22,7 +22,7 @@
 
 ### 在ForEach中使用ObservedArrayList
 
-开发过程中常将对象数组与 ForEach 结合使用，但写法不当会导致 UI 不刷新。
+开发过程中常将对象数组与[ForEach](../rendering_control/cj-rendering-control-foreach.md)结合使用，但写法不当会导致 UI 不刷新。
 
  <!-- run -->
 
@@ -56,13 +56,14 @@ class EntryView {
         Column {
             Text("Font Size List")
                 .fontSize(50)
-                .onClick {
+                .onClick({
                     evt =>
                         for(i in 0..this.styleList.size){
                             this.styleList[i].fontSize++
                         }
                         Hilog.info(0, "AppLogCj", "change font size")
                     }
+                )
             List() {
                 ForEach(this.styleList, {
                         item: TextStyles, _: Int64 =>
@@ -112,13 +113,13 @@ class EntryView {
         Column {
             Text("Font Size List")
                 .fontSize(50)
-                .onClick{
+                .onClick({
                     evt =>
                     for(i in 0..this.styleList.size){
                         this.styleList[i].fontSize++
                     }
                     Hilog.info(0,"AppLog: info","change font size")
-                }
+                })
             List(){
                 ForEach(this.styleList ,{
                         item: TextStyles, _:Int64 =>
