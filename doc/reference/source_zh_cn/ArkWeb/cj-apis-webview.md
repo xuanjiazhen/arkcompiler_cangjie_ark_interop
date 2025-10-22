@@ -39,6 +39,18 @@ public class BackForwardList {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let webController = WebviewController()
+let backForwardList = webController.getBackForwardEntries()
+```
+
 ### prop currentIndex
 
 ```cangjie
@@ -55,6 +67,19 @@ public prop currentIndex: Int32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let webController = WebviewController()
+let backForwardList = webController.getBackForwardEntries()
+let currentIndex = backForwardList.currentIndex
+```
+
 ### prop size
 
 ```cangjie
@@ -70,6 +95,19 @@ public prop size: Int32
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let webController = WebviewController()
+let backForwardList = webController.getBackForwardEntries()
+let size = backForwardList.size
+```
 
 ### func getItemAtIndex(Int32)
 
@@ -164,6 +202,18 @@ public class HistoryItem {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let backForwardList = webController.getBackForwardEntries()
+let historyItem = backForwardList.getItemAtIndex(backForwardList.currentIndex)
+```
+
 ### var historyRawUrl
 
 ```cangjie
@@ -179,6 +229,19 @@ public var historyRawUrl: String
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let backForwardList = webController.getBackForwardEntries()
+let historyItem = backForwardList.getItemAtIndex(backForwardList.currentIndex)
+let historyRawUrl = historyItem.historyRawUrl
+```
 
 ### var historyUrl
 
@@ -196,6 +259,19 @@ public var historyUrl: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let backForwardList = webController.getBackForwardEntries()
+let historyItem = backForwardList.getItemAtIndex(backForwardList.currentIndex)
+let historyUrl = historyItem.historyUrl
+```
+
 ### var title
 
 ```cangjie
@@ -211,6 +287,19 @@ public var title: String
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let backForwardList = webController.getBackForwardEntries()
+let historyItem = backForwardList.getItemAtIndex(backForwardList.currentIndex)
+let title = historyItem.title
+```
 
 ### let icon
 
@@ -228,6 +317,19 @@ public let icon: ?PixelMap
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let backForwardList = webController.getBackForwardEntries()
+let historyItem = backForwardList.getItemAtIndex(backForwardList.currentIndex)
+let icon = historyItem.icon
+```
+
 ## class HitTestValue
 
 ```cangjie
@@ -242,6 +344,23 @@ public class HitTestValue {
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let hitTestValue = webController.getHitTestValue()
+match(hitTestValue.hitTestType) {
+    case WebHitTestType.EditText => Hilog.info(0, "cangjieTest", "getHitTestValue returns EditText")
+    case WebHitTestType.Email => Hilog.info(0, "cangjieTest", "getHitTestValue returns Email")
+    case WebHitTestType.Unknown => Hilog.info(0, "cangjieTest", "getHitTestValue returns Unknown")
+    case _ =>  ()
+}
+```
 
 ### var extra
 
@@ -259,6 +378,18 @@ public var extra: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let hitTestValue = webController.getHitTestValue()
+let extra = hitTestValue.extra
+```
+
 ### var hitTestType
 
 ```cangjie
@@ -275,6 +406,23 @@ public var hitTestType: WebHitTestType
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let hitTestValue = webController.getHitTestValue()
+match(hitTestValue.hitTestType) {
+    case WebHitTestType.EditText => Hilog.info(0, "cangjieTest", "getHitTestValue returns EditText")
+    case WebHitTestType.Email => Hilog.info(0, "cangjieTest", "getHitTestValue returns Email")
+    case WebHitTestType.Unknown => Hilog.info(0, "cangjieTest", "getHitTestValue returns Unknown")
+    case _ =>  ()
+}
+```
+
 ## class WebCookieManager
 
 ```cangjie
@@ -286,6 +434,32 @@ public class WebCookieManager {}
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkWeb.*
+import ohos.business_exception.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
+
+try {
+    // cookie从web session中获取，如从http请求的request中获取。此示例中假设获取到的cookie为"ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置的cookie
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置指定url的cookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // ... 
+    // 此处执行业务逻辑，如加载带有cookie的网页。
+    // 执行完后清除cookie
+    WebCookieManager.clearAllCookies()
+} catch (e: BusinessException) {
+    Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
+}
+```
 
 ### static func clearAllCookies(Bool)
 
@@ -668,6 +842,17 @@ public class WebHeader {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let header = WebHeader("Content-Type", "application/json")
+```
+
 ### var headerKey
 
 ```cangjie
@@ -684,6 +869,18 @@ public var headerKey: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let header = WebHeader("Content-Type", "application/json")
+let key = header.headerKey
+```
+
 ### var headerValue
 
 ```cangjie
@@ -699,6 +896,18 @@ public var headerValue: String
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let header = WebHeader("Content-Type", "application/json")
+let value = header.headerValue
+```
 
 ### init(String, String)
 
@@ -719,6 +928,17 @@ public init(headerKey: String, headerValue: String)
 |headerKey|String|是|-|请求/响应头的key。|
 |headerValue|String|是|-|请求/响应头的value。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let header = WebHeader("Content-Type", "application/json")
+```
+
 ## class WebviewController
 
 ```cangjie
@@ -732,6 +952,17 @@ public class WebviewController {
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let webController = WebviewController()
+```
 
 ### init(?String)
 
@@ -750,6 +981,17 @@ public init(webTag!: ?String = None)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |webTag|?String|否|None|指定Web组件的名称。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkWeb.*
+
+let webController = WebviewController()
+```
 
 ### static func setWebDebuggingAccess(Bool)
 
@@ -3267,6 +3509,20 @@ public operator func !=(other: SecurityLevel): Bool
 |:----|:----|
 |Bool|如果两个枚举值不等，返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkWeb.*
+
+let level1 = SecurityLevel.Secure
+let level2 = SecurityLevel.Warning
+let isNotEqual = level1 != level2
+```
+
 ### func ==(SecurityLevel)
 
 ```cangjie
@@ -3291,6 +3547,20 @@ public operator func ==(other: SecurityLevel): Bool
 |:----|:----|
 |Bool|如果两个枚举值相等，返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkWeb.*
+
+let level1 = SecurityLevel.Secure
+let level2 = SecurityLevel.Secure
+let isEqual = level1 == level2
+```
+
 ### func toString()
 
 ```cangjie
@@ -3304,6 +3574,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkWeb.*
+
+let str = SecurityLevel.Secure.toString()
+```
 
 ## enum WebHitTestType
 
@@ -3383,6 +3665,20 @@ public operator func !=(other: WebHitTestType): Bool
 |:----|:----|
 |Bool|如果两个枚举值不等，返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkWeb.*
+
+let type1 = WebHitTestType.EditText
+let type2 = WebHitTestType.Email
+let isNotEqual = type1 != type2
+```
+
 ### func ==(WebHitTestType)
 
 ```cangjie
@@ -3407,6 +3703,20 @@ public operator func ==(other: WebHitTestType): Bool
 |:----|:----|
 |Bool|如果两个枚举值相等，返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkWeb.*
+
+let type1 = WebHitTestType.EditText
+let type2 = WebHitTestType.Email
+let isEqual = type1 == type2
+```
+
 ### func toString()
 
 ```cangjie
@@ -3420,3 +3730,16 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkWeb.*
+
+let type = WebHitTestType.EditText
+let typeStr = type.toString()
+```

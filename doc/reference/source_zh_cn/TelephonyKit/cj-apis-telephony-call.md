@@ -419,6 +419,17 @@ public init(slotId!: Int32 = 0)
 |:---|:---|:---|:---|:---|
 |slotId|Int32|否|0|卡槽ID：卡槽1：0。卡槽2：1。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.TelephonyKit.*
+
+let options = EmergencyNumberOptions(slotId: 0)
+```
+
 ## class NumberFormatOptions
 
 ```cangjie
@@ -589,6 +600,16 @@ public operator func !=(other: CallState): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state1 = CallState.CallStateIdle
+let state2 = CallState.CallStateRinging
+let isNotEqual = state1 != state2
+```
+
 ### func ==(CallState)
 
 ```cangjie
@@ -613,6 +634,16 @@ public operator func ==(other: CallState): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state1 = CallState.CallStateIdle
+let state2 = CallState.CallStateIdle
+let isEqual = state1 == state2
+```
+
 ### func toString()
 
 ```cangjie
@@ -630,3 +661,11 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的说明。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state = CallState.CallStateRinging
+let stateStr = state.toString()

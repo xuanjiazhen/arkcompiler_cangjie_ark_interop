@@ -356,6 +356,18 @@ public func off(event: HttpRequestEvent, callback!: ?CallbackObject = None): Uni
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let httpRequest = createHttp()
+httpRequest.off(HttpRequestEvent.HeadersReceive)
+```
+
 ### func on(HttpRequestEvent, Callback1Argument\<HashMap\<String,String>>)
 
 ```cangjie
@@ -382,6 +394,20 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<HashMap<Stri
   | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let httpRequest = createHttp()
+httpRequest.on(HttpRequestEvent.HeadersReceive, {headers: HashMap<String, String> =>
+// 处理headers
+})
+```
 
 ### func on(HttpRequestEvent, Callback1Argument\<Array\<Byte>>)
 
@@ -410,6 +436,20 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<Array<Byte>>
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataReceive事件类型。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let httpRequest = createHttp()
+httpRequest.on(HttpRequestEvent.DataReceive, {data: Array<Byte> =>
+// 处理数据
+})
+```
+
 ### func on(HttpRequestEvent, Callback0Argument)
 
 ```cangjie
@@ -436,6 +476,20 @@ public func on(event: HttpRequestEvent, callback: Callback0Argument): Unit
   | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataEnd事件类型。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let httpRequest = createHttp()
+httpRequest.on(HttpRequestEvent.DataEnd, { =>
+// 处理数据接收完毕
+})
+```
 
 ### func on(HttpRequestEvent, Callback1Argument\<DataReceiveProgressInfo>)
 
@@ -464,6 +518,20 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataReceiveP
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataReceiveProgress事件类型。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let httpRequest = createHttp()
+httpRequest.on(HttpRequestEvent.DataReceiveProgress, {progress: DataReceiveProgressInfo =>
+// 处理进度信息
+})
+```
+
 ### func on(HttpRequestEvent, Callback1Argument\<DataSendProgressInfo>)
 
 ```cangjie
@@ -491,6 +559,20 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataSendProg
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataSendProgress事件类型。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let httpRequest = createHttp()
+httpRequest.on(HttpRequestEvent.DataSendProgress, {progress: DataSendProgressInfo =>
+// 处理发送进度
+})
+```
+
 ### func once(HttpRequestEvent, Callback1Argument\<HashMap\<String,String>>)
 
 ```cangjie
@@ -517,6 +599,20 @@ public func once(event: HttpRequestEvent, callback: Callback1Argument<HashMap<St
   | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let httpRequest = createHttp()
+httpRequest.once(HttpRequestEvent.HeadersReceive, {headers: HashMap<String, String> =>
+// 处理headers
+})
+```
 
 ### func request(String, HttpRequestOptions, AsyncCallback\<HttpResponse>)
 

@@ -49,6 +49,21 @@ public init()
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
+
+let predicates = DataSharePredicates()
+predicates.inValues("AGE", [VBValueType.Integer(18), VBValueType.Integer(20)])
+```
+
 ### func inValues(String, Array\<ValueType>)
 
 ```cangjie

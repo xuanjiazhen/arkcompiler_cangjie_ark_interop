@@ -37,6 +37,19 @@ public class HiTraceMeter {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.PerformanceAnalysisKit.*
+
+HiTraceMeter.startTrace("myTestFunc", 1)
+```
+
 ### static func finishTrace(String, Int32)
 
 ```cangjie

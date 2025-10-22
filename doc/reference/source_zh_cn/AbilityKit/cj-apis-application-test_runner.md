@@ -37,6 +37,21 @@ public open class TestRunner {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.TestKit.*
+
+let TESTRUNNER_REGISTER_RESULT = TestRunner.registerCreator("test", () -> MyTestRunner)
+
+class MyTestRunner <: TestRunner {
+    public override func onRun(): Unit {
+    }
+}
+```
+
 ### static func registerCreator(String, () -> TestRunner)
 
 ```cangjie
@@ -59,6 +74,7 @@ public static func registerCreator(name: String, creator: () -> TestRunner): Uni
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.TestKit.*
 
@@ -68,6 +84,7 @@ class MyTestRunner <: TestRunner {
     public override func onPrepare(): Unit {
     }
 }
+```
 
 ### func onPrepare()
 
@@ -84,6 +101,7 @@ public open func onPrepare(): Unit
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.TestKit.*
 
@@ -93,6 +111,7 @@ class MyTestRunner <: TestRunner {
     public override func onPrepare(): Unit {
     }
 }
+```
 
 ### func onRun()
 
@@ -109,6 +128,7 @@ public open func onRun(): Unit
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.TestKit.*
 
@@ -118,3 +138,4 @@ class MyTestRunner <: TestRunner {
     public override func onRun(): Unit {
     }
 }
+```

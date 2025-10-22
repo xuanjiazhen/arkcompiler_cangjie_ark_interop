@@ -137,6 +137,17 @@ public class ColorSpaceManager {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let colorSpaceManager = create(ColorSpace.Srgb)
+```
+
 ### func getColorSpaceName()
 
 ```cangjie
@@ -213,8 +224,8 @@ public func getGamma(): Float32
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let colorSpaceManagerInstance = create(Srgb)
-let colorSpace = colorSpaceManagerInstance.getGamma()
+let colorSpaceManagerInstance = create(ColorSpace.Srgb)
+let gammaValue = colorSpaceManagerInstance.getGamma()
 ```
 
 ### func getWhitePoint()
@@ -253,8 +264,8 @@ public func getWhitePoint(): Array<Float32>
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let colorSpaceManagerInstance = create(Srgb)
-let colorSpace = colorSpaceManagerInstance.getWhitePoint()
+let colorSpaceManagerInstance = create(ColorSpace.Srgb)
+let whitePoint = colorSpaceManagerInstance.getWhitePoint()
 ```
 
 ## class ColorSpacePrimaries
@@ -279,6 +290,26 @@ public class ColorSpacePrimaries {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+```
+
 ### var blueX
 
 ```cangjie
@@ -294,6 +325,27 @@ public var blueX: Float32
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let blueXValue = primaries.blueX
+```
 
 ### var blueY
 
@@ -311,6 +363,27 @@ public var blueY: Float32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let blueYValue = primaries.blueY
+```
+
 ### var greenX
 
 ```cangjie
@@ -326,6 +399,27 @@ public var greenX: Float32
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let greenXValue = primaries.greenX
+```
 
 ### var greenY
 
@@ -343,6 +437,27 @@ public var greenY: Float32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let greenYValue = primaries.greenY
+```
+
 ### var redX
 
 ```cangjie
@@ -358,6 +473,27 @@ public var redX: Float32
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let redXValue = primaries.redX
+```
 
 ### var redY
 
@@ -375,6 +511,27 @@ public var redY: Float32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let redYValue = primaries.redY
+```
+
 ### var whitePointX
 
 ```cangjie
@@ -391,6 +548,27 @@ public var whitePointX: Float32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let whitePointXValue = primaries.whitePointX
+```
+
 ### var whitePointY
 
 ```cangjie
@@ -406,6 +584,27 @@ public var whitePointY: Float32
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let whitePointYValue = primaries.whitePointY
+```
 
 ### init(Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32)
 
@@ -431,6 +630,26 @@ public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blue
 |blueY|Float32|是|-|命名参数。标准蓝色在色彩空间的y坐标值。|
 |whitePointX|Float32|是|-|命名参数。标准白色在色彩空间的x坐标值。|
 |whitePointY|Float32|是|-|命名参数。标准白色在色彩空间的y坐标值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+```
 
 ## enum ColorSpace
 
@@ -482,6 +701,21 @@ public enum ColorSpace <: Equatable<ColorSpace> & ToString {
 - Equatable\<ColorSpace>
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color1 = ColorSpace.Unknown
+let color2 = ColorSpace.AdobeRgb1998
+let color3 = ColorSpace.DciP3
+let color4 = ColorSpace.DisplayP3
+let color5 = ColorSpace.Srgb
+```
+
 ### AdobeRgb1998
 
 ```cangjie
@@ -493,6 +727,17 @@ AdobeRgb1998
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.AdobeRgb1998
+```
 
 ### AdobeRgb1998Limit
 
@@ -506,6 +751,17 @@ AdobeRgb1998Limit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.AdobeRgb1998Limit
+```
+
 ### Bt2020Hlg
 
 ```cangjie
@@ -517,6 +773,17 @@ Bt2020Hlg
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt2020Hlg
+```
 
 ### Bt2020HlgLimit
 
@@ -530,6 +797,17 @@ Bt2020HlgLimit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt2020HlgLimit
+```
+
 ### Bt2020Pq
 
 ```cangjie
@@ -541,6 +819,17 @@ Bt2020Pq
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt2020Pq
+```
 
 ### Bt2020PqLimit
 
@@ -554,6 +843,17 @@ Bt2020PqLimit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt2020PqLimit
+```
+
 ### Bt601Ebu
 
 ```cangjie
@@ -565,6 +865,17 @@ Bt601Ebu
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt601Ebu
+```
 
 ### Bt601EbuLimit
 
@@ -578,6 +889,17 @@ Bt601EbuLimit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt601EbuLimit
+```
+
 ### Bt601SmpteC
 
 ```cangjie
@@ -589,6 +911,17 @@ Bt601SmpteC
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt601SmpteC
+```
 
 ### Bt601SmpteCLimit
 
@@ -602,6 +935,17 @@ Bt601SmpteCLimit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt601SmpteCLimit
+```
+
 ### Bt709
 
 ```cangjie
@@ -613,6 +957,17 @@ Bt709
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt709
+```
 
 ### Bt709Limit
 
@@ -626,6 +981,17 @@ Bt709Limit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Bt709Limit
+```
+
 ### Custom
 
 ```cangjie
@@ -637,6 +1003,17 @@ Custom
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Custom
+```
 
 ### DciP3
 
@@ -650,6 +1027,17 @@ DciP3
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.DciP3
+```
+
 ### DisplayP3
 
 ```cangjie
@@ -661,6 +1049,17 @@ DisplayP3
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.DisplayP3
+```
 
 ### DisplayP3Hlg
 
@@ -674,6 +1073,17 @@ DisplayP3Hlg
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.DisplayP3Hlg
+```
+
 ### DisplayP3Limit
 
 ```cangjie
@@ -685,6 +1095,17 @@ DisplayP3Limit
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.DisplayP3Limit
+```
 
 ### DisplayP3Pq
 
@@ -698,6 +1119,17 @@ DisplayP3Pq
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.DisplayP3Pq
+```
+
 ### DisplayP3Srgb
 
 ```cangjie
@@ -709,6 +1141,17 @@ DisplayP3Srgb
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.DisplayP3Srgb
+```
 
 ### DisplaySrgb
 
@@ -722,6 +1165,17 @@ DisplaySrgb
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.DisplaySrgb
+```
+
 ### LinearBt2020
 
 ```cangjie
@@ -733,6 +1187,17 @@ LinearBt2020
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.LinearBt2020
+```
 
 ### LinearBt709
 
@@ -746,6 +1211,17 @@ LinearBt709
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.LinearBt709
+```
+
 ### LinearP3
 
 ```cangjie
@@ -757,6 +1233,17 @@ LinearP3
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.LinearP3
+```
 
 ### LinearSrgb
 
@@ -770,6 +1257,17 @@ LinearSrgb
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.LinearSrgb
+```
+
 ### P3Hlg
 
 ```cangjie
@@ -781,6 +1279,17 @@ P3Hlg
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.P3Hlg
+```
 
 ### P3HlgLimit
 
@@ -794,6 +1303,17 @@ P3HlgLimit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.P3HlgLimit
+```
+
 ### P3Pq
 
 ```cangjie
@@ -805,6 +1325,17 @@ P3Pq
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.P3Pq
+```
 
 ### P3PqLimit
 
@@ -818,6 +1349,17 @@ P3PqLimit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.P3PqLimit
+```
+
 ### Srgb
 
 ```cangjie
@@ -829,6 +1371,17 @@ Srgb
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Srgb
+```
 
 ### SrgbLimit
 
@@ -842,6 +1395,17 @@ SrgbLimit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.SrgbLimit
+```
+
 ### Unknown
 
 ```cangjie
@@ -854,6 +1418,17 @@ Unknown
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color2 = ColorSpace.Unknown
+```
+
 ### func !=(ColorSpace)
 
 ```cangjie
@@ -861,6 +1436,10 @@ public operator func !=(other: ColorSpace): Bool
 ```
 
 **功能：** 与另一个 `ColorSpace` 枚举值进行不等比较。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+**起始版本：** 22
 
 **参数：**
 
@@ -874,6 +1453,19 @@ public operator func !=(other: ColorSpace): Bool
 |:----|:----|
 |Bool|若不相等返回 `true`，否则返回 `false`。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color1 = ColorSpace.Srgb
+let color2 = ColorSpace.DisplayP3
+let isNotEqual = color1 != color2
+```
+
 ### func ==(ColorSpace)
 
 ```cangjie
@@ -881,6 +1473,10 @@ public operator func ==(other: ColorSpace): Bool
 ```
 
 **功能：** 与另一个 `ColorSpace` 枚举值进行相等比较。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+**起始版本：** 22
 
 **参数：**
 
@@ -894,6 +1490,19 @@ public operator func ==(other: ColorSpace): Bool
 |:----|:----|
 |Bool|若相等返回 `true`，否则返回 `false`。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkGraphics2D.*
+
+let color1 = ColorSpace.Srgb
+let color2 = ColorSpace.Srgb
+let isEqual = color1 == color2
+```
+
 ### func toString()
 
 ```cangjie
@@ -901,6 +1510,10 @@ public func toString(): String
 ```
 
 **功能：** 将[ColorSpace](#enum-colorspace)枚举值转换为字符串。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+**起始版本：** 22
 
 **返回值：**
 

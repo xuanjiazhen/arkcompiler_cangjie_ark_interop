@@ -44,6 +44,15 @@ public open class StartOptions {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let startOptions = StartOptions(WindowMode.FullScreen, 0)
+```
+
 ### var displayId
 
 ```cangjie
@@ -60,6 +69,16 @@ public var displayId: Int32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let startOptions = StartOptions(WindowMode.FullScreen, 0)
+let displayId = startOptions.displayId
+```
+
 ### var windowMode
 
 ```cangjie
@@ -75,6 +94,16 @@ public var windowMode:?WindowMode
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let startOptions = StartOptions(WindowMode.FullScreen, 0)
+let windowMode = startOptions.displwindowModeayId
+```
 
 ### init(?WindowMode, Int32)
 

@@ -21,9 +21,7 @@ API示例代码使用说明：
 
 ```cangjie
 public interface Parcelable {
-
     func marshalling(dataOut: MessageSequence): Bool
-
     func unmarshalling(dataIn: MessageSequence): Bool
 }
 ```
@@ -37,7 +35,6 @@ public interface Parcelable {
 ### func marshalling(MessageSequence)
 
 ```cangjie
-
 func marshalling(dataOut: MessageSequence): Bool
 ```
 
@@ -62,7 +59,6 @@ func marshalling(dataOut: MessageSequence): Bool
 ### func unmarshalling(MessageSequence)
 
 ```cangjie
-
 func unmarshalling(dataIn: MessageSequence): Bool
 ```
 

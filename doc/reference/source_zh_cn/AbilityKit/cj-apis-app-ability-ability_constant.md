@@ -40,6 +40,21 @@ public class LaunchParam {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let lastExitReason = launchParam.lastExitReason
+        let launchReason = launchParam.launchReason
+    }
+}
+```
+
 ### var lastExitReason
 
 ```cangjie
@@ -56,6 +71,21 @@ public var lastExitReason: LastExitReason
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let lastExitReason = launchParam.lastExitReason
+        let launchReason = launchParam.launchReason
+    }
+}
+```
+
 ### var launchReason
 
 ```cangjie
@@ -71,6 +101,21 @@ public var launchReason: LaunchReason
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let lastExitReason = launchParam.lastExitReason
+        let launchReason = launchParam.launchReason
+    }
+}
+```
 
 ## enum LastExitReason
 
@@ -90,6 +135,19 @@ public enum LastExitReason {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let reason1 = LastExitReason.Unknown
+let reason2 = LastExitReason.Normal
+let reason3 = LastExitReason.CppCrash
+let reason4 = LastExitReason.AppFreeze
+```
+
 ### AppFreeze
 
 ```cangjie
@@ -101,6 +159,16 @@ AppFreeze
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let reason = LastExitReason.AppFreeze
+```
 
 ### CppCrash
 
@@ -114,6 +182,16 @@ CppCrash
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let reason = LastExitReason.CppCrash
+```
+
 ### Normal
 
 ```cangjie
@@ -126,6 +204,16 @@ Normal
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let reason = LastExitReason.Normal
+```
+
 ### Unknown
 
 ```cangjie
@@ -137,6 +225,16 @@ Unknown
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let reason = LastExitReason.Unknown
+```
 
 ## enum LaunchReason
 
@@ -157,6 +255,21 @@ public enum LaunchReason {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let reason1 = LaunchReason.Unknown
+let reason2 = LaunchReason.StartAbility
+let reason3 = LaunchReason.Call
+let reason4 = LaunchReason.Continuation
+let reason5 = LaunchReason.AppRecovery
+```
+
 ### AppRecovery
 
 ```cangjie
@@ -168,6 +281,14 @@ AppRecovery
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let recoveryReason = LaunchReason.AppRecovery
+```
 
 ### Call
 
@@ -181,6 +302,14 @@ Call
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let callReason = LaunchReason.Call
+```
+
 ### Continuation
 
 ```cangjie
@@ -192,6 +321,14 @@ Continuation
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let continuationReason = LaunchReason.Continuation
+```
 
 ### StartAbility
 
@@ -205,6 +342,14 @@ StartAbility
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let startAbilityReason = LaunchReason.StartAbility
+```
+
 ### Unknown
 
 ```cangjie
@@ -216,6 +361,14 @@ Unknown
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let unknownReason = LaunchReason.Unknown
+```
 
 ## enum MemoryLevel
 
@@ -239,6 +392,18 @@ public enum MemoryLevel <: Equatable<MemoryLevel> & ToString {
 - [Equatable\<MemoryLevel>](#enum-memorylevel)
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let level1 = MemoryLevel.MemoryLevelModerate
+let level2 = MemoryLevel.MemoryLevelLow
+let level3 = MemoryLevel.MemoryLevelCritical
+```
+
 ### MemoryLevelCritical
 
 ```cangjie
@@ -250,6 +415,14 @@ MemoryLevelCritical
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let criticalLevel = MemoryLevel.MemoryLevelCritical
+```
 
 ### MemoryLevelLow
 
@@ -263,6 +436,14 @@ MemoryLevelLow
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let lowLevel = MemoryLevel.MemoryLevelLow
+```
+
 ### MemoryLevelModerate
 
 ```cangjie
@@ -275,6 +456,14 @@ MemoryLevelModerate
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let moderateLevel = MemoryLevel.MemoryLevelModerate
+```
+
 ### func !=(MemoryLevel)
 
 ```cangjie
@@ -282,6 +471,10 @@ public operator func !=(other: MemoryLevel): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 22
 
 **参数：**
 
@@ -295,6 +488,16 @@ public operator func !=(other: MemoryLevel): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let level1 = MemoryLevel.MemoryLevelModerate
+let level2 = MemoryLevel.MemoryLevelLow
+let isNotEqual = level1 != level2
+```
+
 ### func ==(MemoryLevel)
 
 ```cangjie
@@ -302,6 +505,10 @@ public operator func ==(other: MemoryLevel): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 22
 
 **参数：**
 
@@ -315,6 +522,16 @@ public operator func ==(other: MemoryLevel): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let level1 = MemoryLevel.MemoryLevelModerate
+let level2 = MemoryLevel.MemoryLevelModerate
+let isEqual = level1 == level2
+```
+
 ### func toString()
 
 ```cangjie
@@ -323,11 +540,24 @@ public func toString(): String
 
 **功能：** 获取当前枚举的字符串表示。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 22
+
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |String|当前枚举的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let level = MemoryLevel.MemoryLevelModerate
+let levelString = level.toString()
+```
 
 ## enum OnContinueResult
 
@@ -346,6 +576,18 @@ public enum OnContinueResult {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let result1 = OnContinueResult.Agree
+let result2 = OnContinueResult.Reject
+let result3 = OnContinueResult.Mismatch
+```
+
 ### Agree
 
 ```cangjie
@@ -357,6 +599,16 @@ Agree
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let agreeResult = OnContinueResult.Agree
+```
 
 ### Mismatch
 
@@ -370,6 +622,16 @@ Mismatch
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let mismatchResult = OnContinueResult.Mismatch
+```
+
 ### Reject
 
 ```cangjie
@@ -381,6 +643,16 @@ Reject
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let rejectResult = OnContinueResult.Reject
+```
 
 ## enum WindowMode
 
@@ -399,6 +671,18 @@ public enum WindowMode {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let mode1 = WindowMode.WindowModeFullscreen
+let mode2 = WindowMode.WindowModeSplitPrimary
+let mode3 = WindowMode.WindowModeSplitSecondary
+```
+
 ### WindowModeFullscreen
 
 ```cangjie
@@ -410,6 +694,16 @@ WindowModeFullscreen
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let fullscreenMode = WindowMode.WindowModeFullscreen
+```
 
 ### WindowModeSplitPrimary
 
@@ -423,6 +717,16 @@ WindowModeSplitPrimary
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let splitPrimaryMode = WindowMode.WindowModeSplitPrimary
+```
+
 ### WindowModeSplitSecondary
 
 ```cangjie
@@ -434,3 +738,13 @@ WindowModeSplitSecondary
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let splitSecondaryMode = WindowMode.WindowModeSplitSecondary
+```

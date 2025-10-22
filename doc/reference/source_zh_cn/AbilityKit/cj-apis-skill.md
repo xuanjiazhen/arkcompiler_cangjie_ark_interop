@@ -43,6 +43,19 @@ public class Skill {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+```
+
 ### let actions
 
 ```cangjie
@@ -58,6 +71,20 @@ public let actions: Array<String>
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let actions = skill.actions
+```
 
 ### let domainVerify
 
@@ -75,6 +102,20 @@ public let domainVerify: Bool
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let domainVerify = skill.domainVerify
+```
+
 ### let entities
 
 ```cangjie
@@ -91,6 +132,20 @@ public let entities: Array<String>
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let entities = skill.entities
+```
+
 ### let uris
 
 ```cangjie
@@ -106,6 +161,20 @@ public let uris: Array<SkillUri>
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uris = skill.uris
+```
 
 ## class SkillUri
 
@@ -130,6 +199,20 @@ public class SkillUri {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+```
+
 ### let host
 
 ```cangjie
@@ -145,6 +228,21 @@ public let host: String
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let host = uri.host
+```
 
 ### let linkFeature
 
@@ -162,6 +260,21 @@ public let linkFeature: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let linkFeature = uri.linkFeature
+```
+
 ### let maxFileSupported
 
 ```cangjie
@@ -177,6 +290,21 @@ public let maxFileSupported: Int32
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let maxFileSupported = uri.maxFileSupported
+```
 
 ### let path
 
@@ -194,6 +322,21 @@ public let path: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let path = uri.path
+```
+
 ### let pathRegex
 
 ```cangjie
@@ -209,6 +352,21 @@ public let pathRegex: String
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let pathRegex = uri.pathRegex
+```
 
 ### let pathStartWith
 
@@ -226,6 +384,21 @@ public let pathStartWith: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let pathStartWith = uri.pathStartWith
+```
+
 ### let port
 
 ```cangjie
@@ -241,6 +414,21 @@ public let port: Int32
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let port = uri.port
+```
 
 ### let scheme
 
@@ -258,6 +446,21 @@ public let scheme: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let scheme = uri.scheme
+```
+
 ### let uriType
 
 ```cangjie
@@ -274,6 +477,21 @@ public let uriType: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let uriType = uri.uriType
+```
+
 ### let utd
 
 ```cangjie
@@ -289,3 +507,18 @@ public let utd: String
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let skill = bundleInfo.hapModulesInfo[0].skills[0]
+let uri = skill.uris[0]
+let utd = uri.utd
+```

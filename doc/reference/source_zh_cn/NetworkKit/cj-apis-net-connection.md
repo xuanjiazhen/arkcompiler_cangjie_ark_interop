@@ -899,6 +899,17 @@ public init(host: String,  port: UInt32, exclusionList: Array<String>,
 |username|String|否|""|代理认证用户名。|
 |password|String|否|""|代理认证密码。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let proxy = HttpProxy("proxy.example.com", 8080, ["example.com", "192.168.1.1"], username: "user", password: "pass")
+```
+
 ## class LinkAddress
 
 ```cangjie
@@ -1030,6 +1041,17 @@ public init(address: String, family!: UInt32 = 1, port!: UInt32 = 0)
 |address|String|是|-|地址。|
 |family|UInt32|否|1|IPv4 = 1，IPv6 = 2，默认IPv4。|
 |port|UInt32|否|0|端口，取值范围[0, 65535]。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let netAddress = NetAddress("127.0.0.1", family: 1, port: 8080)
+```
 
 ## class NetBlockStatusInfo
 
@@ -1183,6 +1205,17 @@ public init(bearerTypes: Array<NetBearType>, linkUpBandwidthKbps!: UInt32 = 0, l
 |linkDownBandwidthKbps|UInt32|否|0|**命名参数。** 下行（网络到设备）带宽，0表示无法评估当前网络带宽。|
 |networkCap|Array\<[NetCap](#enum-netcap)>|否|Array<NetCap>()|网络具体能力。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+let netCapabilities = NetCapabilities([NetBearType.BearerCellular], linkUpBandwidthKbps: 1000, linkDownBandwidthKbps: 2000, networkCap: [NetCap.CapInternet])
+```
+
 ## class NetCapabilityInfo
 
 ```cangjie
@@ -1271,6 +1304,23 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetHandle>
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetAvailable或NetLost枚举值 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.NetworkKit.*
+
+let netCon: NetConnection = createNetConnection()
+netCon.register()
+netCon.on(NetConnectionEvent.NetAvailable, (handle: NetHandle) => {
+// Handle network available event
+})
+```
+
 ### func on(NetConnectionEvent, Callback1Argument\<NetBlockStatusInfo>)
 
 ```cangjie
@@ -1299,6 +1349,23 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetBlockSt
   | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetBlockStatusChange枚举值 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.NetworkKit.*
+
+let netCon: NetConnection = createNetConnection()
+netCon.register()
+netCon.on(NetConnectionEvent.NetBlockStatusChange, (info: NetBlockStatusInfo) => {
+// Handle network block status changes
+})
+```
 
 ### func on(NetConnectionEvent, Callback1Argument\<NetCapabilityInfo>)
 
@@ -1329,6 +1396,22 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetCapabil
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetCapabilitiesChange枚举值 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.NetworkKit.*
+
+let netCon: NetConnection = createNetConnection()
+netCon.on(NetConnectionEvent.NetCapabilitiesChange, (info: NetCapabilityInfo) => {
+Hilog.info(0, "test", "NetCapabilities changed: ${info.netCap}")
+})
+```
+
 ### func on(NetConnectionEvent, Callback1Argument\<NetConnectionPropertyInfo>)
 
 ```cangjie
@@ -1357,6 +1440,23 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetConnect
   | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetConnectionPropertiesChange枚举值 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.NetworkKit.*
+
+let netCon: NetConnection = createNetConnection()
+netCon.register()
+netCon.on(NetConnectionEvent.NetConnectionPropertiesChange, (info: NetConnectionPropertyInfo) => {
+// Handle network property changes
+})
+```
 
 ### func on(NetConnectionEvent, Callback0Argument)
 
@@ -1715,6 +1815,18 @@ public init(netCapabilities: NetCapabilities, bearerPrivateIdentifier!: String =
 |:---|:---|:---|:---|:---|
 |netCapabilities|[NetCapabilities](#class-netcapabilities)|是|-|存储数据网络的传输能力和承载类型。|
 |bearerPrivateIdentifier|String|否|""|**命名参数。** 网络标识符，Wi-Fi网络的标识符是"wifi"，蜂窝网络的标识符是"slot0"（对应SIM卡1）。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.NetworkKit.*
+
+// 创建NetSpecifier实例，指定网络能力和标识符
+let netSpecifier = NetSpecifier(NetCapabilities([NetBearType.BearerCellular]), bearerPrivateIdentifier: "slot0")
+```
 
 ## class RouteInfo
 

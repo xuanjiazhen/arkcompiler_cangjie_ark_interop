@@ -782,6 +782,19 @@ public static func getAbilityDelegator(): AbilityDelegator
 |:----|:----|
 |[AbilityDelegator](#class-abilitydelegator)|[AbilityDelegator](#class-abilitydelegator)对象。可以用来调度测试框架相关功能。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+```
+
 ### static func getArguments()
 
 ```cangjie
@@ -1287,6 +1300,20 @@ public operator func !=(other: AbilityLifecycleState): Bool
 |:----|:----|
 |Bool|两个枚举值不等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.TestKit.*
+
+let state1 = AbilityLifecycleState.Foreground
+let state2 = AbilityLifecycleState.Background
+let isNotEqual = state1 != state2
+```
+
 ### func ==(AbilityLifecycleState)
 
 ```cangjie
@@ -1307,6 +1334,20 @@ public operator func ==(other: AbilityLifecycleState): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.TestKit.*
+
+let state1 = AbilityLifecycleState.Foreground
+let state2 = AbilityLifecycleState.Foreground
+let isEqual = state1 == state2
+```
+
 ### func toString()
 
 ```cangjie
@@ -1320,3 +1361,16 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|当前枚举的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.TestKit.*
+
+let state = AbilityLifecycleState.Foreground
+let stateStr = state.toString()
+```

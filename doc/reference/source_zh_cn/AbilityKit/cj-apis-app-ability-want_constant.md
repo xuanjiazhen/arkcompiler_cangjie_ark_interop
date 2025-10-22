@@ -49,6 +49,20 @@ public enum Flags <: Equatable<Flags> & ToString {
 - [Equatable\<Flags>](#enum-flags)
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let flag1 = Flags.FlagAuthReadUriPermission
+let flag2 = Flags.FlagAuthWriteUriPermission
+let flag3 = Flags.FlagAuthPersistableUriPermission
+let flag4 = Flags.FlagInstallOnDemand
+let flag5 = Flags.FlagStartWithoutTips
+```
+
 ### FlagAuthPersistableUriPermission
 
 ```cangjie
@@ -60,6 +74,16 @@ FlagAuthPersistableUriPermission
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let flag = Flags.FlagAuthPersistableUriPermission
+```
 
 ### FlagAuthReadUriPermission
 
@@ -73,6 +97,16 @@ FlagAuthReadUriPermission
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let flag = Flags.FlagAuthReadUriPermission
+```
+
 ### FlagAuthWriteUriPermission
 
 ```cangjie
@@ -84,6 +118,16 @@ FlagAuthWriteUriPermission
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let flag = Flags.FlagAuthWriteUriPermission
+```
 
 ### FlagInstallOnDemand
 
@@ -97,6 +141,16 @@ FlagInstallOnDemand
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let flag = Flags.FlagInstallOnDemand
+```
+
 ### FlagStartWithoutTips
 
 ```cangjie
@@ -108,6 +162,16 @@ FlagStartWithoutTips
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let flag = Flags.FlagStartWithoutTips
+```
 
 ### func !=(Flags)
 
@@ -133,6 +197,16 @@ public operator func !=(other: Flags): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let flag1 = Flags.FlagAuthReadUriPermission
+let flag2 = Flags.FlagAuthWriteUriPermission
+let isNotEqual = flag1 != flag2
+```
+
 ### func ==(Flags)
 
 ```cangjie
@@ -156,6 +230,16 @@ public operator func ==(other: Flags): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let flag1 = Flags.FlagAuthReadUriPermission
+let flag2 = Flags.FlagAuthReadUriPermission
+let isEqual = flag1 == flag2
+```
 
 ### func getValue()
 
@@ -183,6 +267,15 @@ public func getValue(): UInt32
   | :---- | :--- | :--- |
   | The type is not supported. | todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let flag = Flags.FlagAuthReadUriPermission
+let value = flag.getValue()
+```
+
 ### func toString()
 
 ```cangjie
@@ -200,6 +293,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|当前枚举的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let flag = Flags.FlagAuthReadUriPermission
+let str = flag.toString()
+```
 
 ## enum Params
 
@@ -227,6 +329,20 @@ public enum Params <: Equatable<Params> & ToString {
 - [Equatable\<Params>](#enum-params)
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let param1 = Params.AbilityBackToOtherMissionStack
+let param2 = Params.AbilityRecoveryRestart
+let param3 = Params.ContentTitleKey
+let param4 = Params.ShareUrlKey
+```
+
 ### AbilityBackToOtherMissionStack
 
 ```cangjie
@@ -238,6 +354,14 @@ AbilityBackToOtherMissionStack
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let backToOtherMission = Params.AbilityBackToOtherMissionStack
+```
 
 ### AbilityRecoveryRestart
 
@@ -251,6 +375,14 @@ AbilityRecoveryRestart
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let recoveryRestart = Params.AbilityRecoveryRestart
+```
+
 ### ContentTitleKey
 
 ```cangjie
@@ -262,6 +394,14 @@ ContentTitleKey
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let contentTitle = Params.ContentTitleKey
+```
 
 ### ShareAbstractKey
 
@@ -275,6 +415,14 @@ ShareAbstractKey
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let shareAbstract = Params.ShareAbstractKey
+```
+
 ### ShareUrlKey
 
 ```cangjie
@@ -286,6 +434,14 @@ ShareUrlKey
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let shareUrl = Params.ShareUrlKey
+```
 
 ### SupportContinuePageStackKey
 
@@ -299,6 +455,14 @@ SupportContinuePageStackKey
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let supportPageStack = Params.SupportContinuePageStackKey
+```
+
 ### SupportContinueSourceExitKey
 
 ```cangjie
@@ -310,6 +474,14 @@ SupportContinueSourceExitKey
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let supportSourceExit = Params.SupportContinueSourceExitKey
+```
 
 ### func !=(Params)
 
@@ -335,6 +507,16 @@ public operator func !=(other: Params): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let param1 = Params.AbilityBackToOtherMissionStack
+let param2 = Params.AbilityRecoveryRestart
+let isNotEqual = param1 != param2
+```
+
 ### func ==(Params)
 
 ```cangjie
@@ -358,6 +540,16 @@ public operator func ==(other: Params): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let param1 = Params.AbilityBackToOtherMissionStack
+let param2 = Params.AbilityBackToOtherMissionStack
+let isEqual = param1 == param2
+```
 
 ### func getValue()
 
@@ -385,6 +577,15 @@ public func getValue(): String
   | :---- | :--- | :--- |
   | The type is not supported. | todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let param = Params.AbilityBackToOtherMissionStack
+let value = param.getValue()
+```
+
 ### func toString()
 
 ```cangjie
@@ -402,3 +603,12 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|当前枚举的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let param = Params.AbilityBackToOtherMissionStack
+let str = param.toString()
+```

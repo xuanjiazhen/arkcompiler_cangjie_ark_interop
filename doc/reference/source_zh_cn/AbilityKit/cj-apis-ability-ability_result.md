@@ -41,6 +41,16 @@ public class AbilityResult {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let abilityResult = AbilityResult(0)
+```
+
 ### var resultCode
 
 ```cangjie
@@ -57,6 +67,17 @@ public var resultCode: Int32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let abilityResult = AbilityResult(0)
+let code = abilityResult.resultCode
+```
+
 ### var want
 
 ```cangjie
@@ -72,6 +93,17 @@ public var want: Want
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let abilityResult = AbilityResult(0)
+let want = abilityResult.want
+```
 
 ### init(Int32, Want)
 
@@ -99,3 +131,4 @@ public init(resultCode: Int32, want!: Want = Want())
 import kit.AbilityKit.*
 
 let abilityResult = AbilityResult(0)
+```

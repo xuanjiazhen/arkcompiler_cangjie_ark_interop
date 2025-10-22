@@ -135,6 +135,17 @@ public init(name: String, dataGroupId!: String = String.empty,
 |dataGroupId|String|否|String.empty|应用组ID，需要向应用市场获取。|
 |storageType|[StorageType](#enum-storagetype)|否|StorageType.Xml|存储模式，为可选参数。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options("myPreferences", dataGroupId:"myGroupID", storageType:StorageType.Xml)
+```
+
 ## class Preferences
 
 ```cangjie

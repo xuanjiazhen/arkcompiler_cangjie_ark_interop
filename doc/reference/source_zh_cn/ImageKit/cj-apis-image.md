@@ -715,6 +715,28 @@ public init(sampleSize!: UInt32 = 1, rotate!: UInt32 = 0, editable!: Bool = fals
 |desiredColorSpace|?[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|否|None|**命名参数。** 目标色彩空间。|
 |desiredDynamicRange|[DecodingDynamicRange](#enum-decodingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。<br>如果平台不支持HDR，设置无效，默认解码为SDR内容。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ImageKit.*
+
+let decodingOptions = DecodingOptions(
+    sampleSize: 1,
+    rotate: 0,
+    editable: false,
+    desiredSize: Size(0, 0),
+    desiredRegion: Region(Size(0, 0), 0, 0),
+    desiredPixelFormat: Unknown,
+    index: 0,
+    fitDensity: 0,
+    desiredColorSpace: None,
+    desiredDynamicRange: Sdr
+)
+```
+
 ## class Image
 
 ```cangjie
@@ -1327,6 +1349,17 @@ public init(index!: UInt32 = 0, defaultValue!: String = "")
 |:---|:---|:---|:---|:---|
 |index|UInt32|否|0| **命名参数。** 图片序号。|
 |defaultValue|String|否|""| **命名参数。** 默认属性值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ImageKit.*
+
+let imagePropertyOptions: ImagePropertyOptions = ImagePropertyOptions(index: 3, defaultValue: "custom default")
+```
 
 ## class ImageReceiver
 
@@ -2180,6 +2213,17 @@ public init(format: String, quality: UInt8, bufferSize!: UInt64 = 0,
 |bufferSize|UInt64|否|0|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int32-packingoption)不受此参数限制。|
 |desiredDynamicRange|[PackingDynamicRange](#enum-packingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。|
 |needsPackProperties|Bool|否|false|**命名参数。** 是否需要编码图片属性信息，例如EXIF。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ImageKit.*
+
+let packingOption = PackingOption("image/jpeg", 98)
+```
 
 ## class PixelMap
 
@@ -3049,6 +3093,17 @@ public init(pixels: Array<UInt8>, offset: UInt32, stride: UInt32, region: Region
 |stride|UInt32|是|-|跨距，内存中每行像素所占的空间。stride >= region.size.width*4。|
 |region|[Region](#class-region)|是|-|区域，按照区域读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ImageKit.*
+
+let positionArea: PositionArea = PositionArea(Array<UInt8>(8, repeat: 0), 0, 8, Region(Size(1, 2), 0, 0))
+```
+
 ## class Region
 
 ```cangjie
@@ -3134,6 +3189,18 @@ public init(size: Size, x: Int32, y: Int32)
 |x|Int32|是|-|区域横坐标。|
 |y|Int32|是|-|区域纵坐标。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ImageKit.*
+
+let size = Size(100, 100)
+let region = Region(size, 10, 20)
+```
+
 ## class Size
 
 ```cangjie
@@ -3200,6 +3267,17 @@ public init(height: Int32, width: Int32)
 |:---|:---|:---|:---|:---|
 |height|Int32|是|-|输出图片的高。|
 |width|Int32|是|-|输出图片的宽。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ImageKit.*
+
+let size: Size = Size(1080, 960)
+```
 
 ## class SourceOptions
 
@@ -3289,6 +3367,17 @@ public init(sourceDensity: Int32, sourcePixelFormat!: PixelMapFormat = PixelMapF
 |sourceDensity|Int32|是|-|图片资源像素密度，单位DPI。<br>在解码参数[DecodingOptions](#class-decodingoptions)未设置desiredSize的前提下，当前参数SourceOptions.sourceDensity与DecodingOptions.fitDensity非零时将对解码输出的pixelmap进行缩放。<br>缩放后宽计算公式如下(高同理)：(width * fitDensity + (sourceDensity >> 1)) / sourceDensity。|
 |sourcePixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|PixelMapFormat.Unknown|**命名参数** 图片像素格式，默认值为UNKNOWN。|
 |sourceSize|[Size](#class-size)|否|Size(0, 0)|**命名参数** 图像像素大小，默认值为空。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ImageKit.*
+
+let sourceOptions: SourceOptions = SourceOptions(120, sourcePixelFormat: PixelMapFormat.Rgba8888, sourceSize: Size(100, 100))
+```
 
 ## enum AlphaType
 

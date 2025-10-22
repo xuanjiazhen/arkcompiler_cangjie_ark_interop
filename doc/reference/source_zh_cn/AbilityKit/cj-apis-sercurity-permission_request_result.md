@@ -33,6 +33,38 @@ public class PermissionRequestResult {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.*
+
+// 此处代码可添加在依赖项定义中
+var resultCallback = {
+    errorCode: Option<BusinessException>, data: Option<PermissionRequestResult> => match (errorCode) {
+        case Some(e) => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: errcode is ${e.code}")
+        case _ =>
+            match (data) {
+                case Some(value) =>
+                    for (i in (0..value.permissions.size)) {
+                        Hilog.info(0, "AppLogCj", "CallBack: ${value.permissions[i]} - ${value.authResults[i]}")
+                    }
+                case _ => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: data is null")
+            }
+    }
+}
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
+let atManager = AbilityAccessCtrl.createAtManager()
+let permissionList = ["ohos.permission.READ_CONTACTS", "ohos.permission.CAMERA"]
+atManager.requestPermissionsFromUser(ctx, permissionList, resultCallback)
+```
+
 ### var authResults
 
 ```cangjie
@@ -48,6 +80,38 @@ public var authResults: Array<Int32>
 **系统能力：** SystemCapability.Security.AccessToken
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.*
+
+// 此处代码可添加在依赖项定义中
+var resultCallback = {
+    errorCode: Option<BusinessException>, data: Option<PermissionRequestResult> => match (errorCode) {
+        case Some(e) => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: errcode is ${e.code}")
+        case _ =>
+            match (data) {
+                case Some(value) =>
+                    for (i in (0..value.permissions.size)) {
+                        Hilog.info(0, "AppLogCj", "CallBack: ${value.permissions[i]} - ${value.authResults[i]}")
+                    }
+                case _ => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: data is null")
+            }
+    }
+}
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
+let atManager = AbilityAccessCtrl.createAtManager()
+let permissionList = ["ohos.permission.READ_CONTACTS", "ohos.permission.CAMERA"]
+atManager.requestPermissionsFromUser(ctx, permissionList, resultCallback)
+```
 
 ### var dialogShownResults
 
@@ -65,6 +129,38 @@ public var dialogShownResults = Array<Bool>()
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.*
+
+// 此处代码可添加在依赖项定义中
+var resultCallback = {
+    errorCode: Option<BusinessException>, data: Option<PermissionRequestResult> => match (errorCode) {
+        case Some(e) => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: errcode is ${e.code}")
+        case _ =>
+            match (data) {
+                case Some(value) =>
+                    for (i in (0..value.permissions.size)) {
+                        Hilog.info(0, "AppLogCj", "CallBack: ${value.permissions[i]} - ${value.authResults[i]}")
+                    }
+                case _ => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: data is null")
+            }
+    }
+}
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
+let atManager = AbilityAccessCtrl.createAtManager()
+let permissionList = ["ohos.permission.READ_CONTACTS", "ohos.permission.CAMERA"]
+atManager.requestPermissionsFromUser(ctx, permissionList, resultCallback)
+```
+
 ### var permissions
 
 ```cangjie
@@ -80,3 +176,35 @@ public var permissions: Array<String>
 **系统能力：** SystemCapability.Security.AccessToken
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.*
+
+// 此处代码可添加在依赖项定义中
+var resultCallback = {
+    errorCode: Option<BusinessException>, data: Option<PermissionRequestResult> => match (errorCode) {
+        case Some(e) => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: errcode is ${e.code}")
+        case _ =>
+            match (data) {
+                case Some(value) =>
+                    for (i in (0..value.permissions.size)) {
+                        Hilog.info(0, "AppLogCj", "CallBack: ${value.permissions[i]} - ${value.authResults[i]}")
+                    }
+                case _ => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: data is null")
+            }
+    }
+}
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
+let atManager = AbilityAccessCtrl.createAtManager()
+let permissionList = ["ohos.permission.READ_CONTACTS", "ohos.permission.CAMERA"]
+atManager.requestPermissionsFromUser(ctx, permissionList, resultCallback)
+```

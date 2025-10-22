@@ -4208,6 +4208,17 @@ public init(
 |location|?[Location](#class-location)|否|None|**命名参数。** 图片地理位置信息(默认以设备硬件信息为准)。|
 |mirror|Bool|否|false|**命名参数。** 镜像使能开关(默认关)。使用之前需要使用[isMirrorSupported](#func-ismirrorsupported)进行判断是否支持。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let photoSetting = PhotoCaptureSetting(quality: QualityLevel.QualityLevelMedium, rotation: ImageRotation.Rotation180, location: None, mirror: true)
+```
+
 ## class PhotoOutput
 
 ```cangjie
@@ -8093,7 +8104,21 @@ public operator func !=(other: CameraEvents): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|true表示相等，false表示不相等。|
+|Bool|true表示不相等，false表示相等。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+
+let event1 = CameraEvents.CameraError
+let event2 = CameraEvents.CameraStatus
+let isNotEqual = event1 != event2
+```
 
 ### func ==(CameraEvents)
 
@@ -8101,7 +8126,7 @@ public operator func !=(other: CameraEvents): Bool
 public operator func ==(other: CameraEvents): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 判断两个枚举值是否相等。
 
 **参数：**
 
@@ -8113,7 +8138,21 @@ public operator func ==(other: CameraEvents): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|true表示不相等，false表示相等。|
+|Bool|true表示相等，false表示不相等。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+
+let event1 = CameraEvents.CameraError
+let event2 = CameraEvents.CameraError
+let isEqual = event1 == event2
+```
 
 ## enum CameraFormat
 
@@ -8232,13 +8271,26 @@ public operator func !=(other: CameraFormat): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let format1 = CameraFormat.CameraFormatHeic
+let format2 = CameraFormat.CameraFormatJpeg
+let isNotEqual = format1 != format2
+```
+
 ### func ==(CameraFormat)
 
 ```cangjie
 public operator func ==(other: CameraFormat): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 判断两个枚举值是否相等。
 
 **参数：**
 
@@ -8250,7 +8302,20 @@ public operator func ==(other: CameraFormat): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let format1 = CameraFormat.CameraFormatHeic
+let format2 = CameraFormat.CameraFormatJpeg
+let isEqual = format1 == format2
+```
 
 ### func toString()
 
@@ -8269,6 +8334,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let format = CameraFormat.CameraFormatHeic
+let formatString = format.toString()
+```
 
 ## enum CameraPosition
 
@@ -8477,13 +8554,26 @@ public operator func !=(other: CameraStatus): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let status1 = CameraStatus.CameraStatusAppear
+let status2 = CameraStatus.CameraStatusDisappear
+let isNotEqual = status1 != status2
+```
+
 ### func ==(CameraStatus)
 
 ```cangjie
 public operator func ==(other: CameraStatus): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 判断两个枚举值是否相等。
 
 **参数：**
 
@@ -8496,6 +8586,19 @@ public operator func ==(other: CameraStatus): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let status1 = CameraStatus.CameraStatusAppear
+let status2 = CameraStatus.CameraStatusAppear
+let isEqual = status1 == status2
+```
 
 ### func toString()
 
@@ -8514,6 +8617,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let status = CameraStatus.CameraStatusAppear
+let statusStr = status.toString()
+```
 
 ## enum CameraType
 
@@ -8619,6 +8734,19 @@ public operator func !=(other: CameraType): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let type1 = CameraType.CameraTypeDefault
+let type2 = CameraType.CameraTypeWideAngle
+let result = type1 != type2
+```
+
 ### func ==(CameraType)
 
 ```cangjie
@@ -8639,6 +8767,19 @@ public operator func ==(other: CameraType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let type1 = CameraType.CameraTypeDefault
+let type2 = CameraType.CameraTypeWideAngle
+let result = type1 == type2
+```
+
 ### func toString()
 
 ```cangjie
@@ -8656,6 +8797,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let type = CameraType.CameraTypeDefault
+let str = type.toString()
+```
 
 ## enum ConnectionType
 
@@ -8735,6 +8888,19 @@ public operator func !=(other: ConnectionType): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let type1 = ConnectionType.CameraConnectionBuiltIn
+let type2 = ConnectionType.CameraConnectionRemote
+let isNotEqual = type1 != type2
+```
+
 ### func ==(ConnectionType)
 
 ```cangjie
@@ -8755,6 +8921,19 @@ public operator func ==(other: ConnectionType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let type1 = ConnectionType.CameraConnectionBuiltIn
+let type2 = ConnectionType.CameraConnectionBuiltIn
+let isEqual = type1 == type2
+```
+
 ### func toString()
 
 ```cangjie
@@ -8772,6 +8951,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let type = ConnectionType.CameraConnectionBuiltIn
+let typeString = type.toString()
+```
 
 ## enum ExposureMode
 
@@ -8851,6 +9042,19 @@ public operator func !=(other: ExposureMode): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode1 = ExposureMode.ExposureModeAuto
+let mode2 = ExposureMode.ExposureModeContinuousAuto
+let isNotEqual = mode1 != mode2
+```
+
 ### func ==(ExposureMode)
 
 ```cangjie
@@ -8871,6 +9075,19 @@ public operator func ==(other: ExposureMode): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode1 = ExposureMode.ExposureModeAuto
+let mode2 = ExposureMode.ExposureModeAuto
+let isEqual = mode1 == mode2
+```
+
 ### func toString()
 
 ```cangjie
@@ -8884,6 +9101,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode = ExposureMode.ExposureModeAuto
+let modeStr = mode.toString()
+```
 
 ## enum FlashMode
 
@@ -8976,6 +9205,19 @@ public operator func !=(other: FlashMode): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode1 = FlashMode.FlashModeClose
+let mode2 = FlashMode.FlashModeOpen
+let isNotEqual = mode1 != mode2
+```
+
 ### func ==(FlashMode)
 
 ```cangjie
@@ -8996,6 +9238,19 @@ public operator func ==(other: FlashMode): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode1 = FlashMode.FlashModeClose
+let mode2 = FlashMode.FlashModeOpen
+let isEqual = mode1 == mode2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9010,14 +9265,24 @@ public func toString(): String
 |:----|:----|
 |String|枚举的字符串值。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode = FlashMode.FlashModeClose
+let modeStr = mode.toString()
+```
+
 ## enum FocusMode
 
 ```cangjie
 public enum FocusMode {
     | FocusModeManual
     | FocusModeContinuousAuto
-    | FocusModeAuto
-    | FocusModeLocked
     | ...
 }
 ```
@@ -9101,6 +9366,19 @@ public operator func !=(other: FocusMode): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode1 = FocusMode.FocusModeManual
+let mode2 = FocusMode.FocusModeAuto
+let isNotEqual = mode1 != mode2
+```
+
 ### func ==(FocusMode)
 
 ```cangjie
@@ -9121,6 +9399,19 @@ public operator func ==(other: FocusMode): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode1 = FocusMode.FocusModeManual
+let mode2 = FocusMode.FocusModeAuto
+let isEqual = mode1 == mode2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9134,6 +9425,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let mode = FocusMode.FocusModeManual
+let str = mode.toString()
+```
 
 ## enum FocusState
 
@@ -9213,6 +9516,19 @@ public operator func !=(other: FocusState): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let state1 = FocusState.FocusStateScan
+let state2 = FocusState.FocusStateFocused
+let result = state1 != state2
+```
+
 ### func ==(FocusState)
 
 ```cangjie
@@ -9233,6 +9549,19 @@ public operator func ==(other: FocusState): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let state1 = FocusState.FocusStateScan
+let state2 = FocusState.FocusStateFocused
+let result = state1 == state2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9246,6 +9575,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let state = FocusState.FocusStateScan
+let str = state.toString()
+```
 
 ## enum FoldStatus
 
@@ -9325,6 +9666,19 @@ public operator func !=(other: FoldStatus): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let status1 = FoldStatus.Expanded
+let status2 = FoldStatus.Folded
+let isNotEqual = status1 != status2
+```
+
 ### func ==(FoldStatus)
 
 ```cangjie
@@ -9345,6 +9699,19 @@ public operator func ==(other: FoldStatus): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let status1 = FoldStatus.Expanded
+let status2 = FoldStatus.Expanded
+let isEqual = status1 == status2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9362,6 +9729,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let status = FoldStatus.Expanded
+let statusString = status.toString()
+```
 
 ## enum ImageRotation
 
@@ -9454,6 +9833,19 @@ public operator func !=(other: ImageRotation): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let rotation1 = ImageRotation.Rotation0
+let rotation2 = ImageRotation.Rotation90
+let isNotEqual = rotation1 != rotation2
+```
+
 ### func ==(ImageRotation)
 
 ```cangjie
@@ -9474,6 +9866,19 @@ public operator func ==(other: ImageRotation): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let rotation1 = ImageRotation.Rotation0
+let rotation2 = ImageRotation.Rotation0
+let isEqual = rotation1 == rotation2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9491,6 +9896,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CameraKit.*
+
+let rotation = ImageRotation.Rotation0
+let rotationString = rotation.toString()
+```
 
 ## enum MetadataObjectType
 
@@ -9544,6 +9961,16 @@ public operator func !=(other: MetadataObjectType): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type1 = MetadataObjectType.FaceDetection
+let type2 = MetadataObjectType.FaceDetection
+let isNotEqual = type1 != type2
+```
+
 ### func ==(MetadataObjectType)
 
 ```cangjie
@@ -9564,6 +9991,16 @@ public operator func ==(other: MetadataObjectType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type1 = MetadataObjectType.FaceDetection
+let type2 = MetadataObjectType.FaceDetection
+let isEqual = type1 == type2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9581,6 +10018,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type1 = MetadataObjectType.FaceDetection
+let typeString = type1.toString()
+```
 
 ## enum PreconfigRatio
 
@@ -9660,6 +10106,16 @@ public operator func !=(other: PreconfigRatio): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let ratio1 = PreconfigRatio.PreconfigRatio_16_9
+let ratio2 = PreconfigRatio.PreconfigRatio_4_3
+let isNotEqual = ratio1 != ratio2
+```
+
 ### func ==(PreconfigRatio)
 
 ```cangjie
@@ -9680,6 +10136,16 @@ public operator func ==(other: PreconfigRatio): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let ratio1 = PreconfigRatio.PreconfigRatio_16_9
+let ratio2 = PreconfigRatio.PreconfigRatio_16_9
+let isEqual = ratio1 == ratio2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9697,6 +10163,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let ratio = PreconfigRatio.PreconfigRatio_16_9
+let ratioStr = ratio.toString()
+```
 
 ## enum PreconfigType
 
@@ -9789,6 +10264,16 @@ public operator func !=(other: PreconfigType): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type1 = PreconfigType.Preconfig720p
+let type2 = PreconfigType.Preconfig1080p
+let isNotEqual = type1 != type2
+```
+
 ### func ==(PreconfigType)
 
 ```cangjie
@@ -9809,6 +10294,16 @@ public operator func ==(other: PreconfigType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type1 = PreconfigType.Preconfig720p
+let type2 = PreconfigType.Preconfig1080p
+let isEqual = type1 == type2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9826,6 +10321,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type = PreconfigType.Preconfig720p
+let typeStr = type.toString()
+```
 
 ## enum QualityLevel
 
@@ -9905,6 +10409,16 @@ public operator func !=(other: QualityLevel): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let quality1 = QualityLevel.QualityLevelHigh
+let quality2 = QualityLevel.QualityLevelLow
+let isNotEqual = quality1 != quality2
+```
+
 ### func ==(QualityLevel)
 
 ```cangjie
@@ -9925,6 +10439,16 @@ public operator func ==(other: QualityLevel): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let quality1 = QualityLevel.QualityLevelHigh
+let quality2 = QualityLevel.QualityLevelHigh
+let isEqual = quality1 == quality2
+```
+
 ### func toString()
 
 ```cangjie
@@ -9942,6 +10466,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let quality = QualityLevel.QualityLevelHigh
+let qualityStr = quality.toString()
+```
 
 ## enum SceneMode
 
@@ -10326,6 +10859,16 @@ public operator func !=(other: VideoCodecType): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let codec1 = VideoCodecType.Avc
+let codec2 = VideoCodecType.Hevc
+let isNotEqual = codec1 != codec2
+```
+
 ### func ==(VideoCodecType)
 
 ```cangjie
@@ -10346,6 +10889,16 @@ public operator func ==(other: VideoCodecType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let codec1 = VideoCodecType.Avc
+let codec2 = VideoCodecType.Avc
+let isEqual = codec1 == codec2
+```
+
 ### func toString()
 
 ```cangjie
@@ -10363,6 +10916,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let codec = VideoCodecType.Avc
+let codecStr = codec.toString()
+```
 
 ## enum VideoStabilizationMode
 
@@ -10468,6 +11030,16 @@ public operator func !=(other: VideoStabilizationMode): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let mode1 = VideoStabilizationMode.Off
+let mode2 = VideoStabilizationMode.Low
+let isNotEqual = mode1 != mode2
+```
+
 ### func ==(VideoStabilizationMode)
 
 ```cangjie
@@ -10488,6 +11060,16 @@ public operator func ==(other: VideoStabilizationMode): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let mode1 = VideoStabilizationMode.Off
+let mode2 = VideoStabilizationMode.Off
+let isEqual = mode1 == mode2
+```
+
 ### func toString()
 
 ```cangjie
@@ -10501,3 +11083,12 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的字符串值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let mode = VideoStabilizationMode.Off
+let modeStr = mode.toString()
+```

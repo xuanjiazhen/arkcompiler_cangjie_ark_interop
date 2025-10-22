@@ -3164,6 +3164,18 @@ public func getValue(): String
 |:----|:----|
 |String|枚举的值。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+
+let value = ApplicationType.Image.getValue()
+```
+
 ## enum BundleType
 
 ```cangjie

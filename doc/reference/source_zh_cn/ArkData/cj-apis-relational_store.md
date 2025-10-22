@@ -356,6 +356,17 @@ public init(name: String, uri: String, path: String, createTime: String, modifyT
 |size|String|是|-|资产占用空间的大小。|
 |status|[AssetStatus](#enum-assetstatus)|否|AssetStatus.AssetNormal| **命名参数。** 资产的状态，默认值为ASSET_NORMAL。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let asset = Asset("example.txt", "file:///data/storage/el2/base/haps/entry/files/example.txt", "/data/storage/el2/base/haps/entry/files/example.txt", "2023-01-01T00:00:00Z", "2023-01-01T00:00:00Z", "1024", AssetStatus.AssetNormal)
+```
+
 ## class CryptoParam
 
 ```cangjie
@@ -502,11 +513,21 @@ public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
 |hmacAlgo|[HmacAlgo](#enum-hmacalgo)|否|HmacAlgo.Sha256|指定数据库加解密使用的HMAC算法。如不指定，默认值为SHA256。|
 |kdfAlgo|?[KdfAlgo](#enum-kdfalgo)|否|None|指定数据库加解密使用的PBKDF2算法。如不指定，默认使用和HMAC算法相等的算法。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let cryptoParam = CryptoParam([0x1, 0x2, 0x3, 0x4], iterationCount: 20000, encryptionAlgo: EncryptionAlgo.Aes256Gcm, hmacAlgo: HmacAlgo.Sha256, kdfAlgo: Some(KdfAlgo.Pbkdf2Sha256), cryptoPageSize: 2048)
+```
+
 ## class RdbPredicates
 
 ```cangjie
 public class RdbPredicates {
-
     public init(name: String)
 }
 ```
@@ -535,6 +556,17 @@ public init(name: String)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |name|String|是|-|数据库表名。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+```
 
 ### func inValues(String, Array\<ValueType>)
 
@@ -1017,7 +1049,7 @@ import kit.ArkData.*
 // 匹配数据表的"NAME"列中类型为string且值为"?h*g"的字段
 let predicates = RdbPredicates("EMPLOYEE")
 predicates.glob("NAME", "?h*g")
-``
+```
 
 ### func greaterThan(String, ValueType)
 
@@ -4178,6 +4210,17 @@ public init(securityLevel: SecurityLevel, name!: String = "",
 |tokenizer|[Tokenizer](#enum-tokenizer)|否|Tokenizer.NoneTokenizer|指定用户在fts场景下使用哪种分词器。<br>当此参数不填时，则在fts下不支持中文以及多国语言分词，但仍可支持英文分词。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
 |persist|Bool|否|true|指定数据库是否需要持久化。true表示持久化，false表示不持久化，即内存数据库。默认为true。<br>内存数据库不支持加密、backup、restore、跨进程访问及分布式能力，securityLevel属性会被忽略。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
 |enableSemanticIndex|Bool|否|false|指定数据库是否启用语义索引处理功能。true表示启用语义索引处理功能，false表示不启用。默认为false。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let config = StoreConfig(RelationalStoreSecurityLevel.S1, name: "RdbTest.db")
+```
 
 ## enum AssetStatus
 

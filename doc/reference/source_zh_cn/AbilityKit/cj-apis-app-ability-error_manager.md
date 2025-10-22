@@ -37,6 +37,22 @@ public class ErrorManager {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+try {
+    let observerId: Int32 = 1
+    ErrorManager.off(ErrorManagerEvent.Error, observerId)
+} catch (e: BusinessException) {
+    Hilog.info(0, "test_errorManager", "${e.message}")
+}
+```
+
 ### static func off(ErrorManagerEvent, Int32)
 
 ```cangjie
@@ -156,6 +172,17 @@ public enum ErrorManagerEvent {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let event1 = ErrorManagerEvent.Error
+```
+
 ### Error
 
 ```cangjie
@@ -167,3 +194,14 @@ Error
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let event1 = ErrorManagerEvent.Error
+```

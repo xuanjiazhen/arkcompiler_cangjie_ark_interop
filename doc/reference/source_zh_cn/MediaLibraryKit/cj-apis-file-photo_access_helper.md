@@ -225,6 +225,22 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let phAccessHelper = getPhotoAccessHelper(ctx)
+let predicates = DataSharePredicates()
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
+```
+
 ## class Album
 
 ```cangjie
@@ -381,7 +397,7 @@ let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: pred
 let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
     AlbumSubtype.USER_GENERIC, options: fetchOptions)
 let albums = fetchResult.getAllObjects()
-```  
+```
 
 ### func getFirstObject()
 
@@ -408,7 +424,7 @@ public func getFirstObject(): Album
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |\
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -522,7 +538,7 @@ let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: pred
 let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
     AlbumSubtype.USER_GENERIC, options: fetchOptions)
 let album = fetchResult.getNextObject()
-``` 
+```
 
 ### func getObjectByPosition(Int32)
 
@@ -575,7 +591,7 @@ let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: pred
 let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
     AlbumSubtype.USER_GENERIC, options: fetchOptions)
 let album = fetchResult.getObjectByPosition(0)
-``` 
+```
 
 ## class ChangeData
 
@@ -714,6 +730,17 @@ public init(title!: String = "", subtype!: PhotoSubtype = Default)
 |title|String|否|""| **命名参数。** 图片或者视频的标题。|
 |subtype|[PhotoSubtype](#enum-photosubtype)|否|Default| **命名参数。** 图片或者视频的文件子类型。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.MediaLibraryKit.*
+
+let options = CreateOptions(title: "myPhoto", subtype: PhotoSubtype.Default)
+```
+
 ## class FetchOptions
 
 ```cangjie
@@ -780,6 +807,21 @@ public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 |:---|:---|:---|:---|:---|
 |fetchColumns|Array\<String>|是|-| 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。|
 |predicates|[DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates)|是|-| 谓词查询，显示过滤条件。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let predicates = DataSharePredicates()
+let fetchColumns = ['uri', 'title']
+let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates)
+```
 
 ## class FetchResult
 
@@ -1890,6 +1932,25 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
+let phAccessHelper = getPhotoAccessHelper(ctx)
+let predicates = DataSharePredicates()
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult = phAccessHelper.getAssets(fetchOptions)
+let photoAsset = fetchResult.getFirstObject()
+let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
+phAccessHelper.applyChanges(assetChangeRequest)
+```
+
 ### func getAlbums(AlbumType, AlbumSubtype, FetchOptions)
 
 ```cangjie
@@ -2520,7 +2581,6 @@ public func getThumbnail(size!: ?Size = Size(256, 256)): PixelMap
 |:----|:----|
 |[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|返回缩略图的PixelMap。|
 
-
 **异常：**
 
 - BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
@@ -2656,6 +2716,26 @@ public func getAllObjects(): Array<PhotoAsset>
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let phAccessHelper = getPhotoAccessHelper(ctx)
+let predicates = DataSharePredicates()
+predicates.equalTo('album_name', Str('test1'))
+let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
+    AlbumSubtype.USER_GENERIC, options: fetchOptions)
+let albums = fetchResult.getAllObjects()
+```
+
 ### func getFirstObject()
 
 ```cangjie
@@ -2682,6 +2762,26 @@ public func getFirstObject(): PhotoAsset
   | :---- | :--- |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let phAccessHelper = getPhotoAccessHelper(ctx)
+let predicates = DataSharePredicates()
+predicates.equalTo('album_name', Str('test1'))
+let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
+    AlbumSubtype.USER_GENERIC, options: fetchOptions)
+let albums = fetchResult.getFirstObject()
+```
 
 ### func getLastObject()
 
@@ -2710,6 +2810,26 @@ public func getLastObject(): PhotoAsset
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let phAccessHelper = getPhotoAccessHelper(ctx)
+let predicates = DataSharePredicates()
+predicates.equalTo('album_name', Str('test1'))
+let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
+    AlbumSubtype.USER_GENERIC, options: fetchOptions)
+let albums = fetchResult.getLastObject()
+```
+
 ### func getNextObject()
 
 ```cangjie
@@ -2736,6 +2856,26 @@ public func getNextObject(): PhotoAsset
   | :---- | :--- |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let phAccessHelper = getPhotoAccessHelper(ctx)
+let predicates = DataSharePredicates()
+predicates.equalTo('album_name', Str('test1'))
+let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
+    AlbumSubtype.USER_GENERIC, options: fetchOptions)
+let albums = fetchResult.getNextObject()
+```
 
 ### func getObjectByPosition(Int32)
 
@@ -2769,6 +2909,26 @@ public func getObjectByPosition(index: Int32): PhotoAsset
   | :---- | :--- |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let phAccessHelper = getPhotoAccessHelper(ctx)
+let predicates = DataSharePredicates()
+predicates.equalTo('album_name', Str('test1'))
+let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
+    AlbumSubtype.USER_GENERIC, options: fetchOptions)
+let albums = fetchResult.getObjectByPosition(0)
+```
 
 ## class PhotoCreationConfig
 
@@ -2872,6 +3032,21 @@ public init(fileNameExtension: String, photoType: PhotoType, title!: String = ""
 |photoType|[PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype)|是|-|创建的文件类型，IMAGE或者VIDEO。|
 |title|String|否|""| **命名参数。** 图片或者视频的标题。|
 |subtype|[PhotoSubtype](#enum-photosubtype)|否|Default| **命名参数。** 图片或者视频的文件子类型，Default或者MovingPhoto。|
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+// index.cj
+import kit.MediaLibraryKit.*
+
+let config = PhotoCreationConfig(
+    "jpg",
+    PhotoType.Image,
+    title: "example",
+    subtype: PhotoSubtype.Default
+)
+```
 
 ## class RequestOptions
 
