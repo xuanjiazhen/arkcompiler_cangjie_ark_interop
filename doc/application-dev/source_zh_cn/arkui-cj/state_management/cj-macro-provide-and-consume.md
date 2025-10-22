@@ -57,7 +57,7 @@ var age: Float64;
 
 |\@Provide传递/访问|说明|
 |:---|:---|
-|从父组件初始化和更新|可选，允许父组件中常规变量（常规变量对 \@Provide 赋值，只是数值的初始化，常规变量的变化不会触发UI刷新，只有状态变量才能触发UI刷新）、\@State、\@Link、\@Prop、\@Provide、\@Consume、\@Publish、\@StorageLink、\@StorageProp、\@LocalStorageLink 和 \@LocalStorageProp 装饰的变量装饰变量初始化子组件 \@Provide。|
+|从父组件初始化和更新|可选，允许父组件中常规变量（常规变量对 \@Provide 赋值，只是数值的初始化，常规变量的变化不会触发UI刷新，只有状态变量才能触发UI刷新）、[\@State](./cj-macro-state.md)、[\@Link](./cj-macro-link.md)、[\@Prop](./cj-macro-prop.md)、\@Provide、\@Consume、[\@Publish](./cj-macro-observed-and-publish.md)、[\@StorageLink](./cj-appstorage.md#storagelink)、[\@StorageProp](./cj-appstorage.md#storageprop)、[\@LocalStorageLink](./cj-localstorage.md#localstoragelink)和[\@LocalStorageProp](./cj-localstorage.md#localstorageprop)装饰的变量装饰变量初始化子组件 \@Provide。|
 |用于初始化子组件|允许，可用于初始化 \@State、\@Link、\@Prop、\@Provide。|
 |和父组件同步|否。|
 |和后代组件同步|和 \@Consume 双向同步。|
@@ -101,14 +101,14 @@ class EntryView{
         Column(){
             Button("parent increase the day by 1")
                 .margin(10)
-                .onClick{
+                .onClick({ event
                     => this.selectedDate = this.selectedDate.addDays(1)
-                }
+                })
             Button("parent update the new date")
                 .margin(10)
-                .onClick{
+                .onClick({ event
                     => this.selectedDate = DateTime.of(year:2023,month:7,dayOfMonth:7)
-                }
+                })
             DatePicker(
                 start: DateTime.of(year:1970,month:1,dayOfMonth:1),
                 end: DateTime.of(year:2100,month:1,dayOfMonth:1),
@@ -128,14 +128,14 @@ class Child{
     public func build(){
         Column(){
             Button("child increase the day by 1")
-                .onClick{
+                .onClick({ event
                     => this.selectedDate = this.selectedDate.addDays(1)
-                }
+                })
             Button("child update the new date")
                 .margin(10)
-                .onClick{
+                .onClick({ event
                     => this.selectedDate = DateTime.of(year:2023,month:9,dayOfMonth:9)
-                }
+                })
             DatePicker(
                 start: DateTime.of(year:1970,month:1,dayOfMonth:1),
                 end: DateTime.of(year:2100,month:1,dayOfMonth:1),
@@ -148,9 +148,9 @@ class Child{
 
 ![img1](figures/provide_1_datepicker.gif)
 
-- 当装饰的变量是HashMap时，可以观察到HashMap整体的赋值，同时可通过调用HashMap的接口set(), clear(), remove() 更新Map的值。
+- 当装饰的变量是HashMap时，可以观察到HashMap整体的赋值，同时可通过调用HashMap的接口set(), clear(), remove() 更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
-- 当装饰的变量是HashSet时，可以观察到HashSet整体的赋值，同时可通过调用HashSet的接口add(), clear(), remove() 更新Set的值。
+- 当装饰的变量是HashSet时，可以观察到HashSet整体的赋值，同时可通过调用HashSet的接口add(), clear(), remove() 更新Set的值。详见[装饰Set类型变量](#装饰set类型变量)。
 
 - 可以装饰函数类型变量，并观察到函数输出值的变化。
 
@@ -195,11 +195,11 @@ class EntryView{
                 }else{
                     "Switch to add"
                 }
-            ).onClick{ evt =>
+            ).onClick({ evt =>
                 if(isAdd == true){ Func1 = returnMinus }
                 else{ Func1 = returnAdd }
                 isAdd = !isAdd
-            }
+            })
             Divider()
             Child()
         }
@@ -229,11 +229,11 @@ class Child{
                 }else{
                     "Switch to add"
                 }
-            ).onClick{ evt =>
+            ).onClick({ evt =>
                 if(isAdd == true){ Func2 = returnMinus }
                 else{ Func2 = returnAdd }
                 isAdd = !isAdd
-            }
+            })
         }
     }
 }
@@ -449,9 +449,9 @@ class ToDoItem {
         Column{
             Text("count(${this.count})")
             Button("count(${this.count}), count + 1")
-                .onClick{
+                .onClick({
                    evt => this.count += 1
-            }
+            })
         }.width(100.percent)
     }
 }
@@ -485,9 +485,9 @@ class EntryView{
     func build(){
         Column{
             Button("count(${this.count}), count + 1")
-                .onClick{
+                .onClick({
                    evt => this.count += 1
-                }
+                })
             ToDoDemo()
         }
     }
@@ -527,31 +527,31 @@ class Child {
                 keyGeneratorFunc: {item: (Int64, String), idx: Int64
                     => "${idx}_${item[0]}" + item[1]
                 })
-            Button("Consume init map").onClick{
+            Button("Consume init map").onClick({
                 evt =>
                     this.message = HashMap<Int64, String>([(0,"a"),(1,"b"),(3,"c")])
                     arr = message.toArray()
-            }
-            Button("Consume set new one").onClick{
+            })
+            Button("Consume set new one").onClick({
                 evt =>
                     this.message.add(4,"d")
                     arr = message.toArray()
-            }
-            Button("Consume clear").onClick{
+            })
+            Button("Consume clear").onClick({
                 evt =>
                     this.message.clear()
                     arr = message.toArray()
-            }
-            Button("Consume replace the first item").onClick{
+            })
+            Button("Consume replace the first item").onClick({
                 evt =>
                     this.message.add(0,"aa")
                     arr = message.toArray()
-            }
-            Button("Consume delete the first item").onClick{
+            })
+            Button("Consume delete the first item").onClick({
                 evt =>
                     this.message.remove(0)
                     arr = message.toArray()
-            }
+            })
         }
     }
 }
@@ -572,11 +572,11 @@ class EntryView {
     func build(){
         Row(){
             Column(){
-                Button("Provide init map").onClick{
+                Button("Provide init map").onClick({
                     evt =>
                         this.message = HashMap<Int64,String>([(0,"a"),(1,"b"),(3,"c"),(4,"d")])
                         arr = message.toArray()
-                }
+                })
                 Child()
             }.width(100.percent)
         }.height(100.percent)
@@ -613,26 +613,26 @@ class Child{
                 Text("${item}").fontSize(30)
                 Divider()
             })
-            Button("Consume init set").onClick{
+            Button("Consume init set").onClick({
                 evt =>
                     this.message = HashSet<Int64>([0,1,2,3,4])
                     this.arr = this.message.toArray()
-            }
-            Button("Consume set new one").onClick{
+            })
+            Button("Consume set new one").onClick({
                 evt =>
                     this.message.add(5)
                     this.arr = this.message.toArray()
-            }
-            Button("Consume clear").onClick{
+            })
+            Button("Consume clear").onClick({
                 evt =>
                     this.message.clear()
                     this.arr = this.message.toArray()
-            }
-            Button("Consume delete the first one").onClick{
+            })
+            Button("Consume delete the first one").onClick({
                 evt =>
                     this.message.remove(0)
                     this.arr = this.message.toArray()
-            }
+            })
         }
     }
 }
@@ -653,11 +653,11 @@ class EntryView{
     func build(){
         Row(){
             Column(){
-                Button("Provide init Set").onClick{
+                Button("Provide init Set").onClick({
                     evt =>
                     this.message = HashSet<Int64>([0,1,2,3,4,5])
                     this.arr = this.message.toArray()
-                }
+                })
                 Child()
             }.width(100.percent)
         }.height(100.percent)

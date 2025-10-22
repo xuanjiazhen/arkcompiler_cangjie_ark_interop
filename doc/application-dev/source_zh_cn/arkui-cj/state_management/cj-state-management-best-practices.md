@@ -38,13 +38,13 @@ class EntryView{
         Column(space: 20){
             ForEach(this.updateUIArr(this.realStateArr), {item: Int64, _: Int64 => Text("${item}")})
             Text("add item")
-            .onClick{ event =>
-                    // 改变realStateArr不会触发UI视图更新
-                    this.realStateArr.add(this.realStateArr[this.realStateArr.size - 1] + 1)
+            .onClick({ event =>
+                // 改变realStateArr不会触发UI视图更新
+                this.realStateArr.add(this.realStateArr[this.realStateArr.size - 1] + 1)
 
-                    // 触发UI视图更新
-                    this.needsUpdate = !this.needsUpdate
-                }
+                // 触发UI视图更新
+                this.needsUpdate = !this.needsUpdate
+            })
 
             Text("chg color")
             .onClick({event =>
@@ -94,20 +94,20 @@ class EntryView{
             ForEach(this.realStateArr, {item: Int64, _: Int64 => Text("${item}")})
 
             Text("add item")
-            .onClick{event =>
+            .onClick({event =>
                 // 改变realStateArr触发UI视图更新
                 this.realStateArr.append((this.realStateArr[this.realStateArr.size - 1] + 1))
-            }
+            })
 
             Text("chg color")
-            .onClick{event =>
+            .onClick({event =>
                 // 改变realState触发UI视图更新
                 match {
                     case this.realState.toUInt32() == Color(0xFFFF00).toUInt32() => this.realState = Color.Red
                     case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color(0xFFFF00)
                     case _ => Hilog.error(0, "test", "realState invalid")
                 }
-            }
+            })
             .backgroundColor(this.realState)
             .width(200).height(500)
         }
@@ -200,7 +200,7 @@ class EntryView{
 
 在应用开发中，应尽量减少对状态变量的直接赋值，通过临时变量完成数据计算操作。
 
-状态变量发生变化时，ArkUI会查询依赖该状态变量的组件并执行依赖该状态变量的组件的更新方法，完成组件渲染的行为。通过使用临时变量的计算代替直接操作状态变量，可以使ArkUI仅在最后一次状态变量变更时查询并渲染组件，减少不必要的行为，从而提高应用性能。状态变量行为请参见[@State装饰器：组件内状态](cj-macro-state.md)。
+状态变量发生变化时，ArkUI会查询依赖该状态变量的组件并执行依赖该状态变量的组件的更新方法，完成组件渲染的行为。通过使用临时变量的计算代替直接操作状态变量，可以使ArkUI仅在最后一次状态变量变更时查询并渲染组件，减少不必要的行为，从而提高应用性能。状态变量行为请参见[@State宏：组件内状态](cj-macro-state.md)。
 
 【反例】
 
@@ -211,7 +211,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.hi_tracemeter.HiTraceMeter
+import ohos.hi_trace_meter.HiTraceMeter
 
 @Entry
 @Component

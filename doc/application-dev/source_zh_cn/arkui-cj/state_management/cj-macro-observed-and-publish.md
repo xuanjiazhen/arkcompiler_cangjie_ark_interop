@@ -35,7 +35,7 @@
 
 ### 观察变化
 
-\@Observed装饰的类，如果其成员为非简单类型，比如class或数组，class类型需要被\@Observed装饰，数组类型建议使用ObservedArray或ObservedArrayList，否则将观察不到其属性的变化。
+\@Observed装饰的类，如果其成员为非简单类型，比如class或数组，class类型需要被\@Observed装饰，数组类型建议使用ObservedArrayList，否则将观察不到其属性的变化。
 
 ```cangjie
 class Child{
@@ -59,7 +59,7 @@ class Parent{
 
 以上示例中，Parent被 \@Observed 装饰，其被 \@Publish 修饰的成员变量的赋值的变化是可以被观察到的。
 
-对于child，因其类型Child没有被 \@Observed 装饰，且其中的属性没有被\@Publish属性修饰，其属性的修改不能被观察到；而数组arr，作为一种复杂类型，建议使用ObservedArray类型替换。
+对于child，因其类型Child没有被 \@Observed 装饰，且其中的属性没有被\@Publish属性修饰，其属性的修改不能被观察到；而数组arr，作为一种复杂类型，建议使用ObservedArrayList类型替换。
 
 ```cangjie
 var parent: Parent = (child: Child(1), count: 1);
@@ -102,22 +102,22 @@ class EntryView{
         Flex(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center){
             Column(){
                 Text("Time: ${Time.time.format("HH:mm:ss")}").margin(10)
-                Button("time update").onClick{
+                Button("time update").onClick({
                     evt =>
                         Time.time = DateTime.now()
-                }
-                Button("time addHours by 2").onClick{
+                })
+                Button("time addHours by 2").onClick({
                     evt =>
                         Time.time = Time.time.addHours(2)
-                }
-                Button("time addMinutes by 31").onClick{
+                })
+                Button("time addMinutes by 31").onClick({
                     evt =>
                         Time.time = Time.time.addMinutes(31)
-                }
-                Button("add 31 seconds").onClick{
+                })
+                Button("add 31 seconds").onClick({
                     evt =>
                         Time.time = Time.time.addSeconds(31)
-                }
+                })
             }
         }
     }
@@ -183,10 +183,10 @@ class EntryView{
     func build(){
         Column{
             Text("Index: ${this.bag.book.name}")
-            Button("change book.name").onClick{
+            Button("change book.name").onClick({
                 evt =>
                     this.bag.book.name = "ArkUI"
-            }
+            })
         }
     }
 }
@@ -299,16 +299,16 @@ class EntryView{
     func build(){
         Column(space: 10){
             Text("parentId: ${parent1.parentId}")
-            Button("change parentId by 1").onClick{
+            Button("change parentId by 1").onClick({
                 evt =>
                     parent1.parentId += 1
-            }
+            })
 
             Text("childId: ${parent1.child.childId}")
-            Button("change childId by 1").onClick{
+            Button("change childId by 1").onClick({
                 evt =>
                     parent1.child.childId += 1
-            }
+            })
         }
     }
 }
@@ -352,16 +352,16 @@ class EntryView{
     func build(){
         Column(space: 10){
             Text("parentId: ${parent1.parentId}")
-            Button("change parentId by 1").onClick{
+            Button("change parentId by 1").onClick({
                 evt =>
                     parent1.parentId += 1
-            }
+            })
 
             Text("childId: ${parent1.child.childId}")
-            Button("change childId by 1").onClick{
+            Button("change childId by 1").onClick({
                 evt =>
                     parent1.child.childId += 1
-            }
+            })
         }
     }
 }

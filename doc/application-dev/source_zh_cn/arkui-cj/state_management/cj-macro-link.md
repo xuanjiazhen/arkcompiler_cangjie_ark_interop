@@ -14,7 +14,7 @@
 |:---|:---|
 |非属性宏|无。|
 |同步类型|双向同步。<br/>父组件中的状态变量可以与子组件\@Link修饰的变量建立双向同步，当其中一方改变时，另外一方能够感知到变化。|
-|允许装饰的变量类型|支持基础数据类型，对于String，Int64，Float64和Bool类型的变量，可以缺省类型。其他类型的变量不可缺省类型，必须被指定。<br/>支持Enum、Option类型、struct类型，struct类型内部无法修改。<br/>支持class类型，如果要感知内部的变化，在定义的时候需要被[\@Observed](./cj-macro-observed-and-publish.md)修饰，对类内属性和嵌套属性使用[\@Publish](./cj-macro-observed-and-publish.md)装饰后，才能观察到其变化。<br/>支持数组类型，如果要感知内部的变化，需要使用[ObservedArray\<T>](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T>](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。数组项为自定义类型时，使用[\@Observed](./cj-macro-observed-and-publish.md)和[\@Publish](./cj-macro-observed-and-publish.md)装饰时能观察到数组项中属性赋值。其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。<br/>支持[Color](../../../../reference/source_zh_cn/BasicServicesKit/cj-apis-base.md#class-color)类型。<br/>支持类型的场景请参见[观察变化](#观察变化)。<br/>不支持Any。|
+|允许装饰的变量类型|支持基础数据类型，对于String，Int64，Float64和Bool类型的变量，可以缺省类型。其他类型的变量不可缺省类型，必须被指定。<br/>支持Enum、Option类型、struct类型，struct类型内部无法修改。<br/>支持class类型，如果要感知内部的变化，在定义的时候需要被[\@Observed](./cj-macro-observed-and-publish.md)修饰，对类内属性和嵌套属性使用[\@Publish](./cj-macro-observed-and-publish.md)装饰后，才能观察到其变化。<br/>支持数组类型，如果要感知内部的变化，需要使用[ObservedArrayList\<T>](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。数组项为自定义类型时，使用[\@Observed](./cj-macro-observed-and-publish.md)和[\@Publish](./cj-macro-observed-and-publish.md)装饰时能观察到数组项中属性赋值。其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。<br/>支持[Color](../../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#class-color)类型。<br/>支持类型的场景请参见[观察变化](#观察变化)。<br/>不支持Any。|
 |被装饰变量的初始值|\@Link装饰的变量必须使用其父组件提供的变量进行初始化，不允许在子组件中初始化。|
 
 ## 变量的传递/访问规则说明
@@ -33,7 +33,7 @@
 
 - 当装饰的数据类型为class时，需要被[@Observed](./cj-macro-observed-and-publish.md)修饰，内部需要感知变化的属性用[@Publish](./cj-macro-observed-and-publish.md)修饰，如果不使用[@Observed](./cj-macro-observed-and-publish.md)则无法感知成员变量等内部变化。示例请参见[简单类型和类对象类型的@Link](#简单类型和类对象类型的link)。
 
-- 当装饰的对象是数组时，无法单独感知某个数组项的变化，但能感知整体的变化。如果要感知内部的变化，需要使用[ObservedArray\<T>](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T>](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。示例请参见[数组类型的@Link](#数组类型的link)。
+- 当装饰的对象是数组时，无法单独感知某个数组项的变化，但能感知整体的变化。如果要感知内部的变化，需要使用[ObservedArrayList\<T>](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。示例请参见[数组类型的@Link](#数组类型的link)。
 
 - 装饰的变量是其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。
 
@@ -240,7 +240,7 @@ class GreenButton {
             .height(40)
             .backgroundColor(Color.Green)
             .margin(12)
-            .onClick {
+            .onClick({
                 evt => if (this.greenButtonState.width < 700) {
                     // 更新class的属性，变化可以被观察到同步回父组件
                     this.greenButtonState.width += 60
@@ -248,7 +248,7 @@ class GreenButton {
                     // 更新class，变化可以被观察到同步回父组件
                     this.greenButtonState = GreenButtonState(width: 180)
                 }
-            }
+            })
     }
 }
 
@@ -263,11 +263,11 @@ class YellowButton {
             .backgroundColor(Color(0xFFFF00))
             .fontColor(Color.Black)
             .margin(12)
-            .onClick {
+            .onClick({
                 evt =>
                 // 子组件的简单类型可以同步回父组件
                 this.yellowButtonState += 40
-            }
+            })
     }
 }
 
@@ -284,25 +284,25 @@ class EntryView {
                     .width(this.yellowButtonProp)
                     .height(40)
                     .margin(12)
-                    .onClick {
+                    .onClick({
                         evt => if (this.yellowButtonProp < 700) {
                             this.yellowButtonProp = this.yellowButtonProp + 100
                         } else {
                             this.yellowButtonProp = 100
                         }
-                    }
+                    })
                 // class类型从父组件@State向子组件@Link数据同步
                 Button("Parent View: Set GreenButton")
                     .width(this.greenButtonState.width)
                     .height(40)
                     .margin(12)
-                    .onClick {
+                    .onClick({
                         evt => if (this.greenButtonState.width < 700) {
                             this.greenButtonState.width = this.greenButtonState.width + 100
                         } else {
                             this.greenButtonState.width = 100
                         }
-                    }
+                    })
                 // class类型初始化@Link
                 GreenButton(greenButtonState: this.greenButtonState)
                 // 简单类型初始化@Link
@@ -335,16 +335,16 @@ class Child{
             Button("Button 1: push")
                 .margin(12)
                 .size(width: 312, height: 40)
-                .onClick{
+                .onClick({
                     evt => this.items.append(this.items.size + 1)
-                }
+                })
 
             Button("Button 2: replace whole item")
                 .margin(12)
                 .size(width: 312, height:40)
-                .onClick{
+                .onClick({
                     ect => this.items = ObservedArrayList<Int>([100,200,300])
-                }
+                })
         }
     }
 }
@@ -396,9 +396,9 @@ class Child {
             Text(this.memberMessage)
             Text("子组件的sourceNumber：" + this.sourceNumber.toString())
             Button("子组件更改memberMessage")
-              .onClick {
+            .onClick({
                   evt => this.memberMessage = "Hello memberMessage"
-            }
+            })
         }
         .margin(10)
     }
@@ -413,9 +413,9 @@ class EntryView {
             Text("父组件的sourceNumber：" + this.sourceNumber.toString())
             Child(sourceNumber: this.sourceNumber)
             Button("父组件更改sourceNumber")
-              .onClick {
-                  evt => this.sourceNumber++
-            }
+            .onClick({
+                evt => this.sourceNumber++
+            })
         }
     }
 }
@@ -493,7 +493,7 @@ class LinkChild {
     func build() {
         Column() {
             Text("LinkChild testNum ${this.testNum.age}")
-                .onClick({
+            .onClick({
                 evt => this.testNum.age += 1
             })
         }
