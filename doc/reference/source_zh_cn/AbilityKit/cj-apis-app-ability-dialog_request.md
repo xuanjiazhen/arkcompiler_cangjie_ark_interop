@@ -40,6 +40,20 @@ public class RequestResult {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        this.context.requestDialogService(Want(), (err: ?BusinessException, data: ?RequestResult) => {})
+    }
+}
+```
+
 ### var result
 
 ```cangjie
@@ -55,6 +69,22 @@ public var result: ResultCode
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        this.context.requestDialogService(Want(), (err: ?BusinessException, data: ?RequestResult) => {
+            let result = data.result
+        })
+    }
+}
+```
 
 ### var want
 
@@ -72,6 +102,22 @@ public var want: Want
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        this.context.requestDialogService(Want(), (err: ?BusinessException, data: ?RequestResult) => {
+            let want = data.want
+        })
+    }
+}
+```
+
 ## enum ResultCode
 
 ```cangjie
@@ -88,6 +134,17 @@ public enum ResultCode {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let result1 = ResultCode.ResultOk
+let result2 = ResultCode.ResultCancel
+```
+
 ### ResultCancel
 
 ```cangjie
@@ -100,6 +157,16 @@ ResultCancel
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let cancelResult = ResultCode.ResultCancel
+```
+
 ### ResultOk
 
 ```cangjie
@@ -111,3 +178,13 @@ ResultOk
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let okResult = ResultCode.ResultOk
+```

@@ -163,6 +163,20 @@ public init(
 |offset|Int64|否|0| **命名参数。** 资源偏移量，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误。|
 |length|Int64|否|-1| **命名参数。** 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.MediaKit.*
+
+let fd = 123
+let descriptor1 = AVFileDescriptor(fd)
+let descriptor2 = AVFileDescriptor(fd, offset: 1024)
+let descriptor3 = AVFileDescriptor(fd, offset: 1024, length: 2048)
+```
+
 ## class AVImageGenerator
 
 ```cangjie
@@ -363,6 +377,17 @@ public init(width!: Int32 = -1, height!: Int32 = -1)
 |width|Int32|否|-1| **命名参数。** 输出的缩略图宽度。应保证大于0且不大于原始视频宽度。否则返回的缩略图不会进行缩放。|
 |height|Int32|否|-1| **命名参数。** 输出的缩略图高度。应保证大于0且不大于原始视频高度。否则返回的缩略图不会进行缩放。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.MediaKit.*
+
+let params = PixelMapParams(width: 300, height: 300)
+```
+
 ## enum AVImageQueryOptions
 
 ```cangjie
@@ -458,6 +483,16 @@ public operator func !=(other: AVImageQueryOptions): Bool
 |:----|:----|
 |Bool|两个AVImageQueryOptions不等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let option1 = AVImageQueryOptions.AvImageQueryNextSync
+let option2 = AVImageQueryOptions.AvImageQueryPreviousSync
+let result = option1 != option2
+```
+
 ### func ==(AVImageQueryOptions)
 
 ```cangjie
@@ -482,6 +517,16 @@ public operator func ==(other: AVImageQueryOptions): Bool
 |:----|:----|
 |Bool|两个AVImageQueryOptions相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let option1 = AVImageQueryOptions.AvImageQueryNextSync
+let option2 = AVImageQueryOptions.AvImageQueryNextSync
+let result = option1 == option2
+```
+
 ### func toString()
 
 ```cangjie
@@ -499,3 +544,12 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|AVImageQueryOptions的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let option = AVImageQueryOptions.AvImageQueryNextSync
+let str = option.toString()
+```

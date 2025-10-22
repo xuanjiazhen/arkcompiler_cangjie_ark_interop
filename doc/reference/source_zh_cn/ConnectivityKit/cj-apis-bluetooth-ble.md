@@ -886,6 +886,18 @@ public init(interval!: UInt16 = BLE_ADV_DEFAULT_INTERVAL, txPower!: Int8 = BLE_A
 |txPower|Int8|否|BLE_ADV_TX_POWER_MEDIUM_VALUE|表示发送功率，最小值设置-127，最大值设置1，默认值设置-7，单位dbm。推荐值：高档（1），中档（-7），低档（-15）。|
 |connectable|Bool|否|true|表示是否是可连接广播，默认值设置为true，表示可连接，false表示不可连接。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ConnectivityKit.*
+
+let defaultSetting = AdvertiseSetting()
+let customSetting = AdvertiseSetting(interval: 1600, txPower: -7, connectable: true)
+```
+
 ## class AdvertisingParams
 
 ```cangjie
@@ -998,6 +1010,20 @@ public init(
 |advertisingData|[AdvertiseData](#class-advertisedata)|是|-|表示广播的数据包内容。|
 |advertisingResponse|[AdvertiseData](#class-advertisedata)|否|AdvertiseData([],[],[])|表示回复扫描请求的响应内容。|
 |duration|UInt16|否|0| **命名参数。**  表示发送广播持续的时间。单位为10ms，有效范围为1(10ms)到65535(655350ms)，如果未指定此参数或者将其设置为0，则会连续发送广播。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ConnectivityKit.*
+
+let advertisingSettings = AdvertiseSetting(32, 0, true)
+let advertisingData = AdvertiseData(["00001888-0000-1000-8000-00805f9b34fb"], [], [])
+let advertisingResponse = AdvertiseData(["00001888-0000-1000-8000-00805f9b34fb"], [], [])
+let advertisingParams = AdvertisingParams(advertisingSettings, advertisingData, advertisingResponse, duration: 300u16)
+```
 
 ## class AdvertisingStateChangeInfo
 
@@ -3204,6 +3230,27 @@ public init (
 |writeSigned|Bool|否|false|写入该特征值或描述符内容是否需要经过签名处理。<br>true表示内容需要签名处理后方可写入，false表示不需要签名处理。默认值为false。|
 |writeSignedMitm|Bool|否|false|写入该特征值或描述符内容是否需要经过防中间人攻击方式的签名处理。<br>true表示需要防中间人攻击方式的签名处理后方可写入，false表示不需要以防中间人攻击方式签名处理。默认值为false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ConnectivityKit.*
+
+let permissions = GattPermissions(
+read: true,
+readEncrypted: false,
+readEncryptedMitm: false,
+write: true,
+writeEncrypted: false,
+writeEncryptedMitm: false,
+writeSigned: false,
+writeSignedMitm: false
+)
+```
+
 ### func !=(GattPermissions)
 
 ```cangjie
@@ -3224,6 +3271,20 @@ public operator func !=(other: GattPermissions): Bool
 |:----|:----|
 |Bool|如果描述符读写操作需要的权限不同，返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ConnectivityKit.*
+
+let permissions1 = GattPermissions()
+let permissions2 = GattPermissions(read: false)
+let areNotEqual = permissions1 != permissions2
+```
+
 ### func ==(GattPermissions)
 
 ```cangjie
@@ -3242,6 +3303,20 @@ public operator func ==(other: GattPermissions): Bool
 |类型|说明|
 |:----|:----|
 |Bool|如果描述符读写操作需要的权限相同，返回true，否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ConnectivityKit.*
+
+let permissions1 = GattPermissions()
+let permissions2 = GattPermissions()
+let areEqual = permissions1 == permissions2
+```
 
 ## class GattProperties
 

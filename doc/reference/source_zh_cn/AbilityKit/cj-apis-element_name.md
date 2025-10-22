@@ -26,6 +26,15 @@ public class ElementName {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let elementName = ElementName("com.ohos.example", "com.ohos.example.MainAbility")
+```
+
 ### var abilityName
 
 ```cangjie
@@ -41,6 +50,16 @@ public var abilityName: String
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let elementName = ElementName("com.ohos.example", "com.ohos.example.MainAbility")
+let abilityName = elementName.abilityName
+```
 
 ### var bundleName
 
@@ -58,6 +77,16 @@ public var bundleName: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let elementName = ElementName("com.ohos.example", "com.ohos.example.MainAbility")
+let bundleName = elementName.bundleName
+```
+
 ### var deviceId
 
 ```cangjie
@@ -74,6 +103,16 @@ public var deviceId: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let elementName = ElementName("com.ohos.example", "com.ohos.example.MainAbility")
+let deviceId = elementName.deviceId
+```
+
 ### var moduleName
 
 ```cangjie
@@ -89,6 +128,16 @@ public var moduleName: String
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let elementName = ElementName("com.ohos.example", "com.ohos.example.MainAbility")
+let moduleName = elementName.moduleName
+```
 
 ### init(String, String, String, String)
 
@@ -117,5 +166,5 @@ public init(bundleName: String, abilityName: String, deviceId!: String = "", mod
 ```cangjie
 import kit.AbilityKit.*
 
-let elementName = ElementName("com.ohos.example", "com.ohos.example.MainAbility");
+let elementName = ElementName("com.ohos.example", "com.ohos.example.MainAbility")
 ```

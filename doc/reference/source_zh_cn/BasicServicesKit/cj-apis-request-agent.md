@@ -24,7 +24,6 @@ API示例代码使用说明：
 ## func create(UIAbilityContext, Config)
 
 ```cangjie
-
 public func create(context: UIAbilityContext, config: Config): Task
 ```
 
@@ -38,14 +37,12 @@ public func create(context: UIAbilityContext, config: Config): Task
 
 **参数：**
 
-
 | 参数名  | 类型                                                                                       | 必填 | 默认值 | 说明                       |
 | :------ | :----------------------------------------------------------------------------------------- | :--- | :----- | :------------------------- |
 | context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | 是   | -      | 基于应用程序的上下文。     |
 | config  | [Config](#class-config)                                                                    | 是   | -      | <上传/下载任务的配置信息。 |
 
 **返回值：**
-
 
 | 类型                | 说明                                               |
 | :------------------ | :------------------------------------------------- |
@@ -63,6 +60,7 @@ public func create(context: UIAbilityContext, config: Config): Task
   | 13400003 | Task service ability error.                                                                                                       |
   | 21900004 | the application task queue is full.                                                                                               |
   | 21900005 | Operation with wrong task mode.                                                                                                   |
+
 - IllegalArgumentException：
 
   | 错误信息                | 可能原因 | 处理步骤 |
@@ -98,7 +96,6 @@ func exampleCreate(): Unit {
 ## func getTask(UIAbilityContext, String, ?String)
 
 ```cangjie
-
 public func getTask(context: UIAbilityContext, id: String, token!: ?String = None): Task
 ```
 
@@ -110,7 +107,6 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String = Non
 
 **参数：**
 
-
 | 参数名  | 类型                                                                                       | 必填 | 默认值 | 说明                           |
 | :------ | :----------------------------------------------------------------------------------------- | :--- | :----- | :----------------------------- |
 | context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | 是   | -      | 基于应用程序的上下文。         |
@@ -118,7 +114,6 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String = Non
 | token   | ?String                                                                                    | 否   | None   | **命名参数。** 任务查询token。 |
 
 **返回值：**
-
 
 | 类型                | 说明                                               |
 | :------------------ | :------------------------------------------------- |
@@ -133,6 +128,12 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String = Non
   | 401      | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
   | 13400003 | Task service ability error.                                                                                                       |
   | 21900006 | Task removed or not found.                                                                                                        |
+
+- IllegalArgumentException：
+
+  | 错误信息                | 可能原因 | 处理步骤 |
+  | :---------------------- | :------- | :------- |
+  | The context is invalid. | todo     | todo     |
 
 **示例：**
 
@@ -157,16 +158,9 @@ func exampleGetTask(): Unit {
 }
 ```
 
-- IllegalArgumentException：
-
-  | 错误信息                | 可能原因 | 处理步骤 |
-  | :---------------------- | :------- | :------- |
-  | The context is invalid. | todo     | todo     |
-
 ## func remove(String)
 
 ```cangjie
-
 public func remove(id: String): Unit
 ```
 
@@ -177,7 +171,6 @@ public func remove(id: String): Unit
 **起始版本：** 22
 
 **参数：**
-
 
 | 参数名 | 类型   | 必填 | 默认值 | 说明     |
 | :----- | :----- | :--- | :----- | :------- |
@@ -218,7 +211,6 @@ func exampleRemove(): Unit {
 ## func search(Filter)
 
 ```cangjie
-
 public func search(filter!: Filter = Filter()): Array<String>
 ```
 
@@ -230,13 +222,11 @@ public func search(filter!: Filter = Filter()): Array<String>
 
 **参数：**
 
-
 | 参数名 | 类型                    | 必填 | 默认值   | 说明       |
 | :----- | :---------------------- | :--- | :------- | :--------- |
 | filter | [Filter](#class-filter) | 否   | Filter() | 过滤条件。 |
 
 **返回值：**
-
 
 | 类型           | 说明                 |
 | :------------- | :------------------- |
@@ -279,7 +269,6 @@ func exampleSearch(): Unit {
 ## func show(String)
 
 ```cangjie
-
 public func show(id: String): TaskInfo
 ```
 
@@ -291,13 +280,11 @@ public func show(id: String): TaskInfo
 
 **参数：**
 
-
 | 参数名 | 类型   | 必填 | 默认值 | 说明     |
 | :----- | :----- | :--- | :----- | :------- |
 | id     | String | 是   | -      | 任务id。 |
 
 **返回值：**
-
 
 | 类型                        | 说明                             |
 | :-------------------------- | :------------------------------- |
@@ -338,7 +325,6 @@ func exampleShow(): Unit {
 ## func touch(String, String)
 
 ```cangjie
-
 public func touch(id: String, token: String): TaskInfo
 ```
 
@@ -350,14 +336,12 @@ public func touch(id: String, token: String): TaskInfo
 
 **参数：**
 
-
 | 参数名 | 类型   | 必填 | 默认值 | 说明            |
 | :----- | :----- | :--- | :----- | :-------------- |
 | id     | String | 是   | -      | 任务id。        |
 | token  | String | 是   | -      | 任务查询token。 |
 
 **返回值：**
-
 
 | 类型                        | 说明                             |
 | :-------------------------- | :------------------------------- |
@@ -815,7 +799,6 @@ public var url: String
 ### init(Action, String, ?String, String, Mode, Bool, ?String, HashMap\<String,String>, ?ConfigData, String, Network, Bool, Bool, Bool, Bool, UInt32, Int64, Int64, Bool, Bool, ?String, UInt32, HashMap\<String,String>)
 
 ```cangjie
-
 public init(action: Action, url: String, title!: ?String = None, description!: String = "",
     mode!: Mode = Mode.Background, overwrite!: Bool = false, method!: ?String = None,
     headers!: HashMap<String, String> = HashMap<String, String>(), data!: ?ConfigData = None, saveas!: ?String = "./",
@@ -833,32 +816,31 @@ public init(action: Action, url: String, title!: ?String = None, description!: S
 
 **参数：**
 
-
-| 参数名      | 类型                            | 必填 | 默认值                     | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| :---------- | :------------------------------ | :--- | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| action      | [Action](#enum-action)          | 是   | -                          | **命名参数。** 任务操作选项。<br>- UPLOAD表示上传任务。<br>- DOWNLOAD表示下载任务。                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| url         | String                          | 是   | -                          | **命名参数。** 资源地址，其最大长度为2048个字符。                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| title       | ?String                         | 否   | None                       | **命名参数。** 任务标题，其最大长度为256个字符，默认值为小写的upload 或download，与上面的action 保持一致。                                                                                                                                                                                                                                                                                                                                                                                                     |
-| description | String                          | 否   | ""                         | **命名参数。** 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| mode        | [Mode](#enum-mode)              | 否   | Mode.Background            | **命名参数。** 任务模式, 默认为后台任务。                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| overwrite   | Bool                            | 否   | false                      | **命名参数。** 下载过程中路径已存在时的解决方案选择，默认为false。<br>- true，覆盖已存在的文件。<br>- false，下载失败。                                                                                                                                                                                                                                                                                                                                                                                        |
-| method      | ?String                         | 否   | None                       | **命名参数。** 上传或下载的HTTP标准方法，包括GET、POST和PUT，不区分大小写。<br>-上传时，使用PUT或POST，默认值为PUT。<br>-下载时，使用GET或POST，默认值为GET。                                                                                                                                                                                                                                                                                                                                                  |
-| headers     | HashMap\<String,String>         | 否   | HashMap<String,String>()   | **命名参数。** 添加要包含在任务中的HTTP协议标志头。<br>-对于上传请求，默认的Content-Type为"multipart/form-data"。<br>-对于下载请求，默认的Content-Type为"application/json"。                                                                                                                                                                                                                                                                                                                                   |
-| data        | ?[ConfigData](#enum-configdata) | 否   | None                       | **命名参数。** -下载时，data为字符串类型，通常使用json(object将被转换为json文本)，默认为空。<br>-上传时，data是表单项数组Array&lt;FormItem&gt;，默认为空。                                                                                                                                                                                                                                                                                                                                                     |
+| 参数名      | 类型 | 必填 | 默认值 | 说明 |
+| :---------- | :------| :--- | :---- | :----|
+| action      | [Action](#enum-action)          | 是   | -                          | **命名参数。** 任务操作选项。<br>- UPLOAD表示上传任务。<br>- DOWNLOAD表示下载任务。  |
+| url         | String                          | 是   | -                          | **命名参数。** 资源地址，其最大长度为2048个字符。 |
+| title       | ?String                         | 否   | None                       | **命名参数。** 任务标题，其最大长度为256个字符，默认值为小写的upload 或download，与上面的action 保持一致。  |
+| description | String                          | 否   | ""                         | **命名参数。** 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。 |
+| mode        | [Mode](#enum-mode)              | 否   | Mode.Background            | **命名参数。** 任务模式, 默认为后台任务。  |
+| overwrite   | Bool                            | 否   | false                      | **命名参数。** 下载过程中路径已存在时的解决方案选择，默认为false。<br>- true，覆盖已存在的文件。<br>- false，下载失败。 |
+| method      | ?String                         | 否   | None                       | **命名参数。** 上传或下载的HTTP标准方法，包括GET、POST和PUT，不区分大小写。<br>-上传时，使用PUT或POST，默认值为PUT。<br>-下载时，使用GET或POST，默认值为GET。 |
+| headers     | HashMap\<String,String>         | 否   | HashMap<String,String>()   | **命名参数。** 添加要包含在任务中的HTTP协议标志头。<br>-对于上传请求，默认的Content-Type为"multipart/form-data"。<br>-对于下载请求，默认的Content-Type为"application/json"。 |
+| data        | ?[ConfigData](#enum-configdata) | 否   | None                       | **命名参数。** -下载时，data为字符串类型，通常使用json(object将被转换为json文本)，默认为空。<br>-上传时，data是表单项数组Array&lt;FormItem&gt;，默认为空。 |
 | saveas      | ?String                         | 否   | "./"                       | **命名参数。** 保存下载文件的路径，包括如下几种：<br>-相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br>-internal协议路径，仅支持"internal://cache/"及其子路径，如"internal://cache/path/to/file.txt"。<br>-应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br>-file协议路径，必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。<br>默认为相对路径，即下载至调用方当前缓存路径下。 |
-| network     | [Network](#enum-network)        | 否   | Network.AnyType            | **命名参数。** 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。                                                                                                                                                                                                                                                                                                                                                                                                             |
-| metered     | Bool                            | 否   | false                      | **命名参数。** 是否允许在按流量计费的网络中工作，默认为false。<br>-true：是<br>-false：否                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| roaming     | Bool                            | 否   | true                       | **命名参数。** 是否允许在漫游网络中工作，默认为true。<br>-true：是<br>-false：否                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| retry       | Bool                            | 否   | true                       | **命名参数。** 是否为后台任务启用自动重试，仅应用于后台任务，默认为true。<br>-true：是<br>-false：否                                                                                                                                                                                                                                                                                                                                                                                                           |
-| redirect    | Bool                            | 否   | true                       | **命名参数。** 是否允许重定向，默认为true。<br>-true：是<br>-false：否                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| index       | UInt32                          | 否   | 0                          | **命名参数。** 任务的路径索引，通常用于任务断点续传，默认为0。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| begins      | Int64                           | 否   | 0                          | **命名参数。** 文件起点，通常用于断点续传。默认值为0，取值为闭区间。<br>-下载时，请求读取服务器开始下载文件时的起点位置（http协议中设置"Range"选项）。<br>-上传时，在上传开始时读取。                                                                                                                                                                                                                                                                                                                          |
-| ends        | Int64                           | 否   | - 1                        | **命名参数。** 文件终点，通常用于断点续传。默认值为-1，取值为闭区间。<br>-下载时，请求读取服务器开始下载文件时的结束位置（http协议中设置"Range"选项）。<br>-上传时，在上传时结束读取。                                                                                                                                                                                                                                                                                                                         |
-| gauge       | Bool                            | 否   | false                      | **命名参数。** 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br>-false：代表仅完成或失败的通知。<br>-true：发出每个进度已完成或失败的通知。                                                                                                                                                                                                                                                                                                                                                    |
-| precise     | Bool                            | 否   | false                      | **命名参数。** -如果设置为true，在上传/下载无法获取文件大小时任务失败。<br>-如果设置为false，将文件大小设置为-1时任务继续。<br>默认值为false。                                                                                                                                                                                                                                                                                                                                                                 |
-| token       | ?String                         | 否   | None                       | **命名参数。** 当创建了一个带有token的任务后，token则为正常查询期间必须提供的，否则将无法通过查询进行检索。其最小为8个字节，最大为2048个字节。默认为空。                                                                                                                                                                                                                                                                                                                                                       |
-| priority    | UInt32                          | 否   | 0                          | **命名参数。** 任务的优先级。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| extras      | HashMap\<String,String>         | 否   | HashMap\<String, String>() | **命名参数。** 配置的附加功能，默认为空。                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| network     | [Network](#enum-network)        | 否   | Network.AnyType            | **命名参数。** 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。 |
+| metered     | Bool                            | 否   | false                      | **命名参数。** 是否允许在按流量计费的网络中工作，默认为false。<br>-true：是<br>-false：否 |
+| roaming     | Bool                            | 否   | true                       | **命名参数。** 是否允许在漫游网络中工作，默认为true。<br>-true：是<br>-false：否 |
+| retry       | Bool                            | 否   | true                       | **命名参数。** 是否为后台任务启用自动重试，仅应用于后台任务，默认为true。<br>-true：是<br>-false：否   |
+| redirect    | Bool                            | 否   | true                       | **命名参数。** 是否允许重定向，默认为true。<br>-true：是<br>-false：否 |
+| index       | UInt32                          | 否   | 0                          | **命名参数。** 任务的路径索引，通常用于任务断点续传，默认为0。 |
+| begins      | Int64                           | 否   | 0                          | **命名参数。** 文件起点，通常用于断点续传。默认值为0，取值为闭区间。<br>-下载时，请求读取服务器开始下载文件时的起点位置（http协议中设置"Range"选项）。<br>-上传时，在上传开始时读取。  |
+| ends        | Int64                           | 否   | - 1                        | **命名参数。** 文件终点，通常用于断点续传。默认值为-1，取值为闭区间。<br>-下载时，请求读取服务器开始下载文件时的结束位置（http协议中设置"Range"选项）。<br>-上传时，在上传时结束读取。 |
+| gauge       | Bool                            | 否   | false                      | **命名参数。** 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br>-false：代表仅完成或失败的通知。<br>-true：发出每个进度已完成或失败的通知。 |
+| precise     | Bool                            | 否   | false                      | **命名参数。** -如果设置为true，在上传/下载无法获取文件大小时任务失败。<br>-如果设置为false，将文件大小设置为-1时任务继续。<br>默认值为false。 |
+| token       | ?String                         | 否   | None                       | **命名参数。** 当创建了一个带有token的任务后，token则为正常查询期间必须提供的，否则将无法通过查询进行检索。其最小为8个字节，最大为2048个字节。默认为空。  |
+| priority    | UInt32                          | 否   | 0                          | **命名参数。** 任务的优先级。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。  |
+| extras      | HashMap\<String,String>         | 否   | HashMap\<String, String>() | **命名参数。** 配置的附加功能，默认为空。 |
 
 **示例：**
 
@@ -970,50 +952,31 @@ public var mimeType:?String
 
 ### var path
 
-```
-
-```
-
-## enum Network
-
-```cangjie
-public enum Network <: Equatable<Network> & ToString {
-    | AnyType
-    | Wifi
-    | Cellular
-    | ...
-}
-```
-
-## enum Mode
-
-```cangjie
-public enum Mode <: Equatable<Mode> & ToString {
-    | Background
-    | Foreground
-
-    public func toString(): String
-}
-```
-
-**功能：** 任务模式。
-
-**系统能力：** SystemCapability.Request.FileTransferAgent
-
-**起始版本：** 21
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
 ```cangjie
 public var path: String
 ```
 
-**功能：** 文件路径：位于调用方的缓存文件夹下的相对路径或用户公共文件，如"file://media/Photo/path/to/file.img"。
-仅支持前端任务。
+**功能：** 文件路径。
+
+- 相对路径，位于调用方的缓存路径下。
+
+例如："./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。
+
+- internal协议路径，支持"internal://"及其子路径。internal为调用方（即传入的context）对应路径，"internal://cache"对应context.cacheDir。
+
+例如："internal://cache/path/to/file.txt"。
+
+- 应用沙箱目录，只支持到base及其子目录下。
+
+例如："/data/storage/el1/base/path/to/file.txt"。
+
+- file协议路径，必须匹配应用包名，只支持到base及其子目录下。
+
+例如："file://com.example.test/data/storage/el2/base/file.txt"。
+
+- 用户公共文件，仅支持上传任务。
+
+例如："file://media/Photo/path/to/file.img"。仅支持前台任务。
 
 **类型：** String
 
@@ -1026,7 +989,6 @@ public var path: String
 ### init(String, ?String, ?String, HashMap\<String,String>)
 
 ```cangjie
-
 public init(
     path: String,
     mimeType!: ?String = None,
@@ -1043,13 +1005,12 @@ public init(
 
 **参数：**
 
-
-| 参数名   | 类型                    | 必填 | 默认值                   | 说明                                                                                                                                             |
+| 参数名   | 类型                    | 必填 | 默认值                   | 说明 |
 | :------- | :---------------------- | :--- | :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
-| path     | String                  | 是   | -                        | **命名参数。** 文件路径：<br>- 位于调用方的缓存文件夹下的相对路径。<br>- 用户公共文件，如"file://media/Photo/path/to/file.img"。仅支持前端任务。 |
-| mimeType | ?String                 | 否   | None                     | **命名参数。** 文件的mimetype通过文件名获取。                                                                                                    |
-| filename | ?String                 | 否   | None                     | **命名参数。** 文件名，默认值通过路径获取。                                                                                                      |
-| extras   | HashMap\<String,String> | 否   | HashMap<String,String>() | **命名参数。** 文件信息的附加内容。                                                                                                              |
+| path     | String                  | 是   | -                        | 文件路径：<br>- 位于调用方的缓存文件夹下的相对路径。<br>- 用户公共文件，如"file://media/Photo/path/to/file.img"。仅支持前端任务。 |
+| mimeType | ?String                 | 否   | None                     | **命名参数。** 文件的mimetype通过文件名获取。 |
+| filename | ?String                 | 否   | None                     | **命名参数。** 文件名，默认值通过路径获取。 |
+| extras   | HashMap\<String,String> | 否   | HashMap<String,String>() | **命名参数。** 文件信息的附加内容。 |
 
 **示例：**
 
@@ -1195,13 +1156,12 @@ public init(before!: ?Int64 = None, after!: ?Int64 = None, state!: ?State = None
 
 **参数：**
 
-
-| 参数名 | 类型                    | 必填 | 默认值 | 说明                                                                                                                 |
-| :----- | :---------------------- | :--- | :----- | :------------------------------------------------------------------------------------------------------------------- |
-| before | ?Int64                  | 否   | None   | **命名参数。** 结束的Unix时间戳（毫秒），默认为调用时刻。                                                            |
-| after  | ?Int64                  | 否   | None   | **命名参数。** 开始的Unix时间戳（毫秒），默认值为调用时刻减24小时。                                                  |
-| state  | ?[State](#enum-state)   | 否   | None   | **命名参数。** 指定任务的状态。                                                                                      |
-| action | ?[Action](#enum-action) | 否   | None   | **命名参数。** 任务操作选项。<br>-UPLOAD表示上传任务。<br>-DOWNLOAD表示下载任务。                                    |
+| 参数名 | 类型                    | 必填 | 默认值 | 说明 |
+| :----- | :---------------------- | :--- | :----- | :-----  |
+| before | ?Int64                  | 否   | None   | **命名参数。** 结束的Unix时间戳（毫秒），默认为调用时刻。|
+| after  | ?Int64                  | 否   | None   | **命名参数。** 开始的Unix时间戳（毫秒），默认值为调用时刻减24小时。 |
+| state  | ?[State](#enum-state)   | 否   | None   | **命名参数。** 指定任务的状态。 |
+| action | ?[Action](#enum-action) | 否   | None   | **命名参数。** 任务操作选项。<br>-UPLOAD表示上传任务。<br>-DOWNLOAD表示下载任务。 |
 | mode   | ?[Mode](#enum-mode)     | 否   | None   | **命名参数。** 任务模式。<br>-FOREGROUND表示前端任务。<br>-BACKGROUND表示后台任务。<br>-如果未填写，则查询所有任务。 |
 
 **示例：**
@@ -1294,7 +1254,6 @@ public init(name: String, value: FormItemValue)
 **起始版本：** 22
 
 **参数：**
-
 
 | 参数名 | 类型                                 | 必填 | 默认值 | 说明                        |
 | :----- | :----------------------------------- | :--- | :----- | :-------------------------- |
@@ -1568,7 +1527,6 @@ public init(tid: String, config: Config)
 
 **参数：**
 
-
 | 参数名 | 类型                    | 必填 | 默认值 | 说明                                       |
 | :----- | :---------------------- | :--- | :----- | :----------------------------------------- |
 | tid    | String                  | 是   | -      | 任务id，在系统上是唯一的，由系统自动生成。 |
@@ -1604,7 +1562,6 @@ func exampleTaskInit(): Unit {
 ### func off(EventCallbackType, ?CallbackObject)
 
 ```cangjie
-
 public func off(event: EventCallbackType, callback!: ?CallbackObject = None): Unit
 ```
 
@@ -1616,11 +1573,10 @@ public func off(event: EventCallbackType, callback!: ?CallbackObject = None): Un
 
 **参数：**
 
-
-| 参数名   | 类型                                                                               | 必填 | 默认值 | 说明                                                                                                                                                                                                                                                                               |
-| :------- | :--------------------------------------------------------------------------------- | :--- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 参数名   | 类型 | 必填 | 默认值 | 说明 |
+| :------- | :---  | :--- | :----- | :----- |
 | event    | [EventCallbackType](#enum-eventcallbacktype)                                       | 是   | -      | 订阅的事件类型。<br>- 取值为'progress'，表示任务进度。<br>- 取值为'completed'，表示任务完成。<br>- 取值为'failed'，表示任务失败。<br>- 取值为'pause'，表示任务暂停。<br>- 取值为'resume'，表示任务恢复。<br>- 取值为'remove'，表示任务删除。<br>- 取值为'response'，表示任务响应。 |
-| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | 否   | None   | **命名参数。** 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。                                                                                                                                                                                              |
+| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | 否   | None   | **命名参数。** 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。|
 
 **示例：**
 
@@ -1672,9 +1628,8 @@ public func on(event: EventCallbackType, callback: Callback1Argument<HttpRespons
 
 **参数：**
 
-
-| 参数名   | 类型                                                                                                   | 必填 | 默认值 | 说明                                                       |
-| :------- | :----------------------------------------------------------------------------------------------------- | :--- | :----- | :--------------------------------------------------------- |
+| 参数名   | 类型  | 必填 | 默认值 | 说明  |
+| :------- | :----  | :--- | :----- | :------  |
 | event    | [EventCallbackType](#enum-eventcallbacktype)                                                           | 是   | -      | 订阅的事件类型。<br>- 取值为'response'，表示任务响应。     |
 | callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HttpResponse> | 是   | -      | 发生相关的事件时触发该回调方法，返回任务响应头的数据结构。 |
 
@@ -1686,10 +1641,20 @@ public func on(event: EventCallbackType, callback: Callback1Argument<HttpRespons
   | :------- | :----------------------------- |
   | 401      | Parameter verification failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let task = Task("example_task_id", Config(action=Action.Download, url="https://example.com/file.txt"))
+task.on(EventCallbackType.Response, (response) => {
+// 处理响应头
+})
+```
+
 ### func on(EventCallbackType, Callback1Argument\<Progress>)
 
 ```cangjie
-
 public func on(event: EventCallbackType, callback: Callback1Argument<Progress>): Unit
 ```
 
@@ -1701,9 +1666,8 @@ public func on(event: EventCallbackType, callback: Callback1Argument<Progress>):
 
 **参数：**
 
-
-| 参数名   | 类型                                                                                                                  | 必填 | 默认值 | 说明                                                                                                                                                                                                                                         |
-| :------- | :-------------------------------------------------------------------------------------------------------------------- | :--- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 参数名   | 类型 | 必填 | 默认值 | 说明 |
+| :------- | :----  | :--- | :----- | :----  |
 | event    | [EventCallbackType](#enum-eventcallbacktype)                                                                          | 是   | -      | 订阅的事件类型。<br>- 取值为'progress'，表示任务进度。<br>- 取值为'completed'，表示任务完成。<br>- 取值为'failed'，表示任务失败。<br>- 取值为'pause'，表示任务暂停。<br>- 取值为'resume'，表示任务恢复。<br>- 取值为'remove'，表示任务删除。 |
 | callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[Progress](#class-progress)> | 是   | -      | 发生相关的事件时触发该回调方法，返回任务信息的数据结构。                                                                                                                                                                                     |
 
@@ -1715,10 +1679,20 @@ public func on(event: EventCallbackType, callback: Callback1Argument<Progress>):
   | :------- | :----------------------------- |
   | 401      | Parameter verification failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let task = Task("example_task_id", Config(action=Action.Download, url="https://example.com/file.txt"))
+task.on(EventCallbackType.Progress, (progress) => {
+// 处理进度更新
+})
+```
+
 ### func pause()
 
 ```cangjie
-
 public func pause(): Unit
 ```
 
@@ -1738,10 +1712,18 @@ public func pause(): Unit
   | 21900005 | Operation with wrong task mode.  |
   | 21900007 | Operation with wrong task state. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let task = Task("example_task_id", Config(action=Action.Download, url="https://example.com/file.txt"))
+task.pause()
+```
+
 ### func resume()
 
 ```cangjie
-
 public func resume(): Unit
 ```
 
@@ -1764,10 +1746,18 @@ public func resume(): Unit
   | 21900005 | Operation with wrong task mode.  |
   | 21900007 | Operation with wrong task state. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let task = Task("example_task_id", Config(action=Action.Download, url="https://example.com/file.txt"))
+task.resume()
+```
+
 ### func start()
 
 ```cangjie
-
 public func start(): Unit
 ```
 
@@ -1820,7 +1810,6 @@ func exampleTaskStart(): Unit {
 ### func stop()
 
 ```cangjie
-
 public func stop(): Unit
 ```
 
@@ -2259,17 +2248,25 @@ public operator func !=(other: Action): Bool
 
 **参数：**
 
-
 | 参数名 | 类型                   | 必填 | 默认值 | 说明           |
 | :----- | :--------------------- | :--- | :----- | :------------- |
 | other  | [Action](#enum-action) | 是   | -      | 另一个枚举值。 |
 
 **返回值：**
 
-
 | 类型 | 说明                                      |
 | :--- | :---------------------------------------- |
 | Bool | 两个枚举值不相等返回true，否则返回false。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let action1: Action = Action.Download
+let action2: Action = Action.Upload
+let res: Bool = action1 != action2
+```
 
 ### func ==(Action)
 
@@ -2281,17 +2278,25 @@ public operator func ==(other: Action): Bool
 
 **参数：**
 
-
 | 参数名 | 类型                   | 必填 | 默认值 | 说明           |
 | :----- | :--------------------- | :--- | :----- | :------------- |
 | other  | [Action](#enum-action) | 是   | -      | 另一个枚举值。 |
 
 **返回值：**
 
-
 | 类型 | 说明                                    |
 | :--- | :-------------------------------------- |
 | Bool | 两个枚举值相等返回true，否则返回false。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let action1: Action = Action.Download
+let action2: Action = Action.Upload
+let res: Bool = action1 == action2
+```
 
 ### func toString()
 
@@ -2303,10 +2308,18 @@ public func toString(): String
 
 **返回值：**
 
-
 | 类型   | 说明                   |
 | :----- | :--------------------- |
 | String | 当前枚举的字符串表示。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let action: Action = Action.Download
+let actionStr: String = action.toString()
+```
 
 ## enum BroadcastEvent
 
@@ -2353,7 +2366,6 @@ public func toString(): String
 **起始版本：** 22
 
 **返回值：**
-
 
 | 类型   | 说明                   |
 | :----- | :--------------------- |
@@ -2520,17 +2532,25 @@ public operator func !=(other: EventCallbackType): Bool
 
 **参数：**
 
-
 | 参数名 | 类型                                         | 必填 | 默认值 | 说明     |
 | :----- | :------------------------------------------- | :--- | :----- | :------- |
 | other  | [EventCallbackType](#enum-eventcallbacktype) | 是   | -      | 回调事件 |
 
 **返回值：**
 
-
 | 类型 | 说明                                      |
 | :--- | :---------------------------------------- |
 | Bool | 两个枚举值不相等返回true，否则返回false。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let event1 = EventCallbackType.Progress
+let event2 = EventCallbackType.Completed
+let isNotEqual = event1 != event2
+```
 
 ### func ==(EventCallbackType)
 
@@ -2542,17 +2562,25 @@ public operator func ==(other: EventCallbackType): Bool
 
 **参数：**
 
-
 | 参数名 | 类型                                         | 必填 | 默认值 | 说明     |
 | :----- | :------------------------------------------- | :--- | :----- | :------- |
 | other  | [EventCallbackType](#enum-eventcallbacktype) | 是   | -      | 回调事件 |
 
 **返回值：**
 
-
 | 类型 | 说明                                    |
 | :--- | :-------------------------------------- |
 | Bool | 两个枚举值相等返回true，否则返回false。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let event1 = EventCallbackType.Progress
+let event2 = EventCallbackType.Progress
+let isEqual = event1 == event2
+```
 
 ### func hashCode()
 
@@ -2563,7 +2591,6 @@ public func hashCode(): Int64
 **功能：** 获取回调事件的哈希值。
 
 **返回值：**
-
 
 | 类型  | 说明                   |
 | :---- | :--------------------- |
@@ -2579,10 +2606,18 @@ public func toString(): String
 
 **返回值：**
 
-
 | 类型   | 说明                   |
 | :----- | :--------------------- |
 | String | 当前枚举的字符串表示。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let event = EventCallbackType.Progress
+let str = event.toString()
+```
 
 ## enum Faults
 
@@ -2676,7 +2711,6 @@ public func toString(): String
 **功能：** 获取当前枚举的字符串表示。
 
 **返回值：**
-
 
 | 类型   | 说明                   |
 | :----- | :--------------------- |
@@ -2789,17 +2823,25 @@ public operator func !=(other: Mode): Bool
 **功能：** 判断两个枚举值是否不相等。
 **参数：**
 
-
 | 参数名 | 类型               | 必填 | 默认值 | 说明     |
 | :----- | :----------------- | :--- | :----- | :------- |
 | other  | [Mode](#enum-mode) | 是   | -      | 模式状态 |
 
 **返回值：**
 
-
 | 类型 | 说明                                      |
 | :--- | :---------------------------------------- |
 | Bool | 两个枚举值不相等返回true，否则返回false。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let mode1 = Mode.Background
+let mode2 = Mode.Foreground
+let isNotEqual = mode1 != mode2
+```
 
 ### func ==(Mode)
 
@@ -2811,17 +2853,25 @@ public operator func ==(other: Mode): Bool
 
 **参数：**
 
-
 | 参数名 | 类型               | 必填 | 默认值 | 说明     |
 | :----- | :----------------- | :--- | :----- | :------- |
 | other  | [Mode](#enum-mode) | 是   | -      | 模式状态 |
 
 **返回值：**
 
-
 | 类型 | 说明                                    |
 | :--- | :-------------------------------------- |
 | Bool | 两个枚举值相等返回true，否则返回false。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let mode1 = Mode.Background
+let mode2 = Mode.Foreground
+let isEqual = mode1 == mode2
+```
 
 ### func toString()
 
@@ -2833,10 +2883,18 @@ public func toString(): String
 
 **返回值：**
 
-
 | 类型   | 说明                       |
 | :----- | :------------------------- |
 | String | 获取当前枚举的字符串表示。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let mode = Mode.Background
+let modeString = mode.toString()
+```
 
 ## enum Network
 
@@ -2906,17 +2964,25 @@ public operator func !=(other: Network): Bool
 
 **参数：**
 
-
 | 参数名 | 类型                     | 必填 | 默认值 | 说明     |
 | :----- | :----------------------- | :--- | :----- | :------- |
 | other  | [Network](#enum-network) | 是   | -      | 网络状态 |
 
 **返回值：**
 
-
 | 类型 | 说明                                      |
 | :--- | :---------------------------------------- |
 | Bool | 两个枚举值不相等返回true，否则返回false。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let network1 = Network.Wifi
+let network2 = Network.Cellular
+let isNotEqual = network1 != network2
+```
 
 ### func ==(Network)
 
@@ -2928,17 +2994,25 @@ public operator func ==(other: Network): Bool
 
 **参数：**
 
-
 | 参数名 | 类型                     | 必填 | 默认值 | 说明     |
 | :----- | :----------------------- | :--- | :----- | :------- |
 | other  | [Network](#enum-network) | 是   | -      | 网络状态 |
 
 **返回值：**
 
-
 | 类型 | 说明                                    |
 | :--- | :-------------------------------------- |
 | Bool | 两个枚举值相等返回true，否则返回false。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let network1 = Network.Wifi
+let network2 = Network.Wifi
+let isEqual = network1 == network2
+```
 
 ### func toString()
 
@@ -2950,10 +3024,18 @@ public func toString(): String
 
 **返回值：**
 
-
 | 类型   | 说明                       |
 | :----- | :------------------------- |
 | String | 获取当前枚举的字符串表示。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let network = Network.Wifi
+let networkStr = network.toString()
+```
 
 ## enum State
 
@@ -3100,6 +3182,23 @@ public func toString(): String
 
 **返回值：**
 
+| 类型   | 说明                       |
+| :----- | :------------------------- |
+| String | 获取当前枚举的字符串表示。 |
+
+**功能：** 获取当前枚举的字符串表示。
+
+**返回值：**
+
+| 类型   | 说明                       |
+| :----- | :------------------------- |
+| String | 获取当前枚举的字符串表示。 |
+| :----- | :------------------------- |
+| String | 获取当前枚举的字符串表示。 |
+
+**功能：** 获取当前枚举的字符串表示。
+
+**返回值：**
 
 | 类型   | 说明                       |
 | :----- | :------------------------- |

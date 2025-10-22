@@ -1679,6 +1679,19 @@ public operator func !=(other: CryptoMode): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CryptoArchitectureKit.*
+
+let mode1 = CryptoMode.EncryptMode
+let mode2 = CryptoMode.DecryptMode
+let isNotEqual = mode1 != mode2
+```
+
 ### func ==(CryptoMode)
 
 ```cangjie
@@ -1703,6 +1716,19 @@ public operator func ==(other: CryptoMode): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CryptoArchitectureKit.*
+
+let mode1 = CryptoMode.EncryptMode
+let mode2 = CryptoMode.EncryptMode
+let isEqual = mode1 == mode2
+```
+
 ### func toString()
 
 ```cangjie
@@ -1720,6 +1746,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的说明。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CryptoArchitectureKit.*
+
+let mode = CryptoMode.EncryptMode
+let modeString = mode.toString()
+```
 
 ## enum CipherSpecItem
 
@@ -1816,6 +1854,16 @@ public operator func !=(other: CipherSpecItem): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```
+let item1 = CipherSpecItem.OaepMdNameStr
+let item2 = CipherSpecItem.OaepMgfNameStr
+let isNotEqual = item1 != item2
+```
+
 ### func ==(CipherSpecItem)
 
 ```cangjie
@@ -1840,6 +1888,16 @@ public operator func ==(other: CipherSpecItem): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let item1 = CipherSpecItem.OaepMdNameStr
+let item2 = CipherSpecItem.OaepMdNameStr
+let isEqual = item1 == item2
+```
+
 ### func toString()
 
 ```cangjie
@@ -1857,6 +1915,13 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的说明。|
+
+**示例：**
+
+```
+let item = CipherSpecItem.OaepMdNameStr
+let itemStr = item.toString()
+```
 
 ## enum Result
 

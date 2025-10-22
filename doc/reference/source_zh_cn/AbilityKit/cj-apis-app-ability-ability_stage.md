@@ -37,6 +37,21 @@ public open class AbilityStage {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import ohos.base.*
+import kit.AbilityKit.*
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let context = this.context
+    }
+}
+```
+
 ### prop context
 
 ```cangjie
@@ -56,6 +71,7 @@ public mut prop context: AbilityStageContext
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import ohos.base.*
 import kit.AbilityKit.*
@@ -89,6 +105,7 @@ public static func registerCreator(moduleName: String, creator: () -> AbilitySta
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import ohos.base.*
 import kit.AbilityKit.*
@@ -117,6 +134,7 @@ public open func onCreate(): Unit
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import ohos.base.*
 import kit.AbilityKit.*

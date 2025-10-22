@@ -61,6 +61,20 @@ public class Want {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want = Want()
+want.bundleName = "com.example.myapp"
+want.abilityName = "MainAbility"
+want.parameters = {"key": "value"}
+```
+
 ### var abilityName
 
 ```cangjie
@@ -76,6 +90,18 @@ public var abilityName: String
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.abilityName = "MainAbility"
+```
 
 ### var action
 
@@ -93,6 +119,18 @@ public var action: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.action = "action.view"
+```
+
 ### var bundleName
 
 ```cangjie
@@ -108,6 +146,18 @@ public var bundleName: String
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.bundleName = "com.example.myapp"
+```
 
 ### var deviceId
 
@@ -125,6 +175,18 @@ public var deviceId: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.deviceId = "device123"
+```
+
 ### var entities
 
 ```cangjie
@@ -140,6 +202,18 @@ public var entities: Array<String>
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.entities = ["entity.example"]
+```
 
 ### var flags
 
@@ -157,6 +231,18 @@ public var flags: UInt32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.flags = 0
+```
+
 ### var moduleName
 
 ```cangjie
@@ -172,6 +258,18 @@ public var moduleName: String
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.moduleName = "entry"
+```
 
 ### var parameters
 
@@ -189,6 +287,18 @@ public var parameters: HashMap<String, WantValueType>
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.parameters = HashMap<String, WantValueType>()
+```
+
 ### var uri
 
 ```cangjie
@@ -205,6 +315,18 @@ public var uri: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.uri = "https://example.com"
+```
+
 ### var wantType
 
 ```cangjie
@@ -220,6 +342,18 @@ public var wantType: String
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want: Want = Want()
+want.wantType = "type.example"
+```
 
 ### init(String, String, String, String, UInt32, String, String, Array\<String>, String, HashMap\<String,WantValueType>, HashMap\<String,Int32>)
 
@@ -261,6 +395,90 @@ public init(
 |parameters|HashMap\<String,[WantValueType](#enum-wantvaluetype)>|否|HashMap<String, WantValueType>()|参数。|
 |fds|HashMap\<String,Int32>|否|HashMap<String, Int32>()|文件描述符。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let want: Want = Want(
+    deviceId: "device123",
+    bundleName: "com.example.myapp",
+    abilityName: "MainAbility",
+    moduleName: "entry",
+    flags: 0,
+    uri: "https://example.com",
+    action: "action.view",
+    entities: ["entity.example"],
+    wantType: "type.example",
+    parameters: HashMap<String, WantValueType>(),
+    fds: HashMap<String, Int32>()
+)
+```
+
+### func isValid()
+
+```cangjie
+public func isValid(): Bool
+```
+
+**功能：** 检查Want是否有效。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 22
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|Want有效返回true，否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want = Want()
+want.action = "action.system.home"
+let res = want.isValid()
+```
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 将Want转换为字符串表示。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 22
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|Want的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let want = Want()
+want.bundleName = "com.example.myapp"
+want.abilityName = "MainAbility"
+```
+
 ## enum WantValueType
 
 ```cangjie
@@ -281,6 +499,21 @@ public enum WantValueType {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let intValue = WantValueType.Int64Value(42)
+let floatValue = WantValueType.Float64Value(3.14)
+let stringValue = WantValueType.StringValue("Hello")
+let boolValue = WantValueType.BoolValue(true)
+let arrayValue = WantValueType.ArrayValue([WantValueType.Int64Value(1), WantValueType.Int64Value(2)])
+let hashMapValue = WantValueType.HashMapValue(HashMap<String, WantValueType>([("key1", WantValueType.Int64Value(1)), ("key2", WantValueType.StringValue("value"))]))
+```
+
 ### ArrayValue(Array\<WantValueType>)
 
 ```cangjie
@@ -292,6 +525,16 @@ ArrayValue(Array<WantValueType>)
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let arrayValue = WantValueType.ArrayValue([WantValueType.Int64Value(1), WantValueType.Int64Value(2)])
+```
 
 ### BoolValue(Bool)
 
@@ -305,6 +548,16 @@ BoolValue(Bool)
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let boolValue = WantValueType.BoolValue(true)
+```
+
 ### Float64Value(Float64)
 
 ```cangjie
@@ -316,6 +569,16 @@ Float64Value(Float64)
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let floatValue = WantValueType.Float64Value(3.14)
+```
 
 ### HashMapValue(HashMap\<String, WantValueType>)
 
@@ -329,6 +592,16 @@ HashMapValue(HashMap<String, WantValueType>)
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let hashMapValue = WantValueType.HashMapValue(HashMap<String, WantValueType>([("key1", WantValueType.Int64Value(1)), ("key2", WantValueType.StringValue("value"))]))
+```
+
 ### Int64Value(Int64)
 
 ```cangjie
@@ -341,6 +614,16 @@ Int64Value(Int64)
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let intValue = WantValueType.Int64Value(42)
+```
+
 ### StringValue(String)
 
 ```cangjie
@@ -352,3 +635,13 @@ StringValue(String)
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let stringValue = WantValueType.StringValue("Hello")
+```

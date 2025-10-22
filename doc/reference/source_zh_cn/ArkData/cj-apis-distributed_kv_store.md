@@ -48,6 +48,21 @@ public class Constants {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+// Constants 类包含分布式键值数据库的常量定义
+// 可以直接通过类名访问静态常量
+let maxKeyLength = Constants.MAX_KEY_LENGTH
+let maxValueLength = Constants.MAX_VALUE_LENGTH
+let maxBatchSize = Constants.MAX_BATCH_SIZE
+```
+
 ### static let MAX_BATCH_SIZE
 
 ```cangjie
@@ -61,6 +76,15 @@ public static let MAX_BATCH_SIZE: Int32 = 128
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// 获取最大批处理操作数量
+let maxBatchSize = Constants.MAX_BATCH_SIZE
+```
 
 ### static let MAX_KEY_LENGTH
 
@@ -76,6 +100,15 @@ public static let MAX_KEY_LENGTH: Int32 = 1024
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// 获取数据库中Key允许的最大长度
+let maxKeyLength = Constants.MAX_KEY_LENGTH
+```
+
 ### static let MAX_KEY_LENGTH_DEVICE
 
 ```cangjie
@@ -89,6 +122,15 @@ public static let MAX_KEY_LENGTH_DEVICE: Int32 = 896
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// 获取设备协同数据库中key允许的最大长度
+let maxDeviceKeyLength = Constants.MAX_KEY_LENGTH_DEVICE
+```
 
 ### static let MAX_QUERY_LENGTH
 
@@ -104,6 +146,15 @@ public static let MAX_QUERY_LENGTH: Int32 = 512000
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// 获取最大查询长度
+let maxQueryLength = Constants.MAX_QUERY_LENGTH
+```
+
 ### static let MAX_STORE_ID_LENGTH
 
 ```cangjie
@@ -118,6 +169,15 @@ public static let MAX_STORE_ID_LENGTH: Int32 = 128
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// 获取数据库标识符允许的最大长度
+let maxStoreIdLength = Constants.MAX_STORE_ID_LENGTH
+```
+
 ### static let MAX_VALUE_LENGTH
 
 ```cangjie
@@ -131,6 +191,15 @@ public static let MAX_VALUE_LENGTH: Int32 = 4194303
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// 获取数据库中Value允许的最大长度
+let maxValueLength = Constants.MAX_VALUE_LENGTH
+```
 
 ## class DeviceKVStore
 
@@ -154,10 +223,21 @@ public class DeviceKVStore <: SingleKVStore {}
 
 - [SingleKVStore](#class-singlekvstore)
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore"))
+let store = kvManager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
+```
+
 ### func get(String)
 
 ```cangjie
-
 public func get(key: String): ValueType
 ```
 
@@ -200,7 +280,7 @@ public func get(key: String): ValueType
 import kit.ArkData.*
 
 let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let store = manager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 store.put("key", KVValueType.STRING("value"))
 store.get("key")
 ```
@@ -208,7 +288,6 @@ store.get("key")
 ### func getEntries(String)
 
 ```cangjie
-
 public func getEntries(keyPrefix: String): Array<Entry>
 ```
 
@@ -250,7 +329,7 @@ public func getEntries(keyPrefix: String): Array<Entry>
 import kit.ArkData.*
 
 let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let store = manager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 store.put("key", KVValueType.STRING("value"))
 store.getEntries("key")
 ```
@@ -258,7 +337,6 @@ store.getEntries("key")
 ### func getEntries(Query)
 
 ```cangjie
-
 public func getEntries(query: Query): Array<Entry>
 ```
 
@@ -300,7 +378,7 @@ public func getEntries(query: Query): Array<Entry>
 import kit.ArkData.*
 
 let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let store = manager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 store.put("key", KVValueType.STRING("value"))
 store.getEntries(Query())
 ```
@@ -308,7 +386,6 @@ store.getEntries(Query())
 ### func getResultSet(String)
 
 ```cangjie
-
 public func getResultSet(keyPrefix: String): KVStoreResultSet
 ```
 
@@ -351,7 +428,7 @@ public func getResultSet(keyPrefix: String): KVStoreResultSet
 import kit.ArkData.*
 
 let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let store = manager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 store.put("key", KVValueType.STRING("value"))
 store.getResultSet("key")
 ```
@@ -359,7 +436,6 @@ store.getResultSet("key")
 ### func getResultSet(Query)
 
 ```cangjie
-
 public func getResultSet(query: Query): KVStoreResultSet
 ```
 
@@ -402,7 +478,7 @@ public func getResultSet(query: Query): KVStoreResultSet
 import kit.ArkData.*
 
 let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let store = manager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 store.put("key", KVValueType.STRING("value"))
 store.getResultSet(Query())
 ```
@@ -410,7 +486,6 @@ store.getResultSet(Query())
 ### func getResultSize(Query)
 
 ```cangjie
-
 public func getResultSize(query: Query): Int32
 ```
 
@@ -452,7 +527,7 @@ public func getResultSize(query: Query): Int32
 import kit.ArkData.*
 
 let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let store = manager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 store.put("key", KVValueType.STRING("value"))
 store.getResultSize(Query())
 ```
@@ -469,10 +544,21 @@ public class DistributedKVStore {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+// DistributedKVStore 是一个工厂类，用于创建 KVManager 实例
+// 通常不需要直接实例化 DistributedKVStore 类
+```
+
 ### static func createKVManager(KVManagerConfig)
 
 ```cangjie
-
 public static func createKVManager(config: KVManagerConfig): KVManager
 ```
 
@@ -531,6 +617,18 @@ public class Entry {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let entry = Entry("exampleKey", ValueType.STRING("exampleValue"))
+```
+
 ### var key
 
 ```cangjie
@@ -546,6 +644,19 @@ public var key: String
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+``cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let entry = Entry("exampleKey", ValueType.STRING("exampleValue"))
+let key = entry.key
+```
 
 ### var value
 
@@ -563,10 +674,22 @@ public var value: ValueType
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let entry = Entry("exampleKey", ValueType.STRING("exampleValue"))
+let value = entry.value
+```
+
 ### init(String, ValueType)
 
 ```cangjie
-
 public init(key: String, value: ValueType)
 ```
 
@@ -583,6 +706,19 @@ public init(key: String, value: ValueType)
 |key|String|是|-|键值。|
 |value|[ValueType](#enum-valuetype)|是|-|值对象。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let entry = Entry("exampleKey", ValueType.STRING("exampleValue"))
+let value = entry.value
+```
+
 ## class FieldNode
 
 ```cangjie
@@ -590,7 +726,6 @@ public class FieldNode {
     public var nullable: Bool
     public var default: String
     public var type_: Int32
-
     public init(name: String, nullable: Bool, default: String, type_: Int32)
 }
 ```
@@ -600,6 +735,17 @@ public class FieldNode {
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+```
 
 ### var default
 
@@ -617,6 +763,18 @@ public var default: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+``cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let defaultValue = fieldNode.default
+```
+
 ### var nodeType
 
 ```cangjie
@@ -632,6 +790,18 @@ public var nodeType: Int32
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+``cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let nodeType = fieldNode.nodeType
+```
 
 ### var nullable
 
@@ -649,10 +819,21 @@ public var nullable: Bool
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let isNullable = fieldNode.nullable
+```
+
 ### init(String, Bool, String, Int32)
 
 ```cangjie
-
 public init(name: String, nullable: Bool, default: String, nodeType: Int32)
 ```
 
@@ -671,6 +852,15 @@ public init(name: String, nullable: Bool, default: String, nodeType: Int32)
 |default|String|是|-|表示FieldNode的默认值。|
 |nodeType|Int32|是|-|表示指定节点对应的数据类型，取值为ValueType对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致getKVStore失败。|
 
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+```
+
 ## class KVManager
 
 ```cangjie
@@ -683,10 +873,20 @@ public class KVManager {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "com.example.myapplication"))
+```
+
 ### func closeKVStore(String, String)
 
 ```cangjie
-
 public func closeKVStore(appId: String, storeId: String): Unit
 ```
 
@@ -727,7 +927,6 @@ kvManager.closeKVStore("com.example.myapplication", "myStore")
 ### func deleteKVStore(String, String)
 
 ```cangjie
-
 public func deleteKVStore(appId: String, storeId: String): Unit
 ```
 
@@ -769,7 +968,6 @@ kvManager.deleteKVStore("com.example.myapplication", "myStore")
 ### func getAllKVStoreId(String)
 
 ```cangjie
-
 public func getAllKVStoreId(appId: String): Array<String>
 ```
 
@@ -815,7 +1013,6 @@ kvManager.getAllKVStoreId("com.example.myapplication")
 ### func getKVStore\<T>(String, Options) where T \<: SingleKVStore
 
 ```cangjie
-
 public func getKVStore<T>(storeId: String, options: Options): T where T <: SingleKVStore
 ```
 
@@ -873,6 +1070,7 @@ let opt = KVOptions(
 )
 let kvStore = kvManager.getKVStore("myStoreId", opt)
 ```
+
 ## class KVManagerConfig
 
 ```cangjie
@@ -890,6 +1088,18 @@ public class KVManagerConfig {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+// KVManagerConfig 用于配置 KVManager
+let config = KVManagerConfig(Global.getStageContext(), "com.example.myapplication")
+```
+
 ### var bundleName
 
 ```cangjie
@@ -905,6 +1115,19 @@ public var bundleName: String
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let config = KVManagerConfig(Global.getStageContext(), "com.example.myapplication")
+config.bundleName = "com.example.newapplication"
+```
 
 ### var context
 
@@ -922,10 +1145,22 @@ public var context: BaseContext
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let config = KVManagerConfig(Global.getStageContext(), "com.example.myapplication")
+let context = config.context
+```
+
 ### init(BaseContext, String)
 
 ```cangjie
-
 public init(context: BaseContext, bundleName: String)
 ```
 
@@ -942,6 +1177,18 @@ public init(context: BaseContext, bundleName: String)
 |context|[BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|应用的上下文。|
 |bundleName|String|是|-|调用方的包名。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let config = KVManagerConfig(Global.getStageContext(), "com.example.myapplication")
+```
+
 ## class KVStoreResultSet
 
 ```cangjie
@@ -954,10 +1201,24 @@ public class KVStoreResultSet {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+// KVStoreResultSet 表示查询结果集
+// 通常通过 SingleKVStore.getResultSet() 方法获取实例
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore"))
+let store = kvManager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
+let resultSet = store.getResultSet("key")
+```
+
 ### func getCount()
 
 ```cangjie
-
 public func getCount(): Int32
 ```
 
@@ -983,7 +1244,7 @@ public func getCount(): Int32
 import kit.ArkData.*
 
 let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let store = kvManager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let store = kvManager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 store.put("key", KVValueType.STRING("value"))
 var resultSet = store.getResultSet("key")
 resultSet.getCount()
@@ -1011,6 +1272,24 @@ public class Options {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options(
+    SecurityLevel.HIGH,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+    schema: None
+)
+```
+
 ### var autoSync
 
 ```cangjie
@@ -1026,6 +1305,18 @@ public var autoSync: Bool
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options(SecurityLevel.HIGH)
+options.autoSync = true
+```
 
 ### var backup
 
@@ -1043,6 +1334,18 @@ public var backup: Bool
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options(SecurityLevel.HIGH)
+options.backup = false
+```
+
 ### var createIfMissing
 
 ```cangjie
@@ -1058,6 +1361,18 @@ public var createIfMissing: Bool
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options(SecurityLevel.HIGH)
+options.createIfMissing = false
+```
 
 ### var encrypt
 
@@ -1075,6 +1390,18 @@ public var encrypt: Bool
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options(SecurityLevel.HIGH)
+options.encrypt = true
+```
+
 ### var schema
 
 ```cangjie
@@ -1090,6 +1417,18 @@ public var schema:?Schema
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options(SecurityLevel.HIGH)
+options.schema = Some(Schema())
+```
 
 ### var securityLevel
 
@@ -1107,10 +1446,21 @@ public var securityLevel: SecurityLevel
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options(SecurityLevel.HIGH)
+options.securityLevel = SecurityLevel.MEDIUM
+```
+
 ### init(SecurityLevel, Bool, Bool, Bool, Bool, ?Schema)
 
 ```cangjie
-
 public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt!: Bool = false,
     backup!: Bool = true, autoSync!: Bool = false, schema!: ?Schema = None)
 ```
@@ -1132,11 +1482,28 @@ public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt
 |autoSync|Bool|否|false|设置数据库文件是否自动同步。默认为false，即手动同步。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core<br>**需要权限**： ohos.permission.DISTRIBUTED_DATASYNC|
 |schema|?[Schema](#class-schema)|否|None|设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let options = Options(
+    SecurityLevel.HIGH,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+    schema: None
+)
+```
+
 ## class Query
 
 ```cangjie
 public class Query {
-
     public init()
 }
 ```
@@ -1147,10 +1514,20 @@ public class Query {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let query = Query()
+```
+
 ### init()
 
 ```cangjie
-
 public init()
 ```
 
@@ -1160,6 +1537,17 @@ public init()
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let query = Query()
+```
+
 ## class Schema
 
 ```cangjie
@@ -1168,7 +1556,6 @@ public class Schema {
     public var indexes: Array<String>
     public var mode: Int32
     public var skip: Int32
-
     public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 }
 ```
@@ -1178,6 +1565,18 @@ public class Schema {
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let schema = Schema(fieldNode, ["index1", "index2"], 1, 0)
+```
 
 ### var indexes
 
@@ -1195,6 +1594,19 @@ public var indexes: Array<String>
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let schema = Schema(fieldNode, ["index1", "index2"], 1, 0)
+schema.indexes = ["newIndex1", "newIndex2"]
+```
+
 ### var mode
 
 ```cangjie
@@ -1210,6 +1622,19 @@ public var mode: Int32
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let schema = Schema(fieldNode, ["index1", "index2"], 1, 0)
+schema.mode = 2
+```
 
 ### var root
 
@@ -1227,6 +1652,20 @@ public var root: FieldNode
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let schema = Schema(fieldNode, ["index1", "index2"], 1, 0)
+let newNode = FieldNode("exampleField1", true, "defaultValue1", 1)
+schema.root = newNode
+```
+
 ### var skip
 
 ```cangjie
@@ -1243,10 +1682,22 @@ public var skip: Int32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let schema = Schema(fieldNode, ["index1", "index2"], 1, 0)
+schema.skip = 1
+```
+
 ### init(FieldNode, Array\<String>, Int32, Int32)
 
 ```cangjie
-
 public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 ```
 
@@ -1265,6 +1716,19 @@ public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 |mode|Int32|是|-|表示Schema的模式。|
 |skip|Int32|是|-|Schema的跳跃大小。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let fieldNode = FieldNode("exampleField", true, "defaultValue", 1)
+let schema = Schema(fieldNode, ["index1", "index2"], 1, 0)
+schema.skip = 1
+```
+
 ## class SingleKVStore
 
 ```cangjie
@@ -1277,10 +1741,28 @@ public open class SingleKVStore {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+```
+
 ### func backup(String)
 
 ```cangjie
-
 public open func backup(file: String): Unit
 ```
 
@@ -1329,7 +1811,6 @@ singleKVStore.backup("myBackupfile")
 ### func commit()
 
 ```cangjie
-
 public open func commit(): Unit
 ```
 
@@ -1371,7 +1852,6 @@ singleKVStore.commit()
 ### func delete(String)
 
 ```cangjie
-
 public open func delete(key: String): Unit
 ```
 
@@ -1422,7 +1902,6 @@ singleKVStore.delete("myKey")
 ### func deleteBatch(Array\<String>)
 
 ```cangjie
-
 public open func deleteBatch(keys: Array<String>): Unit
 ```
 
@@ -1478,7 +1957,6 @@ for (result in results) {
 ### func enableSync(Bool)
 
 ```cangjie
-
 public open func enableSync(enabled: Bool): Unit
 ```
 
@@ -1534,7 +2012,6 @@ let result = singleKVStore.getEntries(query)
 ### func get(String)
 
 ```cangjie
-
 public open func get(key: String): ValueType
 ```
 
@@ -1578,7 +2055,7 @@ import kit.ArkData.*
 import ohos.base.*
 
 let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let kvStore = kvManager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let kvStore = kvManager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 try {
     let value = kvStore.get("myKey")
     match (value) {
@@ -1595,7 +2072,6 @@ try {
 ### func put(String, ValueType)
 
 ```cangjie
-
 public open func put(key: String, value: ValueType): Unit
 ```
 
@@ -1635,7 +2111,7 @@ import ohos.base.*
 
 let kvManager = DistributedKVStore.createKVManager(
     KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
-let kvStore = kvManager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+let kvStore = kvManager.getKVStore("test", KVOptions(KVSecurityLevel.S1))
 try {
     kvStore.put("myKey", ValueType.STRING("myValue"))
 } catch (e: BusinessException) {
@@ -1646,7 +2122,6 @@ try {
 ### func putBatch(Array\<Entry>)
 
 ```cangjie
-
 public open func putBatch(entries: Array<Entry>): Unit
 ```
 
@@ -1704,7 +2179,6 @@ singleKVStore.putBatch(entries.toArray())
 ### func restore(String)
 
 ```cangjie
-
 public open func restore(file: String): Unit
 ```
 
@@ -1754,7 +2228,6 @@ singleKVStore.restore("myBackupfile")
 ### func rollback()
 
 ```cangjie
-
 public open func rollback(): Unit
 ```
 
@@ -1797,7 +2270,6 @@ singleKVStore.rollback()
 ### func setSyncParam(UInt32)
 
 ```cangjie
-
 public open func setSyncParam(defaultAllowedDelayMs: UInt32): Unit
 ```
 
@@ -1846,7 +2318,6 @@ singleKVStore.setSyncParam(500)
 ### func startTransaction()
 
 ```cangjie
-
 public open func startTransaction(): Unit
 ```
 
@@ -1913,6 +2384,20 @@ public enum SecurityLevel {
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let level1 = SecurityLevel.S1
+let level2 = SecurityLevel.S2
+let level3 = SecurityLevel.S3
+let level4 = SecurityLevel.S4
+```
 
 ### S1
 
@@ -1981,6 +2466,22 @@ public enum ValueType {
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.ArkData.*
+
+let type1 = ValueType.StringValue("example")
+let type2 = ValueType.Integer(42)
+let type3 = ValueType.Float(3.14)
+let type4 = ValueType.ByteArray([0x01, 0x02, 0x03])
+let type5 = ValueType.Boolean(true)
+let type6 = ValueType.Double(3.1415926535)
+```
 
 ### Boolean(Bool)
 

@@ -49,6 +49,20 @@ public enum AreaMode <: Equatable<AreaMode> & ToString {
 - [Equatable\<AreaMode>](#enum-areamode)
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let mode1 = AreaMode.El1
+let mode2 = AreaMode.El2
+let mode3 = AreaMode.El3
+let mode4 = AreaMode.El4
+let mode5 = AreaMode.El5
+```
+
 ### El1
 
 ```cangjie
@@ -60,6 +74,16 @@ El1
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let partition1 = AreaMode.El1
+```
 
 ### El2
 
@@ -73,6 +97,16 @@ El2
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let partition2 = AreaMode.El2
+```
+
 ### El3
 
 ```cangjie
@@ -84,6 +118,16 @@ El3
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let partition3 = AreaMode.El3
+```
 
 ### El4
 
@@ -97,6 +141,16 @@ El4
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let partition4 = AreaMode.El4
+```
+
 ### El5
 
 ```cangjie
@@ -108,6 +162,16 @@ El5
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let partition5 = AreaMode.El5
+```
 
 ### func !=(AreaMode)
 
@@ -133,6 +197,18 @@ public operator func !=(other: AreaMode): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let mode1 = AreaMode.El1
+let mode2 = AreaMode.El2
+let isNotEqual = mode1 != mode2
+```
+
 ### func ==(AreaMode)
 
 ```cangjie
@@ -157,6 +233,18 @@ public operator func ==(other: AreaMode): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let mode1 = AreaMode.El1
+let mode2 = AreaMode.El1
+let isEqual = mode1 == mode2
+```
+
 ### func toString()
 
 ```cangjie
@@ -174,3 +262,14 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|当前枚举的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let mode = AreaMode.El1
+let modeString = mode.toString()
+```

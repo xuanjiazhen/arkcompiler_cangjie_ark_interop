@@ -2967,6 +2967,17 @@ public init(
 |:---|:---|:---|:---|:---|
 |encoding|String|否|"utf-8"|用于指定字符串的编码方式。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CoreFileKit.*
+
+let options: Options = Options(encoding: "utf-8")
+```
+
 ## class RandomAccessFile
 
 ```cangjie
@@ -3335,6 +3346,20 @@ public init(
 |start|Option\<Int64>|否|None|期望读取文件的位置。可选，默认从当前位置开始读。|
 |end|Option\<Int64>|否|None|期望读取结束的位置。可选，默认文件末尾。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CoreFileKit.*
+
+let options = RandomAccessFileOptions()
+let optionsWithStart = RandomAccessFileOptions(start: Some(100))
+let optionsWithEnd = RandomAccessFileOptions(end: Some(200))
+let optionsWithBoth = RandomAccessFileOptions(start: Some(100), end: Some(200))
+```
+
 ## class ReaderIterator
 
 ```cangjie
@@ -3374,6 +3399,24 @@ public func next(): ReaderIteratorResult
   | 13900005 | I/O error |
   | 13900037 | No data available |
   | 13900042 | Unknown error |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let options: Options = Options(encoding: "utf-8")
+let readerIterator = FileFs.readLines(filePath, options: options)
+let result = readerIterator.next()
+if (result.isSome()) {
+Applog.info("content: " + result.getOrThrow())
+}
+```
 
 ## class ReaderIteratorResult
 
@@ -3495,6 +3538,20 @@ public init(
 |offset|Option\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
 |length|Option\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CoreFileKit.*
+
+let readOptions = ReadOptions()
+let readOptionsWithOffset = ReadOptions(offset: Some(10))
+let readOptionsWithLength = ReadOptions(length: Some(20))
+let readOptionsWithBoth = ReadOptions(offset: Some(10), length: Some(20))
+```
+
 ## class ReadTextOptions
 
 ```cangjie
@@ -3557,6 +3614,17 @@ public init(
 |offset|Option\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
 |length|Option\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
 |encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CoreFileKit.*
+
+let options = ReadTextOptions(offset: Some(0), length: Some(100), encoding: "utf-8")
+```
 
 ## class Stat
 

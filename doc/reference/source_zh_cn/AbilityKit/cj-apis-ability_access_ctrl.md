@@ -29,6 +29,17 @@ public class AbilityAccessCtrl {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let atManager: AtManager = AbilityAccessCtrl.createAtManager()
+```
+
 ### static func createAtManager()
 
 ```cangjie
@@ -70,6 +81,17 @@ public class AtManager {}
 **系统能力：** SystemCapability.Security.AccessToken
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let atManager: AtManager = AbilityAccessCtrl.createAtManager()
+```
 
 ### func checkAccessToken(UInt32, Permissions)
 
@@ -210,6 +232,18 @@ public enum GrantStatus <: Equatable<GrantStatus> & ToString {
 - Equatable\<GrantStatus>
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let status1 = GrantStatus.PermissionDenied
+let status2 = GrantStatus.PermissionGranted
+```
+
 ### PermissionDenied
 
 ```cangjie
@@ -222,6 +256,17 @@ PermissionDenied
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let status = GrantStatus.PermissionDenied
+```
+
 ### PermissionGranted
 
 ```cangjie
@@ -233,6 +278,17 @@ PermissionGranted
 **系统能力：** SystemCapability.Security.AccessToken
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let status = GrantStatus.PermissionGranted
+```
 
 ### func !=(GrantStatus)
 
@@ -258,6 +314,19 @@ public operator func !=(other: GrantStatus): Bool
 |:----|:----|
 |Bool|如果授权状态不同，返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let status1 = GrantStatus.PermissionDenied
+let status2 = GrantStatus.PermissionGranted
+let result = status1 != status2
+```
+
 ### func ==(GrantStatus)
 
 ```cangjie
@@ -282,6 +351,19 @@ public operator func ==(other: GrantStatus): Bool
 |:----|:----|
 |Bool|如果授权状态相同，返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let status1 = GrantStatus.PermissionDenied
+let status2 = GrantStatus.PermissionDenied
+let result = status1 == status2
+```
+
 ### func toString()
 
 ```cangjie
@@ -299,6 +381,18 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|授权状态的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let status = GrantStatus.PermissionGranted
+let str = status.toString()
+```
 
 ## type Permissions
 

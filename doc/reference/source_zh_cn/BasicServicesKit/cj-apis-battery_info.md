@@ -29,6 +29,17 @@ public class BatteryInfo {}
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let level: BatteryCapacityLevel = BatteryInfo.batteryCapacityLevel
+```
+
 ### static prop batteryCapacityLevel
 
 ```cangjie
@@ -44,6 +55,17 @@ public static prop batteryCapacityLevel: BatteryCapacityLevel
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let level: BatteryCapacityLevel = BatteryInfo.batteryCapacityLevel
+```
 
 ### static prop batterySOC
 
@@ -61,6 +83,17 @@ public static prop batterySOC: Int32
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let soc: Int32 = BatteryInfo.batterySOC
+```
+
 ### static prop batteryTemperature
 
 ```cangjie
@@ -76,6 +109,17 @@ public static prop batteryTemperature: Int32
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let temp: Int32 = BatteryInfo.batteryTemperature
+```
 
 ### static prop chargingStatus
 
@@ -93,6 +137,17 @@ public static prop chargingStatus: BatteryChargeState
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let status: BatteryChargeState = BatteryInfo.chargingStatus
+```
+
 ### static prop healthStatus
 
 ```cangjie
@@ -108,6 +163,17 @@ public static prop healthStatus: BatteryHealthState
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let health: BatteryHealthState = BatteryInfo.healthStatus
+```
 
 ### static prop isBatteryPresent
 
@@ -125,6 +191,17 @@ public static prop isBatteryPresent: Bool
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let present: Bool = BatteryInfo.isBatteryPresent
+```
+
 ### static prop nowCurrent
 
 ```cangjie
@@ -140,6 +217,17 @@ public static prop nowCurrent: Int32
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let current: Int32 = BatteryInfo.nowCurrent
+```
 
 ### static prop pluggedType
 
@@ -157,6 +245,17 @@ public static prop pluggedType: BatteryPluggedType
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let type: BatteryPluggedType = BatteryInfo.pluggedType
+```
+
 ### static prop technology
 
 ```cangjie
@@ -173,6 +272,17 @@ public static prop technology: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let tech: String = BatteryInfo.technology
+```
+
 ### static prop voltage
 
 ```cangjie
@@ -188,6 +298,17 @@ public static prop voltage: Int32
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let volt: Int32 = BatteryInfo.voltage
+```
 
 ## enum BatteryCapacityLevel
 
@@ -215,6 +336,20 @@ public enum BatteryCapacityLevel <: Equatable<BatteryCapacityLevel> & ToString {
 - Equatable\<BatteryCapacityLevel>
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let level1 = BatteryCapacityLevel.LevelFull
+let level2 = BatteryCapacityLevel.LevelHigh
+let level3 = BatteryCapacityLevel.LevelNormal
+let level4 = BatteryCapacityLevel.LevelLow
+```
+
 ### LevelCritical
 
 ```cangjie
@@ -226,6 +361,14 @@ LevelCritical
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let criticalLevel = BatteryCapacityLevel.LevelCritical
+```
 
 ### LevelFull
 
@@ -239,6 +382,14 @@ LevelFull
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let fullLevel = BatteryCapacityLevel.LevelFull
+```
+
 ### LevelHigh
 
 ```cangjie
@@ -250,6 +401,14 @@ LevelHigh
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let highLevel = BatteryCapacityLevel.LevelHigh
+```
 
 ### LevelLow
 
@@ -263,6 +422,14 @@ LevelLow
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let lowLevel = BatteryCapacityLevel.LevelLow
+```
+
 ### LevelNormal
 
 ```cangjie
@@ -274,6 +441,14 @@ LevelNormal
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let normalLevel = BatteryCapacityLevel.LevelNormal
+```
 
 ### LevelShutdown
 
@@ -287,6 +462,14 @@ LevelShutdown
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let shutdownLevel = BatteryCapacityLevel.LevelShutdown
+```
+
 ### LevelWarning
 
 ```cangjie
@@ -298,6 +481,14 @@ LevelWarning
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let warningLevel = BatteryCapacityLevel.LevelWarning
+```
 
 ### func !=(BatteryCapacityLevel)
 
@@ -319,6 +510,16 @@ public operator func !=(other: BatteryCapacityLevel): Bool
 |:----|:----|
 |Bool| 如果电池电量等级不同返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let levelA = BatteryCapacityLevel.LevelFull
+let levelB = BatteryCapacityLevel.LevelHigh
+let isNotEqual = levelA != levelB
+```
+
 ### func ==(BatteryCapacityLevel)
 
 ```cangjie
@@ -339,6 +540,16 @@ public operator func ==(other: BatteryCapacityLevel): Bool
 |:----|:----|
 |Bool| 如果电池电量等级相同返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let levelA = BatteryCapacityLevel.LevelFull
+let levelB = BatteryCapacityLevel.LevelFull
+let isEqual = levelA == levelB
+```
+
 ### func toString()
 
 ```cangjie
@@ -352,6 +563,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String| 电池电量等级值对应的字符串。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let level = BatteryCapacityLevel.LevelNormal
+let levelString = level.toString()
+```
 
 ## enum BatteryChargeState
 
@@ -376,6 +596,20 @@ public enum BatteryChargeState <: Equatable<BatteryChargeState> & ToString {
 - Equatable\<BatteryChargeState>
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let state1 = BatteryChargeState.UnknownChargeState
+let state2 = BatteryChargeState.Enabled
+let state3 = BatteryChargeState.Disabled
+let state4 = BatteryChargeState.Full
+```
+
 ### Disabled
 
 ```cangjie
@@ -387,6 +621,14 @@ Disabled
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let disabledState = BatteryChargeState.Disabled
+```
 
 ### Enabled
 
@@ -400,6 +642,14 @@ Enabled
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let enabledState = BatteryChargeState.Enabled
+```
+
 ### Full
 
 ```cangjie
@@ -412,6 +662,14 @@ Full
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let fullState = BatteryChargeState.Full
+```
+
 ### UnknownChargeState
 
 ```cangjie
@@ -423,6 +681,14 @@ UnknownChargeState
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let unknownState = BatteryChargeState.UnknownChargeState
+```
 
 ### func !=(BatteryChargeState)
 
@@ -444,6 +710,16 @@ public operator func !=(other: BatteryChargeState): Bool
 |:----|:----|
 |Bool| 如果电池充电状态不同返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state1 = BatteryChargeState.Enabled
+let state2 = BatteryChargeState.Disabled
+let isNotEqual = state1 != state2
+```
+
 ### func ==(BatteryChargeState)
 
 ```cangjie
@@ -464,6 +740,16 @@ public operator func ==(other: BatteryChargeState): Bool
 |:----|:----|
 |Bool| 如果电池充电状态相同返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state1 = BatteryChargeState.Enabled
+let state2 = BatteryChargeState.Enabled
+let isEqual = state1 == state2
+```
+
 ### func toString()
 
 ```cangjie
@@ -477,6 +763,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String| 电池充电状态值对应的字符串。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state = BatteryChargeState.Enabled
+let stateString = state.toString()
+```
 
 ## enum BatteryHealthState
 
@@ -503,6 +798,22 @@ public enum BatteryHealthState <: Equatable<BatteryHealthState> & ToString {
 - Equatable\<BatteryHealthState>
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let state1 = BatteryHealthState.UnknownHealthState
+let state2 = BatteryHealthState.Good
+let state3 = BatteryHealthState.Overheat
+let state4 = BatteryHealthState.Overvoltage
+let state5 = BatteryHealthState.Cold
+let state6 = BatteryHealthState.Dead
+```
+
 ### Cold
 
 ```cangjie
@@ -514,6 +825,14 @@ Cold
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let coldState = BatteryHealthState.Cold
+```
 
 ### Dead
 
@@ -527,6 +846,14 @@ Dead
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let deadState = BatteryHealthState.Dead
+```
+
 ### Good
 
 ```cangjie
@@ -538,6 +865,14 @@ Good
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let goodState = BatteryHealthState.Good
+```
 
 ### Overheat
 
@@ -551,6 +886,14 @@ Overheat
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let overheatState = BatteryHealthState.Overheat
+```
+
 ### Overvoltage
 
 ```cangjie
@@ -563,6 +906,14 @@ Overvoltage
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let overvoltageState = BatteryHealthState.Overvoltage
+```
+
 ### UnknownHealthState
 
 ```cangjie
@@ -574,6 +925,14 @@ UnknownHealthState
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let unknownState = BatteryHealthState.UnknownHealthState
+```
 
 ### func !=(BatteryHealthState)
 
@@ -595,6 +954,16 @@ public operator func !=(other: BatteryHealthState): Bool
 |:----|:----|
 |Bool| 如果电池健康状态不同返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state1 = BatteryHealthState.Good
+let state2 = BatteryHealthState.Overheat
+let isNotEqual = state1 != state2
+```
+
 ### func ==(BatteryHealthState)
 
 ```cangjie
@@ -615,6 +984,16 @@ public operator func ==(other: BatteryHealthState): Bool
 |:----|:----|
 |Bool| 如果电池健康状态相同返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state1 = BatteryHealthState.Good
+let state2 = BatteryHealthState.Good
+let isEqual = state1 == state2
+```
+
 ### func toString()
 
 ```cangjie
@@ -628,6 +1007,15 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String| 电池健康状态值对应的字符串。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let state = BatteryHealthState.Good
+let stateString = state.toString()
+```
 
 ## enum BatteryPluggedType
 
@@ -652,6 +1040,20 @@ public enum BatteryPluggedType <: Equatable<BatteryPluggedType> & ToString {
 - Equatable\<BatteryPluggedType>
 - ToString
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.BasicServicesKit.*
+
+let type1 = BatteryPluggedType.UnknownType
+let type2 = BatteryPluggedType.Ac
+let type3 = BatteryPluggedType.Usb
+let type4 = BatteryPluggedType.Wireless
+```
+
 ### Ac
 
 ```cangjie
@@ -663,6 +1065,14 @@ Ac
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let pluggedType = BatteryPluggedType.Ac
+```
 
 ### UnknownType
 
@@ -676,6 +1086,14 @@ UnknownType
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let pluggedType = BatteryPluggedType.UnknownType
+```
+
 ### Usb
 
 ```cangjie
@@ -688,6 +1106,14 @@ Usb
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let pluggedType = BatteryPluggedType.Usb
+```
+
 ### Wireless
 
 ```cangjie
@@ -699,6 +1125,14 @@ Wireless
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let pluggedType = BatteryPluggedType.Wireless
+```
 
 ### func !=(BatteryPluggedType)
 
@@ -720,6 +1154,16 @@ public operator func !=(other: BatteryPluggedType): Bool
 |:----|:----|
 |Bool| 如果充电器类型不同返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type1 = BatteryPluggedType.Ac
+let type2 = BatteryPluggedType.Usb
+let isNotEqual = type1 != type2
+```
+
 ### func ==(BatteryPluggedType)
 
 ```cangjie
@@ -740,6 +1184,16 @@ public operator func ==(other: BatteryPluggedType): Bool
 |:----|:----|
 |Bool| 如果充电器类型相同返回true，否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type1 = BatteryPluggedType.Ac
+let type2 = BatteryPluggedType.Ac
+let isEqual = type1 == type2
+```
+
 ### func toString()
 
 ```cangjie
@@ -753,3 +1207,12 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String| 充电器类型值对应的字符串。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let type = BatteryPluggedType.Wireless
+let typeString = type.toString()
+```

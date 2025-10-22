@@ -41,6 +41,21 @@ public class ErrorObject {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+``cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let errorObj = ErrorObject(
+name: "TypeError",
+message: "Invalid argument type",
+stack: Some("at <anonymous> (index.cj:10)")
+)
+```
+
 ### let message
 
 ```cangjie
@@ -56,6 +71,32 @@ public let message: String
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.*
+
+let observer = ErrorObserver(
+    {
+        errorMsg =>
+            Hilog.info(0, "test_errorManager", "onUnhandledException, errorMsg:  =${errorMsg}")
+    },
+    onException: Some({ errorObj =>
+        Hilog.info(0, "test_errorManager", "onException, name:   =${errorObj.name}")
+        Hilog.info(0, "test_errorManager", "onException, message:   =${errorObj.message}")
+        if (let Some(v) <-errorObj.stack) {
+            Hilog.info(0, "test_errorManager", "onException, stack:    =${v}")
+        }
+    })
+)
+ErrorManager.on(ErrorManagerEvent.Error, observer)
+```
 
 ### let name
 
@@ -73,6 +114,32 @@ public let name: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.*
+
+let observer = ErrorObserver(
+    {
+        errorMsg =>
+            Hilog.info(0, "test_errorManager", "onUnhandledException, errorMsg:  =${errorMsg}")
+    },
+    onException: Some({ errorObj =>
+        Hilog.info(0, "test_errorManager", "onException, name:   =${errorObj.name}")
+        Hilog.info(0, "test_errorManager", "onException, message:   =${errorObj.message}")
+        if (let Some(v) <-errorObj.stack) {
+            Hilog.info(0, "test_errorManager", "onException, stack:    =${v}")
+        }
+    })
+)
+ErrorManager.on(ErrorManagerEvent.Error, observer)
+```
+
 ### let stack
 
 ```cangjie
@@ -88,6 +155,32 @@ public let stack: Option<String>
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.*
+
+let observer = ErrorObserver(
+    {
+        errorMsg =>
+            Hilog.info(0, "test_errorManager", "onUnhandledException, errorMsg:  =${errorMsg}")
+    },
+    onException: Some({ errorObj =>
+        Hilog.info(0, "test_errorManager", "onException, name:   =${errorObj.name}")
+        Hilog.info(0, "test_errorManager", "onException, message:   =${errorObj.message}")
+        if (let Some(v) <-errorObj.stack) {
+            Hilog.info(0, "test_errorManager", "onException, stack:    =${v}")
+        }
+    })
+)
+ErrorManager.on(ErrorManagerEvent.Error, observer)
+```
 
 ## class ErrorObserver
 
@@ -108,6 +201,32 @@ public class ErrorObserver {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.*
+
+let observer = ErrorObserver(
+    {
+        errorMsg =>
+            Hilog.info(0, "test_errorManager", "onUnhandledException, errorMsg:  =${errorMsg}")
+    },
+    onException: Some({ errorObj =>
+        Hilog.info(0, "test_errorManager", "onException, name:   =${errorObj.name}")
+        Hilog.info(0, "test_errorManager", "onException, message:   =${errorObj.message}")
+        if (let Some(v) <-errorObj.stack) {
+            Hilog.info(0, "test_errorManager", "onException, stack:    =${v}")
+        }
+    })
+)
+ErrorManager.on(ErrorManagerEvent.Error, observer)
+```
+
 ### var onException
 
 ```cangjie
@@ -124,6 +243,32 @@ public var onException: Option <(ErrorObject) -> Unit>
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.*
+
+let observer = ErrorObserver(
+    {
+        errorMsg =>
+            Hilog.info(0, "test_errorManager", "onUnhandledException, errorMsg:  =${errorMsg}")
+    },
+    onException: Some({ errorObj =>
+        Hilog.info(0, "test_errorManager", "onException, name:   =${errorObj.name}")
+        Hilog.info(0, "test_errorManager", "onException, message:   =${errorObj.message}")
+        if (let Some(v) <-errorObj.stack) {
+            Hilog.info(0, "test_errorManager", "onException, stack:    =${v}")
+        }
+    })
+)
+ErrorManager.on(ErrorManagerEvent.Error, observer)
+```
+
 ### var onUnhandledException
 
 ```cangjie
@@ -139,6 +284,32 @@ public var onUnhandledException:(String) -> Unit
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.*
+
+let observer = ErrorObserver(
+    {
+        errorMsg =>
+            Hilog.info(0, "test_errorManager", "onUnhandledException, errorMsg:  =${errorMsg}")
+    },
+    onException: Some({ errorObj =>
+        Hilog.info(0, "test_errorManager", "onException, name:   =${errorObj.name}")
+        Hilog.info(0, "test_errorManager", "onException, message:   =${errorObj.message}")
+        if (let Some(v) <-errorObj.stack) {
+            Hilog.info(0, "test_errorManager", "onException, stack:    =${v}")
+        }
+    })
+)
+ErrorManager.on(ErrorManagerEvent.Error, observer)
+```
 
 ### init((String) -> Unit, Option\<(ErrorObject) -> Unit>)
 

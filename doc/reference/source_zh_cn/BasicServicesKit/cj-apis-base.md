@@ -42,6 +42,20 @@ public func launch(task: () -> Unit): Unit
 |:---|:---|:---|:---|:---|
 |task|()->Unit|是|-|执行任务。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import ohos.base.*
+
+func myTask() {
+// 任务逻辑
+}
+
+launch(myTask)
+```
+
 ## interface CollectionEx
 
 ```cangjie
@@ -461,6 +475,14 @@ public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: Float32 = 1.0)
 |blue|UInt8|是|-|RGB中蓝色通道取值。|
 |alpha|Float32|否|1.0|***\*命名参数。\**** 透明通道取值，取值范围 [0.0, 1.0]。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let customColor: Color = Color(255, 128, 0, alpha: 0.5)
+```
+
 ### init(UInt32)
 
 ```cangjie
@@ -478,6 +500,14 @@ public init(value: UInt32)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|UInt32|是|-|Uint32颜色取值。alpha，R，G，B通道按顺序各占输入的8位，若只输入R,G,B三个通道，则alpha通道默认取0xff。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let hexColor: Color = Color(0xff00ff00)
+```
 
 ### func toUInt32()
 
@@ -549,6 +579,18 @@ public class ReuseParams {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import ohos.base.*
+
+let paramsArray: Array<(String, Any)> = [("width", 100), ("height", 200)]
+let reuseParams: ReuseParams = ReuseParams(paramsArray)
+```
+
 ### init(Array\<(String,Any)>)
 
 ```cangjie
@@ -566,6 +608,18 @@ public init(arr: Array<(String, Any)>)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |arr| Array\<(String, Any)> |是|-|存放组件构造参数元组的数组。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import ohos.base.*
+
+let paramsArray: Array<(String, Any)> = [("width", 100), ("height", 200)]
+let reuseParams: ReuseParams = ReuseParams(paramsArray)
+```
 
 ### func get\<T>(String)
 
@@ -590,6 +644,19 @@ public func get<T>(key: String): ?T
 |类型|说明|
 |:----|:----|
 |?T|构造参数的值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import ohos.base.*
+
+let paramsArray: Array<(String, Any)> = [("width", 100), ("height", 200)]
+let reuseParams: ReuseParams = ReuseParams(paramsArray)
+let value = reuseParams.get("width")
+```
 
 ## enum LengthType
 

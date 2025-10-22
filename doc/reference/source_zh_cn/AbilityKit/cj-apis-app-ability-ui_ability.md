@@ -53,6 +53,7 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import ohos.ark_interop.*
 import ohos.ark_interop_helper.*
@@ -95,6 +96,7 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import ohos.ark_interop.*
 import ohos.ark_interop_helper.*
@@ -138,6 +140,7 @@ public func createContextFromJSValue(context: JSContext, input: JSValue): Contex
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import ohos.ark_interop.*
 import ohos.ark_interop_helper.*
@@ -181,6 +184,7 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import ohos.ark_interop.*
 import ohos.ark_interop_helper.*
@@ -210,6 +214,25 @@ public interface SystemObjectInteropTypeToJS {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import ohos.ark_interop.*
+import ohos.ark_interop_helper.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let jsContext = JSRuntime.getCurrentContext()
+        let input = this.context.toJSValue(jsContext)
+        let ctx = createContextFromJSValue(JjsContext, input)
+    }
+}
+```
+
 ### func toJSValue(JSContext)
 
 ```cangjie
@@ -234,6 +257,25 @@ func toJSValue(context: JSContext): JSValue
 |:----|:----|
 |[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import ohos.ark_interop.*
+import ohos.ark_interop_helper.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let jsContext = JSRuntime.getCurrentContext()
+        let input = this.context.toJSValue(jsContext)
+        let ctx = createContextFromJSValue(JjsContext, input)
+    }
+}
+```
+
 ## class Ability
 
 ```cangjie
@@ -245,6 +287,21 @@ abstract sealed class Ability {}
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+let ENTRY_ABILITY_REGISTER_RESULT = Ability.registerCreator("entry", () -> MyUIAbility)
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+    }
+}
+```
 
 ### static func registerCreator(String, () -> Ability)
 
@@ -268,6 +325,7 @@ public static func registerCreator(name: String, creator: () -> Ability): Unit
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 
@@ -297,6 +355,20 @@ public class AbilityStageContext <: Context {
 
 - [Context](./cj-apis-app-ability-ui_ability.md#class-context)
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let info = this.context.currentHapModuleInfo
+    }
+}
+```
+
 ### var currentHapModuleInfo
 
 ```cangjie
@@ -316,6 +388,7 @@ public var currentHapModuleInfo: HapModuleInfo
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 
@@ -358,6 +431,20 @@ public open class Context <: BaseContext {}
 
 - [BaseContext](./cj-apis-app-ability.md#class-basecontext)
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let info = this.context.applicationInfo
+    }
+}
+```
+
 ### prop applicationInfo
 
 ```cangjie
@@ -377,6 +464,7 @@ public prop applicationInfo: ApplicationInfo
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 
@@ -493,6 +581,19 @@ public open class UIAbility <: Ability {}
 **父类型：**
 
 - [Ability](#class-ability)
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let context = this.context
+    }
+}
+```
 
 ### prop context
 
@@ -872,6 +973,7 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 
@@ -942,6 +1044,7 @@ public func startAbility(want: Want, options!: ?StartOptions = None): Unit
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 
@@ -1008,6 +1111,7 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 
@@ -1075,6 +1179,7 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 
@@ -1112,6 +1217,7 @@ public func terminateSelf(): Unit
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 
@@ -1154,6 +1260,7 @@ public func terminateSelfWithResult(parameter: AbilityResult): Unit
 **示例：**
 
 <!-- compile -->
+
 ```cangjie
 import kit.AbilityKit.*
 

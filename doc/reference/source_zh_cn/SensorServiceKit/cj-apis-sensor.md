@@ -1982,6 +1982,16 @@ public operator func !=(other: IntervalOption): Bool
 |:---- |:------------------------- |
 | Bool | 如果不相等，则返回true；否则，返回false。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let option1 = IntervalOption.GameMode
+let option2 = IntervalOption.UIMode
+let isNotEqual = option1 != option2
+```
+
 ### func ==(IntervalOption)
 
 ```cangjie
@@ -2002,6 +2012,16 @@ public operator func ==(other: IntervalOption): Bool
 |:---- |:------------------------ |
 | Bool | 如果相等，则返回true；否则，返回false。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let option1 = IntervalOption.GameMode
+let option2 = IntervalOption.GameMode
+let isEqual = option1 == option2
+```
+
 ### func toString()
 
 ```cangjie
@@ -2015,6 +2035,15 @@ public func toString(): String
 | 类型     | 说明       |
 |:------ |:-------- |
 | String | 转换后的字符串。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let option = IntervalOption.GameMode
+let str = option.toString()
+```
 
 ## enum SensorAccuracy
 
@@ -2107,6 +2136,14 @@ public operator func !=(other: SensorAccuracy): Bool
 |:---- |:------------------------- |
 | Bool | 如果不相等，则返回true；否则，返回false。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let isNotEqual = SensorAccuracy.AccuracyHigh != SensorAccuracy.AccuracyLow
+```
+
 ### func ==(SensorAccuracy)
 
 ```cangjie
@@ -2127,6 +2164,14 @@ public operator func ==(other: SensorAccuracy): Bool
 |:---- |:------------------------ |
 | Bool | 如果相等，则返回true；否则，返回false。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let isEqual = SensorAccuracy.AccuracyHigh == SensorAccuracy.AccuracyHigh
+```
+
 ### func toString()
 
 ```cangjie
@@ -2140,6 +2185,14 @@ public func toString(): String
 | 类型     | 说明       |
 |:------ |:-------- |
 | String | 转换后的字符串。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let accuracyStr = SensorAccuracy.AccuracyHigh.toString()
+```
 
 ## enum SensorId
 
@@ -3188,6 +3241,16 @@ public operator func !=(other: SensorId): Bool
 |:---- |:------------------------- |
 | Bool | 如果不相等，则返回true；否则，返回false。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let sensor1 = SensorId.Accelerometer
+let sensor2 = SensorId.Gyroscope
+let isNotEqual = sensor1 != sensor2  // true
+```
+
 ### func ==(SensorId)
 
 ```cangjie
@@ -3208,6 +3271,16 @@ public operator func ==(other: SensorId): Bool
 |:---- |:------------------------ |
 | Bool | 如果相等，则返回true；否则，返回false。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let sensor1 = SensorId.Accelerometer
+let sensor2 = SensorId.Accelerometer
+let isEqual = sensor1 == sensor2  // true
+```
+
 ### func getValue()
 
 ```cangjie
@@ -3226,6 +3299,15 @@ public func getValue(): Int32
 |:----- |:---- |
 | Int32 | 枚举值。 |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let sensor = SensorId.Accelerometer
+let value = sensor.getValue()  // 获取枚举对应的整数值
+```
+
 ### func toString()
 
 ```cangjie
@@ -3239,3 +3321,12 @@ public func toString(): String
 | 类型     | 说明       |
 |:------ |:-------- |
 | String | 转换后的字符串。 |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let option = IntervalOption.GameMode
+let str = option.toString()
+```

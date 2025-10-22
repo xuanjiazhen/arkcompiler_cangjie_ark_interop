@@ -148,6 +148,17 @@ public init(priority!: LocationRequestPriority = LocationRequestPriority.FirstFi
 |maxAccuracy|Float32|否|0.0|**命名参数。** 表示精度信息，单位是米。<br/>仅在精确位置功能场景（同时授予了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（仅授予了ohos.permission.APPROXIMATELY_LOCATION 权限）下该字段无意义。<br/>默认值为0，取值范围为大于等于0。<br/>当scenario为Navigation/TrajectoryTracking/CarHailing或者priority为Accuracy时建议设置maxAccuracy为大于10的值。<br/>当scenario为DailyLifeService/NoPower或者priority为LowPower/FirstFix时建议设置maxAccuracy为大于100的值。|
 |timeoutMs|Int32|否|5000|**命名参数。** 表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.LocationKit.*
+
+let request = CurrentLocationRequest(priority: LocationRequestPriority.FirstFix, scenario: LocationRequestScenario.Unset, maxAccuracy: 0.0, timeoutMs: 5000)
+```
+
 ## class GeoLocationManager
 
 ```cangjie
@@ -649,6 +660,17 @@ public init(locatingPriority: LocatingPriority, locatingTimeoutMs: Int32)
 |:---|:---|:---|:---|:---|
 |locatingPriority|[LocatingPriority](#enum-locatingpriority)|是|-|表示优先级信息。取值范围见[LocatingPriority](#enum-locatingpriority)的定义。|
 |locatingTimeoutMs|Int32|是|-|表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.LocationKit.*
+
+let request = SingleLocationRequest(LocatingPriority.PriorityLocatingSpeed, 1000)
+```
 
 ## enum LocatingPriority
 

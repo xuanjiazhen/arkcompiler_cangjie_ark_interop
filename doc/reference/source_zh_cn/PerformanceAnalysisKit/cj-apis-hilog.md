@@ -12,8 +12,8 @@ import kit.PerformanceAnalysisKit.*
 
 API示例代码使用说明：
 
-- 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -28,6 +28,17 @@ public class Hilog {}
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.PerformanceAnalysisKit.*
+
+Hilog.debug(0, "testTag", "Debug: Hello world!")
+```
 
 ### static func debug(UInt32, String, String, Array\<String>)
 
@@ -259,6 +270,21 @@ public enum LogLevel {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.PerformanceAnalysisKit.*
+
+let level1 = LogLevel.Debug
+let level2 = LogLevel.Info
+let level3 = LogLevel.Warning
+let level4 = LogLevel.Error
+let level5 = LogLevel.Fatal
+```
+
 ### Debug
 
 ```cangjie
@@ -271,29 +297,13 @@ Debug
 
 **起始版本：** 22
 
-### Error
+**示例：**
+
+<!-- compile -->
 
 ```cangjie
-Error
+let debugLevel = LogLevel.Debug
 ```
-
-**功能：** 应用发生了错误，该错误会影响功能的正常运行或用户的正常使用，可以恢复但恢复代价较高，如重置数据等。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 22
-
-### Fatal
-
-```cangjie
-Fatal
-```
-
-**功能：** 重大致命异常，表明应用即将崩溃，故障无法恢复。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 22
 
 ### Info
 
@@ -311,6 +321,14 @@ Info
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let infoLevel = LogLevel.Info
+```
+
 ### Warning
 
 ```cangjie
@@ -322,3 +340,51 @@ Warning
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let warningLevel = LogLevel.Warning
+```
+
+### Error
+
+```cangjie
+Error
+```
+
+**功能：** 应用发生了错误，该错误会影响功能的正常运行或用户的正常使用，可以恢复但恢复代价较高，如重置数据等。
+
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
+**起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let errorLevel = LogLevel.Error
+```
+
+### Fatal
+
+```cangjie
+Fatal
+```
+
+**功能：** 重大致命异常，表明应用即将崩溃，故障无法恢复。
+
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
+**起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let fatalLevel = LogLevel.Fatal
+```

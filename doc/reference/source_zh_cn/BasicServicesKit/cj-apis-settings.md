@@ -91,7 +91,7 @@ class MainAbility <: UIAbility {
         }
     }
 }
-````
+```
 
 ## func getValue\<T, P>(UIAbilityContext, T, String, P) where T \<: ToStringP \<: ToString
 
@@ -149,7 +149,7 @@ func exampleGetValueWithDomain(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get screen brightness: ${e.toString()}")
     }
 }
-````
+```
 
 ## enum Date
 
@@ -205,7 +205,7 @@ func exampleAutoGainTime(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get auto gain time setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### AutoGainTimeZone
 
@@ -239,7 +239,7 @@ func exampleAutoGainTimeZone(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get auto gain time zone setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### DateFormat
 
@@ -273,7 +273,7 @@ func exampleDateFormat(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get date format setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### TimeFormat
 
@@ -307,7 +307,7 @@ func exampleTimeFormat(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get time format setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### func toString()
 
@@ -326,6 +326,18 @@ public override func toString(): String
 |类型|说明|
 |:----|:----|
 |String|设置时间和日期格式的数据项。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.BasicServicesKit.*
+
+let str = Date.TimeFormat.toString()
+```
 
 ## enum Display
 
@@ -420,7 +432,7 @@ func exampleAutoScreenBrightness(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get auto screen brightness setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### DefaultScreenRotation
 
@@ -454,7 +466,7 @@ func exampleDefaultScreenRotation(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get default screen rotation setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### DisplayInversionStatus
 
@@ -488,7 +500,7 @@ func exampleDisplayInversion(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get display inversion status: ${e.toString()}")
     }
 }
-````
+```
 
 ### FontScale
 
@@ -522,7 +534,7 @@ func exampleFontScale(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get font scale setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### ScreenBrightnessStatus
 
@@ -556,7 +568,7 @@ func exampleScreenBrightness(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get screen brightness setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### ScreenOffTimeout
 
@@ -590,7 +602,7 @@ func exampleScreenOffTimeout(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get screen off timeout setting: ${e.toString()}")
     }
 }
-````
+```
 
 ### TransitionAnimationScale
 
@@ -624,7 +636,7 @@ func exampleTransitionAnimation(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get transition animation scale: ${e.toString()}")
     }
 }
-````
+```
 
 ### WindowAnimationScale
 
@@ -658,7 +670,7 @@ func exampleWindowAnimation(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get window animation scale: ${e.toString()}")
     }
 }
-````
+```
 
 ### func toString()
 
@@ -677,6 +689,18 @@ public override func toString(): String
 |类型|说明|
 |:----|:----|
 |String|设置显示效果的数据项。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.BasicServicesKit.*
+
+let str = Display.WindowAnimationScale.toString()
+```
 
 ## enum DomainName
 
@@ -730,7 +754,7 @@ func exampleDeviceShared(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get device shared screen brightness: ${e.toString()}")
     }
 }
-````
+```
 
 ### UserProperty
 
@@ -764,7 +788,7 @@ func exampleUserProperty(): Unit {
         Hilog.info(0, "cangjie_ohos_test", "Failed to get user property screen brightness: ${e.toString()}")
     }
 }
-````
+```
 
 ### func toString()
 
@@ -783,3 +807,15 @@ public override func toString(): String
 |类型|说明|
 |:----|:----|
 |String|查询的域名对应字符串。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.BasicServicesKit.*
+
+let str = DomainName.DeviceShared.toString()
+```

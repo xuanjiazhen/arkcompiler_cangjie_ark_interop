@@ -102,6 +102,23 @@ public init(domain: String, eventTypes!: Array<EventType> = [], names!: Array<St
 |eventTypes|Array\<[EventType](#enum-eventtype)>|否|[]|**命名参数。** 需要订阅的事件类型集合。|
 |names|Array\<String>|否|[]|**命名参数。** 需要订阅的事件名称集合。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.PerformanceAnalysisKit.*
+
+// 使用构造函数创建AppEventFilter实例
+let filter1 = AppEventFilter("test_domain")
+let filter2 = AppEventFilter("test_domain", eventTypes: [EventType.Fault])
+let filter3 = AppEventFilter("test_domain", names: ["event1", "event2"])
+let filter4 = AppEventFilter("test_domain", eventTypes: [EventType.Fault], names: ["event1", "event2"])
+```
+
 ## class AppEventGroup
 
 ```cangjie
@@ -258,6 +275,25 @@ public init(domain: String, name: String, event: EventType, params: HashMap<Stri
 |event|[EventType](#enum-eventtype)|是|-|事件类型。|
 |params|HashMap\<String,[EventValueType](#enum-eventvaluetype)>|是|-|事件参数对象，每个事件参数包括参数名和参数值，其规格定义如下：<br>参数名为String类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>参数值支持String、Int32、Float64、Bool、数组类型，String类型参数长度需在8*1024个字符以内；数组类型参数中的元素类型只能全为String、Int32、Float64、Bool中的一种，且元素个数需在100以内。<br>参数个数需在32个以内。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.PerformanceAnalysisKit.*
+
+// 使用构造函数创建AppEventInfo实例的不同方式
+let params1 = HashMap<String, EventValueType>()
+let appEventInfo1 = AppEventInfo("test_domain", "test_event", EventType.Fault, params1)
+
+let params2 = HashMap<String, EventValueType>()
+params2.add("key1", IntValue(100))
+let appEventInfo2 = AppEventInfo("test_domain", "test_event", EventType.Statistic, params2)
+```
+
 ## class AppEventPackage
 
 ```cangjie
@@ -370,6 +406,20 @@ public init(watcherName: String)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |watcherName|String|是|-|已通过addWatcher添加的事件观察者名称。若未通过addWatcher添加，则默认无数据。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.PerformanceAnalysisKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+let holder = AppEventPackageHolder("watcher")
+```
 
 ### func setSize(Int32)
 
@@ -546,6 +596,18 @@ public init(domain!: String = "", name!: String = "", isRealTime!: Bool = false)
 |name|String|否|""|**命名参数。** 事件名称。首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过48个字符。|
 |isRealTime|Bool|否|false|**命名参数。** 是否实时上报事件。配置值为true表示实时上报事件，false表示不实时上报事件。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.PerformanceAnalysisKit.*
+
+let config = AppEventReportConfig()
+```
+
 ## class ConfigOption
 
 ```cangjie
@@ -619,6 +681,18 @@ public init(disable!: Bool = false, maxStorage!: String = "10M")
 |:---|:---|:---|:---|:---|
 |disable|Bool|否|false|打点功能开关|
 |maxStorage|String|否|"10M"|打点数据存放目录的配额大小|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.PerformanceAnalysisKit.*
+
+let option = ConfigOption()
+```
 
 ## class Domain
 
@@ -1160,6 +1234,19 @@ public static func setUserId(name: String, value: String): Unit
 |name|String|是|-|用户ID的key。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。|
 |value|String|是|-|用户ID的值。长度不超过256，当值为null或空字符串时，则清除用户ID。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.PerformanceAnalysisKit.*
+
+HiAppEvent.setUserId("test_getUserId_name", "test_getUserId_value")
+```
+
 ### static func setUserProperty(String, String)
 
 ```cangjie
@@ -1179,6 +1266,18 @@ public static func setUserProperty(name: String, value: String): Unit
 |name|String|是|-|用户属性的key。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。|
 |value|String|是|-|用户属性的值。长度不超过1024，当值为null或空字符串时，则清除用户属性。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.PerformanceAnalysisKit.*
+
+HiAppEvent.setUserProperty("test_setUserProperty_name", "test_setUserProperty_value")
+```
+
 ### static func write(AppEventInfo)
 
 ```cangjie
@@ -1196,6 +1295,26 @@ public static func write(info: AppEventInfo): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |info|[AppEventInfo](#class-appeventinfo)|是|-|应用事件对象。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.PerformanceAnalysisKit.*
+import std.collection.ArrayList
+import std.collection.Map
+
+let params = HashMap<String, EventValueType>()
+params.add("cangjie", IntValue(1001))
+params.add("cangjie2", StringValue("1001"))
+var appInfo: AppEventInfo = AppEventInfo("cangjie1", "test_event", EventType.Fault, params)
+HiAppEvent.write(appInfo)
+HiAppEvent.clearData()
+```
 
 ## class Param
 
@@ -1792,6 +1911,15 @@ public func getValue(): UInt32
 |:----|:----|
 |UInt32|获取枚举的值。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let eventType = EventType.Fault
+let value = eventType.getValue()
+```
+
 ## enum EventValueType
 
 ```cangjie
@@ -1957,3 +2085,12 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|数据的字符串表示。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+let stringValue = EventValueType.StringValue("hello")
+let str = stringValue.toString()
+```

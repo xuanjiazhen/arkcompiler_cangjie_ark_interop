@@ -33,6 +33,20 @@ public class Metadata {
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_DEFAULT | GET_BUNDLE_INFO_WITH_HAP_MODULE
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let hapModuleInfo = bundleInfo.hapModulesInfo[0]
+let metadata = hapModuleInfo.metadata
+```
+
 ### var name
 
 ```cangjie
@@ -48,6 +62,21 @@ public var name: String
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_DEFAULT | GET_BUNDLE_INFO_WITH_HAP_MODULE
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let hapModuleInfo = bundleInfo.hapModulesInfo[0]
+let metadata = hapModuleInfo.metadata
+let name = metadata.name
+```
 
 ### var resource
 
@@ -65,6 +94,21 @@ public var resource: String
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_DEFAULT | GET_BUNDLE_INFO_WITH_HAP_MODULE
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let hapModuleInfo = bundleInfo.hapModulesInfo[0]
+let metadata = hapModuleInfo.metadata
+let resource = metadata.resource
+```
+
 ### var value
 
 ```cangjie
@@ -80,3 +124,18 @@ public var value: String
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_DEFAULT | GET_BUNDLE_INFO_WITH_HAP_MODULE
+let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
+let hapModuleInfo = bundleInfo.hapModulesInfo[0]
+let metadata = hapModuleInfo.metadata
+let value = metadata.value
+```

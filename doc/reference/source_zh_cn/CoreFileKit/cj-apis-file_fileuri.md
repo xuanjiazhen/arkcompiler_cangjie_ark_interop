@@ -142,6 +142,17 @@ public init(uriOrPath: String)
   | 13900042 | Unknown error |
   | 14300002 | Invalid uri |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CoreFileKit.*
+
+let fileUri: FileUri = FileUri("file://docs/storage/Users/currentUser/example.txt")
+```
+
 ### func toString()
 
 ```cangjie
@@ -160,6 +171,18 @@ public override func toString(): String
 |类型|说明|
 |:----|:----|
 |String|返回字符串类型URI。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import kit.CoreFileKit.*
+
+let fileUri: FileUri = FileUri("file://docs/storage/Users/currentUser/example.txt")
+let uriString: String = fileUri.toString()
+```
 
 ## class Uri
 
