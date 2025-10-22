@@ -19720,6 +19720,7 @@ public type Callback<T, V> = (T) -> V
 ```cangjie
 public type CustomBuilder = () -> Unit
 ```
+
 **功能：** [CustomBuilder](#type-custombuilder)是() -> Unit类型的别名。
 
 ## type TransitionFinishCallback
@@ -19727,4 +19728,5 @@ public type CustomBuilder = () -> Unit
 ```cangjie
 public type TransitionFinishCallback = (Bool) -> Unit
 ```
+
 **功能：** [TransitionFinishCallback](#type-transitionfinishcallback)是(Bool) -> Unit类型的别名。

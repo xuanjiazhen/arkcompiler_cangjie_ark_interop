@@ -693,7 +693,7 @@ public class PersistentStorage <: Observer {}
 
 **父类型：**
 
-- Observer
+- [Observer](./cj-ui-framework.md#class-observer)
 
 ### static func deleteProp(String)
 
@@ -892,7 +892,7 @@ public operator func !=(other: ColorMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ColorMode|是|-|要比较的另一个ColorMode实例。|
+|other|[ColorMode](#enum-colormode)|是|-|要比较的另一个ColorMode实例。|
 
 **返回值：**
 
@@ -916,7 +916,7 @@ public operator func ==(other: ColorMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ColorMode|是|-|要比较的另一个ColorMode实例。|
+|other|[ColorMode](#enum-colormode)|是|-|要比较的另一个ColorMode实例。|
 
 **返回值：**
 
@@ -995,7 +995,7 @@ public operator func !=(other: LayoutDirection): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|LayoutDirection|是|-|要比较的另一个LayoutDirection实例。|
+|other|[LayoutDirection](#enum-layoutdirection)|是|-|要比较的另一个LayoutDirection实例。|
 
 **返回值：**
 
@@ -1019,7 +1019,7 @@ public operator func ==(other: LayoutDirection): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|LayoutDirection|是|-|要比较的另一个LayoutDirection实例。|
+|other|[LayoutDirection](#enum-layoutdirection)|是|-|要比较的另一个LayoutDirection实例。|
 
 **返回值：**
 

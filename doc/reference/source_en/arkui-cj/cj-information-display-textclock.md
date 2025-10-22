@@ -33,7 +33,7 @@ public init(timeZoneOffset!: ?Float32 = None, controller!: TextClockController =
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | timeZoneOffset | ?Float32 | No | None | **Named parameter.** Sets the time zone offset.<br/>Valid range is [-14, 12], representing UTC+12 to UTC-12, where negative values indicate east time zones and positive values indicate west time zones. For example, UTC+8 is -8. Floating-point numbers within this range will be truncated (decimal part discarded).<br/>Floating-point numbers in the set { 9.5, 3.5, -3.5, -4.5, -5.5, -5.75, -6.5, -9.5, -10.5, -12.75 } will not be truncated.<br/>For countries or regions crossing the International Date Line, -13 (UTC+13) and -14 (UTC+14) are used to ensure the entire country or region is in the same time. If the set value is outside the valid range, the current system time zone offset will be used. |
-| controller | [TextClockController](#class-textclockcontroller) | No | TextClockController() | **Named parameter.** Binds a controller to manage the state of the text clock. |
+| controller | [TextClockController](./cj-common-types.md#class-textclockcontroller) | No | TextClockController() | **Named parameter.** Binds a controller to manage the state of the text clock. |
 
 ## Common Attributes/Common Events
 

@@ -1443,7 +1443,7 @@ public static func getBranchId(): Int32
 ## class EmptyComponent
 
 ```cangjie
-public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComponentAttribute {
+public class EmptyComponent <: EmptyComponentAttribute {
     public init()
 }
 ```
@@ -1456,7 +1456,6 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComp
 
 **父类型：**
 
-- CommonMethodComponent\<EmptyComponent>
 - EmptyComponentAttribute
 
 ### init()
@@ -1486,7 +1485,7 @@ public open class Observable {}
 ## class \_\_Recycle\_\_
 
 ```cangjie
-public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribute {
+public class __Recycle__ <:  RecycleAttribute {
     public init()
     public init(child: () -> Unit)
 }
@@ -1500,7 +1499,6 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
 
 **父类型：**
 
-- CommonMethodComponent\<\_\_Recycle\_\_>
 - RecycleAttribute
 
 ### init()
