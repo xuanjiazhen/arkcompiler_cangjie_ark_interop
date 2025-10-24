@@ -30,8 +30,13 @@ public init(width!: ?Length = None, height!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|否|None| **命名参数。** 宽度，取值范围≥0。<br>值为异常值或缺省时按照自身内容需要的宽度处理。<br> 初始值: 0.vp|
-|height|?Length|否|None| **命名参数。** 高度，取值范围≥0。<br>值为异常值或缺省时按照自身内容需要的高度处理。<br> 初始值: 0.vp|
+<<<<<<< HEAD
+|width|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 宽度，取值范围≥0。<br>值为异常值或缺省时按照自身内容需要的宽度处理。<br> 初始值: 0.vp|
+|height|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 高度，取值范围≥0。<br>值为异常值或缺省时按照自身内容需要的高度处理。<br> 初始值: 0.vp|
+=======
+|width|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 宽度，取值范围≥0。<br>值为异常值或缺省时按照自身内容需要的宽度处理。<br> 初始值: 0.vp|
+|height|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 高度，取值范围≥0。<br>值为异常值或缺省时按照自身内容需要的高度处理。<br> 初始值: 0.vp|
+>>>>>>> ddl
 
 ## 通用属性/通用事件
 

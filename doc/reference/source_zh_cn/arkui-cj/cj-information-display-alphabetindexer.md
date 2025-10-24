@@ -63,7 +63,7 @@ public func alignStyle(value: ?IndexerAlign): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?IndexerAlign|是|-|字母索引条弹框的对齐样式，支持索引条显示在弹窗左侧和右侧。初始值: IndexerAlign.Right|
+|value|?[IndexerAlign](./cj-common-types.md#enum-indexeralign)|是|-|字母索引条弹框的对齐样式，支持索引条显示在弹窗左侧和右侧。初始值: IndexerAlign.Right|
 
 ### func color(?ResourceColor)
 
@@ -81,7 +81,11 @@ public func color(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|未选中项文本颜色。初始值: Color(0x99182431)|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|未选中项文本颜色。初始值: Color(0x99182431)|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|未选中项文本颜色。初始值: Color(0x99182431)|
+>>>>>>> ddl
 
 ### func font(?Length, ?FontWeight, ?ResourceStr, ?FontStyle)
 
@@ -104,10 +108,16 @@ public func font(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?Length|否|None|**命名参数。** 选中项文字大小。初始值: 10.vp|
-|weight|?FontWeight|否|None|**命名参数。** 选中文字字体粗细。初始值: FontWeight.Normal|
-|family|?ResourceStr|否|None|**命名参数。** 选中文字字体家族。初始值: "HarmonyOS Sans"|
-|style|?FontStyle|否|None|**命名参数。** 选中文字样式。初始值: FontStyle.Normal|
+<<<<<<< HEAD
+|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 选中项文字大小。初始值: 10.vp|
+|weight|?[FontWeight](./cj-common-types.md#enum-fontweight) |否|None|**命名参数。** 选中文字字体粗细。初始值: FontWeight.Normal|
+|family|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|**命名参数。** 选中文字字体家族。初始值: "HarmonyOS Sans"|
+=======
+|size|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 选中项文字大小。初始值: 10.vp|
+|weight|?[FontWeight](./cj-common-types.md#enum-fontweight) |否|None|**命名参数。** 选中文字字体粗细。初始值: FontWeight.Normal|
+|family|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。** 选中文字字体家族。初始值: "HarmonyOS Sans"|
+>>>>>>> ddl
+|style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 选中文字样式。初始值: FontStyle.Normal|
 
 ### func itemSize(?Length)
 
@@ -125,7 +135,11 @@ public func itemSize(size: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?Length|是|-|索引项区域大小，索引项区域为正方形，即正方形边长。<br>不支持设置为百分比。初始值: 16.vp|
+<<<<<<< HEAD
+|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|索引项区域大小，索引项区域为正方形，即正方形边长。<br>不支持设置为百分比。初始值: 16.vp|
+=======
+|size|?[Length](./cj-common-types.md#interface-length)|是|-|索引项区域大小，索引项区域为正方形，即正方形边长。<br>不支持设置为百分比。初始值: 16.vp|
+>>>>>>> ddl
 
 ### func popupBackground(?ResourceColor)
 
@@ -143,7 +157,11 @@ public func popupBackground(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|提示弹窗背景颜色。初始值: Color(0x66808080)|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗背景颜色。初始值: Color(0x66808080)|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|提示弹窗背景颜色。初始值: Color(0x66808080)|
+>>>>>>> ddl
 
 ### func popupColor(?ResourceColor)
 
@@ -161,7 +179,11 @@ public func popupColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|提示弹窗一级索引项文本颜色。初始值: Color(0xFF007DFF)|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗一级索引项文本颜色。初始值: Color(0xFF007DFF)|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|提示弹窗一级索引项文本颜色。初始值: Color(0xFF007DFF)|
+>>>>>>> ddl
 
 ### func popupFont(?Length, ?FontWeight, ?ResourceStr, ?FontStyle)
 
@@ -184,10 +206,16 @@ public func popupFont(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?Length|否|None|**命名参数。** 提示弹窗文字大小。初始值: 24.vp|
-|weight|?FontWeight|否|None|**命名参数。** 提示弹窗文字字体粗细。初始值: FontWeight.Normal|
-|family|?ResourceStr|否|None|**命名参数。** 提示弹窗文字字体家族。初始值: "HarmonyOS Sans"|
-|style|?FontStyle|否|None|**命名参数。** 提示弹窗文字样式。初始值: FontStyle.Normal|
+<<<<<<< HEAD
+|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 提示弹窗文字大小。初始值: 24.vp|
+|weight|? [FontWeight](./cj-common-types.md#enum-fontweight) |否|None|**命名参数。** 提示弹窗文字字体粗细。初始值: FontWeight.Normal|
+|family|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|**命名参数。** 提示弹窗文字字体家族。初始值: "HarmonyOS Sans"|
+=======
+|size|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 提示弹窗文字大小。初始值: 24.vp|
+|weight|? [FontWeight](./cj-common-types.md#enum-fontweight) |否|None|**命名参数。** 提示弹窗文字字体粗细。初始值: FontWeight.Normal|
+|family|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。** 提示弹窗文字字体家族。初始值: "HarmonyOS Sans"|
+>>>>>>> ddl
+|style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 提示弹窗文字样式。初始值: FontStyle.Normal|
 
 ### func popupPosition(?Length, ?Length)
 
@@ -205,8 +233,13 @@ public func popupPosition(x!: ?Length = None, y!: ?Length = None): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?Length|否|None|**命名参数。** 弹出窗口相对于索引器条上边框中点的x坐标。初始值: 60.vp|
-|y|?Length|否|None|**命名参数。** 弹出窗口相对于索引器条上边框中点的y坐标。初始值: 48.vp|
+<<<<<<< HEAD
+|x|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 弹出窗口相对于索引器条上边框中点的x坐标。初始值: 60.vp|
+|y|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 弹出窗口相对于索引器条上边框中点的y坐标。初始值: 48.vp|
+=======
+|x|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 弹出窗口相对于索引器条上边框中点的x坐标。初始值: 60.vp|
+|y|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 弹出窗口相对于索引器条上边框中点的y坐标。初始值: 48.vp|
+>>>>>>> ddl
 
 ### func selected(?Int32)
 
@@ -242,7 +275,11 @@ public func selectedBackgroundColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|选中项背景颜色。初始值: Color(0x1A007DFF)|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项背景颜色。初始值: Color(0x1A007DFF)|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|选中项背景颜色。初始值: Color(0x1A007DFF)|
+>>>>>>> ddl
 
 ### func selectedColor(?ResourceColor)
 
@@ -260,7 +297,11 @@ public func selectedColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|选中项文字颜色。初始值: Color(0xFF007DFF)|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项文字颜色。初始值: Color(0xFF007DFF)|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|选中项文字颜色。初始值: Color(0xFF007DFF)|
+>>>>>>> ddl
 
 ### func selectedFont(?Length, ?FontWeight, ?ResourceStr, ?FontStyle)
 
@@ -283,10 +324,16 @@ public func selectedFont(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?Length|否|None|**命名参数。** 选中项文字大小。初始值: 10.vp|
-|weight|?FontWeight|否|None|**命名参数。** 选中项文字字体粗细。初始值: FontWeight.Normal|
-|family|?ResourceStr|否|None|**命名参数。** 选中项文字字体家族。初始值: "HarmonyOS Sans"|
-|style|?FontStyle|否|None|**命名参数。** 选中项文字样式。初始值: FontStyle.Normal|
+<<<<<<< HEAD
+|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 选中项文字大小。初始值: 10.vp|
+|weight|? [FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** 选中项文字字体粗细。初始值: FontWeight.Normal|
+|family|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|**命名参数。** 选中项文字字体家族。初始值: "HarmonyOS Sans"|
+=======
+|size|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 选中项文字大小。初始值: 10.vp|
+|weight|? [FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** 选中项文字字体粗细。初始值: FontWeight.Normal|
+|family|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。** 选中项文字字体家族。初始值: "HarmonyOS Sans"|
+>>>>>>> ddl
+|style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 选中项文字样式。初始值: FontStyle.Normal|
 
 ### func usingPopup(?Bool)
 
@@ -324,7 +371,11 @@ public func onPopupSelect(callback: ?OnAlphabetIndexerPopupSelectCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?OnAlphabetIndexerPopupSelectCallback|是|-|回调函数，字母索引提示弹窗字符串列表选中时触发。初始值: { _: Int64 => }|
+<<<<<<< HEAD
+|callback|?[OnAlphabetIndexerPopupSelectCallback](./cj-common-types.md#class-onalphabetindexerpopupselectcallback)|是|-|回调函数，字母索引提示弹窗字符串列表选中时触发。初始值: { _: Int64 => }|
+=======
+|callback|?[OnAlphabetIndexerPopupSelectCallback](#type-onalphabetindexerpopupselectcallback)|是|-|回调函数，字母索引提示弹窗字符串列表选中时触发。初始值: { _: Int64 => }|
+>>>>>>> ddl
 
 ### func onRequestPopupData(?OnAlphabetIndexerRequestPopupDataCallback)
 
@@ -342,7 +393,7 @@ public func onRequestPopupData(callback: ?OnAlphabetIndexerRequestPopupDataCallb
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?OnAlphabetIndexerRequestPopupDataCallback|是|-|回调函数，当前选中索引触发。<br>返回值：索引对应的字符串数组，此字符串数组在弹窗中竖排显示，字符串列表最多显示5个，超出部分可以滑动显示。初始值: { _: Int64 => Array<String>() }|
+|callback|?[OnAlphabetIndexerRequestPopupDataCallback](./cj-common-types.md#class-onalphabetindexerrequestpopupdatacallback)|是|-|回调函数，当前选中索引触发。<br>返回值：索引对应的字符串数组，此字符串数组在弹窗中竖排显示，字符串列表最多显示5个，超出部分可以滑动显示。初始值: { _: Int64 => Array<String>() }|
 
 ### func onSelect(?OnAlphabetIndexerSelectCallback)
 
@@ -360,7 +411,7 @@ public func onSelect(callback: ?OnAlphabetIndexerSelectCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?OnAlphabetIndexerSelectCallback|是|-|回调函数，索引条选中时触发。初始值: { _: Int64 => }|
+|callback|?[OnAlphabetIndexerSelectCallback](./cj-common-types.md#class-onalphabetindexerselectcallback)|是|-|回调函数，索引条选中时触发。初始值: { _: Int64 => }|
 
 ## 基础类型定义
 

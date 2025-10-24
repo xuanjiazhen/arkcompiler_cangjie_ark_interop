@@ -57,7 +57,11 @@ public func colors(value: ?Array<(ResourceColor, Int32)>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor), Int32)>|是|-|量规图的颜色，支持分段颜色设置。|
+<<<<<<< HEAD
+|value|?Array\<([ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor), Int32)>|是|-|量规图的颜色，支持分段颜色设置。|
+=======
+|value|?Array\<([ResourceColor](./cj-common-types.md#interface-resourcecolor), Int32)>|是|-|量规图的颜色，支持分段颜色设置。|
+>>>>>>> ddl
 
 ### func colors(?Array\<(LinearGradient, Int32)>)
 
@@ -119,7 +123,11 @@ public func colors(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|量规图的颜色，支持分段颜色设置。|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|量规图的颜色，支持分段颜色设置。|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|量规图的颜色，支持分段颜色设置。|
+>>>>>>> ddl
 
 ### func description(?CustomBuilder)
 
@@ -177,8 +185,13 @@ public func indicator(icon!: ?ResourceStr = None, space!: ?Length = None): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|icon|?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None| **命名参数。** 初始值: "default" 指针样式："default"为三角箭头，"null"为无指针。|
-|space|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 初始值: 8.0.vp 指针距离圆环外边的间距(不支持百分比)。<br>单位：vp。|
+<<<<<<< HEAD
+|icon|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None| **命名参数。** 初始值: "default" 指针样式："default"为三角箭头，"null"为无指针。|
+|space|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 初始值: 8.0.vp 指针距离圆环外边的间距(不支持百分比)。<br>单位：vp。|
+=======
+|icon|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None| **命名参数。** 初始值: "default" 指针样式："default"为三角箭头，"null"为无指针。|
+|space|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 初始值: 8.0.vp 指针距离圆环外边的间距(不支持百分比)。<br>单位：vp。|
+>>>>>>> ddl
 
 ### func startAngle(?Float64)
 
@@ -214,7 +227,11 @@ public func strokeWidth(length: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|length|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值: 4.0.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
+<<<<<<< HEAD
+|length|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值: 4.0.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
+=======
+|length|?[Length](./cj-common-types.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值: 4.0.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
+>>>>>>> ddl
 
 ### func trackShadow(?Float64, ?Float64, ?Float64)
 

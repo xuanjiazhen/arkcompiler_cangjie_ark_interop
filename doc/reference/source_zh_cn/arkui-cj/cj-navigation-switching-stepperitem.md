@@ -92,7 +92,7 @@ public func status(status!: ?ItemState = None): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|status|?ItemState|否|None| **命名参数。** 步骤导航器nextLabel的显示状态。<br>初始值：ItemState.Normal。|
+|status|?[ItemState](#enum-itemstate)|否|None| **命名参数。** 步骤导航器nextLabel的显示状态。<br>初始值：ItemState.Normal。|
 
 > **说明：**
 >

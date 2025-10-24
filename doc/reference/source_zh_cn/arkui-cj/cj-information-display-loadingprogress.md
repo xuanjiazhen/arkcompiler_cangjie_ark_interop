@@ -56,7 +56,11 @@ public func color(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|初始值: 0xFF666666，默认加载进度条的前景色。|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|初始值: 0xFF666666，默认加载进度条的前景色。|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|初始值: 0xFF666666，默认加载进度条的前景色。|
+>>>>>>> ddl
 
 ## 示例代码
 

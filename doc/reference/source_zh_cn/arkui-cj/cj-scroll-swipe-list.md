@@ -75,7 +75,7 @@ public func alignListItem(value: ?ListItemAlign): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ListItemAlign|是|-|交叉轴方向的布局方式。初始值：ListItemAlign.Start。|
+|value|?[ListItemAlign](cj-common-types.md#enum-listitemalign)|是|-|交叉轴方向的布局方式。初始值：ListItemAlign.Start。|
 
 ### func cachedCount(?Int32)
 
@@ -151,7 +151,7 @@ public func edgeEffect(value: ?EdgeEffect): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?EdgeEffect|是|-|边缘效果类型。初始值：EdgeEffect.Spring。|
+|value|?[EdgeEffect](cj-common-types.md#enum-EdgeEffect)|是|-|边缘效果类型。初始值：EdgeEffect.Spring。|
 
 ### func lanes(?Int32)
 
@@ -187,8 +187,8 @@ public func lanes(minLength!: ?Length, maxLength!: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|minLength|?Length|是|-| **命名参数。** 列或行的最小长度。初始值：(-1.0).vp。|
-|maxLength|?Length|是|-| **命名参数。** 列或行的最大长度。初始值：(-1.0).vp。|
+|minLength|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 列或行的最小长度。初始值：(-1.0).vp。|
+|maxLength|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 列或行的最大长度。初始值：(-1.0).vp。|
 
 ### func listDirection(?Axis)
 
@@ -206,7 +206,7 @@ public func listDirection(value: ?Axis): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Axis|是|-|列表项排列方向。初始值：Axis.Vertical。|
+|value|?[Axis](./cj-common-types.md#enum-axis)|是|-|列表项排列方向。初始值：Axis.Vertical。|
 
 ### func multiSelectable(?Bool)
 
@@ -242,7 +242,7 @@ public func sticky(value: ?StickyStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?StickyStyle|是|-|粘性样式。初始值：StickyStyle.None。|
+|value|?[StickyStyle](./cj-common-types.md#enum-stickystyle)|是|-|粘性样式。初始值：StickyStyle.None。|
 
 ## 组件事件
 
@@ -262,7 +262,7 @@ public func onScrollFrameBegin(event: ?(Float64, ScrollState) -> onScrollFrameBe
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(Float64, ScrollState) -> onScrollFrameBeginHandleResult|是|-|滚动帧开始事件回调。初始值：{ _, _ => onScrollFrameBeginHandleResult(offsetRemain: 0.0) }。|
+|event|?(Float64, [ScrollState](./cj-common-types.md#enum-scrollstate)) -> [onScrollFrameBeginHandleResult](./cj-scroll-swipe-list.md#class-onscrollframebeginhandleresult)|是|-|滚动帧开始事件回调。初始值：{ _, _ => onScrollFrameBeginHandleResult(offsetRemain: 0.0) }。|
 
 ### func onScrollIndex(?(Int32, Int32, Int32) -> Unit)
 

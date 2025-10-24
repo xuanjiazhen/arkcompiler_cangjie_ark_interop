@@ -35,7 +35,7 @@ public init(isCountDown!: ?Bool = None, count!: ?Int64 = None,
 |:---|:---|:---|:---|:---|
 |isCountDown|?Bool|否|None| **命名参数。** 是否倒计时。<br>初始值：false。|
 |count|?Int64|否|None| **命名参数。** 计时器时间（isCountDown为true时生效），单位为毫秒。<br>初始值：60000。|
-|controller|?TextTimerController|否|None| **命名参数。** TextTimer控制器。|
+|controller|?[TextTimerController](#class-texttimercontroller)|否|None| **命名参数。** TextTimer控制器。|
 
 ## 通用属性/通用事件
 
@@ -61,7 +61,11 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|字体颜色。|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|字体颜色。|
+>>>>>>> ddl
 
 ### func fontFamily(?ResourceStr)
 
@@ -79,7 +83,11 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|字体列表。<br>初始字体：'HarmonyOS Sans'。<br>初始值："HarmonyOS Sans"。|
+<<<<<<< HEAD
+|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。<br>初始字体：'HarmonyOS Sans'。<br>初始值："HarmonyOS Sans"。|
+=======
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|字体列表。<br>初始字体：'HarmonyOS Sans'。<br>初始值："HarmonyOS Sans"。|
+>>>>>>> ddl
 
 ### func fontSize(?Length)
 
@@ -97,7 +105,11 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|字体大小。初始值：16.0.fp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。初始值：16.0.fp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|字体大小。初始值：16.0.fp。|
+>>>>>>> ddl
 
 ### func fontStyle(?FontStyle)
 
@@ -115,7 +127,7 @@ public func fontStyle(value: ?FontStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontStyle|是|-|字体样式。<br>初始值：FontStyle.Normal。|
+|value|?[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。<br>初始值：FontStyle.Normal。|
 
 ### func fontWeight(?FontWeight)
 
@@ -133,7 +145,7 @@ public func fontWeight(value: ?FontWeight): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontWeight|是|-|字体粗细。初始值：FontWeight.Normal|
+|value|?[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|字体粗细。初始值：FontWeight.Normal|
 
 ### func format(?String)
 
@@ -169,7 +181,7 @@ public func textShadow(value: ?Array<ShadowOptions>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Array\<ShadowOptions>|是|-|阴影选项数组。|
+|value|?Array\<[ShadowOptions](./cj-class-common.md#class-shadowoptions)>|是|-|阴影选项数组。|
 
 ### func textShadow(?ShadowOptions)
 
@@ -187,7 +199,7 @@ public func textShadow(value: ?ShadowOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ShadowOptions|是|-|阴影选项。|
+|value|?[ShadowOptions](./cj-class-common.md#class-shadowoptions)|是|-|阴影选项。|
 
 ## 组件事件
 

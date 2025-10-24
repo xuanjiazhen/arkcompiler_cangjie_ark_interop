@@ -37,7 +37,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
 
 **父类型：**
 
-- CommonMethod\<T>
+-  [CommonMethod](./cj-ui-framework.md#interface-commonmethod)\<T>
 
 ### func fill(?ResourceColor)
 
@@ -55,7 +55,11 @@ func fill(value: ?ResourceColor): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|填充颜色。初始值：Color.Black。|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|填充颜色。初始值：Color.Black。|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|填充颜色。初始值：Color.Black。|
+>>>>>>> ddl
 
 ### func fillOpacity(?Float64)
 
@@ -91,7 +95,7 @@ func fillOpacity(value: ?AppResource): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?AppResource|是|-|填充透明度。初始值：1.0。|
+|value|?[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|填充透明度。初始值：1.0。|
 
 ### func stroke(?ResourceColor)
 
@@ -109,7 +113,11 @@ func stroke(value: ?ResourceColor): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|边框颜色。初始值：Color.Transparent。|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|边框颜色。初始值：Color.Transparent。|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|边框颜色。初始值：Color.Transparent。|
+>>>>>>> ddl
 
 ### func strokeDashArray(?Array\<Length>)
 
@@ -127,7 +135,11 @@ func strokeDashArray(value: ?Array<Length>): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Array\<Length>|是|-|边框虚线数组。初始值：[]。|
+<<<<<<< HEAD
+|value|?Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|边框虚线数组。初始值：[]。|
+=======
+|value|?Array\<[Length](./cj-common-types.md#interface-length)>|是|-|边框虚线数组。初始值：[]。|
+>>>>>>> ddl
 
 ### func strokeDashOffset(?Length)
 
@@ -145,7 +157,11 @@ func strokeDashOffset(value: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|边框虚线偏移量。初始值：0.vp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框虚线偏移量。初始值：0.vp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|边框虚线偏移量。初始值：0.vp。|
+>>>>>>> ddl
 
 ### func strokeLineCap(?LineCapStyle)
 
@@ -163,7 +179,7 @@ func strokeLineCap(value: ?LineCapStyle): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?LineCapStyle|是|-|边框线帽样式。初始值：LineCapStyle.Butt。|
+|value|?[LineCapStyle](./cj-common-types.md#enum-linecapstyle)|是|-|边框线帽样式。初始值：LineCapStyle.Butt。|
 
 ### func strokeLineJoin(?LineJoinStyle)
 
@@ -181,7 +197,7 @@ func strokeLineJoin(value: ?LineJoinStyle): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?LineJoinStyle|是|-|边框连接点样式。初始值：LineJoinStyle.Miter。|
+|value|?[LineJoinStyle](./cj-common-types.md#enum-linejoinstyle)|是|-|边框连接点样式。初始值：LineJoinStyle.Miter。|
 
 ### func strokeMiterLimit(?Float64)
 
@@ -235,7 +251,7 @@ func strokeOpacity(value: ?AppResource): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?AppResource|是|-|边框透明度。初始值：1.0。|
+|value|?[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|边框透明度。初始值：1.0。|
 
 ### func strokeWidth(?Length)
 
@@ -253,7 +269,11 @@ func strokeWidth(value: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|边框宽度。初始值：1.vp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。初始值：1.vp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|边框宽度。初始值：1.vp。|
+>>>>>>> ddl
 
 ### func antiAlias(?Bool)
 
@@ -276,7 +296,7 @@ func antiAlias(value: ?Bool): T
 ## class CommonShapeMethodComponent
 
 ```cangjie
-public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> & CommonShapeMethod<T> {
+public abstract class CommonShapeMethodComponent<T> <:  CommonShapeMethod<T> {
 }
 ```
 
@@ -288,7 +308,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
 
 **父类型：**
 
-- CommonMethodComponent\<T>
 - [CommonShapeMethod](#interface-commonshapemethod)\<T>
 
 ### public func fill(?ResourceColor)
@@ -307,7 +326,11 @@ public func fill(value: ?ResourceColor): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|填充颜色。初始值：Color.Black。|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|填充颜色。初始值：Color.Black。|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|填充颜色。初始值：Color.Black。|
+>>>>>>> ddl
 
 ### public func fillOpacity(?Float64)
 
@@ -343,7 +366,7 @@ public func fillOpacity(value: ?AppResource): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?AppResource|是|-|填充透明度。初始值：1.0。|
+|value|?[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|填充透明度。初始值：1.0。|
 
 ### public func stroke(?ResourceColor)
 
@@ -361,7 +384,11 @@ public func stroke(value: ?ResourceColor): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|边框颜色。初始值：Color.Transparent。|
+<<<<<<< HEAD
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|边框颜色。初始值：Color.Transparent。|
+=======
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|边框颜色。初始值：Color.Transparent。|
+>>>>>>> ddl
 
 ### public func strokeDashArray(?Array\<Length>)
 
@@ -379,7 +406,11 @@ public func strokeDashArray(value: ?Array<Length>): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Array\<Length>|是|-|边框虚线数组。初始值：[]。|
+<<<<<<< HEAD
+|value|?Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|边框虚线数组。初始值：[]。|
+=======
+|value|?Array\<[Length](./cj-common-types.md#interface-length)>|是|-|边框虚线数组。初始值：[]。|
+>>>>>>> ddl
 
 ### public func strokeDashOffset(?Length)
 
@@ -397,7 +428,11 @@ public func strokeDashOffset(value: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|边框虚线偏移量。初始值：0.vp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框虚线偏移量。初始值：0.vp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|边框虚线偏移量。初始值：0.vp。|
+>>>>>>> ddl
 
 ### public func strokeLineCap(?LineCapStyle)
 
@@ -415,7 +450,7 @@ public func strokeLineCap(value: ?LineCapStyle): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?LineCapStyle|是|-|边框线帽样式。初始值：LineCapStyle.Butt。|
+|value|?[LineCapStyle](./cj-common-types.md#enum-linecapstyle)|是|-|边框线帽样式。初始值：LineCapStyle.Butt。|
 
 ### public func strokeLineJoin(?LineJoinStyle)
 
@@ -433,7 +468,7 @@ public func strokeLineJoin(value: ?LineJoinStyle): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?LineJoinStyle|是|-|边框连接点样式。初始值：LineJoinStyle.Miter。|
+|value|?[LineJoinStyle](./cj-common-types.md#enum-linejoinstyle)|是|-|边框连接点样式。初始值：LineJoinStyle.Miter。|
 
 ### public func strokeMiterLimit(?Float64)
 
@@ -487,7 +522,7 @@ public func strokeOpacity(value: ?AppResource): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?AppResource|是|-|边框透明度。初始值：1.0。|
+|value|?[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|边框透明度。初始值：1.0。|
 
 ### public func strokeWidth(?Length)
 
@@ -505,7 +540,11 @@ public func strokeWidth(value: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|边框宽度。初始值：1.vp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。初始值：1.vp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|边框宽度。初始值：1.vp。|
+>>>>>>> ddl
 
 ### public func antiAlias(?Bool)
 

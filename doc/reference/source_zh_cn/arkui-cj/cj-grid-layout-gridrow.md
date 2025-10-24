@@ -39,8 +39,12 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |columns|?Int32|是|-| **命名参数。** 布局列数设置。<br>初始值：12。|
-|gutter|?Length|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp。|
-|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()。|
+<<<<<<< HEAD
+|gutter|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp。|
+=======
+|gutter|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp。|
+>>>>>>> ddl
+|breakpoints|?[BreakPoints](#class-breakpoints)|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()。|
 |direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row。|
 |child|() -> Unit|否|{=>}| **命名参数。** GridRow容器的子组件。|
 
@@ -66,9 +70,13 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|?GridRowOptions|否|None| **命名参数。** 布局列数设置。<br>初始值：GridRowOptions()|
-|gutter|?Length|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp|
-|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
+|columns|?[GridRowOptions](#class-gridrowoptions)|否|None| **命名参数。** 布局列数设置。<br>初始值：GridRowOptions()|
+<<<<<<< HEAD
+|gutter|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp|
+=======
+|gutter|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp|
+>>>>>>> ddl
+|breakpoints|?[BreakPoints](#class-breakpoints)|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
 |direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
 |child|() -> Unit|否|{=>}| **命名参数。** GridRow 容器的子组件。|
 
@@ -95,8 +103,8 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |columns|?Int32|是|-| **命名参数。** 布局列数设置。<br>初始值：12|
-|gutter|?GutterOptions|是|-| **命名参数。** 栅格布局间距。|
-|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
+|gutter|?[GutterOptions](#class-gutteroptions)|是|-| **命名参数。** 栅格布局间距。|
+|breakpoints|?[BreakPoints](#class-breakpoints)|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
 |direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
 |child|() -> Unit|否|{=>}| **命名参数。** GridRow 容器的子组件。|
 
@@ -121,9 +129,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|?GridRowOptions|否|None| **命名参数。** 布局列数设置。<br>初始值：GridRowOptions()。|
-|gutter|?GutterOptions|是|-| **命名参数。** 栅格布局间距。|
-|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()。|
+|columns|?[GridRowOptions](#class-gridrowoptions)|否|None| **命名参数。** 布局列数设置。<br>初始值：GridRowOptions()。|
+|gutter|?[GutterOptions](#class-gutteroptions)|是|-| **命名参数。** 栅格布局间距。|
+|breakpoints|?[BreakPoints](#class-breakpoints)|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()。|
 |direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row。|
 |child|() -> Unit|否|{=>}| **命名参数。** GridRow容器的子组件。|
 
@@ -151,7 +159,7 @@ public func alignItems(value: ?ItemAlign): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ItemAlign|是|-|GridRow中的GridCol垂直主轴方向对齐方式。<br>初始值：ItemAlign.Start。|
+|value|?[ItemAlign](./cj-common-types.md#enum-itemalign)|是|-|GridRow中的GridCol垂直主轴方向对齐方式。<br>初始值：ItemAlign.Start。|
 
 ## 组件事件
 
@@ -219,7 +227,11 @@ public var value: ?Array<Length>
 
 **功能：** 断点位置的单调递增数组设置。
 
-**类型：** ?Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>
+<<<<<<< HEAD
+**类型：** ?Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>
+=======
+**类型：** ?Array\<[Length](./cj-common-types.md#interface-length)>
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -245,7 +257,11 @@ public init(value!: ?Array<Length> = None,
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|否|None| **命名参数。** 断点位置的单调递增数组设置<br>初始值：[320.vp, 600.vp, 840.vp]|
+<<<<<<< HEAD
+|value|?Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|否|None| **命名参数。** 断点位置的单调递增数组设置<br>初始值：[320.vp, 600.vp, 840.vp]|
+=======
+|value|?Array\<[Length](./cj-common-types.md#interface-length)>|否|None| **命名参数。** 断点位置的单调递增数组设置<br>初始值：[320.vp, 600.vp, 840.vp]|
+>>>>>>> ddl
 |reference|?[BreakpointsReference](#enum-breakpointsreference)|否|None| **命名参数。** 断点切换参照物。<br>初始值：BreakpointsReference.WindowSize|
 
 ### class GridRowSizeOptions
@@ -286,7 +302,11 @@ public var lg: ?Length
 
 **功能：** 大宽度类型设备。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+<<<<<<< HEAD
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+=======
+**类型：** ?[Length](./cj-common-types.md#interface-length)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -302,7 +322,11 @@ public var md: ?Length
 
 **功能：** 中等宽度类型设备。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+<<<<<<< HEAD
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+=======
+**类型：** ?[Length](./cj-common-types.md#interface-length)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -318,7 +342,11 @@ public var sm: ?Length
 
 **功能：** 小宽度类型设备。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+<<<<<<< HEAD
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+=======
+**类型：** ?[Length](./cj-common-types.md#interface-length)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -334,7 +362,11 @@ public var xl: ?Length
 
 **功能：** 特大宽度类型设备。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+<<<<<<< HEAD
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+=======
+**类型：** ?[Length](./cj-common-types.md#interface-length)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -350,7 +382,11 @@ public var xs: ?Length
 
 **功能：** 最小宽度类型设备。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+<<<<<<< HEAD
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+=======
+**类型：** ?[Length](./cj-common-types.md#interface-length)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -366,7 +402,11 @@ public var xxl: ?Length
 
 **功能：** 超大宽度类型设备。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+<<<<<<< HEAD
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+=======
+**类型：** ?[Length](./cj-common-types.md#interface-length)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -397,12 +437,21 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xs|?Length|否|None| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
-|sm|?Length|否|None| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
-|md|?Length|否|None| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
-|lg|?Length|否|None| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
-|xl|?Length|否|None| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
-|xxl|?Length|否|None| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+<<<<<<< HEAD
+|xs|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|sm|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|md|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|lg|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|xl|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|xxl|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+=======
+|xs|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|sm|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|md|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|lg|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|xl|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|xxl|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+>>>>>>> ddl
 
 #### init(?Length)
 
@@ -420,7 +469,11 @@ public init(value: ?Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+>>>>>>> ddl
 
 ### class GutterOptions
 
@@ -455,8 +508,13 @@ public init(x!: ?Length = None, y!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?Length|否|None| **命名参数。** 栅格子组件x方向的间距。<br>初始值：0.vp|
-|y|?Length|否|None| **命名参数。** 栅格子组件y方向的间距。<br>初始值：0.vp|
+<<<<<<< HEAD
+|x|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 栅格子组件x方向的间距。<br>初始值：0.vp|
+|y|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 栅格子组件y方向的间距。<br>初始值：0.vp|
+=======
+|x|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 栅格子组件x方向的间距。<br>初始值：0.vp|
+|y|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 栅格子组件y方向的间距。<br>初始值：0.vp|
+>>>>>>> ddl
 
 #### init(?GridRowSizeOptions, ?GridRowSizeOptions)
 
@@ -474,8 +532,8 @@ public init(x!: ?GridRowSizeOptions, y!: ?GridRowSizeOptions)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?GridRowSizeOptions|否|None| **命名参数。** 栅格子组件x方向的间距。<br>初始值：GridRowSizeOptions()|
-|y|?GridRowSizeOptions|否|None| **命名参数。** 栅格子组件y方向的间距。<br>初始值：GridRowSizeOptions()|
+|x|?[GridRowSizeOptions](#class-gridrowsizeoptions)|否|None| **命名参数。** 栅格子组件x方向的间距。<br>初始值：GridRowSizeOptions()|
+|y|?[GridRowSizeOptions](#class-gridrowsizeoptions)|否|None| **命名参数。** 栅格子组件y方向的间距。<br>初始值：GridRowSizeOptions()|
 
 ### class GridRowOptions
 

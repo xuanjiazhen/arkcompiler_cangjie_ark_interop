@@ -36,7 +36,7 @@ public init(sideBarType!: ?SideBarContainerType = None, child!: () -> Unit = {=>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|sideBarType|?SideBarContainerType|否|None| **命名参数。** 设置侧边栏的显示类型。<br>初始值：SideBarContainerType.Embed。|
+|sideBarType|?[SideBarContainerType](./cj-common-types.md#enum-sidebarcontainertype)|否|None| **命名参数。** 设置侧边栏的显示类型。<br>初始值：SideBarContainerType.Embed。|
 |child|() -> Unit|否|{=>}| **命名参数。** 定义侧边栏和内容区。|
 
 ## 通用属性/通用事件
@@ -86,7 +86,7 @@ public func controlButton(value: ?ButtonStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ButtonStyle|是|-|侧边栏控制按钮的属性。|
+|value|?[ButtonStyle](#class-buttonstyle)|是|-|侧边栏控制按钮的属性。|
 
 ### func divider(?DividerStyle)
 
@@ -104,7 +104,7 @@ public func divider(value: ?DividerStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?DividerStyle|是|-|分割线的样式，默认显示分割线。<br>初始值：DividerStyle(strokeWidth: 1.vp)|
+|value|?[DividerStyle](#class-dividerstyle)|是|-|分割线的样式，默认显示分割线。<br>初始值：DividerStyle(strokeWidth: 1.vp)|
 
 ### func maxSideBarWidth(?Length)
 
@@ -127,7 +127,11 @@ public func maxSideBarWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置侧边栏最大宽度。<br>单位：vp。<br>初始值：280.vp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置侧边栏最大宽度。<br>单位：vp。<br>初始值：280.vp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|设置侧边栏最大宽度。<br>单位：vp。<br>初始值：280.vp。|
+>>>>>>> ddl
 
 ### func minContentWidth(?Length)
 
@@ -156,7 +160,11 @@ public func minContentWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|SideBarContainer组件内容区可显示的最小宽度。<br>单位：vp。<br>初始值：360.vp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|SideBarContainer组件内容区可显示的最小宽度。<br>单位：vp。<br>初始值：360.vp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|SideBarContainer组件内容区可显示的最小宽度。<br>单位：vp。<br>初始值：360.vp。|
+>>>>>>> ddl
 
 ### func minSideBarWidth(?Length)
 
@@ -179,7 +187,11 @@ public func minSideBarWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|侧边栏最小宽度。<br>初始值：240.vp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|侧边栏最小宽度。<br>初始值：240.vp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|侧边栏最小宽度。<br>初始值：240.vp。|
+>>>>>>> ddl
 
 ### func showControlButton(?Bool)
 
@@ -233,7 +245,7 @@ public func sideBarPosition(value: ?SideBarPosition): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?SideBarPosition|是|-|侧边栏显示位置。<br>初始值：SideBarPosition.Start。|
+|value|?[SideBarPosition](./cj-common-types.md#enum-sidebarposition)|是|-|侧边栏显示位置。<br>初始值：SideBarPosition.Start。|
 
 ### func sideBarWidth(?Length)
 
@@ -255,7 +267,11 @@ public func sideBarWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|侧边栏的宽度。<br>单位：vp。<br>初始值：240.vp。|
+<<<<<<< HEAD
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|侧边栏的宽度。<br>单位：vp。<br>初始值：240.vp。|
+=======
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|侧边栏的宽度。<br>单位：vp。<br>初始值：240.vp。|
+>>>>>>> ddl
 
 ## 组件事件
 
@@ -312,7 +328,11 @@ public var shown: ?ResourceStr
 
 **功能：** 侧边栏显示时控制按钮的图标。
 
-**类型：** ?ResourceStr
+<<<<<<< HEAD
+**类型：** ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+=======
+**类型：** ?[ResourceStr](./cj-common-types.md#interface-resourcestr)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -328,7 +348,11 @@ public var hidden: ?ResourceStr
 
 **功能：** 侧边栏隐藏时控制按钮的图标。
 
-**类型：** ?ResourceStr
+<<<<<<< HEAD
+**类型：** ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+=======
+**类型：** ?[ResourceStr](./cj-common-types.md#interface-resourcestr)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -344,7 +368,11 @@ public var switching: ?ResourceStr
 
 **功能：** 侧边栏显示和隐藏状态切换时控制按钮的图标。
 
-**类型：** ?ResourceStr
+<<<<<<< HEAD
+**类型：** ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+=======
+**类型：** ?[ResourceStr](./cj-common-types.md#interface-resourcestr)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -368,9 +396,15 @@ public init(shown!: ?ResourceStr, hidden!: ?ResourceStr, switching!: ?ResourceSt
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|shown|?ResourceStr|是|-|**命名参数** 设置侧边栏显示时控制按钮的图标。|
-|hidden|?ResourceStr|是|-|**命名参数** 设置侧边栏隐藏时控制按钮的图标。|
-|switching|?ResourceStr|否|None|**命名参数** 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br>初始值：""|
+<<<<<<< HEAD
+|shown|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数** 设置侧边栏显示时控制按钮的图标。|
+|hidden|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数** 设置侧边栏隐藏时控制按钮的图标。|
+|switching|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|**命名参数** 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br>初始值：""|
+=======
+|shown|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|**命名参数** 设置侧边栏显示时控制按钮的图标。|
+|hidden|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|**命名参数** 设置侧边栏隐藏时控制按钮的图标。|
+|switching|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数** 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br>初始值：""|
+>>>>>>> ddl
 
 ### class ButtonStyle
 
@@ -469,7 +503,7 @@ public var icons: ?ButtonIconOptions
 
 **功能：** 设置侧边栏控制按钮的图标。
 
-**类型：** ?ButtonIconOptions
+**类型：** ?[ButtonIconOptions](#class-buttoniconoptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -503,7 +537,7 @@ public init(
 |top|?Float64|否|None|**命名参数** 设置侧边栏控制按钮距离容器上界限的间距。<br>单位：vp。<br>初始值：48.0。|
 |width|?Float64|否|None|**命名参数** 设置侧边栏控制按钮的宽度。<br>单位：vp。<br>初始值：24.0。|
 |height|?Float64|否|None|**命名参数** 设置侧边栏控制按钮的高度。<br>单位：vp。<br>初始值：24.0。|
-|icons|?ButtonIconOptions|否|None|**命名参数** 设置侧边栏控制按钮的图标。<br>初始值：ButtonIconOptions(shown: "", hidden: "")。|
+|icons|?[ButtonIconOptions](#class-buttoniconoptions)|否|None|**命名参数** 设置侧边栏控制按钮的图标。<br>初始值：ButtonIconOptions(shown: "", hidden: "")。|
 
 ### class DividerStyle
 
@@ -556,7 +590,11 @@ public var color: ?ResourceColor
 
 **功能：** 分割线的颜色。
 
-**类型：** ?ResourceColor
+<<<<<<< HEAD
+**类型：** ?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+=======
+**类型：** ?[ResourceColor](./cj-common-types.md#interface-resourcecolor)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -572,7 +610,11 @@ public var startMargin: ?Length
 
 **功能：** 分割线与侧边栏顶端的距离。
 
-**类型：** ?Length
+<<<<<<< HEAD
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+=======
+**类型：** ?[Length](./cj-common-types.md#interface-length)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -588,7 +630,11 @@ public var endMargin: ?Length
 
 **功能：** 分割线与侧边栏底端的距离。
 
-**类型：** ?Length
+<<<<<<< HEAD
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+=======
+**类型：** ?[Length](./cj-common-types.md#interface-length)
+>>>>>>> ddl
 
 **读写能力：** 可读写
 
@@ -613,10 +659,17 @@ public init(strokeWidth!: ?Length, color!: ?ResourceColor = None, startMargin!: 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|strokeWidth|?Length|是|-|**命名参数** 分割线的线宽。<br>初始值：1.vp。|
-|color|?ResourceColor|否|None|**命名参数** 分割线的颜色。<br>初始值：0x08000000。|
-|startMargin|?Length|否|None|**命名参数** 分割线与侧边栏顶端的距离。<br>初始值：0.vp。|
-|endMargin|?Length|否|None|**命名参数** 分割线与侧边栏底端的距离。<br>初始值：0.vp。|
+<<<<<<< HEAD
+|strokeWidth|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数** 分割线的线宽。<br>初始值：1.vp。|
+|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None|**命名参数** 分割线的颜色。<br>初始值：0x08000000。|
+|startMargin|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数** 分割线与侧边栏顶端的距离。<br>初始值：0.vp。|
+|endMargin|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数** 分割线与侧边栏底端的距离。<br>初始值：0.vp。|
+=======
+|strokeWidth|?[Length](./cj-common-types.md#interface-length)|是|-|**命名参数** 分割线的线宽。<br>初始值：1.vp。|
+|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|None|**命名参数** 分割线的颜色。<br>初始值：0x08000000。|
+|startMargin|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数** 分割线与侧边栏顶端的距离。<br>初始值：0.vp。|
+|endMargin|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数** 分割线与侧边栏底端的距离。<br>初始值：0.vp。|
+>>>>>>> ddl
 
 ## 示例代码
 
