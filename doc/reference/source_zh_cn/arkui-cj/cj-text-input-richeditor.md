@@ -30,7 +30,7 @@ public init(controller: ?RichEditorController)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|controller|?RichEditorController|是|-|富文本控制器。|
+|controller|?[RichEditorController](./cj-text-input-richeditor.md#class-richeditorcontroller)|是|-|富文本控制器。|
 
 ## 通用属性/通用事件
 
@@ -42,7 +42,6 @@ public init(controller: ?RichEditorController)
 > - 不支持borderImage属性。
 
 通用事件：全部支持。
-
 
 ## 组件属性
 
@@ -71,10 +70,10 @@ public func bindSelectionMenu(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|spantype|?RichEditorSpanType|否|None|**命名参数。** 指定选择菜单的类型。<br>初始值：RichEditorSpanType.Text。|
-|content|?CustomBuilder|是|-|**命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。<br>初始值：{ => }。|
-|responseType|?ResponseType|否|None|**命名参数。** 指定选择菜单的响应类型。<br>初始值：ResponseType.LongPress。|
-|options|?SelectionMenuOptions|是|-|**命名参数。** 指定选择菜单的选项。<br>初始值：SelectionMenuOptions()。|
+|spantype|?[RichEditorSpanType](./cj-common-types.md#enum-richeditorspantype)|否|None|**命名参数。** 指定选择菜单的类型。<br>初始值：RichEditorSpanType.Text。|
+|content|?[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|**命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。<br>初始值：{ => }。|
+|responseType|?[ResponseType](./cj-common-types.md#enum-responsetype)|否|None|**命名参数。** 指定选择菜单的响应类型。<br>初始值：ResponseType.LongPress。|
+|options|?[SelectionMenuOptions](#class-selectionmenuoptions)|是|-|**命名参数。** 指定选择菜单的选项。<br>初始值：SelectionMenuOptions()。|
 
 ### func copyOptions(?CopyOptions)
 
@@ -97,7 +96,7 @@ public func copyOptions(value: ?CopyOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?CopyOptions|是|-|复制粘贴的能力。初始值：CopyOptions.LocalDevice。|
+|value|?[CopyOptions](./cj-common-types.md#enum-copyoptions)|是|-|复制粘贴的能力。初始值：CopyOptions.LocalDevice。|
 
 ### func customKeyboard(?CustomBuilder)
 
@@ -124,7 +123,7 @@ public func customKeyboard(value!: ?CustomBuilder): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?CustomBuilder|是|-|**命名参数。** 富文本编辑器的自定义键盘。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。<br>初始值：{ => }。|
+|value|?[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|**命名参数。** 富文本编辑器的自定义键盘。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。<br>初始值：{ => }。|
 
 ## 组件事件
 
@@ -144,7 +143,7 @@ public func onReady(callback: ?VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?VoidCallback|是|-|回调函数，富文本组件初始化完成后触发回调。<br>初始值：{ => }。|
+|callback|?[VoidCallback](./cj-common-types.md#type-VoidCallback)|是|-|回调函数，富文本组件初始化完成后触发回调。<br>初始值：{ => }。|
 
 ### func aboutToImeInput(?Callback\<RichEditorInsertValue, Bool>)
 
@@ -162,7 +161,7 @@ public func aboutToImeInput(callback: ?Callback<RichEditorInsertValue, Bool>): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<RichEditorInsertValue, Bool>|是|-|回调函数，输入法输入内容前触发。RichEditorInsertValue：输入法将要输入内容信息。true：组件执行添加内容操作。false：组件不执行添加内容操作。<br>初始值：{ _ => false }。|
+|callback|?Callback\<[RichEditorInsertValue](#class-richeditorinsertvalue), Bool>|是|-|回调函数，输入法输入内容前触发。RichEditorInsertValue：输入法将要输入内容信息。true：组件执行添加内容操作。false：组件不执行添加内容操作。<br>初始值：{ _ => false }。|
 
 ### func onImeInputComplete(?Callback\<RichEditorTextSpanResult, Unit>)
 
@@ -180,7 +179,7 @@ public func onImeInputComplete(callback: ?Callback<RichEditorTextSpanResult, Uni
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<RichEditorTextSpanResult, Unit>|是|-|回调函数，输入法完成输入后触发回调。RichEditorTextSpanResult：输入法完成输入后的文本Span信息。<br>初始值：{ _ => false }。|
+|callback|?Callback\<[RichEditorTextSpanResult](#class-richeditortextspanresult), Unit>|是|-|回调函数，输入法完成输入后触发回调。RichEditorTextSpanResult：输入法完成输入后的文本Span信息。<br>初始值：{ _ => false }。|
 
 ### func onDeleteComplete(?VoidCallback)
 
@@ -198,7 +197,7 @@ public func onDeleteComplete(callback: ?VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?VoidCallback|是|-|回调函数，订阅输入法完成删除时触发。<br>初始值：{ => }。|
+|callback|?[VoidCallback](./cj-common-types.md#type-VoidCallback)|是|-|回调函数，订阅输入法完成删除时触发。<br>初始值：{ => }。|
 
 ### func aboutToDelete(?Callback\<RichEditorDeleteValue, Bool>)
 
@@ -216,7 +215,7 @@ public func aboutToDelete(callback: ?Callback<RichEditorDeleteValue, Bool>): Thi
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<RichEditorDeleteValue, Bool>|是|-|回调函数，输入法删除内容前触发该回调 。RichEditorDeleteValue：准备删除的内容所在的文本Span信息。true：组件执行删除操作。false：组件不执行删除操作。<br>初始值：{ _ => false }。|
+|callback|?Callback\<[RichEditorDeleteValue](#class-richeditordeletevalue), Bool>|是|-|回调函数，输入法删除内容前触发该回调 。RichEditorDeleteValue：准备删除的内容所在的文本Span信息。true：组件执行删除操作。false：组件不执行删除操作。<br>初始值：{ _ => false }。|
 
 ### func onSelect(?Callback\<RichEditorSelection, Unit>)
 
@@ -234,7 +233,7 @@ public func onSelect(callback: ?Callback<RichEditorSelection, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<RichEditorSelection, Unit>|是|-|回调函数，鼠标左键按下选择，松开左键后触发回调。用手指选择时，松开手指触发回调。RichEditorSelection：选中的所有Span信息。<br>初始值：{ _ => }。|
+|callback|?Callback\<[RichEditorSelection](#class-richeditorselection), Unit>|是|-|回调函数，鼠标左键按下选择，松开左键后触发回调。用手指选择时，松开手指触发回调。RichEditorSelection：选中的所有Span信息。<br>初始值：{ _ => }。|
 
 ### func onPaste(?PasteEventCallback)
 
@@ -438,7 +437,7 @@ public var fontStyle: FontStyle
 
 **功能：** 字体样式。
 
-**类型：** FontStyle
+**类型：**  [FontStyle](./cj-common-types.md#enum-fontstyle)
 
 **读写能力：** 可读写
 
@@ -486,7 +485,7 @@ public var decoration: DecorationStyleResult
 
 **功能：** 字体装饰。
 
-**类型：** DecorationStyleResult
+**类型：** [DecorationStyleResult](#class-decorationstyleresult)
 
 **读写能力：** 可读写
 
@@ -519,10 +518,10 @@ public init(
 |:---|:---|:---|:---|:---|
 |fontColor|String|是|-|字体颜色。|
 |fontSize|Float64|是|-|字体大小。|
-|fontStyle|FontStyle|是|-|字体样式。|
+|fontStyle| [FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。|
 |fontWeight|Int32|是|-|字体粗细。|
 |fontFamily|String|是|-|字体族。|
-|decoration|DecorationStyleResult|是|-|字体装饰。|
+|decoration|[DecorationStyleResult](#class-decorationstyleresult)|是|-|字体装饰。|
 
 ### class RichEditorImageSpanStyleResult
 
@@ -569,7 +568,7 @@ public var verticalAlign: ?ImageSpanAlignment
 
 **功能：** 图像垂直对齐。
 
-**类型：** ?ImageSpanAlignment
+**类型：** ?[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)
 
 **读写能力：** 可读写
 
@@ -585,7 +584,7 @@ public var objectFit: ?ImageFit
 
 **功能：** 图像适应方式。
 
-**类型：** ?ImageFit
+**类型：** ?[ImageFit](./cj-common-types.md#enum-imagefit)
 
 **读写能力：** 可读写
 
@@ -601,17 +600,13 @@ public var layoutStyle: ?RichEditorLayoutStyle
 
 **功能：** RichEditor图像布局样式。
 
-**类型：** ?RichEditorLayoutStyle
+**类型：** ?[RichEditorLayoutStyle](#class-richeditorlayoutstyle)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
-
-
-
-
 
 ### class RichEditorTextSpanResult
 
@@ -638,7 +633,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 
 **父类型：**
 
-- RichEditorSpanResult
+- [RichEditorSpanResult](#class-richeditortextspanresult)
 
 #### var spanPosition
 
@@ -648,7 +643,7 @@ public var spanPosition: RichEditorSpanPosition
 
 **功能：** 文本span的位置。
 
-**类型：** RichEditorSpanPosition
+**类型：** [RichEditorSpanPosition](#class-richeditorspanposition)
 
 **读写能力：** 可读写
 
@@ -680,7 +675,7 @@ public var textStyle: RichEditorTextStyleResult
 
 **功能：** 文本样式。
 
-**类型：** RichEditorTextStyleResult
+**类型：**  [ [RichEditorTextStyleResult](#class-richeditortextstyleresult)](#class-richeditortextstyleresult)
 
 **读写能力：** 可读写
 
@@ -725,9 +720,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|spanPosition|RichEditorSpanPosition|是|-|文本span的位置。|
+|spanPosition|[RichEditorSpanPosition](#class-richeditorspanposition)|是|-|文本span的位置。|
 |value|String|是|-|文本span的内容。|
-|textStyle|RichEditorTextStyleResult|是|-|文本样式。|
+|textStyle| [ [RichEditorTextStyleResult](#class-richeditortextstyleresult)](#class-richeditortextstyleresult)|是|-|文本样式。|
 |offsetInSpan|(Int32, Int32)|是|-|span中的偏移量。|
 
 ### class RichEditorImageSpanResult
@@ -757,9 +752,9 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
 
 **父类型：**
 
-- RichEditorSpanResult
+-  [RichEditorSpanResult](#class-richeditortextspanresult)
 
-#### var spanPosition
+#### var SpanPosition
 
 ```cangjie
 public var spanPosition: ?RichEditorSpanPosition
@@ -767,7 +762,7 @@ public var spanPosition: ?RichEditorSpanPosition
 
 **功能：** 图像span的位置。
 
-**类型：** ?RichEditorSpanPosition
+**类型：** ?[RichEditorSpanPosition](#class-richeditorspanposition)
 
 **读写能力：** 可读写
 
@@ -783,7 +778,7 @@ public var valuePixelMap: Option<PixelMap>
 
 **功能：** 图像span的像素图。
 
-**类型：** Option\<PixelMap>
+**类型：** Option\<[[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)](../ImageKit/cj-apis-image.md#class-pixelmap)>
 
 **读写能力：** 可读写
 
@@ -815,7 +810,7 @@ public var imageStyle: ?RichEditorImageSpanStyleResult
 
 **功能：** 图像属性。
 
-**类型：** ?RichEditorImageSpanStyleResult
+**类型：** ?[RichEditorImageSpanStyleResult](#class-richeditorimagespanresult)
 
 **读写能力：** 可读写
 
@@ -823,7 +818,7 @@ public var imageStyle: ?RichEditorImageSpanStyleResult
 
 **起始版本：** 22
 
-#### var offsetInSpan
+#### var OffsetInSpan
 
 ```cangjie
 public var offsetInSpan: ?(Int32, Int32)
@@ -861,10 +856,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|spanPosition|?RichEditorSpanPosition|否|Option.None|**命名参数。** 图像span的位置。初始值：RichEditorSpanPosition(0, (0, 0))。|
-|valuePixelMap|Option\<PixelMap>|否|Option.None|**命名参数。** 图像span的像素图。|
-|valueResourceStr|?String|否|None|**命名参数。** 图像span的资源字符串。初始值：""。|
-|imageStyle|?RichEditorImageSpanStyleResult|否|None|**命名参数。** 图像属性。初始值：RichEditorImageSpanStyleResult()。|
+|spanPosition|?[RichEditorSpanPosition](#class-richeditorspanposition)|否|Option.None|**命名参数。** 图像span的位置。初始值：RichEditorSpanPosition(0, (0, 0))。|
+|valuePixelMap|Option\<[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)>|否|Option.None|**命名参数。** 图像span的像素图。|
+|value[ResourceStr](./cj-common-types.md#interface-resourcestr)|?String|否|None|**命名参数。** 图像span的资源字符串。初始值：""。|
+|imageStyle|?[RichEditorImageSpanStyleResult](#class-richeditorimagespanresult)|否|None|**命名参数。** 图像属性。初始值：RichEditorImageSpanStyleResult()。|
 |offsetInSpan|?(Int32, Int32)|否|None|**命名参数。** span中的偏移量。初始值：(0, 0)。|
 
 ### class RichEditorSelection
@@ -911,7 +906,7 @@ public var spans: ?ArrayList<RichEditorSpanResult>
 
 **功能：** 选中的文本内容。
 
-**类型：** ?ArrayList\<RichEditorSpanResult>
+**类型：** ?ArrayList\<[RichEditorSpanResult](#interface-richeditorspanresult)>
 
 **读写能力：** 可读写
 
@@ -936,7 +931,7 @@ public init(selection: ?(Int32, Int32), spans: ?ArrayList<RichEditorSpanResult>)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |selection|?(Int32, Int32)|是|-|位置信息。初始值：(0, 0)。|
-|spans|?ArrayList\<RichEditorSpanResult>|是|-|选中的文本内容。初始值：ArrayList\<RichEditorSpanResult>()。|
+|spans|?ArrayList\< [RichEditorSpanResult](#interface-richeditorspanresult)>|是|-|选中的文本内容。初始值：ArrayList\<RichEditorSpanResult>()。|
 
 ### class RichEditorDeleteValue
 
@@ -989,7 +984,7 @@ public var direction: RichEditorDeleteDirection
 
 **功能：** 删除的方向。
 
-**类型：** RichEditorDeleteDirection
+**类型：** [RichEditorDeleteDirection](./cj-common-types.md#enum-richeditordeletedirection)
 
 **读写能力：** 可读写
 
@@ -1021,7 +1016,7 @@ public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
 
 **功能：** 删除的span对象。
 
-**类型：** ArrayList\<RichEditorSpanResult>
+**类型：** ArrayList\< [RichEditorSpanResult](#interface-richeditorspanresult)>
 
 **读写能力：** 可读写
 
@@ -1051,9 +1046,9 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |offset|Int32|是|-|删除的偏移量。|
-|direction|RichEditorDeleteDirection|是|-|删除的方向。|
+|direction|[RichEditorDeleteDirection](./cj-common-types.md#enum-richeditordeletedirection)|是|-|删除的方向。|
 |length|Int32|是|-|删除的文本长度。|
-|richEditorDeleteSpans|ArrayList\<RichEditorSpanResult>|是|-|删除的span对象。|
+|richEditorDeleteSpans|ArrayList\< [RichEditorSpanResult](#interface-richeditorspanresult)>|是|-|删除的span对象。|
 
 ### class TextRange
 
@@ -1258,7 +1253,7 @@ public var decorationType: ?TextDecorationType
 
 **功能：** 装饰类型。
 
-**类型：** ?TextDecorationType
+**类型：** ?[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
 
 **读写能力：** 可读写
 
@@ -1274,7 +1269,7 @@ public var color: ResourceColor
 
 **功能：** 颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -1301,8 +1296,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|decorationType|TextDecorationType|是|-|装饰类型。|
-|color|ResourceColor|是|-|颜色。|
+|decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|装饰类型。|
+|color|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|颜色。|
 
 ### class SelectionMenuOptions
 
@@ -1332,7 +1327,7 @@ public var onAppear: ?VoidCallback
 
 **功能：** 选择菜单出现时的回调函数。
 
-**类型：** ?VoidCallback
+**类型：** ?[VoidCallback](./cj-common-types.md#type-VoidCallback)
 
 **读写能力：** 可读写
 
@@ -1348,7 +1343,7 @@ public var onDisappear: ?VoidCallback
 
 **功能：** 选择菜单消失时的回调函数。
 
-**类型：** ?VoidCallback
+**类型：** ?[VoidCallback](./cj-common-types.md#type-VoidCallback)
 
 **读写能力：** 可读写
 
@@ -1402,9 +1397,7 @@ public class RichEditorTextStyle {
 
 **起始版本：** 22
 
-**父类型：**
-
-无
+**父类型：** 无
 
 #### var fontColor
 
@@ -1430,7 +1423,7 @@ public var fontSize: ?Length
 
 **功能：** 字体大小。
 
-**类型：** ?Length
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1446,7 +1439,7 @@ public var fontStyle: ?FontStyle
 
 **功能：** 字体样式。
 
-**类型：** ?FontStyle
+**类型：** ? [FontStyle](./cj-common-types.md#enum-fontstyle)
 
 **读写能力：** 可读写
 
@@ -1462,7 +1455,7 @@ public var fontWeight: ?FontWeight
 
 **功能：** 字体粗细。
 
-**类型：** ?FontWeight
+**类型：** ?[FontWeight](./cj-common-types.md#enum-fontweight) 
 
 **读写能力：** 可读写
 
@@ -1478,7 +1471,7 @@ public var fontFamily: ?ResourceStr
 
 **功能：** 字体族。
 
-**类型：** ?ResourceStr
+**类型：** ?[ResourceStr](./cj-common-types.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -1486,7 +1479,7 @@ public var fontFamily: ?ResourceStr
 
 **起始版本：** 22
 
-#### var decoration
+#### var Decoration
 
 ```cangjie
 public var decoration: ?TextDecorationOptions
@@ -1494,7 +1487,7 @@ public var decoration: ?TextDecorationOptions
 
 **功能：** 字体装饰。
 
-**类型：** ?TextDecorationOptions
+**类型：** ?[TextDecorationOptions](#class-textdecorationoptions)
 
 **读写能力：** 可读写
 
@@ -1526,11 +1519,11 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fontColor|?ResourceColor|否|None|**命名参数。** 字体颜色。初始值：Color.Black。|
-|fontSize|?Length|否|None|**命名参数。** 字体大小。初始值：16.vp。|
-|fontStyle|?FontStyle|否|None|**命名参数。** 字体样式。初始值：FontStyle.Normal。|
-|fontWeight|?FontWeight|否|None|**命名参数。** 字体粗细。初始值：FontWeight.Normal。|
-|fontFamily|?ResourceStr|否|None|**命名参数。** 字体族。初始值：DEFAULT_FONT。|
-|decoration|?TextDecorationOptions|否|None|**命名参数。** 字体装饰。初始值：TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)。|
+|fontSize|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 字体大小。初始值：16.vp。|
+|fontStyle|? [FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 字体样式。初始值：FontStyle.Normal。|
+|fontWeight|?[FontWeight](./cj-common-types.md#enum-fontweight) |否|None|**命名参数。** 字体粗细。初始值：FontWeight.Normal。|
+|fontFamily|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。** 字体族。初始值：DEFAULT_FONT。|
+|decoration|?[TextDecorationOptions](#class-textdecorationoptions)|否|None|**命名参数。** 字体装饰。初始值：TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)。|
 
 ### class RichEditorTextSpanOptions
 
@@ -1576,7 +1569,7 @@ public var style: ?RichEditorTextStyle
 
 **功能：** 文本样式。
 
-**类型：** ?RichEditorTextStyle
+**类型：** ?[RichEditorTextStyle](#class-richeditortextstyle)
 
 **读写能力：** 可读写
 
@@ -1601,7 +1594,7 @@ public init(offset!: ?Int32 = None, style!: ?RichEditorTextStyle = None)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |offset|?Int32|否|None|**命名参数。** 添加文本span的偏移量。初始值：Int32.Max。|
-|style|?RichEditorTextStyle|否|None|**命名参数。** 文本样式。初始值：RichEditorTextStyle()。|
+|style|?[RichEditorTextStyle](#class-richeditortextstyle)|否|None|**命名参数。** 文本样式。初始值：RichEditorTextStyle()。|
 
 ### class RichEditorLayoutStyle
 
@@ -1632,7 +1625,7 @@ public var margin: ?Margin
 
 **功能：** 边距。
 
-**类型：** ?Margin
+**类型：** ?[Margin](./cj-common-types.md#class-margin)
 
 **读写能力：** 可读写
 
@@ -1648,7 +1641,7 @@ public var borderRadius: ?BorderRadiuses
 
 **功能：** 边框圆角。
 
-**类型：** ?BorderRadiuses
+**类型：** ?[BorderRadiuses](./cj-common-types.md#class-borderradiuses)
 
 **读写能力：** 可读写
 
@@ -1672,8 +1665,8 @@ public init(margin!: ?Margin = None, borderRadius!: ?BorderRadiuses = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|margin|?Margin|否|None|**命名参数。** 边距。初始值：Margin()。|
-|borderRadius|?BorderRadiuses|否|None|**命名参数。** 边框圆角。初始值：BorderRadiuses()。|
+|margin|?[Margin](./cj-common-types.md#class-margin)|否|None|**命名参数。** 边距。初始值：Margin()。|
+|borderRadius|?[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|否|None|**命名参数。** 边框圆角。初始值：BorderRadiuses()。|
 
 #### init(?Length, ?Length)
 
@@ -1691,8 +1684,8 @@ public init(margin!: ?Length, borderRadius!: ?Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|margin|?Length|否|None|**命名参数。** 边距。|
-|borderRadius|?Length|否|None|**命名参数。** 边框圆角。|
+|margin|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 边距。|
+|borderRadius|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 边框圆角。|
 
 ### class RichEditorImageSpanStyle
 
@@ -1728,7 +1721,7 @@ public var size: Option<(Length, Length)>
 
 **功能：** 图像大小。
 
-**类型：** Option\<(Length, Length)>
+**类型：** Option\<([Length](./cj-common-types.md#interface-length), [Length](./cj-common-types.md#interface-length))>
 
 **读写能力：** 可读写
 
@@ -1744,7 +1737,7 @@ public var verticalAlign: ?ImageSpanAlignment
 
 **功能：** 图像垂直对齐。
 
-**类型：** ?ImageSpanAlignment
+**类型：** ?[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)
 
 **读写能力：** 可读写
 
@@ -1760,7 +1753,7 @@ public var objectFit: ?ImageFit
 
 **功能：** 图像适应方式。
 
-**类型：** ?ImageFit
+**类型：** ?[ImageFit](./cj-common-types.md#enum-imagefit)
 
 **读写能力：** 可读写
 
@@ -1776,7 +1769,7 @@ public var layoutStyle: RichEditorLayoutStyle
 
 **功能：** 图像布局样式。
 
-**类型：** RichEditorLayoutStyle
+**类型：** [RichEditorLayoutStyle](#class-richeditorlayoutstyle)
 
 **读写能力：** 可读写
 
@@ -1804,9 +1797,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|Option\<(Length, Length)>|否|Option.None|**命名参数。** 图像大小。|
-|verticalAlign|?ImageSpanAlignment|否|Option.None|**命名参数。** 图像垂直对齐。初始值：ImageSpanAlignment.Bottom。|
-|objectFit|?ImageFit|否|Option.None|**命名参数。** 图像适应方式。初始值：ImageFit.Cover。|
+|size|Option\<([Length](./cj-common-types.md#interface-length), [Length](./cj-common-types.md#interface-length))>|否|Option.None|**命名参数。** 图像大小。|
+|verticalAlign|?[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)|否|Option.None|**命名参数。** 图像垂直对齐。初始值：ImageSpanAlignment.Bottom。|
+|objectFit|?[ImageFit](./cj-common-types.md#enum-imagefit)|否|Option.None|**命名参数。** 图像适应方式。初始值：ImageFit.Cover。|
 
 ### class RichEditorImageSpanOptions
 
@@ -1855,7 +1848,7 @@ public var imageStyle: ?RichEditorImageSpanStyle
 
 **功能：** 图像样式。
 
-**类型：** ?RichEditorImageSpanStyle
+**类型：** ?[RichEditorImageSpanStyle](#class-richeditorimagespanstyle)
 
 **读写能力：** 可读写
 
@@ -1883,7 +1876,7 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |offset|?Int32|否|None|**命名参数。** 添加图像span的偏移量。初始值：Int32.Max。|
-|imageStyle|?RichEditorImageSpanStyle|否|None|**命名参数。** 图像样式。初始值：RichEditorImageSpanStyle()。|
+|imageStyle|?[RichEditorImageSpanStyle](#class-richeditorimagespanstyle)|否|None|**命名参数。** 图像样式。初始值：RichEditorImageSpanStyle()。|
 
 ### class RichEditorParagraphStyle
 
@@ -1915,7 +1908,7 @@ public var textAlign: ?TextAlign
 
 **功能：** 文本对齐。
 
-**类型：** ?TextAlign
+**类型：** ?[TextAlign](./cj-common-types.md#enum-textalign)
 
 **读写能力：** 可读写
 
@@ -1931,7 +1924,7 @@ public var leadingMargin: ?LeadingMarginType
 
 **功能：** 首行缩进。
 
-**类型：** ?LeadingMarginType
+**类型：** ?[LeadingMarginType](#enum-leadingmargintype)
 
 **读写能力：** 可读写
 
@@ -1955,7 +1948,7 @@ public init(textAlign!: ?TextAlign = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|textAlign|?TextAlign|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
+|textAlign|?[TextAlign](./cj-common-types.md#enum-textalign)|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
 
 #### init(?TextAlign, ?Length)
 
@@ -1973,8 +1966,8 @@ public init(textAlign!: ?TextAlign = None, leadingMargin!: ?Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|textAlign|?TextAlign|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
-|leadingMargin|?Length|否|None|**命名参数。** 首行缩进。|
+|textAlign|?[TextAlign](./cj-common-types.md#enum-textalign)|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
+|leadingMargin|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 首行缩进。|
 
 #### init(?TextAlign, ?LeadingMarginPlaceholder)
 
@@ -1992,8 +1985,8 @@ public init(textAlign!: ?TextAlign = None, leadingMargin!: ?LeadingMarginPlaceho
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|textAlign|?TextAlign|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
-|leadingMargin|?LeadingMarginPlaceholder|是|-|**命名参数。** 首行缩进。|
+|textAlign|?[TextAlign](./cj-common-types.md#enum-textalign)|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
+|leadingMargin|?[LeadingMarginPlaceholder](#class-leadingmarginplaceholder)|是|-|**命名参数。** 首行缩进。|
 
 ### class TextDecorationOptions
 
@@ -2023,7 +2016,7 @@ public var decorationType: ?TextDecorationType
 
 **功能：** 装饰类型。
 
-**类型：** ?TextDecorationType
+**类型：** ?[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
 
 **读写能力：** 可读写
 
@@ -2039,7 +2032,7 @@ public var color: ?ResourceColor
 
 **功能：** 颜色。
 
-**类型：** ?ResourceColor
+**类型：** ?[ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -2063,16 +2056,16 @@ public init(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|decorationType|?TextDecorationType|是|-|**命名参数。** 装饰类型。初始值：TextDecorationType.None。|
-|color|?ResourceColor|否|None|**命名参数。** 颜色。初始值：Color.Black。|
+|decorationType|?[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|**命名参数。** 装饰类型。初始值：TextDecorationType.None。|
+|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|None|**命名参数。** 颜色。初始值：Color.Black。|
 
 ### class LeadingMarginPlaceholder
 
 ```cangjie
 public class LeadingMarginPlaceholder {
     public var pixelMap: PixelMap
-    public var size: ?(Length, Length)
-    public init(pixelMap!: PixelMap, size!: ?(Length, Length))
+    public var size: ?([Length](./cj-common-types.md#interface-length), [Length](./cj-common-types.md#interface-length))
+    public init(pixelMap!: PixelMap, size!: ?([Length](./cj-common-types.md#interface-length), [Length](./cj-common-types.md#interface-length)))
 }
 ```
 
@@ -2094,7 +2087,7 @@ public var pixelMap: PixelMap
 
 **功能：** 占位符像素图。
 
-**类型：** PixelMap
+**类型：** [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)
 
 **读写能力：** 可读写
 
@@ -2110,7 +2103,7 @@ public var size: ?(Length, Length)
 
 **功能：** 占位符大小。
 
-**类型：** ?(Length, Length)
+**类型：** ?([Length](./cj-common-types.md#interface-length), [Length](./cj-common-types.md#interface-length))
 
 **读写能力：** 可读写
 
@@ -2134,8 +2127,8 @@ public init(pixelMap!: PixelMap, size!: ?(Length, Length))
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|PixelMap|是|-|**命名参数。** 占位符像素图。|
-|size|?(Length, Length)|是|-|**命名参数。** 占位符大小。初始值：(0.0.px, 0.0.px)。|
+|pixelMap|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|**命名参数。** 占位符像素图。|
+|size|?([Length](./cj-common-types.md#interface-length), [Length](./cj-common-types.md#interface-length))|是|-|**命名参数。** 占位符大小。初始值：(0.0.px, 0.0.px)。|
 
 
 ### class RichEditorBaseController
@@ -2238,8 +2231,8 @@ public func addTextSpan(content!: ?ResourceStr, options!: ?RichEditorTextSpanOpt
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|?ResourceStr|是|-|**命名参数。** 文本内容。初始值：""。|
-|options|?RichEditorTextSpanOptions|否|None|**命名参数。** 文本选项。初始值：RichEditorTextSpanOptions()。|
+|content|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|**命名参数。** 文本内容。初始值：""。|
+|options|?[RichEditorTextSpanOptions](#class-richeditortextspanoptions)|否|None|**命名参数。** 文本选项。初始值：RichEditorTextSpanOptions()。|
 
 **返回值：**
 
@@ -2271,8 +2264,8 @@ public func addImageSpan(value!: ?ResourceStr, options!: ?RichEditorImageSpanOpt
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|**命名参数。** 图片内容。初始值：""。|
-|options|?RichEditorImageSpanOptions|否|None|**命名参数。** 图片选项。初始值：RichEditorImageSpanOptions()。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|**命名参数。** 图片内容。初始值：""。|
+|options|?[RichEditorImageSpanOptions](#class-richeditorimagespanoptions)|否|None|**命名参数。** 图片选项。初始值：RichEditorImageSpanOptions()。|
 
 **返回值：**
 
@@ -2298,7 +2291,7 @@ public func updateSpanStyle(start!: ?Int32 = None, end!: ?Int32 = None, textStyl
 |:---|:---|:---|:---|:---|
 |start|?Int32|否|None|**命名参数。** 起始位置。初始值：0。|
 |end|?Int32|否|None|**命名参数。** 结束位置。初始值：Int32.Max。|
-|textStyle|?RichEditorTextStyle|是|-|**命名参数。** 文本样式。初始值：RichEditorTextStyle()。|
+|textStyle|?[RichEditorTextStyle](#class-richeditortextstyle)|是|-|**命名参数。** 文本样式。初始值：RichEditorTextStyle()。|
 
 #### func updateSpanStyle(?Int32, ?Int32, ?RichEditorImageSpanStyle)
 
@@ -2318,7 +2311,7 @@ public func updateSpanStyle(start!: ?Int32 = None, end!: ?Int32 = None, imageSty
 |:---|:---|:---|:---|:---|
 |start|?Int32|否|None|**命名参数。** 起始位置。初始值：0。|
 |end|?Int32|否|None|**命名参数。** 结束位置。初始值：Int32.Max。|
-|imageStyle|?RichEditorImageSpanStyle|是|-|**命名参数。** 图像样式。初始值：RichEditorImageSpanStyle()。|
+|imageStyle|?[RichEditorImageSpanStyle](#class-richeditorimagespanstyle)|是|-|**命名参数。** 图像样式。初始值：RichEditorImageSpanStyle()。|
 
 #### func deleteSpans(?Int32, ?Int32)
 
@@ -2373,7 +2366,7 @@ public func updateParagraphStyle(start!: ?Int32 = None, end!: ?Int32 = None, sty
 |:---|:---|:---|:---|:---|
 |start|?Int32|否|None|**命名参数。** 起始位置。初始值：0。|
 |end|?Int32|否|None|**命名参数。** 结束位置。初始值：-1。|
-|style|?RichEditorParagraphStyle|是|-|**命名参数。** 段落样式。初始值：RichEditorParagraphStyle()。|
+|style|?[RichEditorParagraphStyle](#class-richeditorparagraphstyle)|是|-|**命名参数。** 段落样式。初始值：RichEditorParagraphStyle()。|
 
 #### func getSpans(?Int32, ?Int32)
 
@@ -2398,7 +2391,7 @@ public func getSpans(start!: ?Int32 = None, end!: ?Int32 = None): ArrayList<Rich
 
 |类型|说明|
 |:---|:---|
-|ArrayList\<RichEditorSpanResult>|Span内容。|
+|ArrayList\< [RichEditorSpanResult](#interface-richeditorspanresult)>|Span内容。|
 
 ### enum LeadingMarginType
 
@@ -2450,6 +2443,10 @@ None
 **功能：** 无。
 
 **起始版本：** 22
+
+## type PasteeEventCallback
+
+## type OnDidChangeCallback
 
 ## 示例代码
 
@@ -2580,3 +2577,4 @@ class EntryView {
 ```
 
 ![richeditor](figures/richeditor.gif)
+
