@@ -33,7 +33,7 @@ public init(timeZoneOffset!: ?Float32 = None, controller!: ?TextClockController 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |timeZoneOffset|?Float32|否|None| **命名参数。** 时区偏移。|
-|controller|?[TextClockController](./cj-common-types.md#class-textclockcontroller)|否|None| **命名参数。** TextClock组件的控制器。|
+|controller|?[TextClockController](#class-textclockcontroller)|否|None| **命名参数。** TextClock组件的控制器。|
 
 ## 通用属性/通用事件
 
@@ -167,7 +167,7 @@ public func textShadow(values: ?Array<ShadowOptions>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|values|?Array\<[ShadowOptions](./cj-common-types.md#interface-shadowoptions)>|是|-|阴影选项数组。|
+|values|?Array\<[ShadowOptions](./cj-common-types.md#class-shadowoptions)>|是|-|阴影选项数组。|
 
 ### func textShadow(?ShadowOptions)
 
@@ -185,7 +185,7 @@ public func textShadow(value: ?ShadowOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ShadowOptions](./cj-common-types.md#interface-shadowoptions)|是|-|阴影选项。|
+|value|?[ShadowOptions](./cj-common-types.md#class-shadowoptions)|是|-|阴影选项。|
 
 ## 组件事件
 

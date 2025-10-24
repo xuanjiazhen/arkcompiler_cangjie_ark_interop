@@ -44,7 +44,7 @@ public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>, keyGenerat
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|arr|[CollectionEx](./cj-common-types.md#interface-collectionex)\<T>|是|-|用于UI中的数组集合。|
+|arr|[CollectionEx](./cj-ui-framework.md#interface-collectionex)\<T>|是|-|用于UI中的数组集合。|
 |itemGenerator|ItemGenFuncType\<T>|否|-|项目生成函数。|
 |keyGenerator|?KeyGenFuncType\<T>|否|None|键生成函数。|
 

@@ -297,7 +297,7 @@ func scrollBar(barState: ?BarState): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|barState|?Bar[BarState](./cj-common-types.md#enum-barstate)State|是|-|滚动条状态。|
+|barState|?BarState[BarState](./cj-common-types.md#enum-barstate)|是|-|滚动条状态。|
 
 #### func scrollBarColor(?ResourceColor)
 
@@ -551,7 +551,7 @@ func clipContent(clip: ?ContentClipMode): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|clip|?[ContentClipMode](./cj-common-types.md#enum-ContentClipMode)|是|-|内容裁剪模式。|
+|clip|?[ContentClipMode](#enum-contentclipmode)|是|-|内容裁剪模式。|
 
 #### func clipContent(?RectShape)
 
@@ -2002,7 +2002,7 @@ public enum ContentClipMode <: Equatable<ContentClipMode> {
 
 **父类型：**
 
-- Equatable\<[ContentClipMode](./cj-common-types.md#enum-ContentClipMode)>
+- Equatable\<[ContentClipMode](#enum-contentclipmode)>
 
 #### ContentOnly
 
@@ -2056,7 +2056,7 @@ public operator func !=(other: ContentClipMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[ContentClipMode](./cj-common-types.md#enum-ContentClipMode)|是|-|待比较的另一个枚举值。|
+|other|[ContentClipMode](#enum-contentclipmode)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
@@ -2080,7 +2080,7 @@ public operator func ==(other: ContentClipMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[ContentClipMode](./cj-common-types.md#enum-ContentClipMode)|是|-|待比较的另一个枚举值。|
+|other|[ContentClipMode](#enum-contentclipmode)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 

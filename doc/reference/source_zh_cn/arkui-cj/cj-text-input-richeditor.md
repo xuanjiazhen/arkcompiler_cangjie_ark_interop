@@ -675,7 +675,7 @@ public var textStyle: RichEditorTextStyleResult
 
 **功能：** 文本样式。
 
-**类型：**  [ [RichEditorTextStyleResult](#class-richeditortextstyleresult)](#class-richeditortextstyleresult)
+**类型：**  [RichEditorTextStyleResult](#class-richeditortextstyleresult)
 
 **读写能力：** 可读写
 
@@ -2064,8 +2064,8 @@ public init(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None)
 ```cangjie
 public class LeadingMarginPlaceholder {
     public var pixelMap: PixelMap
-    public var size: ?([Length](./cj-common-types.md#interface-length), [Length](./cj-common-types.md#interface-length))
-    public init(pixelMap!: PixelMap, size!: ?([Length](./cj-common-types.md#interface-length), [Length](./cj-common-types.md#interface-length)))
+    public var size: ?(Length, Length)
+    public init(pixelMap!: PixelMap, size!: ?(Length, Length))
 }
 ```
 

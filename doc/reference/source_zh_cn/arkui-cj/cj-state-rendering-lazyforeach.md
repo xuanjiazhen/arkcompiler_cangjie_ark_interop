@@ -274,15 +274,15 @@ public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSo
 |:---|:---|:---|:---|:---|
 |viewID|Int64|是|-|观察ID|
 |parentView|[CustomView](./cj-ui-framework.md#class-customview)|是|-|父观察者|
-|dataSource|[IDataSource](./cj-common-types.md#interface-idatasource)\<T>|是|-|LazyForEach数据源，需要开发者实现相关接口。|
+|dataSource|[IDataSource](#interface-idatasource)\<T>|是|-|LazyForEach数据源，需要开发者实现相关接口。|
 |ItemGeneratFunc|[ItemGeneratFunc](#func-itemgeneratfunc)\<T>|是|-|子组件生成函数，为数组中的每一个数据项创建一个子组件。lambda函数的第一个泛型参数为数据类型；第二个参数为当前列表项的索引值。|
-|keyGeneratorFunc|[KeyGenFuncType](#func-keygeneratfunc)\<T>|否|{ _: T, idx: Int64 => }|匿名函数，用于键值生成，为给定数组项生成唯一且稳定的键值。|
+|keyGeneratorFunc|[keyGeneratorFunc](#func-keygeneratfunc)\<T>|否|{ _: T, idx: Int64 => }|匿名函数，用于键值生成，为给定数组项生成唯一且稳定的键值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[LazyForEach](cj-state-rendering-lazyforeach.md)\<T>|LazyForEach实例对象，用于后续进一步操作。|
+|[LazyForEach](./cj-state-rendering-lazyforeach.md#lazyforeach)\<T>|LazyForEach实例对象，用于后续进一步操作。|
 
 ## Func ItemGeneratFunc
 

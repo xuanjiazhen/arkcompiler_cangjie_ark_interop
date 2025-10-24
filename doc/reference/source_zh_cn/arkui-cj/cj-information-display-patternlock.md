@@ -92,7 +92,7 @@ public func circleRadius(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|宫格中圆点的半径。初始值：6.0.vp。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|宫格中圆点的半径。初始值：6.0.vp。|
 
 ### func pathColor(?ResourceColor)
 

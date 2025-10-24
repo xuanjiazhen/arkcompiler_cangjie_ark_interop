@@ -19856,19 +19856,3 @@ public type CustomBuilder = () -> Unit
 public type TransitionFinishCallback = (Bool) -> Unit
 ```
 **功能：** [TransitionFinishCallback](#type-transitionfinishcallback)是(Bool) -> Unit类型的别名。
-
-## class Bindable<T>
-
-```cangjie
-public class Bindable<T> {
-    public let value: T
-    public let onChange: (T) -> Unit
-    public init(value: T, onChange: (T) -> Unit)
-}
-```
-
-**功能：** 定义可绑定属性。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 22

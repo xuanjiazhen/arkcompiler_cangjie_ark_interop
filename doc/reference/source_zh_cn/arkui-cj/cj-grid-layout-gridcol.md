@@ -56,7 +56,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|span|?GridCol[GridColOptions](#class-gridcoloptions)Options|是|-| **命名参数。** 占用列数。<br>初始值：GridColOptions(1)|
+|span|?GridColOptions[GridColOptions](#class-gridcoloptions)Options|是|-| **命名参数。** 占用列数。<br>初始值：GridColOptions(1)|
 |offset|?[GridColOptions](#class-gridcoloptions)|是|-| **命名参数。** 相对于前一个栅格子组件偏移的列数。<br>初始值：GridColOptions(0)|
 |order|?[GridColOptions](#class-gridcoloptions)|是|-| **命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br>初始值：GridColOptions(0)|
 |child|() -> Unit|否|{=>}| **命名参数。** GridCol 容器的子组件。|

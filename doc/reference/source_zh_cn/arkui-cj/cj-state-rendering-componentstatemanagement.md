@@ -33,7 +33,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
 **父类型：** 
 
-- [ObservedPropertyAbstract](./cj-state-rendering-componentstatemanagement.md#class-observedpropertyabstract)
+- [ObservedPropertyAbstract](./cj-ui-framework.md#class-observedpropertyabstract)
 
 #### init(String, T)
 
@@ -130,7 +130,7 @@ public func subscribeEx(observer: Observer): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|observer|[Observer](./cj-ui-framework.md#class-observer)|是|-|绑定的观察类。|
+|observer|[Observer](./cj-ui-framework.md#interface-observer)|是|-|绑定的观察类。|
 
 #### func unsubscribeEx(Observer)
 
@@ -148,7 +148,7 @@ public func unsubscribeEx(observer: Observer): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|observer|[Observer](./cj-ui-framework.md#class-observer)|是|-|解绑的观察类。|
+|observer|[Observer](./cj-ui-framework.md#interface-observer)|是|-|解绑的观察类。|
 
 ## ObservedArrayList
 
@@ -171,8 +171,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
 **父类型：**
 
-- [ObservedComplexAbstract](./cj-state-rendering-appstatemanagement.md#class-observedcomplexabstract)
-- [CollectionEx](./cj-common-types.md#interface-collectionex)\<T>
+- [ObservedComplexAbstract](./cj-ui-framework.md#class-observedcomplexabstract)
+- [CollectionEx](./cj-ui-framework.md#interface-collectionex)\<T>
 
 #### prop size
 
@@ -294,7 +294,7 @@ public func set(newValue: ObservedComplexAbstract): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|newValue|[ObservedComplexAbstract](./cj-state-rendering-appstatemanagement.md#class-observedcomplexabstract)|是|-|状态管理数组列表被设置的新值。|
+|newValue|[ObservedComplexAbstract](./cj-ui-framework.md#class-observedcomplexabstract)|是|-|状态管理数组列表被设置的新值。|
 
 #### operator func [](Int64)
 

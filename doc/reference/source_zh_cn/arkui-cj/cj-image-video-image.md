@@ -150,7 +150,7 @@ public func fillColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|设置填充颜色。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|设置填充颜色。|
 
 ### func fitOriginalSize(?Bool)
 
@@ -352,7 +352,7 @@ public func onError(callback: ?ImageErrorCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?[ImageErrorCallback](./cj-image-video-image.md#type-imageerrorcallback)|是|-|回调函数，图片加载出现异常时触发。<br>初始值：{ _ => }。|
+|callback|?[ImageErrorCallback](#type-imageerrorcallback)|是|-|回调函数，图片加载出现异常时触发。<br>初始值：{ _ => }。|
 
 ### func onFinish(?() -> Unit)
 
