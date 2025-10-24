@@ -40,7 +40,7 @@ public init(controller!: ?SwiperController = Option.None, child!: () -> Unit)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|controller|?SwiperController|否|Option.None| **命名参数。** 给组件绑定一个控制器，用来控制组件翻页。|
+|controller|?[SwiperController](#class-swipercontroller)|否|Option.None| **命名参数。** 给组件绑定一个控制器，用来控制组件翻页。|
 |child|() -> Unit|是|-| **命名参数。** Swiper容器的子组件。|
 
 ## 通用属性/通用事件
@@ -107,7 +107,7 @@ public func curve(value: ?Curve): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Curve|是|-|Swiper的动画曲线。<br>初始值：Curve.Linear。|
+|value|?[Curve](./cj-common-types.md#enum-curve)|是|-|Swiper的动画曲线。<br>初始值：Curve.Linear。|
 
 ### func disableSwipe(?Bool)
 
@@ -173,7 +173,7 @@ public func displayMode(value: ?SwiperDisplayMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?SwiperDisplayMode|是|-|主轴方向上元素排列的模式。<br>初始值：SwiperDisplayMode.Stretch。|
+|value|?[SwiperDisplayMode](./cj-common-types.md#enum-swiperdisplaymode)|是|-|主轴方向上元素排列的模式。<br>初始值：SwiperDisplayMode.Stretch。|
 
 ### func duration(?UInt32)
 
@@ -213,7 +213,7 @@ public func effectMode(value: ?EdgeEffect): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?EdgeEffect|是|-|边缘滑动效果。<br>初始值：EdgeEffect.Spring。|
+|value|?[EdgeEffect](cj-common-types.md#enum-EdgeEffect)|是|-|边缘滑动效果。<br>初始值：EdgeEffect.Spring。|
 
 ### func index(?UInt32)
 
@@ -267,7 +267,7 @@ public func indicator(indicator: ?DotIndicator): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|indicator|?DotIndicator|是|-|可选导航点指示器样式。<br>- DotIndicator：圆点指示器样式。<br>初始值：DigitIndicator()。|
+|indicator|?[DotIndicator](#class-dotindicator)|是|-|可选导航点指示器样式。<br>- DotIndicator：圆点指示器样式。<br>初始值：DigitIndicator()。|
 
 ### func indicator(?DigitIndicator)
 
@@ -285,7 +285,7 @@ public func indicator(indicator: ?DigitIndicator): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|indicator|?DigitIndicator|是|-|可选导航点指示器样式。<br>- DigitIndicator：数字指示器样式。<br>初始值：DigitIndicator()。|
+|indicator|?[DigitIndicator](#class-digitindicator)|是|-|可选导航点指示器样式。<br>- DigitIndicator：数字指示器样式。<br>初始值：DigitIndicator()。|
 
 ### func interval(?UInt32)
 
@@ -323,7 +323,7 @@ public func itemSpace(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|子组件与子组件之间间隙。<br/> 类型为Int64、Float64时，默认单位vp。<br>当设置数值小于0或超出Swiper组件宽度范围时，按照初始值处理。<br>初始值：0.0.vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|子组件与子组件之间间隙。<br/> 类型为Int64、Float64时，默认单位vp。<br>当设置数值小于0或超出Swiper组件宽度范围时，按照初始值处理。<br>初始值：0.0.vp。|
 
 ### func loop(?Bool)
 
@@ -444,7 +444,7 @@ public func digitFont(value: ?Font): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Font|是|-|置Swiper组件数字导航点的字体样式。|
+|value|?[Font](cj-common-types.md#class-font)|是|-|置Swiper组件数字导航点的字体样式。|
 
 #### func fontColor(?ResourceColor)
 
@@ -462,7 +462,7 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|设置Swiper组件数字导航点的字体颜色。<br>初始值：0xFF182431。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置Swiper组件数字导航点的字体颜色。<br>初始值：0xFF182431。|
 
 #### func selectedDigitFont(?Font)
 
@@ -480,7 +480,7 @@ public func selectedDigitFont(value: ?Font): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Font|是|-|设置选中Swiper组件数字导航点的字体样式。<br>初始值：Font(size: 14.vp, weight: FontWeight.Normal)。|
+|value|?[Font](cj-common-types.md#class-font)|是|-|设置选中Swiper组件数字导航点的字体样式。<br>初始值：Font(size: 14.vp, weight: FontWeight.Normal)。|
 
 #### func selectedFontColor(?ResourceColor)
 
@@ -498,7 +498,7 @@ public func selectedFontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|设置选中Swiper组件数字导航点的字体颜色。<br>初始值：0xFF182431。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置选中Swiper组件数字导航点的字体颜色。<br>初始值：0xFF182431。|
 
 ### class DotIndicator
 
@@ -550,7 +550,7 @@ public func color(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|设置Swiper组件圆点导航指示器的颜色。<br>初始值：0x182431（10%透明度）。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置Swiper组件圆点导航指示器的颜色。<br>初始值：0x182431（10%透明度）。|
 
 #### func itemHeight(?Length)
 
@@ -568,7 +568,7 @@ public func itemHeight(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置Swiper组件圆点导航指示器的高，不支持设置百分比。<br>初始值：6。<br>单位：vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置Swiper组件圆点导航指示器的高，不支持设置百分比。<br>初始值：6。<br>单位：vp。|
 
 #### func itemWidth(?Length)
 
@@ -586,7 +586,7 @@ public func itemWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置Swiper组件圆点导航指示器的宽，不支持设置百分比。<br>初始值：6。<br>单位：vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置Swiper组件圆点导航指示器的宽，不支持设置百分比。<br>初始值：6。<br>单位：vp。|
 
 #### func mask(?Bool)
 
@@ -642,7 +642,7 @@ public func selectedColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|设置选中Swiper组件圆点导航指示器的颜色。<br>初始值：0x007DFF。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置选中Swiper组件圆点导航指示器的颜色。<br>初始值：0x007DFF。|
 
 #### func selectedItemHeight(?Length)
 
@@ -660,7 +660,7 @@ public func selectedItemHeight(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。<br>初始值：6。<br>单位：vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。<br>初始值：6。<br>单位：vp。|
 
 #### func selectedItemWidth(?Length)
 
@@ -678,7 +678,7 @@ public func selectedItemWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。<br>初始值：12。<br>单位：vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。<br>初始值：12。<br>单位：vp。|
 
 ### class Indicator
 
@@ -766,7 +766,7 @@ public func bottom(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置导航点底部相对于Swiper的位置。<br>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br>设置为0时：按照0位置布局计算。<br>优先级：低于top属性。<br>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置导航点底部相对于Swiper的位置。<br>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br>设置为0时：按照0位置布局计算。<br>优先级：低于top属性。<br>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。|
 
 #### func end(?Length)
 
@@ -784,7 +784,7 @@ public func end(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|在RTL模式下为导航点距离Swiper组件左边的距离，在LTR模式下为导航点距离Swiper组件右边的距离。<br>初始值：0。<br>单位：vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|在RTL模式下为导航点距离Swiper组件左边的距离，在LTR模式下为导航点距离Swiper组件右边的距离。<br>初始值：0。<br>单位：vp。|
 
 #### func left(?Length)
 
@@ -802,7 +802,7 @@ public func left(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置导航点左侧相对于Swiper的位置。<br>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐。<br>设置为0时：按照0位置布局计算。<br>优先级：高于right属性。<br>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的的边界值。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置导航点左侧相对于Swiper的位置。<br>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐。<br>设置为0时：按照0位置布局计算。<br>优先级：高于right属性。<br>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的的边界值。|
 
 #### func right(?Length)
 
@@ -820,7 +820,7 @@ public func right(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置导航点右侧相对于Swiper的位置。<br>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐。设置为0时：按照0位置布局计算。<br>优先级：低于left属性。<br>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的的边界值。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置导航点右侧相对于Swiper的位置。<br>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐。设置为0时：按照0位置布局计算。<br>优先级：低于left属性。<br>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的的边界值。|
 
 #### func start(?Length)
 
@@ -838,7 +838,7 @@ public func start(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置在RTL模式下为导航点距离Swiper组件右边的距离，在LTR模式下为导航点距离Swiper组件左边的距离。<br>初始值：0。<br>单位：vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置在RTL模式下为导航点距离Swiper组件右边的距离，在LTR模式下为导航点距离Swiper组件左边的距离。<br>初始值：0。<br>单位：vp。|
 
 #### func top(?Length)
 
@@ -856,7 +856,7 @@ public func top(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置导航点顶部相对于Swiper的位置。<br>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。设置为0时：按照0位置布局计算。<br>优先级：高于bottom属性。<br>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置导航点顶部相对于Swiper的位置。<br>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。设置为0时：按照0位置布局计算。<br>优先级：高于bottom属性。<br>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。|
 
 ### class SwiperController
 

@@ -45,10 +45,10 @@ public init(
 
 | 参数名    | 类型              | 必填  | 默认值        | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |:------ |:--------------- |:--- |:---------- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| header | ?CustomBuilder  | 否   | None       | **命名参数。** 设置ListItemGroup头部组件。                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| footer | ?CustomBuilder  | 否   | None       | **命名参数。** 设置ListItemGroup尾部组件。                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| space  | ?Length         | 否   | None       | **命名参数。** 列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。                                                                                                                                                                                                                                                                                                                                                   |
-| style  | ?ListItemGroupStyle | 否   | Option.None | **命名参数。** 设置List组件卡片样式。                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| header | ?[CustomBuilder](./cj-common-types.md#type-custombuilder)  | 否   | None       | **命名参数。** 设置ListItemGroup头部组件。                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| footer | ?[CustomBuilder](./cj-common-types.md#type-custombuilder)  | 否   | None       | **命名参数。** 设置ListItemGroup尾部组件。                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| space  | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)         | 否   | None       | **命名参数。** 列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。                                                                                                                                                                                                                                                                                                                                                   |
+| style  | ?[ListItemGroupStyle](#enum-listitemgroupstyle) | 否   | Option.None | **命名参数。** 设置List组件卡片样式。                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | child  | ()->Unit        | 是   | -          | 声明容器子组件。                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 ## 通用属性/通用事件
@@ -99,7 +99,7 @@ public var color: ?ResourceColor
 
 **功能：** 设置分割线的颜色。
 
-**类型：** ?ResourceColor
+**类型：** ?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -115,7 +115,7 @@ public var endMargin: ?Length
 
 **功能：** 设置分割线距离列表侧边结束端的距离。
 
-**类型：** ?Length
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -131,7 +131,7 @@ public var startMargin: ?Length
 
 **功能：** 设置分割线距离列表侧边起始端的距离。
 
-**类型：** ?Length
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -147,7 +147,7 @@ public var strokeWidth: ?Length
 
 **功能：** 设置分割线的线宽。
 
-**类型：** ?Length
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -176,10 +176,10 @@ public init(
 
 | 参数名         | 类型            | 必填  | 默认值 | 说明               |
 |:----------- |:------------- |:--- |:--- |:---------------- |
-| strokeWidth | ?Length       | 是   | -   | 分割线的线宽。          |
-| color       | ?ResourceColor | 否   | None | 分割线的颜色。          |
-| startMargin | ?Length       | 否   | None | 分割线距离列表侧边起始端的距离。 |
-| endMargin   | ?Length       | 否   | None | 分割线距离列表侧边结束端的距离。 |
+| strokeWidth | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)       | 是   | -   | 分割线的线宽。          |
+| color       | ?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | 否   | None | 分割线的颜色。          |
+| startMargin | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)       | 否   | None | 分割线距离列表侧边起始端的距离。 |
+| endMargin   | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)       | 否   | None | 分割线距离列表侧边结束端的距离。 |
 
 ### enum ListItemGroupStyle
 
@@ -197,7 +197,7 @@ public enum ListItemGroupStyle <: Equatable<ListItemGroupStyle> {
 
 **起始版本：** 22
 
-**父类型：** Equatable\<ListItemGroupStyle>
+**父类型：** Equatable\<[ListItemGroupStyle](./cj-common-types.md#enum-ListItemGroupStyle)>
 
 #### Card
 
@@ -235,7 +235,7 @@ public operator func !=(other: ListItemGroupStyle): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[ListItemGroupStyle](#enum-ListItemGroupStyle)|是|-|待比较的另一个枚举值。|
+|other|[ListItemGroupStyle](./cj-common-types.md#enum-ListItemGroupStyle)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
@@ -255,7 +255,7 @@ public operator func ==(other: ListItemGroupStyle): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[ListItemGroupStyle](#enum-ListItemGroupStyle)|是|-|待比较的另一个枚举值。|
+|other|[ListItemGroupStyle](./cj-common-types.md#enum-ListItemGroupStyle)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 

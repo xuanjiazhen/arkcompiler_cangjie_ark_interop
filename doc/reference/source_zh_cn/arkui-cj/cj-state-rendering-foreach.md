@@ -26,7 +26,7 @@ public class ForEach<T> <: UINodeBase {
 
 **父类型：**
 
-- UINodeBase
+-  [UINodeBase](./cj-ui-framework.md#class-uinodebase)
 
 ### init(CollectionEx\<T>, ItemGenFuncType\<T>, ?KeyGenFuncType\<T>)
 
@@ -44,7 +44,7 @@ public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>, keyGenerat
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|arr|CollectionEx\<T>|是|-|用于UI中的数组集合。|
+|arr|[CollectionEx](../BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|是|-|用于UI中的数组集合。|
 |itemGenerator|ItemGenFuncType\<T>|否|-|项目生成函数。|
 |keyGenerator|?KeyGenFuncType\<T>|否|None|键生成函数。|
 
