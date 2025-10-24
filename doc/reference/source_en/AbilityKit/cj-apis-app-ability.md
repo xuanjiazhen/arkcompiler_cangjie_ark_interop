@@ -29,7 +29,7 @@ For details about the sample project and configuration template mentioned above,
 
 ```cangjie
 public abstract class BaseContext {
-    public let stageMode: Bool
+    public var stageMode: Bool
 }
 ```
 
@@ -39,17 +39,15 @@ public abstract class BaseContext {
 
 **Since:** 21
 
-### let stageMode
+### var stageMode
 
 ```cangjie
-public let stageMode: Bool
+public var stageMode: Bool
 ```
 
 **Function:** Indicates whether it's the Stage model.
 
 **Type:** Bool
-
-**Access:** Read-only
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
