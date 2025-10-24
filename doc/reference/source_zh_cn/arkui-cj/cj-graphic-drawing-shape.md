@@ -52,7 +52,7 @@ public init(value!: ?PixelMap)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?PixelMap|是|-|**命名参数。** 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则在当前绘制目标中进行绘制。|
+|value|?[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|**命名参数。** 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则在当前绘制目标中进行绘制。|
 
 ## 通用属性/通用事件
 
@@ -83,10 +83,10 @@ public func viewPort(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?Length|否|None|**命名参数。** 视口起始点x坐标。初始值：0.vp。|
-|y|?Length|否|None|**命名参数。** 视口起始点y坐标。初始值：0.vp。|
-|width|?Length|否|None|**命名参数。** 视口宽度。初始值：0.vp。|
-|height|?Length|否|None|**命名参数。** 视口高度。初始值：0.vp。|
+|x|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 视口起始点x坐标。初始值：0.vp。|
+|y|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 视口起始点y坐标。初始值：0.vp。|
+|width|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 视口宽度。初始值：0.vp。|
+|height|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 视口高度。初始值：0.vp。|
 
 ### func mesh(?Array\<Float64>, ?UInt32, ?UInt32)
 
