@@ -216,7 +216,7 @@ public class LazyForEach<T> <: UINodeBase {
 
 **父类型：**
 
-- UINodeBase
+-  [UINodeBase](./cj-ui-framework.md#class-uinodebase)
 
 ### init(IDataSource\<T>, ItemGenFuncType\<T>, ?KeyGenFuncType\<T>)
 
@@ -234,7 +234,7 @@ public init(dataSource: IDataSource<T>, itemGenerator!: ItemGenFuncType<T>, keyG
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|dataSource|[IDataSource](#interface-idatasource)\<T>|是|-|LazyForEach数据源，需要开发者实现相关接口。|
+|dataSource|[IDataSource](./cj-common-types.md#interface-idatasource)\<T>|是|-|LazyForEach数据源，需要开发者实现相关接口。|
 |itemGenerator|ItemGenFuncType\<T>|否|-|子组件生成函数，为数组中的每一个数据项创建一个子组件。lambda函数的第一个泛型参数为数据类型；第二个参数为当前列表项的索引值。|
 |keyGenerator|?KeyGenFuncType\<T>|否|None|匿名函数，用于键值生成，为给定数组项生成唯一且稳定的键值。|
 
@@ -273,16 +273,28 @@ public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSo
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |viewID|Int64|是|-|观察ID|
-|parentView|CustomView|是|-|父观察者|
-|dataSource|[IDataSource](#interface-idatasource)\<T>|是|-|LazyForEach数据源，需要开发者实现相关接口。|
-|itemGeneratorFunc|ItemGenFuncType\<T>|是|-|子组件生成函数，为数组中的每一个数据项创建一个子组件。lambda函数的第一个泛型参数为数据类型；第二个参数为当前列表项的索引值。|
-|keyGeneratorFunc|KeyGenFuncType\<T>|否|{ _: T, idx: Int64 => }|匿名函数，用于键值生成，为给定数组项生成唯一且稳定的键值。|
+|parentView|[CustomView](./cj-ui-framework.md#class-customview)|是|-|父观察者|
+|dataSource|[IDataSource](./cj-common-types.md#interface-idatasource)\<T>|是|-|LazyForEach数据源，需要开发者实现相关接口。|
+|ItemGeneratFunc|[ItemGeneratFunc](#func-itemgeneratfunc)\<T>|是|-|子组件生成函数，为数组中的每一个数据项创建一个子组件。lambda函数的第一个泛型参数为数据类型；第二个参数为当前列表项的索引值。|
+|keyGeneratorFunc|[KeyGenFuncType](#func-keygeneratfunc)\<T>|否|{ _: T, idx: Int64 => }|匿名函数，用于键值生成，为给定数组项生成唯一且稳定的键值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[LazyForEach](#class-lazyforeach)\<T>|LazyForEach实例对象，用于后续进一步操作。|
+|[LazyForEach](cj-state-rendering-lazyforeach.md)\<T>|LazyForEach实例对象，用于后续进一步操作。|
+
+## Func ItemGeneratFunc
+
+**类型：** (item: T, index: number) => React.ReactNode
+
+**功能：** 子组件生成函数，为数组中的每一个数据项创建一个子组件。
+
+## Func KeyGeneratFunc
+
+**类型：** (item: T, index: number) => string | number
+
+**功能：** 键值生成函数，为给定数组项生成唯一且稳定的键值。
 
 ## 示例代码
 
@@ -367,3 +379,4 @@ public class EntryView {
 ```
 
 ![lazyforeach](figures/lazyforeach.gif)
+
