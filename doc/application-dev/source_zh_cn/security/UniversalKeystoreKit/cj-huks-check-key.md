@@ -29,8 +29,12 @@ var a = isKeyItemExist(keyAlias, HuksOptions())
 
 let options = HuksOptions(
     properties: [
-        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        
+        (HuksTag.HUKS_TAG_ALGORITHM, HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)),
+        HuksParam(
+            HuksTag.HUKS_TAG_KEY_SIZE, 
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_128)
+        ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
             HuksParamValue.Uint32Value(1 | 2)
@@ -42,5 +46,5 @@ let options = HuksOptions(
 /* 3. 生成密钥 */
 generateKeyItem(keyAlias, options)
 /* 4. 判断密钥是否存在，此时变量a应为true */
-let a = isKeyItemExist(keyAlias, HuksOptions())
+a = isKeyItemExist(keyAlias, HuksOptions())
 ```

@@ -45,15 +45,15 @@ let keyAlias = 'AES256Alias_sample'
 let properties: Array<HuksParam> = [
     HuksParam(
         HuksTag.HUKS_TAG_ALGORITHM,
-        HuksKeyAlg.HUKS_ALG_AES
+        HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)
     ),
     HuksParam(
         HuksTag.HUKS_TAG_KEY_SIZE,
-        HuksKeySize.HUKS_AES_KEY_SIZE_256
+        HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_256)
     ),
     HuksParam(
         HuksTag.HUKS_TAG_PURPOSE,
-        HuksParamValue.Uint32Value(1 | 2)
+        HuksParamValue.Uint32Value(HuksParamValue.Uint32Value(1 | 2))
     )
 ]
 let options: HuksOptions = HuksOptions(
@@ -91,22 +91,22 @@ let keyAlias = 'X25519_Pub_import_sample'
 let properties: Array<HuksParam> = [
     HuksParam(
         HuksTag.HUKS_TAG_ALGORITHM,
-        HuksKeyAlg.HUKS_ALG_X25519
+        HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_X25519)
     ),
     HuksParam(
         HuksTag.HUKS_TAG_KEY_SIZE,
-        HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+        HuksParamValue.Uint32Value(HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256)
     ),
     HuksParam(
         // 此 tag表示密钥导入后的用途，导入后将不可更改。
         HuksTag.HUKS_TAG_PURPOSE,
-        HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+        HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY)
     ),
     HuksParam(
         // 此 tag表示需导入的密钥类型。
         HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
         // 此 value表示导入密钥的公钥，若改为HUKS_KEY_TYPE_KEY_PAIR时表示导入密钥对。
-        HuksImportKeyType.HUKS_KEY_TYPE_PUBLIC_KEY
+        HuksParamValue.Uint32Value(HuksImportKeyType.HUKS_KEY_TYPE_PUBLIC_KEY)
     )
 ]
 let options: HuksOptions = HuksOptions(
@@ -138,7 +138,7 @@ let isKeyExist = false
 let keyProperties: Array<HuksParam> = [
     HuksParam(
         HuksTag.HUKS_TAG_ALGORITHM,
-        HuksKeyAlg.HUKS_ALG_AES
+        HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)
     )
 ]
 let huksOptions: HuksOptions = HuksOptions(

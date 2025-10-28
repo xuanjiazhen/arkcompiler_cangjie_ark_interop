@@ -45,15 +45,15 @@ let keyAlias = 'dh_key'
 let properties1: Array<HuksParam> = [
   HuksParam(
     HuksTag.HUKS_TAG_ALGORITHM,
-    HuksKeyAlg.HUKS_ALG_DH
+    HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_DH)
   ),
   HuksParam(
     HuksTag.HUKS_TAG_PURPOSE,
-    HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
+    HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE)
   ),
   HuksParam(
     HuksTag.HUKS_TAG_KEY_SIZE,
-    HuksKeySize.HUKS_DH_KEY_SIZE_2048
+    HuksParamValue.Uint32Value(HuksKeySize.HUKS_DH_KEY_SIZE_2048)
   )
 ]
 let huksOptions: HuksOptions = HuksOptions(

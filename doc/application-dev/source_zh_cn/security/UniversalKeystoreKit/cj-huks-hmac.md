@@ -55,19 +55,19 @@ func GetHMACProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_HMAC
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_HMAC)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_KEY_SIZE_256
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_KEY_SIZE_256)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC)
         ),
         HuksParam(
-            HuksTag.HuksTagDigest,
-            HuksKeyDigest.HUKS_DIGEST_SHA384
+            HuksTag.HUKS_TAG_DIGEST,
+            HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_SHA384)
         )
     ]
     return properties

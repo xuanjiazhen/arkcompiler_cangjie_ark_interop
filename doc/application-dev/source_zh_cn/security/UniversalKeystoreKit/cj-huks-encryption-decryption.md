@@ -92,11 +92,11 @@ func GetAesGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_AES
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_AES_KEY_SIZE_128
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_128)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
@@ -111,26 +111,26 @@ func GetAesEncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_AES
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_AES_KEY_SIZE_128
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_128)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagPadding,
-            HuksKeyPadding.HUKS_PADDING_PKCS7
+            HuksTag.HUKS_TAG_PADDING,
+            HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_PKCS7)
         ),
         HuksParam(
-            HuksTag.HuksTagBlockMode,
-            HuksCipherMode.HUKS_MODE_CBC
+            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_CBC)
         ),
         HuksParam(
-            HuksTag.HuksTagIv,
+            HuksTag.HUKS_TAG_IV,
             HuksParamValue.BytesValue(IV.toArray())
         )
     ]
@@ -141,26 +141,26 @@ func GetAesDecryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_AES
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_AES_KEY_SIZE_128
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_128)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagPadding,
-            HuksKeyPadding.HUKS_PADDING_PKCS7
+            HuksTag.HUKS_TAG_PADDING,
+            HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_PKCS7)
         ),
         HuksParam(
-            HuksTag.HuksTagBlockMode,
-            HuksCipherMode.HUKS_MODE_CBC
+            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_CBC)
         ),
         HuksParam(
-            HuksTag.HuksTagIv,
+            HuksTag.HUKS_TAG_IV,
             HuksParamValue.BytesValue(IV.toArray())
         )
     ]
@@ -254,11 +254,11 @@ func GetAesGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_AES
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_AES_KEY_SIZE_128
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_128)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
@@ -272,23 +272,23 @@ func GetAesGcmEncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_AES
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_AES_KEY_SIZE_128
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_128)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagPadding,
-            HuksKeyPadding.HUKS_PADDING_NONE
+            HuksTag.HUKS_TAG_PADDING,
+            HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_NONE)
         ),
         HuksParam(
-            HuksTag.HuksTagBlockMode,
-            HuksCipherMode.HUKS_MODE_GCM
+            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_GCM)
         ),
         HuksParam(
             HuksTag.HuksTagNonce,
@@ -306,23 +306,23 @@ func GetAesGcmDecryptProperties(cipherData: Array<UInt8>) {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_AES
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_AES)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_AES_KEY_SIZE_128
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_128)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagPadding,
-            HuksKeyPadding.HUKS_PADDING_NONE
+            HuksTag.HUKS_TAG_PADDING,
+            HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_NONE)
         ),
         HuksParam(
-            HuksTag.HuksTagBlockMode,
-            HuksCipherMode.HUKS_MODE_GCM
+            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_GCM)
         ),
         HuksParam(
             HuksTag.HuksTagNonce,
@@ -428,11 +428,11 @@ func GetRsaGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_RSA
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_RSA)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_RSA_KEY_SIZE_2048)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
@@ -446,27 +446,27 @@ func GetRsaEncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_RSA
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_RSA)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_RSA_KEY_SIZE_2048)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagPadding,
-            HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+            HuksTag.HUKS_TAG_PADDING,
+            HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5)
         ),
         HuksParam(
-            HuksTag.HuksTagBlockMode,
-            HuksCipherMode.HUKS_MODE_ECB
+            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_ECB)
         ),
         HuksParam(
-            HuksTag.HuksTagDigest,
-            HuksKeyDigest.HUKS_DIGEST_NONE
+            HuksTag.HUKS_TAG_DIGEST,
+            HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_NONE)
         )
     ]
     return properties
@@ -476,27 +476,27 @@ func GetRsaDecryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_RSA
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_RSA)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_RSA_KEY_SIZE_2048)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagPadding,
-            HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+            HuksTag.HUKS_TAG_PADDING,
+            HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5)
         ),
         HuksParam(
-            HuksTag.HuksTagBlockMode,
-            HuksCipherMode.HUKS_MODE_ECB
+            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_ECB)
         ),
         HuksParam(
-            HuksTag.HuksTagDigest,
-            HuksKeyDigest.HUKS_DIGEST_NONE
+            HuksTag.HUKS_TAG_DIGEST,
+            HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_NONE)
         )
     ]
     return properties
@@ -586,11 +586,11 @@ func GetRsaGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_RSA
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_RSA)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_RSA_KEY_SIZE_2048)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
@@ -604,27 +604,27 @@ func GetRsaEncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_RSA
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_RSA)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_RSA_KEY_SIZE_2048)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagPadding,
-            HuksKeyPadding.HUKS_PADDING_OAEP
+            HuksTag.HUKS_TAG_PADDING,
+            HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_OAEP)
         ),
         HuksParam(
-            HuksTag.HuksTagBlockMode,
-            HuksCipherMode.HUKS_MODE_ECB
+            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_ECB)
         ),
         HuksParam(
-            HuksTag.HuksTagDigest,
-            HuksKeyDigest.HUKS_DIGEST_SHA256
+            HuksTag.HUKS_TAG_DIGEST,
+            HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_SHA256)
         )
     ]
     return properties
@@ -634,27 +634,27 @@ func GetRsaDecryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_RSA
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_RSA)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_RSA_KEY_SIZE_2048)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagPadding,
-            HuksKeyPadding.HUKS_PADDING_OAEP
+            HuksTag.HUKS_TAG_PADDING,
+            HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_OAEP)
         ),
         HuksParam(
-            HuksTag.HuksTagBlockMode,
-            HuksCipherMode.HUKS_MODE_ECB
+            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_ECB)
         ),
         HuksParam(
-            HuksTag.HuksTagDigest,
-            HuksKeyDigest.HUKS_DIGEST_SHA256
+            HuksTag.HUKS_TAG_DIGEST,
+            HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_SHA256)
         )
     ]
     return properties
@@ -744,11 +744,11 @@ func GetSm2GenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_SM2
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_SM2)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_SM2_KEY_SIZE_256
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_SM2_KEY_SIZE_256)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
@@ -762,19 +762,19 @@ func GetSm2EncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_SM2
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_SM2)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_SM2_KEY_SIZE_256
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_SM2_KEY_SIZE_256)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagDigest,
-            HuksKeyDigest.HUKS_DIGEST_SM3
+            HuksTag.HUKS_TAG_DIGEST,
+            HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_SM3)
         )
     ]
     return properties
@@ -784,19 +784,19 @@ func GetSm2DecryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
             HuksTag.HUKS_TAG_ALGORITHM,
-            HuksKeyAlg.HUKS_ALG_SM2
+            HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_SM2)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_SM2_KEY_SIZE_256
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_SM2_KEY_SIZE_256)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)
         ),
         HuksParam(
-            HuksTag.HuksTagDigest,
-            HuksKeyDigest.HUKS_DIGEST_SM3
+            HuksTag.HUKS_TAG_DIGEST,
+            HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_SM3)
         )
     ]
     return properties

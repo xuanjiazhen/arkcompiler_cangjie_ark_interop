@@ -46,31 +46,31 @@ class ThrowObject {
 let genKeyProperties: Array<HuksParam> = [
     HuksParam(
         HuksTag.HUKS_TAG_ALGORITHM,
-        HuksKeyAlg.HUKS_ALG_RSA
+        HuksParamValue.Uint32Value(HuksKeyAlg.HUKS_ALG_RSA)
     ),
     HuksParam(
         HuksTag.HUKS_TAG_KEY_SIZE,
-        HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+        HuksParamValue.Uint32Value(HuksKeySize.HUKS_RSA_KEY_SIZE_2048)
     ),
     HuksParam(
         HuksTag.HUKS_TAG_PURPOSE,
-        HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+        HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY)
     ),
     HuksParam(
-        HuksTag.HuksTagDigest,
-        HuksKeyDigest.HUKS_DIGEST_SHA256
+        HuksTag.HUKS_TAG_DIGEST,
+        HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_SHA256)
     ),
     HuksParam(
-        HuksTag.HuksTagPadding,
-        HuksKeyPadding.HUKS_PADDING_PSS
+        HuksTag.HUKS_TAG_PADDING,
+        HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_PSS)
     ),
     HuksParam(
         HuksTag.HuksTagKeyGenerateType,
-        HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
+        HuksParamValue.Uint32Value(HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT)
     ),
     HuksParam(
-        HuksTag.HuksTagBlockMode,
-        HuksCipherMode.HUKS_MODE_ECB
+        HuksTag.HUKS_TAG_BLOCK_MODE,
+        HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_ECB)
     )
 ]
 let genOptions: HuksOptions = HuksOptions(properties: genKeyProperties, inData: Bytes())
