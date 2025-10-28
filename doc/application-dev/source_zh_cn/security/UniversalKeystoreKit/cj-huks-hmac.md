@@ -54,15 +54,15 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetHMACProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HuksTagAlgorithm,
+            HuksTag.HUKS_TAG_ALGORITHM,
             HuksKeyAlg.HUKS_ALG_HMAC
         ),
         HuksParam(
-            HuksTag.HuksTagKeySize,
+            HuksTag.HUKS_TAG_KEY_SIZE,
             HuksKeySize.HUKS_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HuksTagPurpose,
+            HuksTag.HUKS_TAG_PURPOSE,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC
         ),
         HuksParam(

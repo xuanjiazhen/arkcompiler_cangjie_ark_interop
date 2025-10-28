@@ -45,15 +45,15 @@ class ThrowObject {
 /* 封装生成时的密钥参数集 */
 let genKeyProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HuksTagAlgorithm,
+        HuksTag.HUKS_TAG_ALGORITHM,
         HuksKeyAlg.HUKS_ALG_RSA
     ),
     HuksParam(
-        HuksTag.HuksTagKeySize,
+        HuksTag.HUKS_TAG_KEY_SIZE,
         HuksKeySize.HUKS_RSA_KEY_SIZE_2048
     ),
     HuksParam(
-        HuksTag.HuksTagPurpose,
+        HuksTag.HUKS_TAG_PURPOSE,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
     ),
     HuksParam(

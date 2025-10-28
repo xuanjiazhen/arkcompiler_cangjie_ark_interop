@@ -44,15 +44,15 @@ let keyAlias = 'AES256Alias_sample'
 /* 2.封装密钥属性集和密钥材料 */
 let properties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HuksTagAlgorithm,
+        HuksTag.HUKS_TAG_ALGORITHM,
         HuksKeyAlg.HUKS_ALG_AES
     ),
     HuksParam(
-        HuksTag.HuksTagKeySize,
+        HuksTag.HUKS_TAG_KEY_SIZE,
         HuksKeySize.HUKS_AES_KEY_SIZE_256
     ),
     HuksParam(
-        HuksTag.HuksTagPurpose,
+        HuksTag.HUKS_TAG_PURPOSE,
         HuksParamValue.Uint32Value(1 | 2)
     )
 ]

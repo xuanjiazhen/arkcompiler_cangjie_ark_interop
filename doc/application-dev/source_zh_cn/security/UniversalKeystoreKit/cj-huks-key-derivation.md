@@ -77,11 +77,11 @@ let HuksKeyDeriveKeySize: UInt32 = 32
 /* 集成生成密钥参数集 */
 let properties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HuksTagAlgorithm,
+        HuksTag.HUKS_TAG_ALGORITHM,
         HuksKeyAlg.HUKS_ALG_AES,
     ),
     HuksParam(
-        HuksTag.HuksTagPurpose,
+        HuksTag.HUKS_TAG_PURPOSE,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
     ),
     HuksParam(
@@ -89,7 +89,7 @@ let properties: Array<HuksParam> = [
         HuksKeyDigest.HUKS_DIGEST_SHA256,
     ),
     HuksParam(
-        HuksTag.HuksTagKeySize,
+        HuksTag.HUKS_TAG_KEY_SIZE,
         HuksKeySize.HUKS_AES_KEY_SIZE_128,
     ),
     HuksParam(
@@ -104,11 +104,11 @@ let huksOptions: HuksOptions = HuksOptions(
 /* 集成init时密钥参数集 */
 let initProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HuksTagAlgorithm,
+        HuksTag.HUKS_TAG_ALGORITHM,
         HuksKeyAlg.HUKS_ALG_HKDF,
     ),
     HuksParam(
-        HuksTag.HuksTagPurpose,
+        HuksTag.HUKS_TAG_PURPOSE,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
     ),
     HuksParam(
@@ -135,15 +135,15 @@ let finishProperties: Array<HuksParam> = [
         HuksParamValue.BooleanValue(true),
     ),
     HuksParam(
-        HuksTag.HuksTagAlgorithm,
+        HuksTag.HUKS_TAG_ALGORITHM,
         HuksKeyAlg.HUKS_ALG_AES,
     ),
     HuksParam(
-        HuksTag.HuksTagKeySize,
+        HuksTag.HUKS_TAG_KEY_SIZE,
         HuksKeySize.HUKS_AES_KEY_SIZE_256,
     ),
     HuksParam(
-        HuksTag.HuksTagPurpose,
+        HuksTag.HUKS_TAG_PURPOSE,
         HuksParamValue.Uint32Value(1 | 2),
     ),
     HuksParam(
@@ -318,11 +318,11 @@ var finishOutData: ?Array<UInt8> = None
 /* 集成生成密钥参数集 */
 let properties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HuksTagAlgorithm,
+        HuksTag.HUKS_TAG_ALGORITHM,
         HuksKeyAlg.HUKS_ALG_AES,
     ),
     HuksParam(
-        HuksTag.HuksTagPurpose,
+        HuksTag.HUKS_TAG_PURPOSE,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
     ),
     HuksParam(
@@ -330,7 +330,7 @@ let properties: Array<HuksParam> = [
         HuksKeyDigest.HUKS_DIGEST_SHA256,
     ),
     HuksParam(
-        HuksTag.HuksTagKeySize,
+        HuksTag.HUKS_TAG_KEY_SIZE,
         HuksKeySize.HUKS_AES_KEY_SIZE_128,
     ),
     HuksParam(
@@ -346,11 +346,11 @@ let huksOptions: HuksOptions = HuksOptions(
 /* 集成init时密钥参数集 */
 let initProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HuksTagAlgorithm,
+        HuksTag.HUKS_TAG_ALGORITHM,
         HuksKeyAlg.HUKS_ALG_PBKDF2,
     ),
     HuksParam(
-        HuksTag.HuksTagPurpose,
+        HuksTag.HUKS_TAG_PURPOSE,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
     ),
     HuksParam(
@@ -386,15 +386,15 @@ let finishProperties: Array<HuksParam> = [
         HuksParamValue.BooleanValue(true),
     ),
     HuksParam(
-        HuksTag.HuksTagAlgorithm,
+        HuksTag.HUKS_TAG_ALGORITHM,
         HuksKeyAlg.HUKS_ALG_AES,
     ),
     HuksParam(
-        HuksTag.HuksTagKeySize,
+        HuksTag.HUKS_TAG_KEY_SIZE,
         HuksKeySize.HUKS_AES_KEY_SIZE_256,
     ),
     HuksParam(
-        HuksTag.HuksTagPurpose,
+        HuksTag.HUKS_TAG_PURPOSE,
         HuksParamValue.Uint32Value(1 | 2),
     ),
     HuksParam(

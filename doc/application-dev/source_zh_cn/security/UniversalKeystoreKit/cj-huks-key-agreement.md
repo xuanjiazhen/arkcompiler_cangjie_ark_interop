@@ -76,15 +76,15 @@
     /* 集成生成密钥参数集 */
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HuksTagAlgorithm,
+            HuksTag.HUKS_TAG_ALGORITHM,
             HuksKeyAlg.HUKS_ALG_X25519,
         ),
         HuksParam(
-            HuksTag.HuksTagPurpose,
+            HuksTag.HUKS_TAG_PURPOSE,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
         ),
         HuksParam(
-            HuksTag.HuksTagKeySize,
+            HuksTag.HUKS_TAG_KEY_SIZE,
             HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256,
         ),
         HuksParam(
@@ -119,15 +119,15 @@
             HuksParamValue.BooleanValue(true)
         ),
         HuksParam(
-            HuksTag.HuksTagAlgorithm,
+            HuksTag.HUKS_TAG_ALGORITHM,
             HuksKeyAlg.HUKS_ALG_AES,
         ),
         HuksParam(
-            HuksTag.HuksTagKeySize,
+            HuksTag.HUKS_TAG_KEY_SIZE,
             HuksKeySize.HUKS_AES_KEY_SIZE_256,
         ),
         HuksParam(
-            HuksTag.HuksTagPurpose,
+            HuksTag.HUKS_TAG_PURPOSE,
             HuksParamValue.Uint32Value(1 | 2),
         ),
         HuksParam(
@@ -162,15 +162,15 @@
             HuksParamValue.BooleanValue(true)
         ),
         HuksParam(
-            HuksTag.HuksTagAlgorithm,
+            HuksTag.HUKS_TAG_ALGORITHM,
             HuksKeyAlg.HUKS_ALG_AES,
         ),
         HuksParam(
-            HuksTag.HuksTagKeySize,
+            HuksTag.HUKS_TAG_KEY_SIZE,
             HuksKeySize.HUKS_AES_KEY_SIZE_256,
         ),
         HuksParam(
-            HuksTag.HuksTagPurpose,
+            HuksTag.HUKS_TAG_PURPOSE,
             HuksParamValue.Uint32Value(1 | 2),
         ),
         HuksParam(
@@ -351,25 +351,25 @@
 
     let dhAgree: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HuksTagAlgorithm,
+            HuksTag.HUKS_TAG_ALGORITHM,
             HuksKeyAlg.HUKS_ALG_DH,
         ),
         HuksParam(
-            HuksTag.HuksTagPurpose,
+            HuksTag.HUKS_TAG_PURPOSE,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
         )
     ]
     let dh2048Agree: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HuksTagAlgorithm,
+            HuksTag.HUKS_TAG_ALGORITHM,
             HuksKeyAlg.HUKS_ALG_DH,
         ),
         HuksParam(
-            HuksTag.HuksTagPurpose,
+            HuksTag.HUKS_TAG_PURPOSE,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
         ),
         HuksParam(
-            HuksTag.HuksTagKeySize,
+            HuksTag.HUKS_TAG_KEY_SIZE,
             HuksKeySize.HUKS_DH_KEY_SIZE_2048,
         )
     ]
@@ -387,11 +387,11 @@
         let dhAgreeUpdateBobPubKey: HuksOptions = HuksOptions(
             properties: [
                 HuksParam(
-                    HuksTag.HuksTagAlgorithm,
+                    HuksTag.HUKS_TAG_ALGORITHM,
                     HuksKeyAlg.HUKS_ALG_DH,
                 ),
                 HuksParam(
-                    HuksTag.HuksTagPurpose,
+                    HuksTag.HUKS_TAG_PURPOSE,
                     HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
                 ),
                 HuksParam(
@@ -434,7 +434,7 @@
                     HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 ),
-                HuksParam(HuksTag.HuksTagKeySize, HuksKeySize.HUKS_AES_KEY_SIZE_256),
+                HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_256),
                 HuksParam(
                     HuksTag.HuksTagKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
@@ -456,10 +456,10 @@
                 HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
             ),
             HuksParam(HuksTag.HuksTagIsKeyAlias, HuksParamValue.BooleanValue(true)),
-            HuksParam(HuksTag.HuksTagAlgorithm, HuksKeyAlg.HUKS_ALG_AES),
-            HuksParam(HuksTag.HuksTagKeySize, HuksKeySize.HUKS_AES_KEY_SIZE_256),
+            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_256),
             HuksParam(
-                HuksTag.HuksTagPurpose,
+                HuksTag.HUKS_TAG_PURPOSE,
                 HuksParamValue.Uint32Value(1 | 2)
             )
         ]
@@ -468,11 +468,11 @@
         let dhAgreeUpdatePubKey: HuksOptions = HuksOptions(
             properties: [
                 HuksParam(
-                    HuksTag.HuksTagAlgorithm,
+                    HuksTag.HUKS_TAG_ALGORITHM,
                     HuksKeyAlg.HUKS_ALG_DH,
                 ),
                 HuksParam(
-                    HuksTag.HuksTagPurpose,
+                    HuksTag.HUKS_TAG_PURPOSE,
                     HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
                 ),
                 HuksParam(
@@ -498,10 +498,10 @@
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 ),
                 HuksParam(HuksTag.HuksTagIsKeyAlias, HuksParamValue.BooleanValue(true)),
-                HuksParam(HuksTag.HuksTagAlgorithm, HuksKeyAlg.HUKS_ALG_AES),
-                HuksParam(HuksTag.HuksTagKeySize, HuksKeySize.HUKS_AES_KEY_SIZE_256),
+                HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+                HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_256),
                 HuksParam(
-                    HuksTag.HuksTagPurpose,
+                    HuksTag.HUKS_TAG_PURPOSE,
                     HuksParamValue.Uint32Value(1 | 2)
                 ),
                 HuksParam(HuksTag.HuksTagKeyAlias, HuksParamValue.BytesValue(aliasAgreedKey.toArray()))
