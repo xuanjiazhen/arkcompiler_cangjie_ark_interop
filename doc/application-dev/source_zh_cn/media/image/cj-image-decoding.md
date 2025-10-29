@@ -62,7 +62,7 @@
         }
         ```
 
-    - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[ResourceManager API参考文档](../../../../reference/source_zh_cn/LocalizationKit/cj-apis-resource_manager.md#func-getrawfdstring)。
+    - 方法三：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[ResourceManager API参考文档](../../../../reference/source_zh_cn/LocalizationKit/cj-apis-resource_manager.md#func-getrawfdstring)。
 
         <!-- compile -->
 
