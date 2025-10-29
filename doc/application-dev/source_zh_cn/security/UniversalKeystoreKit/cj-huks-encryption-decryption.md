@@ -291,11 +291,11 @@ func GetAesGcmEncryptProperties() {
             HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_GCM)
         ),
         HuksParam(
-            HuksTag.HuksTagNonce,
+            HuksTag.HUKS_TAG_NONCE,
             HuksParamValue.BytesValue(NONCE.toArray())
         ),
         HuksParam(
-            HuksTag.HuksTagAssociatedData,
+            HuksTag.HUKS_TAG_ASSOCIATED_DATA,
             HuksParamValue.BytesValue(AAD.toArray())
         )
     ]
@@ -325,15 +325,15 @@ func GetAesGcmDecryptProperties(cipherData: Array<UInt8>) {
             HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_GCM)
         ),
         HuksParam(
-            HuksTag.HuksTagNonce,
+            HuksTag.HUKS_TAG_NONCE,
             HuksParamValue.BytesValue(NONCE.toArray())
         ),
         HuksParam(
-            HuksTag.HuksTagAssociatedData,
+            HuksTag.HUKS_TAG_ASSOCIATED_DATA,
             HuksParamValue.BytesValue(AAD.toArray())
         ),
         HuksParam(
-            HuksTag.HuksTagAeTag,
+            HuksTag.HUKS_TAG_AE_TAG,
             HuksParamValue.BytesValue(cipherData.slice(cipherData.size - 16, 16).toArray())
         )
     ]

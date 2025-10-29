@@ -71,7 +71,7 @@ let genKeyProperties: Array<HuksParam> = [
         HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_PSS)
     ),
     HuksParam(
-        HuksTag.HuksTagKeyGenerateType,
+        HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
         HuksParamValue.Uint32Value(HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT)
     ),
     HuksParam(
@@ -84,16 +84,8 @@ let genOptions: HuksOptions = HuksOptions(properties: genKeyProperties, inData: 
 /* 2.封装证明密钥的参数集 */
 let anonAttestKeyProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HuksTagAttestationIdSecLevelInfo,
-        HuksParamValue.BytesValue(securityLevel.toArray())
-    ),
-    HuksParam(
-        HuksTag.HuksTagAttestationChallenge,
+        HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
         HuksParamValue.BytesValue(challenge.toArray())
-    ),
-    HuksParam(
-        HuksTag.HuksTagAttestationIdVersionInfo,
-        HuksParamValue.BytesValue(versionInfo.toArray())
     )
 ]
 let huksOptions: HuksOptions = HuksOptions(properties: anonAttestKeyProperties, inData: Option<Array<UInt8>>.None.getOrThrow())

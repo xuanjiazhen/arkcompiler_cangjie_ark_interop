@@ -59,7 +59,7 @@ func GetHMACProperties() {
         ),
         HuksParam(
             HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksParamValue.Uint32Value(HuksKeySize.HUKS_KEY_SIZE_256)
+            HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_256)
         ),
         HuksParam(
             HuksTag.HUKS_TAG_PURPOSE,

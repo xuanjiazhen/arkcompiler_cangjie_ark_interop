@@ -237,11 +237,11 @@ var encryptKeyCommonParams: HuksOptions = HuksOptions(
             HuksParamValue.Uint32Value(HuksCipherMode.HUKS_MODE_GCM)
         ),
         HuksParam(
-            HuksTag.HuksTagNonce,
+            HuksTag.HUKS_TAG_NONCE,
             HuksParamValue.BytesValue(NONCE.toArray())
         ),
         HuksParam(
-            HuksTag.HuksTagAssociatedData,
+            HuksTag.HUKS_TAG_ASSOCIATED_DATA,
             HuksParamValue.BytesValue(AAD.toArray())
         )
     ],
@@ -274,7 +274,7 @@ var importWrappedAes192Params: HuksOptions = HuksOptions(
             HuksParamValue.Uint32Value(HuksKeyDigest.HUKS_DIGEST_NONE)
         ),
         HuksParam(
-            HuksTag.HuksTagUnwrapAlgorithmSuite,
+            HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
             HuksParamValue.Uint32Value(HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING)
         ),
         HuksParam(

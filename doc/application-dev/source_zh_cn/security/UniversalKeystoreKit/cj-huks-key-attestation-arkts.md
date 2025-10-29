@@ -65,7 +65,7 @@ let genKeyProperties: Array<HuksParam> = [
         HuksParamValue.Uint32Value(HuksKeyPadding.HUKS_PADDING_PSS)
     ),
     HuksParam(
-        HuksTag.HuksTagKeyGenerateType,
+        HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
         HuksParamValue.Uint32Value(HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT)
     ),
     HuksParam(
@@ -78,16 +78,8 @@ let genOptions: HuksOptions = HuksOptions(properties: genKeyProperties, inData: 
 /* 2.封装证明密钥的参数集 */
 let anonAttestKeyProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HuksTagAttestationIdSecLevelInfo,
-        HuksParamValue.BytesValue(securityLevel.toArray())
-    ),
-    HuksParam(
-        HuksTag.HuksTagAttestationChallenge,
+        HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
         HuksParamValue.BytesValue(challenge.toArray())
-    ),
-    HuksParam(
-        HuksTag.HuksTagAttestationIdVersionInfo,
-        HuksParamValue.BytesValue(versionInfo.toArray())
     )
 ]
 let huksOptions: HuksOptions = HuksOptions(properties: anonAttestKeyProperties, inData: Bytes())
@@ -117,9 +109,9 @@ func publicGenKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
 }
 
 /* 4.证明密钥 */
-func attestKeyItem(keyAlias: String, huksOptions: HuksOptions, throwObject: ThrowObject) {
+func attestKeyItemext(keyAlias: String, huksOptions: HuksOptions, throwObject: ThrowObject): Array<String> {
     return try {
-        attestKeyItem(keyAlias, huksOptions)
+        anonAttestKeyItem(keyAlias, huksOptions)
     } catch (e: Exception) {
         throwObject.isThrow = true
         throw e
@@ -130,7 +122,7 @@ func publicAttestKey(keyAlias: String, huksOptions: HuksOptions) {
     loggerInfo("enter attestKeyItem")
     let throwObject: ThrowObject = ThrowObject(false)
     try {
-        attestCertChain = attestKeyItem(keyAlias, huksOptions, throwObject)
+        attestCertChain = attestKeyItemext(keyAlias, huksOptions, throwObject)
     } catch (e: Exception) {
         loggerInfo("attestKeyItem input arg invalid, ${e}")
     }

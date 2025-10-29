@@ -416,7 +416,7 @@
     func HuksDhAgreeInHuks(keyAlias: String, peerPubKey: ?Array<UInt8>, aliasAgreedKey: String): ?Array<UInt8> {
         let onlyUsedInHuks: Array<HuksParam> = [
             HuksParam(
-                HuksTag.HuksTagKeyStorageFlag,
+                HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
                 HuksParamValue.Uint32Value(HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS),
             ),
             HuksParam(
@@ -427,7 +427,7 @@
         let dhAgreeInit: HuksOptions = HuksOptions(
             properties: [
                 HuksParam(
-                    HuksTag.HuksTagKeyStorageFlag,
+                    HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
                     HuksParamValue.Uint32Value(HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS),
                 ),
                 HuksParam(
@@ -439,7 +439,7 @@
                     HuksParamValue.Uint32Value(HuksKeySize.HUKS_AES_KEY_SIZE_256)
                 ),
                 HuksParam(
-                    HuksTag.HuksTagKeyStorageFlag,
+                    HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
                     HuksParamValue.Uint32Value(HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS),
                 ),
                 HuksParam(
@@ -451,7 +451,7 @@
         )
         let dhAgreeFinishParams: Array<HuksParam> = [
             HuksParam(
-                HuksTag.HuksTagKeyStorageFlag,
+                HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
                 HuksParamValue.Uint32Value(HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS),
             ),
             HuksParam(
@@ -482,7 +482,7 @@
                     HuksParamValue.Uint32Value(HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE),
                 ),
                 HuksParam(
-                    HuksTag.HuksTagKeyStorageFlag,
+                    HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
                     HuksParamValue.Uint32Value(HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS),
                 ),
                 HuksParam(
@@ -496,7 +496,7 @@
         let dhAgreeAliceFinnish: HuksOptions = HuksOptions(
             properties: [
                 HuksParam(
-                    HuksTag.HuksTagKeyStorageFlag,
+                    HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
                     HuksParamValue.Uint32Value(HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS),
                 ),
                 HuksParam(

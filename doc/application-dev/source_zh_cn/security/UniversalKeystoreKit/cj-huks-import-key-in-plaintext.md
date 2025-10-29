@@ -53,7 +53,7 @@ let properties: Array<HuksParam> = [
     ),
     HuksParam(
         HuksTag.HUKS_TAG_PURPOSE,
-        HuksParamValue.Uint32Value(HuksParamValue.Uint32Value(1 | 2))
+        HuksParamValue.Uint32Value(1 | 2)
     )
 ]
 let options: HuksOptions = HuksOptions(
@@ -110,8 +110,8 @@ let properties: Array<HuksParam> = [
     )
 ]
 let options: HuksOptions = HuksOptions(
-    properties,
-    x25519KeyPubMaterial
+    properties: properties,
+    inData: x25519KeyPubMaterial
 )
 
 /* 3. 明文导入密钥 */
@@ -119,7 +119,7 @@ func importKeyFunc(): Unit {
     try {
         importKeyItem(keyAlias, options)
     } catch (e: Exception) {
-        AppLog.error("callback: importKeyItem input arg invalid ${e}")
+        Hilog.error(1, "info", "callback: importKeyItem input arg invalid ${e}")
     }
 }
 ```
@@ -142,8 +142,8 @@ let keyProperties: Array<HuksParam> = [
     )
 ]
 let huksOptions: HuksOptions = HuksOptions(
-    keyProperties, // 非空填充。
-    None // 非空填充。
+    properties: keyProperties, // 非空填充。
+    inData: None // 非空填充。
 )
 
 @Entry
@@ -158,14 +158,13 @@ class EntryView {
                 Text(this.message)
                     .fontSize(50)
                     .fontWeight(FontWeight.Bold)
-                    .onClick {
+                    .onClick ({
                         evt => try {
                             isKeyItemExist(keyAlias, huksOptions)
                         } catch (e: Exception) {
-                            AppLog.error(e)
                             throw e
                         }
-                    }
+                    })
             }.width(100.percent)
         }.height(100.percent)
     }
