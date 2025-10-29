@@ -1308,6 +1308,7 @@ public open func putBatch(entries: Array<Entry>): Unit
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified; 2. Incorrect parameter types. |
   | 15100003 | Database corrupted. |
   | 15100005 | Database or result set already closed. |
+  | 14800047 | The WAL file size exceeds the default limit.|
 
 ### func restore(String)
 
