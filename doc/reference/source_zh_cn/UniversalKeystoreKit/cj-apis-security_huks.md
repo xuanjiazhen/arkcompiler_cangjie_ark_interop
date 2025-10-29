@@ -470,7 +470,8 @@ public func generateKeyItem(keyAlias: String, options: HuksOptions): Unit
   | 12000013 | queried credential does not exist |
   | 12000014 | memory is insufficient |
   | 12000015 | call service failed |
-
+  | 12000017 | The key with same alias is already exist |
+ 
 **示例：**
 
 <!-- compile -->
@@ -657,6 +658,7 @@ public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, opt
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
+  | 201 | check permission failed |
   | 401 | argument is invalid |
   | 801 | api is not supported |
   | 12000001 | algorithm mode is not supported |
@@ -670,6 +672,7 @@ public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, opt
   | 12000013 | queried credential does not exist |
   | 12000014 | memory is insufficient |
   | 12000015 | call service failed |
+  | 12000017 | The key with same alias is already exist|
 
 ## func initSession(String, HuksOptions)
 
@@ -715,6 +718,7 @@ public func initSession(keyAlias: String, options: HuksOptions): HuksSessionHand
   | 12000011 | queried entity does not exist |
   | 12000012 | external error |
   | 12000014 | memory is insufficient |
+  | 12000018 | the input parameter is invalid |
 
 **示例：**
 
