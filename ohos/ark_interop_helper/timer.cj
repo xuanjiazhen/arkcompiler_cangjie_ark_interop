@@ -32,7 +32,6 @@ class Timer {
         }
     }
 
-
     let mutex = Mutex()
     var nextId = AtomicInt64(1)
     let tasks = HashSet<Int64>()
@@ -97,37 +96,6 @@ class Timer {
         id
     }
 
-    private func setTimeout_(callInfo: JSCallInfo): JSValue {
-        let callback = callInfo[0].asFunction()
-        let timeout = if (callInfo.count > 1 && callInfo[1].isNumber()) {
-            Int64(callInfo[1].toNumber())
-        } else {
-            0
-        }
-        let result = setTimeout(timeout) {
-            callback.call()
-        }
-        context.number(Float64(result)).toJSValue()
-    }
-
-    private func clearTimeout_(callInfo: JSCallInfo): Unit {
-        let id = Int64(callInfo[0].toNumber())
-        clearTimeout(id)
-    }
-
-    private func setInterval_(callInfo: JSCallInfo): JSValue {
-        let callback = callInfo[0].asFunction()
-        let timeout = if (callInfo.count > 1 && callInfo[1].isNumber()) {
-            Int64(callInfo[1].toNumber())
-        } else {
-            0
-        }
-        let result = setIntervel(timeout) {
-            callback.call()
-        }
-        context.number(Float64(result)).toJSValue()
-    }
-
     private func clearInterval(callInfo: JSCallInfo): Unit {
         let id = Int64(callInfo[0].toNumber())
         clearTimeout(id)
@@ -154,9 +122,37 @@ class Timer {
     }
 
     func attach(): Unit {
-        wrap("setTimeout", setTimeout_)
-        wrap0("clearTimeout", clearTimeout_) 
-        wrap("setInterval", setInterval_)
+        wrap("setTimeout") {
+            callInfo =>
+            let callback = callInfo[0].asFunction()
+            let timeout = if (callInfo.count > 1 && callInfo[1].isNumber()) {
+                Int64(callInfo[1].toNumber())
+            } else {
+                0
+            }
+            let result = setTimeout(timeout) {
+                callback.call()
+            }
+            context.number(Float64(result)).toJSValue()
+        }
+        wrap0("clearTimeout") {
+            callInfo =>
+            let id = Int64(callInfo[0].toNumber())
+            clearTimeout(id)
+        }
+        wrap("setInterval") {
+            callInfo =>
+            let callback = callInfo[0].asFunction()
+            let timeout = if (callInfo.count > 1 && callInfo[1].isNumber()) {
+                Int64(callInfo[1].toNumber())
+            } else {
+                0
+            }
+            let result = setIntervel(timeout) {
+                callback.call()
+            }
+            context.number(Float64(result)).toJSValue()
+        }
         wrap0("clearInterval", clearInterval)
         wrap("setImmediate", setImmediate) 
         wrap0("clearImmediate", clearImmediate)
