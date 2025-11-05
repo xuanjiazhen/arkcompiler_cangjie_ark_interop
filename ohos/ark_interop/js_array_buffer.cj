@@ -55,7 +55,9 @@ func JSBufferFinalizerStub(buffer: CPointer<Byte>, hint: Int64): Unit {
 /**
  * ArrayBuffer relative operation class, interop ArrayBuffer, DataView and TypedArrays	
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[
+    since: "22"
+]
 public class JSArrayBuffer <: JSHeapObject {
     static var bufferFinalizers_ = SlabMT<JSBufferFinalizer>()
 
@@ -149,8 +151,8 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public prop byteLength: Int32 {
         get() {
@@ -166,14 +168,15 @@ public class JSArrayBuffer <: JSHeapObject {
     }
 
     /**
-     * Read binding memory in bytes.
+     * Read binding memory to Array<Byte>.
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<Byte> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func readBytes(): Array<Byte> {
         let env = context.env // do lifecycle check and thread check here.
@@ -193,14 +196,15 @@ public class JSArrayBuffer <: JSHeapObject {
     }
 
     /**
-     * Read binding memory to Array<bytes>.
+     * Read binding memory to Array<UInt8>.
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<UInt8> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt8Array(): Array<UInt8> {
         let env = context.env // do lifecycle check and thread check here.
@@ -219,10 +223,11 @@ public class JSArrayBuffer <: JSHeapObject {
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<Int8> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toInt8Array(): Array<Int8> {
         let env = context.env // do lifecycle check and thread check here.
@@ -242,10 +247,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<UInt16> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt16Array(): Array<UInt16> {
         let env = context.env // do lifecycle check and thread check here.
@@ -268,10 +274,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<Int16> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toInt16Array(): Array<Int16> {
         let env = context.env // do lifecycle check and thread check here.
@@ -294,10 +301,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<Int32> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toInt32Array(): Array<Int32> {
         let env = context.env // do lifecycle check and thread check here.
@@ -320,10 +328,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<UInt32> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt32Array(): Array<UInt32> {
         let env = context.env // do lifecycle check and thread check here.
@@ -346,10 +355,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<Float32> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toFloat32Array(): Array<Float32> {
         let env = context.env // do lifecycle check and thread check here.
@@ -372,10 +382,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<UInt64> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt64Array(): Array<UInt64> {
         let env = context.env // do lifecycle check and thread check here.
@@ -398,10 +409,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<Int64> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toInt64Array(): Array<Int64> {
         let env = context.env // do lifecycle check and thread check here.
@@ -424,10 +436,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<Float64> } Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toFloat64Array(): Array<Float64> {
         let env = context.env // do lifecycle check and thread check here.
@@ -450,10 +463,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toArrayBufferJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -484,10 +498,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt8ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -504,10 +519,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt8ClampedArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -524,10 +540,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toInt8ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -544,10 +561,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt16ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -564,10 +582,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toInt16ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -584,10 +603,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt32ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -604,10 +624,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toInt32ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -624,10 +645,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toUInt64ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -644,10 +666,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toInt64ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -664,10 +687,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toFloat32ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -684,10 +708,11 @@ public class JSArrayBuffer <: JSHeapObject {
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toFloat64ArrayJSValue(): JSValue {
         let env = context.env // do lifecycle check and thread check here.

@@ -48,8 +48,10 @@ struct JSCallInfoPrivate {
  * arguments, and get argument by index. Each ArkTS function call saves the argument list and other related
  * information on the ArkTS stack. JSCallInfo is a pointer to this information.
  */
-@!APILevel[22, stagemodelonly: true]
-public struct JSCallInfo {
+@!APILevel[
+    since: "22"
+]
+public class JSCallInfo {
     JSCallInfo(
         let context: JSContext,
         let callInfo: JSCallInfoPrivate
@@ -62,8 +64,8 @@ public struct JSCallInfo {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public prop count: Int64 {
         get() {
@@ -79,8 +81,8 @@ public struct JSCallInfo {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public prop thisArg: JSValue {
         get() {
@@ -92,14 +94,16 @@ public struct JSCallInfo {
 
     /**
      * Get argument at index.
-     * 
+     *
+     * @param { Int64 } index - Index.
      * @throws { BusinessException } 34300001 - The accessing index is out of range.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } The JSValue at the Index.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func [](index: Int64): JSValue {
         context.checkLifecycleAndThread()
@@ -146,7 +150,9 @@ func cjLambdaDestructor(env: JSEnv, lambdaId: Int64): Unit {
 /**
  * A safe reference to the ArkTS function.
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[
+    since: "22"
+]
 public class JSFunction <: JSHeapObject {
     static func createFunction(context: JSContext, lambda: JSLambda): JSValue_ {
         let lambdaId = context.sharedLambda_.append(lambda)
@@ -227,13 +233,15 @@ public class JSFunction <: JSHeapObject {
     /**
      * An ArkTS function call with None argument.
      *
+     * @param { JSValue } [ thisArg ] - The `this` pointer. The default value is Undefined.
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } Function call return value.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -246,13 +254,16 @@ public class JSFunction <: JSHeapObject {
     /**
      * An ArkTS function call with one argument.
      *
+     * @param { JSValue } arg - ArkTS function call parameter.
+     * @param { JSValue } [ thisArg ] - ArkTS function call `this` pointer. The default value is Undefined.
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } Function call return value.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         let env = context.env // do lifecycle check and thread check here.
@@ -266,13 +277,16 @@ public class JSFunction <: JSHeapObject {
     /**
      * An ArkTS function call with multiple arguments.
      *
+     * @param { Array<JSValue> } args - Parameter list.
+     * @param { JSValue } [ thisArg ] - The `this` pointer. The default value is Undefined.
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } Function call return value.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         let env = context.env // do lifecycle check and thread check here.

@@ -27,14 +27,20 @@ enum JSSource<T, J> {
 /**
  * Function and performance expansion of JSString.
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[
+    since: "22"
+]
 public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & ToString {
     private var source_: JSSource<String, JSString>
 
     /**
      * Init JSStringEx.
+     *
+     * @param { String } str - Initial string.
      */
-    @!APILevel[22, stagemodelonly: true]
+    @!APILevel[
+        since: "22"
+    ]
     public init(str: String) {
         source_ = CJ(str)
     }
@@ -46,12 +52,14 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
     /**
      * Return true if and only if the two string are identical.
      *
+     * @param { JSStringEx } str - String to compare.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Bool } Returns true if equal, false if not equal.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func ==(str: JSStringEx): Bool {
         return toString() == str.toString()
@@ -60,12 +68,14 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
     /**
      * Return true if and only if the two string are not identical.
      *
+     * @param { JSStringEx } str - String to compare.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Bool } Returns true if not equal, false if equal.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func !=(str: JSStringEx): Bool {
         return toString() != str.toString()
@@ -76,10 +86,11 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { String } Converted string.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toString(): String {
         match (source_) {
@@ -91,12 +102,14 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
     /**
      * Convert JSStringEx to JSValue.
      *
+     * @param { JSContext } context - ArkTS interoperation context.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toJSValue(context: JSContext): JSValue {
         match (source_) {
@@ -111,13 +124,16 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
     /**
      * Init JSStringEx from JSValue.
      *
+     * @param { JSContext } context - ArkTS interoperation context.
+     * @param { JSValue } input - ArkTS unified type.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
+     * @returns { JSStringEx } Declarative interoperation macro type JSStringEx.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public static func fromJSValue(context: JSContext, input: JSValue): JSStringEx {
         let jsStr = input.asString()
@@ -125,9 +141,13 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
     }
 
     /**
-     * Get corresponding ArkTS type name of JSStringEx.
+     * Get ArkTS type name of JSStringEx.
+     *
+     * @returns { String } Converted ArkTS type name.
      */
-    @!APILevel[22, stagemodelonly: true]
+    @!APILevel[
+        since: "22"
+    ]
     public static func toArktsType(): String {
         "string"
     }
@@ -136,14 +156,20 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 /**
  * Function and performance expansion of JSArray.
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[
+    since: "22"
+]
 public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropType<T> {
     private var source_: JSSource<Array<T>, JSArray>
 
     /**
      * Init JSArrayEx<T>.
+     *
+     * @param { Array<T> } arr - Created based on this Array instance.
      */
-    @!APILevel[22, stagemodelonly: true]
+    @!APILevel[
+        since: "22"
+    ]
     public init(arr: Array<T>) {
         source_ = CJ(arr)
     }
@@ -157,10 +183,11 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSArrayEx<T> } New JSArrayEx obtained from cloning.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func clone(): JSArrayEx<T> {
         JSArrayEx<T>(this.toArray())
@@ -169,12 +196,14 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     /**
      * Create a new JSArrayEx, with content being the concatenation of the current JSArrayEx follow by other JSArrayEx.
      *
+     * @param { JSArrayEx<T> } other - JSArrayEx to concatenate at the end.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSArrayEx<T> } New JSArrayEx obtained from concatenation.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func concat(other: JSArrayEx<T>): JSArrayEx<T> {
         JSArrayEx<T>(this.toArray().concat(other.toArray()))
@@ -187,8 +216,8 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public prop size: Int64 {
         get() {
@@ -202,12 +231,14 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     /**
      * Get the element at index.
      *
+     * @param { Int64 } index - Index of the value to retrieve.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Option<T> } Value at the specified index in the current array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func get(index: Int64): Option<T> {
         if (index >= this.size || index < 0) {
@@ -219,13 +250,15 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     /**
      * Set the element at index.
      *
+     * @param { Int64 } index - Index of the value to modify, range [0..this.size].
+     * @param { T } element - Target value to modify.
      * @throws { BusinessException } 34300001 - The accessing index is out of range.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func set(index: Int64, element: T): Unit {
         this[index] = element
@@ -236,10 +269,11 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Bool } Returns true if the array is empty; otherwise, returns false.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func isEmpty(): Bool {
         this.size == 0
@@ -248,13 +282,15 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     /**
      * Get the element at index.
      *
+     * @param { Int64 } index - Index of the value to retrieve.
      * @throws { BusinessException } 34300001 - The accessing index is out of range.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { T } Value at the specified index in the current array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func [](index: Int64): T {
         if (index < 0 || index >= size) {
@@ -269,13 +305,15 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     /**
      * Set the element at index.
      *
+     * @param { Int64 } index - Index of the value to modify, range [0..this.size].
+     * @param { T } value - Target value to modify.
      * @throws { BusinessException } 34300001 - The accessing index is out of range.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func [](index: Int64, value!: T): Unit {
         if (index < 0 || index >= size) {
@@ -292,10 +330,11 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Array<T> } Converted Cangjie array.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toArray(): Array<T> {
         match (source_) {
@@ -311,13 +350,15 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     /**
      * Convert JSArrayEx<T> to JSValue.
      *
+     * @param { JSContext } context - ArkTS interop context.
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toJSValue(context: JSContext): JSValue {
         let jsArr = match (source_) {
@@ -336,13 +377,16 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     /**
      * Init JSArrayEx<T> from JSValue.
      *
+     * @param { JSContext } context - ArkTS interop context.
+     * @param { JSValue } input - ArkTS unified type.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
+     * @returns { JSArrayEx<T> } Declarative interop macro type JSArrayEx.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public static func fromJSValue(context: JSContext, input: JSValue): JSArrayEx<T> {
         let jsArr = input.asArray()
@@ -350,9 +394,13 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     }
 
     /**
-     * Get corresponding ArkTS type name of JSArrayEx<T>.
+     * Get ArkTS type name of JSArrayEx<T>.
+     *
+     * @returns { String } Converted ArkTS type name.
      */
-    @!APILevel[22, stagemodelonly: true]
+    @!APILevel[
+        since: "22"
+    ]
     public static func toArktsType(): String {
         "Array"
     }
@@ -361,7 +409,9 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 /**
  * Function and performance expansion of JSMap.
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[
+    since: "22"
+]
 public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JSKeyable & Hashable & Equatable<K> &
     JSInteropType<K>, V <: JSInteropType<V> {
 
@@ -369,8 +419,9 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
 
     /**
      * Init JSHashMapEx<K, V>.
+     *
+     * @param { HashMap<K, V> } map - Creates based on this HashMap instance.
      */
-    @!APILevel[22, stagemodelonly: true]
     public init(map: HashMap<K, V>) {
         source_ = CJ(map)
     }
@@ -378,7 +429,9 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Init JSHashMapEx<K, V>.
      */
-   @!APILevel[22, stagemodelonly: true]
+    @!APILevel[
+        since: "22"
+    ]
     public init() {
         source_ = CJ(HashMap<K, V>())
     }
@@ -390,12 +443,14 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Get the value corresponding to the key.
      *
+     * @param { K } key - Input key.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Option<V> } Value corresponding to the key. Wrapped in Option.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func get(key: K): Option<V> {
         match (source_) {
@@ -413,8 +468,8 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func clear(): Unit {
         match (source_) {
@@ -428,10 +483,11 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSHashMapEx<K, V> } The newly cloned JSHashMapEx.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func clone(): JSHashMapEx<K, V> {
         JSHashMapEx<K, V>(this.toHashMap())
@@ -440,12 +496,14 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Checks whether the mapping relationship corresponding to the collection key exists in this JSHashMapEx<K, V>.
      *
+     * @param { Collection<K> } keys - Keys to be checked.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Bool } Returns true if all are contained; otherwise, false.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func containsAll(keys: Collection<K>): Bool {
         this.toHashMap().contains(all: keys)
@@ -456,10 +514,11 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Bool } Whether JSHashMapEx is empty.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func isEmpty(): Bool {
         this.size == 0
@@ -468,12 +527,14 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Set value corresponding to the key.
      *
+     * @param { K } key - Key to be inserted.
+     * @param { V } value - Value to be assigned.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func set(key: K, value: V): Unit {
         match (source_) {
@@ -485,12 +546,13 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Set value corresponding to the key in collection.
      *
+     * @param { Collection<(K, V)> } elements - Collection of key-value pairs to be added to JSHashMapEx.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func setAll(elements: Collection<(K, V)>): Unit {
         for ((k, v) in elements) {
@@ -501,12 +563,15 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Set value corresponding to the key if key does not exists in this JSHashMapEx<K, V>.
      *
+     * @param { K } key - Key to be inserted.
+     * @param { V } value - Value to be assigned.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Bool } Returns false if the key existed before assignment; otherwise, true.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func setIfAbsent(key: K, value: V): Bool {
         if (this.has(key)) {
@@ -520,12 +585,14 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Delete key in this JSHashMapEx<K, V>.
      *
+     * @param { K } key - Key to be deleted.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Bool } Returns true if the key existed and was successfully deleted; otherwise, false.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func delete(key: K): Bool {
         match (source_) {
@@ -537,12 +604,13 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Delete keys in this JSHashMapEx<K, V>.
      *
+     * @param { Collection<K> } keys - Collection of keys to be deleted.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func deleteAll(keys: Collection<K>): Unit {
         for (key in keys) {
@@ -553,12 +621,13 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Delete keys that do not meet the predicate condition.
      *
+     * @param { (K, V) -> Bool } predicate - Lambda expression for evaluation.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func deleteIf(predicate: (K, V) -> Bool): Unit {
         let keys = this.keys().toArray()
@@ -576,10 +645,11 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { EquatableCollection<K> } Container holding all returned keys.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func keys(): EquatableCollection<K> {
         match (source_) {
@@ -605,10 +675,11 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Collection<V> } Container holding all returned values.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func values(): Collection<V> {
         this.toHashMap().values()
@@ -621,8 +692,8 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public prop size: Int64 {
         get() {
@@ -636,12 +707,14 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Checks whether the mapping relationship corresponding to the key exists in this JSHashMapEx<K, V>.
      *
+     * @param { K } key - Key to be checked.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { Bool } Returns true if present; otherwise, false.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func has(key: K): Bool {
         match (source_) {
@@ -655,10 +728,11 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
      *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { HashMap<K, V> } Converted HashMap.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toHashMap(): HashMap<K, V> {
         match (source_) {
@@ -675,13 +749,15 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Get the value corresponding to the key.
      *
+     * @param { K } key - Key to be inserted.
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { V } Value corresponding to the key.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func [](key: K): V {
         get(key).getOrThrow {
@@ -692,12 +768,14 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Set value corresponding to the key.
      *
+     * @param { K } key - Key to be inserted.
+     * @param { V } value - Value to be assigned.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func [](key: K, value!: V): Unit {
         set(key, value)
@@ -706,12 +784,14 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Convert JSHashMapEx<K, V> to JSValue.
      *
+     * @param { JSContext } c - ArkTS interoperability context.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } ArkTS unified type.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public func toJSValue(c: JSContext): JSValue {
         match (source_) {
@@ -726,21 +806,28 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
     /**
      * Init JSHashMapEx<K, V> from JSValue.
      *
+     * @param { JSContext } context - ArkTS interoperability context.
+     * @param { JSValue } input - ArkTS unified type.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSHashMapEx<K, V> } Declarative interoperability macro type JSHashMapEx.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public static func fromJSValue(context: JSContext, input: JSValue): JSHashMapEx<K, V> {
         return JSHashMapEx<K, V>(context, input)
     }
 
     /**
-     * Get corresponding ArkTS type name of JSHashMapEx<K, V>.
+     * Get ArkTS type name of JSHashMapEx<K, V>.
+     *
+     * @returns { String } Converted ArkTS type name.
      */
-    @!APILevel[22, stagemodelonly: true]
+    @!APILevel[
+        since: "22"
+    ]
     public static func toArktsType(): String {
         "Map"
     }

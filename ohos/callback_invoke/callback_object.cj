@@ -23,14 +23,16 @@ import ohos.labels.APILevel
 /**
  * Callback type.
  */
+@!APILevel[
+    since: "22"
+]
 public type Callback<T> = (arg: T) -> Unit
 
 /**
  * The callback wrapper base class.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "22"
 ]
 public abstract class CallbackObject {}
 
@@ -38,16 +40,16 @@ public abstract class CallbackObject {}
  * The wrapper of callback without argument and returns.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "22"
 ]
 public abstract class Callback0Argument <: CallbackObject {
     /**
      * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the callback params information.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22"
     ]
     public open func invoke(err: ?BusinessException): Unit
 }
@@ -56,16 +58,17 @@ public abstract class Callback0Argument <: CallbackObject {
  * The wrapper of callback with one argument and no returns.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "22"
 ]
 public abstract class Callback1Argument<A> <: CallbackObject {
     /**
      * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @param { A } arg - indicates the callback params information A.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22"
     ]
     public open func invoke(err: ?BusinessException, arg: A): Unit
 }
@@ -74,16 +77,18 @@ public abstract class Callback1Argument<A> <: CallbackObject {
  * The wrapper of callback with 2 arguments and no returns.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "22"
 ]
 public abstract class Callback2Argument<A, B> <: CallbackObject {
     /**
      * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @param { A } arg1 - indicates the callback params information A.
+     * @param { B } arg2 - indicates the callback params information B.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22"
     ]
     public open func invoke(err: ?BusinessException, arg1: A, arg2: B): Unit
 }
@@ -92,13 +97,20 @@ public abstract class Callback2Argument<A, B> <: CallbackObject {
  * The wrapper of callback with 3 arguments.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "22"
 ]
 public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject {
+    /**
+     * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @param { A } arg1 - indicates the callback params information A.
+     * @param { B } arg2 - indicates the callback params information B.
+     * @param { C } arg3 - indicates the callback params information C.
+     * @returns { D } the representation of the callback result.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22"
     ]
     public open func invoke(err: ?BusinessException, arg1: A, arg2: B, arg3: C): D
 }
@@ -107,13 +119,18 @@ public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject 
  * The wrapper of callback with 2 arguments and returns.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "22"
 ]
 public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {
+    /**
+     * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @param { A } arg1 - indicates the callback params information A.
+     * @returns { B } the representation of the callback result.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22"
     ]
     public open func invoke(err: ?BusinessException, arg1: A): B
 }
@@ -122,13 +139,17 @@ public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {
  * The wrapper of callback without argument and returns.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true
+    since: "22"
 ]
 public abstract class CallbackWithReturn<A> <: CallbackObject {
+    /**
+     * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @returns { A } the representation of the callback result.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true
+        since: "22"
     ]
     public open func invoke(err: ?BusinessException): A
 }

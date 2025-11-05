@@ -36,7 +36,9 @@ foreign func ARKTS_GetElement(env: JSEnv, arr: JSValue_, index: UInt32): JSValue
  * The JSArray object is used to represent a safe reference to the ArkTS array.
  * It supports getting length, reading and writing elements.
  */
-@!APILevel[22, stagemodelonly: true]
+@!APILevel[
+    since: "22"
+]
 public class JSArray <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
@@ -73,8 +75,8 @@ public class JSArray <: JSHeapObject {
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public prop size: Int64 {
         get() {
@@ -86,9 +88,11 @@ public class JSArray <: JSHeapObject {
     /**
      * Get the element at index.
      *
+     * @param { Int64 } index - Input index, safe range: [0, input count).
      * @throws { BusinessException } 34300001 - The accessing index is out of range.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { JSValue } - ArkTS unified type.
      */
     @!APILevel[
         22,
@@ -106,13 +110,15 @@ public class JSArray <: JSHeapObject {
     /**
      * Set the element at index.
      *
+     * @param { Int64 } index - Write index.
+     * @param { JSValue } value - Value to write.
      * @throws { BusinessException } 34300001 - The accessing index is out of range.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func [](index: Int64, value!: JSValue): Unit {
         let env = context.env // do lifecycle check and thread check here.
@@ -125,13 +131,15 @@ public class JSArray <: JSHeapObject {
     /**
      * Set the element at index.
      *
+     * @param { Int64 } index - Write index.
+     * @param { JSHeapObject } [value] - Value to write.
      * @throws { BusinessException } 34300001 - The accessing index is out of range.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        22,
-        stagemodelonly: true
+        since: "22",
+        throwexception: true
     ]
     public operator func [](index: Int64, value!: JSHeapObject): Unit {
         let env = context.env // do lifecycle check and thread check here.

@@ -29,11 +29,14 @@ foreign func IsStageMode(context: napi_value, env: napi_env): Bool
 foreign func NapiValueToArkTsValue(value: CPointer<Unit>): JSValue_
 
 /**
- * Determine whether in application mode. 
+ * Determine whether in application mode.
+ *
+ * @param { napi_env } env - The napi environment.
+ * @param { napi_value } context - The napi context.
+ * @returns { Bool } Return true if in Stage mode, otherwise false.
  */
 @!APILevel[
-    22,
-    stagemodelonly: true
+    since: "22"
 ]
 public func isStageMode(env: napi_env, context: napi_value): Bool {
     unsafe {
@@ -43,10 +46,13 @@ public func isStageMode(env: napi_env, context: napi_value): Bool {
 
 /**
  * Convert JSValue to napi_value.
+ *
+ * @param { napi_env } env - The napi environment.
+ * @param { JSValue } ark_value - The JSValue to convert.
+ * @returns { napi_value } The converted napi_value.
  */
 @!APILevel[
-    22,
-    stagemodelonly: true
+    since: "22"
 ]
 public func arktsValueToNapiValue(env: napi_env, ark_value: JSValue): napi_value {
     unsafe {
@@ -56,10 +62,17 @@ public func arktsValueToNapiValue(env: napi_env, ark_value: JSValue): napi_value
 
 /**
  * Convert HashMap to JSValue.
+ *
+ * @param { JSContext } context - The JS Context.
+ * @param { ?HashMap<String, T> } parameter - The HashMap to convert.
+ * @param { (JSContext, T) -> JSValue } convert - The conversion function.
+ * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+ * @throws { BusinessException } 34300004 - Thread mismatch.
+ * @returns { JSValue } The converted JSValue.
  */
 @!APILevel[
-    22,
-    stagemodelonly: true
+    since: "22",
+    throwexception: true
 ]
 public func mapToJSValue<T>(
     context: JSContext,
@@ -79,10 +92,17 @@ public func mapToJSValue<T>(
 
 /**
  * Convert JSValue to HashMap.
+ *
+ * @param { JSContext } context - The JS Context.
+ * @param { JSValue } value - The JS Context.
+ * @param { (JSContext, JSValue) -> T } convert - The conversion function.
+ * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+ * @throws { BusinessException } 34300004 - Thread mismatch.
+ * @returns { ?HashMap<String, T> } The converted HashMap.
  */
 @!APILevel[
-    22,
-    stagemodelonly: true
+    since: "22",
+    throwexception: true
 ]
 public func mapFromJSValue<T>(
     context: JSContext,
