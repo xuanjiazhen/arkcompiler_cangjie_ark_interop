@@ -23,6 +23,9 @@ import ohos.labels.APILevel
 /**
  * Callback type.
  */
+@!APILevel[
+    since: "22"
+]
 public type Callback<T> = (arg: T) -> Unit
 
 /**
@@ -42,6 +45,8 @@ public abstract class CallbackObject {}
 public abstract class Callback0Argument <: CallbackObject {
     /**
      * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the callback params information.
      */
     @!APILevel[
         since: "22"
@@ -58,6 +63,9 @@ public abstract class Callback0Argument <: CallbackObject {
 public abstract class Callback1Argument<A> <: CallbackObject {
     /**
      * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @param { A } arg - indicates the callback params information A.
      */
     @!APILevel[
         since: "22"
@@ -74,6 +82,10 @@ public abstract class Callback1Argument<A> <: CallbackObject {
 public abstract class Callback2Argument<A, B> <: CallbackObject {
     /**
      * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @param { A } arg1 - indicates the callback params information A.
+     * @param { B } arg2 - indicates the callback params information B.
      */
     @!APILevel[
         since: "22"
@@ -88,6 +100,15 @@ public abstract class Callback2Argument<A, B> <: CallbackObject {
     since: "22"
 ]
 public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject {
+    /**
+     * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @param { A } arg1 - indicates the callback params information A.
+     * @param { B } arg2 - indicates the callback params information B.
+     * @param { C } arg3 - indicates the callback params information C.
+     * @returns { D } the representation of the callback result.
+     */
     @!APILevel[
         since: "22"
     ]
@@ -101,6 +122,13 @@ public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject 
     since: "22"
 ]
 public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {
+    /**
+     * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @param { A } arg1 - indicates the callback params information A.
+     * @returns { B } the representation of the callback result.
+     */
     @!APILevel[
         since: "22"
     ]
@@ -114,6 +142,12 @@ public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {
     since: "22"
 ]
 public abstract class CallbackWithReturn<A> <: CallbackObject {
+    /**
+     * invoker mainly for C
+     *
+     * @param { ?BusinessException } err - indicates the BusinessException error information.
+     * @returns { A } the representation of the callback result.
+     */
     @!APILevel[
         since: "22"
     ]
