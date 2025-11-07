@@ -22,7 +22,6 @@ import std.io.*
 import std.sync.*
 import std.ast.*
 import std.collection.*
-import std.process.*
 
 let typeTabale_g = HashMap<String, String>(
     [("Int8", "number"), ("Int16", "number"), ("Int32", "number"), ("Int64", "number"), ("UInt8", "number"),
@@ -82,6 +81,14 @@ func genClassDeclareFile(classDecl: ClassDecl) {
     let newFile = genFile(currentPkg: pkgName)
     let newClassDeclare = genClassDeclare(visibleClassDecl, withConstructor: true)
     declareWriteIntoFileHead(newClassDeclare, newFile)
+}
+
+func genEnumDeclareFile(enumDecl: EnumDecl) {
+    // No need to write into files under ark_interop_api.
+    let pkgName = IDLCustomTypeWL.getPkgName(enumDecl.identifier.value)
+    let file = genFile(currentPkg: pkgName)
+    let enumDeclare = genEnumDeclare(enumDecl)
+    declareWriteIntoFileTail(enumDeclare, file)
 }
 
 func getFuncRetType(retType: TypeNode) {
@@ -236,6 +243,32 @@ func genClassInitDeclare(pubClassDecl: ClassDecl, insideClassDecl!: Bool = false
         ("): " + classId + "}" + "\n")
     }
     return retInit
+}
+
+func genEnumBodyDeclare(enumDecl: EnumDecl) {
+    let ctors = enumDecl.constructors
+    var retBody = ""
+
+    for (i in 0..ctors.size) {
+        let ctor = ctors[i]
+        let identifierDeclare = ctor.identifier.value
+        if (i == 0) {
+            retBody += (tabStr + identifierDeclare + " = 0")
+        } else {
+            retBody += (",\n" + tabStr + identifierDeclare + " = " + i.toString())
+        }
+    }
+
+    return " {\n" + retBody + "}"
+}
+
+func genEnumDeclare(enumDecl: EnumDecl) {
+    let identifier = enumDecl.identifier
+
+    let identifierDeclare = identifier.value
+    let bodyDeclare = genEnumBodyDeclare(enumDecl)
+
+    return "export declare const enum " + identifierDeclare + bodyDeclare + "\n"
 }
 
 func genFile(currentPkg!: String = "") {
@@ -429,7 +462,7 @@ func refType2Arkts(refType: RefType): String {
                     "The T of the Array type only support Byte type within the `Interop` macro scope.")
                 ""
             }
-        // class/interface
+        // class/interface/enum
         case _ =>
             if (!IDLCustomTypeWL.isWhitelisted(refType.identifier.value)) {
                 IDLUtil.diagReportTE(

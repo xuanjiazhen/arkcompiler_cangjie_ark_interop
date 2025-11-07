@@ -299,7 +299,7 @@ func checkClassMembers(classDecl: ClassDecl) {
     }
 }
 
-/* 
+/*
     modifiers          | type parameters | named parameters                     | return value
     only can be public | not supported   | supported, cannot have default value | cannot be defaulted
  */
@@ -338,6 +338,15 @@ func checkClass(classDecl: ClassDecl) {
     checkModifierBePublic(classDecl)
     checkGenericParam(classDecl)
     checkClassMembers(classDecl)
+}
+
+/*
+    TODO
+ */
+func checkEnum(enumDecl: EnumDecl) {
+    checkModifierBePublic(enumDecl)
+    checkGenericParam(enumDecl)
+    // TODO
 }
 
 func getCangjieSrcPath(): String {
@@ -464,7 +473,7 @@ class IDLCustomTypeWL {
                     tokenStr += (fileTokens[i].value + "\n")
                 }
 
-                let classMDArr = Regex(##"^@\s*Interop\s*\[\s*ArkTS\s*\]\s*public\s*(class|interface)\s*(\w+)$"##,
+                let classMDArr = Regex(##"^@\s*Interop\s*\[\s*ArkTS\s*\]\s*public\s*(class|interface|enum)\s*(\w+)$"##,
                     [MultiLine]).findAll(tokenStr, group: true)
                 for (md in classMDArr) {
                     whitelistSet.add(md.matchString(2))
