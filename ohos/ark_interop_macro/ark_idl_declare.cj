@@ -104,6 +104,12 @@ func genFuncDeclare(funcDecl: FuncDecl, isAsync: Bool) {
     let params = funcDecl.funcParams
     let retType = getFuncRetType(funcDecl.declType)
 
+    let modDeclare =
+        if (IDLUtil.hasStaticModifier(funcDecl)) {
+            "static "
+        } else {
+            ""
+        }
     let identifierDeclare = identifier.value
     let paramDeclare = genFuncParamDeclare(params)
     var retDeclare = ""
@@ -113,7 +119,7 @@ func genFuncDeclare(funcDecl: FuncDecl, isAsync: Bool) {
         retDeclare = cjType2ArktsType(retType, "funcArg")
     }
 
-    return identifierDeclare + "(" + paramDeclare + "): " + retDeclare + "\n"
+    return modDeclare + identifierDeclare + "(" + paramDeclare + "): " + retDeclare + "\n"
 }
 
 func genInterfaceDeclare(interfaceDecl: InterfaceDecl) {
@@ -317,13 +323,13 @@ func funcDeclareWriteIntoFile(funcDeclare: String, filePath: String) {
         }
 
         if (context.contains("interface CustomLib")) {
-            file.seek(SeekPosition.End(-1))
+            file.seek(SeekPosition.End(-2))
             file.write((TAB_STR + funcDeclare).toArray())
-            file.write("}".toArray())
+            file.write("}\n".toArray())
         } else {
             file.write("export declare interface CustomLib {\n".toArray())
             file.write((TAB_STR + funcDeclare).toArray())
-            file.write("}".toArray())
+            file.write("}\n".toArray())
         }
         file.flush()
         file.close()
