@@ -104,6 +104,12 @@ func genFuncDeclare(funcDecl: FuncDecl, isAsync: Bool) {
     let params = funcDecl.funcParams
     let retType = getFuncRetType(funcDecl.declType)
 
+    let modDeclare =
+        if (IDLUtil.hasStaticModifier(funcDecl)) {
+            "static "
+        } else {
+            ""
+        }
     let identifierDeclare = identifier.value
     let paramDeclare = genFuncParamDeclare(params)
     var retDeclare = ""
@@ -113,7 +119,7 @@ func genFuncDeclare(funcDecl: FuncDecl, isAsync: Bool) {
         retDeclare = cjType2ArktsType(retType, "funcArg")
     }
 
-    return identifierDeclare + "(" + paramDeclare + "): " + retDeclare + "\n"
+    return modDeclare + identifierDeclare + "(" + paramDeclare + "): " + retDeclare + "\n"
 }
 
 func genInterfaceDeclare(interfaceDecl: InterfaceDecl) {
