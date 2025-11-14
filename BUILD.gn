@@ -23,18 +23,7 @@ cangjie_ark_interop_sdk_modules = [
   "//arkcompiler/cangjie_ark_interop/ohos/callback_invoke:ohos.callback_invoke"
 ]
 
-cangjie_ohos_sdk_api_lib_copy("copy_cangjie_ark_interop_sdk_libs_mac") {
-  toolchain = toolchain_mac
-  platform = previewer_platform_mac
-  dyn_extension = ".dylib"
-  inputs = cangjie_ark_interop_sdk_modules
-  module_name = "ohos"
-}
-
-cangjie_ohos_sdk_api_lib_copy("copy_cangjie_ark_interop_sdk_libs_windows") {
-  toolchain = toolchain_windows
-  platform = previewer_platform_windows
-  dyn_extension = ".dll"
-  inputs = cangjie_ark_interop_sdk_modules
-  module_name = "ohos"
+ohos_sdk_cangjie_api_lib_copy("copy_cangjie_ark_interop") {
+  sdk_packages_ohos = cangjie_ark_interop_sdk_modules
+  part_name = "cangjie_ark_interop"
 }
