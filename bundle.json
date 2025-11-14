@@ -70,7 +70,10 @@
                     "name": "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop_macro_cjo"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop:copy_cangjie_ark_interop_sdk_mac_libs"
+                    "name": "//arkcompiler/cangjie_ark_interop:copy_cangjie_ark_interop_sdk_libs_mac"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_ark_interop:copy_cangjie_ark_interop_sdk_libs_windows"
                 }
             ],
             "test": []
