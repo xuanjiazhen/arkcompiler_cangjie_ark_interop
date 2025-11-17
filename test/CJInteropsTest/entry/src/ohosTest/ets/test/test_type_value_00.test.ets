@@ -30,9 +30,7 @@ interface Lib {
   test_types_09(a: Array<string>): void;
   test_types_10(c: string): void;
   test_types_11(a: number): void;
-  test_types_12(): void;
   test_types_13(c: string): void;
-  test_jsCurrent_14(c: string): void;
   test_jsStringEx_15(c: string): void;
   test_jsHashMap_16(c: string): void;
 }
@@ -104,14 +102,8 @@ export default function TestTypeValue() {
         hilog.error(0, 'WBT', `|${e.message.toString()}|`);
       }
     })
-    it('test_types_12', 0, () => {
-      lib.test_types_12();
-    })
     it('test_types_13', 0, () => {
       lib.test_types_13("isStageMode");
-    })
-    it('test_jsCurrent_14', 0, () => {
-      lib.test_jsCurrent_14("isStageMode");
     })
     it('test_jsStringEx_15', 0, () => {
       lib.test_jsStringEx_15("isStageMode");
