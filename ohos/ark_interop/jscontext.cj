@@ -17,6 +17,8 @@
 
 package ohos.ark_interop
 
+import ohos.business_exception.*
+
 import std.sync.{Mutex, AtomicInt8}
 import std.collection.HashMap
 
@@ -83,6 +85,8 @@ foreign func ARKTS_GetGlobalNapiEnv(env: JSEnv): napi_env
 
 @FastNative
 foreign func ARKTS_GetExceptionAndClear(env: JSEnv): JSValue_
+
+foreign func ARKTS_RequireArkModule(env: JSEnv, path: CPointer<UInt8>, size: UIntNative, kind: Int32): JSValue_
 
 @C
 func asyncCallbackExecutor(env: JSEnv, id: Int64): Unit {
@@ -888,5 +892,68 @@ public class JSContext {
             Int32(0)
         }
         jsCodeError(code, message, stack)
+    }
+
+    private let cachedKits = HashMap<String, JSObject>()
+    var isOnLoadingCJ = false
+
+    private func createKit(config: KitConfig): JSObject {
+        let result = object()
+        for ((pkgName, data) in config) {
+            match (data) {
+                case Package(name) =>
+                    result.defineOwnAccessor(name, getter: { context, _ =>
+                        context.requireArkModule(pkgName)
+                    })
+                case Decls(decls) =>
+                    for (one in decls) {
+                        match (one) {
+                            case Name(name) =>
+                                result.defineOwnAccessor(name, getter: { context, _ =>
+                                    let pkg = context.requireArkModule(pkgName).asObject()
+                                    return pkg[name]
+                                })
+                            case Mapping(from, to) =>
+                                result.defineOwnAccessor(to, getter: { context, _ =>
+                                    let pkg = context.requireArkModule(pkgName).asObject()
+                                    return pkg[from]
+                                })
+                        }
+                    }
+            }
+        }
+        return result
+    }
+
+    public func requireArkModule(src: String): JSValue {
+        if (isOnLoadingCJ) {
+            throw BusinessException(34300007, "Cannot requireArkModule during initializing cangjie module.")
+        }
+        if (!ArkModuleHelper.checkSpecifier(src)) {
+            throw BusinessException(34300006, "module specifier invalid: ${src}")
+        }
+
+        if (src.startsWith("@kit.")) {
+            if (let Some(object) <- cachedKits.get(src)) {
+                return object.toJSValue()
+            }
+            let object = createKit(kitConfigs[src])
+            cachedKits[src] = object
+            return object.toJSValue()
+        }
+
+        let (url, kind) = ArkModuleHelper.resolveUrl(src)
+        unsafe {
+            let handle = acquireArrayRawData(url.rawData())
+            let size = UIntNative(url.size)
+            let result = try {
+                ARKTS_RequireArkModule(env, handle.pointer, size, kind)
+            } catch (e: Exception) {
+                releaseArrayRawData(handle)
+                throw e
+            }
+            releaseArrayRawData(handle)
+            return JSValue(this, result)
+        }
     }
 }
