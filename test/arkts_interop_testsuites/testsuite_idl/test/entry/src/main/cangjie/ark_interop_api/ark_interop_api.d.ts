@@ -59,6 +59,11 @@ export declare class AbnormalClass {
 export declare class CJNativeClass {
 }
 
+export declare class TicketMachine {
+    static reset(nextId: number): void
+    static nextId(): number
+}
+
 export declare class Node {
     name: string
     childCount: number
@@ -81,6 +86,7 @@ export declare interface CustomLib {
     checkJSArrayExOfNormalInterface(a: Array<NormalInterface>): void
     createJSArrayExOfNormalInterface(): Array<NormalInterface>
     CJNativeClass: {new (): CJNativeClass}
+    TicketMachine: typeof TicketMachine
     AbnormalClass: {new (): AbnormalClass}
     NormalClass: {new (mutableVariableThatHasNoInitialization: number): NormalClass}
     ClassThatInheritsAnotherClass: {new (): ClassThatInheritsAnotherClass}
