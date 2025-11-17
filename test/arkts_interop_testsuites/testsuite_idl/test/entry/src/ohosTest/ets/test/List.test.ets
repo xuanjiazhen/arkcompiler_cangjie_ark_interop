@@ -15,6 +15,7 @@
 
 import TestAsyncFunction from './TestAsyncFunction.test';
 import TestBinaryTree from './TestBinaryTree.test';
+import TestEnum from './TestEnum.test';
 import TestJSArrayEx from './TestJSArrayEx.test';
 import TestJSClass from './TestJSClass.test';
 import TestJSMapEx from './TestJSMapEx.test';
@@ -30,6 +31,7 @@ import TestZoo from './TestZoo.test';
 
 export default function testsuite() {
   TestAsyncFunction();
+  TestEnum();
   TestNamedParameter();
   TestOption();
   TestParameterNumber();
