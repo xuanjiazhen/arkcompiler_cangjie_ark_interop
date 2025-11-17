@@ -106,5 +106,13 @@ export default function testJSModule02() {
     it('test12', 0, () => {
       expect(Object.keys(lib).indexOf('testRegisterModule12') !== undefined).assertTrue();
     })
+    it("fail during cangjie load", 0, ()=> {
+      try {
+        requireCJLib("libentry.fail_load.so")
+        expect().assertFail();
+      } catch (e) {
+        hilog.error(0, 'WBT', `|${e.message.toString()}|`);
+      }
+    })
   })
 }

@@ -1,0 +1,11 @@
+import("//build/templates/cangjie/cj_test.gni")
+
+ohos_cangjie_unittest("cj_test_ark_interop") {
+    sources = []
+    cj_deps = [
+        "../../ohos:ohos.ark_interop"
+    ]
+    external_deps = [
+        "napi:ark_interop"
+    ]
+}
