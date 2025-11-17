@@ -1,0 +1,31 @@
+{
+    "apiType": "stageMode",
+    "buildOption": {
+        "resOptions": {
+            "copyCodeResource": {
+                "enabled": false
+            }
+        }
+    },
+    "buildOptionSet": [
+        {
+            "name": "release",
+            "arkOptions": {
+                "obfuscation" {
+                    "enabled": false,
+                    "files": [
+                        "./obfuscation-rules.txt"
+                    ]
+                },
+                "consumerFiles": [
+                    "./consumer-rules.txt"
+                ]
+            }
+        }
+    ],
+    "targets": [
+        {
+            "name": "default"
+        }
+    ]
+}
