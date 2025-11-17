@@ -21,6 +21,10 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "libark_interop_loader.so": "file:./src/main/cangjie/loader"
+    "libark_interop_loader.so": "file:./src/main/cangjie/loader",
+    "libentry.so": "file:./src/main/cpp/types/libentry",
+    "localhar": "file:../localhar",
+    "localhsp": "file:../localhsp",
+    "@ohos.lottie": "^2.0.0"
   }
 }
