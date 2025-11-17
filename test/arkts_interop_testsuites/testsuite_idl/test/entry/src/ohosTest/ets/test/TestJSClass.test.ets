@@ -15,7 +15,7 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CJNativeClass, CustomLib, Node } from "libark_interop_api.so"
+import { CJNativeClass, CustomLib, Node, TicketMachine } from "libark_interop_api.so"
 import { requireCJLib } from "libark_interop_loader.so"
 import { JSON } from '@kit.ArkTS';
 
@@ -87,6 +87,13 @@ export default function TestJSClass() {
     it('test07', 0, () => {
       const obj = new JSNativeClass();
       expect(obj instanceof JSNativeClass).assertTrue();
+    })
+    it('test08_staticMethodOnClass', 0, () => {
+      lib.TicketMachine.reset(0);
+      const first = lib.TicketMachine.nextId();
+      const second = lib.TicketMachine.nextId();
+      expect(first).assertEqual(1);
+      expect(second).assertEqual(2);
     })
   })
 }

@@ -24,6 +24,13 @@ export declare interface StringAnalyzer {
     printAnalysis: () => void
 }
 
+export declare const enum Season {
+    Spring = 0,
+    Summer = 1,
+    Autumn = 2,
+    Winter = 3
+}
+
 export declare interface NormalInterface {
     mutableInstanceProperty: number
     ImmutableInstanceProperty: string
@@ -59,6 +66,12 @@ export declare class AbnormalClass {
 export declare class CJNativeClass {
 }
 
+export declare class TicketMachine {
+    constructor();
+    static reset(nextId: number): void
+    static nextId(): number
+}
+
 export declare class Node {
     name: string
     childCount: number
@@ -81,6 +94,7 @@ export declare interface CustomLib {
     checkJSArrayExOfNormalInterface(a: Array<NormalInterface>): void
     createJSArrayExOfNormalInterface(): Array<NormalInterface>
     CJNativeClass: {new (): CJNativeClass}
+    TicketMachine: {new (): TicketMachine}
     AbnormalClass: {new (): AbnormalClass}
     NormalClass: {new (mutableVariableThatHasNoInitialization: number): NormalClass}
     ClassThatInheritsAnotherClass: {new (): ClassThatInheritsAnotherClass}
@@ -139,4 +153,7 @@ export declare interface CustomLib {
     returnTypeBeingFunctionType_00(): () => void
     returnTypeBeingFunctionType_01(): (funcArg0: (funcArgfuncArg0: (funcArgfuncArgfuncArg0: (funcArgfuncArgfuncArgfuncArg0: (funcArgfuncArgfuncArgfuncArgfuncArg0: undefined) => boolean) => number) => number) => number | undefined) => ArrayBuffer
     cookBird(bird: CanFly): string
+    getDefaultSeason(): Season
+    rotateSeason(current: Season): Season
+    isHotSeason(current: Season): boolean
 }
