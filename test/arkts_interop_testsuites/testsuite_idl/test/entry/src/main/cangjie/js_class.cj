@@ -35,6 +35,38 @@ let _ = JSModule.registerFunc("test02") {
     jsContext.boolean(true).toJSValue()
 }
 
+private var ticketCounter: Int64 = 0
+
+@Interop[ArkTS]
+public class TicketMachine {
+    public init() {}
+
+    public static func reset(nextId: Int64): Unit {
+        ticketCounter = if (nextId > 0) {
+            nextId
+        } else {
+            0
+        }
+    }
+
+    public static func nextId(): Int64 {
+        ticketCounter += 1
+        return ticketCounter
+    }
+}
+
+@Interop[ArkTS]
+public class Person {
+    public var name: String = ""
+    public var age: Int32 = 0
+
+    public init() {}
+
+    public static func build(): Person {
+        return Person()
+    }
+}
+
 @Interop[ArkTS]
 public class AbnormalClass {
     // 不支持主构造函数
