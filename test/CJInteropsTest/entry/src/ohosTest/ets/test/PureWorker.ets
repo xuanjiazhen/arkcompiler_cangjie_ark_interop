@@ -7,6 +7,10 @@ interface PureLib {
     runPureTests(): Promise<void>
 }
 
+globalThis.callSync = (callback: ()=>void) => {
+    callback()
+}
+
 workerPort.onmessage = async (event: MessageEvents) => {
     interface Res {
         data: string;
