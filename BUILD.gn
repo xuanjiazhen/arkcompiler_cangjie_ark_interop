@@ -16,8 +16,8 @@ import("//build/templates/cangjie/cjc.gni")
 cangjie_ark_interop_sdk_modules = [
   "//arkcompiler/cangjie_ark_interop/ohos/ffi:ohos.ffi",
   "//arkcompiler/cangjie_ark_interop/ohos/encoding:ohos.encoding.json",
-  # "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop",
-  # "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop_helper",
+  "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop",
+  "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop_helper",
   "//arkcompiler/cangjie_ark_interop/ohos/labels:ohos.labels",
   "//arkcompiler/cangjie_ark_interop/ohos/business_exception:ohos.business_exception",
   "//arkcompiler/cangjie_ark_interop/ohos/callback_invoke:ohos.callback_invoke"
