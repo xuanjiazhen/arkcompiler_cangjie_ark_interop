@@ -23,7 +23,6 @@ cangjie_ark_interop_sdk_modules = [
   "//arkcompiler/cangjie_ark_interop/ohos/callback_invoke:ohos.callback_invoke"
 ]
 
-ohos_sdk_cangjie_api_lib_copy("copy_cangjie_ark_interop") {
-  sdk_packages_ohos = cangjie_ark_interop_sdk_modules
-  part_name = "cangjie_ark_interop"
+copy_ohos_cangjie_sdk_api_lib("copy_cangjie_ark_interop_libs") {
+  ohos_inputs = cangjie_ark_interop_sdk_modules
 }
