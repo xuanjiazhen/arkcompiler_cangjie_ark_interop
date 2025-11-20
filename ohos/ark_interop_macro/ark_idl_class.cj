@@ -18,7 +18,8 @@
 macro package ohos.ark_interop_macro
 
 import std.ast.{Decl, FuncDecl, PrimaryCtorDecl, VarDecl, PropDecl, Token, Tokens, ClassDecl, TypeNode, FuncParam, TokenKind, setItem, getChildMessages, ToTokens}
-import std.collection.ArrayList
+import std.collection.{ArrayList, HashMap}
+import std.sort.sort
 
 class IDLClassMemberInvisible {
     private var keyWord: String
@@ -93,7 +94,7 @@ class IDLClassMemberInvisible {
 
 class IDLClass {
     private let identifier_: Token
-    private var initFunc_: FuncDecl
+    private var initFuncs_: ArrayList<FuncDecl>
     private var primaryCtor_: PrimaryCtorDecl
     private var isPrimaryCtor: Bool
     private let funcs_: ArrayList<FuncDecl>
@@ -104,7 +105,7 @@ class IDLClass {
 
     init(classDecl: ClassDecl) {
         identifier_ = classDecl.identifier
-        initFunc_ = FuncDecl()
+        initFuncs_ = ArrayList<FuncDecl>()
         primaryCtor_ = PrimaryCtorDecl()
         isPrimaryCtor = false
         funcs_ = ArrayList<FuncDecl>()
@@ -119,7 +120,7 @@ class IDLClass {
             match (decl) {
                 case funcDecl: FuncDecl =>
                     if (funcDecl.identifier.value == "init") {
-                        initFunc_ = funcDecl
+                        initFuncs_.add(funcDecl)
                     } else {
                         funcs_.add(funcDecl)
                     }
@@ -209,56 +210,95 @@ class IDLClass {
         )
     }
 
-    private func genIDLConstructor(): Tokens {
-        var funcParams: ArrayList<FuncParam>
-        var initFuncTokens: Tokens
-        if (isPrimaryCtor) {
-            funcParams = primaryCtor_.funcParams
-            initFuncTokens = primaryCtor_.toTokens()
-        } else {
-            funcParams = initFunc_.funcParams
-            initFuncTokens = initFunc_.toTokens()
+    private func genIDLConstructors(): Tokens {
+        var funcParamsMap = HashMap<Int64, ArrayList<ArrayList<FuncParam>>>()
+        var initFuncTokens = Tokens()
+        if (primaryCtor_.identifier.value != "") {
+            let funcParams = primaryCtor_.funcParams
+            if (funcParamsMap.contains(funcParams.size)) {
+                funcParamsMap[funcParams.size].add(funcParams)
+            } else {
+                funcParamsMap[funcParams.size] = ArrayList<ArrayList<FuncParam>>([funcParams])
+            }
+            initFuncTokens.append(primaryCtor_.toTokens())
         }
-        let argx = Tokens()
-        let callArgs = Tokens()
-        let callSrcFunc = Tokens()
-        for (i in 0..funcParams.size) {
-            let funcParam = funcParams[i]
-            let newArgName = IDLUtil.genRandomVarName("arg")
-            let callinfoName = quote(callInfo[$i])
-            argx.append(IDLUtil.jsvalue2Cangjie(funcParam.paramType, newArgName, callinfoName, quote(context))).append(
-                Token(NL))
-            callArgs.append(IDLUtil.genInputArg(funcParam, newArgName, i != funcParams.size - 1))
+        for (initFunc in initFuncs_) {
+            let funcParams = initFunc.funcParams
+            if (funcParamsMap.contains(funcParams.size)) {
+                funcParamsMap[funcParams.size].add(funcParams)
+            } else {
+                funcParamsMap[funcParams.size] = ArrayList<ArrayList<FuncParam>>([funcParams])
+            }
+            initFuncTokens.append(initFunc.toTokens())
         }
+
+        let construct = Tokens()
+        let paramNums = funcParamsMap.keys().toArray()
+        sort(paramNums)
+        for (paramNum in paramNums) {
+            construct.append(quote(case $paramNum =>
+            ))
+            if (paramNum == 0) {
+                construct.append(quote( $(identifier_)()
+                ))
+                continue
+            }
+            let construct = Tokens()
+            for (funcParams in funcParamsMap[paramNum]) {
+                construct.append(quote(try {
+                ))
+                let callArgs = Tokens()
+                for (i in 0..funcParams.size) {
+                    let funcParam = funcParams[i]
+                    let newArgName = IDLUtil.genRandomVarName("arg")
+                    let callInfoName = quote(callInfo[$i])
+                    construct.append(IDLUtil.jsvalue2Cangjie(funcParam.paramType, newArgName, callInfoName, quote(context)))
+                        .append(Token(NL))
+                    callArgs.append(IDLUtil.genInputArg(funcParam, newArgName, i != funcParams.size - 1))
+                }
+                construct.append(quote(return $(identifier_)($callArgs)
+                } catch (_) {}
+                ))
+            }
+            construct.append(quote(throw Exception("class: construct failed.")
+            ))
+        }
+        construct.append(quote(case _ => throw Exception("class: construct failed.")))
 
         return quote(
             $(initFuncTokens)
+            static func $(constructorName)Helper(context: JSContext, callInfo: JSCallInfo): $(identifier_) {
+                match (callInfo.count) {
+                    $(construct)
+                }
+            }
+
             public static func $(constructorName)(context: JSContext, callInfo: JSCallInfo): JSValue {
-                $(argx)
-                let clazz = $(identifier_)($callArgs)
+                let object = $(constructorName)Helper(context, callInfo)
+
                 let thisArg = callInfo.thisArg
                 let thisObject = thisArg.asObject()
-                let jsExternal = context.external(clazz)
+                let jsExternal = context.external(object)
                 thisObject.attachCJObject(jsExternal)
                 return thisObject.toJSValue()
             }
         )
     }
 
-    private func genClazzTokens(retName: Tokens) {
+    private func genObjectTokens() {
         return quote(
             let thisArg = callInfo.thisArg
             let thisObject = thisArg.asObject()
             let jsExternal = thisObject.getAttachInfo() ?? throw Exception("class: get external failed.")
-            let $(retName) = jsExternal.cast<$(identifier_)>() ?? throw Exception("class: get clazz failed.")
+            let object = jsExternal.cast<$(identifier_)>() ?? throw Exception("class: get $(identifier_) failed.")
         )
     }
 
     private func genVarGetFunc(identifier: Token, declType: TypeNode) {
         return quote(
             public static func $(genGetFuncName(identifier))(context: JSContext, callInfo: JSCallInfo): JSValue {
-                $(genClazzTokens(quote(clazz)))
-                let RET = clazz.$(identifier)
+                $(genObjectTokens())
+                let RET = object.$(identifier)
                 return $(IDLUtil.cangjie2JSValue(declType, Tokens(), quote(RET), quote(context)))
             }
         )
@@ -267,9 +307,9 @@ class IDLClass {
     private func genVarSetFunc(identifier: Token, declType: TypeNode) {
         return quote(
             public static func $(genSetFuncName(identifier))(context: JSContext, callInfo: JSCallInfo): JSValue {
-                $(genClazzTokens(quote(clazz)))
+                $(genObjectTokens())
                 $(IDLUtil.jsvalue2Cangjie(declType, quote(value), quote(callInfo[0]), quote(context)))
-                clazz.$(identifier) = value
+                object.$(identifier) = value
                 return context.undefined().toJSValue()
             }
         )
@@ -322,9 +362,9 @@ class IDLClass {
         } else {
             return quote(
                 public static func $(newFuncIdentifier)(context: JSContext, callInfo: JSCallInfo): JSValue {
-                    $(genClazzTokens(quote(clazz)))
+                    $(genObjectTokens())
                     $(argx)
-                    let RET = clazz.$(identifier)($callArgs)
+                    let RET = object.$(identifier)($callArgs)
                     return $(IDLUtil.cangjie2JSValue(funcDecl.declType, Tokens(), quote(RET), quote(context)))
                 }
             )
@@ -425,7 +465,7 @@ class IDLClass {
             public static func fromJSValue(context: JSContext, input: JSValue) {
                 let jsObj = input.asObject()
                 let jsExt = jsObj.getAttachInfo() ?? throw Exception("class: get external failed.")
-                let obj = jsExt.cast<$(identifier_)>() ?? throw Exception("class: get clazz failed.")
+                let obj = jsExt.cast<$(identifier_)>() ?? throw Exception("class: get $(identifier_) failed.")
                 return obj
             }
             public static func toArktsType(): String {
@@ -448,7 +488,7 @@ class IDLClass {
         return quote(
             $(genIDLHead()) {
                 $(genIDLStaticInit())
-                $(genIDLConstructor())
+                $(genIDLConstructors())
                 $(genIDLVars())
                 $(genIDLFuncs())
                 $(genIDLProps())
