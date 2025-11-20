@@ -234,11 +234,9 @@ func genClassInitDeclare(pubClassDecl: ClassDecl, insideClassDecl!: Bool = false
             case funcDecl: FuncDecl =>
                 if (funcDecl.identifier.value == "init") {
                     retInit += genFuncParamDeclare(funcDecl.funcParams)
-                    break
                 }
             case primaryCtorDecl: PrimaryCtorDecl =>
                 retInit += genFuncParamDeclare(primaryCtorDecl.funcParams)
-                break
             case _ => ()
         }
     }
