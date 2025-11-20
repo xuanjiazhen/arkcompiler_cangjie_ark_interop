@@ -466,7 +466,7 @@ class SplitIterator <: Iterator<Utf16String> {
         if (!closed) {
             closed = true
             if (!removeEmpty) {
-                return Utf16String.empty
+                return Utf16String.EMPTY
             }
         }
         return None
