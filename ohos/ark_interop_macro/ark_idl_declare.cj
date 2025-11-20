@@ -222,33 +222,31 @@ func genClassDeclare(pubClassDecl: ClassDecl, withConstructor!: Bool = false) {
 
 func genClassInitDeclare(pubClassDecl: ClassDecl, insideClassDecl!: Bool = false) {
     let classId = pubClassDecl.identifier.value
-    var retInit = if (insideClassDecl) {
+    var head = if (insideClassDecl) {
         "constructor ("
     } else {
         classId + ": {new ("
     }
+    var tail = if (insideClassDecl) {
+        (")" + "\n")
+    } else {
+        ("): " + classId + "}" + "\n")
+    }
 
+    var retInits = ""
     let decls = pubClassDecl.body.decls
     for (decl in decls) {
         match (decl) {
             case funcDecl: FuncDecl =>
                 if (funcDecl.identifier.value == "init") {
-                    retInit += genFuncParamDeclare(funcDecl.funcParams)
-                    break
+                    retInits += head + genFuncParamDeclare(funcDecl.funcParams) + tail + "\n"
                 }
             case primaryCtorDecl: PrimaryCtorDecl =>
-                retInit += genFuncParamDeclare(primaryCtorDecl.funcParams)
-                break
+                retInits += head + genFuncParamDeclare(primaryCtorDecl.funcParams) + tail + "\n"
             case _ => ()
         }
     }
-
-    retInit += if (insideClassDecl) {
-        (")" + "\n")
-    } else {
-        ("): " + classId + "}" + "\n")
-    }
-    return retInit
+    return retInits
 }
 
 func genEnumBodyDeclare(enumDecl: EnumDecl) {
