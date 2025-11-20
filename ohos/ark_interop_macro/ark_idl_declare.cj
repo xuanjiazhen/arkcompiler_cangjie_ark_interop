@@ -74,8 +74,8 @@ func genClassDeclareFile(classDecl: ClassDecl) {
     let classDeclare = genClassDeclare(visibleClassDecl)
     declareWriteIntoFileHead(classDeclare, file)
 
-    let classInitDeclare = genClassInitDeclare(visibleClassDecl)
-    funcDeclareWriteIntoFile(classInitDeclare, file)
+    let classInitsDeclare = genClassInitsDeclare(visibleClassDecl)
+    funcDeclareWriteIntoFile(classInitsDeclare.replace("\n", "\n" + TAB_STR).trimEnd(" "), file)
 
     let pkgName = IDLCustomTypeWL.getPkgName(classDecl.identifier.value)
     let newFile = genFile(currentPkg: pkgName)
@@ -205,8 +205,8 @@ func genClassBodyDeclare(classDecl: ClassDecl, withConstructor!: Bool) {
     }
 
     if (withConstructor) {
-        let classInitDeclare = genClassInitDeclare(classDecl, insideClassDecl: true)
-        retBody += (TAB_STR + classInitDeclare)
+        let classInitsDeclare = genClassInitsDeclare(classDecl, insideClassDecl: true)
+        retBody += (TAB_STR + classInitsDeclare.replace("\n", "\n" + TAB_STR).trimEnd(" "))
     }
     return " {\n" + retBody + "}"
 }
@@ -220,35 +220,43 @@ func genClassDeclare(pubClassDecl: ClassDecl, withConstructor!: Bool = false) {
     return "export declare class " + identifierDeclare + bodyDeclare + "\n"
 }
 
-func genClassInitDeclare(pubClassDecl: ClassDecl, insideClassDecl!: Bool = false) {
+func genClassInitsDeclare(pubClassDecl: ClassDecl, insideClassDecl!: Bool = false) {
     let classId = pubClassDecl.identifier.value
-    var retInit = if (insideClassDecl) {
-        "constructor ("
+    var head = if (insideClassDecl) {
+        "constructor("
     } else {
-        classId + ": {new ("
+        classId + ": { new ("
+    }
+    var tail = if (insideClassDecl) {
+        (")" + "\n")
+    } else {
+        ("): " + classId + " }" + "\n")
     }
 
+    var retInits = ""
     let decls = pubClassDecl.body.decls
     for (decl in decls) {
+        var retInit = ""
         match (decl) {
             case funcDecl: FuncDecl =>
                 if (funcDecl.identifier.value == "init") {
-                    retInit += genFuncParamDeclare(funcDecl.funcParams)
-                    break
+                    retInit = head + genFuncParamDeclare(funcDecl.funcParams) + tail
                 }
             case primaryCtorDecl: PrimaryCtorDecl =>
-                retInit += genFuncParamDeclare(primaryCtorDecl.funcParams)
-                break
+                retInit = head + genFuncParamDeclare(primaryCtorDecl.funcParams) + tail
             case _ => ()
         }
+        if (!retInit.isEmpty() && retInits.contains(retInit)) {
+            IDLUtil.diagReportTW(
+                Tokens(decl.identifier),
+                "Constructor synonymous with a previous one. " +
+                    "This constructor declaration will be ignored."
+            )
+        } else {
+            retInits += retInit
+        }
     }
-
-    retInit += if (insideClassDecl) {
-        (")" + "\n")
-    } else {
-        ("): " + classId + "}" + "\n")
-    }
-    return retInit
+    return retInits
 }
 
 func genEnumBodyDeclare(enumDecl: EnumDecl) {
