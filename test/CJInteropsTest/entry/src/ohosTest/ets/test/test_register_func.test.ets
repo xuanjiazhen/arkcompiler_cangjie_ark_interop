@@ -14,20 +14,12 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { requireCJLib } from "libark_interop_loader.so"
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { JSON } from '@kit.ArkTS';
-
-interface Lib {
-  testRegisterFunc00(): string;
-
-  testRegisterFunc01(): string;
-}
+import * as lib from "libentry.so"
 
 export default function testJSModule01() {
   describe('TestRegisterFunc', () => {
-    const lib = requireCJLib('libentry.so') as Lib;
-
     it('test00', 0, () => {
       expect(lib.testRegisterFunc00()).assertEqual('testRegisterFunc00');
     })

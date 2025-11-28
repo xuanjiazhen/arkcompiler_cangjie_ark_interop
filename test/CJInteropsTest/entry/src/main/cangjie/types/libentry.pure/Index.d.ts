@@ -1,0 +1,1 @@
+export function runPureTests(): Promise<void>
