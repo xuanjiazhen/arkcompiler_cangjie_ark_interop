@@ -17,8 +17,20 @@
 
 package ohos.labels
 
+/**
+ * Annotation class for defining interfaces that need to be hidden.
+ * Interfaces marked with this annotation will not show hints and will not allow navigation in the IDE.
+ */
 @Annotation
-public class Hide {
-    public const init() {
+protected class Hide {
+    /**
+     * Creates a new Hide annotation with the specified parameters.
+     *
+     * @param { Bool } isChecked - indicates whether compiler checking is needed.
+     *                             When isChecked is true, the compiler will check and report an error if the user uses the marked interface;
+     *                             when isChecked is false, the compiler will not perform the check. 
+     *                             The default value is false.
+     */
+    protected const init(isChecked!: Bool = false) {
     }
 }
