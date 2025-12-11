@@ -17,8 +17,16 @@
 
 package ohos.labels
 
+/**
+ * Annotation class for defining interfaces that need to be hidden.
+ */
 @Annotation
 public class Hide {
-    public const init() {
+    /**
+     * Creates a new Hide annotation with the specified parameters.
+     *
+     * @param { Bool } needCompilerChecking - indicates whether compiler checking is needed.
+     */
+    public const init(needCompilerChecking!: Bool = false) {
     }
 }
