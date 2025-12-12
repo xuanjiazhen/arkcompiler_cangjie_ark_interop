@@ -44,6 +44,7 @@ class TestJSClass {
     @TestCase
     func testJSClassPlain() {
         let jsContext = getJSContext()
+        await(jsContext) {
         let classA = await(jsContext) {
             jsContext.clazz({
                 _, callInfo => callInfo.thisArg
@@ -68,11 +69,13 @@ class TestJSClass {
         @Expect(await(jsContext){objA.instanceOf(classA)})
         await(jsContext) {objA.callMethod("doSth")}
         @Expect(sthDone.value)
+        }
     }
 
     @TestCase
     func testJSClassInherit() {
         let jsContext = getJSContext()
+        await(jsContext) {
         let classA = await(jsContext) {
             jsContext.clazz(
                 {
@@ -242,6 +245,7 @@ class TestJSClass {
         }
         @Expect(await(jsContext){objB["id"].toNumber()}, 3.0)
         @Expect(await(jsContext){objB["myid1"].toNumber()}, 3.0)
+        }
     }
 
     @TestCase
