@@ -105,6 +105,26 @@ func disposeJSContext(env: JSEnv): Unit {
     }
 }
 
+struct Scope {
+    private let handle_: JSScope
+    private let handledValues_ = ArrayList<JSValue>()
+
+    init(env: JSEnv) {
+        handle_ = unsafe { ARKTS_OpenScope(env) }
+    }
+
+    func close(env: JSEnv): Unit {
+        for (value in handledValues_) {
+            value.isSafe = false
+        }
+        unsafe { ARKTS_CloseScope(env, scope) }
+    }
+
+    func add(value: JSValue): Unit {
+        handledValues_.add(value)
+    }
+}
+
 /**
  * A single-thread ArkTS interop context. JSContext has a one-to-one correspondence with the ArkTS runtime. 
  * Its main purpose is to create JSValues and safe references and manage the lifecycle of Cangjie objects 
@@ -138,7 +158,7 @@ public class JSContext {
     private let bindTid_: UInt64
     var global_: ?JSObject = None
     var constants_: ?JSConstants = None
-    private let void_: JSValue_
+    let void_: JSValue_
 
     /**
      * @throws { Exception } - Create JSContext failed, env is null.
@@ -283,12 +303,37 @@ public class JSContext {
         }
     }
 
-    func newScope(callback: () -> Unit): Unit {
-        unsafe {
-            let scope = ARKTS_OpenScope(env)
-            callback()
-            ARKTS_CloseScope(env, scope)
+    private let scopes_ = ArrayList<Scope>()
+
+    func handleValue(value: JSValue): Unit {
+        if (scopes_.isEmpty()) {
+            throw noScopeError()
         }
+        scopes_[scopes_.size - 1].add(value)
+    }
+
+    @!APILevel[
+        since: "22",
+        throwexception: true
+    ]
+    public func newScope<T>(callback: () -> T): T {
+        let scope = Scope(env)
+        let index = scopes_.size
+        scopes_.add(scope)
+        let result = try {
+            callback()
+        } catch (e: Exception) {
+            scopes_.remove(at: index)
+            scope.close(env)
+            throw e
+        } catch (e: Error) {
+            scopes_.remove(at: index)
+            scope.close(env)
+            throw e
+        }
+        scopes_.remove(at: index)
+        scope.close()
+        return result
     }
 
     /**
@@ -851,7 +896,9 @@ public class JSContext {
             }
             LibC.free(moduleNameC)
             checkJSException()
-            return JSValue(this, result)
+            let back = JSValue(this, result)
+            handleValue(back)
+            return back
         }
     }
 
@@ -979,7 +1026,9 @@ public class JSContext {
                 throw e
             }
             releaseArrayRawData(handle)
-            return JSValue(this, result)
+            let back = JSValue(this, result)
+            handleValue(back)
+            return back
         }
     }
 }

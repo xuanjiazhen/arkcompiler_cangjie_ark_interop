@@ -67,6 +67,8 @@ abstract sealed class JSHeapObject {
     ]
     public func toJSValue(): JSValue {
         context.checkLifecycleAndThread()
-        JSValue(context, innerValue)
+        let back = JSValue(context, innerValue)
+        context.handleValue(back)
+        return back
     }
 }
