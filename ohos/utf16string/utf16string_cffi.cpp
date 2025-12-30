@@ -97,7 +97,7 @@ int64_t CJUtf16StringIndexOf(CJUtf16StringHandle handle, CJUtf16StringHandle tar
 
 int64_t CJUtf16StringLastIndexOf(CJUtf16StringHandle handle, CJUtf16StringHandle target, int64_t ending)
 {
-    return handle->RawLastIndexOf(target, ending);
+    return handle->RawLastIndexOf(target, ending + target->Length());
 }
 
 int64_t CJUtf16StringCountOf(CJUtf16StringHandle handle, CJUtf16StringHandle target)
