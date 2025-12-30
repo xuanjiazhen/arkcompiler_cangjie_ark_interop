@@ -53,7 +53,7 @@ foreign {
     @FastNative func CJUtf16StringSplit(handle: Utf16StringHandle, separator: Utf16StringHandle, limit: UInt32): Utf16StringArray
     @FastNative func CJUtf16StringArrayFree(arr: Utf16StringArray): Unit
     @FastNative func CJUtf16StringIndexOf(handle: Utf16StringHandle, target: Utf16StringHandle, start: Int64): Int64
-    @FastNative func CJUtf16StringLastIndexOf(handle: Utf16StringHandle, target: Utf16StringHandle, ending: Int64): Int64
+    @FastNative func CJUtf16StringLastIndexOfV1(handle: Utf16StringHandle, target: Utf16StringHandle, ending: Int64): Int64
     @FastNative func CJUtf16StringCountOf(handle: Utf16StringHandle, target: Utf16StringHandle): Int64
     @FastNative func CJUtf16StringStartsWith(handle: Utf16StringHandle, target: Utf16StringHandle, start: UInt32): Bool
     @FastNative func CJUtf16StringEndsWith(handle: Utf16StringHandle, target: Utf16StringHandle, ending: UInt32): Bool
@@ -579,7 +579,21 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64 {
         acquire()
         target.acquire()
-        let result = unsafe {CJUtf16StringIndexOf(handle_, target.handle_, fromIndex)}
+        let offset = if (fromIndex < 0) {
+            0
+        } else if (fromIndex >= size) {
+            target.release()
+            release()
+            return None
+        } else {
+            fromIndex
+        }
+        if (target.isEmpty()) {
+            target.release()
+            release()
+            return offset;
+        }
+        let result = unsafe {CJUtf16StringIndexOf(handle_, target.handle_, offset)}
         target.release()
         release()
         if (result >= 0) {
@@ -618,7 +632,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64 {
         acquire()
         target.acquire()
-        let result = unsafe {CJUtf16StringLastIndexOf(handle_, target.handle_, fromIndex)}
+        let result = unsafe {CJUtf16StringLastIndexOfV1(handle_, target.handle_, fromIndex)}
         target.release()
         release()
         if (result >= 0) {
@@ -680,17 +694,12 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func split(separator: Utf16String, maxSplit: Int64, removeEmpty!: Bool = false): Array<Utf16String> {
         acquire()
         separator.acquire()
-        if (maxSplit < 0) {
-            separator.release()
-            release()
-            throw jsArrayRangeMisMatch(0, Int64.Max, maxSplit)
-        }
         if (maxSplit == 0) {
             separator.release()
             release()
             return []
         }
-        let m = if (maxSplit > Int64(UInt32.Max)) {
+        let m = if (maxSplit < 0 || maxSplit > Int64(UInt32.Max)) {
             UInt32.Max
         } else {
             UInt32(maxSplit)
@@ -745,7 +754,12 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     ]
     public func lazySplit(separator: Utf16String, maxSplit: Int64, removeEmpty!: Bool = false): Iterator<Utf16String> {
         acquire()
-        let result = SplitIterator(this, separator, maxSplit, removeEmpty)
+        let fixedMaxSplit = if (maxSplit < 0) {
+            Int64.Max
+        } else {
+            maxSplit
+        }
+        let result = SplitIterator(this, separator, fixedMaxSplit, removeEmpty)
         release()
         return result
     }
@@ -806,6 +820,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func startsWith(target: Utf16String): Bool {
         acquire()
         target.acquire()
+        if (target.isEmpty()) {
+            target.release()
+            release()
+            return true
+        }
         let result = unsafe {
             CJUtf16StringStartsWith(handle_, target.handle_, 0)
         }
@@ -828,6 +847,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func endsWith(target: Utf16String): Bool {
         acquire()
         target.acquire()
+        if (target.isEmpty()) {
+            target.release()
+            release()
+            return true
+        }
         let result = unsafe {
             CJUtf16StringEndsWith(handle_, target.handle_, 0)
         }

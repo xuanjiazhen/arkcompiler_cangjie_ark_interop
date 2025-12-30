@@ -272,7 +272,9 @@ class TestUtf16String {
         let cases = [
             ("🚒真实的自我132", "我", 6),
             ("🚒真实的自我132", "3", 8),
-            ("0123456", "123", 1)]
+            ("0123456", "123", 1),
+            ("123", "", 0),
+            ("", "", 0)]
         for ((src, target, dst) in cases) {
             let uSrc = Utf16String(src)
             let uTar = Utf16String(target)
@@ -285,7 +287,8 @@ class TestUtf16String {
     func testLastIndexOf() {
         let cases = [
             ("🚂好🚂3456", 8, "345", 5),
-            ("0123456", 7, "123", 1)
+            ("0123456", 7, "123", 1),
+            ("0123456", 1, "123", 1)
         ]
         for ((src, offset, target, dst) in cases) {
             let uSrc = Utf16String(src)
@@ -298,9 +301,11 @@ class TestUtf16String {
     @TestCase
     func testLastIndexOfIsNone() {
         let cases = [
-            ("0123456", 7, "999", 1)
+            ("0123456", 7, "999"),
+            ("0123456", 0, "123"),
+            ("0123456", 1, "23"),
         ]
-        for ((src, offset, target, dst) in cases) {
+        for ((src, offset, target) in cases) {
             let uSrc = Utf16String(src)
             let uTar = Utf16String(target)
             let result = uSrc.lastIndexOf(uTar, offset)
@@ -349,6 +354,7 @@ class TestUtf16String {
             ("123456789", "1", 0),
             ("123456789", "9", 0),
             ("1 2 3 4 568", " ", 0),
+            ("1 2 3 4 568", " ", -1),
             (" ", "", 0)]
         for ((src, tar, count) in cases) {
             let uSrc = Utf16String(src)
@@ -375,6 +381,7 @@ class TestUtf16String {
             ("1234", "", 3),
             ("12你34🚲", "", 0),
             ("12你34🚲", "", 3),
+            ("12你34🚲", "", -1),
             ("123456789", "1", 0),
             ("123456789", "9", 0),
             ("1 2 3 4 568", " ", 0)]

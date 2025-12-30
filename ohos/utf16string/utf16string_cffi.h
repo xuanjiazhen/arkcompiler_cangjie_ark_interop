@@ -48,6 +48,7 @@ EXPORT CJUtf16StringArray CJUtf16StringSplit(CJUtf16StringHandle handle, CJUtf16
 EXPORT void CJUtf16StringArrayFree(CJUtf16StringArray array);
 EXPORT int64_t CJUtf16StringIndexOf(CJUtf16StringHandle handle, CJUtf16StringHandle target, int64_t start);
 EXPORT int64_t CJUtf16StringLastIndexOf(CJUtf16StringHandle handle, CJUtf16StringHandle target, int64_t ending);
+EXPORT int64_t CJUtf16StringLastIndexOfV1(CJUtf16StringHandle handle, CJUtf16StringHandle target, int64_t start);
 EXPORT int64_t CJUtf16StringCountOf(CJUtf16StringHandle handle, CJUtf16StringHandle target);
 EXPORT bool CJUtf16StringStartsWith(CJUtf16StringHandle handle, CJUtf16StringHandle target, uint32_t start);
 EXPORT bool CJUtf16StringEndsWith(CJUtf16StringHandle handle, CJUtf16StringHandle target, uint32_t ending);
