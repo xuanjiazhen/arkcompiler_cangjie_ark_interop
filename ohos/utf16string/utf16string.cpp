@@ -752,25 +752,32 @@ int64_t Utf16String::RawIndexOf(Utf16StringHandle separator, uint32_t start) con
     return -1;
 }
 
-int64_t Utf16String::RawLastIndexOf(Utf16StringHandle separator, uint32_t ending) const
+int64_t Utf16String::RawLastIndexOf(Utf16StringHandle separator, uint32_t start) const
 {
-    if (ending > length_) {
+    if (start > length_) {
         return -1;
     }
     if (separator->IsEmpty()) {
-        return ending;
+        return length_ - 1;
+    }
+    if (separator->length_ > length_) {
+        return -1;
     }
     auto lastCode = separator->CharCodeAt(separator->length_ - 1);
-    while (ending > 0) {
-        auto next = RawLastIndexOf(lastCode, ending);
-        if (next < 0) {
+    auto position = length_;
+    while (start <= position) {
+        auto next = RawLastIndexOf(lastCode, position);
+        if (next < start) {
             return -1;
         }
-        auto start = next - (separator->length_ - 1);
-        if (RawStartsWith(separator, start)) {
-            return start;
+        auto begin = next - (separator->length_ - 1);
+        if (begin < start) {
+            return -1;
         }
-        ending = static_cast<uint32_t>(next);
+        if (RawStartsWith(separator, begin)) {
+            return begin;
+        }
+        position = static_cast<uint32_t>(next);
     }
     return -1;
 }
