@@ -100,6 +100,11 @@ int64_t CJUtf16StringLastIndexOf(CJUtf16StringHandle handle, CJUtf16StringHandle
     return handle->RawLastIndexOf(target, ending);
 }
 
+int64_t CJUtf16StringLastIndexOfV1(CJUtf16StringHandle handle, CJUtf16StringHandle target, int64_t start)
+{
+    return handle->RawLastIndexOf(target, start + target->Length());
+}
+
 int64_t CJUtf16StringCountOf(CJUtf16StringHandle handle, CJUtf16StringHandle target)
 {
     return handle->CountOf(target);
