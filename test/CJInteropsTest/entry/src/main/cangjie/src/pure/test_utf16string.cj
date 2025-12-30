@@ -282,8 +282,8 @@ class TestUtf16String {
     @TestCase
     func testLastIndexOf() {
         let cases = [
-            ("🚂好🚂3456", 8, "345", 5),
-            ("0123456", 7, "123", 1)
+            ("🚂好🚂3456", 2, "345", 5),
+            ("0123456", 0, "123", 1)
         ]
         for ((src, offset, target, dst) in cases) {
             let uSrc = Utf16String(src)
