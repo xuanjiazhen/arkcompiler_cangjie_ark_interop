@@ -754,11 +754,14 @@ int64_t Utf16String::RawIndexOf(Utf16StringHandle separator, uint32_t start) con
 
 int64_t Utf16String::RawLastIndexOf(Utf16StringHandle separator, uint32_t ending) const
 {
-    if (ending > length_) {
-        return -1;
-    }
     if (separator->IsEmpty()) {
         return ending;
+    }
+    if (isEmpty()) {
+        return -1;
+    }
+    if (ending > length_) {
+        ending = length_ - 1;
     }
     auto lastCode = separator->CharCodeAt(separator->length_ - 1);
     while (ending > 0) {

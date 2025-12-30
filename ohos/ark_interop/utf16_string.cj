@@ -579,7 +579,21 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64 {
         acquire()
         target.acquire()
-        let result = unsafe {CJUtf16StringIndexOf(handle_, target.handle_, fromIndex)}
+        let offset = if (fromIndex < 0) {
+            0
+        } else if (fromIndex >= size) {
+            target.release()
+            release()
+            return None
+        } else {
+            fromIndex
+        }
+        if (target.isEmpty()) {
+            target.release()
+            release()
+            return offset;
+        }
+        let result = unsafe {CJUtf16StringIndexOf(handle_, target.handle_, offset)}
         target.release()
         release()
         if (result >= 0) {
@@ -618,7 +632,14 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64 {
         acquire()
         target.acquire()
-        let result = unsafe {CJUtf16StringLastIndexOf(handle_, target.handle_, fromIndex)}
+        let offset = if (fromIndex < 0) {
+            0
+        } else if (fromIndex >= size) {
+            size - 1
+        } else {
+            fromIndex
+        }
+        let result = unsafe {CJUtf16StringLastIndexOf(handle_, target.handle_, offset)}
         target.release()
         release()
         if (result >= 0) {
@@ -680,17 +701,12 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func split(separator: Utf16String, maxSplit: Int64, removeEmpty!: Bool = false): Array<Utf16String> {
         acquire()
         separator.acquire()
-        if (maxSplit < 0) {
-            separator.release()
-            release()
-            throw jsArrayRangeMisMatch(0, Int64.Max, maxSplit)
-        }
         if (maxSplit == 0) {
             separator.release()
             release()
             return []
         }
-        let m = if (maxSplit > Int64(UInt32.Max)) {
+        let m = if (maxSplit < 0 || maxSplit > Int64(UInt32.Max)) {
             UInt32.Max
         } else {
             UInt32(maxSplit)
@@ -745,7 +761,12 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     ]
     public func lazySplit(separator: Utf16String, maxSplit: Int64, removeEmpty!: Bool = false): Iterator<Utf16String> {
         acquire()
-        let result = SplitIterator(this, separator, maxSplit, removeEmpty)
+        let fixedMaxSplit = if (maxSplit < 0) {
+            Int64.Max
+        } else {
+            maxSplit
+        }
+        let result = SplitIterator(this, separator, fixedMaxSplit, removeEmpty)
         release()
         return result
     }
@@ -806,6 +827,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func startsWith(target: Utf16String): Bool {
         acquire()
         target.acquire()
+        if (target.isEmpty()) {
+            target.release()
+            release()
+            return true
+        }
         let result = unsafe {
             CJUtf16StringStartsWith(handle_, target.handle_, 0)
         }
@@ -828,6 +854,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func endsWith(target: Utf16String): Bool {
         acquire()
         target.acquire()
+        if (target.isEmpty()) {
+            target.release()
+            release()
+            return true
+        }
         let result = unsafe {
             CJUtf16StringEndsWith(handle_, target.handle_, 0)
         }
