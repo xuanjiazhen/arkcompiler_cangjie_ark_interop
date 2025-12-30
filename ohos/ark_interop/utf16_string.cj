@@ -600,14 +600,14 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
         throwexception: true
     ]
     public func lastIndexOf(target: Utf16String): ?Int64 {
-        return lastIndexOf(target, size)
+        return lastIndexOf(target, 0)
     }
 
     /**
-     * Search forward from the index for the position of the target string.
+     * Search backward from the end the string to fromIndex for the target string.
      *
      * @param { Utf16String } target - The target string.
-     * @param { Int64 } fromIndex - The starting position for the search in the current string. Default is the string size.
+     * @param { Int64 } fromIndex - The minimal starting position for the search in the current string.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @returns { ?Int64 } Returns the index of the first occurrence of the target string, or None if not found.
      */
@@ -618,7 +618,12 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64 {
         acquire()
         target.acquire()
-        let result = unsafe {CJUtf16StringLastIndexOf(handle_, target.handle_, fromIndex)}
+        let offset: Int64 = if (fromIndex < 0) {
+            0
+        } else {
+            fromIndex
+        }
+        let result = unsafe {CJUtf16StringLastIndexOf(handle_, target.handle_, offset)}
         target.release()
         release()
         if (result >= 0) {
