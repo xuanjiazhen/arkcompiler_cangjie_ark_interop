@@ -79,6 +79,10 @@ ohos_cangjie_shared_library("ohos.ark_interop") {
     "./business_exception:ohos.business_exception",
   ]
 
+  cj_external_deps = [
+    "bundlemanager_cangjie_wrapper:ohos.bundle.bundle_manager"
+  ]
+
   deps = [
     ":utf16string",
   ]
