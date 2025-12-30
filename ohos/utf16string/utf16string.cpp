@@ -695,12 +695,12 @@ int64_t Utf16String::RawLastIndexOf(const CharCode code, uint32_t start) const
 {
     if (code.kind == CharCode::LATIN1) {
         if (isLatin1_) {
-            if (auto location = RFindChar(Latin1Data() + start, start, code.value)) {
+            if (auto location = RFindChar(Latin1Data() + length_, length_ - start, code.value)) {
                 return location - Latin1Data();
             }
             return -1;
         }
-        if (auto location = RFindChar(Utf16Data() + start, start, code.value)) {
+        if (auto location = RFindChar(Utf16Data() + length_, length_ - start, code.value)) {
             return location - Utf16Data();
         }
         return -1;
@@ -709,7 +709,7 @@ int64_t Utf16String::RawLastIndexOf(const CharCode code, uint32_t start) const
         return -1;
     }
     if (code.kind == CharCode::CHAR16) {
-        if (auto location = RFindChar(Utf16Data() + start, start, code.value)) {
+        if (auto location = RFindChar(Utf16Data() + length_, length_ - start, code.value)) {
             return location - Utf16Data();
         }
         return -1;
@@ -717,15 +717,16 @@ int64_t Utf16String::RawLastIndexOf(const CharCode code, uint32_t start) const
     const auto charCode = code.value - 0x10000;
     const char16_t higher = 0xD800 | ((charCode & 0xFFC00) >> 10);
     const char16_t lower = 0xDC00 | (charCode & 0x3FF);
-    while (start < length_) {
-        const auto location = RFindChar(Utf16Data() + start, start, lower);
+    auto position = length_;
+    while (start <= position) {
+        const auto location = RFindChar(Utf16Data() + position, position, lower);
         if (!location || location == src_) {
             return -1;
         }
         if (location[-1] == higher) {
             return location - Utf16Data();
         }
-        start = location - Utf16Data() - 1;
+        position = location - Utf16Data() - 1;
     }
     return -1;
 }
@@ -752,25 +753,32 @@ int64_t Utf16String::RawIndexOf(Utf16StringHandle separator, uint32_t start) con
     return -1;
 }
 
-int64_t Utf16String::RawLastIndexOf(Utf16StringHandle separator, uint32_t ending) const
+int64_t Utf16String::RawLastIndexOf(Utf16StringHandle separator, uint32_t start) const
 {
-    if (ending > length_) {
+    if (start > length_) {
         return -1;
     }
     if (separator->IsEmpty()) {
-        return ending;
+        return length_ - 1;
+    }
+    if (separator->length_ > length_) {
+        return -1;
     }
     auto lastCode = separator->CharCodeAt(separator->length_ - 1);
-    while (ending > 0) {
-        auto next = RawLastIndexOf(lastCode, ending);
-        if (next < 0) {
+    auto position = length_;
+    while (start <= position) {
+        auto next = RawLastIndexOf(lastCode, length_);
+        if (next < start) {
             return -1;
         }
-        auto start = next - (separator->length_ - 1);
-        if (RawStartsWith(separator, start)) {
-            return start;
+        auto begin = next - (separator->length_ - 1);
+        if (begin < start) {
+            return -1;
         }
-        ending = static_cast<uint32_t>(next);
+        if (RawStartsWith(separator, begin)) {
+            return begin;
+        }
+        position = static_cast<uint32_t>(next);
     }
     return -1;
 }
