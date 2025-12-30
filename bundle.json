@@ -23,7 +23,8 @@
         "deps": {
             "components": [
                 "ability_runtime",
-                "napi"
+                "napi",
+                "bundlemanager_cangjie_wrapper"
             ]
         },
         "build": {

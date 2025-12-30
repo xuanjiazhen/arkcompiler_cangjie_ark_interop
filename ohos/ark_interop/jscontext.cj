@@ -18,6 +18,7 @@
 package ohos.ark_interop
 
 import ohos.business_exception.*
+import ohos.bundle.bundle_manager.*
 
 import std.sync.{Mutex, AtomicInt8}
 import std.collection.*
@@ -139,6 +140,10 @@ struct Scope {
 public class JSContext {
     static let ALL_RUNTIMES_ = HashMap<JSEnv, JSContext>()
     static let RUNTIMES_MUTEX = Mutex()
+    static var isDebug_ = LazyInit {
+        let bundleInfo = BundleManager.getBundleInfoForSelf(0)
+        return bundleInfo.appInfo.debug
+    }
 
     static func getOrCreate(env: JSEnv, tidGetter!: () -> UInt64 = {=> unsafe { ARKTS_GetPosixThreadId() }}): JSContext {
         synchronized(RUNTIMES_MUTEX) {
@@ -309,6 +314,9 @@ public class JSContext {
     private let scopes_ = ArrayList<Scope>()
 
     func handleValue(value: JSValue): Unit {
+        if (!isDebug_.data) {
+            return
+        }
         if (scopes_.isEmpty()) {
             return
         }
