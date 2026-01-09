@@ -23,7 +23,8 @@ ohos_cangjie_shared_library("kit.CangjieKit") {
         "../../ohos/callback_invoke:ohos.callback_invoke",
         "../../ohos/ffi:ohos.ffi",
         "../../ohos:ohos.ark_interop",
-        "../../ohos:ohos.ark_interop_helper"
+        "../../ohos:ohos.ark_interop_helper",
+        "../../ohos:ohos.ark_interop_macro",
     ]
 
     subsystem_name = "arkcompiler"
