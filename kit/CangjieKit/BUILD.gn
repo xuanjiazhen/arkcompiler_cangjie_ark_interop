@@ -13,6 +13,22 @@
 
 import("//build/templates/cangjie/cjc.gni")
 
+if (host_os == "mac") {
+    if (host_cpu == "arm64") {
+        host_toolchain = "//build/toolchain/mac:clang_arm64"
+    } else if (host_cpu == "x64") {
+        host_toolchain = "//build/toolchain/mac:clang_x64"
+    } else {
+        assert(false && "unsupported host ${host_os}-${host_cpu}")
+    }
+} else if (host_os == "linux") {
+    if (host_cpu == "x64") {
+        host_toolchain = "//build/toolchain/linux:clang_x64"
+    } else {
+        assert(false && "unsupported host ${host_os}-${host_cpu}")
+    }
+}
+
 ohos_cangjie_shared_library("kit.CangjieKit") {
     sources = [
         "index.cj",
@@ -23,7 +39,8 @@ ohos_cangjie_shared_library("kit.CangjieKit") {
         "../../ohos/callback_invoke:ohos.callback_invoke",
         "../../ohos/ffi:ohos.ffi",
         "../../ohos:ohos.ark_interop",
-        "../../ohos:ohos.ark_interop_helper"
+        "../../ohos:ohos.ark_interop_helper",
+        "../../ohos:ohos.ark_interop_macro($host_toolchain)",
     ]
 
     subsystem_name = "arkcompiler"
