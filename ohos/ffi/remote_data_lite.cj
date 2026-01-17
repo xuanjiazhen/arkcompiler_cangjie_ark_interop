@@ -17,7 +17,6 @@
 
 protected package ohos.ffi
 
-import std.sync.Mutex
 import std.collection.HashMap
 
 foreign func FfiOHOSFFIFFIDataExist(id: Int64): Bool
@@ -132,9 +131,9 @@ protected class RemoteDataManager {
     }
 
     private let store_ = HashMap<Int64, RemoteData>()
-    private let dataLock = Mutex()
+    private var dataLock = AtomicLock()
     protected func getOrCreate<T>(id: Int64, creator: (Int64) -> T): T where T <: RemoteData {
-        synchronized(dataLock) {
+        dataLock.acquire {
             let optData = store_.get(id)
             match (optData) {
                 case Some(data) => getOrThrow(data as T, msg: "getOrCreate fail, data exist but type mismatch.")
@@ -147,7 +146,7 @@ protected class RemoteDataManager {
     }
 
     protected func register(data: RemoteData): Unit {
-        synchronized(dataLock) {
+        dataLock.acquire {
             let id = data.getID();
             if (store_.contains(id)) {
                 FFI_BIND_LOG.error("RemoteData repeat register: " + id.toString())
@@ -157,7 +156,7 @@ protected class RemoteDataManager {
     }
 
     protected func releaseData(id: Int64): Bool {
-        synchronized(dataLock) {
+        dataLock.acquire {
             let optData = store_.get(id)
             match (optData) {
                 case Some(data) =>
