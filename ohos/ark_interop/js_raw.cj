@@ -224,18 +224,37 @@ public class JSNumber {
     since: "22"
 ]
 public class JSValue {
-    protected JSValue(
-        let context: JSContext,
-        private let value_: JSValue_
-    ) {}
-
+    let context: JSContext
+    private let value_: JSValue_
+    private let type_: JSType
     var isSafe = true
+
+    protected init(context: JSContext, value: JSValue_) {
+        this.context = context
+        value_ = value
+        type_ = unsafe { ARKTS_GetValueType(context.env, value) }
+        handleValue()
+    }
+
+    protected init(context: JSContext, value: JSValue_, ty: JSType) {
+        this.context = context
+        value_ = value
+        type_ = ty
+        handleValue()
+    }
+
+    private func handleValue(): Unit {
+        // only handle JSHeapObject.
+        if (type_ >= JSType.BIGINT) {
+            context.handleValue(this)
+        }
+    }
 
     // do lifecycle check.
     protected prop value: JSValue_ {
         get() {
             if (!isSafe) {
-                throw jsObjUseAfterFree("JSValue")
+                printExp(jsObjUseAfterFree("JSValue"))
             }
             value_
         }
@@ -254,7 +273,7 @@ public class JSValue {
     ]
     public func typeof(): JSType {
         let env = context.env // do lifecycle check and thread check here.
-        unsafe { ARKTS_GetValueType(env, value) }
+        type_
     }
 
     /**
@@ -901,9 +920,7 @@ public class JSValue {
             throw jsArrayRangeMisMatch(0, safeSize, index)
         }
         let elementValue = unsafe { ARKTS_GetElement(context.env, value, UInt32(index)) }
-        let back = JSValue(context, elementValue)
-        context.handleValue(back)
-        return back
+        return JSValue(context, elementValue)
     }
 
     /**
@@ -950,10 +967,8 @@ public class JSValue {
         }
         let keyValue = key.toJSValue(context)
         let result = unsafe { ARKTS_GetProperty(context.env, value, keyValue.value) }
-        let back = JSValue(context, result)
         context.checkJSException()
-        context.handleValue(back)
-        return back
+        JSValue(context, result)
     }
 
     /**

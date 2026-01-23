@@ -41,11 +41,11 @@ foreign func ARKTS_GetElement(env: JSEnv, arr: JSValue_, index: UInt32): JSValue
 ]
 public class JSArray <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
-        super(context, value)
+        super(context, value, JSType.OBJECT)
     }
 
     init(context: JSContext, arr: Array<JSValue>) {
-        super(context, createWithInit(context, arr))
+        super(context, createWithInit(context, arr), JSType.OBJECT)
     }
 
     static func createWithInit(context: JSContext, arr: Array<JSValue>): JSValue_ {
@@ -107,9 +107,7 @@ public class JSArray <: JSHeapObject {
             throw jsArrayRangeMisMatch(0, size, index)
         }
         let result = unsafe { ARKTS_GetElement(env, innerValue, UInt32(index)) }
-        let back = JSValue(context, result)
-        context.handleValue(back)
-        return back
+        JSValue(context, result)
     }
 
     /**
