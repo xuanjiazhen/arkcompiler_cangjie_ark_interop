@@ -62,7 +62,7 @@ public class JSCallInfo {
     prop callInfo: JSCallInfoPrivate {
         get() {
             if (!isSafe) {
-                throw jsObjUseAfterFree("JSCallInfo")
+                printExp(jsObjUseAfterFree("JSCallInfo"))
             }
             callInfo_
         }
@@ -99,9 +99,7 @@ public class JSCallInfo {
         get() {
             context.checkLifecycleAndThread()
             let result = unsafe { ARKTS_GetThisArg(callInfo) }
-            let back = JSValue(context, result)
-            context.handleValue(back)
-            return back
+            return JSValue(context, result)
         }
     }
 
@@ -128,9 +126,7 @@ public class JSCallInfo {
             throw jsArrayRangeMisMatch(0, count, index, message: "The call argument index is invalid")
         }
         let result = unsafe { ARKTS_GetArg(callInfo, UInt32(index)) }
-        let back = JSValue(context, result)
-        context.handleValue(back)
-        return back
+        return JSValue(context, result)
     }
 
     func dispose(): Unit {
@@ -148,21 +144,20 @@ func cjLambdaInvoker(info: JSCallInfoPrivate, lambdaId: Int64): JSValue_ {
     let env = info.env()
     let context = JSContext.getOrCreate(env)
     let callInfo = JSCallInfo(context, info)
-    try {
-        let lambda = context.sharedLambda_[lambdaId]
-        let result = context.newScope {
+    context.newScope {
+        try {
+            let lambda = context.sharedLambda_[lambdaId]
             lambda(context, callInfo).value
+            return result
+        } catch (err: Exception) {
+            context.throwJSError(err)
+            context.undefined().toJSValue().value
+        } catch (err: Error) {
+            context.throwJSError(err)
+            context.undefined().toJSValue().value
+        } finally {
+            callInfo.dispose()
         }
-        callInfo.dispose()
-        return result
-    } catch (err: Exception) {
-        callInfo.dispose()
-        context.throwJSError(err)
-        context.undefined().toJSValue().value
-    } catch (err: Error) {
-        callInfo.dispose()
-        context.throwJSError(err)
-        context.undefined().toJSValue().value
     }
 }
 
@@ -187,11 +182,11 @@ public class JSFunction <: JSHeapObject {
     }
 
     init(context: JSContext, value: JSValue_) {
-        super(context, value)
+        super(context, value, JSType.FUNCTION)
     }
 
     init(context: JSContext, lambda: JSLambda) {
-        super(context, createFunction(context, lambda))
+        super(context, createFunction(context, lambda), JSType.FUNCTION)
     }
 
     ~init() {
