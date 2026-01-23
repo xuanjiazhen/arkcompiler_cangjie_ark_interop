@@ -62,7 +62,7 @@ public class JSCallInfo {
     prop callInfo: JSCallInfoPrivate {
         get() {
             if (!isSafe) {
-                throw jsObjUseAfterFree("JSCallInfo")
+                printExp(jsObjUseAfterFree("JSCallInfo"))
             }
             callInfo_
         }

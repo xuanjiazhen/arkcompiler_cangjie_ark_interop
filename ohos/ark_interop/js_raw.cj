@@ -235,7 +235,7 @@ public class JSValue {
     protected prop value: JSValue_ {
         get() {
             if (!isSafe) {
-                throw jsObjUseAfterFree("JSValue")
+                printExp(jsObjUseAfterFree("JSValue"))
             }
             value_
         }
