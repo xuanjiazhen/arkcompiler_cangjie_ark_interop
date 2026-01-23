@@ -45,7 +45,7 @@ foreign func ARKTS_PromiseCatch(env: JSEnv, prom: JSValue_, callback: JSValue_):
     since: "22"
 ]
 public class JSPromise <: JSHeapObject {
-    init(context: JSContext, value: JSValue_) {
+    init(context: JSContext, value: JSValue_, JSType.OBJECT) {
         super(context, value)
     }
 
