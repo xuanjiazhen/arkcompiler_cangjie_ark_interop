@@ -65,7 +65,7 @@ public class JSArrayBuffer <: JSHeapObject {
     private var buffer_: ?Array<Byte> = None
 
     init(context: JSContext, value: JSValue_) {
-        super(context, value)
+        super(context, value, JSType.OBJECT)
         byteLength_ = None
     }
 

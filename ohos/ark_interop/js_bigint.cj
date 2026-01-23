@@ -44,7 +44,7 @@ foreign func ARKTS_BigIntReadBytes(env: JSEnv, value: JSValue_, isNegative: CPoi
 ]
 public class JSBigInt <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
-        super(context, value)
+        super(context, value, JSType.BIGINT)
     }
 
     init(context: JSContext, value: Int64) {

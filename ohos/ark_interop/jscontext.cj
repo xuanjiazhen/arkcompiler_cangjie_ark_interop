@@ -105,7 +105,7 @@ func disposeJSContext(env: JSEnv): Unit {
     }
 }
 
-struct Scope {
+class Scope {
     private let handle_: JSScope
     private let handledValues_ = ArrayList<JSValue>()
 
@@ -177,7 +177,7 @@ public class JSContext {
 
     prop void: JSValue {
         get() {
-            JSValue(this, void_)
+            JSValue(this, void_, JSType.UNDEFINED)
         }
     }
 
@@ -310,6 +310,7 @@ public class JSContext {
 
     func handleValue(value: JSValue): Unit {
         if (scopes_.isEmpty()) {
+            printExp(noScopeError())
             return
         }
         scopes_[scopes_.size - 1].add(value)
@@ -364,7 +365,7 @@ public class JSContext {
     ]
     public func null(): JSNull {
         checkLifecycleAndThread()
-        JSNull(JSValue(this, unsafe { ARKTS_CreateNull() }))
+        JSNull(JSValue(this, unsafe { ARKTS_CreateNull() }, JSType.NULL))
     }
 
     /**
@@ -381,7 +382,7 @@ public class JSContext {
     ]
     public func boolean(value: Bool): JSBoolean {
         checkLifecycleAndThread()
-        JSBoolean(JSValue(this, unsafe { ARKTS_CreateBool(value) }))
+        JSBoolean(JSValue(this, unsafe { ARKTS_CreateBool(value) }, JSType.BOOLEAN))
     }
 
     /**
@@ -398,7 +399,7 @@ public class JSContext {
     ]
     public func number(value: Float64): JSNumber {
         checkLifecycleAndThread()
-        JSNumber(JSValue(this, unsafe { ARKTS_CreateF64(value) }))
+        JSNumber(JSValue(this, unsafe { ARKTS_CreateF64(value) }, JSType.NUMBER))
     }
 
     /**
@@ -415,7 +416,7 @@ public class JSContext {
     ]
     public func number(value: Int32): JSNumber {
         checkLifecycleAndThread()
-        JSNumber(JSValue(this, unsafe { ARKTS_CreateI32(value) }))
+        JSNumber(JSValue(this, unsafe { ARKTS_CreateI32(value) }, JSType.NUMBER))
     }
 
     /**
@@ -902,9 +903,7 @@ public class JSContext {
             }
             LibC.free(moduleNameC)
             checkJSException()
-            let back = JSValue(this, result)
-            handleValue(back)
-            return back
+            return JSValue(this, result)
         }
     }
 
@@ -1032,9 +1031,7 @@ public class JSContext {
                 throw e
             }
             releaseArrayRawData(handle)
-            let back = JSValue(this, result)
-            handleValue(back)
-            return back
+            return JSValue(this, result)
         }
     }
 }
