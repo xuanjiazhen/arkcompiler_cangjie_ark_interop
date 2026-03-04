@@ -80,11 +80,10 @@ protected class CallbackList {
         synchronized(listMut) {
             match (list) {
                 case Some(callbackWrapper) =>
-                    for (idx in 0..callbackWrapper.size) {
-                        listCopy.add(callbackWrapper[idx].callback)
-                        if (callbackWrapper[idx].isOnce) {
-                            callbackWrapper.remove(at: idx)
-                        }
+                    callbackWrapper.removeIf() {
+                        element: CallbackWrapper =>
+                        listCopy.add(element.callback)
+                        element.isOnce
                     }
                 case None => return
             }
