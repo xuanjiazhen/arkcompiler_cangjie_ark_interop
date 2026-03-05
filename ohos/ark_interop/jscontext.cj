@@ -313,7 +313,19 @@ public class JSContext {
         scopes_[scopes_.size - 1].add(value)
     }
 
-    func newScope<T>(callback: () -> T): T {
+    /**
+     * Create a new handle scope, execute a callback in the scope.
+     *
+     * @param { () -> T } callback - The task to to be executed in the scope.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @returns { T } The result of the callback.
+     */
+    @!APILevel[
+        since: "24",
+        throwexception: true
+    ]
+    public func newScope<T>(callback: () -> T): T {
         let scope = Scope(env)
         let index = scopes_.size
         scopes_.add(scope)
