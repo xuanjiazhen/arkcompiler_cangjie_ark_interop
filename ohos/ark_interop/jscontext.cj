@@ -983,7 +983,7 @@ public class JSContext {
     /**
      * Load ArkTS module.
      *
-     * @param { String } src - ArkTS module specifier.
+     * @param { String } path - ArkTS module specifier.
      * @throws { BusinessException } 34300002 - Outside error occurred.
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      * @throws { BusinessException } 34300004 - Thread mismatch.
@@ -996,25 +996,25 @@ public class JSContext {
         since: "23",
         throwexception: true
     ]
-    public func requireArkModule(src: String): JSValue {
+    public func requireArkModule(path: String): JSValue {
         let env = this.env // thread check and lifecycle check here.
         if (isOnLoadingCJ) {
             throw noRequireWhenExport()
         }
-        if (!ArkModuleHelper.checkSpecifier(src)) {
-            throw moduleNotExist(src)
+        if (!ArkModuleHelper.checkSpecifier(path)) {
+            throw moduleNotExist(path)
         }
         // ArkTS kit dit not exist at runtime, cangjie create an object to fake a kit module object.
-        if (src.startsWith("@kit.")) {
-            if (let Some(object) <- cachedKits.get(src)) {
+        if (path.startsWith("@kit.")) {
+            if (let Some(object) <- cachedKits.get(path)) {
                 return object.toJSValue()
             }
-            let object = createKit(KIT_CONFIGS[src])
-            cachedKits[src] = object
+            let object = createKit(KIT_CONFIGS[path])
+            cachedKits[path] = object
             return object.toJSValue()
         }
         // process native
-        let (url, kind) = ArkModuleHelper.resolveUrl(src)
+        let (url, kind) = ArkModuleHelper.resolveUrl(path)
         unsafe {
             let handle = acquireArrayRawData(url.rawData())
             let size = UIntNative(url.size)
