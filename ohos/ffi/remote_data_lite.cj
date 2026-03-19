@@ -138,7 +138,11 @@ protected class RemoteDataManager {
             match (optData) {
                 case Some(data) => getOrThrow(data as T, msg: "getOrCreate fail, data exist but type mismatch.")
                 case _ =>
+                    // unlock the lock to avoid deadlock inside the acquire
+                    dataLock.unlock()
                     let data = creator(id)
+                    // lock to avoid race condition inside the acquire
+                    dataLock.lock()
                     store_.add(id, data)
                     data
             }
