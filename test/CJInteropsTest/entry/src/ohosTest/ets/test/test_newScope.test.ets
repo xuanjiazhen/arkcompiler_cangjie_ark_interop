@@ -16,20 +16,23 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import * as lib from "libentry.so"
+import deviceInfo from "@ohos.deviceInfo";
 
 export default function newScopeTask() {
   describe('TestNewScopeTask', () => {
-    it('test00', 0, () => {
-      lib.testNewScope00();
-    })
-    it('testNewScope0', 0, async ()=> {
-        await lib.testNewScope0()
-    })
-    it('testNewScope1', 0, async ()=> {
-        await lib.testNewScope1()
-    })
-    it('testNewScope2', 0, ()=> {
-        expect(lib.testNewScope2()).assertTrue()
-    })
+    if (deviceInfo.sdkApiVersion >= 24) {
+      it('test00', 0, () => {
+        lib.testNewScope00();
+      })
+      it('testNewScope0', 0, async ()=> {
+          await lib.testNewScope0()
+      })
+      it('testNewScope1', 0, async ()=> {
+          await lib.testNewScope1()
+      })
+      it('testNewScope2', 0, ()=> {
+          expect(lib.testNewScope2()).assertTrue()
+      })
+    }
   })
 }
