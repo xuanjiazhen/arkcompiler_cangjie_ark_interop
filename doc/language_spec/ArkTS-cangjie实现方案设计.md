@@ -1,11 +1,11 @@
 # ArkTS-Cangjie实现方案设计
 
-**版本**: 1.1.0  
+**版本**: 1.2.0  
 **状态**: 已验证  
 **最后更新**: 2026-03-10
 
-> **验证状态**: 本方案已通过端到端验证，详见[@Interop[ArkTS]端到端验证报告](./@Interop[ArkTS]端到端验证报告.md)。
-> 验证覆盖API接口方案和编译器内建注解方案，各7项测试全部通过。
+> **验证状态**: 本方案已通过全面端到端验证，覆盖API接口方案、编译器内建注解方案、三级继承、泛型类/函数、ArkTS继承仓颉泛型类等场景。
+> 测试总计：38项全部通过，详见[@Interop[ArkTS]端到端验证报告](./@Interop[ArkTS]端到端验证报告.md)。
 
 ---
 
@@ -1903,12 +1903,40 @@ box.set("string")  // 运行时错误：Type mismatch: expected Float64
 
 ### 3.1 验证概况
 
-| 方案 | 测试结果 | 说明 |
-|-----|---------|------|
+| 验证场景 | 测试结果 | 说明 |
+|---------|---------|------|
 | API接口方案 | ✅ 7/7 通过 | 手动使用`JSModule.registerClass`注册 |
 | 编译器内建注解方案 | ✅ 7/7 通过 | `@Interop[ArkTS]`注解 + 胶水代码生成 |
+| ArkTS继承普通类 | ✅ 6/6 通过 | Cat extends Animal等场景 |
+| 三级继承 | ✅ 5/5 通过 | Vehicle -> Car -> SportsCar |
+| 泛型类验证 | ✅ 6/6 通过 | Box<T>, Pair<K,V>, Stack<T>等 |
+| ArkTS继承泛型类 | ✅ 7/7 通过 | NumberBox extends Box<number>等 |
+| **总计** | **38/38 通过** | 全部场景验证成功 |
 
 详细验证报告见：[@Interop[ArkTS]端到端验证报告](./@Interop[ArkTS]端到端验证报告.md)
+
+### 3.1.1 泛型类验证详情
+
+| 序号 | 场景 | 测试用例 | 状态 |
+|-----|------|---------|------|
+| G1 | Box<number> | new Box(42), get()==42 | ✅ |
+| G2 | Box<string> | new Box("hello"), __typeTag__=="string" | ✅ |
+| G3 | Box.set() | box.set(20), get()==20 | ✅ |
+| G4 | Pair<string,number> | getKey(), getValue() | ✅ |
+| G5 | Stack泛型继承 | push/pop/peek操作 | ✅ |
+| G6 | identity泛型函数 | identity(42)==42 | ✅ |
+
+### 3.1.2 ArkTS继承泛型类验证详情
+
+| 序号 | 场景 | 测试用例 | 状态 |
+|-----|------|---------|------|
+| AG1 | NumberBox实例化 | extends Box<number>, get()返回双倍值 | ✅ |
+| AG2 | NumberBox.double() | ArkTS子类新增方法 | ✅ |
+| AG3 | instanceof泛型类 | numberBox instanceof Box | ✅ |
+| AG4 | StringNumberPair | extends Pair<string,number> | ✅ |
+| AG5 | 泛型父类方法 | pair.getKey(), pair.getValue() | ✅ |
+| AG6 | 跨语言多态 | makeAnimalSpeak(cat)返回"Meow!" | ✅ |
+| AG7 | describe()父类方法 | cat.describe()调用仓颉实现 | ✅ |
 
 ### 3.2 关键技术发现
 
