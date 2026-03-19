@@ -62,11 +62,10 @@ func loadArkInteropModule(env: JSEnv, cname: CString, exports: JSValue_): JSValu
         try {
             let name = cname.toString()
             let exportObj = exportValue.asObject()
-            let module = match (JSModule.getCachedModule(name)) {
-                case Some(mod) => mod
-                case None => JSModule.finishLoad(name)
+            if (let Some(module) <- JSModule.getCachedModule(name)) {
+                module.fillInto(context, exportObj)
             }
-            module.fillInto(context, exportObj)
+            JSModule.finishLoad(name).fillInto(context, exportObj)
             exportValue.value
         } catch (err: Exception) {
             context.throwJSError(err)
@@ -181,6 +180,7 @@ func throwNativeErrorToCJ(message: CString): Unit {
 public class JSModule {
     private static var lastModule_ = JSModule()
     static let LOADED_MODULES_ = HashMap<String, JSModule>()
+    private static const DELIMITER = "@"
 
     static init() {
         var moduleCallbacks = CJModuleCallbacks(
@@ -213,6 +213,18 @@ public class JSModule {
         lastModule_.addExporter(register)
     }
 
+    // To be made public.
+    static func registerModule(name: String, register: ModuleRegister): Unit {
+        if (name.isEmpty()) {
+            return registerModule(register)
+        }
+        if (!JSModule.LOADED_MODULES_.contains(name)) {
+            let newModule = JSModule()
+            JSModule.LOADED_MODULES_.add(name, newModule)
+        }
+        LOADED_MODULES_[name].addExporter(register)
+    }
+
     /**
      * Register a class to be exported to ArkTS.
      *
@@ -223,6 +235,14 @@ public class JSModule {
         since: "22"
     ]
     public static func registerClass(name: String, register: ClassRegister): Unit {
+        if (name.contains(DELIMITER)) {
+            let split = name.split(DELIMITER, 2)
+            let moduleName = split[0]
+            let identifier = split[1]
+            return registerModule(moduleName) { context, exports =>
+                exports[identifier] = register(context).toJSValue()
+            }
+        }
         lastModule_.addClass(name, register)
     }
 
@@ -236,6 +256,14 @@ public class JSModule {
         since: "22"
     ]
     public static func registerFunc(name: String, register: FuncRegister): Unit {
+        if (name.contains(DELIMITER)) {
+            let split = name.split(DELIMITER, 2)
+            let moduleName = split[0]
+            let identifier = split[1]
+            return registerModule(moduleName) { context, exports =>
+                exports[identifier] = register(context).toJSValue()
+            }
+        }
         lastModule_.addFunc(name, register)
     }
 

@@ -425,6 +425,7 @@ class IDLCustomTypeWL {
     private static let MTX = Mutex()
     private static var whitelistSet = HashSet<String>()
     private static var packageNameMap = HashMap<String, HashMap<String, String>>()
+    private static var packagePathMap = HashMap<String, String>()
     private static var packagesSet = HashSet<String>()
     private static var isCreated = false
     private static var isRead = false
@@ -444,7 +445,7 @@ class IDLCustomTypeWL {
         return files
     }
 
-    static func collectPkgInfo(fileTokens: Tokens): Unit {
+    static func collectPkgInfo(fileTokens: Tokens, filePath: String): Unit {
         let source = parseProgram(fileTokens)
         let visitor = PackageNameCollector()
         source.traverse(visitor)
@@ -453,6 +454,9 @@ class IDLCustomTypeWL {
                 packageNameMap.add(name, HashMap<String, String>())
             }
             packageNameMap[name].add(origPkg, outPkg)
+        }
+        if (!visitor.currentPkg.isEmpty()) {
+            packagePathMap.add(visitor.currentPkg, Path(filePath).parent.toString())
         }
         packagesSet.add(visitor.outputPkg)
     }
@@ -517,7 +521,7 @@ class IDLCustomTypeWL {
                     return
                 }
 
-                collectPkgInfo(fileTokens)
+                collectPkgInfo(fileTokens, info.path.toString())
 
                 var tokenStr: String = ""
                 for (i in 0..fileTokens.size) {
@@ -565,6 +569,22 @@ class IDLCustomTypeWL {
             }
             isRead = true
         }
+    }
+
+    static func getPkgPath(pkgName: String): String {
+        return packagePathMap.get(pkgName) ?? ""
+    }
+
+    static func getOrigPkgNames(declName: String): ArrayList<String> {
+        let list = ArrayList<String>()
+        match (packageNameMap.get(declName)) {
+            case Some(pkgMap) =>
+                for ((origPkg, _) in pkgMap) {
+                    list.add(origPkg)
+                }
+            case None => ()
+        }
+        return list
     }
 
     static func getPkgName(declName: String): String {
