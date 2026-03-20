@@ -16,20 +16,22 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import * as lib from "libentry.so"
+import deviceInfo from '@ohos.deviceInfo';
 
 export default function newScopeTask() {
   describe('TestNewScopeTask', () => {
-    it('test00', 0, () => {
-      lib.testNewScope00();
-    })
-    it('testNewScope0', 0, async ()=> {
-        await lib.testNewScope0()
-    })
-    it('testNewScope1', 0, async ()=> {
-        await lib.testNewScope1()
-    })
-    it('testNewScope2', 0, ()=> {
-        expect(lib.testNewScope2()).assertTrue()
-    })
+    if (deviceInfo.sdkApiVersion >= 24) {
+      it('test_newScope_fix_memory_leak_success', 0, async ()=> {
+        let result = await lib.test_newScope_fix_memory_leak_success()
+        expect(result).assertTrue()
+      })
+      it('test_newScope_throw_exception_reference_beyond_reach', 0, async ()=> {
+        let result = await lib.test_newScope_throw_exception_reference_beyond_reach()
+        expect(result).assertEqual("Accessing reference [JSContext] is beyond reach.")
+      })
+      it('test_newScope_throw_exception_thread_mismatch', 0, ()=> {
+        expect(lib.test_newScope_throw_exception_thread_mismatch()).assertEqual("Thread mismatch")
+      })
+    }
   })
 }
