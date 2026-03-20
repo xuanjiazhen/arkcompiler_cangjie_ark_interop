@@ -19,17 +19,16 @@ import * as lib from "libentry.so"
 
 export default function newScopeTask() {
   describe('TestNewScopeTask', () => {
-    it('test00', 0, () => {
-      lib.testNewScope00();
+    it('test_newScope_fix_memory_leak_success', 0, async ()=> {
+        let result = await lib.testNewScope0()
+        expect(result).assertTrue()
     })
-    it('testNewScope0', 0, async ()=> {
-        await lib.testNewScope0()
+    it('test_newScope_throw_exception_reference_beyond_reach', 0, async ()=> {
+        let result = await lib.test_newScope_throw_exception_reference_beyond_reach()
+        expect(result).assertEqual("Accessing reference [JSContext] is beyond reach.")
     })
-    it('testNewScope1', 0, async ()=> {
-        await lib.testNewScope1()
-    })
-    it('testNewScope2', 0, ()=> {
-        expect(lib.testNewScope2()).assertTrue()
+    it('test_newScope_throw_exception_thread_mismatch', 0, ()=> {
+        expect(lib.test_newScope_throw_exception_thread_mismatch()).assertEqual("Thread mismatch")
     })
   })
 }
