@@ -95,33 +95,22 @@ func throwJSErrorToCJ(env: JSEnv, rawError: JSValue_): Unit {
     let context = JSContext.getOrCreate(env)
     let error = JSValue(context, rawError)
 
-    if (error.isString()) {
-        let errorMsg = error.toString()
-        throw jsCodeError(errorMsg, [])
-    } else if (!error.isObject()) {
-        throw Exception("unknown js error")
+    if (let Some(shared) <- error.getBindingObject()) {
+        if (let Some(mixed) <- (shared as SharedException)) {
+            throw mixed.mixedException
+        }
     }
     let errObJ = error.asObject()
-    let errName = if (errObJ["name"].isString()) {
-        errObJ["name"].toString()
-    } else {
-        "[unknown]"
-    }
-    let errMsg = if (errObJ["message"].isString()) {
+    let errName = "Error Name: " + errObJ.getClassName()
+    var errMsg = errName + "\nError Message: " + if (errObJ["message"].isString()) {
         errObJ["message"].toString()
     } else {
         "[unknown]"
     }
-    let errStack: Array<String> = if (errObJ["stack"].isArray()) {
-        let errStack = errObJ["stack"].asArray()
+    let errStack: Array<String> = if (errObJ["stack"].isString()) {
+        let errStack = errObJ["stack"].toString()
         let stackSize = errStack.size
-        Array<String>(stackSize) {
-            idx => if (errStack[idx].isString()) {
-                errStack[idx].toString()
-            } else {
-                "..."
-            }
-        }
+        errStack.split("\n")
     } else {
         []
     }
@@ -144,7 +133,10 @@ func throwJSErrorToCJ(env: JSEnv, rawError: JSValue_): Unit {
     if (errMsg.startsWith("ReferenceError Unable to get recordName and fileName due to failure")) {
         throw withoutArkFrame()
     }
-    throw jsCodeError(errCode, "${errName}\n${errMsg}", errStack)
+    if (errCode != 0) {
+        errMsg += "\nError Code: ${errCode}"
+    }
+    throw MixedException(errMsg, errStack)
 }
 
 // case1: cannot find record '&somemodule/somedir/somefile&1.0.0'
