@@ -72,7 +72,7 @@ internal func nativeIdInvalid(value: Int64): BusinessException {
 }
 
 internal func propertyError(object: String, propertyName: String, expectType: String): BusinessException {
-    return outsideError("Property ${object}.${propertyName} is not ${expectType}")
+    return outsideError("Property [${object}].${propertyName} is not ${expectType}")
 }
 
 internal func integerOverflow(): BusinessException {
@@ -121,5 +121,70 @@ internal func printExp(exp: Exception): Unit {
     Hilog.error(0xD003900, "ark_interop", exp.toString())
     for (element in exp.getStackTrace()) {
         Hilog.error(0xD003900, "ark_interop", "\t at ${element.declaringClass}.${element.methodName}(${element.fileName}:${element.lineNumber})")
+    }
+}
+
+class SharedException <: SharedObject {
+    SharedException(
+        let mixedException: MixedException
+    ) {}
+}
+
+class MixedException <: Exception {
+    let arkStack: Array<String>
+    let original: ?Exception
+    init(message: String, stack: Array<String>) {
+        super(message)
+        arkStack = stack
+        original = None
+    }
+
+    init(exp: Exception, stack: Array<String>) {
+        super("")
+        arkStack = stack
+        original = exp
+    }
+
+    func getMessage(): String {
+        if (let Some(exp) <- original) {
+            exp.toString()
+        } else {
+            this.message
+        }
+    }
+
+    func getMixedStackTrace(): String {
+        if (let Some(exp) <- original) {
+            var s = ""
+            for (element in exp.getStackTrace()) {
+                s += "    at ${element.declaringClass}.${element.methodName}(${element.fileName}:${element.lineNumber})\n"
+            }
+            s += String.join(arkStack, delimiter: "\n")
+            s
+        } else {
+            var s = ""
+            for (l in arkStack) {
+                s += "${l}\n"
+            }
+            let cjStack = exp.getStackTrace()
+            s += String.join(Array(cjStack.size) { idx =>
+                let element = cjStack[idx]
+                "    at ${element.declaringClass}.${element.methodName}(${element.fileName}:${element.lineNumber})\n"
+            }, delimiter: "\n")
+            s
+        }
+    }
+
+    public func toString(): String {
+        getMessage() + "\n" + getMixedStackTrace()
+    }
+
+    public func toJSError(context: JSContext): JSValue {
+        let cls = context.global["Error"].asClass()
+        let obj = cls.new(context.string(getMessage()).toJSValue()).asObject()
+        obj["stack"] = context.string(getMixedStackTrace()).toJSValue()
+        let external = context.external(SharedException(this))
+        obj.attachCJObject(external)
+        return obj.toJSValue()
     }
 }

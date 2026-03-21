@@ -157,3 +157,5 @@ export function testNewScope00(): void;
 export function testNewScope0(): Promise<void>
 export function testNewScope1(): Promise<void>
 export function testNewScope2(): boolean
+export function testMixedStack0(callback: (c: ()=>void)=>void): void
+export function testMixedStack1(callback: (c: (c: ()=>void)=>void)=>void): void
