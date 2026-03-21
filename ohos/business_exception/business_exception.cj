@@ -93,9 +93,9 @@ public class BusinessException <: Exception {
         let className: String = getClassName()
         let message: String = this.message
         if (message.isEmpty()) {
-            return "${className}:  errorcode: ${code}"
+            return "Error name: ${className}\nError code: ${code}"
         }
-        return "${className}: errorcode: ${code}, message: ${message}"
+        return "Error name: ${className}\nError message: ${message}\nError code: ${code}"
     }
 }
 
