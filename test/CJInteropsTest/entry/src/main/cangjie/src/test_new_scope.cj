@@ -40,7 +40,7 @@ func testNewScope1(context: JSContext, callInfo: JSCallInfo): JSValue {
     let result = promise.toJSValue()
     let newContext = createContext()
     gc(heavy: true)
-    context.global.callMethod("setTimeout", context.function {
+    context.global.callMethod("setTimeout", context.function { c, _ =>
         try {
             newContext.newScope {}
             promise.reject(context.string("no exception throw").toJSValue())
