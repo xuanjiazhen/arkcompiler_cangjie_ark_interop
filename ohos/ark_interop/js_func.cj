@@ -148,9 +148,16 @@ func cjLambdaInvoker(info: JSCallInfoPrivate, lambdaId: Int64): JSValue_ {
         try {
             let lambda = context.sharedLambda_[lambdaId]
             lambda(context, callInfo).value
+        } catch (err: MixedException) {
+            unsafe { ARKTS_Throw(context.env, err.toJSError(context).value) }
+            context.void_
         } catch (err: Exception) {
-            context.throwJSError(err)
-            context.undefined().toJSValue().value
+            let cls = context.global["Error"].asClass()
+            let obj = cls.new(context.string("").toJSValue()).asObject()
+            let stack = obj["stack"].toString().split("\n")
+            let mixedExp = MixedException(err, stack)
+            unsafe { ARKTS_Throw(context.env, mixedExp.toJSError(context).value) }
+            context.void_
         } catch (err: Error) {
             context.throwJSError(err)
             context.undefined().toJSValue().value
