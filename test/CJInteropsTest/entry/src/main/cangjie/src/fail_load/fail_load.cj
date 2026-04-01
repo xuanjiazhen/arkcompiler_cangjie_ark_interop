@@ -17,6 +17,6 @@ package entry.fail_load
 
 import ohos.ark_interop.*
 
-let _ = JSModule.registerModule { context, exports =>
-    context.requireArkModule("libentry.so")
+let _ = JSModule.registerModule {
+    context, exports => context.requireArkModule("libentry.so")
 }
