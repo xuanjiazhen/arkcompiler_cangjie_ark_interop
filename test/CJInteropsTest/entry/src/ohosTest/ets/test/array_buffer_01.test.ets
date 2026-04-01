@@ -19,16 +19,44 @@ import * as lib from "libentry.so"
 
 export default function arrayTest() {
   describe('TestArray', () => {
-    it('test00', 0, () => {
+    it('test00_operator_get_jsArrayRangeMisMatch', 0, () => {
       let emptyArray = [];
-      lib.testArray00(emptyArray);
+      lib.test_JSArray_OperatorGet_throwException_jsArrayRangeMisMatch_1(emptyArray);
     })
-    it('test01', 0, () => {
+    it('test00_operator_set_jsvalue_jsArrayRangeMisMatch', 0, () => {
+      let emptyArray = [];
+      lib.test_JSArray_OperatorSetJSValue_throwException_jsArrayRangeMisMatch_1(emptyArray);
+    })
+    it('test00_operator_set_jsheapobject_jsArrayRangeMisMatch', 0, () => {
+      let emptyArray = [];
+      lib.test_JSArray_OperatorSetJSHeapObject_throwException_jsArrayRangeMisMatch_1(emptyArray);
+    })
+    it('test01_operator_get_returnExpectedValue', 0, () => {
       let array = [114.514, "my love", undefined, null, true];
-      lib.testArray01(array);
+      lib.test_JSArray_OperatorGet_returnExpectedValue(array);
+    })
+    it('test01_operator_get_jsArrayRangeMisMatch', 0, () => {
+      let array = [114.514, "my love", undefined, null, true];
+      lib.test_JSArray_OperatorGet_throwException_jsArrayRangeMisMatch_2(array);
+    })
+    it('test01_operator_set_jsvalue_success', 0, () => {
+      let array = [114.514, "my love", undefined, null, true];
+      lib.test_JSArray_OperatorSetJSValue_success_1(array);
+    })
+    it('test01_operator_set_jsvalue_jsArrayRangeMisMatch', 0, () => {
+      let array = [114.514, "my love", undefined, null, true];
+      lib.test_JSArray_OperatorSetJSValue_throwException_jsArrayRangeMisMatch_2(array);
+    })
+    it('test01_operator_set_jsheapobject_success', 0, () => {
+      let array = [114.514, "my love", undefined, null, true];
+      lib.test_JSArray_OperatorSetJSHeapObject_success(array);
+    })
+    it('test01_operator_set_jsheapobject_jsArrayRangeMisMatch', 0, () => {
+      let array = [114.514, "my love", undefined, null, true];
+      lib.test_JSArray_OperatorSetJSHeapObject_throwException_jsArrayRangeMisMatch_2(array);
     })
     it('test02', 0, () => {
-      let array = lib.testArray02();
+      let array = lib.test_JSArray_OperatorSetJSValue_success_2();
       expect(array[0]).assertEqual(114.514);
       expect(array[1]).assertEqual(false);
     })
