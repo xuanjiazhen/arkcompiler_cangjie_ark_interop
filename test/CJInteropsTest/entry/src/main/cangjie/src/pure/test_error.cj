@@ -16,27 +16,79 @@
 package entry.pure
 
 import ohos.ark_interop.*
+import std.runtime.*
+import std.sync.*
 import std.unittest.testmacro.*
 import std.unittest.common.*
 import std.unittest.*
 
 @Test
 class TestJSError {
-    @TestCase
-    func testJSError() {
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSFunction_call_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
-        let callback = await(jsContext) {
+        let newContext = JSRuntime().mainContext
+        let callback = newContext.function {
+            context, _ => context.undefined().toJSValue()
+        }
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
             jsContext.function {
-                _, callInfo =>
-                throw Exception("this is an exception")
-                jsContext
-                    .undefined()
-                    .toJSValue()
+                context, _ =>
+                    let msg = try {
+                        callback.call()
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSFunction_call_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let callback = jsContext.function {
+            context, _ => context.undefined().toJSValue()
+        }
+        let msg = spawn {
+            try {
+                callback.call()
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
             }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSFunction_call_throwException_propagate() {
+        let jsContext = getJSContext()
+        let callback = jsContext.function {
+            _, callInfo =>
+                throw Exception("this is an exception")
+                jsContext.undefined().toJSValue()
         }
         var hasError = false;
         try {
-            await(jsContext) {callback.call()}
+            callback.call()
         } catch (_: BusinessException) {
             hasError = true
         }
