@@ -20,14 +20,15 @@ import std.unittest.testmacro.*
 import std.collection.*
 import std.fs.*
 import std.sync.*
-
+import std.runtime.*
 import ohos.ark_interop.*
+import ohos.business_exception.BusinessException
 import ohos.hilog.*
 
 private var curContext_: ?JSContext = None
 private let allTests_ = HashMap<String, TestClass>()
 
-func registerTestSuite(name: String, creator: ()-> TestClass): Unit {
+func registerTestSuite(name: String, creator: () -> TestClass): Unit {
     allTests_.add(name, creator())
 }
 
@@ -48,17 +49,11 @@ private func runAllTests(context: JSContext): Unit {
     }
 }
 
-let _ = JSModule.registerFunc("runPureTests") { context =>
-    return context.function { context, _ =>
-        let promise = context.promiseCapability()
-        let result = promise.toJSValue()
-        spawn {
+let _ = JSModule.registerFunc("runPureTests") {
+    context => return context.function {
+        context, _ =>
             runAllTests(context)
-            context.postJSTask {
-                promise.resolve(context.undefined().toJSValue())
-            }
-        }
-        return result
+            context.undefined().toJSValue()
     }
 }
 
@@ -66,12 +61,23 @@ func getJSContext(): JSContext {
     curContext_.getOrThrow()
 }
 
+func expectBusinessExceptionCode(expected: Int32, callback: () -> Unit) {
+    var ok = false
+    try {
+        callback()
+    } catch (e: BusinessException) {
+        @Expect(e.code, expected)
+        ok = true
+    }
+    @Expect(ok)
+}
+
 private enum Result<T, E> {
     | Ok(T)
     | Err(E)
 }
 
-func await<T>(context: JSContext, f: ()-> T): T {
+func await<T>(context: JSContext, f: () -> T): T {
     if (context.isInBindThread()) {
         return f()
     }
@@ -83,13 +89,13 @@ func await<T>(context: JSContext, f: ()-> T): T {
         } catch (e: Exception) {
             Result.Err(e)
         } finally {
-            synchronized (monitor) {
+            synchronized(monitor) {
                 monitor.notify()
             }
         }
     }
 
-    synchronized (monitor) {
+    synchronized(monitor) {
         monitor.wait(timeout: Duration.second * 6)
     }
     match (result.value) {

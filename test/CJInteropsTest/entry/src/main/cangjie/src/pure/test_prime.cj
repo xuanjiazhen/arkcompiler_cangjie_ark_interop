@@ -18,41 +18,111 @@ package entry.pure
 import std.unittest.*
 import std.unittest.testmacro.*
 import ohos.ark_interop.*
+import std.runtime.*
+import std.sync.*
 
 @Test
 class TestPrime {
     @TestCase
-    func testJSBool() {
+    func test_JSNumber_fromInt32_toJSValue_success() {
         let jsContext = getJSContext()
-        let boolean = await(jsContext) {jsContext.boolean(true)}
-        @Expect(await(jsContext) {boolean.toBool()})
-        let valueF = await(jsContext) {jsContext.boolean(false)}
-        @Expect(await(jsContext) {valueF.toBool()}, false)
-    }
-
-    @TestCase
-    func testJSNumberF64() {
-        let jsContext = getJSContext()
-        let originals: Array<Float64> = [0.0, 123.123, -5461.13, 12345678812.1245]
+        let originals: Array<Int32> = [0, 123456, Int32.Max, Int32.Min, -784121]
         for (original in originals) {
-            let number = await(jsContext) {jsContext.number(original)}
-            let received = await(jsContext) {number.toFloat64()}
-            @Expect(original, received)
-            let jsValue = await(jsContext) {number.toJSValue()}
-            @Expect(await(jsContext) {jsValue.isNumber()})
+            let number = jsContext.number(original)
+            let jsValue = number.toJSValue()
+            @Expect(jsValue.isNumber())
         }
     }
 
     @TestCase
-    func testJSNumberI32() {
+    func test_JSBoolean_toBool_success() {
+        let jsContext = getJSContext()
+        let boolean = jsContext.boolean(true)
+        @Expect(boolean.toBool())
+        let valueF = jsContext.boolean(false)
+        @Expect(valueF.toBool(), false)
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSBoolean_toBool_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let boolean = newContext.boolean(true)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        boolean.toBool()
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSBoolean_toBool_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let boolean = jsContext.boolean(true)
+        let msg = spawn {
+            try {
+                boolean.toBool()
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSNumber_toJSValue_success() {
+        let jsContext = getJSContext()
+        let originals: Array<Float64> = [0.0, 123.123, -5461.13, 12345678812.1245]
+        for (original in originals) {
+            let number = jsContext.number(original)
+            let jsValue = number.toJSValue()
+            @Expect(jsValue.isNumber())
+        }
+    }
+
+    @TestCase
+    func test_JSNumber_toFloat64_success() {
+        let jsContext = getJSContext()
+        let originals: Array<Float64> = [0.0, 123.123, -5461.13, 12345678812.1245]
+        for (original in originals) {
+            let number = jsContext.number(original)
+            let received = number.toFloat64()
+            @Expect(original, received)
+        }
+    }
+
+    @TestCase
+    func test_JSNumber_fromInt32_toFloat64_success() {
         let jsContext = getJSContext()
         let originals: Array<Int32> = [0, 123456, Int32.Max, Int32.Min, -784121]
         for (original in originals) {
-            let number = await(jsContext) {jsContext.number(original)}
+            let number = jsContext.number(original)
             let received = Int32(await(jsContext) {number.toFloat64()})
             @Expect(original, received)
-            let jsValue = await(jsContext) {number.toJSValue()}
-            @Expect(await(jsContext) {jsValue.isNumber()})
         }
     }
 }
