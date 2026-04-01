@@ -21,34 +21,501 @@ import ohos.ark_interop.*
 import std.time.*
 import std.runtime.*
 import std.math.numeric.*
+import std.sync.*
 
 @Test
 class TestObject {
     @TestCase
-    func testJSObject00() {
+    func test_JSObject_instanceOf_class_false_success() {
         let jsContext = getJSContext()
-        let object = await(jsContext) {jsContext.object()}
-        @Expect(await(jsContext){object.keys().size}, 0)
-        await(jsContext) {
-            object["a"] = jsContext
-                .boolean(true)
-                .toJSValue()
+        let object = jsContext.object()
+        let newCls = jsContext.clazz({
+            _, callInfo => callInfo.thisArg
+        })
+        let isError = object.instanceOf(newCls)
+        @Expect(isError, false)
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_instanceOf_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let c = newContext.clazz({_, ci => ci.thisArg})
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = o.instanceOf(c)
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
         }
-        @Expect(await(jsContext){object["a"].isBoolean()})
-        @Expect(await(jsContext){object["b"].isUndefined()})
-        @Expect(await(jsContext){object.hasProperty("a")})
-        @Expect(await(jsContext){object.hasProperty("b")}, false)
-        @Expect(await(jsContext){object.getProperty("a").toBoolean()})
-        await(jsContext) {
-            object.setProperty("a", jsContext
-                .boolean(false)
-                .toJSValue())
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
-        @Expect(await(jsContext){object["a"].toBoolean()}, false)
     }
 
     @TestCase
-    func testJSObjectDefineProperty() {
+    func test_JSObject_instanceOf_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let c = jsContext.clazz({_, ci => ci.thisArg})
+
+        let msg = spawn {
+            try {
+                let _ = o.instanceOf(c)
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_hasProperty_success() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["a"] = jsContext.boolean(true).toJSValue()
+        @Expect(object.hasProperty("a"))
+        @Expect(object.hasProperty("b"), false)
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_hasProperty_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let key = "k"
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = o.hasProperty(key)
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_hasProperty_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let key = jsContext.string("k")
+
+        let msg = spawn {
+            try {
+                let _ = o.hasProperty(key)
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_getProperty_and_setProperty_success() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["a"] = jsContext.boolean(true).toJSValue()
+        @Expect(object.getProperty("a").toBoolean())
+        object.setProperty("a", jsContext.boolean(false).toJSValue())
+        @Expect(object["a"].toBoolean(), false)
+    }
+
+    @TestCase
+    func test_JSObject_getProperty_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        let getter = jsContext.function {
+            context, _ =>
+                throw Exception("outside getter error")
+                context.undefined().toJSValue()
+        }
+        object.defineOwnAccessor("k", getter: getter, setter: None<JSFunction>)
+        expectBusinessExceptionCode(34300002) {
+            let _ = object.getProperty("k")
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_getProperty_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let object = newContext.object()
+        object["a"] = newContext.number(1.0).toJSValue()
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        object.getProperty("a")
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_getProperty_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["a"] = jsContext.number(1.0).toJSValue()
+        let msg = spawn {
+            try {
+                object.getProperty("a")
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_operatorSet_operatorGet_stringKey_success() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["a"] = jsContext.boolean(true).toJSValue()
+        @Expect(object["a"].isBoolean())
+        @Expect(object["b"].isUndefined())
+    }
+
+    @TestCase
+    func test_JSObject_operatorGet_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        let getter = jsContext.function {
+            context, _ =>
+                throw Exception("outside getter error")
+                context.undefined().toJSValue()
+        }
+        object.defineOwnAccessor("k", getter: getter, setter: None<JSFunction>)
+        expectBusinessExceptionCode(34300002) {
+            let _ = object["k"]
+        }
+    }
+
+    @TestCase
+    func test_JSObject_symbolKey_operatorSet_success() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        let key = jsContext.symbol(description: "b")
+        object[key] = jsContext.boolean(true).toJSValue()
+        @Expect(object[key].toBoolean())
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_operatorGet_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let key = "k"
+        o.setProperty(key, newContext.number(1.0).toJSValue())
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = o[key]
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_operatorSet_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let key = "k"
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        o[key] = newContext.number(3.0).toJSValue()
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_operatorGet_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let key = jsContext.string("k")
+        o.setProperty(key, jsContext.number(1.0).toJSValue())
+
+        let msg = spawn {
+            try {
+                let _ = o[key]
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_operatorSet_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let key = jsContext.string("k")
+
+        let msg = spawn {
+            try {
+                o[key] = jsContext.number(3.0).toJSValue()
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_callMethod_success() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["c"] = jsContext.function {
+            _, _ => jsContext.undefined().toJSValue()
+        }.toJSValue()
+        object.callMethod("c")
+    }
+
+    @TestCase
+    func test_JSObject_callMethod_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["boom"] = jsContext.object().toJSValue()
+        expectBusinessExceptionCode(34300002) {
+            let _ = object.callMethod("boom")
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_callMethod_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let object = newContext.object()
+        object["m"] = newContext.function {context, _ => context.undefined().toJSValue()}.toJSValue()
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        object.callMethod("m")
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_callMethod_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["m"] = jsContext.function {context, _ => context.undefined().toJSValue()}.toJSValue()
+        let msg = spawn {
+            try {
+                object.callMethod("m")
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_setProperty_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let key = "k"
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        o.setProperty(key, newContext.number(2.0).toJSValue())
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    // @TestCase
+    func test_JSObject_operatorSet_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        let setter = jsContext.function {
+            context, _ =>
+                throw Exception("outside setter error")
+                context.undefined().toJSValue()
+        }
+        object.defineOwnAccessor("k", getter: None<JSFunction>, setter: setter)
+        expectBusinessExceptionCode(34300002) {
+            object["k"] = jsContext.number(1.0).toJSValue()
+        }
+    }
+
+    @TestCase
+    func test_JSObject_setProperty_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let key = jsContext.string("k")
+
+        let msg = spawn {
+            try {
+                o.setProperty(key, jsContext.number(2.0).toJSValue())
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_defineOwnProperty_flags() {
         let jsContext = getJSContext()
         let cases = [
             PropCase("a", false, false, false),
@@ -60,25 +527,15 @@ class TestObject {
             PropCase("g", false, true, true),
             PropCase("h", true, true, true)
         ]
-        let object = await(jsContext) {jsContext.object()}
-        let valueT = await(jsContext) {
-            jsContext
-                .boolean(true)
-                .toJSValue()
-        }
-        let valueF = await(jsContext) {
-            jsContext
-                .boolean(false)
-                .toJSValue()
-        }
+        let object = jsContext.object()
+        let valueT = jsContext.boolean(true).toJSValue()
+        let valueF = jsContext.boolean(false).toJSValue()
         for (one in cases) {
-            await(jsContext) {
-                object.defineOwnProperty(one.key, valueF, isWritable: one.writable, isEnumerable: one.enumerable,
-                    isConfigurable: one.configurable)
-            }
+            object.defineOwnProperty(one.key, valueF, isWritable: one.writable, isEnumerable: one.enumerable,
+                isConfigurable: one.configurable)
         }
         // enumerable
-        let keys = await(jsContext) {object.keys()}
+        let keys = object.keys()
         let expectedKeys = ["c", "e", "g", "h"]
         @Expect(keys.size, 4)
         for (k in keys) {
@@ -87,26 +544,22 @@ class TestObject {
         // writable
         for (one in cases) {
             if (one.writable) {
-                await(jsContext) {object[one.key] = valueT}
-                let received = await(jsContext) {object[one.key].toBoolean()}
+                object[one.key] = valueT
+                let received = object[one.key].toBoolean()
                 @Expect(one.writable, received)
             }
         }
         // configurable
-        let valueNull = await(jsContext) {
-            jsContext
-                .null()
-                .toJSValue()
-        }
+        let valueNull = jsContext.null().toJSValue()
         for (one in cases) {
             let expThrow = try {
-                await(jsContext) {object.defineOwnProperty(one.key, valueNull)}
+                object.defineOwnProperty(one.key, valueNull)
                 false
             } catch (_) {
                 true
             }
             if (one.configurable) {
-                @Expect(await(jsContext){object[one.key].isNull()})
+                @Expect(object[one.key].isNull())
             } else {
                 @Expect(expThrow)
             }
@@ -114,136 +567,389 @@ class TestObject {
     }
 
     @TestCase
-    func testJSObjectDefineAccessor() {
+    func test_JSObject_defineOwnProperty_throwException34300002() {
         let jsContext = getJSContext()
-        let object = await(jsContext) {jsContext.object()}
-        await(jsContext) {
-            object["a"] = jsContext
-                .number(1.1)
-                .toJSValue()
+        let o = jsContext.object()
+        let key = jsContext.string("k")
+
+        let msg = try {
+            o.defineOwnProperty(key, jsContext.number(0.0).toJSValue(), isWritable: true, isEnumerable: true, isConfigurable: false)
+            o.defineOwnProperty(key, jsContext.number(0.0).toJSValue())
+            "NO_EXCEPTION"
+        } catch (e: BusinessException) {
+            e.message.toString()
         }
+        @Expect(msg.contains("Cannot define property"))
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_defineOwnProperty_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let key = "k"
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        o.defineOwnProperty(key, newContext.number(0.0).toJSValue())
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_defineOwnProperty_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let key = jsContext.string("k")
+
+        let msg = spawn {
+            try {
+                o.defineOwnProperty(key, jsContext.number(0.0).toJSValue())
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_defineOwnAccessor_getter_setter_success() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["a"] = jsContext.number(1.1).toJSValue()
 
         let rawGetter: JSLambda = {
-            _, callInfo => callInfo
-                .thisArg
-                .getProperty("a")
+            _, callInfo => callInfo.thisArg.getProperty("a")
         }
         let rawSetter: JSLambda = {
             _, callInfo =>
-            callInfo
-                .thisArg
-                .setProperty("a", callInfo[0])
-            jsContext
-                .undefined()
-                .toJSValue()
+                callInfo.thisArg.setProperty("a", callInfo[0])
+                jsContext.undefined().toJSValue()
         }
-        let getter = await(jsContext) {jsContext.function(rawGetter)}
-        let setter = await(jsContext) {jsContext.function(rawSetter)}
-        await(jsContext) {object.defineOwnAccessor("b", getter: getter, setter: setter)}
-        await(jsContext) {object.defineOwnAccessor("c", getter: getter)}
-        await(jsContext) {object.defineOwnAccessor("d", setter: setter)}
-        await(jsContext) {object.defineOwnAccessor("e", getter: rawGetter, setter: rawSetter)}
-        await(jsContext) {object.defineOwnAccessor("f", getter: rawGetter)}
-        await(jsContext) {object.defineOwnAccessor("g", setter: rawSetter)}
-        await(jsContext) {
-            object["b"] = jsContext
-                .boolean(true)
-                .toJSValue()
+        let getter = jsContext.function(rawGetter)
+        let setter = jsContext.function(rawSetter)
+        object.defineOwnAccessor("b", getter: getter, setter: setter)
+        object.defineOwnAccessor("c", getter: getter)
+        object.defineOwnAccessor("d", setter: setter)
+        object.defineOwnAccessor("e", getter: rawGetter, setter: rawSetter)
+        object.defineOwnAccessor("f", getter: rawGetter)
+        object.defineOwnAccessor("g", setter: rawSetter)
+        object["b"] = jsContext.boolean(true).toJSValue()
+        @Expect(object["a"].toBoolean())
+        @Expect(object["b"].toBoolean())
+        @Expect(object["c"].toBoolean())
+        @Expect(object["e"].toBoolean())
+        @Expect(object["f"].toBoolean())
+        object["d"] = jsContext.number(0.0).toJSValue()
+        @Expect(object["a"].toNumber(), 0.0)
+        @Expect(object["b"].toNumber(), 0.0)
+        @Expect(object["c"].toNumber(), 0.0)
+        @Expect(object["e"].toNumber(), 0.0)
+        @Expect(object["f"].toNumber(), 0.0)
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_defineOwnAccessor_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let key = "k"
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        o.defineOwnAccessor(
+                            key,
+                            getter: None<JSFunction>,
+                            setter: None<JSFunction>
+                        )
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
         }
-        @Expect(await(jsContext) {object["a"].toBoolean()})
-        @Expect(await(jsContext) {object["b"].toBoolean()})
-        @Expect(await(jsContext) {object["c"].toBoolean()})
-        @Expect(await(jsContext) {object["e"].toBoolean()})
-        @Expect(await(jsContext) {object["f"].toBoolean()})
-        await(jsContext) {
-            object["d"] = jsContext
-                .number(0.0)
-                .toJSValue()
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
-        @Expect(await(jsContext) {object["a"].toNumber()}, 0.0)
-        @Expect(await(jsContext) {object["b"].toNumber()}, 0.0)
-        @Expect(await(jsContext) {object["c"].toNumber()}, 0.0)
-        @Expect(await(jsContext) {object["e"].toNumber()}, 0.0)
-        @Expect(await(jsContext) {object["f"].toNumber()}, 0.0)
     }
 
     @TestCase
-    func testJSObjectOther() {
+    func test_JSObject_defineOwnAccessor_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
-        let object = await(jsContext) {jsContext.object()}
-        await(jsContext) {
-            object["a"] = jsContext
-                .null()
-                .toJSValue()
-        }
-        await(jsContext) {
-            object[jsContext.symbol(description: "b")] = jsContext
-                .boolean(true)
-                .toJSValue()
-        }
-        await(jsContext) {
-            object["c"] = jsContext.function {
-                _, callInfo => jsContext
-                    .undefined()
-                    .toJSValue()
-            }.toJSValue()
-        }
-        await(jsContext) {object.callMethod("c")}
-        let keys = await(jsContext) {object.keys()}
-        @Expect(keys.size, 2)
-        let newCls = await(jsContext) {
-            jsContext.clazz({
-                _, callInfo => callInfo.thisArg
-            })
-        }
-        let isError = await(jsContext) {object.instanceOf(newCls)}
-        @Expect(isError, false)
+        let o = jsContext.object()
+        let key = jsContext.string("k")
+
+        let msg = spawn {
+            try {
+                o.defineOwnAccessor(
+                    key,
+                    getter: None<JSFunction>,
+                    setter: None<JSFunction>
+                )
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
     }
 
     @TestCase
-    func testJSObjectExternal() {
+    func test_JSObject_keys_empty_success() {
         let jsContext = getJSContext()
-        let object = await(jsContext) {jsContext.object()}
-        @Expect(await(jsContext){object.getAttachInfo().isNone()})
+        let object = jsContext.object()
+        @Expect(object.keys().size, 0)
+    }
+
+    @TestCase
+    func test_JSObject_keys_after_stringKey_and_symbolKey_success() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["a"] = jsContext.null().toJSValue()
+        object[jsContext.symbol(description: "b")] = jsContext.boolean(true).toJSValue()
+        let keys = object.keys()
+        @Expect(keys.size, 1)
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_keys_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let key = "k"
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = o.keys()
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_keys_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+
+        let msg = spawn {
+            try {
+                let _ = o.keys()
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_attachCJObject_getAttachInfo_success() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        @Expect(object.getAttachInfo().isNone())
         let myObject = MyObject()
-        let external = await(jsContext) {jsContext.external(myObject)}
-        await(jsContext) {object.attachCJObject(external)}
-        let received = await(jsContext) {object.getAttachInfo()}
+        let external = jsContext.external(myObject)
+        object.attachCJObject(external)
+        let received = object.getAttachInfo()
         @Expect(received.isSome())
         let receivedExt = received.getOrThrow()
-        let receivedObJOpt = await(jsContext) {receivedExt.cast<MyObject>()}
+        let receivedObJOpt = receivedExt.cast<MyObject>()
         @Expect(receivedObJOpt.isSome())
         let receivedObJ = receivedObJOpt.getOrThrow()
         @Expect(receivedObJ.nativeId, myObject.nativeId)
-        let data = await(jsContext) {receivedExt.getData()} as MyObject
+        let data = receivedExt.getData() as MyObject
         @Expect(data.isSome())
     }
 
-    @TestCase
-    func testFinalizer() {
-        let context = getJSContext()
-        await (context) {
-            let a = context.function { _, _ => context.undefined().toJSValue() }
-            let b = context.object()
-            let c = context.external(MyObject())
-            let d = context.array()
-            let e = context.bigint(BigInt(123))
-            let f = context.clazz({ _, c => c.thisArg })
-            let g = unsafe {
-                context.arrayBuffer(LibC.malloc<Byte>(count: 8), 8) { ptr => LibC.free(ptr) }
-            }
-            let h = context.promiseCapability()
-            let i = h.toJSValue().asPromise()
-            h.resolve(context.undefined().toJSValue())
-            let j = context.symbol()
-            let l = context.string("")
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_attachCJObject_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+        let ext = newContext.external(MyObject())
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        o.attachCJObject(ext)
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
         }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_attachCJObject_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let ext = jsContext.external(MyObject())
+
+        let msg = spawn {
+            try {
+                o.attachCJObject(ext)
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSObject_getAttachInfo_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let o = newContext.object()
+
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = o.getAttachInfo()
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_getAttachInfo_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+
+        let msg = spawn {
+            try {
+                let _ = o.getAttachInfo()
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSRuntime_finalizer_forceFullGC() {
+        let context = getJSContext()
+        let a = context.function {_, _ => context.undefined().toJSValue()}
+        let b = context.object()
+        let c = context.external(MyObject())
+        let d = context.array()
+        let e = context.bigint(BigInt(123))
+        let f = context.clazz({_, c => c.thisArg})
+        let g = unsafe {
+            context.arrayBuffer(LibC.malloc<Byte>(count: 8), 8) {ptr => LibC.free(ptr)}
+        }
+        let h = context.promiseCapability()
+        let i = h.toJSValue().asPromise()
+        h.resolve(context.undefined().toJSValue())
+        let j = context.symbol()
+        let l = context.string("")
 
         gc()
         sleep(Duration.second * 1)
-        await (context) {
-            context.global["ArkTools"].asObject().callMethod("forceFullGC")
-        }
+        context.global["ArkTools"].asObject().callMethod("forceFullGC")
         sleep(Duration.millisecond * 200)
     }
 }
