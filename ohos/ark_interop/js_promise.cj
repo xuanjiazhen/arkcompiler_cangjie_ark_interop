@@ -17,6 +17,13 @@
 
 package ohos.ark_interop
 
+/**
+ * ArkTS promises and deferred capabilities: chaining (`then`/`catch`) and resolve/reject without extra `JSValue` boxing for the cap handle.
+ */
+
+/**
+ * Opaque VM promise capability (resolve/reject pair); not a surfaced `JSValue` but a faster native hook type.
+ */
 @C
 struct JSPromisePrivate {}
 
@@ -45,10 +52,16 @@ foreign func ARKTS_PromiseCatch(env: JSEnv, prom: JSValue_, callback: JSValue_):
     since: "22"
 ]
 public class JSPromise <: JSHeapObject {
+    /**
+     * Wraps an existing ArkTS promise object.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.OBJECT)
     }
 
+    /**
+     * Releases the global ref for this promise wrapper.
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
@@ -116,6 +129,9 @@ public class JSPromiseCapability {
     private let promise: JSPromiseCap
     private var isComplete: Bool
 
+    /**
+     * Allocates a native promise capability pair (promise + internal resolve/reject hooks).
+     */
     init(context: JSContext) {
         this.context = context
         promise = create(context)

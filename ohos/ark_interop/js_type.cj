@@ -17,11 +17,15 @@
 
 package ohos.ark_interop
 
+/**
+ * Integer tags for ArkTS value kinds returned by the engine; kept `@C` so they share layout with native `JSType` checks.
+ */
+
 let JS_TYPE_NAMES_ = ["undefined", "null", "number", "bool", "bigint", "string", "symbol", "object", "function",
     "external"]
 
 /**
- * The ArkTS data type enumeration.
+ * Mirrors the runtime’s internal type discriminant for `JSValue` (used with `ARKTS_GetValueType` and heap typing).
  */
 @!APILevel[
     since: "22"

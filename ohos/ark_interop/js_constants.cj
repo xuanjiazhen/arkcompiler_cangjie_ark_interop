@@ -19,6 +19,9 @@ package ohos.ark_interop
 
 import std.collection.*
 
+/**
+ * Thread-unsafe lazy box: runs the initializer once on first `data` access, then drops the thunk to release captures.
+ */
 protected class LazyInit<T> {
     private var data_: ?T = None
     private var func_: ?() -> T
@@ -41,6 +44,11 @@ protected class LazyInit<T> {
     }
 }
 
+/**
+ * Interned `JSString` / `JSSymbol` handles for property keys used across interop (errors, iterators, builtins).
+ *
+ * Centralizing here avoids reallocating the same keys and keeps spelling consistent with ArkTS.
+ */
 class JSBuiltinText {
     let WeakSet: JSString
     let add: JSString
@@ -63,6 +71,7 @@ class JSBuiltinText {
     let done: JSString
     let value: JSString
 
+    /** Materialize well-known string/symbol values on `context`. */
     init(context: JSContext) {
         WeakSet = context.string("WeakSet")
         add = context.string("add")
@@ -86,6 +95,9 @@ class JSBuiltinText {
     }
 }
 
+/**
+ * Cached references to `%Map.prototype` methods — invoked from `JSMap` without name lookup each call.
+ */
 class JSMapFuncs {
     let clazz: JSClass
 
@@ -96,6 +108,7 @@ class JSMapFuncs {
     let clear: JSFunction
     let keys: JSFunction
 
+    /** Resolve global `Map`, then bind prototype methods as `JSFunction` wrappers. */
     init(context: JSContext) {
         clazz = context.global["Map"].asClass()
         let proto = clazz.prototype
@@ -109,6 +122,8 @@ class JSMapFuncs {
 }
 
 /**
+ * Load a constructor from `globalThis[name]` and assert it is a `JSClass`.
+ *
  * @throws { BusinessException } 34300002 - Outside error occurred.
  */
 func loadGlobalClass(context: JSContext, name: String): JSClass {
@@ -120,6 +135,9 @@ func loadGlobalClass(context: JSContext, name: String): JSClass {
     value.asClass()
 }
 
+/**
+ * Lazily resolved `ArrayBuffer`, `DataView`, and TypedArray constructors (touched only when interop uses buffers).
+ */
 class JSTypedArrayFuncs {
     let arrayBuffer: LazyInit<JSClass>
     let dataView: LazyInit<JSClass>
@@ -135,6 +153,7 @@ class JSTypedArrayFuncs {
     let float32Array: LazyInit<JSClass>
     let float64Array: LazyInit<JSClass>
 
+    /** Defer global lookups until first buffer/typed-array interop on this context. */
     init(context: JSContext) {
         arrayBuffer = LazyInit {
             loadGlobalClass(context, "ArrayBuffer")
@@ -178,13 +197,18 @@ class JSTypedArrayFuncs {
     }
 }
 
+/**
+ * Per-`JSContext` cache of common globals: builtin text keys, `Map` helpers, typed arrays, and synthetic Error subclasses.
+ */
 class JSConstants {
     let context: JSContext
     let builtinText: JSBuiltinText
     let mapFuncs: JSMapFuncs
     let typedArray: JSTypedArrayFuncs
+    /** Memoized `Error` subclasses keyed by ArkTS class name string (for structured exception mapping). */
     let errClsByName = HashMap<String, JSClass>()
 
+    /** Eagerly load builtin text and Map funcs; typed-array classes stay lazy until needed. */
     init(context: JSContext) {
         this.context = context
         builtinText = JSBuiltinText(context)
@@ -193,6 +217,9 @@ class JSConstants {
         errClsByName["Error"] = context.global["Error"].asClass()
     }
 
+    /**
+     * Return a `JSClass` constructor named `clsName` inheriting from base `Error`, creating it on first use.
+     */
     func getErrorClass(clsName: String): JSClass {
         if (let Some(cls) <- errClsByName.get(clsName)) {
             cls
@@ -207,6 +234,9 @@ class JSConstants {
         }
     }
 
+    /**
+     * Capture a fresh JS stack trace as string lines (used when rethrowing without a real `Error` instance).
+     */
     func getArkStack(): Array<String> {
         let cls = errClsByName["Error"]
         let obJ = cls.new().asObject()
@@ -214,6 +244,7 @@ class JSConstants {
         parseArkStack(stack)
     }
 
+    /** Split raw `error.stack` text into non-empty trimmed lines. */
     func parseArkStack(stack: String): Array<String> {
         let result = ArrayList<String>()
         for (line in stack.split("\n")) {

@@ -17,6 +17,10 @@
 
 package ohos.ark_interop_helper
 
+/**
+ * Async OHOS module calls: resolves promises on the JS thread and funnels results or `BusinessException` back to Cangjie callbacks.
+ */
+
 import std.collection.concurrent.ConcurrentHashMap
 import ohos.business_exception.BusinessException
 import ohos.base.UIThread
@@ -46,6 +50,9 @@ protected func getMainContext(): JSContext {
     // pure cj, create js runtime in main thread
     // user may call this func in spawn
 
+    /**
+     * Lazily boots a `JSRuntime` on the UI thread and caches `mainThreadContext` for later async module calls.
+     */
     func initJs(): JSContext {
         synchronized(lock) {
             if (let Some(v) <- mainThreadContext) {
@@ -81,6 +88,9 @@ protected func checkThreadAndCall<T>(ctx: JSContext, f: (JSContext) -> T): T {
     }
 }
 
+/**
+ * Coerces a JS rejection value (object/number/primitive) into a `BusinessException` with a best-effort code/message.
+ */
 func handleError(ctx: JSContext, err: JSValue): BusinessException {
     if (err.isObject()) {
         let errObj = err.asObject()
@@ -107,6 +117,9 @@ func handleError(ctx: JSContext, err: JSValue): BusinessException {
 
 protected func asyncCallbackWrapper<T>(ctx: JSContext, callback: (?BusinessException, ?T) -> Unit,
     onResolve: (JSContext, JSValue) -> T): JSValue {
+    /**
+     * Builds the JS trampoline invoked on fulfill/reject; marshals `(err, data)` back into `callback` on the Cangjie side.
+     */
     func call(ctx: JSContext): JSValue {
         let jscall = ctx.function {
             ctx, info =>
@@ -146,6 +159,9 @@ protected func getJSModule(ctx: JSContext, name: String, prefix: ?String): JSObj
 
 protected func jsGlobalApiCall<T>(moduleName: String, modulePrefix: ?String, funcName: String,
     args: (JSContext) -> Array<JSValue>, onResolve: (JSContext, JSValue) -> T): T {
+    /**
+     * Dispatches synchronously on the JS thread: require module, call method, map return through `onResolve`.
+     */
     func call(context: JSContext): T {
         let jsModule = getJSModule(context, moduleName, modulePrefix)
         let jsRet = jsModule.callMethod(funcName, args(context))
@@ -156,6 +172,9 @@ protected func jsGlobalApiCall<T>(moduleName: String, modulePrefix: ?String, fun
 
 protected func jsObjApiCall<T>(obj: JSObject, funcName: String, args: (JSContext) -> Array<JSValue>,
     onResolve: (JSContext, JSValue) -> T): T {
+    /**
+     * Like `jsGlobalApiCall` but targets an existing `JSObject` receiver (instance method call).
+     */
     func call(context: JSContext): T {
         let jsRet = obj.callMethod(funcName, args(context))
         onResolve(context, jsRet)
@@ -191,6 +210,9 @@ protected struct JsGlobalApiCallInfo<T> {
     var funcName: String
     var callback: (?BusinessException, ?T) -> Unit
     var args: (JSContext) -> Array<JSValue>
+    /**
+     * Bundles module identity, user callback, and argument thunk for promise-based global API helpers.
+     */
     init(moduleName: String, modulePrefix: ?String, funcName: String,
          callback: (?BusinessException, ?T) -> Unit, args: (JSContext) -> Array<JSValue>) {
         this.moduleName = moduleName
@@ -202,6 +224,9 @@ protected struct JsGlobalApiCallInfo<T> {
 }
 
 protected func jsGlobalApiCallPromise<T>(jsGlobalApiCallInfo: JsGlobalApiCallInfo<T>, onResolve: (JSContext, JSValue) -> T): Unit {
+    /**
+     * Invokes the module method, chains `then`/`catchError`, and forwards success/failure into `jsGlobalApiCallInfo.callback`.
+     */
     func call(context: JSContext): Unit {
         let jsRet = getJSModule(context, jsGlobalApiCallInfo.moduleName, jsGlobalApiCallInfo.modulePrefix).callMethod(
             jsGlobalApiCallInfo.funcName, jsGlobalApiCallInfo.args(context))
@@ -261,6 +286,9 @@ protected func ohosGlobalApiCallPromise<T>(moduleName: String, funcName: String,
 
 protected func jsObjApiCallPromise<T>(obj: JSObject, funcName: String, callback: (?BusinessException, ?T) -> Unit,
     args: (JSContext) -> Array<JSValue>, onResolve: (JSContext, JSValue) -> T): Unit {
+    /**
+     * Promise variant for calls on a specific `JSObject` (same callback wiring as `jsGlobalApiCallPromise`).
+     */
     func call(context: JSContext): Unit {
         let jsRet = obj.callMethod(funcName, args(context))
         let promise = jsRet.asPromise()

@@ -17,6 +17,10 @@
 
 package ohos.ark_interop_helper
 
+/**
+ * Synchronous “call JS from Cangjie on the JS thread” helpers: module cache, lazy console/timer install, and bridged returns.
+ */
+
 import std.sync.{SyncCounter, AtomicBool}
 import std.collection.concurrent.ConcurrentHashMap
 import ohos.business_exception.BusinessException

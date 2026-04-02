@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * Error helpers for Ark↔Cangjie interop: structured `BusinessException` factories and `MixedException` for JS stack stitching.
+ */
+
 import ohos.business_exception.BusinessException
 import ohos.hilog.*
 
@@ -103,6 +107,9 @@ internal func withoutArkFrame(): BusinessException {
     BusinessException(34300008, "Cannot requireArkModule without ArkTS frame.")
 }
 
+/**
+ * Non-business fatal interop fault (native contract broken); distinct from `BusinessException` used in public APIs.
+ */
 class JSInteropNativeError <: Exception {
     public init(message: String) {
         super(message)
@@ -124,12 +131,121 @@ internal func printExp(exp: Exception): Unit {
     }
 }
 
+/**
+ * Carries `MixedException` across the JS boundary via `JSExternal` so the same error object can round-trip.
+ */
 class SharedException <: SharedObject {
     SharedException(
         let mixedException: BusinessException
     ) {}
 }
 
+class MixedException <: BusinessException {
+    let arkStack: Array<String>
+    let original: ?Exception
+    let className: ?String
+    /**
+     * Serialized ArkTS-side error: fixed code/message and captured JS stack frames (no nested Cangjie cause).
+     */
+    init(className: String, code: Int32, message: String, stack: Array<String>) {
+        super(code, message)
+        this.className = className
+        arkStack = stack
+        original = None
+    }
+
+    /**
+     * Wraps a Cangjie exception raised while handling an ArkTS callback; defers message to `original` when present.
+     */
+    init(code: Int32, exp: Exception, stack: Array<String>) {
+        super(code, "")
+        className = None
+        arkStack = stack
+        original = exp
+    }
+
+    /**
+     * Prefer the wrapped exception’s message; otherwise fall back to `BusinessException.message`.
+     */
+    func getMessage(): String {
+        if (let Some(exp) <- original) {
+            exp.message
+        } else {
+            this.message
+        }
+    }
+
+    /**
+     * @brief Cross-boundary message used by `toJSError`: for mixed errors, prefer `getMessage()`.
+     */
+    func getCrossMessage(): String {
+        getMessage()
+    }
+
+    /**
+     * Concatenates Cangjie and ArkTS stack portions so a single string can surface in logs or a JS `Error.stack`.
+     */
+    func getMixedStackTrace(): String {
+        if (let Some(exp) <- original) {
+            var s = ""
+            for (element in exp.getStackTrace()) {
+                s += "    at ${element.declaringClass}.${element.methodName}(${element.fileName}:${element.lineNumber})\n"
+            }
+            s += String.join(arkStack, delimiter: "\n")
+            s
+        } else {
+            var s = ""
+            for (l in arkStack) {
+                s += "${l}\n"
+            }
+            let cjStack = getStackTrace()
+            s += String.join(Array(cjStack.size) { idx =>
+                let element = cjStack[idx]
+                "    at ${element.declaringClass}.${element.methodName}(${element.fileName}:${element.lineNumber})"
+            }, delimiter: "\n")
+            s
+        }
+    }
+
+    protected override func getClassName(): String {
+        if (let Some(name) <- className) {
+            name
+        } else {
+            original.getOrThrow().getClassName()
+        }
+    }
+
+
+    public func toString(): String {
+        let codeStr = if (code == 0) {
+            ""
+        } else {
+            "Error code:${code}\n"
+        }
+        "Error name:${getClassName()}\nError message:${getMessage()}\n${codeStr}Stacktrace:\n${getMixedStackTrace()}"
+    }
+
+
+    public func toJSError(context: JSContext): JSValue {
+        let cls = context.constants.getErrorClass(getClassName())
+        let obj = cls.new().asObject()
+        obj["message"] = context.string(getMessage()).toJSValue()
+        obj["stack"] = context.string(getMixedStackTrace()).toJSValue()
+        if (code != 0) {
+            obj["code"] = context.number(code).toJSValue()
+        }
+        let external = context.external(SharedException(this))
+        obj.attachCJObject(external)
+        return obj.toJSValue()
+    }
+}
+
+/**
+ * Build a JS `Error` object from a Cangjie-side `BusinessException` (including mixed ArkTS stacks when present).
+ *
+ * The returned `Error` has `message`, `stack`, and optional numeric `code`, and carries the original exception via
+ * an attached `JSExternal` so it can round-trip across the boundary.
+ */
 func toJSError(context: JSContext, exception: BusinessException): JSValue {
     let cls = context.constants.getErrorClass(exception.getClassName())
     let obj = cls.new().asObject()

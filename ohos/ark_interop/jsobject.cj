@@ -17,6 +17,13 @@
 
 package ohos.ark_interop
 
+/**
+ * ArkTS objects: property flags/accessor bundles for `defineProperty`, own-keys enumeration, and attachable Cangjie externals.
+ */
+
+/**
+ * `PropertyAttribute` bitmask shared with native `DefineProperty`/`DefineAccessors` (writable, enumerable, configurable).
+ */
 @C
 struct PropertyFlags {
     static let NONE = PropertyFlags(0)
@@ -27,10 +34,16 @@ struct PropertyFlags {
 
     let value: UInt32
 
+    /**
+     * Bitmask from the raw engine attribute flags (writable/enumerable/configurable).
+     */
     init(value: UInt32) {
         this.value = value
     }
 
+    /**
+     * Builds flags matching typical `Object.defineProperty` attribute booleans.
+     */
     init(writable: Bool, enumerable: Bool, configurable: Bool) {
         var value_: UInt32 = 0
         if (writable) {
@@ -50,6 +63,9 @@ struct PropertyFlags {
     }
 }
 
+/**
+ * Accessor descriptor passed to native `DefineAccessors`: getter/setter handles plus attribute bitmask (layout for FFI).
+ */
 @C
 struct JSAccessor {
     JSAccessor(
@@ -87,6 +103,9 @@ foreign func ARKTS_DefineAccessorsV2(env: JSEnv, object: JSValue_, key: JSValue_
     since: "22"
 ]
 abstract sealed class JSObjectBase <: JSHeapObject {
+    /**
+     * Wraps any ArkTS object handle owned by the calling context.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.OBJECT)
     }
@@ -192,6 +211,9 @@ abstract sealed class JSObjectBase <: JSHeapObject {
         JSValue(context, value)
     }
 
+    /**
+     * Best-effort constructor “name” from `this.constructor.name` for diagnostics and error mapping.
+     */
     func getClassName(): String {
         let ctor = this["constructor"]
         if (!ctor.isObject() || !ctor.isFunction()) {
@@ -415,14 +437,23 @@ abstract sealed class JSObjectBase <: JSHeapObject {
     since: "22"
 ]
 public class JSObject <: JSObjectBase {
+    /**
+     * Wraps an existing plain object handle.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value)
     }
 
+    /**
+     * Allocates a fresh empty ArkTS object (`{}`).
+     */
     init(context: JSContext) {
         super(context, unsafe { ARKTS_CreateObject(context.env) })
     }
 
+    /**
+     * Releases the global ref for this object wrapper.
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }

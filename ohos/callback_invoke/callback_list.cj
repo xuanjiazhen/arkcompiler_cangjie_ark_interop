@@ -17,6 +17,10 @@
 
 package ohos.callback_invoke
 
+/**
+ * Thread-safe registries of user `CallbackObject` wrappers (once vs multi) for async/native completion delivery.
+ */
+
 import ohos.business_exception.BusinessException
 
 import std.collection.ArrayList
@@ -26,6 +30,9 @@ class CallbackWrapper {
     let callback: CallbackObject
     var isOnce: Bool
 
+    /**
+     * Pairs a concrete callback with a “fire once” hint so the list can auto-prune one-shot listeners after invoke.
+     */
     init(callback: CallbackObject, inOnce: Bool) {
         this.callback = callback
         this.isOnce = inOnce

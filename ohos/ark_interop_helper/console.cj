@@ -17,6 +17,10 @@
 
 package ohos.ark_interop_helper
 
+/**
+ * Minimal `console` polyfill backed by HiLog: installs global methods so Ark-style logging works in hybrid tests and hosts.
+ */
+
 import ohos.hilog.HilogChannel
 import std.collection.HashMap
 
@@ -35,6 +39,9 @@ class Console <: SharedObject {
     Console(let context: JSContext) {
     }
 
+    /**
+     * Materializes a JSObject with standard `console` method slots wired to this `SharedObject` instance.
+     */
     func createObj(): JSValue {
         let console = context.object()
         console.attachCJObject(context.external(this))
@@ -194,14 +201,23 @@ class Console <: SharedObject {
         return true
     }
 
+    /**
+     * Emits an INFO-level HiLog line (also used as backing for `log` bindings).
+     */
     func info(message: String): Unit {
         LOGGER.info(message)
     }
 
+    /**
+     * Drops all `console.count` labels maintained in-process.
+     */
     func clear(): Unit {
         counter.clear()
     }
 
+    /**
+     * Increments and prints a HiLog tally for `label` (Node-style counter semantics).
+     */
     func count(label: String): Unit {
         let count = if (counter.contains(label)) {
             counter[label] + 1
@@ -212,70 +228,121 @@ class Console <: SharedObject {
         LOGGER.info("${label}: ${count}")
     }
 
+    /**
+     * Removes one counter bucket so the next `count` starts again from 1.
+     */
     func countReset(label: String): Unit {
         counter.remove(label)
     }
 
+    /**
+     * Forwards to HiLog DEBUG severity (distinct from INFO used by `info`/`log`).
+     */
     func debug(message: String): Unit {
         LOGGER.debug(message)
     }
 
+    /**
+     * Writes an ERROR-level HiLog line for `console.error` bridges.
+     */
     func error(message: String): Unit {
         LOGGER.error(message)
     }
 
+    /**
+     * Not implemented in this lightweight adapter; reports via `error` so callers see an explicit gap.
+     */
     func dir(): Unit {
         error("console.dir unsupport")
     }
 
+    /**
+     * Placeholder: DOM/XML inspection is unavailable in this host; surfaces an explicit unsupported message.
+     */
     func dirxml(): Unit {
         error("console.dirxml unsupport")
     }
 
+    /**
+     * Grouping APIs are not modeled; kept for Web-compat method presence on the object.
+     */
     func group(): Unit {
         error("console.group unsupport")
     }
 
+    /**
+     * See `group`: collapsible groups are not implemented in HiLog bridging.
+     */
     func groupCollapsed(): Unit {
         error("console.groupCollaped unsupport")
     }
 
+    /**
+     * Symmetric noop/unsupported pair with `group`; preserves compatible global shape.
+     */
     func groupEnd(): Unit {
         error("console.groupEnd unsupport")
     }
 
+    /**
+     * Tabular pretty-print is not provided; logs an explicit unsupported path.
+     */
     func table(): Unit {
         error("console.table unsupport")
     }
 
+    /**
+     * Timer labels are not tracked; stubbed to avoid silent no-ops on `console.time()`.
+     */
     func time(): Unit {
         error("console.time unsupport")
     }
 
+    /**
+     * Pair of `time` stubs; no high-resolution timer bridge is installed in this build.
+     */
     func timeEnd(): Unit {
         error("console.timeEnd unsupport")
     }
 
+    /**
+     * Intermediate timer sampling is unsupported; emits the same explicit error as other timer methods.
+     */
     func timeLog(): Unit {
         error("console.timeLog unsupport")
     }
 
+    /**
+     * Currently maps to INFO-level output (no stack decoration) to keep overhead low in embedded hosts.
+     */
     func trace(message: String): Unit {
         LOGGER.info(message)
     }
 
+    /**
+     * WARN-level HiLog line used by `console.warn` bindings.
+     */
     func warn(message: String): Unit {
         LOGGER.warn(message)
     }
 
+    /**
+     * CPU profiler hooks are not exposed through HiLog; surfaces explicit unsupported behavior.
+     */
     func profile(): Unit {
         error("console.profile unsupport")
     }
 
+    /**
+     * Matches `profile` stub—keeps method table coherent for devtools-oriented scripts.
+     */
     func profileEnd(): Unit {
         error("console.profileEnd unsupport")
     }
 
+    /**
+     * Performance timeline marks are not wired; reports unsupported analogous to timers.
+     */
     func timeStamp(): Unit {
         error("console.timeStamp unsupport")
     }

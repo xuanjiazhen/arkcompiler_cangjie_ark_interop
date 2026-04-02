@@ -17,8 +17,15 @@
 
 protected package ohos.ffi
 
+/**
+ * Spin-style mutex built on `AtomicInt8` for lightweight critical sections inside FFI glue (e.g. `FFIDataManager`).
+ */
+
 import std.sync.AtomicInt8
 
+/**
+ * 0/1 atomic flag with `acquire`/`lock`/`unlock`; not a re-entrant OS mutex but sufficient for serializing map access.
+ */
 struct AtomicLock {
     private var value = AtomicInt8(0)
 

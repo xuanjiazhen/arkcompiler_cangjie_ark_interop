@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * ArkTS dense arrays: create empty or from Cangjie `JSValue` lists and index access via native element APIs.
+ */
+
 @FastNative
 foreign func ARKTS_CreateArray(env: JSEnv, size: UInt32): JSValue_
 
@@ -40,10 +44,16 @@ foreign func ARKTS_GetElement(env: JSEnv, arr: JSValue_, index: UInt32): JSValue
     since: "22"
 ]
 public class JSArray <: JSHeapObject {
+    /**
+     * Wraps an existing ArkTS array object (validated as object by the heap layer).
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.OBJECT)
     }
 
+    /**
+     * Allocates a new ArkTS array and fills it from Cangjie handles in one native call when non-empty.
+     */
     init(context: JSContext, arr: Array<JSValue>) {
         super(context, createWithInit(context, arr), JSType.OBJECT)
     }
@@ -67,6 +77,9 @@ public class JSArray <: JSHeapObject {
         }
     }
 
+    /**
+     * Releases the global ref for this array wrapper.
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }

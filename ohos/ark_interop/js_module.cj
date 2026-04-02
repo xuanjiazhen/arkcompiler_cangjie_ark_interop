@@ -21,6 +21,11 @@ import std.collection.{HashMap, ArrayList}
 import std.convert.Parsable
 import ohos.business_exception.*
 
+/**
+ * V-table passed once from Cangjie to the native loader: module export, errors, FFI teardown, lambdas, async, context.
+ *
+ * Layout must stay ABI-stable with the C/C++ registration side.
+ */
 @C
 struct CJModuleCallbacks {
     CJModuleCallbacks(
@@ -54,6 +59,9 @@ public type ClassRegister = (JSContext) -> JSClass
  */
 public type FuncRegister = (JSContext) -> JSFunction
 
+/**
+ * Native hook: populate the ArkTS exports object for a Cangjie dynamic module (`isOnLoadingCJ` guards re-entrancy).
+ */
 @C
 func loadArkInteropModule(env: JSEnv, cname: CString, exports: JSValue_): JSValue_ {
     let context = JSContext.getOrCreate(env)
@@ -81,6 +89,9 @@ func loadArkInteropModule(env: JSEnv, cname: CString, exports: JSValue_): JSValu
     }
 }
 
+/**
+ * Native query: whether a Cangjie module has already been recorded in `JSModule.LOADED_MODULES_`.
+ */
 @C
 func hasArkInteropModule(cname: CString): Bool {
     let name = cname.toString()
@@ -88,6 +99,8 @@ func hasArkInteropModule(cname: CString): Bool {
 }
 
 /**
+ * Bridge ArkTS thrown value into a Cangjie exception (string, binding object, or normalized Error object).
+ *
  * @throws { BusinessException } 34300002 - Outside error occurred.
  * @throws { Exception } - Unknown js error.
  */
@@ -143,6 +156,9 @@ func throwJSErrorToCJ(env: JSEnv, rawError: JSValue_): Unit {
 
 // case1: cannot find record '&somemodule/somedir/somefile&1.0.0'
 // case2: Cannot find module 'libxxx.so'
+/**
+ * Parse common loader error prefixes and return the module/path token if present (feeds `moduleNotExist`).
+ */
 func searchNotExist(src: String): ?String {
     let begins = ["cannot find record '", "Cannot find module '"]
     for (target in begins) {
@@ -158,6 +174,8 @@ func searchNotExist(src: String): ?String {
 }
 
 /**
+ * Native bridge: throw `JSInteropNativeError` with a C string payload (freed by caller conventions on the C side).
+ *
  * @throws { JSInteropNativeError } - JSInteropNativeError.
  */
 @C
@@ -262,22 +280,29 @@ public class JSModule {
     private let rawFuncs_ = HashMap<String, JSLambda>()
     private let exports_ = ArrayList<ModuleRegister>()
 
+    /** Queue a lazily-built ArkTS class under `name` for the next module load. */
     func addClass(name: String, register: ClassRegister): Unit {
         classes_.add(name, register)
     }
 
+    /** Queue a wrapper that materializes a `JSFunction` for `name` when the module is finalized. */
     func addFunc(name: String, register: FuncRegister): Unit {
         funcs_.add(name, register)
     }
 
+    /** Queue a raw `JSLambda` export (skips intermediate `FuncRegister`). */
     func addRawFunc(name: String, rawFunc: JSLambda): Unit {
         rawFuncs_.add(name, rawFunc)
     }
 
+    /** Append a module-level export hook that receives the fresh exports object. */
     func addExporter(register: ModuleRegister): Unit {
         exports_.add(register)
     }
 
+    /**
+     * Materialize every queued class/func export onto `object` (invoked from `loadArkInteropModule` after `finishLoad`).
+     */
     func fillInto(context: JSContext, object: JSObject): Unit {
         for ((k, v) in classes_) {
             object[k] = v(context).toJSValue()

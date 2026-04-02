@@ -18,7 +18,11 @@
 protected package ohos.ffi
 
 /**
- * FFIAtCPackage holds basic ffi @C functions.
+ * V-table of `@C` entry points registered once with native so C++ can throw, release FFIData, and invoke CJ callbacks uniformly.
+ */
+
+/**
+ * Bundles function pointers passed to `FfiOHOSFFIRegisterCJFuncs` for bootstrap-time JNI-style binding.
  */
 @C
 protected struct FFIAtCPackage {
@@ -29,6 +33,9 @@ protected struct FFIAtCPackage {
     let CJCallbackInvoker: CFunc<(Int64, Int32, CPointer<CPointer<Unit>>, CPointer<Unit>) -> Unit> = ohosFFICJCallbackInvoker
 }
 
+/**
+ * Bridge for surfacing C++ errors into Cangjie: converts message `CString` into a thrown `Exception` path.
+ */
 @C
 protected func OHOSFFICJInstanceThrow(msg: CString): Int64 {
     throw Exception(msg.toString())
@@ -36,6 +43,9 @@ protected func OHOSFFICJInstanceThrow(msg: CString): Int64 {
 
 foreign func FfiOHOSFFIRegisterCJFuncs(cjFuncs: FFIAtCPackage): Unit
 
+/**
+ * Eagerly registers the default `FFIAtCPackage` at module load so downstream native code can call into CJ safely.
+ */
 func injectFFICJFuncs(): Unit {
     unsafe { FfiOHOSFFIRegisterCJFuncs(FFIAtCPackage()) }
 }

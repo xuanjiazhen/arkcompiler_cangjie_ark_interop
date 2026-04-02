@@ -17,6 +17,10 @@
 
 protected package ohos.ffi
 
+/**
+ * ID-indirection for passing Cangjie objects to native: global registry, refcounted release, and `@C` probes from C++.
+ */
+
 import std.collection.HashMap
 
 /**
@@ -138,11 +142,17 @@ protected class FFIDataManager {
     }
 }
 
+/**
+ * Native-side existence check before dereferencing an `FFIData` id (pairs with release to avoid UAF races).
+ */
 @C
 protected func OHOSFFIExistFFIData(id: Int64): Bool {
     return FFIDataManager.getInstance().exist(id)
 }
 
+/**
+ * Drops registry entry and runs `onDestroyed`; returns whether an entry was present for `id`.
+ */
 @C
 protected func OHOSFFIReleaseFFIData(id: Int64): Bool {
     return FFIDataManager.getInstance().releaseData(id)

@@ -17,6 +17,10 @@
 
 protected package ohos.encoding.json
 
+/**
+ * JSON parser and WantParams-style wrappers: token scan, typed array encodings, and helpers for OHOS IPC-shaped objects.
+ */
+
 import std.collection.{ArrayList,HashMap}
 
 const VALUE_TYPE_BOOLEAN: String = "1"
@@ -35,6 +39,9 @@ enum BracketKinds {
     | Square
 }
 
+/**
+ * Maps `JsonKind` to the legacy numeric/string type tag used by WantParams and similar serializers.
+ */
 func getJsonType(ob: JsonValue): String {
     return match (ob.kind()) {
         case JsonKind.JsBool => VALUE_TYPE_BOOLEAN
@@ -47,6 +54,9 @@ func getJsonType(ob: JsonValue): String {
     }
 }
 
+/**
+ * Returns the single-letter array-element signature (`Z`/`I`/`D`/`T`) for homogeneous JsonArrays.
+ */
 func getJsonArrayType(jsonValue: JsonValue): String {
     let arrType = match (jsonValue.kind()) {
         case JsonKind.JsBool => BOOLEAN_ARRAY_SIGNATURE
@@ -58,6 +68,9 @@ func getJsonArrayType(jsonValue: JsonValue): String {
     return arrType
 }
 
+/**
+ * Lifts bool/int/float primitives (and passes strings through) into `JsonString` tokens for tagged wrapper objects.
+ */
 func toJsonString(jsonValue: JsonValue): JsonString {
     return match (jsonValue) {
         case v: JsonBool => JsonString(v.toString())
@@ -68,6 +81,9 @@ func toJsonString(jsonValue: JsonValue): JsonString {
     }
 }
 
+/**
+ * Validates that `jsonValue` matches the expected array element signature and renders it as the compact text fragment.
+ */
 func checkandGetJsonValue(arrayType: String, jsonValue: JsonValue): String {
     match ((arrayType, jsonValue)) {
         case (BOOLEAN_ARRAY_SIGNATURE, v: JsonBool) => v.toString()
@@ -85,6 +101,9 @@ func checkandGetJsonValue(arrayType: String, jsonValue: JsonValue): String {
 }
 
 // Array to {102, JsonString}
+/**
+ * Packs a homogeneous `JsonArray` into `{ "102": "<signature><count>{elements}" }` for the WantParams wire format.
+ */
 func arrayToJsonValue(arr: JsonArray): JsonValue {
     let arrayType = getJsonArrayType(arr[0])
     let str = StringBuilder(arrayType)
@@ -99,14 +118,23 @@ func arrayToJsonValue(arr: JsonArray): JsonValue {
     return JsonObject(HashMap<String, JsonValue>([(VALUE_TYPE_ARRAY, JsonString(str.toString()))]))
 }
 
+/**
+ * Strips a leading and trailing ASCII quote from a JSON string token (assumes well-formed wrapper text).
+ */
 func trimQuotation(s: String): String {
     return s[1..s.size - 1]
 }
 
+/**
+ * Wraps raw text in double quotes so `JsonValue.fromStr` can parse it as a JSON string literal.
+ */
 func addQuotation(s: String): String {
     return "\"" + s + "\""
 }
 
+/**
+ * Decodes compact typed-array blobs such as `T3{a,b,c}` back into a `JsonArray` of the correct element kind.
+ */
 func parseStringToJsonArray(s: String): JsonArray {
     let arrType = s[0]
     let arrString = s[3..s.size - 1].split(",") // for example: "T3{X,X,X}", value start from index 3
@@ -154,6 +182,9 @@ protected func jsonObjectWrapper(jsObj: JsonObject): JsonObject {
     return JsonObject(newMap)
 }
 
+/**
+ * Inserts backslashes before embedded `"` that are not already escaped—used when embedding JSON fragments in larger strings.
+ */
 func escapeUnescapedQuotes(s: String): String {
     let bytes = ArrayList<Byte>()
     var i = 0
@@ -178,6 +209,9 @@ func escapeUnescapedQuotes(s: String): String {
     return unsafe { String.fromUtf8Unchecked(bytes.toArray()) }
 }
 
+/**
+ * Finds JSON object/array substrings tagged in a custom envelope and escapes interior quotes so the outer document stays valid.
+ */
 func addSlashesInString(jsString: String, brakinds: BracketKinds): String {
     let quoString = match (brakinds) {
         case Braces => "\"9\":\"{"

@@ -17,6 +17,7 @@
 
 protected package ohos.ffi
 
+/** Thin wrapper around a registered FFI callback id; `invoke` decodes argv and writes the C return buffer. */
 protected abstract class BaseCallBack <: FFIData {
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit
 }
@@ -150,6 +151,9 @@ protected class Callback5Param<T0, T1, T2, T3, T4, R> <: BaseCallBack where T0 <
     }
 }
 
+/**
+ * C→Cangjie dispatcher: resolve `BaseCallBack` by `FFIDataManager` id and forward the native call frame.
+ */
 @C
 func ohosFFICJCallbackInvoker(id: Int64, argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
     let callback = FFIDataManager.getInstance().getData<BaseCallBack>(id)

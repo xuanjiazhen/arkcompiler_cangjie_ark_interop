@@ -17,5 +17,8 @@ package ohos.ark_interop
 
 import std.collection.HashMap
 
+/**
+ * Optional mapping from logical bundle keys to module paths (extended by product/configuration layers).
+ */
 let BUNDLE_MAP = HashMap<String, String>(
 )

@@ -17,6 +17,10 @@
 
 package ohos.ark_interop_helper
 
+/**
+ * Thin wrapper exporting `NapiValueToArkTsValue` for callers that already hold a raw `napi_value` pointer.
+ */
+
 protected func napiValueToArkTsValue(value: CPointer<Unit>): JSValue_ {
     unsafe { NapiValueToArkTsValue(value) }
 }

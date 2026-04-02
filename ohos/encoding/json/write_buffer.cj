@@ -17,6 +17,10 @@
 
 protected package ohos.encoding.json
 
+/**
+ * Byte-oriented append buffer for JSON serialization: blank-filled backing store, cheaper tail trims, and `memcpy_s` bulk writes.
+ */
+
 @FastNative
 foreign func memcpy_s(dest: CPointer<UInt8>, destMax: UIntNative, src: CPointer<UInt8>, count: UIntNative): Int32
 
@@ -40,6 +44,9 @@ class WriteBuffer {
     /*
      * buff must be filled with blank
      */
+    /**
+     * Allocates blank-initialized storage so space-padding hot paths can bump an index without zeroing.
+     */
     init(capacity: Int64) {
         const MIN_CAPACITY = 16
         let cap = if (capacity > MIN_CAPACITY) {
@@ -59,6 +66,9 @@ class WriteBuffer {
     /*
      * buff must be filled with blank
      */
+    /**
+     * Grows `_buffer` geometrically when `_size + addition` would exceed capacity, preserving blank fill invariant.
+     */
     func checkAndExpend(addition: Int64): Unit {
         let minCapacity = _size + addition
         let oldCapacity: Int64 = _buffer.size
@@ -75,6 +85,9 @@ class WriteBuffer {
         _buffer = newArr
     }
 
+    /**
+     * Copies raw bytes into the blank-padded tail, using `copyTo` for larger chunks to reduce per-byte loops.
+     */
     func append(arr: Array<Byte>): WriteBuffer {
         checkAndExpend(arr.size)
 
@@ -90,11 +103,17 @@ class WriteBuffer {
         return this
     }
 
+    /**
+     * Appends UTF-8 bytes of `str` without adding quotes (callers add JSON framing).
+     */
     func append(str: String): WriteBuffer {
         append(unsafe { str.rawData() })
         return this
     }
 
+    /**
+     * Single-byte append for punctuation hot paths (`{`, `:`, commas).
+     */
     func append(byte: Byte): WriteBuffer {
         checkAndExpend(1)
         _buffer[_size] = byte
@@ -102,6 +121,9 @@ class WriteBuffer {
         return this
     }
 
+    /**
+     * Serializes a signed integer in decimal directly into the buffer (reserves 22 bytes—max `Int64` width).
+     */
     func append(n: Int64): WriteBuffer {
         checkAndExpend(22)
         let len = writeBufferAppendInt(_buffer[_size..], n)
@@ -109,6 +131,9 @@ class WriteBuffer {
         return this
     }
 
+    /**
+     * Uses `CJ_CORE_Float64ToCPointer` for shortest CRuntime-style text, then trims trailing zeros for stable JSON numbers.
+     */
     func append(fl: Float64): WriteBuffer {
         unsafe {
             let p: CPointer<UInt8> = CJ_CORE_Float64ToCPointer(fl)
@@ -135,6 +160,9 @@ class WriteBuffer {
         return this
     }
 
+    /**
+     * Writes JSON literals `true` or `false` as ASCII bytes.
+     */
     func append(b: Bool): WriteBuffer {
         let BOOL_TRUE_STRING = "true".toArray()
         let BOOL_FALSE_STRING = "false".toArray()
@@ -145,12 +173,18 @@ class WriteBuffer {
         }
     }
 
+    /**
+     * Fast path for runs of spaces: relies on pre-blanked `_buffer` and only advances `_size`.
+     */
     func appendBlank(n: Int64): WriteBuffer {
         checkAndExpend(n)
         _size += n
         return this
     }
 
+    /**
+     * Drops the last written byte—typically a trailing comma before closing `]`/`}`.
+     */
     func removetail(): WriteBuffer {
         if (_size > 0) {
             _size--
@@ -158,6 +192,9 @@ class WriteBuffer {
         return this
     }
 
+    /**
+     * JSON-escapes `str` in one pass; if no escapes needed, delegates to plain `append(str)`.
+     */
     func appendEscape(str: String): WriteBuffer {
         var escapenum = 0
 
@@ -174,6 +211,9 @@ class WriteBuffer {
         }
     }
 
+    /**
+     * Returns the filled prefix `[0.._size)` and resets the builder to empty (caller usually wraps bytes as UTF-8 `String`).
+     */
     func getAndClear(): Array<Byte> {
         let ret = _buffer[0.._size]
         _buffer = Array<Byte>(0, repeat: BLANK)
@@ -182,6 +222,9 @@ class WriteBuffer {
     }
 }
 
+/**
+ * Compact JSON emitter (no extra whitespace) shared by `toString` paths and pretty-printer leaves.
+ */
 func jsonWriteWithoutFormat(json: JsonValue, buff: WriteBuffer): Unit {
     match (json) {
         case jo: JsonObject =>
@@ -220,6 +263,9 @@ func jsonWriteWithoutFormat(json: JsonValue, buff: WriteBuffer): Unit {
     }
 }
 
+/**
+ * Pretty-prints an object with newline+indent between fields; recurses for nested objects/arrays.
+ */
 func jsonWriteObject(json: JsonObject, buff: WriteBuffer, depth: Int64, bracketInNewLine: Bool, indent: String): Unit {
     if (bracketInNewLine) {
         for (_ in 0..depth) {
@@ -256,6 +302,9 @@ func jsonWriteObject(json: JsonObject, buff: WriteBuffer, depth: Int64, bracketI
     buff.append(UInt8(UInt32(r'}')))
 }
 
+/**
+ * Pretty-prints an array analogously to `jsonWriteObject`, trimming the final comma before the closing bracket.
+ */
 func jsonWriteArray(json: JsonArray, buff: WriteBuffer, depth: Int64, bracketInNewLine: Bool, indent: String): Unit {
     if (bracketInNewLine) {
         for (_ in 0..depth) {
@@ -290,6 +339,9 @@ func jsonWriteArray(json: JsonArray, buff: WriteBuffer, depth: Int64, bracketInN
     buff.append(UInt8(UInt32(r']')))
 }
 
+/**
+ * Heuristic byte budget for serializing `json`—good enough to cut reallocations without parsing twice.
+ */
 func asumecapacity(json: JsonValue): Int64 {
     match (json) {
         case jo: JsonObject =>
@@ -313,6 +365,9 @@ func asumecapacity(json: JsonValue): Int64 {
     }
 }
 
+/**
+ * Writes escaped UTF-8 bytes into `buffer` and returns produced length (handles control chars and `\\`/quote rules).
+ */
 func replaceEscapeChar(input: Array<Byte>, inputlen: Int64, buffer: Array<Byte>): Int64 {
     let hex: Array<Byte> = "0123456789abcdef".toArray()
     var j: Int64 = 0
@@ -359,6 +414,9 @@ func replaceEscapeChar(input: Array<Byte>, inputlen: Int64, buffer: Array<Byte>)
 }
 
 @OverflowWrapping
+/**
+ * Decimal encoding for signed integers into `arr`, reusing `writeBufferAppendUint` for magnitude with optional `-` prefix.
+ */
 func writeBufferAppendInt(arr: Array<Byte>, num: Int64): Int64 {
     if (num < 0) {
         let unum = UInt64(-num)
@@ -369,6 +427,9 @@ func writeBufferAppendInt(arr: Array<Byte>, num: Int64): Int64 {
     }
 }
 
+/**
+ * Least-significant-digit-first fill followed by in-place reversal—compact and allocation-free.
+ */
 func writeBufferAppendUint(arr: Array<Byte>, num: UInt64): Int64 {
     var index = 0
     var unum = num
@@ -390,6 +451,9 @@ func writeBufferAppendUint(arr: Array<Byte>, num: UInt64): Int64 {
     return index
 }
 
+/**
+ * Counts extra bytes needed if each risky character becomes `\\`+letter or `\\u00XX` (used to size `appendEscape`).
+ */
 func stringEscapeCharNumGet(arr: Array<Byte>): Int64 {
     var escapeCharacters = 0
     for (byte in arr) {

@@ -15,9 +15,16 @@
 
 package ohos.ark_interop
 
+/**
+ * Module specifier normalization: whitelist kits/system APIs, `.so` names, path shapes, and `@native:` aliases before loading.
+ */
+
 import std.regex.*
 import std.collection.*
 
+/**
+ * Stateless helpers shared by `requireArkModule` style entry points; keeps validation logic out of the hot JSContext path.
+ */
 class ArkModuleHelper {
     private static let idReg = Regex("^[A-Za-z][A-Za-z0-9_]*$")
     private static func isIdentifier(name: String): Bool {

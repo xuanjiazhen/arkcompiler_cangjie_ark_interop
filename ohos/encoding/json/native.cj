@@ -17,6 +17,10 @@
 
 protected package ohos.encoding.json
 
+/**
+ * Recursive-descent JSON parser over UTF-8 bytes: shared `JsonParser` state, number lexer, and string unescaping.
+ */
+
 import std.collection.{ArrayList, HashMap}
 import std.convert.Parsable
 
@@ -99,6 +103,9 @@ class JsonParser {
     var cacheSize: Int64
     let strCache: ArrayList<Byte>
 
+    /**
+     * Pins the source string as a byte view, resets the scan cursor, and sizes a small AST cache proportional to input length.
+     */
     init(str: String) {
         this.data = unsafe { str.rawData() }
         this.size = data.size
@@ -113,6 +120,9 @@ class JsonParser {
     }
 }
 
+/**
+ * Advances `parser.offset` past ASCII whitespace so the next token starts at a structural or literal character.
+ */
 func skipWhiteSpace(parser: JsonParser): Unit {
     var tmp = parser.data[parser.offset]
     while (tmp == UInt8(UInt32(r' ')) || tmp == UInt8(UInt32(r'\t')) || tmp == UInt8(UInt32(r'\n')) || tmp == UInt8(UInt32(r'\r'))) {
@@ -326,6 +336,9 @@ func parseJsonFalse(parser: JsonParser): JsonBool {
     return JsonBool(false)
 }
 
+/**
+ * Lexes a JSON number (sign, radix prefixes, fraction, exponent) and materializes `JsonInt` or `JsonFloat`.
+ */
 func parseJsonNumber(parser: JsonParser): JsonValue {
     var isFloat = false
     let leftIndex = parser.offset
@@ -348,12 +361,18 @@ func parseJsonNumber(parser: JsonParser): JsonValue {
     return JsonInt(Int64.parse(numStr))
 }
 
+/**
+ * Consumes an optional leading `-` for numeric literals.
+ */
 func parseSign(parser: JsonParser): Unit {
     if (parser.data[parser.offset] == UInt8(UInt32(r'-'))) {
         parser.offset++
     }
 }
 
+/**
+ * Detects `0b`/`0o`/`0x` prefixes after a leading zero; otherwise returns decimal lexing mode.
+ */
 func parseNumberSystem(parser: JsonParser): NumberSystem {
     if (parser.data[parser.offset] == UInt8(UInt32(r'0'))) {
         parser.offset++
@@ -377,6 +396,9 @@ func parseNumberSystem(parser: JsonParser): NumberSystem {
     return Decimal
 }
 
+/**
+ * Produces the digit predicate matching the active radix (binary/octal/decimal/hex).
+ */
 func checkNumberSystem(numSystem: NumberSystem): (Byte) -> Bool {
     match (numSystem) {
         case Binary => return {byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'1'))}
@@ -473,6 +495,9 @@ func parseDigit(parser: JsonParser): Bool {
     return true
 }
 
+/**
+ * Returns true if `char` is an ASCII hex digit (used by `\uXXXX` handling).
+ */
 func isHexNum(char: UInt8): Bool {
     if (!((char >= UInt8(UInt32(r'0')) && char <= UInt8(UInt32(r'9'))) || (char >= UInt8(UInt32(r'a')) && char <= UInt8(UInt32(r'f'))) ||
         (char >= UInt8(UInt32(r'A')) && char <= UInt8(UInt32(r'F'))))) {
@@ -579,6 +604,9 @@ func handleEscape(parser: JsonParser): Unit {
     }
 }
 
+/**
+ * Reads four hex digits after `\u` and returns a `0x....` text slice for parsing a UTF-16 code unit (surrogate recovery).
+ */
 func getStr(parser: JsonParser): String {
     unsafe {
         let byte1 = getNextHexNum(parser)

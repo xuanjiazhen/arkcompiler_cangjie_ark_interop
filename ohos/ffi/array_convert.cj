@@ -17,6 +17,10 @@
 
 protected package ohos.ffi
 
+/**
+ * Array/CString marshalling utilities: copy Cangjie collections into contiguous native memory with paired free paths.
+ */
+
 protected let FUNCTION_S2CS: (String) -> CString = {p: String => unsafe { LibC.mallocCString(p) }}
 protected let FUNCTION_CS_FREE: (CString) -> Unit = {p: CString => unsafe { LibC.free(p) }}
 
