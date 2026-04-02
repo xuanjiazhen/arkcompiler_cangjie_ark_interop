@@ -18,6 +18,10 @@
 protected package ohos.encoding.json
 
 /**
+ * JSON AST core: tagged `JsonKind`, `JsonValue` sealed hierarchy, and guarded downcasts used by parser/serializer.
+ */
+
+/**
  * This enum used for identify the JSON type.
  */
 protected enum JsonKind {

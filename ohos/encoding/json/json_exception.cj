@@ -18,6 +18,10 @@
 protected package ohos.encoding.json
 
 /**
+ * Domain-specific failure for `JsonValue` shape mismatches and non-standard JSON text during parse/format.
+ */
+
+/**
  * JsonException class.
  */
 protected class JsonException <: Exception {

@@ -17,6 +17,10 @@
 
 protected package ohos.ffi
 
+/**
+ * Standard (code, payload) structs for OHOS C APIs: POD `@C` layouts for scalars, arrays, and heap strings with explicit free.
+ */
+
 protected type RetCode = Int32
 
 @C
@@ -166,6 +170,9 @@ protected struct CArrString {
         protected let size: Int64
     ) {}
 
+    /**
+     * Null sentinel empty array (no native pointers allocated yet).
+     */
     init() {
         head = CPointer()
         size = 0

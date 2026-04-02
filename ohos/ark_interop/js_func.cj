@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * JS callable values: native call frames (`JSCallInfo`), Cangjie lambdas bridged into ArkTS functions, and `JSFunction`.
+ */
+
 import ohos.business_exception.*
 
 @FastNative
@@ -36,10 +40,16 @@ foreign func ARKTS_GetThisArg(info: JSCallInfoPrivate): JSValue_
 
 foreign func ARKTS_Call(env: JSEnv, fun: JSValue_, thisArg: JSValue_, numArgs: Int32, args: CPointer<JSValue_>): JSValue_
 
+/**
+ * Opaque pointer to the engine’s native call-info frame (this/args/env) for one JS invocation.
+ */
 @C
 struct JSCallInfoPrivate {
     JSCallInfoPrivate(private let addr: UIntNative) {}
 
+    /**
+     * Runtime `env` for the call frame; used to resolve `JSContext` and to throw back into JS.
+     */
     func env(): JSEnv {
         unsafe { ARKTS_GetCallEnv(this) }
     }
@@ -54,13 +64,22 @@ struct JSCallInfoPrivate {
     since: "22"
 ]
 public class JSCallInfo {
+    /**
+     * Bind the native call frame to a `JSContext` so argument reads enforce lifecycle/thread rules.
+     */
     JSCallInfo(
         let context: JSContext,
         private let callInfo_: JSCallInfoPrivate
     ) {}
 
+    /**
+     * After `dispose()`, native call-info must not be touched (use-after-free from nested calls).
+     */
     private var isSafe = true
 
+    /**
+     * Underlying native call-info; invalidated when `dispose()` runs.
+     */
     prop callInfo: JSCallInfoPrivate {
         get() {
             if (!isSafe) {
@@ -131,6 +150,9 @@ public class JSCallInfo {
         JSValue(context, result)
     }
 
+    /**
+     * Mark this wrapper dead after the C callback returns so later accesses fail loudly.
+     */
     func dispose(): Unit {
         isSafe = false
     }
@@ -141,6 +163,9 @@ public class JSCallInfo {
  */
 public type JSLambda = (JSContext, JSCallInfo) -> JSValue
 
+/**
+ * ArkTS→Cangjie trampoline: looks up `lambdaId` in `sharedLambda_`, runs user lambda under a handle scope, maps errors to `ARKTS_Throw`.
+ */
 @C
 func cjLambdaInvoker(info: JSCallInfoPrivate, lambdaId: Int64): JSValue_ {
     let env = info.env()
@@ -172,6 +197,9 @@ func cjLambdaInvoker(info: JSCallInfoPrivate, lambdaId: Int64): JSValue_ {
     }
 }
 
+/**
+ * Called when the ArkTS function proxy is collected: drop the slab slot to avoid unbounded growth.
+ */
 @C
 func cjLambdaDestructor(env: JSEnv, lambdaId: Int64): Unit {
     let context = JSContext.getOrCreate(env)
@@ -185,6 +213,7 @@ func cjLambdaDestructor(env: JSEnv, lambdaId: Int64): Unit {
     since: "22"
 ]
 public class JSFunction <: JSHeapObject {
+    /** Register `lambda` in `sharedLambda_` and create the native JS function carrying its id. */
     static func createFunction(context: JSContext, lambda: JSLambda): JSValue_ {
         let lambdaId = context.sharedLambda_.append(lambda)
         let result = unsafe { ARKTS_CreateFunc(context.env, lambdaId) }
@@ -192,14 +221,23 @@ public class JSFunction <: JSHeapObject {
         return result
     }
 
+    /**
+     * Wraps an existing ArkTS function handle; type must be `function`.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.FUNCTION)
     }
 
+    /**
+     * Registers `lambda` in the context slab and installs a new ArkTS function that forwards invocations to it.
+     */
     init(context: JSContext, lambda: JSLambda) {
         super(context, createFunction(context, lambda), JSType.FUNCTION)
     }
 
+    /**
+     * Releases the global ref held for this function wrapper when the Cangjie object is collected.
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }

@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * ArkTS `Symbol` values: creation from a description string and lazy fetch of the runtime description.
+ */
+
 @FastNative
 foreign func ARKTS_CreateSymbol(env: JSEnv, description: CPointer<UInt8>, length: Int32): JSValue_
 
@@ -35,15 +39,24 @@ foreign func ARKTS_GetSymbolDesc(env: JSEnv, symbol: JSValue_): CString
 public class JSSymbol <: JSHeapObject & JSKeyable {
     private var desc_: ?String = None
 
+    /**
+     * Wraps an existing native symbol handle.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.SYMBOL)
     }
 
+    /**
+     * Allocates a new symbol in ArkTS and caches `description` to skip a native round-trip when possible.
+     */
     init(context: JSContext, description: String) {
         super(context, createSymbol(context, description), JSType.SYMBOL)
         desc_ = description
     }
 
+    /**
+     * Releases the global ref held for this symbol wrapper.
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }

@@ -17,6 +17,10 @@
 
 package ohos.ark_interop_helper
 
+/**
+ * Host timers bound to `global`: sleeps on a worker thread then `postJSTask` so callbacks run on the JS/UI thread.
+ */
+
 import std.sync.{Mutex, AtomicInt64}
 import std.collection.HashSet
 
@@ -35,18 +39,27 @@ class Timer {
     var nextId = AtomicInt64(1)
     let tasks = HashSet<Int64>()
 
+    /**
+     * Installs a global JS function returning `JSValue` (`setTimeout`-style) delegating to `callback`.
+     */
     func wrap(name: String, callback: (JSCallInfo) -> JSValue): Unit {
         bindFuncToJsObj(context.global, name) {
             _, info => callback(info)
         }
     }
 
+    /**
+     * Installs a global JS function with `undefined` return (`clearTimeout`-style control APIs).
+     */
     func wrap0(name: String, callback: (JSCallInfo) -> Unit): Unit {
         bindFuncRetUnitToJsObj(context.global, name) {
             _, info => callback(info)
         }
     }
 
+    /**
+     * Schedules `callback` on the JS thread after `timeout` ms; returns an id cancelable via `clearTimeout`.
+     */
     func setTimeout(timeout: Int64, callback: () -> Unit): Int64 {
         let id = nextId.fetchAdd(1)
         synchronized(mutex) {
@@ -67,12 +80,18 @@ class Timer {
         id
     }
 
+    /**
+     * Removes a pending timer id so the waking thread drops the `postJSTask` callback.
+     */
     func clearTimeout(id: Int64): Unit {
         synchronized(mutex) {
             tasks.remove(id)
         }
     }
 
+    /**
+     * Repeating timer: sleeps in a loop while `tasks` still contains `id`, posting the callback each period.
+     */
     func setIntervel(timeout: Int64, callback: () -> Unit): Int64 {
         let id = nextId.fetchAdd(1)
         synchronized(mutex) {
@@ -151,6 +170,9 @@ class Timer {
         }
     }
 
+    /**
+     * Wires `setTimeout`/`setInterval`/microtask shims onto `global` for hybrid workloads lacking browser timers.
+     */
     func attach(): Unit {
         wrap("setTimeout", setTimeoutCallback)
         wrap0("clearTimeout", clearTimeoutCallback) 

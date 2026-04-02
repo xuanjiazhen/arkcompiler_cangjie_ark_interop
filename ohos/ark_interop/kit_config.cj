@@ -17,19 +17,31 @@ package ohos.ark_interop
 
 import std.collection.HashMap
 
+/**
+ * Declarative description of synthetic `@kit.*` facades: which `@ohos.*` modules to load and how exports are exposed.
+ *
+ * `JSContext.requireArkModule` consults `KIT_CONFIGS` when the specifier starts with `@kit.` so Cangjie can mirror
+ * ArkTS kit entry points without a real kit bundle at runtime.
+ */
+
+/** Single exported name or import rename (`Mapping`) inside a kit facade object. */
 enum Decl {
     | Name(String)
     | Mapping(String, String)
 }
 
+/** Either a default re-export of one package or a set of named exports from one module. */
 enum ImportClause {
     | Package(String)
     | Decls(Array<Decl>)
 }
 
+/** Per–`@kit.X` map: inner module specifier → how it appears on the synthetic kit object. */
 type KitConfig = HashMap<String, ImportClause>
+/** All configured kit facades keyed by `@kit.*` name. */
 type KitConfigs = HashMap<String, KitConfig>
 
+/** Large static table populated at load time; keep in sync with product kit expectations. */
 let KIT_CONFIGS = HashMap<String, KitConfig>(
     ("@kit.AVSessionKit", KitConfig(
         ("@ohos.multimedia.avCastPicker", Package("AVCastPicker")),

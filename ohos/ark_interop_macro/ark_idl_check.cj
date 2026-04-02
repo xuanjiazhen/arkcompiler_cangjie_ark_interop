@@ -17,6 +17,10 @@
 
 macro package ohos.ark_interop_macro
 
+/**
+ * Structural validation prior to codegen: enforces public/static/mut patterns, bans unsupported generics, and deduplicates members.
+ */
+
 import std.ast.{Visitor, Decl, FuncDecl, RefType, PrimaryCtorDecl, InterfaceDecl, ClassDecl, PropDecl, EnumDecl, Token, Tokens, MacroExpandDecl, PackageHeader, VarDecl, parseProgram, cangjieLex}
 import std.collection.{ArrayList, HashSet, HashMap, forEach}
 import std.fs.{FileInfo, Path, FSException, File, Directory, OpenMode}
@@ -28,6 +32,9 @@ import std.env.{getVariable, getHomeDirectory}
 let CONTEXT_TYPE_G: Array<String> = ["JSStringEx", "JSArrayEx", "JSHashMapEx"]
 
 // only public
+/**
+ * Requires a single `public` modifier—interop surfaces are explicitly exported and nothing else is allowed here.
+ */
 func checkModifierBePublic(decl: Decl) {
     let modifiers = decl.modifiers
     if (modifiers.size == 0 || modifiers.size > 1 || modifiers.get(0).getOrThrow().keyword.kind != PUBLIC) {
@@ -37,6 +44,9 @@ func checkModifierBePublic(decl: Decl) {
 }
 
 // public [static]
+/**
+ * Class members must be public and may add static; reject any other modifiers.
+ */
 func checkModifierBePublicCanStatic(decl: Decl) {
     let modifiers = decl.modifiers
     var hasPublic = false
@@ -57,6 +67,9 @@ func checkModifierBePublicCanStatic(decl: Decl) {
 }
 
 //no modifier
+/**
+ * Interop interface methods cannot carry modifiers (except enforced elsewhere for props).
+ */
 func checkModifierNone(decl: Decl) {
     let modifiers = decl.modifiers
     if (modifiers.size != 0) {
@@ -66,6 +79,9 @@ func checkModifierNone(decl: Decl) {
 }
 
 // [mut]
+/**
+ * Interface properties may only use the mut modifier when required.
+ */
 func checkModifierCanMut(decl: Decl) {
     let modifiers = decl.modifiers
     for (mod in modifiers) {
@@ -77,6 +93,9 @@ func checkModifierCanMut(decl: Decl) {
 }
 
 // public [mut]
+/**
+ * Class properties must be public and may add mut for setters.
+ */
 func checkModifierBePublicCanMut(decl: Decl) {
     let modifiers = decl.modifiers
     for (mod in modifiers) {
@@ -91,6 +110,9 @@ func checkModifierBePublicCanMut(decl: Decl) {
 }
 
 // no generic
+/**
+ * Generics are rejected so the IDL surface stays monomorphic for TS generation.
+ */
 func checkGenericParam(decl: Decl) {
     if (try {
         decl.genericParam
@@ -104,6 +126,9 @@ func checkGenericParam(decl: Decl) {
 }
 
 // named param no default values
+/**
+ * Named parameters cannot use defaults—signature must mirror a fixed JS call shape.
+ */
 func checkParamDefault(funcDecl: FuncDecl) {
     for (param in funcDecl.funcParams) {
         if (param.assign != Token()) {
@@ -113,6 +138,9 @@ func checkParamDefault(funcDecl: FuncDecl) {
     }
 }
 
+/**
+ * Async interop forbids context-carrying placeholder types in parameters or returns.
+ */
 func checkTypesNoContext(funcDecl: FuncDecl) {
     for (param in funcDecl.funcParams) {
         match (param.paramType) {
@@ -140,6 +168,9 @@ func checkTypesNoContext(funcDecl: FuncDecl) {
 }
 
 // named param no default values
+/**
+ * Primary ctor parameters cannot use default values in Interop classes.
+ */
 func checkParamDefaultPrimaryCtor(primaryCtorDecl: PrimaryCtorDecl) {
     for (param in primaryCtorDecl.funcParams) {
         if (param.assign != Token()) {
@@ -150,6 +181,9 @@ func checkParamDefaultPrimaryCtor(primaryCtorDecl: PrimaryCtorDecl) {
 }
 
 // retType be
+/**
+ * Return types must be explicit so the TS emitter can map them reliably.
+ */
 func checkRetType(funcDecl: FuncDecl) {
     if (try {
         funcDecl.declType
@@ -163,6 +197,9 @@ func checkRetType(funcDecl: FuncDecl) {
 }
 
 // no super type
+/**
+ * Extending other interfaces is forbidden—flatten the contract into one declaration.
+ */
 func checkSuperType(interfaceDecl: InterfaceDecl) {
     if (interfaceDecl.superTypes.size != 0) {
         IDLUtil.diagReportTEAndThrow(Tokens(interfaceDecl.identifier),
@@ -171,6 +208,9 @@ func checkSuperType(interfaceDecl: InterfaceDecl) {
 }
 
 // no operator
+/**
+ * Operator overloads are not marshalled; forbid them in exported APIs.
+ */
 func checkOperator(funcDecl: FuncDecl) {
     if (funcDecl.overloadOp.size != 0) {
         IDLUtil.diagReportTEAndThrow(Tokens(funcDecl.identifier),
@@ -179,6 +219,9 @@ func checkOperator(funcDecl: FuncDecl) {
 }
 
 // no static init
+/**
+ * Static init blocks are excluded to keep lifecycle predictable on the JS side.
+ */
 func checkStaticInit(classDecl: ClassDecl) {
     let decls = classDecl.body.decls
     for (decl in decls) {
@@ -195,6 +238,9 @@ func checkStaticInit(classDecl: ClassDecl) {
 }
 
 // at least one init
+/**
+ * Ensure at least one init or primary ctor exists so JS can construct the type.
+ */
 func checkClassInitFuncNum(classDecl: ClassDecl) {
     let decls = classDecl.body.decls
     for (decl in decls) {
@@ -217,6 +263,9 @@ func checkClassInitFuncNum(classDecl: ClassDecl) {
 }
 
 // no duplicate func name
+/**
+ * Exported method names must be unique for stable property keys on the prototype.
+ */
 func checkClassFuncDup(funcNameSet: HashSet<String>, funcDecl: FuncDecl) {
     if (funcNameSet.contains(funcDecl.identifier.value)) {
         IDLUtil.diagReportTEAndThrow(Tokens(funcDecl.identifier),
@@ -224,16 +273,25 @@ func checkClassFuncDup(funcNameSet: HashSet<String>, funcDecl: FuncDecl) {
     }
 }
 
+/**
+ * Validate mut-only modifier rules for interface properties.
+ */
 func checkInterfaceProp(propDecl: PropDecl) {
     checkModifierCanMut(propDecl)
 }
 
+/**
+ * Enforce no operators, no stray modifiers, and explicit returns on interface methods.
+ */
 func checkInterfaceFunc(funcDecl: FuncDecl) {
     checkOperator(funcDecl)
     checkModifierNone(funcDecl)
     checkRetType(funcDecl)
 }
 
+/**
+ * Walk interface body and delegate to per-member validators.
+ */
 func checkInterfaceMembers(interfaceDecl: InterfaceDecl) {
     let decls = interfaceDecl.body.decls
     for (decl in decls) {
@@ -248,12 +306,18 @@ func checkInterfaceMembers(interfaceDecl: InterfaceDecl) {
 }
 
 // check constructor
+/**
+ * Regular init must be public with no default params.
+ */
 func checkClassInitFunc(funcDecl: FuncDecl) {
     checkModifierBePublic(funcDecl)
     checkParamDefault(funcDecl)
 }
 
 // check parameter, operator func and member func
+/**
+ * Instance/static methods: public (+static), no defaults, explicit return.
+ */
 func checkClassFunc(funcDecl: FuncDecl) {
     checkOperator(funcDecl)
     checkModifierBePublicCanStatic(funcDecl)
@@ -262,22 +326,34 @@ func checkClassFunc(funcDecl: FuncDecl) {
 }
 
 // check class fields
+/**
+ * Interop class fields must be public.
+ */
 func checkClassVar(varDecl: VarDecl) {
     checkModifierBePublic(varDecl)
 }
 
 // check main constructor
+/**
+ * Primary ctor must be public; parameters cannot carry defaults.
+ */
 func checkClassPrimaryCtor(primaryCtorDecl: PrimaryCtorDecl) {
     checkModifierBePublic(primaryCtorDecl)
     checkParamDefaultPrimaryCtor(primaryCtorDecl)
 }
 
 // check class attributes
+/**
+ * Class properties allow public with optional mut.
+ */
 func checkClassProp(propDecl: PropDecl) {
     checkModifierBePublicCanMut(propDecl)
 }
 
 // check class members
+/**
+ * Orchestrate validation for all supported class member kinds.
+ */
 func checkClassMembers(classDecl: ClassDecl) {
     checkClassInitFuncNum(classDecl)
     checkStaticInit(classDecl)
@@ -309,6 +385,9 @@ func checkClassMembers(classDecl: ClassDecl) {
     }
 }
 
+/**
+ * Enum constructors cannot be parameterized in this macro.
+ */
 func checkEnumConstructors(enumDecl: EnumDecl) {
     for (ctor in enumDecl.constructors) {
         if (ctor.typeArguments.size > 0) {
@@ -321,6 +400,9 @@ func checkEnumConstructors(enumDecl: EnumDecl) {
 /*
     modifiers          | type parameters | named parameters                     | return value
     only can be public | not supported   | supported, cannot have default value | cannot be defaulted
+ */
+/**
+ * Top-level/async function validation (public, no generics, explicit return, async type ban).
  */
 func checkFunc(funcDecl: FuncDecl, isAsync: Bool) {
     checkModifierBePublic(funcDecl)
@@ -339,6 +421,9 @@ func checkFunc(funcDecl: FuncDecl, isAsync: Bool) {
     member function                  | operator function | member attributes
     supported, require none-modifiers| not supported     | supported, only support mut modifier
  */
+/**
+ * Whole-interface guard: public, no generics, no super, valid members.
+ */
 func checkInterface(interfaceDecl: InterfaceDecl) {
     checkModifierBePublic(interfaceDecl)
     checkGenericParam(interfaceDecl)
@@ -353,6 +438,9 @@ func checkInterface(interfaceDecl: InterfaceDecl) {
     modifiers of member                 | static constructor | constructors | member variables         | operator function | member attibutes |
     can only be public or public static | not supported      | supported    | supported except generic | not supported     | supported        |
  */
+/**
+ * Whole-class guard: public, no generics, validated member set.
+ */
 func checkClass(classDecl: ClassDecl) {
     checkModifierBePublic(classDecl)
     checkGenericParam(classDecl)
@@ -366,12 +454,18 @@ func checkClass(classDecl: ClassDecl) {
     | constructors                    | member functions | operator functions | member properties |
     | only parameterless constructors | not supported    | not supported      | not supported     |
  */
+/**
+ * Whole-enum guard: public, no generics, ctor shape.
+ */
 func checkEnum(enumDecl: EnumDecl) {
     checkModifierBePublic(enumDecl)
     checkGenericParam(enumDecl)
     checkEnumConstructors(enumDecl)
 }
 
+/**
+ * Resolve project root for scanning .cj sources (home dir hint or CJ_BUILD_INTEROP_PATH).
+ */
 func getCangjieSrcPath(): String {
     if (getHomeDirectory().fileName == "cangjie") {
         return "./"
@@ -381,6 +475,9 @@ func getCangjieSrcPath(): String {
 
 // If root pacakge is not combined, then decls will be generated into seperate .d.ts (per package)
 // Otherwise, decls will be generated into one .d.ts
+/**
+ * Normalize output package for .d.ts splitting when combinedPkgName bundles subtrees.
+ */
 func getOutputPkg(pkgName: String): String {
     if (IDLCustomTypeWL.combinedPkgName == "") {
         return pkgName
@@ -393,6 +490,9 @@ func getOutputPkg(pkgName: String): String {
     }
 }
 
+/**
+ * AST visitor that records each `package` header’s logical output package and maps `@Interop[ArkTS]` declarations to it.
+ */
 class PackageNameCollector <: Visitor {
     var outputPkg: String = ""
     var packageNameMap = HashMap<String, String>()
@@ -422,7 +522,11 @@ class PackageNameCollector <: Visitor {
     }
 }
 
-//user-defined type whitelist
+/**
+ * Scans Cangjie sources to build the custom-type whitelist and dependency metadata used during IDL expansion.
+ *
+ * Also mirrors `cjpm.toml` `[*.combined]` hints so generated `.d.ts` paths align with packaged modules.
+ */
 class IDLCustomTypeWL {
     private static let MTX = Mutex()
     private static var whitelistSet = HashSet<String>()

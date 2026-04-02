@@ -17,11 +17,18 @@
 
 protected package ohos.ffi
 
+/**
+ * Shared FFI helpers and base exceptions: strict `Option` unwrap with HiLog and typed mis-argument failures.
+ */
+
 import ohos.hilog.HilogChannel
 
 let FFI_BIND_LOG = HilogChannel(0, 0xD001E00, "CJ-FFIBind")
 
 // only for ffi package
+/**
+ * Unwraps `Option` with HiLogged error text—preferred over silent `getOrThrow` inside FFI boundaries.
+ */
 func getOrThrow<T>(optData: Option<T>, msg!: String = ""): T {
     match (optData) {
         case None =>

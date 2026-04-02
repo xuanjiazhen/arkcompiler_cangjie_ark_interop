@@ -17,6 +17,10 @@
 
 package ohos.business_exception
 
+/**
+ * `BusinessException` base type with numeric `code`, optional typed payload, and universal OHOS error-string mapping.
+ */
+
 import std.collection.HashMap
 import ohos.labels.APILevel
 

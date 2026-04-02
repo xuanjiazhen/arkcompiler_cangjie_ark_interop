@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * ArkTS `bigint` bridge: create from `Int64` or arbitrary `BigInt` words and read back through byte buffers.
+ */
+
 internal import std.math.numeric.BigInt
 
 @FastNative
@@ -43,20 +47,32 @@ foreign func ARKTS_BigIntReadBytes(env: JSEnv, value: JSValue_, isNegative: CPoi
     since: "22"
 ]
 public class JSBigInt <: JSHeapObject {
+    /**
+     * Wraps an existing native bigint handle.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.BIGINT)
     }
 
+    /**
+     * Creates an ArkTS bigint from a signed 64-bit integer.
+     */
     init(context: JSContext, value: Int64) {
         super(context, createWithInt64(context, value), JSType.BIGINT)
         context.checkJSException() // in case of ArkTS OOM
     }
 
+    /**
+     * Creates an ArkTS bigint from arbitrary-precision `BigInt` (sign + magnitude bytes).
+     */
     init(context: JSContext, value: BigInt) {
         super(context, createWithBigInt(context, value), JSType.BIGINT)
         context.checkJSException() // in case of ArkTS OOM
     }
 
+    /**
+     * Releases the global ref for this bigint wrapper.
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }

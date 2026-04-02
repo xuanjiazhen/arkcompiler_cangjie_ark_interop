@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * ArkTS string values: UTF-8/UTF-16 FFI helpers, `JSString` heap wrapper, and `ToJSValue`/`JSKeyable` for map keys.
+ */
+
 @FastNative
 foreign func ARKTS_CreateUtf8(env: JSEnv, value: CPointer<UInt8>, size: Int32): JSValue_
 
@@ -31,6 +35,10 @@ foreign func ARKTS_GetValueUtf8Size(env: JSEnv, value: JSValue_): Int32
 
 @FastNative
 foreign func ARKTS_GetValueUtf8(env: JSEnv, value: JSValue_, capacity: Int32, buffer: CPointer<UInt8>): Int32
+
+/**
+ * Snapshot of ArkTS string storage: Latin-1 vs full UTF-16 and code-unit length (FE layout matches native side).
+ */
 @C
 struct JSStringInfo {
     JSStringInfo(
@@ -150,21 +158,33 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
 
     private var cjStrCache_: ?String
 
+    /**
+     * Builds a JS string from UTF-8 text and retains the Cangjie `String` to avoid an extra decode on first `toString()`.
+     */
     init(context: JSContext, source: String) {
         super(context, createString(context, source), JSType.STRING)
         cjStrCache_ = Some(source)
     }
 
+    /**
+     * Adopts an existing native string handle; UTF-8/`Utf16String` materialization is lazy.
+     */
     init(context: JSContext, jsValue: JSValue_) {
         super(context, jsValue, JSType.STRING)
         cjStrCache_ = None
     }
 
+    /**
+     * Creates a JS string from `Utf16String` using the engine’s compressed-string path when possible.
+     */
     init(context: JSContext, value: Utf16String) {
         super(context, createString(context, value), JSType.STRING)
         cjStrCache_ = None
     }
 
+    /**
+     * Drops the global ref for this wrapper when the Cangjie object goes away.
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }

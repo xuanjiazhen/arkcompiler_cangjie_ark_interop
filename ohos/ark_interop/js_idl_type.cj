@@ -17,15 +17,22 @@
 
 package ohos.ark_interop
 
+/**
+ * IDL-oriented string utilities (`JSStringEx`, `JSMapEx`, …): dual storage for values owned by JS vs Cangjie to cut copies.
+ */
+
 import std.collection.{HashMap, EquatableCollection}
 
+/**
+ * Either a live `JSString` tied to a context or an owned Cangjie `String`—used to avoid premature JS round-trips.
+ */
 enum JSSource<T, J> {
     | JS(JSContext, J)
     | CJ(T)
 }
 
 /**
- * Function and performance expansion of JSString.
+ * Lazy dual-representation string for IDL: upgrades CJ `String` to `JSString` on first cross-language use.
  */
 @!APILevel[
     since: "22"

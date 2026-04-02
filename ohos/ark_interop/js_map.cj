@@ -19,6 +19,10 @@ package ohos.ark_interop
 
 import std.collection.HashMap
 
+/**
+ * Cangjie handle to a JavaScript `Map` instance: operations delegate to cached `%Map.prototype` methods for correctness
+ * and to avoid embedding engine-specific fast paths here.
+ */
 class JSMap <: JSObjectBase {
     static func fromHashMap<K, V>(context: JSContext, src: HashMap<K, V>): JSMap
         where K <: JSKeyable & Hashable & Equatable<K> & JSInteropType<K>, V <: JSInteropType<V> {
@@ -29,43 +33,51 @@ class JSMap <: JSObjectBase {
         return result
     }
 
+    /** Wrap an existing ArkTS `Map` value (must already be an object). */
     init(context: JSContext, value: JSValue_) {
         super(context, value)
     }
 
+    /** Release the global handle backing this reference (ArkTS may then collect the `Map`). */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
+    /** Element count (`map.size` on the JS object). */
     prop size: Int64 {
         get() {
             Int64(this["size"].toNumber())
         }
     }
 
+    /** `Map.prototype.has` with `this` bound to this map. */
     func has(key: JSKeyable): Bool {
         let result = context.constants.mapFuncs.has.call(key.toJSValue(context), thisArg: toJSValue())
         return result.toBoolean()
     }
 
+    /** `Map.prototype.get`. */
     func get(key: JSKeyable): JSValue {
         context.constants.mapFuncs.get.call(key.toJSValue(context), thisArg: toJSValue())
     }
 
+    /** `Map.prototype.set` (mutates the JS map in place). */
     func set(key: JSKeyable, value: JSValue): Unit {
         context.constants.mapFuncs.set.call([key.toJSValue(context), value], thisArg: toJSValue())
     }
 
+    /** `Map.prototype.delete`. */
     func remove(key: JSKeyable): Bool {
         context.constants.mapFuncs.delete.call(key.toJSValue(context), thisArg: toJSValue()).toBoolean()
     }
 
+    /** `Map.prototype.clear`. */
     func clear(): Unit {
         context.constants.mapFuncs.clear.call(thisArg: toJSValue())
     }
 
     /**
-     * returns js iterator
+     * `Map.prototype.keys` iterator value (caller drives/forwards iteration on the JS side).
      */
     func rawkeys(): JSValue {
         context.constants.mapFuncs.keys.call(thisArg: toJSValue())

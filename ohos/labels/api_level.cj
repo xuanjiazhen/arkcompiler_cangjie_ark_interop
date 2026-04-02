@@ -18,6 +18,10 @@
 package ohos.labels
 
 /**
+ * Declarative API surface metadata (`@!APILevel`): version gates, exception policy, and permission literals for STs checks.
+ */
+
+/**
  * Represents a permission value with bitwise AND and OR operations.
  */
 public interface PermissionValue {

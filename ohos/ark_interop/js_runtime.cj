@@ -17,8 +17,15 @@
 
 package ohos.ark_interop
 
+/**
+ * Embeds an ArkTS engine in the host process: creates/destroys the native runtime and surfaces its root `JSContext` / N-API env.
+ */
+
 import ohos.business_exception.BusinessException
 
+/**
+ * Opaque native ArkTS engine; thread identity and VM state live behind this pointer.
+ */
 @C
 struct JSEnginePrivate {}
 
@@ -114,6 +121,9 @@ public class JSRuntime {
         threadId_ = unsafe { ARKTS_GetThreadIdOfEngine(engine) }
     }
 
+    /**
+     * Tears down the native engine and all contexts tied to it; callers must not use `mainContext` afterward.
+     */
     ~init() {
         unsafe { ARKTS_DestroyEngine(engine_) }
     }

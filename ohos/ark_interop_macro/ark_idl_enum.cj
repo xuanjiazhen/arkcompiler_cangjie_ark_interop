@@ -17,6 +17,10 @@
 
 macro package ohos.ark_interop_macro
 
+/**
+ * Expands Cangjie `enum` into a JSInteropType-friendly enum with string round-trip for ArkTS bridging.
+ */
+
 import std.ast.{Decl, EnumDecl, Token, Tokens, ToTokens}
 
 class IDLEnum {
@@ -24,6 +28,9 @@ class IDLEnum {
     let identifier_: Token
     let ctorIdentifiers_: Array<Token>
 
+    /**
+     * Captures enum identity and constructor tokens so generated `JSInteropType` wiring can enumerate variants.
+     */
     init(enumDecl: EnumDecl) {
         decl_ = enumDecl
         identifier_ = enumDecl.identifier
@@ -74,6 +81,9 @@ class IDLEnum {
         )
     }
 
+    /**
+     * Builds the full enum declaration block: head, constructors, and `fromJSValue`/`toJSValue` glue.
+     */
     func genIDLEnum(): Tokens {
         return quote(
             $(genIDLHead()) {

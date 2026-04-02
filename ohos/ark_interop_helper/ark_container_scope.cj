@@ -17,6 +17,10 @@
 
 package ohos.ark_interop_helper
 
+/**
+ * RAII around ArkTS container scopes: pairs native enter/exit so ephemeral handles are attributed to the right UI/feature container.
+ */
+
 foreign func ARKTS_GetCurrentContainerId(): Int32
 
 foreign func ARKTS_CreateContainerScope(id: Int32): CPointer<Unit>
@@ -34,18 +38,30 @@ class ContainerScope {
 
     private let handle_: CPointer<Unit>
 
+    /**
+     * Opens a scope bound to `ARKTS_GetCurrentContainerId()` for nested native calls.
+     */
     init() {
         handle_ = unsafe { ARKTS_CreateContainerScope(currentId()) }
     }
 
+    /**
+     * Opens a scope for an explicit container id (tests or host-provided isolation).
+     */
     init(id: Int32) {
         handle_ = unsafe { ARKTS_CreateContainerScope(id) }
     }
 
+    /**
+     * Destroys the native scope handle if not already torn down.
+     */
     ~init() {
         unsafe { ARKTS_DestroyContainerScope(handle_) }
     }
 
+    /**
+     * Runs `callback` between `Enter`/`Exit` so temporary locals are released with this container context.
+     */
     func inScope<T>(_: Int32, callback: () -> T): T {
         let _ = unsafe { ARKTS_EnterContainerScope(handle_) }
         let result = callback()

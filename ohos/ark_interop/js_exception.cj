@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * Error helpers for Ark↔Cangjie interop: structured `BusinessException` factories and `MixedException` for JS stack stitching.
+ */
+
 import ohos.business_exception.BusinessException
 import ohos.hilog.*
 
@@ -103,6 +107,9 @@ internal func withoutArkFrame(): BusinessException {
     BusinessException(34300008, "Cannot requireArkModule without ArkTS frame.")
 }
 
+/**
+ * Non-business fatal interop fault (native contract broken); distinct from `BusinessException` used in public APIs.
+ */
 class JSInteropNativeError <: Exception {
     public init(message: String) {
         super(message)
@@ -124,6 +131,9 @@ internal func printExp(exp: Exception): Unit {
     }
 }
 
+/**
+ * Carries `MixedException` across the JS boundary via `JSExternal` so the same error object can round-trip.
+ */
 class SharedException <: SharedObject {
     SharedException(
         let mixedException: MixedException
@@ -134,6 +144,9 @@ class MixedException <: BusinessException {
     let arkStack: Array<String>
     let original: ?Exception
     let className: ?String
+    /**
+     * Serialized ArkTS-side error: fixed code/message and captured JS stack frames (no nested Cangjie cause).
+     */
     init(className: String, code: Int32, message: String, stack: Array<String>) {
         super(code, message)
         this.className = className
@@ -141,6 +154,9 @@ class MixedException <: BusinessException {
         original = None
     }
 
+    /**
+     * Wraps a Cangjie exception raised while handling an ArkTS callback; defers message to `original` when present.
+     */
     init(code: Int32, exp: Exception, stack: Array<String>) {
         super(code, "")
         className = None
@@ -148,6 +164,9 @@ class MixedException <: BusinessException {
         original = exp
     }
 
+    /**
+     * Prefer the wrapped exception’s message; otherwise fall back to `BusinessException.message`.
+     */
     func getMessage(): String {
         if (let Some(exp) <- original) {
             exp.message
@@ -156,6 +175,9 @@ class MixedException <: BusinessException {
         }
     }
 
+    /**
+     * Concatenates Cangjie and ArkTS stack portions so a single string can surface in logs or a JS `Error.stack`.
+     */
     func getMixedStackTrace(): String {
         if (let Some(exp) <- original) {
             var s = ""
@@ -186,6 +208,7 @@ class MixedException <: BusinessException {
         }
     }
 
+
     public func toString(): String {
         let codeStr = if (code == 0) {
             ""
@@ -194,6 +217,7 @@ class MixedException <: BusinessException {
         }
         "Error name:${getClassName()}\nError message:${getMessage()}\n${codeStr}Stacktrace:\n${getMixedStackTrace()}"
     }
+
 
     public func toJSError(context: JSContext): JSValue {
         let cls = context.constants.getErrorClass(getClassName())

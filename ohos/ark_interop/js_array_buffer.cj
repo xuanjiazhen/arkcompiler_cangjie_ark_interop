@@ -45,6 +45,9 @@ foreign func ARKTS_ArrayBufferReadBytes(env: JSEnv, value: JSValue_, dest: CPoin
  */
 public type JSBufferFinalizer = (CPointer<Byte>) -> Unit
 
+/**
+ * Native finalizer: `hint` indexes a Cangjie closure in `bufferFinalizers_` invoked when JS releases backing bytes.
+ */
 @C
 func JSBufferFinalizerStub(buffer: CPointer<Byte>, hint: Int64): Unit {
     if (let Some(callback) <- JSArrayBuffer.bufferFinalizers_.remove(hint)) {
@@ -59,87 +62,132 @@ func JSBufferFinalizerStub(buffer: CPointer<Byte>, hint: Int64): Unit {
     since: "22"
 ]
 public class JSArrayBuffer <: JSHeapObject {
+    /** User finalizers registered by id for `ARKTS_CreateArrayBufferWithData` (invoked from `JSBufferFinalizerStub`). */
     static var bufferFinalizers_ = SlabMT<JSBufferFinalizer>()
 
+    /** Cached length from ArkTS when read once; avoids repeated native calls. */
     private var byteLength_: ?Int32
+    /** Optional copy of bytes materialized on demand for Cangjie-side reads. */
     private var buffer_: ?Array<Byte> = None
 
+    /**
+     * Wrap an existing ArkTS ArrayBuffer / TypedArray backing object as a `JSHeapObject`.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.OBJECT)
         byteLength_ = None
     }
 
+    /**
+     * Create a new ArkTS ArrayBuffer of the given length (empty, zero-filled on the JS side).
+     */
     init(context: JSContext, length: Int32) {
         super(context, unsafe { ARKTS_CreateArrayBuffer(context.env, length) }, JSType.OBJECT)
         context.checkJSException() // in case of ArkTS OOM
         byteLength_ = length
     }
 
+    /**
+     * Copy bytes into a new ArkTS ArrayBuffer and keep the same array in `buffer_` for fast re-reads.
+     */
     init(context: JSContext, buffer: Array<Byte>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size)
         buffer_ = buffer
     }
 
+    /**
+     * Create an ArrayBuffer from an `Int8` array (byte width 1; no Cangjie-side cache).
+     */
     init(context: JSContext, buffer: Array<Int8>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size)
         buffer_ = None
     }
 
+    /**
+     * Create an ArrayBuffer from `Int16` elements (byte length = `count * 2`).
+     */
     init(context: JSContext, buffer: Array<Int16>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size) * 2
         buffer_ = None
     }
 
+    /**
+     * Create an ArrayBuffer from `UInt16` elements (byte length = `count * 2`).
+     */
     init(context: JSContext, buffer: Array<UInt16>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size) * 2
         buffer_ = None
     }
 
+    /**
+     * Create an ArrayBuffer from `UInt32` elements (byte length = `count * 4`).
+     */
     init(context: JSContext, buffer: Array<UInt32>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size) * 4
         buffer_ = None
     }
 
+    /**
+     * Create an ArrayBuffer from `Int32` elements (byte length = `count * 4`).
+     */
     init(context: JSContext, buffer: Array<Int32>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size) * 4
         buffer_ = None
     }
 
+    /**
+     * Create an ArrayBuffer from `Float32` elements (byte length = `count * 4`).
+     */
     init(context: JSContext, buffer: Array<Float32>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size) * 4
         buffer_ = None
     }
 
+    /**
+     * Create an ArrayBuffer from `Int64` elements (byte length = `count * 8`).
+     */
     init(context: JSContext, buffer: Array<Int64>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size) * 8
         buffer_ = None
     }
 
+    /**
+     * Create an ArrayBuffer from `UInt64` elements (byte length = `count * 8`).
+     */
     init(context: JSContext, buffer: Array<UInt64>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size) * 8
         buffer_ = None
     }
 
+    /**
+     * Create an ArrayBuffer from `Float64` elements (byte length = `count * 8`).
+     */
     init(context: JSContext, buffer: Array<Float64>) {
         super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
         byteLength_ = Int32(buffer.size) * 8
         buffer_ = None
     }
 
+    /**
+     * Adopt a raw byte span into ArkTS; `finalizer` runs from `JSBufferFinalizerStub` when JS releases storage.
+     */
     init(context: JSContext, buffer: CPointer<Byte>, length: Int32, finalizer: JSBufferFinalizer) {
         super(context, createArrayBuffer(context, buffer, length, finalizer), JSType.OBJECT)
         byteLength_ = length
     }
 
+    /**
+     * Drop the global handle; does **not** run the optional byte finalizer (that is owned by the JS lifetime).
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }

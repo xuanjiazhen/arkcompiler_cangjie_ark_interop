@@ -17,6 +17,10 @@
 
 macro package ohos.ark_interop_macro
 
+/**
+ * Turns `interface` declarations into ArkTS-facing proxies: JSInteropType surface plus JSObject-backed implementation class.
+ */
+
 import std.ast.{Token, Tokens, FuncDecl, PropDecl, InterfaceDecl, ToTokens}
 import std.collection.ArrayList
 
@@ -27,6 +31,9 @@ class IDLInterface {
     private let hostObjVar_: Tokens = quote(hostObj)
     private let contextVar_: Tokens = quote(context_)
 
+    /**
+     * Classifies interface members into func vs prop lists; anything else is a compile-time error under `@Interop`.
+     */
     init(interfaceDecl: InterfaceDecl) {
         identifier_ = interfaceDecl.identifier
         funcs_ = ArrayList<FuncDecl>()
@@ -104,6 +111,9 @@ class IDLInterface {
         return quote(
             protected let $(contextVar_): JSContext
             protected let $(hostObjVar_): JSObject
+            /**
+             * Binds the proxy to the JSObject that actually lives in ArkTS (methods forward property reads to it).
+             */
             init(context: JSContext, obj: JSObject) {
                 this.$(contextVar_) = context
                 this.$(hostObjVar_) = obj
@@ -189,6 +199,9 @@ class IDLInterface {
         )
     }
 
+    /**
+     * Emits both the public interface and its `*_ArkTS_Interop_Identifier` proxy implementation as nested quote tokens.
+     */
     func genIDLInterface() {
         return quote(
             $(genIDLnewInterface())

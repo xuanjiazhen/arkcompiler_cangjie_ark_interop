@@ -20,31 +20,64 @@ package ohos.ark_interop
 type JSGlobal = CPointer<JSValue_>
 
 @FastNative
+/**
+ * Create a global handle for an ArkTS heap object.
+ *
+ * The returned handle keeps the underlying ArkTS object alive across GC until disposed.
+ */
 foreign func ARKTS_CreateGlobal(env: JSEnv, value: JSValue_): JSGlobal
 
 @FastNative
+/**
+ * Dispose a global handle previously created by `ARKTS_CreateGlobal`.
+ *
+ * This should be executed on the correct runtime thread; the C layer may internally defer disposal to avoid GC issues.
+ */
 foreign func ARKTS_DisposeGlobal(env: JSEnv, ref: JSGlobal): Unit
 
 @FastNative
+/**
+ * Convert a global handle back to a local ArkTS value.
+ */
 foreign func ARKTS_GetGlobalValue(ref: JSGlobal): JSValue_
 
 @FastNative
+/**
+ * Return whether a value is a heap object (i.e. reference type) in ArkTS.
+ */
 foreign func ARKTS_IsHeapObject(value: JSValue_): Bool
 
 /**
- * JSObjects into cj are references, JSHeapObject is the base class of all JSObject references.
- *  JSHeapObject keeps the JSObject alive by create global handle, and dispose global handle after cj object are
- *  destructed(Note: the finalizer is called in final derived class [cj spec rule]).
+ * Cangjie-side base for references to ArkTS **heap** objects.
+ *
+ * **Why a base class:** a raw `JSValue_` alone does not keep the object alive across ArkTS GC; a global handle does.
+ * The constructor creates `globalValue_`; the concrete subclass `~init` must dispose it (Cangjie dispatches finalizers
+ * from the most-derived type only).
+ *
+ * **Invariants:** only reference-typed ArkTS values may be wrapped; primitives use value wrappers instead.
+ * Public methods must go through `JSContext` lifecycle and thread checks before touching `innerValue`.
  */
 @!APILevel[
     since: "22"
 ]
 abstract sealed class JSHeapObject {
+    /** Owning interop context (thread + lifecycle gate for all uses of this reference). */
     let context: JSContext
 
+    /** Strong ref on the ArkTS side; keeps the object alive until explicitly disposed. */
     let globalValue_: JSGlobal
+    /** Local view of the wrapped object suitable for passing back into ArkTS calls from this runtime. */
     let innerValue: JSValue_
 
+    /**
+     * Construct a safe reference to an ArkTS heap object.
+     *
+     * @param context The owning interop context (enforces lifecycle and thread constraints).
+     * @param value   The ArkTS value to wrap. Must be a heap object.
+     * @param type_   The static `JSType` used by `toJSValue`.
+     *
+     * @throws Exception/BusinessException if the value is not a heap object or if creating the global handle fails.
+     */
     JSHeapObject(
         context: JSContext,
         value: JSValue_,

@@ -17,6 +17,10 @@
 
 package ohos.ark_interop_helper
 
+/**
+ * N-API ↔ ArkTS value shims and small shared utilities used by hybrid Cangije/ArkTS hosts (stage mode, map bridging).
+ */
+
 internal import ohos.ark_interop.{SharedObject, JSValue, JSObject, JSContext, JSCallInfo, napi_env, napi_value, JSInteropType, JSValue_, getGlobalContext, JSType}
 internal import ohos.labels.APILevel
 import std.collection.HashMap

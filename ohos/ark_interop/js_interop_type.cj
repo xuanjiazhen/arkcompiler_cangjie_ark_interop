@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * Canonical convertors between Cangjie scalars/strings and `JSValue`, plus hooks consumed by IDL-generated `JSInteropType` impls.
+ */
+
 @!APILevel[
     since: "22"
 ]

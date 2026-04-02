@@ -20,9 +20,19 @@ package ohos.ark_interop
 import std.sync.{Mutex, AtomicInt8}
 import std.collection.*
 
+/**
+ * Opaque native handle for an ArkTS hidden class object (`JSHClass`).
+ *
+ * Only passed through FFI as a typed pointer; layout is owned by the runtime.
+ */
 @C
 struct JSHClassPrivate {}
 
+/**
+ * Opaque native handle for an ArkTS `napi_handle_scope` / local handle scope.
+ *
+ * Scopes pin temporary JS values during nested native calls so they are not collected mid-call.
+ */
 @C
 struct JSScopePrivate {}
 
@@ -86,6 +96,11 @@ foreign func ARKTS_GetExceptionAndClear(env: JSEnv): JSValue_
 
 foreign func ARKTS_RequireArkModule(env: JSEnv, path: CPointer<UInt8>, size: UIntNative, kind: Int32): JSValue_
 
+/**
+ * ArkTS runtime entry: runs a previously queued async callback on the JS thread.
+ *
+ * Why: cross-thread work must hop back to the runtime thread before touching `env` or JS handles.
+ */
 @C
 func asyncCallbackExecutor(env: JSEnv, id: Int64): Unit {
     let context = JSContext.getOrCreate(env)
@@ -94,6 +109,11 @@ func asyncCallbackExecutor(env: JSEnv, id: Int64): Unit {
     }
 }
 
+/**
+ * ArkTS runtime teardown hook: removes and disposes the `JSContext` for this `env`.
+ *
+ * Why: avoid stale `JSContext` lookups after the native runtime is destroyed.
+ */
 @C
 func disposeJSContext(env: JSEnv): Unit {
     synchronized(JSContext.RUNTIMES_MUTEX) {
@@ -107,6 +127,12 @@ class Scope {
     private let handle_: JSScope
     private let handledValues_ = ArrayList<JSValue>()
 
+    /**
+     * Open a native handle scope.
+     *
+     * Values registered into this scope are marked unsafe when the scope closes to prevent accidental use
+     * beyond their valid lifetime.
+     */
     init(env: JSEnv) {
         handle_ = unsafe { ARKTS_OpenScope(env) }
         if (handle_.isNull()) {
@@ -114,6 +140,9 @@ class Scope {
         }
     }
 
+    /**
+     * Close the scope and invalidate all tracked values.
+     */
     func close(env: JSEnv): Unit {
         for (value in handledValues_) {
             value.isSafe = false
@@ -121,23 +150,42 @@ class Scope {
         unsafe { ARKTS_CloseScope(env, handle_) }
     }
 
+    /**
+     * Track a value created inside this scope.
+     */
     func add(value: JSValue): Unit {
         handledValues_.add(value)
     }
 }
 
 /**
- * A single-thread ArkTS interop context. JSContext has a one-to-one correspondence with the ArkTS runtime. 
- * Its main purpose is to create JSValues and safe references and manage the lifecycle of Cangjie objects 
- * referenced by ArkTS.
+ * Runtime-scoped ArkTS interop context (one `JSContext` per ArkTS runtime `env`).
+ *
+ * Responsibilities (see project documentation guidelines: document *why* the type exists):
+ * - **Lifecycle**: after `dispose()`, APIs that validate runtime state reject further use (use-after-free guard).
+ * - **Thread affinity**: interop must run on the thread bound when the context was created (`bindTid_`).
+ * - **Cross-language ownership**:
+ *   - `sharedObjects_` — table from ArkTS `External` id to `SharedObject` (reference counting on share side).
+ *   - `sharedLambda_` — registered Cangjie lambdas invoked from ArkTS.
+ *   - `asyncCallbacks_` — callbacks posted to the JS thread via `postJSTask` / async native path.
+ * - **Handle scopes**: `newScope` pairs with native handle scopes so short-lived values are not collected
+ *   during nested native→JS calls.
  */
 @!APILevel[
     since: "22"
 ]
 public class JSContext {
+    /** Global lazy map: native runtime handle `JSEnv` → interop context (one per runtime). */
     static let ALL_RUNTIMES_ = HashMap<JSEnv, JSContext>()
+    /** Protects `ALL_RUNTIMES_` across threads when creating or removing contexts. */
     static let RUNTIMES_MUTEX = Mutex()
 
+    /**
+     * Get the `JSContext` for the given ArkTS runtime `env`, creating it if needed.
+     *
+     * @param env The ArkTS runtime identifier.
+     * @param tidGetter A function used to obtain the current OS thread id (injected for testing).
+     */
     static func getOrCreate(env: JSEnv, tidGetter!: () -> UInt64 = {=> unsafe { ARKTS_GetPosixThreadId() }}): JSContext {
         synchronized(RUNTIMES_MUTEX) {
             match (ALL_RUNTIMES_.get(env)) {
@@ -150,20 +198,34 @@ public class JSContext {
         }
     }
 
+    /** Entries for `SharedObject` / `External`: id → object; finalized from ArkTS via `cjExternalDestructor`. */
     var sharedObjects_ = Slab<SharedObject>()
+    /** Callable ids passed to ArkTS when wrapping Cangjie lambdas as JS functions. */
     var sharedLambda_ = Slab<JSLambda>()
+    /** Runnable callbacks keyed by id; executed on the JS thread (`asyncCallbackExecutor`). */
     var asyncCallbacks_ = SlabMT<() -> Unit>()
 
+    /** Native runtime opaque handle; stable for the lifetime of this context. */
     let env_: JSEnv
+    /** `0` = alive, `1` = inside `keepAlive`, `-1` = disposed (see `dispose` / `keepAlive` CAS protocol). */
     private var disposed_ = AtomicInt8(0)
+    /** OS thread id of the runtime-bound thread; used by `checkThread`. */
     private let bindTid_: UInt64
+    /** Lazy-cached ArkTS global object and built-in constants accessor. */
     var global_: ?JSObject = None
+    /** Lazily constructed well-known string keys (`undefined`, `message`, `stack`, …). */
     var constants_: ?JSConstants = None
+    /** Cached raw ArkTS “undefined” as `JSValue_` for cheap `void` / default returns. */
     let void_: JSValue_
+    /** Nested native handle scopes opened by `newScope`; mirrors stack of `Scope` instances. */
     private let scopes_ = ArrayList<Scope>()
 
     /**
+     * Create a context bound to a specific runtime and thread id.
+     *
      * @throws { Exception } - Create JSContext failed, env is null.
+     *
+     * The constructor is private; use `getOrCreate` to ensure one-to-one mapping with the runtime.
      */
     private init(env: JSEnv, tid: UInt64) {
         if (env == 0) {
@@ -174,19 +236,34 @@ public class JSContext {
         void_ = unsafe { ARKTS_CreateUndefined() }
     }
 
+    /**
+     * Well-typed view of the cached ArkTS `undefined` value (`void_`).
+     */
     prop void: JSValue {
         get() {
             JSValue(this, void_, JSType.UNDEFINED)
         }
     }
 
+    /**
+     * Mark this context as disposed.
+     *
+     * Once disposed, all API calls that validate lifecycle must fail with a "use-after-free" style exception.
+     */
     func dispose(): Unit {
+        // Spin until no concurrent `keepAlive` holds the context (`0`→`-1` transition).
         while (!disposed_.compareAndSwap(0, -1)) {
             // wait for other thread to finish
         }
     }
 
+    /**
+     * Execute a callback while preventing concurrent disposal.
+     *
+     * Returns false if the context is already disposed; otherwise runs the callback and restores state.
+     */
     func keepAlive(callback: ()->Unit): Bool {
+        // Serialize with `dispose`: refuse if already `-1`; temporarily mark `1` during `callback`.
         while (true) {
             let value = disposed_.load()
             if (value == -1) {
@@ -201,6 +278,9 @@ public class JSContext {
         return true
     }
 
+    /**
+     * Built-in strings and symbols used when reading JS exceptions and standard fields.
+     */
     prop constants: JSConstants {
         get() {
             if (let Some(data) <- constants_) {
@@ -225,6 +305,8 @@ public class JSContext {
     }
 
     /**
+     * Throw if the context has been disposed (use-after-free guard).
+     *
      * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
      */
     func checkAlive(): Unit {
@@ -234,6 +316,8 @@ public class JSContext {
     }
 
     /**
+     * Throw if not called from the runtime-bound thread (ArkTS APIs are thread-affine).
+     *
      * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     func checkThread(): Unit {
@@ -283,6 +367,9 @@ public class JSContext {
         }
     }
 
+    /**
+     * Validate both lifecycle and thread affinity.
+     */
     func checkLifecycleAndThread(): Unit {
         checkAlive()
         checkThread()
@@ -305,6 +392,9 @@ public class JSContext {
         }
     }
 
+    /**
+     * Register a `JSValue` into the current scope (if any), so it can be invalidated on scope close.
+     */
     func handleValue(value: JSValue): Unit {
         if (scopes_.isEmpty()) {
             printExp(noScopeError())
@@ -336,6 +426,7 @@ public class JSContext {
         } catch (e: Error) {
             throw e
         } finally {
+            // Pop the shadow stack entry, then release the native handle scope (invalidates tracked temporaries).
             scopes_.remove(at: index)
             scope.close(env_)
         }
@@ -561,6 +652,11 @@ public class JSContext {
         JSPromiseCapability(this)
     }
 
+    /**
+     * Convert a Cangjie `Exception` into an ArkTS `Error` object and throw it into the current runtime.
+     *
+     * This method formats the Cangjie stack trace into a JS-like stack string for easier debugging on the ArkTS side.
+     */
     func throwJSError(exception: Exception): Unit {
         let stack = exception.getStackTrace()
         let stackTexts = Array<String>(stack.size) {
@@ -578,6 +674,11 @@ public class JSContext {
         unsafe { ARKTS_Throw(env, jstr) }
     }
 
+    /**
+     * Convert a Cangjie `Error` into an ArkTS `Error` object and throw it into the current runtime.
+     *
+     * This overload exists because Cangjie distinguishes `Exception` and `Error`.
+     */
     func throwJSError(exception: Error): Unit {
         let stack = exception.getStackTrace()
         let stackTexts = Array<String>(stack.size) {
@@ -868,6 +969,7 @@ public class JSContext {
         since: "22"
     ]
     public func postJSTask(callback: () -> Unit): Unit {
+        // `keepAlive` prevents disposal while we register the callback id the runtime will use asynchronously.
         keepAlive {
             let id = asyncCallbacks_.append(callback)
             unsafe { ARKTS_CreateAsyncTask(env_, id) }
@@ -914,7 +1016,14 @@ public class JSContext {
     }
 
     /**
-     * @throws { Exception } - ArkTS error.
+     * If the runtime has a pending JS exception, read and clear it, then throw as a Cangjie exception.
+     *
+     * Uses `ARKTS_GetExceptionAndClear` so the pending error does not remain latent. Normalizes message/stack/code
+     * into `BusinessException` when possible.
+     *
+     * @throws { Exception } - ArkTS error (including unknown non-object thrown value).
+     *
+     * Typical usage: call after native calls that may set a JS exception (OOM, module load failure, etc.).
      */
     func checkJSException(): Unit {
         let error = unsafe {
@@ -952,10 +1061,17 @@ public class JSContext {
         throw jsCodeError(code, message, stack)
     }
 
+    /** Memoized synthetic `@kit.*` facade objects (see `createKit` / `KIT_CONFIGS`). */
     private let cachedKits = HashMap<String, JSObject>()
+    /** Guard: `requireArkModule` must not nest while a Cangjie module is loading (avoids load cycles). */
     var isOnLoadingCJ = false
 
-    // create kit object
+    /**
+     * Create a "kit" object based on a `KitConfig`.
+     *
+     * Kits are lazily-resolved module facades: properties are defined with accessors that `requireArkModule` on first
+     * access, and optionally remap/export names.
+     */
     private func createKit(config: KitConfig): JSObject {
         let result = object()
         for ((pkgName, data) in config) {
@@ -1016,7 +1132,7 @@ public class JSContext {
         if (!ArkModuleHelper.checkSpecifier(src)) {
             throw moduleNotExist(src)
         }
-        // ArkTS kit dit not exist at runtime, cangjie create an object to fake a kit module object.
+        // Runtime may not expose real `@kit.*` packages; synthesize lazy property object from static `KIT_CONFIGS`.
         if (src.startsWith("@kit.")) {
             if (let Some(object) <- cachedKits.get(src)) {
                 return object.toJSValue()
@@ -1025,7 +1141,7 @@ public class JSContext {
             cachedKits[src] = object
             return object.toJSValue()
         }
-        // process native
+        // App or system module: pass specifier bytes + load kind into native loader.
         let (url, kind) = ArkModuleHelper.resolveUrl(src)
         unsafe {
             let handle = acquireArrayRawData(url.rawData())

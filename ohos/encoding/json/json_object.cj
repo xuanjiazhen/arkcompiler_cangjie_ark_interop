@@ -17,6 +17,10 @@
 
 protected package ohos.encoding.json
 
+/**
+ * Concrete `JsonValue` nodes (null, scalars, array, object) and serialization helpers built on `WriteBuffer`.
+ */
+
 import std.collection.{ArrayList, HashMap}
 
 /**
@@ -163,6 +167,9 @@ protected class JsonArray <: JsonValue {
     /* Json data of the JsonArray(ArrayList<JsonValue>). */
     private var items: ArrayList<JsonValue>
 
+    /**
+     * Pre-sizes internal storage when the element count is known (reduces `ArrayList` growth during parsing/building).
+     */
     init(capacity: Int64) {
         items = ArrayList<JsonValue>(capacity)
     }
@@ -249,6 +256,9 @@ protected class JsonObject <: JsonValue {
         fields = HashMap<String, JsonValue>()
     }
 
+    /**
+     * Pre-sizes the field map for large objects to limit hash-table rehash churn during construction.
+     */
     init(capacity: Int64) {
         fields = HashMap<String, JsonValue>(capacity)
     }
@@ -319,6 +329,9 @@ protected class JsonObject <: JsonValue {
 }
 
 extend String {
+    /**
+     * Returns true if every byte is ASCII space or tab (used to treat “blank” JSON chunks as empty).
+     */
     func isContainOnlySpaceAndTab() {
         for (i in this) {
             if (i != UInt8(UInt32(r' ')) && i != UInt8(UInt32(r'\t'))) {

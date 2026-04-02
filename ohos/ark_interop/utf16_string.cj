@@ -17,12 +17,22 @@
 
 package ohos.ark_interop
 
+/**
+ * UTF-16 string storage aligned with the ArkTS engine: native-backed text, refcounted access, and `JSInteropType` bridge.
+ */
+
 import std.collection.ArrayList
 import std.sync.AtomicInt64
 
+/**
+ * Opaque native string blob; all mutations go through `CJUtf16String*` FFI.
+ */
 @C struct Utf16StringPrivate {}
 type Utf16StringHandle = CPointer<Utf16StringPrivate>
 
+/**
+ * Header view for FFI memcpy targets: Latin-1 vs UTF-16 unit width, length, and raw data pointer.
+ */
 @C
 struct Utf16StringHeader {
     let isConstObJ: Bool = false
@@ -31,6 +41,9 @@ struct Utf16StringHeader {
     let data: CPointer<Unit> = CPointer<Unit>()
 }
 
+/**
+ * FFI aggregate for `split` results: length plus array of owned `Utf16StringHandle`s freed by `CJUtf16StringArrayFree`.
+ */
 @C
 struct Utf16StringArray {
     Utf16StringArray(
@@ -64,7 +77,8 @@ foreign {
 }
 
 /**
- * String stored in UTF-16 encoding format which has better performance than String when converting to and from ArkTS string.
+ * Engine-native string container: matches ArkTS internal representation (Latin-1 or UTF-16 units) and uses acquire/release so
+ * raw pointers stay valid across native calls—preferred when crossing the JS boundary repeatedly.
  */
 @!APILevel[
     since: "22"
@@ -121,10 +135,16 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
         }
     }
 
+    /**
+     * Takes ownership of an existing native handle (internal/FFI use); does not copy bytes.
+     */
     init(handle: Utf16StringHandle) {
         handle_ = handle
     }
     
+    /**
+     * Enters a manual read section: bumps `isAlive_` so `dispose()` cannot free storage while iterators hold pointers.
+     */
     func acquire(): Unit {
         while (true) {
             let status = isAlive_.load()
@@ -137,6 +157,9 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
         }
     }
     
+    /**
+     * Pairs with `acquire()` after native reads; must not drop below zero from user code paths.
+     */
     func release(): Unit {
         isAlive_.fetchAdd(-1)
     }
@@ -175,12 +198,18 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
         }
     }
 
+    /**
+     * Last-chance native free if the user never called `dispose()` but refcount shows no outstanding acquires.
+     */
     ~init() {
         if (isAlive_.load() >= 0) {
             unsafe {CJUtf16StringDelete(handle_)}
         }
     }
 
+    /**
+     * Lazily caches `Utf16StringHeader` from the engine (pointer becomes invalid after `dispose()`).
+     */
     func getHeader(): Utf16StringHeader {
         if (!headerInited_) {
             header_ = unsafe {CJUtf16StringGetHeader(handle_)}
@@ -299,12 +328,18 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
         }
     }
     
+    /**
+     * Code-unit count from the header without `acquire()`—callers must already hold the string alive.
+     */
     prop rawSize: Int64 {
         get() {
             Int64(getHeader().length)
         }
     }
 
+    /**
+     * Native storage length in code units (`UInt32` as returned by the engine header).
+     */
     prop length: UInt32 {
         get() {
             getHeader().length
@@ -909,7 +944,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 }
 
 /**
- * Latin1 rune iterator.
+ * Streams ASCII-range bytes from a Latin-1-backed `Utf16String` as Unicode scalars (one byte → one `Rune`).
  */
 class Latin1Iterator <: Iterator<Rune> {
     Latin1Iterator(
@@ -936,7 +971,7 @@ class Latin1Iterator <: Iterator<Rune> {
 }
 
 /**
- * Utf16String rune iterator.
+ * Iterates UTF-16 code units, combining surrogate pairs into supplementary-plane `Rune`s matching ECMAScript semantics.
  */
 class Utf16Iterator <: Iterator<Rune> {
     Utf16Iterator(
@@ -970,7 +1005,7 @@ class Utf16Iterator <: Iterator<Rune> {
 }
 
 /**
- * Utf16String split iterator.
+ * Incremental splitter: holds source/separator handles and walks indices without materializing the full `split` array up front.
  */
 class SplitIterator <: Iterator<Utf16String> {
     let src: Utf16String
@@ -1033,6 +1068,9 @@ class SplitIterator <: Iterator<Utf16String> {
         return None
     }
 
+    /**
+     * Empty-separator split path: yields one grapheme cluster (surrogate pair aware) per step.
+     */
     func nextChar(): ?Utf16String {
         if (current < length) {
             if (maxCount == 0) {
