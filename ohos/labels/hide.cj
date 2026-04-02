@@ -18,6 +18,10 @@
 package ohos.labels
 
 /**
+ * Compile-time / IDE visibility control: marks APIs that should stay out of completion and navigation surfaces.
+ */
+
+/**
  * Annotation class for defining APIs that need to be hidden.
  * APIs marked with this annotation will not show hints and will not allow navigation in the IDE.
  */

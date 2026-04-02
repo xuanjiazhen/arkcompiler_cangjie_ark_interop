@@ -18,11 +18,24 @@
 package ohos.ark_interop
 
 @FastNative
+/**
+ * Create an ArkTS `External` value wrapping an int64 payload.
+ *
+ * The payload is typically a Cangjie-side object id managed by `JSContext.sharedObjects_`.
+ */
 foreign func ARKTS_CreateExternal(env: JSEnv, data: Int64): JSValue_
 
 @FastNative
+/**
+ * Read the int64 payload out of an ArkTS `External` value.
+ */
 foreign func ARKTS_GetExternalData(env: JSEnv, value: JSValue_): Int64
 
+/**
+ * ArkTS GC finalizer for `External`: drop one logical reference to the Cangjie `SharedObject` row.
+ *
+ * When `shareCnt_` hits zero the slab entry is removed so the Cangjie object can be collected.
+ */
 @C
 func cjExternalDestructor(id: Int64, env: JSEnv): Unit {
     let context = JSContext.getOrCreate(env)
@@ -35,18 +48,31 @@ func cjExternalDestructor(id: Int64, env: JSEnv): Unit {
 }
 
 /**
- * Base class of objects shared with arkts. It has an unique id. When shared to arkts, the object would be kept to
- *  a global table. The id used to index the object.
+ * Base class for Cangjie objects that can be referenced from ArkTS.
+ *
+ * Lifecycle model:
+ * - When first shared, the object is assigned a stable `nativeId_` and registered into `JSContext.sharedObjects_`.
+ * - ArkTS holds only the `nativeId_` via an `External`.
+ * - `shareCnt_` tracks how many ArkTS `External` values keep this object alive. When it reaches 0, the table entry
+ *   is removed and the object becomes eligible for GC on the Cangjie side.
+ *
+ * Notes:
+ * - `nativeId_` is only meaningful within the owning `JSContext` (runtime). Higher-level APIs must enforce thread
+ *   and context-lifecycle checks before accessing the table.
  */
 @!APILevel[
     since: "22"
 ]
 public open class SharedObject {
+    /** Row id in `JSContext.sharedObjects_`; `-1` until first export to ArkTS. */
     var nativeId_: Int64 = -1
+    /** Number of live ArkTS `External` values pointing at this row (paired with `cjExternalDestructor`). */
     var shareCnt_: Int64 = 0
 
     /**
-     * Init SharedObject.
+     * Construct a shareable object.
+     *
+     * The `nativeId_` is assigned lazily when the object is first shared into ArkTS.
      */
     @!APILevel[
         since: "22"
@@ -54,7 +80,7 @@ public open class SharedObject {
     public init() {}
 
     /**
-     * Id of the SharedObject in global table.
+     * The id of this object in the per-runtime global table (`JSContext.sharedObjects_`).
      */
     @!APILevel[
         since: "22"
@@ -67,13 +93,25 @@ public open class SharedObject {
 }
 
 /**
- * The js presentation of a cj object. It holds the id of cj object, and affects the lifecycle of the cj object.
+ * Cangjie-side safe reference wrapper for an ArkTS `External`.
+ *
+ * An `External` stores only an int64 payload (the `SharedObject` id). This wrapper:
+ * - Creates the ArkTS `External` and increments `SharedObject.shareCnt_`.
+ * - Keeps the ArkTS `External` alive via `JSHeapObject` global-handle semantics.
+ * - Provides accessors to resolve `id -> SharedObject` through `JSContext.sharedObjects_`.
+ *
+ * The ArkTS GC finalizer will call `cjExternalDestructor`, which decrements `shareCnt_` and removes the table entry
+ * when the last external reference is gone.
  */
 @!APILevel[
     since: "22"
 ]
 public class JSExternal <: JSHeapObject {
+    /**
+     * Create an ArkTS `External` value for a Cangjie object and update the global table and share count.
+     */
     static func createExternal(context: JSContext, data: SharedObject): JSValue_ {
+        // First share allocates a stable slab id; subsequent shares reuse it and only bump the refcount.
         let id = if (data.nativeId_ < 0) {
             let id = context.sharedObjects_.append(data)
             data.nativeId_ = id
@@ -87,23 +125,38 @@ public class JSExternal <: JSHeapObject {
         return result
     }
 
+    /** Lazily read from ArkTS payload via `ARKTS_GetExternalData` after construction. */
     private var id_: ?Int64
 
+    /**
+     * Wrap an existing ArkTS external value as a safe reference.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.EXTERNAL)
         id_ = None
     }
 
+    /**
+     * Create and wrap an ArkTS external value for a Cangjie `SharedObject`.
+     */
     init(context: JSContext, data: SharedObject) {
         super(context, createExternal(context, data), JSType.EXTERNAL)
         id_ = data.nativeId_
     }
 
+    /**
+     * Wrap an existing ArkTS external value with a known id.
+     */
     private init(context: JSContext, value: JSValue, id: Int64) {
         super(context, value.value, JSType.EXTERNAL)
         id_ = id
     }
 
+    /**
+     * Dispose the underlying ArkTS global handle.
+     *
+     * Note: actual `SharedObject` lifetime is governed by ArkTS GC finalizer callback (`cjExternalDestructor`).
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
@@ -143,6 +196,11 @@ public class JSExternal <: JSHeapObject {
         getData() as T
     }
 
+    /**
+     * The Cangjie-side object id stored in the ArkTS external payload.
+     *
+     * This property lazily reads the payload once and caches it in `id_`.
+     */
     prop id: Int64 {
         get() {
             let env = context.env

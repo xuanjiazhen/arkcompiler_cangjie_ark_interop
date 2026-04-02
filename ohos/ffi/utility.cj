@@ -17,6 +17,10 @@
 
 protected package ohos.ffi
 
+/**
+ * Thin Resource wrappers and `@C` array views for libc-backed buffers (e.g. float arrays) used across OHOS FFI bindings.
+ */
+
 protected class CTypeResource<T> <: Resource where T <: CType {
     protected CTypeResource(
         protected let value: T,
@@ -24,9 +28,11 @@ protected class CTypeResource<T> <: Resource where T <: CType {
     ) {}
     protected let isFree: Box<Bool> = Box(false)
 
+
     public func isClosed(): Bool {
         return isFree.value
     }
+
 
     public func close(): Unit {
         if (isFree.value) {
@@ -37,6 +43,9 @@ protected class CTypeResource<T> <: Resource where T <: CType {
     }
 }
 
+/**
+ * Pointer+length pair describing a heap-allocated `Float32` buffer owned by native code until `free()` runs.
+ */
 @C
 protected struct CArrFloat32 {
     protected CArrFloat32(

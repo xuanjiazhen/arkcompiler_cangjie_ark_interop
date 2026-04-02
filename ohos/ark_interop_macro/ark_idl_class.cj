@@ -17,6 +17,10 @@
 
 macro package ohos.ark_interop_macro
 
+/**
+ * Class expansion for `@Interop`: splits visible vs `@Interop(Invisible)` members and generates ctor/property/method bridges.
+ */
+
 import std.ast.{Decl, FuncDecl, PrimaryCtorDecl, VarDecl, PropDecl, Token, Tokens, ClassDecl, TypeNode, FuncParam, TokenKind, setItem, getChildMessages, ToTokens}
 import std.collection.{ArrayList, HashMap}
 import std.sort.sort
@@ -25,6 +29,9 @@ class IDLClassMemberInvisible {
     private var keyWord: String
     private var hasPublic: Bool = false
 
+    /**
+     * Computes a stable key per member and records whether it was explicitly `public` (otherwise treated as invisible glue).
+     */
     init(decl: Decl) {
         match (decl) {
             case funcDecl: FuncDecl => keyWord = getFuncMemberKey(funcDecl)
@@ -72,10 +79,16 @@ class IDLClassMemberInvisible {
         return propDecl.toTokens().toString()
     }
 
+    /**
+     * Annotates this member key in macro metadata so code generation can strip it from the exported surface.
+     */
     func markMemberInvisible() {
         setItem(keyWord, true)
     }
 
+    /**
+     * Non-public members are invisible; public members can still be hidden when `@Interop(ArkTS, Invisible)` marks the key.
+     */
     func isMemberInvisible(): Bool {
         if (!hasPublic) {
             return true
@@ -103,6 +116,9 @@ class IDLClass {
     private let constructorName: Token = Token(TokenKind.IDENTIFIER, "jsConstructor")
     private let constructorHelperName: Token = Token(TokenKind.IDENTIFIER, "jsConstructorHelper")
 
+    /**
+     * Walks the class body, partitioning constructors, methods, fields, and members marked invisible to the IDL exporter.
+     */
     init(classDecl: ClassDecl) {
         identifier_ = classDecl.identifier
         constructors_ = ArrayList<Decl>()
@@ -480,6 +496,9 @@ class IDLClass {
         decls
     }
 
+    /**
+     * Emits the transformed class: static init hooks, bridged constructors, members, and invisible passthrough decls.
+     */
     func genIDLClass(): Tokens {
         return quote(
             $(genIDLHead()) {

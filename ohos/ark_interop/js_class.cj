@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * ArkTS constructor functions as heap objects: optional subclass wiring, prototype access, and `new` via native call.
+ */
+
 @FastNative
 foreign func ARKTS_CreateClass(env: JSEnv, lambdaId: Int64, base: JSValue_): JSValue_
 
@@ -46,6 +50,9 @@ public class JSClass <: JSHeapObject {
 
     private let prototype_: ?JSObject
 
+    /**
+     * Adopts a native class/constructor function and resolves its `.prototype` object when it is a JS object.
+     */
     init(context: JSContext, value: JSValue_) {
         super(context, value, JSType.FUNCTION)
         let proto = unsafe { ARKTS_GetPrototype(context.env, value) }
@@ -56,6 +63,9 @@ public class JSClass <: JSHeapObject {
         }
     }
 
+    /**
+     * Defines a new ArkTS class with `constructor` as body and optional `superClass` in the prototype chain.
+     */
     init(context: JSContext, constructor: JSLambda, superClass: ?JSClass) {
         super(context, createClass(context, constructor, superClass), JSType.FUNCTION)
         let proto = unsafe { ARKTS_GetPrototype(context.env, innerValue) }
@@ -66,6 +76,9 @@ public class JSClass <: JSHeapObject {
         }
     }
 
+    /**
+     * Releases the global ref for this class/constructor wrapper.
+     */
     ~init() {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }

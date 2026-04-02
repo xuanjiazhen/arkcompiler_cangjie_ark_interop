@@ -17,6 +17,10 @@
 
 macro package ohos.ark_interop_macro
 
+/**
+ * File emission pass: maps Cangjie types to ArkTS strings and writes generated `.ets` / index fragments next to sources.
+ */
+
 import std.fs.{Path, FSException, exists, Directory, File, OpenMode}
 import std.io.{SeekPosition, readToEnd}
 import std.sync.Mutex
@@ -32,6 +36,9 @@ let TYPE_TABLE_G = HashMap<String, String>(
 let MTX = Mutex()
 let TAB_STR = "    "
 
+/**
+ * Emits a function `.d.ts` fragment into `ark_interop_api` and a package-scoped export line in the kit `Index.d.ts`.
+ */
 func genFuncDeclareFile(funcDecl: FuncDecl, isAsync: Bool) {
     let file = genFile()
     let funcDeclare = genFuncDeclare(funcDecl, isAsync)
@@ -43,6 +50,9 @@ func genFuncDeclareFile(funcDecl: FuncDecl, isAsync: Bool) {
     funcDeclareWriteIntoIndexFile("export declare function " + funcDeclare, newFile)
 }
 
+/**
+ * Writes the interface declaration ahead of existing `CustomLib` content and mirrors it into the per-package typings file.
+ */
 func genInterfaceDeclareFile(interfaceDecl: InterfaceDecl) {
     let file = genFile()
     let interfaceDeclare = genInterfaceDeclare(interfaceDecl)
@@ -54,6 +64,9 @@ func genInterfaceDeclareFile(interfaceDecl: InterfaceDecl) {
     cieDeclareWriteIntoIndexFile(interfaceDeclare, newFile)
 }
 
+/**
+ * Clones a class AST dropping `@Interop(Invisible)` members so generated TS only exposes the public interop surface.
+ */
 func getVisibleClassMembers(classDecl: ClassDecl) {
     var visibleClassDecl = ClassDecl()
     visibleClassDecl.identifier = classDecl.identifier
@@ -68,6 +81,9 @@ func getVisibleClassMembers(classDecl: ClassDecl) {
     return visibleClassDecl
 }
 
+/**
+ * Generates class + constructor declares: API file gets methods/statics; index file optionally includes ctor signature.
+ */
 func genClassDeclareFile(classDecl: ClassDecl) {
     let file = genFile()
 
@@ -84,6 +100,9 @@ func genClassDeclareFile(classDecl: ClassDecl) {
     cieDeclareWriteIntoIndexFile(newClassDeclare, newFile)
 }
 
+/**
+ * Enums skip `ark_interop_api` and land directly in the target package `Index.d.ts` as `const enum` blocks.
+ */
 func genEnumDeclareFile(enumDecl: EnumDecl) {
     // No need to write into files under ark_interop_api.
     let pkgName = IDLCustomTypeWL.getPkgName(enumDecl.identifier.value)
@@ -92,6 +111,9 @@ func genEnumDeclareFile(enumDecl: EnumDecl) {
     cieDeclareWriteIntoIndexFile(enumDeclare, file)
 }
 
+/**
+ * Maps `Unit` returns to `RetUnit` (typed `void` alias) so TS signatures stay consistent for fire-and-forget exports.
+ */
 func getFuncRetType(retType: TypeNode) {
     if (retType.toTokens().toString() == "Unit") {
         return RefType(quote(RetUnit))
@@ -100,6 +122,9 @@ func getFuncRetType(retType: TypeNode) {
     }
 }
 
+/**
+ * Builds one ArkTS function signature string (static prefix, params, Promise wrap when async).
+ */
 func genFuncDeclare(funcDecl: FuncDecl, isAsync: Bool) {
     let identifier = funcDecl.identifier
     let params = funcDecl.funcParams
@@ -123,6 +148,9 @@ func genFuncDeclare(funcDecl: FuncDecl, isAsync: Bool) {
     return modDeclare + identifierDeclare + "(" + paramDeclare + "): " + retDeclare + "\n"
 }
 
+/**
+ * Concatenates `export declare interface Name { ... }` with converted members.
+ */
 func genInterfaceDeclare(interfaceDecl: InterfaceDecl) {
     let identifier = interfaceDecl.identifier
     let body = interfaceDecl.body
@@ -133,6 +161,9 @@ func genInterfaceDeclare(interfaceDecl: InterfaceDecl) {
     return "export declare interface " + identifierDeclare + bodyDeclare + "\n"
 }
 
+/**
+ * Renders a single `name: arktsType` line with context-specific type mapping (`propArg` rules).
+ */
 func genPropDeclare(propDecl: PropDecl) {
     let identifier = propDecl.identifier
     let declType = propDecl.declType
@@ -143,6 +174,9 @@ func genPropDeclare(propDecl: PropDecl) {
     return identifierDeclare + ": " + retDeclare + "\n"
 }
 
+/**
+ * Interface members use method properties `name: (args) => ret` rather than `function` keyword blocks.
+ */
 func genFuncDeclareForInterface(funcDecl: FuncDecl) {
     let identifier = funcDecl.identifier
     let params = funcDecl.funcParams
@@ -156,6 +190,9 @@ func genFuncDeclareForInterface(funcDecl: FuncDecl) {
     return identifierDeclare + ": (" + paramDeclare + ") => " + retDeclare + "\n"
 }
 
+/**
+ * Walks interface body decls, emitting only func/prop lines with tab indentation inside braces.
+ */
 func genInterfaceBodyDeclare(body: Body) {
     let decls = body.decls
     var retBody = ""
@@ -173,6 +210,9 @@ func genInterfaceBodyDeclare(body: Body) {
     return " {\n" + retBody + "}"
 }
 
+/**
+ * Field declares inside classes use the `varArg` type mapping (differs subtly from props for nullability hints).
+ */
 func genVarDeclare(varDecl: VarDecl) {
     let identifier = varDecl.identifier
     let declType = varDecl.declType
@@ -183,6 +223,9 @@ func genVarDeclare(varDecl: VarDecl) {
     return identifierDeclare + ": " + retDeclare + "\n"
 }
 
+/**
+ * Class bodies skip ordinary `init` methods (ctor synthesized separately) but include func/prop/var members.
+ */
 func genClassBodyDeclare(classDecl: ClassDecl, withConstructor!: Bool) {
     let body = classDecl.body
     let decls = body.decls
@@ -212,6 +255,9 @@ func genClassBodyDeclare(classDecl: ClassDecl, withConstructor!: Bool) {
     return " {\n" + retBody + "}"
 }
 
+/**
+ * Wraps `genClassBodyDeclare` with `export declare class` header for top-level or index emission.
+ */
 func genClassDeclare(pubClassDecl: ClassDecl, withConstructor!: Bool = false) {
     let identifier = pubClassDecl.identifier
 
@@ -221,6 +267,9 @@ func genClassDeclare(pubClassDecl: ClassDecl, withConstructor!: Bool = false) {
     return "export declare class " + identifierDeclare + bodyDeclare + "\n"
 }
 
+/**
+ * Emits constructor signatures either as `constructor(...)` inside the class or as `Name: { new(...) }` type literals.
+ */
 func genClassInitsDeclare(pubClassDecl: ClassDecl, insideClassDecl!: Bool = false) {
     let classId = pubClassDecl.identifier.value
     var head = if (insideClassDecl) {
@@ -273,6 +322,9 @@ func genClassInitsDeclare(pubClassDecl: ClassDecl, insideClassDecl!: Bool = fals
       ENUM_C = 2
   }
 */
+/**
+ * Numeric `const enum` body: assigns `0` to the first variant and increments for subsequent constructors.
+ */
 func genEnumBodyDeclare(enumDecl: EnumDecl) {
     let ctors = enumDecl.constructors
     var retBody = ""
@@ -290,6 +342,9 @@ func genEnumBodyDeclare(enumDecl: EnumDecl) {
     return " {\n" + retBody + "\n}"
 }
 
+/**
+ * Full `export declare const enum Name { ... }` string combining identifier and computed body.
+ */
 func genEnumDeclare(enumDecl: EnumDecl) {
     let identifier = enumDecl.identifier
 
@@ -299,6 +354,9 @@ func genEnumDeclare(enumDecl: EnumDecl) {
     return "export declare const enum " + identifierDeclare + bodyDeclare + "\n"
 }
 
+/**
+ * Ensures `ark_interop_api` or per-package `types/lib*` dirs exist with `oh-package.json5` and an empty `.d.ts` seed.
+ */
 func genFile(currentPkg!: String = "") {
     let relativePath: String = getCangjieSrcPath()
     if (relativePath.isEmpty()) {
@@ -331,6 +389,9 @@ func genFile(currentPkg!: String = "") {
     filePath.toString()
 }
 
+/**
+ * Appends or seeds `CustomLib` interface entries inside the shared API declaration file (deduped by substring test).
+ */
 func funcDeclareWriteIntoApiFile(funcDeclare: String, filePath: String) {
     synchronized(MTX) {
         let file = try {
@@ -357,6 +418,9 @@ func funcDeclareWriteIntoApiFile(funcDeclare: String, filePath: String) {
     }
 }
 
+/**
+ * Updates kit `Index.d.ts`: replaces an existing overloaded signature when regex matches, else appends export line.
+ */
 func funcDeclareWriteIntoIndexFile(funcDecl: String, filePath: String) {
     synchronized(MTX) {
         let file = try {
@@ -386,6 +450,9 @@ func funcDeclareWriteIntoIndexFile(funcDecl: String, filePath: String) {
     }
 }
 
+/**
+ * Prepends class/interface declarations to the API file so `CustomLib` aggregator can still wrap function exports.
+ */
 func ciDeclareWriteIntoApiFile(ciDeclare: String, filePath: String) {
     synchronized(MTX) {
         let file = try {
@@ -406,6 +473,9 @@ func ciDeclareWriteIntoApiFile(ciDeclare: String, filePath: String) {
 }
 
 // Used for class/interface/enum declare.
+/**
+ * Regex-replaces whole interface/class/enum blocks in index typings when the opening line matches (keeps files idempotent).
+ */
 func cieDeclareWriteIntoIndexFile(cieDeclare: String, filePath: String) {
     synchronized(MTX) {
         let file = try {
@@ -435,6 +505,9 @@ func cieDeclareWriteIntoIndexFile(cieDeclare: String, filePath: String) {
     }
 }
 
+/**
+ * Comma-joins `name: type` segments for ArkTS signatures with per-parameter `cjType2ArktsType` context.
+ */
 func genFuncParamDeclare(funcParams: ArrayList<FuncParam>): String {
     var ret = ""
     for (i in 0..funcParams.size) {
@@ -460,6 +533,9 @@ func genFuncParamDeclare(funcParams: ArrayList<FuncParam>): String {
     Array<T>: only support Array<Byte>
     HashMap<K, V>: not supported
  */
+/**
+ * Central type translator: hits the primitive table, then dispatches function/reference forms per interop whitelist rules.
+ */
 func cjType2ArktsType(typeNode: TypeNode, nameBase: String): String {
     try {
         TYPE_TABLE_G[typeNode.toTokens().toString()]
@@ -478,6 +554,9 @@ func cjType2ArktsType(typeNode: TypeNode, nameBase: String): String {
     }
 }
 
+/**
+ * Converts Cangjie function types to ArkTS arrow signatures, prefixing synthetic parameter names derived from `nameBase`.
+ */
 func funcType2Arkts(funcType: FuncType, nameBase: String): String {
     let paramTypes = funcType.types
     let returnType = getFuncRetType(funcType.returnType)
@@ -494,6 +573,9 @@ func funcType2Arkts(funcType: FuncType, nameBase: String): String {
     return "(" + paramStr + ") => " + cjType2ArktsType(returnType, nameBase + "funcArg")
 }
 
+/**
+ * Handles `Option`, collections (`JSArrayEx`, `Map`, raw `Array<Byte>`), and rejects nested Options or func-typed generics.
+ */
 func refType2Arkts(refType: RefType): String {
     match (refType.identifier.value) {
         case "Option" =>

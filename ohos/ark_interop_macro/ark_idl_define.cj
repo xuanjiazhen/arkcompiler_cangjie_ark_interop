@@ -17,6 +17,10 @@
 
 macro package ohos.ark_interop_macro
 
+/**
+ * `@Interop[...]` entry router: dispatches parsed declarations to class/interface/func/enum/invisible handlers.
+ */
+
 import std.ast.{Tokens, ClassDecl, InterfaceDecl, FuncDecl, EnumDecl, Decl, parseDecl, assertParentContext}
 import std.collection.ArrayList
 
@@ -33,6 +37,9 @@ public macro Interop(attrTokens: Tokens, input: Tokens): Tokens {
     }
 }
 
+/**
+ * Default interop path: regenerate declaration + emit companion ArkTS bridge artifacts via IDL builders.
+ */
 func handleArkTS(input: Tokens): Tokens {
     let decl = parseDecl(input)
     match (decl) {
@@ -49,18 +56,27 @@ func handleArkTS(input: Tokens): Tokens {
     }
 }
 
+/**
+ * Validates the free function, writes its `.ets`/`api` declaration artifact, and splices generated wrapper tokens.
+ */
 func handleFunc(funcDecl: FuncDecl, isAsync: Bool): Tokens {
     checkFunc(funcDecl, isAsync)
     genFuncDeclareFile(funcDecl, isAsync)
     IDLFunction(funcDecl, isAsync).genIDLFunction()
 }
 
+/**
+ * Checks interface shape, emits forward declarations for TS tooling, and returns interface+proxy codegen.
+ */
 func handleInterface(interfaceDecl: InterfaceDecl): Tokens {
     checkInterface(interfaceDecl)
     genInterfaceDeclareFile(interfaceDecl)
     IDLInterface(interfaceDecl).genIDLInterface()
 }
 
+/**
+ * Verifies class members, dumps declare files for the exported ArkTS view, and returns the bridged class body.
+ */
 func handleClass(classDecl: ClassDecl): Tokens {
     checkClass(classDecl)
     genClassDeclareFile(classDecl)
@@ -72,12 +88,18 @@ func handleClass(classDecl: ClassDecl): Tokens {
   2. Generate enum declare file.
   3. Generate enum IDL code.
 */
+/**
+ * Validates enum constructors, generates companion declaration files, and emits `JSInteropType` enum glue.
+ */
 func handleEnum(enumDecl: EnumDecl): Tokens {
     checkEnum(enumDecl)
     genEnumDeclareFile(enumDecl)
     IDLEnum(enumDecl).genIDLEnum()
 }
 
+/**
+ * Marks a single member AST node as omitted from generated ArkTS API without rewriting the original source tokens.
+ */
 func handleInvisible(input: Tokens): Tokens {
     assertParentContext("Interop")
 
@@ -104,6 +126,9 @@ func handleInvisible(input: Tokens): Tokens {
     return input
 }
 
+/**
+ * Async interop flavor: only `FuncDecl` is legal; reuses `handleFunc` with `isAsync = true` for Promise-aware stubs.
+ */
 func handleAsyncFunc(input: Tokens): Tokens {
     let decl = parseDecl(input)
     match (decl) {

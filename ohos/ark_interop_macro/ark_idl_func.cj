@@ -17,6 +17,10 @@
 
 macro package ohos.ark_interop_macro
 
+/**
+ * Free-function `@Interop`: keeps the original decl, adds a `context/callInfo` thunk, and registers a module export stub.
+ */
+
 import std.ast.{FuncDecl, Token, Tokens, FuncParam, TypeNode, TokenKind, ToTokens}
 import std.collection.ArrayList
 
@@ -27,6 +31,9 @@ class IDLFunction {
     let retType_: TypeNode
     let isAsync_: Bool
 
+    /**
+     * Captures the source signature, async flag, and return type node for generating the JS-callable wrapper layer.
+     */
     init(funcDecl: FuncDecl, isAsync: Bool) {
         decl_ = funcDecl
         identifier_ = funcDecl.identifier
@@ -93,6 +100,9 @@ class IDLFunction {
         )
     }
 
+    /**
+     * Returns tokens for original function + stack-safe wrapper + optional module registration chunk.
+     */
     func genIDLFunction(): Tokens {
         return quote(
             $(genIDLOld())

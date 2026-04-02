@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * Error helpers for Ark↔Cangjie interop: structured `BusinessException` factories and `MixedException` for JS stack stitching.
+ */
+
 import ohos.business_exception.BusinessException
 import ohos.hilog.*
 
@@ -103,6 +107,9 @@ internal func withoutArkFrame(): BusinessException {
     BusinessException(34300008, "Cannot requireArkModule without ArkTS frame.")
 }
 
+/**
+ * Non-business fatal interop fault (native contract broken); distinct from `BusinessException` used in public APIs.
+ */
 class JSInteropNativeError <: Exception {
     public init(message: String) {
         super(message)
@@ -124,6 +131,9 @@ internal func printExp(exp: Exception): Unit {
     }
 }
 
+/**
+ * Carries `MixedException` across the JS boundary via `JSExternal` so the same error object can round-trip.
+ */
 class SharedException <: SharedObject {
     SharedException(
         let mixedException: BusinessException

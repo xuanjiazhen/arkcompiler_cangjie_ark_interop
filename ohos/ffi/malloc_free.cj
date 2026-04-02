@@ -17,6 +17,10 @@
 
 protected package ohos.ffi
 
+/**
+ * `LibC.malloc` helpers that throw `IllegalMemoryException` (optionally running cleanup) instead of returning null pointers.
+ */
+
 protected func safeMalloc<T>(count!: Int64 = 1): CPointer<T> where T <: CType {
     let ptr = LibC.malloc<T>(count: count)
     if (ptr.isNull()) {

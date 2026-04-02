@@ -17,6 +17,10 @@
 
 macro package ohos.ark_interop_macro
 
+/**
+ * Common utilities for `@Interop` expansion: attribute parsing, randomized symbols, and JSValue lambda codegen helpers.
+ */
+
 import std.ast.{Expr, Tokens, Token, FuncType, TypeNode, TokenKind, parseExprFragment, parseExpr, FuncParam, Decl, diagReport, DiagReportLevel, ToTokens}
 import std.time.DateTime
 

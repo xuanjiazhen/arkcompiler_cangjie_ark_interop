@@ -17,6 +17,10 @@
 
 package ohos.callback_invoke
 
+/**
+ * Typed callback shells (0–3 args, optional return) invoked from native/JS threads with optional `BusinessException`.
+ */
+
 import ohos.business_exception.BusinessException
 import ohos.labels.APILevel
 

@@ -17,6 +17,10 @@
 
 package ohos.ark_interop
 
+/**
+ * Tagged JS values (`JSValue_`) and typed views (`JSNull`, `JSNumber`, …) with `typeof` checks and narrowing helpers.
+ */
+
 @FastNative
 foreign func ARKTS_GetValueType(env: JSEnv, value: JSValue_): JSType
 
@@ -62,6 +66,9 @@ foreign func ARKTS_GetValueNumber(value: JSValue_): Float64
 @FastNative
 foreign func ARKTS_GetValueBool(value: JSValue_): Bool
 
+/**
+ * Opaque 64-bit JS value encoding as seen by the ArkTS FFI layer (tag + payload; not interpreted here).
+ */
 @C
 protected struct JSValue_ {
     JSValue_(let value: UInt64) {}
@@ -76,6 +83,9 @@ protected struct JSValue_ {
 public class JSNull {
     let value: JSValue
 
+    /**
+     * Typed view over a `JSValue` already known (by caller) to be null.
+     */
     init(value: JSValue) {
         this.value = value
     }
@@ -106,6 +116,9 @@ public class JSNull {
 public class JSUndefined {
     let value: JSValue
 
+    /**
+     * Typed view over a `JSValue` already known to be undefined.
+     */
     init(value: JSValue) {
         this.value = value
     }
@@ -136,6 +149,9 @@ public class JSUndefined {
 public class JSBoolean {
     let value: JSValue
 
+    /**
+     * Typed view over a boolean `JSValue`.
+     */
     init(value: JSValue) {
         this.value = value
     }
@@ -181,6 +197,9 @@ public class JSBoolean {
 public class JSNumber {
     let value: JSValue
 
+    /**
+     * Typed view over a numeric `JSValue` (IEEE double in JS).
+     */
     init(value: JSValue) {
         this.value = value
     }
@@ -501,6 +520,9 @@ public class JSValue {
         unsafe { ARKTS_IsArrayBuffer(env, value) }
     }
 
+    /**
+     * True if this object is an instance of the engine’s builtin `Map` constructor (used before `asMap()` narrowing).
+     */
     func isMap(): Bool {
         if (!isObject()) {
             return false

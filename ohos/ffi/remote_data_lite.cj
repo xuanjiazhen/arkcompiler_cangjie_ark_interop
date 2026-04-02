@@ -17,6 +17,10 @@
 
 protected package ohos.ffi
 
+/**
+ * Reverse direction handles: Cangjie proxy for native objects identified by id, with lifecycle states mirroring native teardown.
+ */
+
 import std.collection.HashMap
 
 foreign func FfiOHOSFFIFFIDataExist(id: Int64): Bool
@@ -226,6 +230,9 @@ protected open class RemoteDataWithIdManager {
 class IdManager {
     IdManager(let myDataId: Int64) {}
 
+    /**
+     * When the Cangjie wrapper dies, notify native so the mirror `FFIData`/remote slot can be torn down promptly.
+     */
     ~init() {
         releaseFFIData(myDataId)
     }
