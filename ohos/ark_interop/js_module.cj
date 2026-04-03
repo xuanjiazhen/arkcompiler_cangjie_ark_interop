@@ -20,6 +20,18 @@ package ohos.ark_interop
 import std.collection.{HashMap, ArrayList}
 import std.convert.Parsable
 
+@Intrinsic func getJSLambdaAddr(lambda: (JSContext, JSCallInfo)->JSValue): CPointer<Unit>
+
+@FastNative
+foreign func ARKTS_RegisterAddrGetter(callback: CFunc<(JSEnv, Int64)->CPointer<Unit>>): Unit
+
+@C
+func getJSLambdaAddr_(env: JSEnv, id: Int64): CPointer<Unit> {
+    let context = JSContext.getContext(env) ?? return CPointer<Unit>()
+    let lambda = context.sharedLambda_.get(id) ?? return CPointer<Unit>()
+    return getJSLambdaAddr(lambda)
+}
+
 @C
 struct CJModuleCallbacks {
     CJModuleCallbacks(
@@ -189,6 +201,7 @@ public class JSModule {
             disposeJSContext
         )
         unsafe { ARKTS_SetCJModuleCallback(inout moduleCallbacks) }
+        unsafe { ARKTS_RegisterAddrGetter(getJSLambdaAddr_) }
     }
 
     /**
