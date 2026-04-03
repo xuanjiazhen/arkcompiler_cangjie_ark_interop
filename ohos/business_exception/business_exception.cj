@@ -38,6 +38,12 @@ protected func getUniversalErrorMsg(code: Int32): ?String {
     UNIVERSAL_ERROR_MAP.get(code)
 }
 
+enum ErrorKind {
+    | Normal
+    | CrossCangjie(Exception)
+    | CrossArkTS(String)
+}
+
 /**
  * Defines the exception interface.
  */
@@ -54,6 +60,8 @@ public open class BusinessException <: Exception {
     public let code: Int32
 
     private var errData: ?Any
+    private let kind: ErrorKind
+    private let arkStack: Array<String>
 
     /**
      * Defines the additional information for business.
@@ -75,10 +83,39 @@ public open class BusinessException <: Exception {
         super(msg)
         this.code = code
         this.errData = data
+        kind = Normal
+        arkStack = []
+    }
+
+    protected init(className: String, code: Int32, message: String, arkStack: Array<String>) {
+        super(message)
+        this.code = code
+        this.errData = None
+        kind = CrossArkTS(className)
+        this.arkStack = arkStack
+    }
+
+    protected init(code: Int32, exp: Exception, stack: Array<String>) {
+        super("")
+        this.code = code
+        this.errData = None
+        kind = CrossCangjie(exp)
+        this.arkStack = stack
     }
 
     protected open func getClassName(): String {
-        "BusinessException"
+        match (kind) {
+            case Normal => "BusinessException"
+            case CrossArkTS(name) => name
+            case CrossCangjie(exp) => exp.getClassName()
+        }
+    }
+
+    protected func isCross(): Bool {
+        match (kind) {
+            case Normal => false
+            case _ => true
+        }
     }
 
     /**
@@ -90,6 +127,52 @@ public open class BusinessException <: Exception {
         since: "22"
     ]
     public open func toString(): String {
+        match (kind) {
+            case Normal => toNormalStr()
+            case _ => toCrossStr()
+        }
+    }
+
+    private func toCrossStr(): String {
+        let codeStr = if (code == 0) {
+            ""
+        } else {
+            "Error code: ${code}\n"
+        }
+        "Error name:${getClassName()}\nError message:${getCrossMessage()}\n${codeStr}Stacktrace:\n${getMixedStackTrace()}"
+    }
+
+    protected func getCrossMessage(): String {
+        match (kind) {
+            case CrossCangjie(exp) => exp.message
+            case _ => this.message
+        }
+    }
+
+    protected func getMixedStackTrace(): String {
+        match (kind) {
+            case CrossCangjie(exp) =>
+                var s = ""
+                for (element in exp.getStackTrace()) {
+                    s += "    at ${element.declaringClass}.${element.methodName}(${element.fileName}:${element.lineNumber})\n"
+                }
+                s += String.join(arkStack, delimiter: "\n")
+                s
+            case _ =>
+                var s = ""
+                for (l in arkStack) {
+                    s += "${l}\n"
+                }
+                let cjStack = getStackTrace()
+                s += String.join(Array(cjStack.size) { idx =>
+                    let element = cjStack[idx]
+                    "    at ${element.declaringClass}.${element.methodName}(${element.fileName}:${element.lineNumber})"
+                }, delimiter: "\n")
+                s
+        }
+    }
+
+    private func toNormalStr(): String {
         let className: String = getClassName()
         let message: String = this.message
         if (message.isEmpty()) {
