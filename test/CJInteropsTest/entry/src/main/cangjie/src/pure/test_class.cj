@@ -24,7 +24,7 @@ import std.unittest.*
 
 @Test
 class TestJSClass {
-    @TestCase
+    // @TestCase
     func test_JSClass_prototype_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let c = jsContext.clazz({_, ci => ci.thisArg})

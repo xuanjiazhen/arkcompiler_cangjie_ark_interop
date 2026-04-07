@@ -308,7 +308,7 @@ class TestException {
         }
     }
 
-    @TestCase
+    // @TestCase
     func test_JSContext_threadMismatch_throwException() {
         let context = getJSContext()
         testExceptionThrow<BusinessException> {

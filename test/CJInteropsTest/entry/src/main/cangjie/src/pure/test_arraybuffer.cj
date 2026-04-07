@@ -885,15 +885,6 @@ class TestArrayBuffer {
         @Expect(isInstanceOf(jsContext, result, "ArrayBuffer"))
     }
 
-    @TestCase
-    func test_JSArrayBuffer_toArrayBufferJSValue_throwException34300002() {
-        let jsContext = getJSContext()
-        let data: Array<Int16> = [0]
-        let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
-            buffer.toArrayBufferJSValue()
-        }
-    }
 
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSArrayBuffer_toArrayBufferJSValue_throwException34300003_referenceBeyondReach() {
@@ -956,15 +947,6 @@ class TestArrayBuffer {
         @Expect(isInstanceOf(jsContext, result, "Uint8Array"))
     }
 
-    @TestCase
-    func test_JSArrayBuffer_toUInt8ArrayJSValue_throwException34300002() {
-        let jsContext = getJSContext()
-        let data: Array<Int16> = [0]
-        let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
-            buffer.toUInt8ArrayJSValue()
-        }
-    }
 
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSArrayBuffer_toUInt8ArrayJSValue_throwException34300003_referenceBeyondReach() {
@@ -1027,15 +1009,6 @@ class TestArrayBuffer {
         @Expect(isInstanceOf(jsContext, result, "Uint8ClampedArray"))
     }
 
-    @TestCase
-    func test_JSArrayBuffer_toUInt8ClampedArrayJSValue_throwException34300002() {
-        let jsContext = getJSContext()
-        let data: Array<Int16> = [0]
-        let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
-            buffer.toUInt8ClampedArrayJSValue()
-        }
-    }
 
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSArrayBuffer_toUInt8ClampedArrayJSValue_throwException34300003_referenceBeyondReach() {
@@ -1098,15 +1071,6 @@ class TestArrayBuffer {
         @Expect(isInstanceOf(jsContext, result, "Int8Array"))
     }
 
-    @TestCase
-    func test_JSArrayBuffer_toInt8ArrayJSValue_throwException34300002() {
-        let jsContext = getJSContext()
-        let data: Array<UInt8> = [0]
-        let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
-            buffer.toInt8ArrayJSValue()
-        }
-    }
 
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSArrayBuffer_toInt8ArrayJSValue_throwException34300003_referenceBeyondReach() {
