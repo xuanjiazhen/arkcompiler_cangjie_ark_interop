@@ -163,6 +163,21 @@ class TestObject {
         @Expect(object["a"].toBoolean(), false)
     }
 
+    @TestCase
+    func test_JSObject_getProperty_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        let getter = jsContext.function {
+            context, _ =>
+                throw Exception("outside getter error")
+                context.undefined().toJSValue()
+        }
+        object.defineOwnAccessor("k", getter: getter, setter: None<JSFunction>)
+        expectBusinessExceptionCode(34300002) {
+            let _ = object.getProperty("k")
+        }
+    }
+
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSObject_getProperty_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
@@ -222,6 +237,21 @@ class TestObject {
         object["a"] = jsContext.boolean(true).toJSValue()
         @Expect(object["a"].isBoolean())
         @Expect(object["b"].isUndefined())
+    }
+
+    @TestCase
+    func test_JSObject_operatorGet_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        let getter = jsContext.function {
+            context, _ =>
+                throw Exception("outside getter error")
+                context.undefined().toJSValue()
+        }
+        object.defineOwnAccessor("k", getter: getter, setter: None<JSFunction>)
+        expectBusinessExceptionCode(34300002) {
+            let _ = object["k"]
+        }
     }
 
     @TestCase
@@ -353,6 +383,20 @@ class TestObject {
         object.callMethod("c")
     }
 
+    @TestCase
+    func test_JSObject_callMethod_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        object["boom"] = jsContext.function {
+            context, _ =>
+                throw Exception("outside call error")
+                context.undefined().toJSValue()
+        }.toJSValue()
+        expectBusinessExceptionCode(34300002) {
+            let _ = object.callMethod("boom")
+        }
+    }
+
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSObject_callMethod_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
@@ -439,6 +483,36 @@ class TestObject {
         match (msgBox.value) {
             case None => @Expect(false)
             case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSObject_setProperty_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        let setter = jsContext.function {
+            context, _ =>
+                throw Exception("outside setter error")
+                context.undefined().toJSValue()
+        }
+        object.defineOwnAccessor("k", getter: None<JSFunction>, setter: setter)
+        expectBusinessExceptionCode(34300002) {
+            object.setProperty("k", jsContext.number(1.0).toJSValue())
+        }
+    }
+
+    @TestCase
+    func test_JSObject_operatorSet_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let object = jsContext.object()
+        let setter = jsContext.function {
+            context, _ =>
+                throw Exception("outside setter error")
+                context.undefined().toJSValue()
+        }
+        object.defineOwnAccessor("k", getter: None<JSFunction>, setter: setter)
+        expectBusinessExceptionCode(34300002) {
+            object["k"] = jsContext.number(1.0).toJSValue()
         }
     }
 
@@ -566,6 +640,24 @@ class TestObject {
     }
 
     @TestCase
+    func test_JSObject_defineOwnProperty_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let keyObj = jsContext.object()
+        keyObj.setProperty(
+            "toString",
+            jsContext.function {
+                _, _ =>
+                    throw Exception("outside key conversion error")
+                    jsContext.string("k").toJSValue()
+            }.toJSValue()
+        )
+        expectBusinessExceptionCode(34300002) {
+            o.defineOwnProperty(keyObj, jsContext.number(1.0).toJSValue())
+        }
+    }
+
+    @TestCase
     func test_JSObject_defineOwnAccessor_getter_setter_success() {
         let jsContext = getJSContext()
         let object = jsContext.object()
@@ -661,6 +753,24 @@ class TestObject {
             }
         }.get()
         @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSObject_defineOwnAccessor_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let keyObj = jsContext.object()
+        keyObj.setProperty(
+            "toString",
+            jsContext.function {
+                _, _ =>
+                    throw Exception("outside key conversion error")
+                    jsContext.string("k").toJSValue()
+            }.toJSValue()
+        )
+        expectBusinessExceptionCode(34300002) {
+            o.defineOwnAccessor(keyObj, getter: None<JSFunction>, setter: None<JSFunction>)
+        }
     }
 
     @TestCase

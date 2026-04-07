@@ -166,6 +166,24 @@ class TestJSClass {
     }
 
     @TestCase
+    func test_JSClass_addProperty_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let c = jsContext.clazz({_, ci => ci.thisArg})
+        let keyObj = jsContext.object()
+        keyObj.setProperty(
+            "toString",
+            jsContext.function {
+                _, _ =>
+                    throw Exception("outside key conversion error")
+                    jsContext.string("p").toJSValue()
+            }.toJSValue()
+        )
+        expectBusinessExceptionCode(34300002) {
+            c.addProperty(keyObj, jsContext.number(1.0).toJSValue())
+        }
+    }
+
+    @TestCase
     func test_JSClass_addAccessor_and_addMethod_success(): Unit {
         let jsContext = getJSContext()
         let clazz = jsContext.clazz({_, callInfo => callInfo.thisArg})
@@ -249,6 +267,28 @@ class TestJSClass {
         @Expect(msg.contains("Thread mismatch"))
     }
 
+    @TestCase
+    func test_JSClass_addAccessor_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let c = jsContext.clazz({_, ci => ci.thisArg})
+        let keyObj = jsContext.object()
+        keyObj.setProperty(
+            "toString",
+            jsContext.function {
+                _, _ =>
+                    throw Exception("outside key conversion error")
+                    jsContext.string("p").toJSValue()
+            }.toJSValue()
+        )
+        expectBusinessExceptionCode(34300002) {
+            c.addAccessor(
+                keyObj.toJSValue(),
+                getter: None<JSFunction>,
+                setter: None<JSFunction>
+            )
+        }
+    }
+
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSClass_addMethod_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
@@ -301,6 +341,25 @@ class TestJSClass {
             }
         }.get()
         @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSClass_addMethod_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        let c = jsContext.clazz({_, ci => ci.thisArg})
+        let keyObj = jsContext.object()
+        keyObj.setProperty(
+            "toString",
+            jsContext.function {
+                _, _ =>
+                    throw Exception("outside key conversion error")
+                    jsContext.string("m").toJSValue()
+            }.toJSValue()
+        )
+        let f = jsContext.function {_, __ => jsContext.undefined().toJSValue()}
+        expectBusinessExceptionCode(34300002) {
+            c.addMethod(keyObj, f)
+        }
     }
 
     @TestCase
@@ -555,6 +614,36 @@ class TestJSClass {
             @Assert(false)
         } catch (e: BusinessException) {
             @Expect(e.code, 34300002)
+        }
+    }
+
+    @TestCase
+    func test_JSClass_new_arg_throwException34300002(): Unit {
+        let jsContext = getJSContext()
+        let jsClass = jsContext.clazz(
+            {
+                _: JSContext, callInfo: JSCallInfo =>
+                    throw Exception("exception inside constructor.")
+                    callInfo.thisArg
+            }
+        )
+        expectBusinessExceptionCode(34300002) {
+            let _ = jsClass.new(jsContext.number(1.0).toJSValue())
+        }
+    }
+
+    @TestCase
+    func test_JSClass_new_args_throwException34300002(): Unit {
+        let jsContext = getJSContext()
+        let jsClass = jsContext.clazz(
+            {
+                _: JSContext, callInfo: JSCallInfo =>
+                    throw Exception("exception inside constructor.")
+                    callInfo.thisArg
+            }
+        )
+        expectBusinessExceptionCode(34300002) {
+            let _ = jsClass.new([jsContext.number(1.0).toJSValue()])
         }
     }
 }
