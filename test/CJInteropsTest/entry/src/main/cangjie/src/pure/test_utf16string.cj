@@ -184,6 +184,20 @@ class TestUtf16String {
     }
 
     @TestCase
+    func test_Utf16String_accessible_success() {
+        let src = Utf16String("123abc")
+        @Expect(src.accessible)
+    }
+
+    @TestCase
+    func test_Utf16String_dispose_success() {
+        let src = Utf16String("123abc")
+        @Expect(src.accessible)
+        src.dispose()
+        @Expect(!src.accessible)
+    }
+
+    @TestCase
     func test_Utf16String_toString_roundTrip() {
         let cases = ["123zxcaijoad./?'[]{}", "你好，世界！", "i阿搜到叫哦🚹🚺😭😢"]
         for (one in cases) {
@@ -339,6 +353,13 @@ class TestUtf16String {
     }
 
     @TestCase
+    func test_Utf16String_operatorNotEqual_success() {
+        let a = Utf16String("abc")
+        let c = Utf16String("xyz")
+        @Expect(a != c)
+    }
+
+    @TestCase
     func test_Utf16String_operatorNotEqual_throwException34300003_afterDispose() {
         var caught = false
         try {
@@ -488,6 +509,14 @@ class TestUtf16String {
     }
 
     @TestCase
+    func test_Utf16String_operatorGet_throwException34300001_outOfRange() {
+        let u16 = Utf16String("abc123,./")
+        expectBusinessExceptionCode(34300001) {
+            let _ = u16[10]
+        }
+    }
+
+    @TestCase
     func test_Utf16String_operatorGet_range_invalidRange_throwException() {
         let utf16Src = Utf16String("abcde")
         @Expect(withException<Exception> {
@@ -499,6 +528,14 @@ class TestUtf16String {
         @Expect(withException<Exception> {
             utf16Src[2..1]
         })
+    }
+
+    @TestCase
+    func test_Utf16String_operatorGet_range_throwException34300001_outOfRange() {
+        let utf16Src = Utf16String("abcde")
+        expectBusinessExceptionCode(34300001) {
+            let _ = utf16Src[0..999]
+        }
     }
 
     @TestCase
@@ -947,6 +984,33 @@ class TestUtf16String {
             caught = true
         }
         @Expect(caught)
+    }
+
+    @TestCase
+    func test_Utf16String_operatorGet_throwException34300003_afterDispose() {
+        let a = Utf16String("abc")
+        a.dispose()
+        expectBusinessExceptionCode(34300003) {
+            let _ = a[0]
+        }
+    }
+
+    @TestCase
+    func test_Utf16String_operatorGet_range_throwException34300003_afterDispose() {
+        let a = Utf16String("abc")
+        a.dispose()
+        expectBusinessExceptionCode(34300003) {
+            let _ = a[0..1]
+        }
+    }
+
+    @TestCase
+    func test_Utf16String_replace_throwException34300003_afterDispose() {
+        let a = Utf16String("abc")
+        a.dispose()
+        expectBusinessExceptionCode(34300003) {
+            let _ = a.replace(Utf16String("a"), Utf16String("x"))
+        }
     }
 }
 
