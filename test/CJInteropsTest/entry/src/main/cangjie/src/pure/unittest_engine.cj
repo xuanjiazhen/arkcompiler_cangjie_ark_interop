@@ -46,6 +46,25 @@ private func runAllTests(context: JSContext): Unit {
     for ((name, report) in reports) {
         report.reportTo(reporter)
         Hilog.error(0, "unittest", "resulting: ${name}, passed: ${report.passedCount}/${report.caseCount}")
+        if (report.passedCount < report.caseCount) {
+            dumpFailedSuiteXmlReport(name)
+        }
+    }
+}
+
+private func dumpFailedSuiteXmlReport(suiteName: String): Unit {
+    let testReportXmlFileName = "test-default.${suiteName}.xml"
+    match (Directory.readFrom("/data/storage/el1/base/tests") |>
+        filter {fileInfo => fileInfo.name == testReportXmlFileName} |> first) {
+        case None =>
+            Hilog.error(0, "unittest", "failed report xml not found: ${testReportXmlFileName}")
+        case Some(testReportXmlFileInfo) =>
+            let testReportXmlFilePath = testReportXmlFileInfo.path
+            let testReportXmlFileContent = File.readFrom(testReportXmlFilePath)
+            let xmlReport = String.fromUtf8(testReportXmlFileContent)
+            Hilog.error(0, "unittest", "failed report xml begin: ${testReportXmlFileName}")
+            Hilog.error(0, "unittest", "${xmlReport}")
+            Hilog.error(0, "unittest", "failed report xml end: ${testReportXmlFileName}")
     }
 }
 
