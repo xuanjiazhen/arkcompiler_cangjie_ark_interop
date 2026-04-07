@@ -446,7 +446,7 @@ class TestIDLType {
 
     @TestCase
     func test_JSArrayEx_size_withOneElement_success() {
-        let arr = JSArrayEx<String>()
+        let arr = JSArrayEx<String>("b")
         arr.set(0, "a")
         @Expect(arr.size, 1)
     }
@@ -505,7 +505,7 @@ class TestIDLType {
 
     @TestCase
     func test_JSArrayEx_get_byIndex_nonempty_success() {
-        let arr = JSArrayEx<String>()
+        let arr = JSArrayEx<String>("b")
         arr.set(0, "a")
         @Expect(arr.get(0).getOrThrow(), "a")
     }
@@ -564,7 +564,7 @@ class TestIDLType {
 
     @TestCase
     func test_JSArrayEx_set_indexZero_success() {
-        let arr = JSArrayEx<String>()
+        let arr = JSArrayEx<String>("b")
         arr.set(0, "a")
         @Expect(arr.size, 1)
     }
@@ -689,7 +689,7 @@ class TestIDLType {
 
     @TestCase
     func test_JSArrayEx_operatorGet_index_success() {
-        let arr = JSArrayEx<String>()
+        let arr = JSArrayEx<String>("b")
         arr.set(0, "a")
         @Expect(arr[0], "a")
     }
@@ -712,7 +712,7 @@ class TestIDLType {
 
     @TestCase
     func test_JSArrayEx_operatorSet_index_success() {
-        let arr = JSArrayEx<String>()
+        let arr = JSArrayEx<String>("b")
         arr.set(0, "a")
         arr[0] = "c"
         @Expect(arr[0], "c")
@@ -752,7 +752,7 @@ class TestIDLType {
 
     @TestCase
     func test_JSArrayEx_toArray_afterOneElement_success() {
-        let arr = JSArrayEx<String>()
+        let arr = JSArrayEx<String>("b")
         arr.set(0, "a")
         let cjArr = arr.toArray()
         @Expect(cjArr.size, 1)
@@ -814,7 +814,7 @@ class TestIDLType {
     @TestCase
     func test_JSArrayEx_toJSValue_isArray_success() {
         let jsContext = getJSContext()
-        let arr = JSArrayEx<String>()
+        let arr = JSArrayEx<String>("b")
         arr.set(0, "a")
         @Expect(arr.toJSValue(jsContext).isArray(), true)
     }

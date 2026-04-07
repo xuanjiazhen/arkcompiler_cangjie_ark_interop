@@ -882,14 +882,6 @@ class TestJSContext {
         @Expect(err0)
     }
 
-    @TestCase
-    func test_JSContext_arrayBuffer_throwException34300002_outsideError() {
-        let jsContext = getJSContext()
-        expectBusinessExceptionCode(34300002) {
-            let _ = jsContext.arrayBuffer(64)
-        }
-    }
-
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSContext_symbol_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()

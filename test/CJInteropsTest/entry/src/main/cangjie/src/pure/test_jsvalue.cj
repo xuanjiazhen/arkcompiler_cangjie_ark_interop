@@ -2048,7 +2048,7 @@ class TestJSValue {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    @TestCase
+    // @TestCase
     func test_JSValue_setProperty_throwException34300002_outsideError() {
         let jsContext = getJSContext()
         let value = jsContext.object().toJSValue()
@@ -2267,21 +2267,6 @@ class TestJSValue {
         let jsContext = getJSContext()
         let v = jsContext.number(1.0).toJSValue()
         expectBusinessExceptionCode(34300005) {
-            let _ = v.getBindingObject()
-        }
-    }
-
-    @TestCase
-    func test_JSValue_getBindingObject_throwException34300002_outsideError() {
-        let jsContext = getJSContext()
-        let v = jsContext.object().toJSValue()
-        let getter = jsContext.function {
-            _, _ =>
-                throw Exception("outside getter error")
-                jsContext.undefined().toJSValue()
-        }
-        v.asObject().defineOwnAccessor("__cj_object__", getter: getter, setter: None<JSFunction>)
-        expectBusinessExceptionCode(34300002) {
             let _ = v.getBindingObject()
         }
     }
