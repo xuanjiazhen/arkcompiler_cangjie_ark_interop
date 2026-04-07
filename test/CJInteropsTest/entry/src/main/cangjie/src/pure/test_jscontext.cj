@@ -231,6 +231,13 @@ class TestJSContext {
     }
 
     @TestCase
+    func test_JSContext_null_success() {
+        let jsContext = getJSContext()
+        let v = jsContext.null().toJSValue()
+        @Expect(v.isNull())
+    }
+
+    @TestCase
     func test_JSContext_null_factory_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
 
@@ -533,6 +540,32 @@ class TestJSContext {
         match (msgBox.value) {
             case None => @Expect(false)
             case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    @TestCase
+    func test_JSContext_object_success() {
+        let jsContext = getJSContext()
+        let v = jsContext.object().toJSValue()
+        @Expect(v.isObject())
+    }
+
+    @TestCase
+    func test_JSContext_array_success() {
+        let jsContext = getJSContext()
+        let array = jsContext.array([jsContext.number(1.0).toJSValue(), jsContext.string("x").toJSValue()])
+        let v = array.toJSValue()
+        @Expect(v.isArray())
+        @Expect(v.asArray().size, 2)
+        @Expect(v.asArray()[0].toNumber(), 1.0)
+        @Expect(v.asArray()[1].toString(), "x")
+    }
+
+    @TestCase
+    func test_JSContext_arrayBuffer_throwException34300001_indexOutOfRange() {
+        let jsContext = getJSContext()
+        expectBusinessExceptionCode(34300001) {
+            let _ = jsContext.arrayBuffer(-1)
         }
     }
 
@@ -849,6 +882,14 @@ class TestJSContext {
         @Expect(err0)
     }
 
+    @TestCase
+    func test_JSContext_arrayBuffer_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        expectBusinessExceptionCode(34300002) {
+            let _ = jsContext.arrayBuffer(0)
+        }
+    }
+
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSContext_symbol_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
@@ -1091,6 +1132,22 @@ class TestJSContext {
             }
         }.get()
         @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSContext_requireSystemNativeModule_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        expectBusinessExceptionCode(34300002) {
+            let _ = jsContext.requireSystemNativeModule("module.not.exists.for.outside.error")
+        }
+    }
+
+    @TestCase
+    func test_JSContext_requireArkModule_throwException34300002_outsideError() {
+        let jsContext = getJSContext()
+        expectBusinessExceptionCode(34300002) {
+            let _ = jsContext.requireArkModule("ark.module.not.exists.for.outside.error")
+        }
     }
 
     @TestCase

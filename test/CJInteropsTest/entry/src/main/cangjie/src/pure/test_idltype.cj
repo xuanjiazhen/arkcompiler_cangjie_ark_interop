@@ -510,6 +510,22 @@ class TestIDLType {
         @Expect(arr.get(0).getOrThrow(), "a")
     }
 
+    @TestCase
+    func test_JSArrayEx_get_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let arr = JSArrayEx<String>("y")
+        let _ = arr.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                let _ = arr.get(0)
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
+    }
+
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSArrayEx_get_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
@@ -553,6 +569,58 @@ class TestIDLType {
         @Expect(arr.size, 1)
     }
 
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSArrayEx_set_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let arr = JSArrayEx<String>("x")
+        let _ = arr.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        arr.set(0, "y")
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
+    }
+
+    @TestCase
+    func test_JSArrayEx_set_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let arr = JSArrayEx<String>("y")
+        let _ = arr.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                arr.set(0, "z")
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
+    }
+
     @TestCase
     func test_JSArrayEx_set_throwException34300001_indexOutOfRange() {
         let arr = JSArrayEx<String>("x")
@@ -583,6 +651,42 @@ class TestIDLType {
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSArrayEx_isEmpty_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let arr = JSArrayEx<String>("y")
+        let _ = arr.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = arr.isEmpty()
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
+    }
+
     @TestCase
     func test_JSArrayEx_operatorGet_index_success() {
         let arr = JSArrayEx<String>()
@@ -591,11 +695,43 @@ class TestIDLType {
     }
 
     @TestCase
+    func test_JSArrayEx_operatorGet_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let arr = JSArrayEx<String>("y")
+        let _ = arr.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                let _ = arr[0]
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
+    }
+
+    @TestCase
     func test_JSArrayEx_operatorSet_index_success() {
         let arr = JSArrayEx<String>()
         arr.set(0, "a")
         arr[0] = "c"
         @Expect(arr[0], "c")
+    }
+
+    @TestCase
+    func test_JSArrayEx_operatorSet_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let arr = JSArrayEx<String>("y")
+        let _ = arr.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                arr[0] = "z"
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
     }
 
     @TestCase
@@ -621,6 +757,22 @@ class TestIDLType {
         let cjArr = arr.toArray()
         @Expect(cjArr.size, 1)
         @Expect(cjArr[0], "a")
+    }
+
+    @TestCase
+    func test_JSArrayEx_toArray_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let arr = JSArrayEx<String>("y")
+        let _ = arr.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                let _ = arr.toArray()
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
     }
 
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
@@ -807,6 +959,94 @@ class TestIDLType {
         map.clear()
         @Expect(map.size, 0)
         @Expect(map.isEmpty())
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSHashMapEx_clear_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        map.clear()
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
+    }
+
+    @TestCase
+    func test_JSHashMapEx_clear_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                map.clear()
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
+    }
+
+    @TestCase
+    func test_JSHashMapEx_get_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                let _ = map.get("a")
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
+    }
+
+    @TestCase
+    func test_JSHashMapEx_has_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                let _ = map.has("a")
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
     }
 
     @TestCase
@@ -1068,6 +1308,54 @@ class TestIDLType {
         map.setAll([("a", "b")])
         @Expect(map.size, 1)
         @Expect(map["a"], "b")
+    }
+
+    @TestCase
+    func test_JSHashMapEx_operatorGet_success() {
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        @Expect(map["a"], "b")
+    }
+
+    @TestCase
+    func test_JSHashMapEx_operatorSet_success() {
+        let map = JSHashMapEx<String, String>()
+        map["a"] = "b"
+        @Expect(map.get("a").getOrThrow(), "b")
+    }
+
+    @TestCase
+    func test_JSHashMapEx_operatorGet_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                let _ = map["a"]
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
+    }
+
+    @TestCase
+    func test_JSHashMapEx_operatorSet_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(jsContext)
+        let msg = spawn {
+            try {
+                map["a"] = "c"
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"), true)
     }
 
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
@@ -2791,5 +3079,225 @@ class TestIDLType {
         map.set("a", "b")
         map.clear()
         @Expect(withException<Exception> { _ = map["a"] })
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSArrayEx_operatorGet_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let arr = JSArrayEx<String>("x")
+        let _ = arr.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = arr[0]
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSArrayEx_operatorSet_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let arr = JSArrayEx<String>("x")
+        let _ = arr.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        arr[0] = "y"
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSHashMapEx_size_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = map.size
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSHashMapEx_has_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = map.has("a")
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSHashMapEx_operatorGet_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = map["a"]
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSHashMapEx_operatorSet_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let map = JSHashMapEx<String, String>()
+        map.set("a", "b")
+        let _ = map.toJSValue(newContext)
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        map["a"] = "c"
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        }
     }
 }

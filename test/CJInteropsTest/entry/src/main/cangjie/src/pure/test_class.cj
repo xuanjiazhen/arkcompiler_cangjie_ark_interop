@@ -557,4 +557,34 @@ class TestJSClass {
             @Expect(e.code, 34300002)
         }
     }
+
+    @TestCase
+    func test_JSClass_new_arg_throwException34300002(): Unit {
+        let jsContext = getJSContext()
+        let jsClass = jsContext.clazz(
+            {
+                _: JSContext, callInfo: JSCallInfo =>
+                    throw Exception("exception inside constructor.")
+                    callInfo.thisArg
+            }
+        )
+        expectBusinessExceptionCode(34300002) {
+            let _ = jsClass.new(jsContext.number(1.0).toJSValue())
+        }
+    }
+
+    @TestCase
+    func test_JSClass_new_args_throwException34300002(): Unit {
+        let jsContext = getJSContext()
+        let jsClass = jsContext.clazz(
+            {
+                _: JSContext, callInfo: JSCallInfo =>
+                    throw Exception("exception inside constructor.")
+                    callInfo.thisArg
+            }
+        )
+        expectBusinessExceptionCode(34300002) {
+            let _ = jsClass.new([jsContext.number(1.0).toJSValue()])
+        }
+    }
 }

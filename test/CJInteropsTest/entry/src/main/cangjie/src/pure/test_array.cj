@@ -46,6 +46,54 @@ class TestArray {
         @Expect(array[4].isUndefined(), true)
     }
 
+    @TestCase
+    func test_JSArray_operatorGet_success() {
+        let jsContext = getJSContext()
+        let array = jsContext.array([jsContext.number(1.0).toJSValue()]).toJSValue().asArray()
+        let v = array[0]
+        @Expect(v.isNumber())
+        @Expect(v.toNumber(), 1.0)
+    }
+
+    @TestCase
+    func test_JSArray_operatorSet_success() {
+        let jsContext = getJSContext()
+        let array = jsContext.array().toJSValue().asArray()
+        array[0] = jsContext.string("x").toJSValue()
+        @Expect(array.size, 1)
+        @Expect(array[0].toString(), "x")
+    }
+
+    @TestCase
+    func test_JSArray_operatorGet_throwException34300001_indexOutOfRange() {
+        let jsContext = getJSContext()
+        let array = jsContext.array([jsContext.number(1.0).toJSValue()]).toJSValue().asArray()
+        expectBusinessExceptionCode(34300001) {
+            let _ = array[1]
+        }
+    }
+
+    @TestCase
+    func test_JSArray_operatorSet_throwException34300001_indexOutOfRange() {
+        let jsContext = getJSContext()
+        let array = jsContext.array().toJSValue().asArray()
+        let index = Int64(UInt32.Max) + 1
+        expectBusinessExceptionCode(34300001) {
+            array[index] = jsContext.number(1.0).toJSValue()
+        }
+    }
+
+    @TestCase
+    func test_JSArray_operatorSet_heapObject_throwException34300001_indexOutOfRange() {
+        let jsContext = getJSContext()
+        let array = jsContext.array().toJSValue().asArray()
+        let index = Int64(UInt32.Max) + 1
+        let obj = jsContext.object().toJSValue().asObject()
+        expectBusinessExceptionCode(34300001) {
+            array[index] = obj
+        }
+    }
+
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
     func test_JSArray_operatorGet_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
@@ -94,6 +142,158 @@ class TestArray {
             }
         }.get()
         @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSArray_size_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let array = jsContext.array([jsContext.number(1.0).toJSValue()])
+        let msg = spawn {
+            try {
+                let _ = array.size
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSArray_operatorSet_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let array = jsContext.array().toJSValue().asArray()
+        let msg = spawn {
+            try {
+                array[0] = jsContext.number(1.0).toJSValue()
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    @TestCase
+    func test_JSArray_operatorSet_heapObject_throwException34300004_threadMismatch() {
+        let jsContext = getJSContext()
+        let array = jsContext.array().toJSValue().asArray()
+        let obj = jsContext.object().toJSValue().asObject()
+        let msg = spawn {
+            try {
+                array[0] = obj
+                "NO_EXCEPTION"
+            } catch (e: BusinessException) {
+                e.message.toString()
+            }
+        }.get()
+        @Expect(msg.contains("Thread mismatch"))
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSArray_size_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let array = newContext.array([newContext.number(1.0).toJSValue()])
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        let _ = array.size
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSArray_operatorSet_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let array = newContext.array()
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        array[0] = newContext.number(1.0).toJSValue()
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
+    }
+
+    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    func test_JSArray_operatorSet_heapObject_throwException34300003_referenceBeyondReach() {
+        let jsContext = getJSContext()
+        let newContext = JSRuntime().mainContext
+        let array = newContext.array()
+        let obj = newContext.object().toJSValue().asObject()
+        let monitor = Monitor()
+        let msgBox = Box(None<String>)
+        gc(heavy: true)
+        jsContext.global.callMethod(
+            "setTimeout",
+            jsContext.function {
+                context, _ =>
+                    let msg = try {
+                        array[0] = obj
+                        "NO_EXCEPTION"
+                    } catch (e: BusinessException) {
+                        e.message.toString()
+                    }
+                    synchronized(monitor) {
+                        msgBox.value = Some(msg)
+                        monitor.notify()
+                    }
+                    context.undefined().toJSValue()
+            }.toJSValue(),
+            jsContext.number(2000).toJSValue()
+        )
+        synchronized(monitor) {
+            monitor.wait(timeout: Duration.second * 6)
+        }
+        match (msgBox.value) {
+            case None => @Expect(false)
+            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        }
     }
 
     @TestCase
