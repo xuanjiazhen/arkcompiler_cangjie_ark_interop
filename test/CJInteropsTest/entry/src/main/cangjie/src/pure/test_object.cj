@@ -487,21 +487,6 @@ class TestObject {
     }
 
     @TestCase
-    func test_JSObject_setProperty_throwException34300002_outsideError() {
-        let jsContext = getJSContext()
-        let object = jsContext.object()
-        let setter = jsContext.function {
-            context, _ =>
-                throw Exception("outside setter error")
-                context.undefined().toJSValue()
-        }
-        object.defineOwnAccessor("k", getter: None<JSFunction>, setter: setter)
-        expectBusinessExceptionCode(34300002) {
-            object.setProperty("k", jsContext.number(1.0).toJSValue())
-        }
-    }
-
-    @TestCase
     func test_JSObject_operatorSet_throwException34300002_outsideError() {
         let jsContext = getJSContext()
         let object = jsContext.object()

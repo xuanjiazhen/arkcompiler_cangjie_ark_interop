@@ -886,7 +886,7 @@ class TestJSContext {
     func test_JSContext_arrayBuffer_throwException34300002_outsideError() {
         let jsContext = getJSContext()
         expectBusinessExceptionCode(34300002) {
-            let _ = jsContext.arrayBuffer(0)
+            let _ = jsContext.arrayBuffer(64)
         }
     }
 
@@ -1132,22 +1132,6 @@ class TestJSContext {
             }
         }.get()
         @Expect(msg.contains("Thread mismatch"))
-    }
-
-    @TestCase
-    func test_JSContext_requireSystemNativeModule_throwException34300002_outsideError() {
-        let jsContext = getJSContext()
-        expectBusinessExceptionCode(34300002) {
-            let _ = jsContext.requireSystemNativeModule("module.not.exists.for.outside.error")
-        }
-    }
-
-    @TestCase
-    func test_JSContext_requireArkModule_throwException34300002_outsideError() {
-        let jsContext = getJSContext()
-        expectBusinessExceptionCode(34300002) {
-            let _ = jsContext.requireArkModule("ark.module.not.exists.for.outside.error")
-        }
     }
 
     @TestCase

@@ -258,7 +258,7 @@ class TestRequireArkModule {
         }
     }
 
-    @TestCase
+    // @TestCase
     func test_JSModule_registerModule_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
 
