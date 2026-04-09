@@ -162,6 +162,19 @@ func checkRetType(funcDecl: FuncDecl) {
     }
 }
 
+// varType be
+func checkVarType(varDecl: VarDecl) {
+    if (try {
+        varDecl.declType
+        false
+    } catch (_) {
+        true
+    }) {
+        IDLUtil.diagReportTEAndThrow(Tokens(varDecl.identifier),
+            "The type of the variable cannot be omitted within the `Interop` macro scope.")
+    }
+}
+
 // no super type
 func checkSuperType(interfaceDecl: InterfaceDecl) {
     if (interfaceDecl.superTypes.size != 0) {
@@ -264,6 +277,7 @@ func checkClassFunc(funcDecl: FuncDecl) {
 // check class fields
 func checkClassVar(varDecl: VarDecl) {
     checkModifierBePublic(varDecl)
+    checkVarType(varDecl)
 }
 
 // check main constructor
@@ -316,6 +330,11 @@ func checkEnumConstructors(enumDecl: EnumDecl) {
                 "Enum parameterized constructors are not supported within the `Interop` macro scope.")
         }
     }
+}
+
+func checkVar(varDecl: VarDecl) {
+    checkModifierBePublic(varDecl)
+    checkVarType(varDecl)
 }
 
 /*
@@ -542,7 +561,7 @@ class IDLCustomTypeWL {
                     tokenStr += (fileTokens[i].value + "\n")
                 }
 
-                let classMDArr = Regex(##"^@\s*Interop\s*\[\s*ArkTS\s*\]\s*public\s*(class|interface|enum)\s*(\w+)$"##,
+                let classMDArr = Regex(##"^@\s*Interop\s*\[\s*ArkTS\s*\]\s*public\s*(class|interface|enum|const|let|var|func)\s*(\w+)$"##,
                     [MultiLine]).findAll(tokenStr, group: true)
                 for (md in classMDArr) {
                     whitelistSet.add(md.matchString(2))
