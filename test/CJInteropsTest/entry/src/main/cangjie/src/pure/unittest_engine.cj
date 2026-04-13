@@ -82,6 +82,16 @@ func expectBusinessExceptionCode(expected: Int32, callback: () -> Unit) {
     @Expect(ok)
 }
 
+func expectBusinessExceptionMsg(expected: String, callback: () -> Unit) {
+    let msg = try {
+        callback()
+        "NO_EXCEPTION"
+    } catch (e: BusinessException) {
+        e.msg.toString()
+    }
+    @Expect(msg == expected)
+}
+
 private enum Result<T, E> {
     | Ok(T)
     | Err(E)
