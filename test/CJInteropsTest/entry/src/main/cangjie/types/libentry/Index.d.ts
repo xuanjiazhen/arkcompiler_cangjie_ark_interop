@@ -260,3 +260,5 @@ export function test_mixedStack_asClass_throwException34300005(callback: (c: ()=
 export function test_mixedStack_nestedCall_propagateArkTsError_success(callback: (c: (c: ()=>void)=>void)=>void): void
 export function test_mixedStack_caughtException_identityMismatch_success(callback: (c: ()=>void)=>void): boolean
 export function test_mixedStack_stackTrace_noEtsFrame_success(callback: (c: ()=>void)=>void): boolean
+
+export function test_JSArrayBuffer_toArrayBufferJSValue_throwException34300002(array: Uint8Array): void

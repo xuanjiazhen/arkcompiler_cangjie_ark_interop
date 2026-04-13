@@ -17,6 +17,12 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import * as lib from "libentry.so"
 
+class CustomBuffer extends ArrayBuffer {
+  slice(begin: number, end?: number): ArrayBuffer {
+    throw new Error("xxx")
+  }
+}
+
 export default function arrayTest() {
   describe('TestArray', () => {
     it('test00_operator_get_jsArrayRangeMisMatch', 0, () => {
@@ -59,6 +65,16 @@ export default function arrayTest() {
       let array = lib.test_JSArray_OperatorSetJSValue_success_2();
       expect(array[0]).assertEqual(114.514);
       expect(array[1]).assertEqual(false);
+    })
+
+    it('test_JSArrayBuffer_toArrayBufferJSValue_throwException34300002', 0, () => {
+      let buffer = new CustomBuffer(10)
+      let typedArr = new Uint8Array(buffer)
+      try {
+        lib.test_JSArrayBuffer_toArrayBufferJSValue_throwException34300002(typedArr);
+      } catch (e) {
+        console.log(e)
+      }
     })
   })
 }
