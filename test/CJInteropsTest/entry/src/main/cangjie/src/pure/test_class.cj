@@ -554,7 +554,7 @@ class TestJSClass {
             let _ = jsClass.new()
             @Assert(false)
         } catch (e: BusinessException) {
-            @Expect(e.code, 34300002)
+            @Expect(e.toString().contains("exception inside constructor."))
         }
     }
 
@@ -568,8 +568,11 @@ class TestJSClass {
                     callInfo.thisArg
             }
         )
-        expectBusinessExceptionCode(34300002) {
+        try {
             let _ = jsClass.new(jsContext.number(1.0).toJSValue())
+            @Assert(false)
+        } catch (e: BusinessException) {
+            @Expect(e.toString().contains("exception inside constructor."))
         }
     }
 
@@ -583,8 +586,11 @@ class TestJSClass {
                     callInfo.thisArg
             }
         )
-        expectBusinessExceptionCode(34300002) {
+        try {
             let _ = jsClass.new([jsContext.number(1.0).toJSValue()])
+            @Assert(false)
+        } catch (e: BusinessException) {
+            @Expect(e.toString().contains("exception inside constructor."))
         }
     }
 }
