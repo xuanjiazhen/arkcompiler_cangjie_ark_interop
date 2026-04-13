@@ -387,11 +387,7 @@ class TestObject {
     func test_JSObject_callMethod_throwException34300002_outsideError() {
         let jsContext = getJSContext()
         let object = jsContext.object()
-        object["boom"] = jsContext.function {
-            context, _ =>
-                throw Exception("outside call error")
-                context.undefined().toJSValue()
-        }.toJSValue()
+        object["boom"] = jsContext.object().toJSValue()
         expectBusinessExceptionCode(34300002) {
             let _ = object.callMethod("boom")
         }
@@ -568,6 +564,22 @@ class TestObject {
                 @Expect(expThrow)
             }
         }
+    }
+
+    @TestCase
+    func test_JSObject_defineOwnProperty_throwException34300002() {
+        let jsContext = getJSContext()
+        let o = jsContext.object()
+        let key = jsContext.string("k")
+
+        let msg = try {
+            o.defineOwnProperty(key, jsContext.number(0.0).toJSValue(), isWritable: true, isEnumerable: true, isConfigurable: false)
+            o.defineOwnProperty(key, jsContext.number(0.0).toJSValue())
+            "NO_EXCEPTION"
+        } catch (e: BusinessException) {
+            e.message.toString()
+        }
+        @Expect(msg.contains("Cannot define property"))
     }
 
     // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)

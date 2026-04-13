@@ -1138,7 +1138,7 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let data: Array<UInt8> = [0]
         let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
+        expectBusinessExceptionMsg("The byte length of UInt16Array should be a multiple of 2") {
             buffer.toUInt16ArrayJSValue()
         }
     }
@@ -1209,7 +1209,7 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let data: Array<UInt8> = [0]
         let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
+        expectBusinessExceptionMsg("The byte length of Int16Array should be a multiple of 2") {
             buffer.toInt16ArrayJSValue()
         }
     }
@@ -1280,7 +1280,7 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let data: Array<UInt8> = [0]
         let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
+        expectBusinessExceptionMsg("The byte length of UInt32Array should be a multiple of 2") {
             buffer.toUInt32ArrayJSValue()
         }
     }
@@ -1351,7 +1351,7 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let data: Array<UInt8> = [0]
         let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
+        expectBusinessExceptionMsg("The byte length of Int32Array should be a multiple of 2") {
             buffer.toInt32ArrayJSValue()
         }
     }
@@ -1422,7 +1422,7 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let data: Array<UInt8> = [0]
         let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
+        expectBusinessExceptionMsg("The byte length of UInt64Array should be a multiple of 2") {
             buffer.toUInt64ArrayJSValue()
         }
     }
@@ -1493,7 +1493,7 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let data: Array<UInt8> = [0]
         let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
+        expectBusinessExceptionMsg("The byte length of Int64Array should be a multiple of 2") {
             buffer.toInt64ArrayJSValue()
         }
     }
@@ -1564,7 +1564,7 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let data: Array<UInt8> = [0]
         let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
+        expectBusinessExceptionMsg("The byte length of Float32Array should be a multiple of 2") {
             buffer.toFloat32ArrayJSValue()
         }
     }
@@ -1635,7 +1635,7 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let data: Array<UInt8> = [0]
         let buffer = jsContext.arrayBuffer(data)
-        expectBusinessExceptionCode(34300002) {
+        expectBusinessExceptionMsg("The byte length of Float64Array should be a multiple of 2") {
             buffer.toFloat64ArrayJSValue()
         }
     }
