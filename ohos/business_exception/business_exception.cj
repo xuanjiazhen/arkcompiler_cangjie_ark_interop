@@ -93,7 +93,7 @@ public class BusinessException <: Exception {
     }
 
     protected init(code: Int32, exp: Exception, stack: Array<String>) {
-        super("")
+        super(exp.message)
         this.code = code
         this.errData = if (let Some(business) <- (exp as BusinessException)) {
             business.errData

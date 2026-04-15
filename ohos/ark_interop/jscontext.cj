@@ -19,6 +19,7 @@ package ohos.ark_interop
 
 import std.sync.{Mutex, AtomicInt8}
 import std.collection.*
+import std.convert.Parsable
 
 @C
 struct JSHClassPrivate {}
@@ -167,6 +168,7 @@ public class JSContext {
     var constants_: ?JSConstants = None
     let void_: JSValue_
     private let scopes_ = ArrayList<Scope>()
+    var pendingJSError: ?JSObject = None
 
     /**
      * @throws { Exception } - Create JSContext failed, env is null.
@@ -934,28 +936,43 @@ public class JSContext {
             }
             JSObject(this, value_)
         }
-        let rawMsg = error[constants.builtinText.message]
-        let message = "[${error.getClassName()}]" + if (rawMsg.isString()) {
+        rethrowJSError(error)
+    }
+
+    func rethrowJSError(errObJ: JSObject): Unit {
+        let errName = errObJ.getClassName()
+        let rawMsg = errObJ[constants.builtinText.message]
+        let errMsg = if (rawMsg.isString()) {
             rawMsg.toString()
         } else {
-            "undefined"
+            "[unknown]"
         }
-        let rawStack = error[constants.builtinText.stack]
-        let stack: Array<String> = if (rawStack.isArray()) {
-            let jStack = rawStack.asArray()
-            Array<String>(jStack.size) { idx =>
-                jStack[idx].toString()
-            }
+        let rawStack = errObJ[constants.builtinText.stack]
+        let errStack: Array<String> = if (rawStack.isString()) {
+            constants.parseArkStack(rawStack.toString())
         } else {
             []
         }
-        let rawCode = error[constants.builtinText.code]
-        let code = if (rawCode.isNumber()) {
+        let rawCode = errObJ[constants.builtinText.code]
+        let errCode: Int32 = if (rawCode.isNumber()) {
             Int32(rawCode.toNumber())
+        } else if (rawCode.isString()) {
+            let code = Int32.tryParse(rawCode.toString())
+            if (let Some(v) <- code) {
+                v
+            } else {
+                0
+            }
         } else {
-            Int32(0)
+            0
         }
-        throw jsCodeError(code, message, stack)
+        let errDataValue = errObJ["data"]
+        let errData: ?Any = if (errDataValue.isObject()) {
+            errDataValue.asObject()
+        } else {
+            None
+        }
+        throw BusinessException(errName, errCode, errMsg, errStack, errData)
     }
 
     private let cachedKits = HashMap<String, JSObject>()
