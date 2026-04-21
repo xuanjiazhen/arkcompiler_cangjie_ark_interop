@@ -1,15 +1,22 @@
 # ArkTS-Cangjie 互操作
 
-**版本**: 2.5.0
+**版本**: 2.6.0
 **状态**: 草稿
-**最后更新**: 2026-04-12
+**最后更新**: 2026-04-21
 
 为了兼容 HarmonyOS 应用生态，仓颉支持与 ArkTS 的双向互操作。仓颉可以将函数、类、接口等声明导出给 ArkTS 调用，也可以在仓颉侧声明并调用 ArkTS 模块中的函数和类型。
 
-当前ArkTS调用仓颉，使用仓颉元编程能力，互操作声明宏进行修饰映射，仓颉调用ArkTS，通过HLE工具单独额外生成胶水代码（不在默认的编译过程中），这些场景存在几个问题：1、需要在宏展开扫描除修饰的声明外的其他文件代码，用来实现相关检查功能，低效并且影响IDE如LSP正常的代码提示等功能 2、部分高阶能力，比如泛型、重载、继承、跨包场景的声明校验等当前宏方案实现难度高或无法做到，需要更强的编译器能力 3、仓颉调用ArkTS场景缺少完整可用的端到端流程，HLE用户需要额外的步骤处理，且仅作.d.ts 内容到互操作API胶水的代码的转换，并无实际的强类型以及编译期规格检查保障
+当前方案存在两条历史路径：
 
+1. ArkTS 调用仓颉依赖互操作声明宏，编译期需要额外扫描被修饰声明之外的上下文，导致 IDE/LSP 体验、增量编译效率和约束检查能力都受到限制。
+2. 仓颉调用 ArkTS 依赖 HLE 工具额外生成胶水代码，不属于默认编译闭环，开发者需要手工维护生成步骤、模块声明与运行时代码之间的一致性。
+3. 现有路径对泛型、重载、继承、跨包命名冲突、线程语义和完整类型检查的支持不足，很多规则只能依赖约定，不能由编译器统一保证。
 
-修改建议：细化一下上述内容，并给出具体的例子作为背景章节导入；第一点找一下原始诉求文件
+典型问题可概括为三个场景：
+
+- 互操作声明宏只能生成编译器拥有的 `.d.ts` 文件，用户若直接在生成文件中增量修改，会在下次构建时被覆盖；
+- 合法的仓颉重载如 `func f(a: Int32)` 与 `func f(a: Float64)` 在 ArkTS 侧都退化为 `f(a: number)`，现有宏方案难以稳定做冲突检测和规避；
+- HLE 只负责把声明转换成胶水代码，缺少一套与类型系统联动的端到端编译规格，开发者仍需自行承担模块路径、类型兼容性和线程调用约束的正确性。
 
 本文档分为两部分：第一部分定义仓颉类型导出到 ArkTS 的规则（ArkTS 调用仓颉），第二部分定义仓颉调用 ArkTS 的规则（仓颉调用 ArkTS）。两部分共用 `@ArkTS` 注解体系，与仓颉-C 互操作中 `@C` + `foreign` 的设计思路保持一致。
 
@@ -37,9 +44,13 @@
 | 全局变量（let/var/const） | 支持 | `declare const` / `declare let` | `let`/`const` 为只读，`var` 为可读写 |
 | 泛型函数/类/接口 | 支持 | 泛型声明 | 类型参数自动蕴含 `JSType` 约束 |
 | `foreign` 声明 | 支持 | — | 用于仓颉调用 ArkTS，见第二部分 |
-| 其他顶级声明（`type` / `extend` / `macro` / `package` / `import`） | 不支持 | — | `type` / `extend` / `package` 暂时没有诉求支持复杂，其他没有使用场景 |
+| 其他顶级声明（`type` / `extend` / `macro` / `package` / `import`） | 不支持 | — | 当前版本暂不定义对应的稳定导出语义 |
 
-修改建议： 区分现状和本期修改调整
+当前现状与本期调整区分如下：
+
+- 现状：导出能力主要依赖声明宏与外围工具拼装，规则分散在脚本、宏实现和人工约定中。
+- 本期调整：将 `@ArkTS` 作为编译器内建注解统一建模，在一个规格中同时定义语义约束、胶水生成和 ArkTS 声明生成规则。
+- 本期目标：优先把“可检查、可生成、可联调”的主路径定清楚；不在本版引入新的用户自定义构建步骤或手工修改生成产物的工作流。
 
 详细内容见下面具体章节介绍。
 
@@ -64,14 +75,10 @@ public class Calculator {
 }
 ```
 
-问题导入：
-1、用户只使用互操作声明宏，.d.ts只有自动生成的内容，用户增量修改默认全覆盖
-2、用户混合api手动修改.d.ts，修改代码后，默认编译后行为？
-
-编译后自动生成 TypeScript 声明文件：
+编译后自动生成 ArkTS 声明文件：
 
 ```typescript
-// auto generate--！don't modify！--
+// auto generate--! don't modify !--
 export namespace mathutils {
     function add(a: number, b: number): number
 
@@ -79,14 +86,10 @@ export namespace mathutils {
         multiply(a: number, b: number): number
     }
 }
-// auto generate--！don't modify！--
-
-//  user define
-
-//  user define
+// auto generate--! don't modify !--
 ```
 
-修改建议：
+生成文件由编译器完全托管，默认视为只读产物。若业务需要在 ArkTS 侧补充手写封装，应新增独立的 ArkTS façade 文件引用生成声明，而不是直接修改生成文件。
 
 ArkTS 侧导入并调用：
 
@@ -101,7 +104,7 @@ let product = calc.multiply(3, 4)
 ### 1.3 设计原则
 
 1. **安全**：尽可能在编译期检查拦截有运行时风险的行为，同时编译时生成 `.d.ts` 类型声明供 ArkTS 编译器做静态检查
-2. **统一**：提供@ArkTS注解，尽可能与当前仓颉整体多语言互操作设计风格保持一致，优先复用其他互操作机制已有的语法语义
+2. **统一**：提供 `@ArkTS` 注解，尽可能与当前仓颉整体多语言互操作设计风格保持一致，优先复用其他互操作机制已有的语法语义
 
 ### 1.4 术语定义
 
@@ -129,14 +132,18 @@ InteropAnnotation:
 
 InteropOption:
     'Invisible'
+    'name:' StringLiteral
     'module:' StringLiteral
 ```
 
-修改建议：考虑arkts1.2是否通过version区分
-修改建议：单独介绍大的兼容性策略：@Interop[ArkTS] ->@ArkTS   
-
 
 备注：`async` 选项在本版本方案中废弃，不再作为 `InteropOption` 出现。异步导出由返回类型自动推导：返回 `Future<T>` 的导出函数自动生成 `Promise<T'>` 声明（见 13.2 节）。
+
+兼容性策略如下：
+
+1. 规范主写法统一为 `@ArkTS`，本期不再按 ArkTS 版本拆分不同注解名字。
+2. 历史设计或旧代码中的 `@Interop[ArkTS]` 视为迁移来源，而非新的规范入口；实现若保留兼容解析，应给出迁移提示并统一收敛到 `@ArkTS` 语义。
+3. `name` 选项用于显式指定导出到 ArkTS 的名称；`module` 仅用于第二部分的 `foreign` 绑定，不参与第一部分的导出命名。
 
 基本形式用于标记导出声明：
 
@@ -198,7 +205,7 @@ extend String { ... }        // 编译错误：extend 声明不支持 @ArkTS
 | `struct` | 构造函数、方法、属性 |
 | `enum` | 枚举成员 |
 
-`Invisible` 的一个重要用途是**解决函数重载冲突**：当仓颉侧多个重载方法映射到 ArkTS 后参数签名相同时（详见 6.5 节"函数重载"），开发者可使用 `@ArkTS[Invisible]` 隐藏产生冲突的重载，保留需要导出的版本。
+`Invisible` 的一个重要用途是**解决函数重载冲突**：当仓颉侧多个重载方法映射到 ArkTS 后参数签名相同时（见 6.5 节“函数重载”），开发者可使用 `@ArkTS[Invisible]` 隐藏产生冲突的重载，保留需要导出的版本。
 
 ```cangjie
 @ArkTS
@@ -218,10 +225,6 @@ public class Converter {
 
 被 `@ArkTS[Invisible]` 标记的成员不参与 ArkTS 导出，编译器不对其执行导出相关的类型映射检查。该机制可用于保留仓颉侧专用成员（包括无法映射到 ArkTS 的类型）。
 
-修改建议：@ArkTS[Invisible] 中Invisible字符串太长
-
-修改建议：所有详见修改为文章内跳转
-
 #### module
 
 `module` 选项用于第二部分的 `foreign` 声明，指定目标 ArkTS 模块路径。它不参与第一部分的导出命名，而是控制仓颉侧调用 ArkTS 时的模块绑定行为。
@@ -231,7 +234,7 @@ public class Converter {
 foreign func generateRandomUUID(): String
 ```
 
-`module` 支持系统 API 模块、Kit 模块、HAR/HSP 包、ohpm 三方包与相对路径模块；路径类别与校验规则详见 15.3 节。
+`module` 支持系统 API 模块、Kit 模块、HAR/HSP 包、ohpm 三方包与相对路径模块；路径类别与校验规则见 15.3 节。
 
 ### 2.5 编译约束（实现内容）
 
@@ -243,17 +246,11 @@ foreign func generateRandomUUID(): String
 - 用户定义类型：标记了 `@ArkTS` 的 `class`、`interface`、`struct`、`enum`
 - 复合类型：由可导出类型构成的 `Array<T>`、元组、函数类型
 
-1. **可见性检查**：被标记的声明必须为 `public`，否则编译报错。
-
-修改建议：删除，可见性检查不需要限制，仓颉声明的可见性不影响ArkTS侧访问，按需使用；之前宏为什么限制public？附录补充注册机制说明；可能需要单独描述一下：ArkTS可以访问仓颉私有内容
-
+1. **导出注册检查**：声明或成员一旦进入 `@ArkTS` 导出面，ArkTS 侧即可访问该导出符号；仓颉源码中的 `public`/`private`/`internal` 等可见性仅约束仓颉侧访问，不再额外作为 ArkTS 导出前置条件。若成员不希望暴露，应显式使用 `@ArkTS[Invisible]`。
 2. **声明种类检查**：仅 2.2 节列出的声明类型允许使用 `@ArkTS`；`type`、`extend`、`macro`、`package`、`import` 等非导出声明类型直接报错。
 3. **签名可导出性检查**：函数参数/返回值、属性类型、全局变量类型等跨边界暴露的类型必须满足可导出类型约束；详细规则分别见第 3 章及第 5～11 章对应子节。
 4. **依赖检查**：若导出声明引用了用户定义类型，则被引用类型也必须可导出；否则编译报错。
-5. **导出名称一致性检查**：生成到同一 ArkTS 模块中的导出名字只能有一个；重载冲突、`name` 选项与成员级命名规则见 6.5 节、7 节、10 节。 
-
-修改建议：`name` 还是要保留
-
+5. **导出名称一致性检查**：生成到同一 ArkTS 模块中的导出名字只能有一个；重载冲突以及 `name` 选项的规避策略分别见 6.5 节、7 节、10 节。
 6. **忽略成员检查**：被 `Invisible` 标记的成员不参与导出检查。
 
 函数默认值、位置传参、操作符重载、类继承、接口继承、泛型约束等声明级细则在对应章节展开说明，不在本节重复列举。
@@ -265,13 +262,9 @@ foreign func generateRandomUUID(): String
 
 1. **单包模块**：一个仓颉包编译为一个 `.so` 文件，对应一个 ArkTS 模块。ArkTS 通过 `import { ... } from 'lib{包名}.so'` 引入。
 2. **多包合并模块**：多个包通过 `combined` 选项合并为单一 `.so`，ArkTS 通过一次 `import` 引入所有包的导出。
-3. **包的公开性**：仅 `public` 包中标记了 `@ArkTS` 的声明会被导出。  
-
-修改意见：包的可见性跟前面声明的可见性相同考虑
+3. **包的导出性**：包是否出现在导出结果中，仅取决于该包是否产生产物并包含有效的 `@ArkTS` 声明；不再额外引入“仅 `public` 包可导出”的独立限制。  
 
 编译时，编译器根据 `@ArkTS` 标记的声明自动生成 ArkTS 声明文件。按仓颉包组织，每个包生成独立的 `.d.ts` 文件至 `types/lib{包名}/Index.d.ts`。 
-
-修改建议：所有 TypeScript 替换为 ArkTS
 
 注意：当 `cjpm.toml` 中配置了 `output-type = "shared"` 且启用 `combined` 选项时，一个仓颉模块的所有包会编译为单一 `.so` 文件。此时编译器将所有包的导出声明合并到一个 `.d.ts` 文件中。
 
@@ -307,12 +300,8 @@ libohos.ark_interop1.so    .d.ts
 import { ohos as ohos1 } from 'libohos.ark_interop1.so'
 import { ohos } from 'libohos.ark_interop.so'
 
-问题导入：
-1、ArkTS 导入的时候 只能访问其中一个
-2、导入两遍
 
-
-修改建议：仓颉包名的标识符和arkTS的包名标识符需要确认是否存在冲突？
+若多个动态库导出的顶层包名相同，ArkTS 侧应通过 `import alias` 区分不同导入项；包名冲突不会在链接阶段自动合并为同一命名空间。
 
 
 ---
@@ -325,39 +314,19 @@ import { ohos } from 'libohos.ark_interop.so'
 
 1. 基础值类型以拷贝语义传递，两侧数据独立；
 2. 对象类型以引用语义传递，两侧共享同一实例；
-3. 仓颉值类型（struct）跨语言边界时进行深拷贝。
-
-### 3.1 基础类型映射
-
-| 仓颉类型 | ArkTS 类型 | 传递语义 | 备注 |
-|---------|-----------|---------|------|
-| `Int8` | `number` | 拷贝 | ArkTS→仓颉时做范围检查 [-128, 127] |
-| `Int16` | `number` | 拷贝 | ArkTS→仓颉时做范围检查 [-32768, 32767] |
-| `Int32` | `number` | 拷贝 | 直接映射，无精度损失 |
-| `Int64` | `number` | 拷贝 | 超出 JS 安全整数范围时抛异常（见 4.1） |
-| `UInt8` | `number` | 拷贝 | ArkTS→仓颉时做范围检查 [0, 255] |
-| `UInt16` | `number` | 拷贝 | ArkTS→仓颉时做范围检查 [0, 65535] |
-| `UInt32` | `number` | 拷贝 | ArkTS→仓颉时做范围检查 [0, 2^32-1] |
-| `UInt64` | `number` | 拷贝 | 超出 JS 安全整数范围时抛异常（见 4.1） |
-| `Float16` | `number` | 拷贝 | ArkTS→仓颉时可能精度损失 |
-| `Float32` | `number` | 拷贝 | ArkTS→仓颉时可能精度损失 |
-| `Float64` | `number` | 拷贝 | 直接映射 |
-| `Bool` | `boolean` | 拷贝 | 直接映射 |
-| `Unit` | `void` / `undefined` | — | 作为返回类型映射为 `void`，作为值映射为 `undefined` |
-| `Rune` | `number` | 拷贝 | Rune 存储的是 Unicode 码点数值，映射为 `number`。ArkTS→仓颉方向进行有效性校验：值必须为非负整数且为合法 Unicode 码点（≤ U+10FFFF，排除代理对区间 U+D800–U+DFFF），否则抛出 `TYPE_MISMATCH` 异常 |
+| `Rune` | `number` | 拷贝 | Rune 存储的是 Unicode 码点数值，ArkTS 侧表现为 `number`。建议业务层优先显式按 `Int32` 码点值理解和处理；ArkTS→仓颉方向仍进行合法 Unicode 码点校验（≤ U+10FFFF，排除代理对区间 U+D800–U+DFFF），否则抛出 `TYPE_MISMATCH` 异常 |
 | `String` | `string` | 拷贝 | 每次传递进行 UTF-8/UTF-16 编码转换 |
 | `Option<T>` | `T \| undefined` | 同 T | `Some(v)` → `v`，`None` → `undefined` |
-
-修改建议：Rune 用户自行转成Int32，映射到 number
-
+1. 入参方向：ArkTS 的 `undefined` 统一映射为仓颉侧 `None`，其余值映射为 `Some(v)`。
+2. 返回方向：仓颉侧 `Some(v)` 映射为 ArkTS 值 `v`，`None` 映射为 `undefined`。
+3. 不支持嵌套 `Option`：`Option<Option<T>>` 会导致编译错误，因为 ArkTS 侧无法区分 `Some(None)` 与 `None`。
 ### 3.2 复合类型映射
 
 | 仓颉类型 | ArkTS 类型 | 传递语义 | 备注 |
 |---------|-----------|---------|------|
 | `Array<T>` | `Array<T'>` | 拷贝 | T 须满足类型映射规则，逐元素转换 |
-| `Array<Byte>` | `ArrayBuffer` | 拷贝 | 二进制数据，特殊映射。`Byte` 是 `UInt8` 的类型别名，因此 `Array<Byte>` 与 `Array<UInt8>` 在互操作映射中等价，均可映射为 `ArrayBuffer` |
 | `(T1, ..., Tn) -> R` | `(a1: T1, ..., an: Tn) => R` | 引用 | 回调函数 |
-| `(T1, T2)` | `[T1, T2]` | 拷贝 | 元组映射为 TypeScript 元组 |
+| `(T1, T2)` | `[T1, T2]` | 拷贝 | 元组映射为 ArkTS 元组 |
 
 > **互操作辅助类型：** `JSStringEx`、`JSArrayEx<T>`、`JSHashMapEx<K,V>` 等是 `ohos.ark_interop` 包提供的互操作专用类型，以引用语义和延迟转换方式桥接 ArkTS 对象。这些类型的详细介绍见第二部分的类型映射（第 16 章）。
 
@@ -486,29 +455,12 @@ public func findUser(id: Int32): Option<String> {
 export function findUser(id: number): string | undefined
 ```
 
-修改建议：支持嵌套参考如下处理,入参和返回映射对应关系讲清楚
-
-```cangjie
-@ArkTS
-public func findUser(id: ?Option<String>):Int32  {
-    // ...
-    Some(Some(String))   // string
-    Some(None)           // undefined
-    None                 // undefined
-
-}
-```
-```typescript
-export function findUser(id: string | undefined): number
-```
-if (id == undefined){
-    None
-}
-
 
 需要注意的是：
 
-1. 不支持嵌套 `Option`：`Option<Option<T>>` 会导致编译错误，因为 ArkTS 侧无法区分 `Some(None)` 与 `None`。
+1. 入参方向：ArkTS 的 `undefined` 统一映射为仓颉侧 `None`，其余值映射为 `Some(v)`。
+2. 返回方向：仓颉侧 `Some(v)` 映射为 ArkTS 值 `v`，`None` 映射为 `undefined`。
+3. 不支持嵌套 `Option`：`Option<Option<T>>` 会导致编译错误，因为 ArkTS 侧无法区分 `Some(None)` 与 `None`。
 
 ArkTS 中的 `T | undefined` 是联合类型，强调“这个值要么是 `T`，要么未提供”；它不保留仓颉 `Option` 的构造器信息，也没有 `Some` / `None` 的显式层级。因此：
 
@@ -548,19 +500,16 @@ public func getNames(): Array<String> {
 declare function getNames(): string[]
 ```
 
-在 ArkTS/TypeScript 类型系统中，`string[]` 与 `Array<string>` 是等价写法，均表示元素类型为 `string` 的可变数组。本文档默认使用 `T[]` 记法展示导出结果，因为它更紧凑、在一维和多维数组场景中更直观；需要突出泛型嵌套关系时，也可等价写作 `Array<T>`。
+在 ArkTS 类型系统中，`string[]` 与 `Array<string>` 是等价写法，均表示元素类型为 `string` 的可变数组。本文档默认使用 `T[]` 记法展示导出结果，因为它更紧凑、在一维和多维数组场景中更直观；需要突出泛型嵌套关系时，也可等价写作 `Array<T>`。
 
 `Array<T>` 导出的限制：
 
 1. 元素类型 `T` 必须满足类型映射规则（见第 3 章），否则编译报错。
 2. 跨语言传递时进行全量拷贝——仓颉→ArkTS 时逐元素转换为 ArkTS `Array`，ArkTS→仓颉时逐元素转换回仓颉 `Array`。
-3. `Array<Byte>` 作为特殊情况映射为 ArkTS 的 `ArrayBuffer`，适用于二进制数据传递。
+3. `Byte` 是 `UInt8` 的类型别名，因此 `Array<Byte>` 按普通数组规则导出为 `number[]`，与 `Array<UInt8>` 保持一致。
+4. 本版本不把 `ArrayBuffer` 作为 `Array<Byte>` 的直出映射。若业务需要高效二进制对象桥接，后续将通过专用互操作类型单独定义，而不是复用普通数组语义。
 
-修改建议：ArrayBuffer.ts  vs JSArrayBuffer； Array<Byte>的映射移除
-Array<Byte> ->  number[]
-ArrayBUffer 数据的操作效率问题
-
-> 对于大数组场景，全量拷贝可能带来性能开销。`ohos.ark_interop` 包提供了 `JSArrayEx<T>` 互操作辅助类型，以引用语义和延迟转换方式桥接 ArkTS 数组，详见第二部分第 16 章。
+> 对于大数组场景，全量拷贝可能带来性能开销。`ohos.ark_interop` 包提供了 `JSArrayEx<T>` 互操作辅助类型，以引用语义和延迟转换方式桥接 ArkTS 数组，见第二部分第 16 章。
 
 与 `JSString` 类似，`JSArrayEx<T>` 用于保留 ArkTS 原始数组引用，避免立即执行整数组拷贝：
 
@@ -581,30 +530,23 @@ public func keepNumbers(values: JSArrayEx<Int32>): JSArrayEx<Int32> {
 
 ### 5.2 Map 与 Set 类型
 
-仓颉标准库的 `HashMap<K,V>` 和 `HashSet<T>` 不直接支持导出到 ArkTS，原因包括：
+本版本在第一部分只定义 `HashMap<K,V>` 的受控桥接方案；`HashSet<T>` / `Set<T>` 的导出策略暂不纳入本期范围，避免在相等性与迭代语义尚未统一前提前冻结接口。
+
+仓颉标准库的 `HashMap<K,V>` 不直接支持导出到 ArkTS，原因包括：
 
 **HashMap 不支持的原因**：
 - 仓颉 `HashMap<K,V>` 基于 `Hashable` 和 `Equatable` 接口的值相等性进行键查找
 - ArkTS `Map<K,V>` 使用引用相等性（`===`）或自定义比较器，语义差异较大
 
-**HashSet 不支持的原因**：
-- 仓颉 `HashSet<T>` 基于 `Hashable` 和 `Equatable` 的值相等性判断元素唯一性
-- ArkTS `Set<T>` 使用引用相等性（`===`）判断元素唯一性
-- 两者在迭代顺序保证、子类型关系等方面存在不同
+即使 `HashMap<K,V>` 的类型参数本身可导出，也不能仅通过生成 `.d.ts` 将它当作普通自定义类型暴露给 ArkTS。原因在于：`.d.ts` 只能描述接口形状，无法让 ArkTS 侧直接理解仓颉标准库容器的运行时布局、哈希策略与相等性语义。若直接导出，ArkTS 侧看见的只是一个名字匹配的类型声明，实际却无法按 ArkTS `Map` 的方式安全操作该对象。因此这类容器不做“声明直出”，而统一通过 `JSHashMapEx<K,V>` 提供受控桥接。
 
-即使 `HashMap<K,V>` / `HashSet<T>` 的类型参数本身可导出，也不能仅通过生成 `.d.ts` 将它们当作普通自定义类型暴露给 ArkTS。原因在于：`.d.ts` 只能描述接口形状，无法让 ArkTS 侧直接理解仓颉标准库容器的运行时布局、哈希策略与相等性语义。若直接导出，ArkTS 侧看见的只是一个名字匹配的类型声明，实际却无法按 ArkTS `Map` / `Set` 的方式安全操作该对象。因此这类容器不做“声明直出”，而统一通过 `JSHashMapEx<K,V>`、`JSSetEx<T>` 提供受控桥接。
-
-在 ArkTS 与仓颉之间传递 Map/Set 数据时，应使用 `ohos.ark_interop` 包提供的互操作辅助类型：
+在 ArkTS 与仓颉之间传递 Map 数据时，应使用 `ohos.ark_interop` 包提供的互操作辅助类型：
 
 | 场景 | 使用类型 | 说明 |
 |------|---------|------|
 | 传递 ArkTS `Map` 到仓颉 | `JSHashMapEx<K,V>` | 引用语义，延迟转换，避免全量拷贝 |
-| 传递 ArkTS `Set` 到仓颉 | `JSSetEx<T>` | 引用语义，延迟转换 |
 
-
-修改建议：Set先不提
-
-详见第二部分第 16 章的 §16.2。
+对应的 ArkTS → 仓颉映射规则见第 16 章的 16.2 节。
 
 例：
 
@@ -614,15 +556,9 @@ public func processContacts(contacts: JSHashMapEx<String, String>): Unit {
     // 直接访问 contacts，无需转换为仓颉 HashMap
     // 性能优于先转换然后操作
 }
-
-@ArkTS
-public func filterTags(tags: JSSetEx<String>): JSSetEx<String> {
-    // 返回相同类型，供 ArkTS 侧继续处理
-    return tags
-}
 ```
 
-> **性能优化：** 对于大量元素或高频调用的场景，`JSHashMapEx` 和 `JSSetEx` 的引用语义和延迟转换可避免不必要的拷贝开销，相比先完整转换为仓颉容器后操作能显著提升性能。
+> **性能优化：** 对于大量元素或高频调用的场景，`JSHashMapEx` 的引用语义和延迟转换可避免不必要的拷贝开销，相比先完整转换为仓颉容器后操作能显著提升性能。
 
 ### 5.3 函数类型
 
@@ -688,7 +624,7 @@ declare function swap(a: number, b: number): [number, number]
 
 ### 6.1 类的导出
 
-使用 `@ArkTS` 标记需要导出的类。类本身必须为 `public`，仅 `public` 成员被导出。
+使用 `@ArkTS` 标记需要导出的类。类或成员一旦进入导出面，ArkTS 侧即可访问该符号；仓颉源码中的可见性修饰符仅约束仓颉侧访问，不再额外决定是否导出。若成员不希望暴露，应显式使用 `@ArkTS[Invisible]`。
 
 ```cangjie
 @ArkTS
@@ -720,13 +656,13 @@ declare class Person {
 
 ### 6.2 构造函数
 
-仓颉类的 `init` 构造函数映射为 ArkTS 的 `constructor`，主构造函数同理。导出类支持多个构造函数的重载导出，但需满足以下条件：
+仓颉类的 `init` 构造函数映射为 ArkTS 的 `constructor`，主构造函数同理。构造函数重载遵循一个总原则：映射到 ArkTS 后的 `constructor(...)` 签名必须保持可区分。
 
-- 各构造函数的参数列表在映射到 ArkTS 类型后必须保持可区分性（即不产生签名冲突）
-- 当多个构造函数映射后签名相同时（如 `init(a: Int32)` 和 `init(a: Float64)` 都映射为 `constructor(a: number)`），编译器报告重载冲突错误
-- 可使用 `@ArkTS[Invisible]` 隐藏冲突的构造函数
+若多个构造函数映射后签名相同（如 `init(a: Int32)` 和 `init(a: Float64)` 都映射为 `constructor(a: number)`），有以下处理策略：
 
-修改建议： 上面第一点和二三点并非并列关系，第一点时原则，2、3点是处理策略，不应该并列。其次还可以通过name属性进行改名解决也应该列出
+1. 使用 `@ArkTS[Invisible]` 隐藏不希望暴露的构造函数；
+2. 将差异化的创建路径改写为静态工厂函数，再用 `@ArkTS[name: ...]` 为工厂函数指定不同的 ArkTS 名称；
+3. 若既不隐藏也无法改写为工厂函数，则编译器直接报构造函数重载冲突错误。
 
 ```cangjie
 @ArkTS
@@ -841,7 +777,7 @@ declare class MathUtils {
 
 1. 操作符重载函数不支持导出，因为 ArkTS 不支持自定义操作符语法，无法为其生成对应的调用方式。
 2. 方法参数默认值不导出到 ArkTS；生成声明中参数均为必选。
-3. 导出类支持同名方法的重载导出，相关规则和限制详见 6.5 节"函数重载"。
+3. 导出类支持同名方法的重载导出，相关规则和限制见 6.5 节“函数重载”。
 
 ### 6.5 函数重载
 
@@ -1086,7 +1022,7 @@ ArkTS 侧继承的限制：
 | 仓颉侧不可见子类类型 | 仓颉代码中无法使用 ArkTS 子类类型 |
 | 子类新增成员仓颉不可访问 | 仓颉无法访问 ArkTS 子类新增的属性和方法 |
 | `protected` 成员不可访问 | 当前不支持跨语言 `protected` 访问 |
-| 必须调用 `super()` | TypeScript 语言规范强制派生类构造函数中必须调用 `super()`，否则 TypeScript 编译报错。编译器生成的基类 `constructor` 中包含仓颉对象的初始化逻辑 |
+| 必须调用 `super()` | ArkTS 沿用 TypeScript 的派生类构造规则，派生类构造函数中必须调用 `super()`；编译器生成的基类 `constructor` 中包含仓颉对象的初始化逻辑 |
 | 多层混合继承受限 | 当前版本不保证 ArkTS→仓颉→ArkTS 的多层混合继承链行为 |
 ---
 
@@ -1119,7 +1055,7 @@ declare interface Drawable {
 | `prop x: T` | `readonly x: T` |
 | `mut prop y: T` | `y: T`（可读写） |
 
-> **关于方法映射形式的设计说明：** 接口方法映射为箭头函数属性（`foo: (a: T) => R`），而非方法声明（`foo(a: T): R`），是为了避免 ArkTS/TypeScript 中方法声明的 `this` 绑定行为引入的语义偏差——仓颉接口方法不依赖 `this` 上下文。ArkTS 侧实现该接口时应注意：方法引用在解构或作为回调传递时，箭头函数形式的 `this` 绑定可能与方法声明形式不同。
+> **关于方法映射形式的设计说明：** 接口方法映射为箭头函数属性（`foo: (a: T) => R`），而非方法声明（`foo(a: T): R`），是为了避免 ArkTS 方法声明的 `this` 绑定行为引入语义偏差——仓颉接口方法不依赖 `this` 上下文。ArkTS 侧实现该接口时应注意：方法引用在解构或作为回调传递时，箭头函数形式的 `this` 绑定可能与方法声明形式不同。
 
 需要注意的是：
 
@@ -1163,7 +1099,7 @@ struct 的值类型成员（基础类型、其他 struct）递归深拷贝；引
 
 ## 9. 枚举（enum）
 
-仓颉的无关联数据枚举可以通过 `@ArkTS` 导出，映射为 TypeScript 的 `enum` 类型。
+仓颉的无关联数据枚举可以通过 `@ArkTS` 导出，映射为 ArkTS 的 `enum` 类型。
 
 ```cangjie
 @ArkTS
@@ -1262,9 +1198,9 @@ declare function greet(name: string): string
 
 - 所有基础数值类型：`Int8`、`Int16`、`Int32`、`Int64`、`UInt8`～`UInt64`、`Float16`、`Float32`、`Float64`
 - `Bool`、`Unit`、`String`
-- `JSStringEx`、`JSArrayEx<T>`、`JSHashMapEx<K,V>`、`JSSetEx<T>`
+- `JSStringEx`、`JSArrayEx<T>`、`JSHashMapEx<K,V>`
 - `Option<T>`（其中 T 满足 `JSInteropType`）
-- `Array<Byte>`
+- `Array<UInt8>`（`Byte` 作为 `UInt8` 别名时等价）
 - 所有 `@ArkTS` 标记的 `class`、`interface`、`struct`
 
 > **注意：**
@@ -1415,11 +1351,11 @@ declare class IntStack extends Collection<number> {
 
 ### 11.6 型变
 
-仓颉泛型类型参数默认是不变的（invariant），即 `Box<Dog>` 不是 `Box<Animal>` 的子类型，即使 `Dog <: Animal`。ArkTS/TypeScript 的泛型类型参数同样默认不变，映射后行为一致。不支持协变或逆变标注。
+仓颉泛型类型参数默认是不变的（invariant），即 `Box<Dog>` 不是 `Box<Animal>` 的子类型，即使 `Dog <: Animal`。ArkTS 的泛型类型参数同样默认不变，映射后行为一致。不支持协变或逆变标注。
 
 ### 11.7 运行时行为
 
-ArkTS/TypeScript 在运行时进行类型擦除，泛型类型信息不保留。为保证类型安全，跨语言边界传递泛型值时进行运行时类型检查：
+ArkTS 在运行时进行类型擦除，泛型类型信息不保留。为保证类型安全，跨语言边界传递泛型值时进行运行时类型检查：
 
 ArkTS 调用仓颉泛型函数时，胶水代码通过运行时信息推断类型实参并选择转换路径：
 
@@ -1437,7 +1373,7 @@ ArkTS 调用仓颉泛型函数时，胶水代码通过运行时信息推断类�
 
 **运行时类型检查机制：**
 
-由于 ArkTS/TypeScript 在运行时进行类型擦除，泛型类型参数的信息不保留。编译器在胶水代码中插入运行时类型检查逻辑，确保跨语言边界传递的值符合仓颉侧的类型约束。
+由于 ArkTS 在运行时进行类型擦除，泛型类型参数的信息不保留。编译器在胶水代码中插入运行时类型检查逻辑，确保跨语言边界传递的值符合仓颉侧的类型约束。
 
 具体检查方式：
 - **基础类型参数**：通过 `typeof` 检查（如 `typeof value === 'number'`）
@@ -2302,9 +2238,9 @@ let result = fetchData().get()
 | 整数类型 | `Int8`、`Int16`、`Int32`、`Int64`、`UInt8`、`UInt16`、`UInt32`、`UInt64` |
 | 浮点类型 | `Float16`、`Float32`、`Float64` |
 | 基础类型 | `Bool`、`Unit`、`String` |
-| 延迟转换类型 | `JSStringEx`、`JSArrayEx<T>`、`JSHashMapEx<K,V>`、`JSSetEx<T>` |
+| 延迟转换类型 | `JSStringEx`、`JSArrayEx<T>`、`JSHashMapEx<K,V>` |
 | 可选类型 | `Option<T>`（T 满足 JSInteropType） |
-| 字节数组 | `Array<Byte>` |
+| 字节数组 | `Array<UInt8>`（`Byte` 等价别名） |
 | 字符类型 | `Rune` |
 | 大整数类型 | `BigInt` |
 | 元组类型 | `(T1, T2, ..., Tn)`（各元素类型满足 JSInteropType） |
@@ -2426,6 +2362,7 @@ let result = fetchData().get()
 
 | 版本 | 日期 | 变更摘要 | 不兼容变更 |
 |------|------|----------|------------|
+| 2.6.0 | 2026-04-21 | 根据文档讨论意见重整背景章节，补齐 `name` 选项与注解兼容策略，移除 `public`/`public 包` 的额外导出限制，收敛 `Option`、数组/字节数组、Map/Set 与构造函数重载规则表述 | 无 |
 | 2.5.0 | 2026-04-12 | 红蓝对抗审视：补充类型完整性（Rune/BigInt/元组/函数类型）、增强错误处理说明、完善并发安全指导、统一术语、扩展附录对比维度 | 无 |
 | 2.4.0 | 2026-04-11 | 根据检视意见调整线程错误分类、导出约束、泛型约束说明、sealed/继承语义、module 路径规格、TypedArray 映射、foreign interface 属性映射与运行时初始化策略；审视补充 utf16string 说明、JSSetEx 约束列表、REFERENCE_BEYOND_REACH 引用完整性 | 无 |
 | 2.3.0 | 2026-03-19 | 草稿基线版本 | — |
@@ -2436,7 +2373,8 @@ let result = fetchData().get()
 
 | 日期 | 记录项 | 内容 |
 |------|--------|------|
-| 2026-04-12 | v2.5.0 变更 | 红蓝对抗审视：51 项修改应用，详见 `docs/红蓝对抗审视/` 归档 |
+| 2026-04-21 | v2.6.0 变更 | 根据文档讨论和审视意见重整设计正文，清理批注并统一导出、命名、字节数组与容器相关规则 |
+| 2026-04-12 | v2.5.0 变更 | 红蓝对抗审视：51 项修改应用，相关审视记录归档于 `docs/红蓝对抗审视/` |
 | 2026-04-11 | 分支 | `pr_266` |
 | 2026-04-11 | 基线提交 | `d63b41ee` |
 | 2026-04-11 | v2.4.0 变更 | 检视意见修订（`1fcaa3e9`） |
