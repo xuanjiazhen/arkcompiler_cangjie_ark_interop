@@ -52,33 +52,8 @@ class TestExternal {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let ext = newContext.external(MyObject())
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        ext.getData()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            ext.getData()
         }
     }
 
@@ -86,14 +61,9 @@ class TestExternal {
     func test_JSExternal_getData_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let ext = jsContext.external(MyObject())
-        let msg = spawn {
-            try {
-                ext.getData()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            ext.getData()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -111,33 +81,8 @@ class TestExternal {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let ext = newContext.external(MyObject())
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        ext.cast<MyObject>()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            ext.cast<MyObject>()
         }
     }
 
@@ -145,14 +90,9 @@ class TestExternal {
     func test_JSExternal_cast_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let ext = jsContext.external(MyObject())
-        let msg = spawn {
-            try {
-                ext.cast<MyObject>()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            ext.cast<MyObject>()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 }

@@ -76,33 +76,8 @@ class TestSymbol {
         let s = newContext.symbol(description: "sym")
         let _ = s.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = s.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = s.toJSValue(jsContext)
         }
     }
 
@@ -111,14 +86,9 @@ class TestSymbol {
         let jsContext = getJSContext()
         let s = jsContext.symbol(description: "sym")
 
-        let msg = spawn {
-            try {
-                let _ = s.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = s.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -129,33 +99,8 @@ class TestSymbol {
         let s = newContext.symbol(description: "sym")
         let _ = s.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = s.description
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = s.description
         }
     }
 
@@ -164,14 +109,9 @@ class TestSymbol {
         let jsContext = getJSContext()
         let s = jsContext.symbol(description: "sym")
 
-        let msg = spawn {
-            try {
-                let _ = s.description
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = s.description
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -180,33 +120,8 @@ class TestSymbol {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let symbol = newContext.symbol(description: "a")
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        symbol.toString()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            symbol.toString()
         }
     }
 
@@ -214,14 +129,9 @@ class TestSymbol {
     func test_JSSymbol_toString_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let symbol = jsContext.symbol(description: "a")
-        let msg = spawn {
-            try {
-                symbol.toString()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            symbol.toString()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
