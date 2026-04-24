@@ -24,19 +24,11 @@ import std.unittest.*
 
 @Test
 class TestJSClass {
-    // @TestCase
+    @TestCase
     func test_JSClass_prototype_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let c = jsContext.clazz({_, ci => ci.thisArg})
-        let _ = c.prototype
-        let msg = spawn {
-            try {
-                let _ = c.prototype
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {=> c.prototype}
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -57,33 +49,8 @@ class TestJSClass {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let clazz = newContext.clazz({_, callInfo => callInfo.thisArg})
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        clazz.new()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            clazz.new()
         }
     }
 
@@ -91,14 +58,9 @@ class TestJSClass {
     func test_JSClass_new_throwException34300004_threadMismatch(): Unit {
         let jsContext = getJSContext()
         let clazz = jsContext.clazz({_, callInfo => callInfo.thisArg})
-        let msg = spawn {
-            try {
-                clazz.new()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            clazz.new()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -119,33 +81,8 @@ class TestJSClass {
         let newContext = JSRuntime().mainContext
         let c = newContext.clazz({_, ci => ci.thisArg})
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        c.addProperty("p", newContext.number(1.0).toJSValue())
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            c.addProperty("p", newContext.number(1.0).toJSValue())
         }
     }
 
@@ -154,14 +91,9 @@ class TestJSClass {
         let jsContext = getJSContext()
         let c = jsContext.clazz({_, ci => ci.thisArg})
 
-        let msg = spawn {
-            try {
-                c.addProperty("p", jsContext.number(1.0).toJSValue())
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            c.addProperty("p", jsContext.number(1.0).toJSValue())
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -195,37 +127,12 @@ class TestJSClass {
         let newContext = JSRuntime().mainContext
         let c = newContext.clazz({_, ci => ci.thisArg})
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        c.addAccessor(
-                            "p",
-                            getter: None<JSFunction>,
-                            setter: None<JSFunction>
-                        )
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            c.addAccessor(
+                "p",
+                getter: None<JSFunction>,
+                setter: None<JSFunction>
+            )
         }
     }
 
@@ -234,18 +141,13 @@ class TestJSClass {
         let jsContext = getJSContext()
         let c = jsContext.clazz({_, ci => ci.thisArg})
 
-        let msg = spawn {
-            try {
-                c.addAccessor(
-                    "p",
-                    getter: None<JSFunction>,
-                    setter: None<JSFunction>
-                )
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            c.addAccessor(
+                "p",
+                getter: None<JSFunction>,
+                setter: None<JSFunction>
+            )
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -255,34 +157,9 @@ class TestJSClass {
         let newContext = JSRuntime().mainContext
         let c = newContext.clazz({_, ci => ci.thisArg})
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let f = newContext.function {_, __ => newContext.undefined().toJSValue()}
-                        c.addMethod("m", f)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let f = newContext.function {_, __ => newContext.undefined().toJSValue()}
+            c.addMethod("m", f)
         }
     }
 
@@ -292,14 +169,9 @@ class TestJSClass {
         let c = jsContext.clazz({_, ci => ci.thisArg})
         let f = jsContext.function {_, __ => jsContext.undefined().toJSValue()}
 
-        let msg = spawn {
-            try {
-                c.addMethod("m", f)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            c.addMethod("m", f)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
