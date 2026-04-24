@@ -69,7 +69,7 @@ class TestSymbol {
         @Expect(v.isSymbol(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSSymbol_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -92,7 +92,7 @@ class TestSymbol {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSSymbol_description_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -115,7 +115,7 @@ class TestSymbol {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSSymbol_toString_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

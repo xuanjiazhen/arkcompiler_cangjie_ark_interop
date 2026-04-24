@@ -33,7 +33,7 @@ class TestArrayBuffer {
         @Expect(buffer.byteLength, length)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_byteLength_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -63,7 +63,7 @@ class TestArrayBuffer {
         @Expect(source, received)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_readBytes_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -99,7 +99,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt8Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -134,7 +134,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toInt8Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -179,7 +179,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt16Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -224,7 +224,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toInt16Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -269,7 +269,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toInt32Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -314,7 +314,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt32Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -359,7 +359,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toFloat32Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -404,7 +404,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt64Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -449,7 +449,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toInt64Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -494,7 +494,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toFloat64Array_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -525,7 +525,7 @@ class TestArrayBuffer {
         @Expect(isInstanceOf(jsContext, result, "ArrayBuffer"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toArrayBufferJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -556,7 +556,7 @@ class TestArrayBuffer {
         @Expect(isInstanceOf(jsContext, result, "Uint8Array"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt8ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -587,7 +587,7 @@ class TestArrayBuffer {
         @Expect(isInstanceOf(jsContext, result, "Uint8ClampedArray"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt8ClampedArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -618,7 +618,7 @@ class TestArrayBuffer {
         @Expect(isInstanceOf(jsContext, result, "Int8Array"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toInt8ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -659,7 +659,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt16ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -700,7 +700,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toInt16ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -741,7 +741,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt32ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -782,7 +782,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toInt32ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -823,7 +823,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toUInt64ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -864,7 +864,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toInt64ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -905,7 +905,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toFloat32ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -946,7 +946,7 @@ class TestArrayBuffer {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayBuffer_toFloat64ArrayJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -974,7 +974,7 @@ class TestArrayBuffer {
         @Expect(v.isArrayBuffer(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHeapObject_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

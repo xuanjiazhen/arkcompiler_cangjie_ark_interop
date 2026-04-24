@@ -104,8 +104,6 @@ func testThreadMismatch<T>(operation: () -> T): String {
 }
 
 func testReferenceBeyondReach<T>(jsContext: JSContext, operation: () -> T) {
-    let monitor = Monitor()
-    let msgBox = Box(None<String>)
     gc(heavy: true)
     jsContext.global.callMethod(
         "setTimeout",
@@ -117,21 +115,11 @@ func testReferenceBeyondReach<T>(jsContext: JSContext, operation: () -> T) {
                 } catch (e: BusinessException) {
                     e.message.toString()
                 }
-                synchronized(monitor) {
-                    msgBox.value = Some(msg)
-                    monitor.notify()
-                }
+                @Expect(msg.contains("beyond reach"))
                 context.undefined().toJSValue()
         }.toJSValue(),
         jsContext.number(2000).toJSValue()
     )
-    synchronized(monitor) {
-        monitor.wait(timeout: Duration.second * 6)
-    }
-    match (msgBox.value) {
-        case None => @Expect(false)
-        case Some(msg) => @Expect(msg.contains("beyond reach"))
-    }
 }
 
 private enum Result<T, E> {

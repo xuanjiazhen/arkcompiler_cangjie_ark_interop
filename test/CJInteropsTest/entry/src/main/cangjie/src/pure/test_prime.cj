@@ -43,7 +43,7 @@ class TestPrime {
         @Expect(valueF.toBool(), false)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSBoolean_toBool_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

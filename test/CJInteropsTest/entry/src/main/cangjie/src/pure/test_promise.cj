@@ -64,7 +64,7 @@ class TestPromise {
         promiseCap.reject(jsContext.string("xxx").toJSValue())
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSPromise_then_throwException34300003_referenceBeyondReach(): Unit {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -116,7 +116,7 @@ class TestPromise {
         promiseCap.reject(jsContext.string("xxx").toJSValue())
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSPromise_catchError_throwException34300003_referenceBeyondReach(): Unit {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -174,7 +174,7 @@ class TestPromise {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSPromiseCapability_resolve_throwException34300003_referenceBeyondReach(): Unit {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -238,7 +238,7 @@ class TestPromise {
         @Expect(isMismatch, false)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSPromiseCapability_reject_throwException34300003_referenceBeyondReach(): Unit {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -292,7 +292,7 @@ class TestPromise {
         @Expect(value.isPromise())
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSPromiseCapability_toJSValue_throwException34300003_referenceBeyondReach(): Unit {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

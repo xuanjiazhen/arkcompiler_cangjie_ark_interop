@@ -32,7 +32,7 @@ class TestJSValue {
         @Expect(jsContext.boolean(true).toJSValue().isBoolean(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSBoolean_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -60,7 +60,7 @@ class TestJSValue {
         @Expect(jsContext.null().toJSValue().isNull(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSNull_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -88,7 +88,7 @@ class TestJSValue {
         @Expect(jsContext.undefined().toJSValue().isUndefined(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSUndefined_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -110,7 +110,7 @@ class TestJSValue {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSNumber_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -132,7 +132,7 @@ class TestJSValue {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSNumber_toFloat64_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -160,7 +160,7 @@ class TestJSValue {
         @Expect(jsContext.number(3.0).toJSValue().typeof() == JSType.NUMBER, true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_typeof_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -210,7 +210,7 @@ class TestJSValue {
         @Expect(symbol.description, "")
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_strictEqual_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -240,7 +240,7 @@ class TestJSValue {
         @Expect(jsContext.null().toJSValue().isNull(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isNull_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -268,7 +268,7 @@ class TestJSValue {
         @Expect(jsContext.undefined().toJSValue().isUndefined(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isUndefined_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -296,7 +296,7 @@ class TestJSValue {
         @Expect(jsContext.boolean(false).toJSValue().isBoolean(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isBoolean_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -324,7 +324,7 @@ class TestJSValue {
         @Expect(jsContext.number(2.0).toJSValue().isNumber(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isNumber_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -346,7 +346,7 @@ class TestJSValue {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isString_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -375,7 +375,7 @@ class TestJSValue {
         @Expect(fn.isFunction(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isFunction_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -403,7 +403,7 @@ class TestJSValue {
         @Expect(jsContext.object().toJSValue().isObject(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isObject_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -425,7 +425,7 @@ class TestJSValue {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isArray_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -454,7 +454,7 @@ class TestJSValue {
         @Expect(p.isPromise(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isPromise_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -483,7 +483,7 @@ class TestJSValue {
         @Expect(c.isClass(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isClass_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -512,7 +512,7 @@ class TestJSValue {
         @Expect(e.isExternal(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isExternal_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -534,7 +534,7 @@ class TestJSValue {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isSymbol_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -556,7 +556,7 @@ class TestJSValue {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isArrayBuffer_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -675,7 +675,7 @@ class TestJSValue {
         @Expect(f64Num.toFloat64(), 2.0)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asNumber_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -749,7 +749,7 @@ class TestJSValue {
         @Expect(value.asBoolean().toBool(), false)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_toNumber_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -826,7 +826,7 @@ class TestJSValue {
         @Expect(msg.contains("Thread mismatch"))
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_toUtf16String_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1068,7 +1068,7 @@ class TestJSValue {
         @Expect(jsContext.bigint(11).toJSValue().isBigInt(), true)
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_isBigInt_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1247,7 +1247,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_getProperty_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1348,7 +1348,7 @@ class TestJSValue {
         @Expect(v.getBindingObject().isSome())
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_getBindingObject_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1417,7 +1417,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asNull_throwException34300003_referenceBeyondReach() {
         let v = JSRuntime().mainContext.null().toJSValue()
         testReferenceBeyondReach {
@@ -1425,7 +1425,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asUndefined_throwException34300003_referenceBeyondReach() {
         let v = JSRuntime().mainContext.undefined().toJSValue()
         testReferenceBeyondReach {
@@ -1433,7 +1433,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asBoolean_throwException34300003_referenceBeyondReach() {
         let v = JSRuntime().mainContext.boolean(true).toJSValue()
         testReferenceBeyondReach {
@@ -1441,7 +1441,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_toBoolean_throwException34300003_referenceBeyondReach() {
         let v = JSRuntime().mainContext.boolean(true).toJSValue()
         testReferenceBeyondReach {
@@ -1449,7 +1449,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_toString_throwException34300003_referenceBeyondReach() {
         let v = JSRuntime().mainContext.string("x").toJSValue()
         testReferenceBeyondReach {
@@ -1457,7 +1457,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asString_throwException34300003_referenceBeyondReach() {
         let v = JSRuntime().mainContext.string("x").toJSValue()
         testReferenceBeyondReach {
@@ -1465,7 +1465,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asObject_throwException34300003_referenceBeyondReach() {
         let v = JSRuntime().mainContext.object().toJSValue()
         testReferenceBeyondReach {
@@ -1473,7 +1473,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asFunction_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.function {context, _ => context.undefined().toJSValue()}.toJSValue()
@@ -1482,7 +1482,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asArray_throwException34300003_referenceBeyondReach() {
         let v = JSRuntime().mainContext.array().toJSValue()
         testReferenceBeyondReach {
@@ -1490,7 +1490,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asClass_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.clazz({_, callInfo => callInfo.thisArg}).toJSValue()
@@ -1499,7 +1499,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asExternal_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.external(MyObject()).toJSValue()
@@ -1508,7 +1508,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asPromise_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.promiseCapability().toJSValue()
@@ -1517,7 +1517,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asSymbol_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.symbol(description: "x").toJSValue()
@@ -1526,7 +1526,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asArrayBuffer_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.arrayBuffer(4).toJSValue()
@@ -1535,7 +1535,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_asBigInt_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.bigint(1).toJSValue()
@@ -1544,7 +1544,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_toBigInt_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.bigint(1).toJSValue()
@@ -1553,7 +1553,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_getElement_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.array().toJSValue()
@@ -1562,7 +1562,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_setElement_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.array().toJSValue()
@@ -1571,7 +1571,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_setProperty_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.object().toJSValue()
@@ -1580,7 +1580,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_bindObject_external_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.object().toJSValue()
@@ -1591,7 +1591,7 @@ class TestJSValue {
         }
     }
 
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSValue_bindObject_data_throwException34300003_referenceBeyondReach() {
         let nc = JSRuntime().mainContext
         let v = nc.object().toJSValue()

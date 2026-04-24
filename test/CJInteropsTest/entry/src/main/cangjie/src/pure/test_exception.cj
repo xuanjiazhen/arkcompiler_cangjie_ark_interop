@@ -38,7 +38,7 @@ func testExceptionThrow<T>(callback: () -> Unit): Unit where T <: BusinessExcept
 
 @Test
 class TestException {
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_undefined_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
