@@ -38,33 +38,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         let _ = buffer.byteLength
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -72,14 +47,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_byteLength_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 let _ = buffer.byteLength
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -99,33 +69,8 @@ class TestArrayBuffer {
         let newContext = JSRuntime().mainContext
         let bytes: Array<Byte> = [1, 2]
         let buffer = newContext.arrayBuffer(bytes)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.readBytes()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -134,14 +79,9 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let bytes: Array<Byte> = [1, 2]
         let buffer = jsContext.arrayBuffer(bytes)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.readBytes()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
     @TestCase
@@ -153,9 +93,7 @@ class TestArrayBuffer {
 
         @Expect(buffer.toJSValue().isArrayBuffer(), true)
 
-        @Expect(result.size, data.size) //判断接口功能是否正确，优先
-        for (i in 0..result.size) { //然后才是覆盖率
-            @Expect(result[i], data[i])
+        @Expect(result.size, data.size) //判断接口功能是否正确，优�?        for (i in 0..result.size) { //然后才是覆盖�?            @Expect(result[i], data[i])
         }
     }
 
@@ -164,33 +102,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt8Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -198,14 +111,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt8Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt8Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -229,33 +137,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toInt8Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -263,14 +146,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toInt8Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toInt8Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -304,33 +182,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt16Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -338,14 +191,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt16Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt16Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -379,33 +227,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toInt16Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -413,14 +236,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toInt16Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toInt16Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -454,33 +272,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toInt32Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -488,14 +281,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toInt32Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toInt32Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -529,33 +317,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt32Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -563,14 +326,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt32Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt32Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -604,33 +362,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toFloat32Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -638,14 +371,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toFloat32Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toFloat32Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -679,33 +407,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt64Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -713,14 +416,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt64Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt64Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -754,33 +452,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toInt64Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -788,14 +461,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toInt64Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toInt64Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -829,33 +497,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toFloat64Array()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -863,14 +506,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toFloat64Array_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toFloat64Array()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -891,33 +529,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toArrayBufferJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -925,14 +538,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toArrayBufferJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toArrayBufferJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -953,33 +561,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt8ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -987,14 +570,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt8ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt8ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1015,33 +593,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt8ClampedArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1049,14 +602,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt8ClampedArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt8ClampedArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1077,33 +625,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toInt8ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1111,14 +634,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toInt8ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toInt8ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1148,33 +666,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt16ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1182,14 +675,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt16ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt16ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1219,33 +707,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toInt16ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1253,14 +716,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toInt16ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toInt16ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1290,33 +748,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt32ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1324,14 +757,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt32ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt32ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1361,33 +789,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toInt32ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1395,14 +798,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toInt32ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toInt32ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1432,33 +830,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toUInt64ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1466,14 +839,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toUInt64ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toUInt64ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1503,33 +871,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toInt64ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1537,14 +880,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toInt64ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toInt64ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1574,33 +912,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toFloat32ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1608,14 +921,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toFloat32ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toFloat32ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1645,33 +953,8 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let buffer = newContext.arrayBuffer(64)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         buffer.toFloat64ArrayJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1679,14 +962,9 @@ class TestArrayBuffer {
     func test_JSArrayBuffer_toFloat64ArrayJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let buffer = jsContext.arrayBuffer(64)
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 buffer.toFloat64ArrayJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1704,33 +982,8 @@ class TestArrayBuffer {
         let newContext = JSRuntime().mainContext
         let buf = newContext.arrayBuffer(8)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         let _ = buf.toJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -1739,14 +992,9 @@ class TestArrayBuffer {
         let jsContext = getJSContext()
         let buf = jsContext.arrayBuffer(8)
 
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 let _ = buf.toJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
