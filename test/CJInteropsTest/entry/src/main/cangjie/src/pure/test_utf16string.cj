@@ -49,33 +49,8 @@ class TestUtf16String {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let value = newContext.string("abc").toJSValue()
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        Utf16String.fromJSValue(newContext, value)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            Utf16String.fromJSValue(newContext, value)
         }
     }
 
@@ -83,14 +58,9 @@ class TestUtf16String {
     func test_Utf16String_fromJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let value = jsContext.string("abc").toJSValue()
-        let msg = spawn {
-            try {
-                Utf16String.fromJSValue(jsContext, value)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            Utf16String.fromJSValue(jsContext, value)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -122,33 +92,8 @@ class TestUtf16String {
         let u = Utf16String("z")
         let _ = u.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = u.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = u.toJSValue(jsContext)
         }
     }
 
@@ -158,14 +103,9 @@ class TestUtf16String {
         let u = Utf16String("z")
         let _ = u.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = u.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = u.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 

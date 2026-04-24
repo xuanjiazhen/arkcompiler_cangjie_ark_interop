@@ -56,33 +56,8 @@ class TestIDLType {
         let _ = ex.toJSValue(newContext)
         let _2 = ex2.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = ex == ex2
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = ex == ex2
         }
     }
 
@@ -94,14 +69,9 @@ class TestIDLType {
         let _ = ex.toJSValue(jsContext)
         let _2 = ex2.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = ex == ex2
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = ex == ex2
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -121,33 +91,8 @@ class TestIDLType {
         let _ = ex.toJSValue(newContext)
         let _2 = ex2.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = ex != ex2
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = ex != ex2
         }
     }
 
@@ -159,14 +104,9 @@ class TestIDLType {
         let _ = ex.toJSValue(jsContext)
         let _2 = ex2.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = ex != ex2
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = ex != ex2
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -185,33 +125,8 @@ class TestIDLType {
         let _ = ex.toJSValue(newContext)
         let _2 = ex2.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = ex.toString()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = ex.toString()
         }
     }
 
@@ -223,14 +138,9 @@ class TestIDLType {
         let _ = ex.toJSValue(jsContext)
         let _2 = ex2.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = ex.toString()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = ex.toString()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -247,33 +157,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let ex = JSStringEx("ab")
         let _ = ex.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _v = ex.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _v = ex.toJSValue(jsContext)
         }
     }
 
@@ -282,14 +167,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let ex = JSStringEx("ab")
         let _ = ex.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _v = ex.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _v = ex.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -331,33 +211,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _c = arr.clone()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _c = arr.clone()
         }
     }
 
@@ -366,14 +221,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _c = arr.clone()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _c = arr.clone()
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -396,33 +246,8 @@ class TestIDLType {
         let b = JSArrayEx<String>("z")
         let _ = a.toJSValue(newContext)
         let _2 = b.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _c = a.concat(b)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _c = a.concat(b)
         }
     }
 
@@ -433,14 +258,9 @@ class TestIDLType {
         let b = JSArrayEx<String>("z")
         let _ = a.toJSValue(jsContext)
         let _2 = b.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _c = a.concat(b)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _c = a.concat(b)
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -457,33 +277,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _sz = arr.size
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _sz = arr.size
         }
     }
 
@@ -492,14 +287,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _sz = arr.size
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _sz = arr.size
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -515,14 +305,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = arr.get(0)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = arr.get(0)
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -532,33 +317,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _g = arr.get(0)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _g = arr.get(0)
         }
     }
 
@@ -575,33 +335,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("x")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        arr.set(0, "y")
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            arr.set(0, "y")
         }
     }
 
@@ -610,14 +345,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                arr.set(0, "z")
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            arr.set(0, "z")
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -640,14 +370,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _e = arr.isEmpty()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _e = arr.isEmpty()
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -657,33 +382,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = arr.isEmpty()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _ = arr.isEmpty()
         }
     }
 
@@ -699,14 +399,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = arr[0]
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = arr[0]
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -723,14 +418,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                arr[0] = "z"
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            arr[0] = "z"
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -764,14 +454,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = arr.toArray()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = arr.toArray()
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -781,33 +466,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("y")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _a = arr.toArray()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _a = arr.toArray()
         }
     }
 
@@ -825,33 +485,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("z")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _v = arr.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _v = arr.toJSValue(jsContext)
         }
     }
 
@@ -860,14 +495,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr = JSArrayEx<String>("z")
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _v = arr.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _v = arr.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -922,33 +552,8 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("k", "v")
         let _ = map.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _o = map.get("k")
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _o = map.get("k")
         }
     }
 
@@ -968,33 +573,8 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        map.clear()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            map.clear()
         }
     }
 
@@ -1004,14 +584,9 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                map.clear()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            map.clear()
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -1021,14 +596,9 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = map.get("a")
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = map.get("a")
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -1038,14 +608,9 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = map.has("a")
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = map.has("a")
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -1066,33 +631,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.clone()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.clone()
         }
     }
 
@@ -1103,14 +643,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.clone()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.clone()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1129,33 +664,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.containsAll(["a"])
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.containsAll(["a"])
         }
     }
 
@@ -1166,14 +676,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.containsAll(["a"])
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.containsAll(["a"])
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1191,33 +696,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.isEmpty()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.isEmpty()
         }
     }
 
@@ -1228,14 +708,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.isEmpty()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.isEmpty()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1254,33 +729,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        m.set("c", "d")
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            m.set("c", "d")
         }
     }
 
@@ -1291,14 +741,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                m.set("c", "d")
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            m.set("c", "d")
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1330,14 +775,9 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = map["a"]
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = map["a"]
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -1347,14 +787,9 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                map["a"] = "c"
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            map["a"] = "c"
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -1366,33 +801,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        m.setAll([("x", "y")])
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            m.setAll([("x", "y")])
         }
     }
 
@@ -1403,14 +813,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                m.setAll([("x", "y")])
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            m.setAll([("x", "y")])
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1430,33 +835,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.setIfAbsent("z", "w")
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.setIfAbsent("z", "w")
         }
     }
 
@@ -1467,14 +847,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.setIfAbsent("z", "w")
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.setIfAbsent("z", "w")
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1495,33 +870,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.delete("a")
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.delete("a")
         }
     }
 
@@ -1532,14 +882,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.delete("a")
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.delete("a")
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1560,33 +905,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        m.deleteAll(["a"])
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            m.deleteAll(["a"])
         }
     }
 
@@ -1597,14 +917,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                m.deleteAll(["a"])
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            m.deleteAll(["a"])
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1626,33 +941,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        m.deleteIf({k, v => false})
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            m.deleteIf({k, v => false})
         }
     }
 
@@ -1663,14 +953,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                m.deleteIf({k, v => false})
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            m.deleteIf({k, v => false})
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1691,33 +976,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.keys()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.keys()
         }
     }
 
@@ -1728,14 +988,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.keys()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.keys()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1762,33 +1017,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.values()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.values()
         }
     }
 
@@ -1799,14 +1029,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.values()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.values()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1823,14 +1048,9 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _s = map.size
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _s = map.size
+        }
         @Expect(msg.contains("Thread mismatch"), true)
     }
 
@@ -1857,33 +1077,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.toHashMap()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.toHashMap()
         }
     }
 
@@ -1894,14 +1089,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.toHashMap()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.toHashMap()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -1921,33 +1111,8 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = m.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = m.toJSValue(jsContext)
         }
     }
 
@@ -1958,14 +1123,9 @@ class TestIDLType {
         m.set("a", "b")
         let _ = m.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = m.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = m.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2015,33 +1175,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = Int8(1)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2051,33 +1186,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = UInt8(1)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2086,14 +1196,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = Int8(1)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2102,14 +1207,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = UInt8(1)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2135,33 +1235,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = Int16(1)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2171,33 +1246,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = UInt16(1)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2206,14 +1256,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = Int16(1)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2222,14 +1267,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = UInt16(1)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2238,33 +1278,8 @@ class TestIDLType {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let value = newContext.number(1).toJSValue()
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        Int32.fromJSValue(newContext, value)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            Int32.fromJSValue(newContext, value)
         }
     }
 
@@ -2272,14 +1287,9 @@ class TestIDLType {
     func test_JSInteropType_Int32_fromJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let value = jsContext.number(1).toJSValue()
-        let msg = spawn {
-            try {
-                Int32.fromJSValue(jsContext, value)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            Int32.fromJSValue(jsContext, value)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2313,33 +1323,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let o: Option<Int32> = Some(4)
         let _ = o.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = o.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = o.toJSValue(jsContext)
         }
     }
 
@@ -2349,33 +1334,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = Int32(1)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2385,33 +1345,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = UInt32(1)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2420,14 +1355,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let o: Option<Int32> = Some(4)
         let _ = o.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = o.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = o.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2436,14 +1366,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = Int32(1)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2452,14 +1377,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = UInt32(1)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2499,33 +1419,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = Int64(1)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2535,33 +1430,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = UInt64(1)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2570,14 +1440,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = Int64(1)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2586,14 +1451,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = UInt64(1)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2611,33 +1471,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = Float16(1.0)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2646,14 +1481,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = Float16(1.0)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2671,33 +1501,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = Float32(1.0)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2706,14 +1511,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = Float32(1.0)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2731,33 +1531,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = Float64(1.0)
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2766,14 +1541,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = Float64(1.0)
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2791,33 +1561,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let v = true
         let _ = v.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = v.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = v.toJSValue(jsContext)
         }
     }
 
@@ -2826,14 +1571,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let v = true
         let _ = v.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = v.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = v.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2891,33 +1631,8 @@ class TestIDLType {
         let u = ()
         let _ = u.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = u.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = u.toJSValue(jsContext)
         }
     }
 
@@ -2927,14 +1642,9 @@ class TestIDLType {
         let u = ()
         let _ = u.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
-                let _ = u.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = u.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -2959,33 +1669,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr: Array<Byte> = [1, 2]
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = arr.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            let _ = arr.toJSValue(jsContext)
         }
     }
 
@@ -2994,14 +1679,9 @@ class TestIDLType {
         let jsContext = getJSContext()
         let arr: Array<Byte> = [1, 2]
         let _ = arr.toJSValue(jsContext)
-        let msg = spawn {
-            try {
-                let _ = arr.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            let _ = arr.toJSValue(jsContext)
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -3087,33 +1767,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("x")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = arr[0]
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _ = arr[0]
         }
     }
 
@@ -3123,33 +1778,8 @@ class TestIDLType {
         let newContext = JSRuntime().mainContext
         let arr = JSArrayEx<String>("x")
         let _ = arr.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        arr[0] = "y"
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            arr[0] = "y"
         }
     }
 
@@ -3160,33 +1790,8 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = map.size
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _ = map.size
         }
     }
 
@@ -3197,33 +1802,8 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = map.has("a")
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _ = map.has("a")
         }
     }
 
@@ -3234,33 +1814,8 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        let _ = map["a"]
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            let _ = map["a"]
         }
     }
 
@@ -3271,33 +1826,8 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         map.set("a", "b")
         let _ = map.toJSValue(newContext)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        map["a"] = "c"
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"), true)
+        testReferenceBeyondReach(jsContext) {
+            map["a"] = "c"
         }
     }
 }

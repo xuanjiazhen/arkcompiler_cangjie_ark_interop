@@ -48,33 +48,8 @@ class TestPrime {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let boolean = newContext.boolean(true)
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
-                        boolean.toBool()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(jsContext) {
+            boolean.toBool()
         }
     }
 
@@ -82,14 +57,9 @@ class TestPrime {
     func test_JSBoolean_toBool_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let boolean = jsContext.boolean(true)
-        let msg = spawn {
-            try {
-                boolean.toBool()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            boolean.toBool()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 

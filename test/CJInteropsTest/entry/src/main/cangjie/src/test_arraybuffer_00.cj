@@ -21,13 +21,17 @@ import ohos.business_exception.*
 let _ = JSModule.registerModule {
     jsContext: JSContext, jsObject: JSObject =>
         jsObject["test_JSArrayBuffer_toArrayBufferJSValue_throwException34300002"] = jsContext
-        .function(test_JSArrayBuffer_toArrayBufferJSValue_throwException34300002).toJSValue()
+            .function(test_JSArrayBuffer_toArrayBufferJSValue_throwException34300002)
+            .toJSValue()
         jsObject["test_JSArrayBuffer_toUInt8ArrayJSValue_throwException34300002"] = jsContext
-        .function(test_JSArrayBuffer_toUInt8ArrayJSValue_throwException34300002).toJSValue()
+            .function(test_JSArrayBuffer_toUInt8ArrayJSValue_throwException34300002)
+            .toJSValue()
         jsObject["test_JSArrayBuffer_toUInt8ClampedArrayJSValue_throwException34300002"] = jsContext
-        .function(test_JSArrayBuffer_toUInt8ClampedArrayJSValue_throwException34300002).toJSValue()
+            .function(test_JSArrayBuffer_toUInt8ClampedArrayJSValue_throwException34300002)
+            .toJSValue()
         jsObject["test_JSArrayBuffer_toInt8ArrayJSValue_throwException34300002"] = jsContext
-        .function(test_JSArrayBuffer_toInt8ArrayJSValue_throwException34300002).toJSValue()
+            .function(test_JSArrayBuffer_toInt8ArrayJSValue_throwException34300002)
+            .toJSValue()
 }
 
 func test_JSArrayBuffer_toArrayBufferJSValue_throwException34300002(jsContext: JSContext, jsCallInfo: JSCallInfo): JSValue {

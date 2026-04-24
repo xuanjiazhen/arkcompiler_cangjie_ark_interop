@@ -148,47 +148,17 @@ class TestRequireArkModule {
     func test_JSContext_requireArkModule_throwException34300003_referenceBeyondReach() {
         let context = getJSContext()
         let newContext = JSRuntime().mainContext
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        context.global.callMethod(
-            "setTimeout",
-            context.function {
-                c, _ =>
-                    let msg = try {
-                        newContext.requireArkModule("@ohos.hilog")
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    c.undefined().toJSValue()
-            }.toJSValue(),
-            context.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
+        testReferenceBeyondReach(context) {
+            newContext.requireArkModule("@ohos.hilog")
         }
     }
 
     @TestCase
     func test_JSContext_requireArkModule_throwException34300004_threadMismatch() {
         let context = getJSContext()
-        let msg = spawn {
-            try {
-                context.requireArkModule("@ohos.hilog")
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            context.requireArkModule("@ohos.hilog")
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -258,20 +228,14 @@ class TestRequireArkModule {
         }
     }
 
-    // @TestCase
+    @TestCase
     func test_JSModule_registerModule_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
-
-        let msg = spawn {
-            try {
-                JSModule.registerModule({
-                    ctx, exp => {=>}
-                })
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        let msg = testThreadMismatch {
+            JSModule.registerModule({
+                ctx, exp => {=>}
+            })
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 }
