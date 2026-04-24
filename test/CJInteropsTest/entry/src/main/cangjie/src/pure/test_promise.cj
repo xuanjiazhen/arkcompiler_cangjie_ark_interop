@@ -74,34 +74,8 @@ class TestPromise {
             context, _ => context.undefined().toJSValue()
         }
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         promise.then(onFulfilled)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -113,14 +87,9 @@ class TestPromise {
         let onFulfilled = jsContext.function {
             context, _ => context.undefined().toJSValue()
         }
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 promise.then(onFulfilled)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -157,34 +126,8 @@ class TestPromise {
             context, _ => context.undefined().toJSValue()
         }
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         promise.catchError(callback)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -238,34 +181,8 @@ class TestPromise {
         let promiseCapability = newContext.promiseCapability()
         let resolveValue = newContext.boolean(true).toJSValue()
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         promiseCapability.resolve(resolveValue)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -274,22 +191,16 @@ class TestPromise {
         let jsContext = getJSContext()
         let promiseCapability = jsContext.promiseCapability()
         let resolveValue = jsContext.boolean(true).toJSValue()
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 promiseCapability.resolve(resolveValue)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
     @TestCase
     func test_JSPromiseCapability_resolve_throwException_referenceBeyondReach() {
         let jsContext = getJSContext()
-        // 初始化对象
-        let promiseCapability = jsContext.promiseCapability()
+        // 初始化对�?        let promiseCapability = jsContext.promiseCapability()
 
         // 强制类型转化
         let resolveValue = jsContext.boolean(true).toJSValue()
@@ -333,34 +244,8 @@ class TestPromise {
         let promiseCapability = newContext.promiseCapability()
         let rejectValue = newContext.string("reject").toJSValue()
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         promiseCapability.reject(rejectValue)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -369,14 +254,9 @@ class TestPromise {
         let jsContext = getJSContext()
         let promiseCapability = jsContext.promiseCapability()
         let rejectValue = jsContext.string("reject").toJSValue()
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 promiseCapability.reject(rejectValue)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -417,34 +297,8 @@ class TestPromise {
         let newContext = JSRuntime().mainContext
         let promiseCapability = newContext.promiseCapability()
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         promiseCapability.toJSValue()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -452,14 +306,9 @@ class TestPromise {
     func test_JSPromiseCapability_toJSValue_throwException34300004_threadMismatch(): Unit {
         let jsContext = getJSContext()
         let promiseCapability = jsContext.promiseCapability()
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 promiseCapability.toJSValue()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 

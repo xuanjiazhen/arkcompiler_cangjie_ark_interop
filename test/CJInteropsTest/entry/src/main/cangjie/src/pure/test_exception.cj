@@ -42,47 +42,17 @@ class TestException {
     func test_JSContext_undefined_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         newContext.undefined()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
     @TestCase
     func test_JSContext_undefined_throwException34300004_threadMismatch() {
         let context = getJSContext()
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 context.undefined()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -308,24 +278,29 @@ class TestException {
         }
     }
 
-    // @TestCase
+    @TestCase
     func test_JSContext_threadMismatch_throwException() {
         let context = getJSContext()
-        testExceptionThrow<BusinessException> {
+        let msgUndefined = testThreadMismatch {
             context.undefined()
         }
-        testExceptionThrow<BusinessException> {
+        @Expect(msgUndefined.contains("Thread mismatch"))
+        let msgNull = testThreadMismatch {
             context.null()
         }
-        testExceptionThrow<BusinessException> {
+        @Expect(msgNull.contains("Thread mismatch"))
+        let msgBool = testThreadMismatch {
             context.boolean(true)
         }
-        testExceptionThrow<BusinessException> {
+        @Expect(msgBool.contains("Thread mismatch"))
+        let msgNumber = testThreadMismatch {
             context.number(0)
         }
-        testExceptionThrow<BusinessException> {
+        @Expect(msgNumber.contains("Thread mismatch"))
+        let msgString = testThreadMismatch {
             context.string("")
         }
+        @Expect(msgString.contains("Thread mismatch"))
     }
 
     @TestCase

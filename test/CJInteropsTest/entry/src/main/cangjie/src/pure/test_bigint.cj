@@ -84,33 +84,8 @@ class TestBigInt {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let jsBigInt = newContext.bigint(BigInt.parse("42"))
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         jsBigInt.toBigInt()
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -118,14 +93,9 @@ class TestBigInt {
     func test_JSBigInt_toBigInt_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let jsBigInt = jsContext.bigint(BigInt.parse("42"))
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 jsBigInt.toBigInt()
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 

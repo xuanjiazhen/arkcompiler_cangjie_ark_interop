@@ -33,8 +33,8 @@ class TestUtf16String {
             "abcdefg",
             ",./[]-=",
             "阿斯蒂芬",
-            "asdafas电",
-            "暗色调😊😞🚹👴🚺"
+            "asdafas�?,
+            "暗色调😊😞🚹👴�?
         ]
         for (one in cases) {
             let u16 = Utf16String(one)
@@ -49,33 +49,8 @@ class TestUtf16String {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
         let value = newContext.string("abc").toJSValue()
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         Utf16String.fromJSValue(newContext, value)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -83,14 +58,9 @@ class TestUtf16String {
     func test_Utf16String_fromJSValue_throwException34300004_threadMismatch() {
         let jsContext = getJSContext()
         let value = jsContext.string("abc").toJSValue()
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 Utf16String.fromJSValue(jsContext, value)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -102,8 +72,8 @@ class TestUtf16String {
             "abcdefg",
             ",./[]-=",
             "阿斯蒂芬",
-            "asdafas电",
-            "暗色调😊😞🚹👴🚺"
+            "asdafas�?,
+            "暗色调😊😞🚹👴�?
         ]
         for (one in cases) {
             let u16 = Utf16String(one)
@@ -122,33 +92,8 @@ class TestUtf16String {
         let u = Utf16String("z")
         let _ = u.toJSValue(newContext)
 
-        let monitor = Monitor()
-        let msgBox = Box(None<String>)
-        gc(heavy: true)
-        jsContext.global.callMethod(
-            "setTimeout",
-            jsContext.function {
-                context, _ =>
-                    let msg = try {
+        testReferenceBeyondReach(jsContext) {
                         let _ = u.toJSValue(jsContext)
-                        "NO_EXCEPTION"
-                    } catch (e: BusinessException) {
-                        e.message.toString()
-                    }
-                    synchronized(monitor) {
-                        msgBox.value = Some(msg)
-                        monitor.notify()
-                    }
-                    context.undefined().toJSValue()
-            }.toJSValue(),
-            jsContext.number(2000).toJSValue()
-        )
-        synchronized(monitor) {
-            monitor.wait(timeout: Duration.second * 6)
-        }
-        match (msgBox.value) {
-            case None => @Expect(false)
-            case Some(msg) => @Expect(msg.contains("beyond reach"))
         }
     }
 
@@ -158,14 +103,9 @@ class TestUtf16String {
         let u = Utf16String("z")
         let _ = u.toJSValue(jsContext)
 
-        let msg = spawn {
-            try {
+        let msg = testThreadMismatch {
                 let _ = u.toJSValue(jsContext)
-                "NO_EXCEPTION"
-            } catch (e: BusinessException) {
-                e.message.toString()
-            }
-        }.get()
+        }
         @Expect(msg.contains("Thread mismatch"))
     }
 
@@ -199,7 +139,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_toString_roundTrip() {
-        let cases = ["123zxcaijoad./?'[]{}", "你好，世界！", "i阿搜到叫哦🚹🚺😭😢"]
+        let cases = ["123zxcaijoad./?'[]{}", "你好，世界！", "i阿搜到叫哦🚹🚺😭�?]
         for (one in cases) {
             let src = Utf16String(one)
             @Expect(src.toString(), one)
@@ -267,7 +207,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_size() {
-        let cases = [("abc123,./", 9), ("你好，世界！", 6), ("😭💗√✅️", 7)]
+        let cases = [("abc123,./", 9), ("你好，世界！", 6), ("😭💗√✅�?, 7)]
         for ((ori, dst) in cases) {
             let src = Utf16String(ori)
             @Expect(src.size, dst)
@@ -290,7 +230,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_totalChars() {
-        let cases = [("abc123,./", 9), ("你好，世界！", 6), ("😭💗√✅️", 5)]
+        let cases = [("abc123,./", 9), ("你好，世界！", 6), ("😭💗√✅�?, 5)]
         for ((ori, dst) in cases) {
             let src = Utf16String(ori)
             @Expect(src.totalChars, dst)
@@ -336,7 +276,7 @@ class TestUtf16String {
             let src = Utf16String(one)
             @Expect(src.isCompressed())
         }
-        let utf16Cases = ["阿斯蒂芬", "asdsfdasd下", "i阿搜到叫哦🚹🚺😭😢"]
+        let utf16Cases = ["阿斯蒂芬", "asdsfdasd�?, "i阿搜到叫哦🚹🚺😭�?]
         for (one in utf16Cases) {
             let src = Utf16String(one)
             @Expect(!src.isCompressed())
@@ -376,8 +316,8 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_compare_and_orderingOperators() {
-        let cases = [("123456", "1234567"), ("asdasfsafda", "1245678"), ("谢谢小星星", "嘻嘻嘻嘻嘻"),
-            ("谢谢谢谢", "xxxxx"), ("123abc那你呢", "123abc那你呢"), ("xxxxx", "谢谢谢谢")]
+        let cases = [("123456", "1234567"), ("asdasfsafda", "1245678"), ("谢谢小星�?, "嘻嘻嘻嘻�?),
+            ("谢谢谢谢", "xxxxx"), ("123abc那你�?, "123abc那你�?), ("xxxxx", "谢谢谢谢")]
         for ((a, b) in cases) {
             let ua = Utf16String(a)
             let ub = Utf16String(b)
@@ -469,7 +409,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_operatorGet_index() {
-        let cases = [("abc123,./", 0, r'a'), ("你好，世界！", 2, r'，'), ("😭💗√✅️", 2, r'💗')]
+        let cases = [("abc123,./", 0, r'a'), ("你好，世界！", 2, r'�?), ("😭💗√✅�?, 2, r'💗')]
         for ((src, index, dst) in cases) {
             let u16 = Utf16String(src)
             let result = u16[index]
@@ -485,8 +425,8 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_operatorGet_range_toString() {
-        let cases = [("0123456789", 0..5, "01234"), ("123456", 0..6, "123456"), ("你好世界，⏰️123", 2..7,
-            "世界，⏰️")]
+        let cases = [("0123456789", 0..5, "01234"), ("123456", 0..6, "123456"), ("你好世界，⏰�?23", 2..7,
+            "世界，⏰�?)]
         for ((src, range, dst) in cases) {
             let uSrc = Utf16String(src)
             let result = uSrc[range].toString()
@@ -496,7 +436,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_operatorGet_outOfRange_throwException() {
-        let cases = ["abc123,./", "你好，世界！", "😭💗√✅️"]
+        let cases = ["abc123,./", "你好，世界！", "😭💗√✅�?]
         for (src in cases) {
             let u16 = Utf16String(src)
             @Expect(withException<Exception> {
@@ -605,10 +545,10 @@ class TestUtf16String {
     @TestCase
     func test_Utf16String_indexOf_withOffset() {
         let cases = [
-            ("🚒真实的自我132", 0, "我", 6),
-            ("🚒真实的自我132", 0, "3", 8),
+            ("🚒真实的自�?32", 0, "�?, 6),
+            ("🚒真实的自�?32", 0, "3", 8),
             ("0123456", 0, "123", 1),
-            ("谢谢谢谢写法小行星谢", 4, "谢", 9)
+            ("谢谢谢谢写法小行星谢", 4, "�?, 9)
         ]
         for ((src, offset, target, dst) in cases) {
             let uSrc = Utf16String(src)
@@ -620,7 +560,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_indexOf() {
-        let cases = [("🚒真实的自我132", "我", 6), ("🚒真实的自我132", "3", 8), ("0123456", "123", 1)]
+        let cases = [("🚒真实的自�?32", "�?, 6), ("🚒真实的自�?32", "3", 8), ("0123456", "123", 1)]
         for ((src, target, dst) in cases) {
             let uSrc = Utf16String(src)
             let uTar = Utf16String(target)
@@ -662,7 +602,7 @@ class TestUtf16String {
     @TestCase
     func test_Utf16String_lastIndexOf_withOffset() {
         let cases = [
-            ("🚂好🚂3456", 8, "345", 5),
+            ("🚂好�?456", 8, "345", 5),
             ("0123456", 7, "123", 1)
         ]
         for ((src, offset, target, dst) in cases) {
@@ -687,7 +627,7 @@ class TestUtf16String {
     @TestCase
     func test_Utf16String_lastIndexOf() {
         let cases = [
-            ("🚂好🚂3456", "345", 5),
+            ("🚂好�?456", "345", 5),
             ("0123456", "123", 1)
         ]
         for ((src, target, dst) in cases) {
@@ -732,7 +672,7 @@ class TestUtf16String {
     func test_Utf16String_count() {
         let cases = [
             ("asdf213i1o23iui0sj0f", "a"),
-            ("谢谢小星星小星星小星星嘻嘻嘻嘻", "谢")
+            ("谢谢小星星小星星小星星嘻嘻嘻�?, "�?)
         ]
         for ((src, tar) in cases) {
             let dst = src.count(tar)
@@ -760,8 +700,8 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_split() {
-        let cases = [("😓😃😐🚲😄", "", 0), ("😓😃😐🚲😄", "", 0), ("1234", "", 0), ("1234", "", 3), ("12你34🚲", "", 0),
-            ("12你34🚲", "", 3), ("123456789", "1", 0), ("123456789", "9", 0), ("1 2 3 4 568", " ", 0), (" ", "", 0)]
+        let cases = [("😓😃😐🚲😄", "", 0), ("😓😃😐🚲😄", "", 0), ("1234", "", 0), ("1234", "", 3), ("12�?4🚲", "", 0),
+            ("12�?4🚲", "", 3), ("123456789", "1", 0), ("123456789", "9", 0), ("1 2 3 4 568", " ", 0), (" ", "", 0)]
         for ((src, tar, count) in cases) {
             let uSrc = Utf16String(src)
             let uTar = Utf16String(tar)
@@ -804,8 +744,8 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_lazySplit() {
-        let cases = [("😓😃😐🚲😄", "", 0), ("😓😃😐🚲😄", "", 0), ("1234", "", 0), ("1234", "", 3), ("12你34🚲", "", 0),
-            ("12你34🚲", "", 3), ("123456789", "1", 0), ("123456789", "9", 0), ("1 2 3 4 568", " ", 0)]
+        let cases = [("😓😃😐🚲😄", "", 0), ("😓😃😐🚲😄", "", 0), ("1234", "", 0), ("1234", "", 3), ("12�?4🚲", "", 0),
+            ("12�?4🚲", "", 3), ("123456789", "1", 0), ("123456789", "9", 0), ("1 2 3 4 568", " ", 0)]
         for ((src, tar, count) in cases) {
             let uSrc = Utf16String(src)
             let uTar = Utf16String(tar)
@@ -869,7 +809,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_contains() {
-        let cases = [("123456789", "0254"), ("123145456", "1454"), ("你12看5678", "56"), ("你12看看线性5678", "看线")]
+        let cases = [("123456789", "0254"), ("123145456", "1454"), ("�?2�?678", "56"), ("�?2看看线�?678", "看线")]
         for ((src, tar) in cases) {
             let dst = src.contains(tar)
             let uSrc = Utf16String(src)
@@ -896,7 +836,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_startsWith() {
-        let cases = [("abcd123", "abc"), ("abcd您那你", "abc")]
+        let cases = [("abcd123", "abc"), ("abcd您那�?, "abc")]
         for ((src, tar) in cases) {
             let dst = src.startsWith(tar)
             let uSrc = Utf16String(src)
@@ -923,7 +863,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_endsWith() {
-        let cases = [("abcd123", "abc"), ("abcd123", "123"), ("在这种这地方12354x", "54x"), ("吱吱吱吱中", "5454")]
+        let cases = [("abcd123", "abc"), ("abcd123", "123"), ("在这种这地方12354x", "54x"), ("吱吱吱吱�?, "5454")]
         for ((src, tar) in cases) {
             let dst = src.endsWith(tar)
             let uSrc = Utf16String(src)
@@ -950,7 +890,7 @@ class TestUtf16String {
 
     @TestCase
     func test_Utf16String_operatorPlus_toString() {
-        let cases = [("132", "bxx"), ("您那你", "xxx"), ("xxfdaasdf", "嘻嘻嘻"), ("嘻嘻嘻", "单独发顺丰")]
+        let cases = [("132", "bxx"), ("您那�?, "xxx"), ("xxfdaasdf", "嘻嘻�?), ("嘻嘻�?, "单独发顺�?)]
         for ((prev, next) in cases) {
             let dst = prev + next
             let uPrev = Utf16String(prev)

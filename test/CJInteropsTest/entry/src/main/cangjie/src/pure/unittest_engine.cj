@@ -92,6 +92,48 @@ func expectBusinessExceptionMsg(expected: String, callback: () -> Unit) {
     @Expect(msg == expected)
 }
 
+func testThreadMismatch<T>(operation: () -> T): String {
+    spawn {
+        try {
+            operation()
+            "NO_EXCEPTION"
+        } catch (e: BusinessException) {
+            e.message.toString()
+        }
+    }.get()
+}
+
+func testReferenceBeyondReach<T>(jsContext: JSContext, operation: () -> T) {
+    let monitor = Monitor()
+    let msgBox = Box(None<String>)
+    gc(heavy: true)
+    jsContext.global.callMethod(
+        "setTimeout",
+        jsContext.function {
+            context, _ =>
+                let msg = try {
+                    operation()
+                    "NO_EXCEPTION"
+                } catch (e: BusinessException) {
+                    e.message.toString()
+                }
+                synchronized(monitor) {
+                    msgBox.value = Some(msg)
+                    monitor.notify()
+                }
+                context.undefined().toJSValue()
+        }.toJSValue(),
+        jsContext.number(2000).toJSValue()
+    )
+    synchronized(monitor) {
+        monitor.wait(timeout: Duration.second * 6)
+    }
+    match (msgBox.value) {
+        case None => @Expect(false)
+        case Some(msg) => @Expect(msg.contains("beyond reach"))
+    }
+}
+
 private enum Result<T, E> {
     | Ok(T)
     | Err(E)
