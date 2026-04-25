@@ -87,6 +87,7 @@ ohos_cangjie_shared_library("ohos.ark_interop") {
 
   deps = [
     ":utf16string",
+    ":interop_dfx",
   ]
 
   part_name = "cangjie_ark_interop"
@@ -137,6 +138,20 @@ ohos_cangjie_macro_library("ohos.ark_interop_macro") {
     "ark_interop_macro/ark_idl_enum.cj",
   ]
   compilation_config = "pipeline=NG"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_ark_interop"
+}
+
+ohos_shared_library("interop_dfx") {
+  sources = [
+    "interop_dfx/interop_dfx.cpp"
+  ]
+  external_deps = [
+    "faultloggerd:libbacktrace_local",
+    "bounds_checking_function:libsec_shared",
+    "faultloggerd:libunwinder",
+  ]
+  innerapi_tags = [ "platformsdk" ]
   subsystem_name = "arkcompiler"
   part_name = "cangjie_ark_interop"
 }

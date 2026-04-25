@@ -22,7 +22,9 @@
         "deps": {
             "components": [
                 "ability_runtime",
-                "napi"
+                "napi",
+                "faultloggerd",
+                "bounds_checking_function"
             ]
         },
         "build": {
