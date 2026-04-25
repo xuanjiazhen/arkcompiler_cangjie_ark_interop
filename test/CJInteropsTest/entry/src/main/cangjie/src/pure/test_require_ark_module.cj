@@ -143,8 +143,7 @@ class TestRequireArkModule {
             )
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_requireArkModule_throwException34300003_referenceBeyondReach() {
         let context = getJSContext()
         let newContext = JSRuntime().mainContext

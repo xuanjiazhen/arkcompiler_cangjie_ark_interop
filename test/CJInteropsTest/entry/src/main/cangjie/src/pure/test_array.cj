@@ -93,8 +93,7 @@ class TestArray {
             array[index] = obj
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArray_operatorGet_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -140,8 +139,7 @@ class TestArray {
             array[0] = obj
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArray_size_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -150,8 +148,7 @@ class TestArray {
             array.size
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArray_operatorSet_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -160,8 +157,7 @@ class TestArray {
             array[0] = newContext.number(1.0).toJSValue()
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArray_operatorSet_heapObject_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

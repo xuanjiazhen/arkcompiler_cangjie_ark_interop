@@ -46,8 +46,7 @@ class TestIDLType {
         let other = JSStringEx.fromJSValue(jsContext, value.toJSValue(jsContext))
         @Expect(value == other, true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSStringEx_operatorEqual_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -80,8 +79,7 @@ class TestIDLType {
         let c = JSStringEx("xyz")
         @Expect(a != c, true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSStringEx_operatorNotEqual_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -113,8 +111,7 @@ class TestIDLType {
         let a = JSStringEx("abc")
         @Expect(a.toString(), "abc")
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSStringEx_toString_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -147,8 +144,7 @@ class TestIDLType {
         let a = JSStringEx("abc")
         @Expect(a.toJSValue(jsContext).isString(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSStringEx_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -200,8 +196,7 @@ class TestIDLType {
         @Expect(firstOpt.isSome())
         @Expect(firstOpt.getOrThrow(), "aaa")
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_clone_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -232,8 +227,7 @@ class TestIDLType {
         @Expect(both[0], "aaa")
         @Expect(both[1], "aaa")
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_concat_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -264,8 +258,7 @@ class TestIDLType {
         arr.set(0, "a")
         @Expect(arr.size, 1)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_size_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -302,8 +295,7 @@ class TestIDLType {
             arr.get(0)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_get_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -320,8 +312,7 @@ class TestIDLType {
         arr.set(0, "a")
         @Expect(arr.size, 1)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_set_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -365,8 +356,7 @@ class TestIDLType {
             arr.isEmpty()
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_isEmpty_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -446,8 +436,7 @@ class TestIDLType {
             arr.toArray()
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_toArray_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -465,8 +454,7 @@ class TestIDLType {
         arr.set(0, "a")
         @Expect(arr.toJSValue(jsContext).isArray(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -530,8 +518,7 @@ class TestIDLType {
         map.set("a", "b")
         @Expect(map.get("a").getOrThrow(), "b")
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_get_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -551,8 +538,7 @@ class TestIDLType {
         @Expect(map.size, 0)
         @Expect(map.isEmpty())
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_clear_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -605,8 +591,7 @@ class TestIDLType {
         @Expect(clonedMap.size, 1)
         @Expect(clonedMap.get("a").getOrThrow(), "b")
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_clone_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -637,8 +622,7 @@ class TestIDLType {
         map.set("k", "v")
         @Expect(map.containsAll(["k"]), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_containsAll_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -668,8 +652,7 @@ class TestIDLType {
         let map = JSHashMapEx<String, String>()
         @Expect(map.isEmpty(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_isEmpty_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -700,8 +683,7 @@ class TestIDLType {
         map.set("a", "b")
         @Expect(map.size, 1)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_set_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -769,8 +751,7 @@ class TestIDLType {
             map["a"] = "c"
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_setAll_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -802,8 +783,7 @@ class TestIDLType {
         map.setIfAbsent("a", "b") // should not override
         @Expect(map["a"], "a")
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_setIfAbsent_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -836,8 +816,7 @@ class TestIDLType {
         @Expect(map.size, 0)
         @Expect(map.isEmpty())
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_delete_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -870,8 +849,7 @@ class TestIDLType {
         @Expect(map.size, 0)
         @Expect(map.isEmpty())
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_deleteAll_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -905,8 +883,7 @@ class TestIDLType {
         @Expect(map.size, 1)
         @Expect(map["b"], "c")
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_deleteIf_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -939,8 +916,7 @@ class TestIDLType {
         @Expect(keys.size, 1)
         @Expect(keys.contains("a"))
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_keys_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -979,8 +955,7 @@ class TestIDLType {
         }
         @Expect(hasB)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_values_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1037,8 +1012,7 @@ class TestIDLType {
         let hh = map.toHashMap()
         @Expect(hh.size, 1)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_toHashMap_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1070,8 +1044,7 @@ class TestIDLType {
         map.set("k", "v")
         @Expect(map.toJSValue(jsContext).isObject(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1135,8 +1108,7 @@ class TestIDLType {
             let _ = UInt8.fromJSValue(jsContext, jsContext.string("bad").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Int8_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1146,8 +1118,7 @@ class TestIDLType {
             v.toJSValue(jsContext)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_UInt8_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1193,8 +1164,7 @@ class TestIDLType {
             let _ = UInt16.fromJSValue(jsContext, jsContext.string("bad").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Int16_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1204,8 +1174,7 @@ class TestIDLType {
             v.toJSValue(jsContext)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_UInt16_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1235,8 +1204,7 @@ class TestIDLType {
             v.toJSValue(jsContext)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSInteropType_Int32_fromJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1278,8 +1246,7 @@ class TestIDLType {
             let _ = UInt32.fromJSValue(jsContext, jsContext.string("bad").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Option_Int32_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1289,8 +1256,7 @@ class TestIDLType {
             o.toJSValue(jsContext)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Int32_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1300,8 +1266,7 @@ class TestIDLType {
             v.toJSValue(jsContext)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_UInt32_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1371,8 +1336,7 @@ class TestIDLType {
             let _ = UInt64.fromJSValue(jsContext, jsContext.string("bad").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Int64_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1382,8 +1346,7 @@ class TestIDLType {
             v.toJSValue(jsContext)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_UInt64_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1421,8 +1384,7 @@ class TestIDLType {
             let _ = Float16.fromJSValue(jsContext, jsContext.string("bad").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Float16_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1450,8 +1412,7 @@ class TestIDLType {
             let _ = Float32.fromJSValue(jsContext, jsContext.string("bad").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Float32_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1479,8 +1440,7 @@ class TestIDLType {
             let _ = Float64.fromJSValue(jsContext, jsContext.string("bad").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Float64_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1508,8 +1468,7 @@ class TestIDLType {
             let _ = Bool.fromJSValue(jsContext, jsContext.string("bad").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Bool_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1576,8 +1535,7 @@ class TestIDLType {
         @Expect(Utf16String.toArktsType(), "string")
         doJSInteropTypeTest<Utf16String>(jsContext, Utf16String("💗"))
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Unit_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1614,8 +1572,7 @@ class TestIDLType {
             let _ = Array<Byte>.fromJSValue(jsContext, jsContext.string("x").toJSValue())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Array_Byte_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1711,8 +1668,7 @@ class TestIDLType {
         map.clear()
         @Expect(withException<Exception> { _ = map["a"] })
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_operatorGet_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1722,8 +1678,7 @@ class TestIDLType {
             arr[0]
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSArrayEx_operatorSet_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1733,8 +1688,7 @@ class TestIDLType {
             arr[0] = "y"
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_size_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1745,8 +1699,7 @@ class TestIDLType {
             map.size
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_has_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1757,8 +1710,7 @@ class TestIDLType {
             map.has("a")
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_operatorGet_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -1769,8 +1721,7 @@ class TestIDLType {
             map["a"]
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSHashMapEx_operatorSet_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

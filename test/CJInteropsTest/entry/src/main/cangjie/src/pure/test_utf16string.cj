@@ -43,8 +43,7 @@ class TestUtf16String {
             @Expect(received, u16)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Utf16String_fromJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -83,8 +82,7 @@ class TestUtf16String {
             @Expect(one, receive.toString())
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_Utf16String_toJSValue_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

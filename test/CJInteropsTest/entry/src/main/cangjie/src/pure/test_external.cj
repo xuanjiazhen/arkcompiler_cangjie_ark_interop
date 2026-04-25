@@ -46,8 +46,7 @@ class TestExternal {
         @Expect(data.nativeId, received3.nativeId)
         @Expect(data.nativeId, recevied1.nativeId)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSExternal_getData_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -74,8 +73,7 @@ class TestExternal {
         @Expect(obj.isSome())
         @Expect(obj.getOrThrow().nativeId, ext.getData().nativeId)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSExternal_cast_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

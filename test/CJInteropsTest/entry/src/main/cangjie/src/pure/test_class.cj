@@ -42,8 +42,7 @@ class TestJSClass {
         let objA = valueA.asObject()
         @Expect(objA.instanceOf(classA), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSClass_new_throwException34300003_referenceBeyondReach(): Unit {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -72,8 +71,7 @@ class TestJSClass {
         let obj = value.asObject()
         @Expect(obj.getProperty("x").toNumber(), 7.0)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSClass_addProperty_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -117,8 +115,7 @@ class TestJSClass {
         @Expect(obj["name"].toString(), "abc")
         @Expect(obj.callMethod("ping").toString(), "pong")
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSClass_addAccessor_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -146,8 +143,7 @@ class TestJSClass {
             )
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSClass_addMethod_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext

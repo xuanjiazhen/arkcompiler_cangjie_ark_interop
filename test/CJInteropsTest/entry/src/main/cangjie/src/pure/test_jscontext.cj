@@ -35,8 +35,7 @@ class TestJSContext {
         let jsContext = getJSContext()
         @Expect(jsContext.global.toJSValue().isObject(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_global_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -54,8 +53,7 @@ class TestJSContext {
             jsContext.global
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_env_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -82,8 +80,7 @@ class TestJSContext {
         @Expect(env != 0)
         @Expect(!napiEnv.isNull())
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_getNapiEnv_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -101,8 +98,7 @@ class TestJSContext {
             jsContext.getNapiEnv()
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_null_factory_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -133,8 +129,7 @@ class TestJSContext {
         let jsContext = getJSContext()
         @Expect(jsContext.boolean(false).toJSValue().isBoolean(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_boolean_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -152,8 +147,7 @@ class TestJSContext {
             jsContext.boolean(true)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_number_Float64_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -162,8 +156,7 @@ class TestJSContext {
             newContext.number(1.0)
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_number_Int32_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -190,8 +183,7 @@ class TestJSContext {
             jsContext.number(Int32(1))
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_string_String_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -200,8 +192,7 @@ class TestJSContext {
             newContext.string("a")
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_string_Utf16String_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -228,8 +219,7 @@ class TestJSContext {
             jsContext.string(Utf16String("a"))
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_object_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -273,8 +263,7 @@ class TestJSContext {
             jsContext.object()
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_function_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -302,8 +291,7 @@ class TestJSContext {
         let c = jsContext.clazz({_, ci => ci.thisArg})
         @Expect(c.toJSValue().isClass(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_clazz_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -331,8 +319,7 @@ class TestJSContext {
         let e = jsContext.external(MyObject())
         @Expect(e.toJSValue().isExternal(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_external_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -361,8 +348,7 @@ class TestJSContext {
         let cap = jsContext.promiseCapability()
         @Expect(cap.toJSValue().isPromise(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_promiseCapability_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -387,8 +373,7 @@ class TestJSContext {
         let buffer = jsContext.arrayBuffer(8)
         @Expect(buffer.byteLength, 8)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_arrayBuffer_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -416,8 +401,7 @@ class TestJSContext {
         }
         @Expect(err0)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_symbol_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -447,8 +431,7 @@ class TestJSContext {
         let jsContext = getJSContext()
         @Expect(jsContext.bigint(BigInt.parse("17")).toJSValue().isBigInt(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_bigint_Int64_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -457,8 +440,7 @@ class TestJSContext {
             newContext.bigint(Int64(1))
         }
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_bigint_BigInt_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
@@ -519,8 +501,7 @@ class TestJSContext {
         let pushService = jsContext.requireSystemNativeModule("core.push.pushService", prefix: "hms")
         @Expect(pushService.isObject(), true)
     }
-
-    // @TestCase  // TEMP_DISABLED: gc-heavy referenceBeyondReach (suite timeout)
+    @TestCase
     func test_JSContext_requireSystemNativeModule_throwException34300003_referenceBeyondReach() {
         let jsContext = getJSContext()
         let newContext = JSRuntime().mainContext
