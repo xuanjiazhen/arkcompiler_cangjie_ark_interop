@@ -15,12 +15,10 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CustomLib } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import { oneParamWithOneNamedParameter, twoParamsWithTwoNamedParameters, twoParamsWithOneNamedParameter } from 'libohos_app_cangjie_entry.so';
 
 export default function TestNamedParameter() {
   describe('TestNamedParameter', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -30,15 +28,15 @@ export default function TestNamedParameter() {
     afterAll(() => {
     })
     it('oneParamWithOneNamedParameter', 0, () => {
-      const result = lib.oneParamWithOneNamedParameter(null);
+      const result = oneParamWithOneNamedParameter(null);
       expect(result === undefined).assertTrue();
     })
     it('twoParamsWithTwoNamedParameters', 0, () => {
-      const result = lib.twoParamsWithTwoNamedParameters(true, 114514);
+      const result = twoParamsWithTwoNamedParameters(true, 114514);
       expect(result === undefined).assertTrue();
     })
     it('twoParamsWithOneNamedParameter', 0, () => {
-      const result = lib.twoParamsWithOneNamedParameter(114.514, new ArrayBuffer(666));
+      const result = twoParamsWithOneNamedParameter(114.514, new ArrayBuffer(666));
       expect(result === undefined).assertTrue();
     })
   })

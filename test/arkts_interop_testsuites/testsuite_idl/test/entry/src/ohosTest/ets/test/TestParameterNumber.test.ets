@@ -15,12 +15,10 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CustomLib } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import { zeroParams, oneParam, twoParams } from 'libohos_app_cangjie_entry.so';
 
 export default function TestParameterNumber() {
   describe('TestParameterNumber', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -30,16 +28,16 @@ export default function TestParameterNumber() {
     afterAll(() => {
     })
     it('zeroParams', 0, () => {
-      const result = lib.zeroParams();
+      const result = zeroParams();
       hilog.info(0, 'WBT', JSON.stringify(result));
       expect(result === undefined).assertTrue();
     })
     it('oneParam', 0, () => {
-      const result = lib.oneParam(null);
+      const result = oneParam(null);
       expect(result === undefined).assertTrue();
     })
     it('twoParams', 0, () => {
-      const result = lib.twoParams(114514, true);
+      const result = twoParams(114514, true);
       expect(result).assertEqual(114.514);
     })
   })

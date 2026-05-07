@@ -15,8 +15,7 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CJNativeClass, CustomLib, Node, TicketMachine, Season } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import { Season, CJNativeClass, TicketMachine, Person, ClassWithMultiCtors } from 'libohos_app_cangjie_entry.so';
 import { JSON } from '@kit.ArkTS';
 
 class JSNativeClass {
@@ -28,7 +27,6 @@ interface MyClass_test_instanceof_03 {}
 
 export default function TestJSClass() {
   describe('TestJSClass', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -39,48 +37,48 @@ export default function TestJSClass() {
     })
 
     it('test01', 0, () => {
-      const obj = new lib.CJNativeClass();
-      expect(obj instanceof lib.CJNativeClass).assertTrue();
+      const obj = new CJNativeClass();
+      expect(obj instanceof CJNativeClass).assertTrue();
     })
     it('test02', 0, () => {
-      const obj = new lib.CJNativeClass();
-      expect(obj instanceof lib.CJNativeClass).assertTrue();
+      const obj = new CJNativeClass();
+      expect(obj instanceof CJNativeClass).assertTrue();
     })
     it('test03', 0, () => {
       const obj = new JSNativeClass();
       expect(obj instanceof JSNativeClass).assertTrue();
     })
     it('staticMethodOnClass01', 0, () => {
-      lib.TicketMachine.reset(0);
-      const first = lib.TicketMachine.nextId();
-      const second = lib.TicketMachine.nextId();
+      TicketMachine.reset(0);
+      const first = TicketMachine.nextId();
+      const second = TicketMachine.nextId();
       expect(first).assertEqual(1);
       expect(second).assertEqual(2);
     })
     it('staticMethodOnClass02', 0, () => {
-      let p = lib.Person.build();
+      let p = Person.build();
       expect(p.name).assertEqual("");
       expect(p.age).assertEqual(0);
     })
     it('staticMethodBuildFromSeasonMapping', 0, () => {
-      const person = lib.Person.buildFromSeason(Season.Autumn);
+      const person = Person.buildFromSeason(Season.Autumn);
       expect(person.name).assertEqual("harvest");
       expect(person.age).assertEqual(3);
     })
     it('classWithMultiCtors', 0, () => {
-      const obj1 = new lib.ClassWithMultiCtors();
+      const obj1 = new ClassWithMultiCtors();
       expect(obj1.name).assertEqual("empty");
 
-      const obj2 = new lib.ClassWithMultiCtors(100);
+      const obj2 = new ClassWithMultiCtors(100);
       expect(obj2.name).assertEqual("Int64");
 
-      const obj3 = new lib.ClassWithMultiCtors("test");
+      const obj3 = new ClassWithMultiCtors("test");
       expect(obj3.name).assertEqual("String");
 
-      const obj4 = new lib.ClassWithMultiCtors(200, 300);
+      const obj4 = new ClassWithMultiCtors(200, 300);
       expect(obj4.name).assertEqual("2Int64");
 
-      const obj5 = new lib.ClassWithMultiCtors("a", "b");
+      const obj5 = new ClassWithMultiCtors("a", "b");
       expect(obj5.name).assertEqual("2String");
     })
   })

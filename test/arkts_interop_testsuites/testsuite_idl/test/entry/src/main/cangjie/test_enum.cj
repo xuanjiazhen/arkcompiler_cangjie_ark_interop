@@ -27,6 +27,22 @@ public enum Season {
 }
 
 @Interop[ArkTS]
+public enum Color {
+    | Red
+    | Green
+    | Blue
+    | Yellow
+}
+
+@Interop[ArkTS]
+public enum Status {
+    | Pending
+    | Running
+    | Completed
+    | Failed
+}
+
+@Interop[ArkTS]
 public func getDefaultSeason(): Season {
     Season.Spring
 }
@@ -58,4 +74,112 @@ public func seasonFromOrdinal(index: Int32): Option<Season> {
         case 3 => Some(Season.Winter)
         case _ => None
     }
+}
+
+@Interop[ArkTS]
+public func seasonToOrdinal(season: Season): Int32 {
+    match (season) {
+        case Season.Spring => 0
+        case Season.Summer => 1
+        case Season.Autumn => 2
+        case Season.Winter => 3
+    }
+}
+
+@Interop[ArkTS]
+public func seasonToString(season: Season): String {
+    match (season) {
+        case Season.Spring => "Spring"
+        case Season.Summer => "Summer"
+        case Season.Autumn => "Autumn"
+        case Season.Winter => "Winter"
+    }
+}
+
+@Interop[ArkTS]
+public func optionSeasonParam(season: Option<Season>): String {
+    match (season) {
+        case Some(s) => seasonToString(s)
+        case None => "None"
+    }
+}
+
+@Interop[ArkTS]
+public func optionSeasonReturnSome(): Option<Season> {
+    Some(Season.Autumn)
+}
+
+@Interop[ArkTS]
+public func optionSeasonReturnNone(): Option<Season> {
+    None
+}
+
+@Interop[ArkTS]
+public func compareSeasons(s1: Season, s2: Season): Bool {
+    seasonToOrdinal(s1) == seasonToOrdinal(s2)
+}
+
+@Interop[ArkTS]
+public func getDefaultColor(): Color {
+    Color.Red
+}
+
+@Interop[ArkTS]
+public func colorFromOrdinal(index: Int32): Option<Color> {
+    match (index) {
+        case 0 => Some(Color.Red)
+        case 1 => Some(Color.Green)
+        case 2 => Some(Color.Blue)
+        case 3 => Some(Color.Yellow)
+        case _ => None
+    }
+}
+
+@Interop[ArkTS]
+public func colorToOrdinal(color: Color): Int32 {
+    match (color) {
+        case Color.Red => 0
+        case Color.Green => 1
+        case Color.Blue => 2
+        case Color.Yellow => 3
+    }
+}
+
+@Interop[ArkTS]
+public func getDefaultStatus(): Status {
+    Status.Pending
+}
+
+@Interop[ArkTS]
+public func nextStatus(current: Status): Status {
+    match (current) {
+        case Status.Pending => Status.Running
+        case Status.Running => Status.Completed
+        case Status.Completed => Status.Completed
+        case Status.Failed => Status.Pending
+    }
+}
+
+@Interop[ArkTS]
+public func statusFromOrdinal(index: Int32): Option<Status> {
+    match (index) {
+        case 0 => Some(Status.Pending)
+        case 1 => Some(Status.Running)
+        case 2 => Some(Status.Completed)
+        case 3 => Some(Status.Failed)
+        case _ => None
+    }
+}
+
+@Interop[ArkTS]
+public func isTerminalStatus(status: Status): Bool {
+    match (status) {
+        case Status.Completed | Status.Failed => true
+        case _ => false
+    }
+}
+
+@Interop[ArkTS]
+public func mixedEnumParams(season: Season, color: Color): Int32 {
+    seasonToOrdinal(season) + colorToOrdinal(color)
 }

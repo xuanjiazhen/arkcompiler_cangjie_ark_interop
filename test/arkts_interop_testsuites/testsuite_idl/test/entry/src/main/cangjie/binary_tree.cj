@@ -17,6 +17,7 @@ package ohos_app_cangjie_entry
 
 import ohos.ark_interop_macro.*
 import ohos.ark_interop.*
+import ohos.hilog.Hilog
 
 @Interop[ArkTS]
 public class Node {
@@ -39,7 +40,7 @@ public class Node {
     }
     public prop childNodeNameList: JSArrayEx<JSStringEx> {
         get() {
-            logger.info("name = ${this.name}, ${this.hasLeftChild}, ${this.hasRightChild}")
+            Hilog.info(0, "WBT", "name = ${this.name}, ${this.hasLeftChild}, ${this.hasRightChild}")
             JSArrayEx([this.name])
                 .concat(this._leftChild?.childNodeNameList ?? JSArrayEx())
                 .concat(this._rightChild?.childNodeNameList ?? JSArrayEx())

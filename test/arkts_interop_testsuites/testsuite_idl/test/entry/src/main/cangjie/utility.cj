@@ -15,12 +15,13 @@
 
 package ohos_app_cangjie_entry
 
-import ohos.hilog.HilogChannel
-import std.collection.{forEach}
-import std.math.{MathExtension, abs}
+import ohos.hilog.Hilog
+import std.collection.forEach
+import std.math.abs
 import std.convert.Formattable
 
-let logger = HilogChannel(0, 0, "WBT")
+let LOG_DOMAIN = UInt32(0)
+let LOG_TAG = "WBT"
 
 foreign func malloc(size: UIntNative): CPointer<Unit>
 
@@ -38,23 +39,23 @@ public class Assert {
     public static func isFalse(actual: Bool, reason!: String = "") {
         if (actual) {
             let message = "isFalse, result=true, reason=${reason}"
-            logger.error(message)
+            Hilog.error(LOG_DOMAIN, LOG_TAG, message)
             fail(message, reason)
         } else {
-            logger.info("isFalse, result=false, reason=${reason}")
+            Hilog.info(LOG_DOMAIN, LOG_TAG, "isFalse, result=false, reason=${reason}")
         }
     }
     public static func isTrue(actual: Bool, reason!: String = "") {
         if (actual) {
-            logger.info("isTrue, result=true, reason=${reason}")
+            Hilog.info(LOG_DOMAIN, LOG_TAG, "isTrue, result=true, reason=${reason}")
         } else {
             let message = "isTrue, result=false, reason=${reason}"
-            logger.error(message)
+            Hilog.error(LOG_DOMAIN, LOG_TAG, message)
             fail(message, reason)
         }
     }
     public static func isUnreachable(reason!: String = "") {
-        logger.error("unreachable, ${reason}")
+        Hilog.error(LOG_DOMAIN, LOG_TAG, "unreachable, ${reason}")
         fail("isUnreachable", reason)
     }
     public static func isNone<T>(actual: Option<T>, reason!: String = "") {
@@ -81,9 +82,9 @@ public class Assert {
             } else {
                 ""
             }
-            logger.error("notEquals${argStr}")
+            Hilog.error(LOG_DOMAIN, LOG_TAG, "notEquals${argStr}")
         } else {
-            logger.info("notEquals success")
+            Hilog.info(LOG_DOMAIN, LOG_TAG, "notEquals success")
         }
     }
     public static func equals<T>(expected: T, actual: T, reason!: String = "") where T <: Equatable<T> {
@@ -94,10 +95,10 @@ public class Assert {
                 ""
             }
             throw AssertException(argStr)
-        //            logger.error("equals${argStr} ${reason}")
+        //            Hilog.error(LOG_DOMAIN, LOG_TAG, "equals${argStr} ${reason}")
         //            fail("equals ${argStr} ${reason}", reason)
         } else {
-            //            logger.info("equals success ${reason}")
+            //            Hilog.info(LOG_DOMAIN, LOG_TAG, "equals success ${reason}")
         }
     }
     public static func approxEquals(expected: Float64, actual: Float64, reason!: String = "") {
@@ -112,14 +113,14 @@ public class Assert {
     public static func approxEquals(expected: Float64, actual: Float64, tolerance: Float64, reason!: String = "") {
         let actualTolerance = abs(expected - actual)
         if (isNaN(actualTolerance) || isNaN(tolerance) || actualTolerance > tolerance) {
-            logger.error(
+            Hilog.error(LOG_DOMAIN, LOG_TAG,
                 """
 approxEquals64(expected =${expected.format(".30e")},
                                            actual   =${actual
                     .format(".30e")},
                                            tolerance=${tolerance})""")
         } else {
-            logger.info("approxEquals success: ${reason}")
+            Hilog.info(LOG_DOMAIN, LOG_TAG, "approxEquals success: ${reason}")
         }
     }
     public static func approxEquals(expected: Float32, actual: Float32, tolerance: Float32, reason!: String = "") {
@@ -191,7 +192,7 @@ func fail(assertionName: String, reason: String) {
             s: StackTraceElement => sb.append(
                 "\t\tat ${s.declaringClass}.${s.methodName}(${s.fileName}:${s.lineNumber})\n")
         }
-        logger.error(sb.toString())
+        Hilog.error(LOG_DOMAIN, LOG_TAG, sb.toString())
     }
 }
 

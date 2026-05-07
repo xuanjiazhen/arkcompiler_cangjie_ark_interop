@@ -15,12 +15,10 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CustomLib } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import { checkJSStringEx, createJSStringEx } from 'libohos_app_cangjie_entry.so';
 
 export default function TestJSStringEx() {
   describe('TestJSStringEx', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -30,10 +28,10 @@ export default function TestJSStringEx() {
     afterAll(() => {
     })
     it('checkJSStringEx', 0, () => {
-      lib.checkJSStringEx('hello world');
+      checkJSStringEx('hello world');
     })
     it('createJSStringEx', 0, () => {
-      const result = lib.createJSStringEx();
+      const result = createJSStringEx();
       expect(result).assertEqual('hello world');
     })
   })

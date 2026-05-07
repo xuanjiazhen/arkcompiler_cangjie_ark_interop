@@ -14,12 +14,29 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CustomLib } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import {
+  returnTypeUnit_00,
+  returnTypeUnit_01,
+  returnTypeUnit_02,
+  returnTypeUnit_03,
+  returnTypeUnit_04,
+  returnTypeInt64_00,
+  returnTypeUInt64_00,
+  returnTypeFloat64_00,
+  returnTypeBool_00,
+  returnTypeBool_01,
+  returnTypeOption_00,
+  returnTypeOption_01,
+  returnTypeOption_02,
+  returnTypeArrayBuffer_00,
+  returnTypeArrayBuffer_01,
+  returnTypeArrayBuffer_02,
+  returnTypeBeingFunctionType_00,
+  returnTypeBeingFunctionType_01
+} from 'libohos_app_cangjie_entry.so';
 
 export default function TestReturnType() {
   describe('TestReturnType', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -29,75 +46,75 @@ export default function TestReturnType() {
     afterAll(() => {
     })
     it('returnTypeUnit_00', 0, () => {
-      const result = lib.returnTypeUnit_00();
+      const result = returnTypeUnit_00();
       expect(result === undefined).assertTrue();
     })
     it('returnTypeUnit_01', 0, () => {
-      const result = lib.returnTypeUnit_01();
+      const result = returnTypeUnit_01();
       expect(result === undefined).assertTrue();
     })
     it('returnTypeUnit_02', 0, () => {
-      const result = lib.returnTypeUnit_02();
+      const result = returnTypeUnit_02();
       expect(result === undefined).assertTrue();
     })
     it('returnTypeUnit_03', 0, () => {
-      const result = lib.returnTypeUnit_03();
+      const result = returnTypeUnit_03();
       expect(result === undefined).assertTrue();
     })
     it('returnTypeUnit_04', 0, () => {
-      const result = lib.returnTypeUnit_04();
+      const result = returnTypeUnit_04();
       expect(result === undefined).assertTrue();
     })
     it('returnTypeInt64_00', 0, () => {
-      const result = lib.returnTypeInt64_00();
+      const result = returnTypeInt64_00();
       expect(result).assertEqual(114514);
     })
     it('returnTypeUInt64_00', 0, () => {
-      const result = lib.returnTypeUInt64_00();
+      const result = returnTypeUInt64_00();
       expect(result).assertEqual(114514);
     })
     it('returnTypeFloat64_00', 0, () => {
-      const result = lib.returnTypeFloat64_00();
+      const result = returnTypeFloat64_00();
       expect(result).assertEqual(114.514);
     })
     it('returnTypeBool_00', 0, () => {
-      const result = lib.returnTypeBool_00();
+      const result = returnTypeBool_00();
       expect(result).assertEqual(true);
     })
     it('returnTypeBool_01', 0, () => {
-      const result = lib.returnTypeBool_01();
+      const result = returnTypeBool_01();
       expect(result).assertEqual(true);
     })
     it('returnTypeOption_00', 0, () => {
-      const result = lib.returnTypeOption_00();
+      const result = returnTypeOption_00();
       expect(result).assertEqual(undefined);
     })
     it('returnTypeOption_01', 0, () => {
-      const result = lib.returnTypeOption_01();
+      const result = returnTypeOption_01();
       expect(result).assertEqual(114514);
     })
     it('returnTypeOption_02', 0, () => {
-      const result = lib.returnTypeOption_02();
+      const result = returnTypeOption_02();
       expect(result).assertEqual(undefined);
     })
     it('returnTypeArrayBuffer_00', 0, () => {
-      const result = lib.returnTypeArrayBuffer_00();
+      const result = returnTypeArrayBuffer_00();
       expect(result.byteLength).assertEqual(0);
     })
     it('returnTypeArrayBuffer_01', 0, () => {
-      const result = lib.returnTypeArrayBuffer_01();
+      const result = returnTypeArrayBuffer_01();
       expect(result.byteLength).assertEqual(4);
     })
     it('returnTypeArrayBuffer_02', 0, () => {
-      const result = lib.returnTypeArrayBuffer_02();
+      const result = returnTypeArrayBuffer_02();
       expect(result.byteLength).assertEqual(5);
     })
     it('returnTypeBeingFunctionType_00', 0, () => {
-      const result = lib.returnTypeBeingFunctionType_00();
+      const result = returnTypeBeingFunctionType_00();
       expect(result() === undefined).assertTrue();
     })
     it('returnTypeBeingFunctionType_01', 0, () => {
-      const result = lib.returnTypeBeingFunctionType_01();
+      const result = returnTypeBeingFunctionType_01();
       type FunctionType = (d: (c: (b: (a: undefined) => boolean) => number) => number) => (number | undefined);
       const f: FunctionType = (something) => {
         return undefined;

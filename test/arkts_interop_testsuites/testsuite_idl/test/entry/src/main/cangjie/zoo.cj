@@ -17,11 +17,12 @@ package ohos_app_cangjie_entry
 
 import ohos.ark_interop_macro.*
 import ohos.ark_interop.*
+import ohos.hilog.Hilog
 
 @Interop[ArkTS]
 public interface CanFly {
     func flies(): Unit {
-        logger.info("flying!!!!")
+        Hilog.info(0, "WBT", "flying!!!!")
     }
 }
 

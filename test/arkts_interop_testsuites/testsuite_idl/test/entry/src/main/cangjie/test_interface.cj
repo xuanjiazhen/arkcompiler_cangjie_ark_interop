@@ -62,3 +62,61 @@ public func checkObjectThatImplementsNormalInterface(obj: NormalInterface): Unit
     assertEqual(obj.abstractInstanceMemberFunctionWithoutDefaultImplementation(1, 2), 3.0)
     obj.mutableInstanceProperty = 66666.0
 }
+
+@Interop[ArkTS]
+public func interfaceParam(obj: NormalInterface): Float64 {
+    obj.mutableInstanceProperty
+}
+
+@Interop[ArkTS]
+public func interfaceReturn(obj: NormalInterface): NormalInterface {
+    obj
+}
+
+@Interop[ArkTS]
+public func optionInterfaceParam(obj: Option<NormalInterface>): Option<Float64> {
+    match (obj) {
+        case Some(o) => Some(o.mutableInstanceProperty)
+        case None => None
+    }
+}
+
+@Interop[ArkTS]
+public func optionInterfaceReturnSome(obj: NormalInterface): Option<NormalInterface> {
+    Some(obj)
+}
+
+@Interop[ArkTS]
+public func optionInterfaceReturnNone(): Option<NormalInterface> {
+    None
+}
+
+@Interop[ArkTS]
+public func callInterfaceMethod(obj: NormalInterface, a: Int64, b: Int32): Float64 {
+    obj.abstractInstanceMemberFunctionWithoutDefaultImplementation(a, b)
+}
+
+@Interop[ArkTS]
+public func callInterfaceMethodWithDefaultImpl(obj: NormalInterface): JSStringEx {
+    obj.abstractInstanceMemberFunctionWithDefaultImplementation(JSArrayEx<JSStringEx>(), JSHashMapEx<String, JSArrayEx<JSStringEx>())
+}
+
+@Interop[ArkTS]
+public func getInterfaceImmutableProperty(obj: NormalInterface): JSStringEx {
+    obj.ImmutableInstanceProperty
+}
+
+@Interop[ArkTS]
+public func setInterfaceMutableProperty(obj: NormalInterface, value: Float64): Unit {
+    obj.mutableInstanceProperty = value
+}
+
+@Interop[ArkTS]
+public func getInterfaceMutableProperty(obj: NormalInterface): Float64 {
+    obj.mutableInstanceProperty
+}
+
+@Interop[ArkTS]
+public func multipleInterfaceParams(obj1: NormalInterface, obj2: NormalInterface): Float64 {
+    obj1.mutableInstanceProperty + obj2.mutableInstanceProperty
+}

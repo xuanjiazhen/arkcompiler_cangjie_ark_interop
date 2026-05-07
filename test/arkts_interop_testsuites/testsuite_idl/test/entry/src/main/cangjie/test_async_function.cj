@@ -17,7 +17,6 @@ package ohos_app_cangjie_entry
 
 import ohos.ark_interop_macro.*
 import ohos.ark_interop.*
-import kit.UIKit.BusinessException
 
 @Interop[ArkTS, Async]
 public func returnTypeBeingPromiseOfVoid(): Unit {

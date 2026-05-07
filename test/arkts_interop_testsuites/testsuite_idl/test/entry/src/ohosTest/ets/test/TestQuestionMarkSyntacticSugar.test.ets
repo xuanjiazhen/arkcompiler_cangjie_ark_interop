@@ -15,12 +15,10 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CustomLib } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import { useQuestionMarkSyntacticSugarInFunctionBody } from 'libohos_app_cangjie_entry.so';
 
 export default function TestQuestionMarkSyntacticSugar() {
   describe('TestQuestionMarkSyntacticSugar', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -30,7 +28,7 @@ export default function TestQuestionMarkSyntacticSugar() {
     afterAll(() => {
     })
     it('useQuestionMarkSyntacticSugarInFunctionBody', 0, () => {
-      const result = lib.useQuestionMarkSyntacticSugarInFunctionBody();
+      const result = useQuestionMarkSyntacticSugarInFunctionBody();
       expect(result === undefined).assertTrue();
     })
   })

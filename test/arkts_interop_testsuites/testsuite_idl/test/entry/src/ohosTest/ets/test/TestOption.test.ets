@@ -15,12 +15,20 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CustomLib } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import {
+  paramBeingOfNestedOptionType_00,
+  paramBeingOfOptionalInt64,
+  paramBeingOfOptionalArrayBuffer,
+  paramBeingOfOptionalUnit,
+  paramBeingOfOptionalBool,
+  paramBeingOfOptionalFloat64,
+  returnTypeBeingOfOptionalInt64,
+  returnTypeBeingOfOptionalArrayBuffer,
+  returnTypeBeingOfOptionalBool
+} from 'libohos_app_cangjie_entry.so';
 
 export default function TestOption() {
   describe('TestOption', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -30,39 +38,39 @@ export default function TestOption() {
     afterAll(() => {
     })
     it('paramBeingOfNestedOptionType_00', 0, () => {
-      const result = lib.paramBeingOfNestedOptionType_00(new ArrayBuffer(666));
+      const result = paramBeingOfNestedOptionType_00(new ArrayBuffer(666));
       expect(result === undefined).assertTrue();
     })
     it('paramBeingOfOptionalInt64', 0, () => {
-      const result = lib.paramBeingOfOptionalInt64(114514);
+      const result = paramBeingOfOptionalInt64(114514);
       expect(result === undefined).assertTrue();
     })
     it('paramBeingOfOptionalArrayBuffer', 0, () => {
-      const result = lib.paramBeingOfOptionalArrayBuffer(new ArrayBuffer(666));
+      const result = paramBeingOfOptionalArrayBuffer(new ArrayBuffer(666));
       expect(result === undefined).assertTrue();
     })
     it('paramBeingOfOptionalUnit', 0, () => {
-      const result = lib.paramBeingOfOptionalUnit(null);
+      const result = paramBeingOfOptionalUnit(null);
       expect(result === undefined).assertTrue();
     })
     it('paramBeingOfOptionalBool', 0, () => {
-      const result = lib.paramBeingOfOptionalBool(true);
+      const result = paramBeingOfOptionalBool(true);
       expect(result === undefined).assertTrue();
     })
     it('paramBeingOfOptionalFloat64', 0, () => {
-      const result = lib.paramBeingOfOptionalFloat64(114.514);
+      const result = paramBeingOfOptionalFloat64(114.514);
       expect(result === undefined).assertTrue();
     })
     it('returnTypeBeingOfOptionalInt64', 0, () => {
-      const result = lib.returnTypeBeingOfOptionalInt64();
+      const result = returnTypeBeingOfOptionalInt64();
       expect(result).assertEqual(114514);
     })
     it('returnTypeBeingOfOptionalArrayBuffer', 0, () => {
-      const result = lib.returnTypeBeingOfOptionalArrayBuffer();
+      const result = returnTypeBeingOfOptionalArrayBuffer();
       expect(result?.byteLength).assertEqual(5);
     })
     it('returnTypeBeingOfOptionalBool', 0, () => {
-      const result = lib.returnTypeBeingOfOptionalBool();
+      const result = returnTypeBeingOfOptionalBool();
       expect(result?.valueOf()).assertEqual(true);
     })
   })

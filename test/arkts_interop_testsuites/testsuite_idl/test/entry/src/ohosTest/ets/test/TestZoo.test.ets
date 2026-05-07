@@ -15,8 +15,7 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CanFly, CustomLib, Node, NormalInterface } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import { CanFly, NormalInterface, cookBird, checkObjectThatImplementsNormalInterface } from 'libohos_app_cangjie_entry.so';
 import { JSON } from '@kit.ArkTS';
 
 class Bird implements CanFly {
@@ -27,7 +26,6 @@ class Bird implements CanFly {
 
 export default function TestZoo() {
   describe('TestZoo', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -38,7 +36,7 @@ export default function TestZoo() {
     })
     it('simpleTreeConstruction', 0, () => {
       const bird = new Bird();
-      const result = lib.cookBird(bird);
+      const result = cookBird(bird);
       expect(result).assertEqual('bird poop');
     })
     it('testInterface', 0, () => {
@@ -56,7 +54,7 @@ export default function TestZoo() {
         abstractImmutableInstanceMemberPropertyWithDefaultImplementation: new Map(),
         abstractMutableInstanceMemberPropertyWithDefaultImplementation: new Array(),
       }
-      lib.checkObjectThatImplementsNormalInterface(obj);
+      checkObjectThatImplementsNormalInterface(obj);
       expect(obj.mutableInstanceProperty).assertEqual(66666);
     })
   })

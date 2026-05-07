@@ -15,12 +15,10 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CustomLib } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import { complexParam_00, complexParam_01, paramsOfAllKindsOfPrimitiveTypes } from 'libohos_app_cangjie_entry.so';
 
 export default function TestParameterType() {
   describe('TestParameterType', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -34,7 +32,7 @@ export default function TestParameterType() {
       const f: F = (something) => {
         return new ArrayBuffer(666);
       }
-      const result = lib.complexParam_00(f);
+      const result = complexParam_00(f);
       expect(result === undefined).assertTrue();
     })
     it('complexParam_01', 0, () => {
@@ -43,11 +41,11 @@ export default function TestParameterType() {
       const f: F = (something) => {
         return null;
       }
-      const result = lib.complexParam_01(f);
+      const result = complexParam_01(f);
       expect(result === undefined).assertTrue();
     })
     it('paramsOfAllKindsOfPrimitiveTypes', 0, () => {
-      const result = lib.paramsOfAllKindsOfPrimitiveTypes(null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1);
+      const result = paramsOfAllKindsOfPrimitiveTypes(null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1);
     })
   })
 }

@@ -15,13 +15,11 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { CustomLib, Node } from "libark_interop_api.so"
-import { requireCJLib } from "libark_interop_loader.so"
+import { Node } from 'libohos_app_cangjie_entry.so';
 import { JSON } from '@kit.ArkTS';
 
 export default function TestBinaryTree() {
   describe('TestBinaryTree', () => {
-    const lib: CustomLib = requireCJLib("libohos_app_cangjie_entry.so") as CustomLib;
     beforeAll(() => {
     })
     beforeEach(() => {
@@ -31,17 +29,17 @@ export default function TestBinaryTree() {
     afterAll(() => {
     })
     it('simpleTreeConstruction', 0, () => {
-      const root = new lib.Node('root', undefined, undefined);
+      const root = new Node('root', undefined, undefined);
       expect(root.name).assertEqual('root');
       expect(JSON.stringify(root.childNodeNameList)).assertEqual('["root"]');
       expect(root.childCount).assertEqual(1);
       expect(root.hasLeftChild).assertFalse();
       expect(root.hasRightChild).assertFalse();
       expect(root.hasAnyDescendants).assertFalse();
-      const a = new lib.Node('a', undefined, undefined);
-      const b = new lib.Node('b', undefined, undefined);
-      const c = new lib.Node('c', a, b);
-      const d = new lib.Node('d', undefined, undefined);
+      const a = new Node('a', undefined, undefined);
+      const b = new Node('b', undefined, undefined);
+      const c = new Node('c', a, b);
+      const d = new Node('d', undefined, undefined);
       root.leftChild = c;
       root.rightChild = d;
       expect(root.hasLeftChild).assertTrue();
