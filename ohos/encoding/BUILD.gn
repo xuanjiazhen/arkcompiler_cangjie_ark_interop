@@ -22,7 +22,7 @@ ohos_cangjie_shared_library("ohos.encoding.json") {
     "json/parse_json.cj",
     "json/write_buffer.cj",
   ]
-
+  is_mock_enabled = true
   subsystem_name = "arkcompiler"
   part_name = "cangjie_ark_interop"
 }

@@ -42,6 +42,9 @@
                     "name": "//arkcompiler/cangjie_ark_interop/ohos/labels:ohos.labels"
                 },
                 {
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos/labels:ohos.labels.mock"
+                },
+                {
                     "name": "//arkcompiler/cangjie_ark_interop/ohos/encoding:ohos.encoding.json"
                 },
                 {
@@ -58,6 +61,9 @@
                 },
                 {
                     "name": "//arkcompiler/cangjie_ark_interop/ohos/business_exception:ohos.business_exception"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos/business_exception:ohos.business_exception.mock"
                 },
                 {
                     "name": "//arkcompiler/cangjie_ark_interop/ohos/callback_invoke:ohos.callback_invoke"
