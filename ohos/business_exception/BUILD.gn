@@ -25,3 +25,16 @@ ohos_cangjie_shared_library("ohos.business_exception") {
   subsystem_name = "arkcompiler"
   part_name = "cangjie_ark_interop"
 }
+
+ohos_cangjie_shared_library_mock("ohos.business_exception.mock") {
+  sources = [
+    "business_exception.cj",
+  ]
+
+  cj_deps = [
+    "../labels:ohos.labels.mock",
+  ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_ark_interop"
+}
