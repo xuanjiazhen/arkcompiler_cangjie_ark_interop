@@ -22,3 +22,13 @@ ohos_cangjie_shared_library("ohos.labels") {
   subsystem_name = "arkcompiler"
   part_name = "cangjie_ark_interop"
 }
+
+ohos_cangjie_shared_library_mock("ohos.business_exception.mock") {
+  sources = [ 
+    "api_level.cj",
+    "hide.cj"
+  ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_ark_interop"
+}
