@@ -18,7 +18,7 @@ ohos_cangjie_shared_library("ohos.labels") {
     "api_level.cj",
     "hide.cj"
   ]
-
+  is_mock_enabled = true
   subsystem_name = "arkcompiler"
   part_name = "cangjie_ark_interop"
 }
