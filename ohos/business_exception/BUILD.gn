@@ -22,6 +22,8 @@ ohos_cangjie_shared_library("ohos.business_exception") {
     "../labels:ohos.labels",
   ]
 
+  is_mock_enabled = true
+
   subsystem_name = "arkcompiler"
   part_name = "cangjie_ark_interop"
 }
