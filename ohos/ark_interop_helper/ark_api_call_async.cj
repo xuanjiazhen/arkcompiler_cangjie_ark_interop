@@ -19,7 +19,6 @@ package ohos.ark_interop_helper
 
 import std.collection.concurrent.ConcurrentHashMap
 import ohos.business_exception.BusinessException
-import ohos.base.UIThread
 import ohos.hilog.Hilog
 import std.sync.Mutex
 import ohos.ark_interop.{JSRuntime, JSModule}
@@ -70,14 +69,34 @@ protected func getMainContext(): JSContext {
     }
 }
 
+enum Result<T> {
+    | Success(T)
+    | Failure(Exception)
+    | None
+}
+
 protected func checkThreadAndCall<T>(ctx: JSContext, f: (JSContext) -> T): T {
     if (ctx.isInBindThread()) {
         f(ctx)
     } else {
-        let fut = spawn (UIThread) {
-            f(ctx)
+        let result = Box<Result<T>>(None)
+        let complete = Box(AtomicBool(false))
+        ctx.postJSTask {
+            result.value = try {
+                Success(f(ctx))
+            } catch (e: Exception) {
+                Failure(e)
+            } finally {
+                complete.value.store(true)
+            }
         }
-        fut.get()
+        while (!complete.value.load()) {
+        }
+        match (result.value) {
+            case Success(r) => return r
+            case Exception(e) => throw e
+            case None => throw Exception("should never happen")
+        }
     }
 }
 
