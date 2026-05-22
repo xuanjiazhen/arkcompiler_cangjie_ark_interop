@@ -23,23 +23,42 @@ foreign func FfiOHOSFFIFFIDataExist(id: Int64): Bool
 
 foreign func FfiOHOSFFIFFIDataRelease(id: Int64): Unit
 
-enum RemoteDataStatus {
-    // created with invalid id: 0.
-    | INVALID
-    | VALID
-    /**
-     * removed from global map, native object not destructed yet.
-     *  once cj RemoteData release the reference, FFIDataManager may not destructor the native object right now,
-     *  cause some place at native may still hold the reference.
-     *  This status means the native object may still be alive, but cj can't access it.
-     */
-    | OUT_REACH
-    // native object destructed.
-    | DESTROYED
-}
-
 protected const SUCCESS_CODE: Int32 = 0
 protected const INVALID_CODE: Int32 = -1
+
+private class KeyKeeper {
+    private var isValid_ = true
+
+    KeyKeeper(let id_: Int64) {}
+
+    ~init() {
+        if (isValid_) {
+            unsafe { FfiOHOSFFIFFIDataRelease(id_) }
+        }
+    }
+
+    prop isValid: Bool {
+        get() {
+            isValid_
+        }
+    }
+
+    prop id: Int64 {
+        get() {
+            if (!isValid) {
+                throw Exception("")
+            }
+            return id_
+        }
+    }
+
+    func release(): Unit {
+        if (isValid_) {
+            isValid_ = false
+            unsafe { FfiOHOSFFIFFIDataRelease(id_) }
+        }
+    }
+}
 
 /**
  * base class of native objects that would be visit by cj, cj holds a shared pointer to the native object.
@@ -50,58 +69,31 @@ protected const INVALID_CODE: Int32 = -1
  *  properties and methods of the object.
  */
 protected open class RemoteData {
-    protected init() {
-        id_ = 0
-        status_ = INVALID
-    }
+    private let key_: KeyKeeper
 
     protected init(id: Int64) {
-        id_ = id
-        if (id == 0) {
-            status_ = INVALID
-        } else {
-            status_ = VALID
-        }
+        key_ = KeyKeeper(id)
     }
-
-    protected func dataInit(id: Int64): Unit {
-        id_ = id
-        if (id == 0) {
-            status_ = INVALID
-        } else {
-            status_ = VALID
-        }
-    }
-
-    private var id_: Int64
-    private var status_: RemoteDataStatus
 
     /**
      * before visit the native object, must check the object is valid[is deleted], or unexpected situation would occur.
      */
     protected func isValid(): Bool {
-        match (status_) {
-            case VALID => true
-            case _ => false
-        }
+        key_.isValid
     }
 
     /**
      * once determinate to delete the object, remote the native object from the global map
      */
     protected func release(): Unit {
-        unsafe {
-            status_ = RemoteDataStatus.OUT_REACH
-            FfiOHOSFFIFFIDataRelease(id_)
-            id_ = 0
+        if (key_.isValid) {
+            key_.release()
+            onDestroyed()
         }
     }
 
     protected func getID(): Int64 {
-        if (!isValid()) {
-            throw NoneValueException("not a valid RemoteData: ${id_}")
-        }
-        return id_
+        key_.id
     }
 
     /**
@@ -109,69 +101,12 @@ protected open class RemoteData {
      * call once after `release` called, it only be called when native object is destructed.
      */
     protected open func onDestroyed(): Unit {
-        status_ = DESTROYED
-    }
-}
-
-/**
- * stores a global map for RemoteData.
- *  when a NativeObject passed to cj for more than one time, could have several RemoteData referenced to the same
- *  NativeObject. Once A RemoteData release the NativeObject, others visit the NativeObject would causes exception.
- *  The solution is check status before visit any NativeObject's properties or methods.
- *  The old way to check status is call a FFI function, that is much expensive. If we store the status as local
- *  property, the trouble is how to synchronize NativeObject's status to cj. That is what RemoteDataManager design for,
- *  we provide @C func to synchronize NativeObject's status, to achieve that, we have to keep every RemoteData on a
- *  global map, so that we can change their status from the native.By the way, it also can prevent several RemoteData
- *  reference to the same NativeObject.
- */
-protected class RemoteDataManager {
-    private static let INSTANCE = RemoteDataManager()
-    protected static func getInstance(): RemoteDataManager {
-        INSTANCE
-    }
-
-    private let store_ = HashMap<Int64, RemoteData>()
-    private var dataLock = AtomicLock()
-    protected func getOrCreate<T>(id: Int64, creator: (Int64) -> T): T where T <: RemoteData {
-        dataLock.acquire {
-            let optData = store_.get(id)
-            match (optData) {
-                case Some(data) => getOrThrow(data as T, msg: "getOrCreate fail, data exist but type mismatch.")
-                case _ =>
-                    let data = creator(id)
-                    store_.add(id, data)
-                    data
-            }
-        }
-    }
-
-    protected func register(data: RemoteData): Unit {
-        dataLock.acquire {
-            let id = data.getID();
-            if (store_.contains(id)) {
-                FFI_BIND_LOG.error("RemoteData repeat register: " + id.toString())
-            }
-            store_.add(id, data)
-        }
-    }
-
-    protected func releaseData(id: Int64): Bool {
-        dataLock.acquire {
-            let optData = store_.get(id)
-            match (optData) {
-                case Some(data) =>
-                    data.onDestroyed()
-                    store_.remove(id)
-                    true
-                case _ => false
-            }
-        }
     }
 }
 
 @C
 protected func OHOSFFIReleaseRemoteData(id: Int64): Bool {
-    return RemoteDataManager.getInstance().releaseData(id)
+    return true
 }
 
 protected open class RemoteDataLite {
