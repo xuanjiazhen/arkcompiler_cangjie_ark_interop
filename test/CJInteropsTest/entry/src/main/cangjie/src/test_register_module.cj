@@ -90,7 +90,30 @@ let _ = JSModule.registerModule {
             jsObject["test_JSContext_requireArkModule_success"] = jsContext.function {
                 context, callInfo => context.requireArkModule(callInfo[0].toString())
             }.toJSValue()
+            jsObject["test_JSContext_requireArkModule"] = jsContext.function(test_JSContext_requireArkModule).toJSValue()
         }
+}
+
+func test_JSContext_requireArkModule(context: JSContext, callInfo: JSCallInfo): JSValue {
+    expectException<Exception> {
+        context.requireArkModule("xxx")
+    }
+    expectException<Exception> {
+        context.requireArkModule("libxxx")
+    }
+    expectException<Exception> {
+        context.requireArkModule("")
+    }
+    expectException<Exception> {
+        context.requireArkModule("lib*.so")
+    }
+    expectException<Exception> {
+        context.requireArkModule("*./xxx")
+    }
+    expectException<Exception> {
+        context.requireArkModule("entry/*/xxx")
+    }
+    context.undefined().toJSValue()
 }
 
 class Person <: SharedObject {
