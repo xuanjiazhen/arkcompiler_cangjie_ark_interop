@@ -75,63 +75,63 @@ public class JSArrayBuffer <: JSHeapObject {
         byteLength_ = length
     }
 
-    init(context: JSContext, buffer: Array<Byte>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size)
+    init(context: JSContext, buffer: Array<Byte>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = buffer
     }
 
-    init(context: JSContext, buffer: Array<Int8>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size)
+    init(context: JSContext, buffer: Array<Int8>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
-    init(context: JSContext, buffer: Array<Int16>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size) * 2
+    init(context: JSContext, buffer: Array<Int16>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
-    init(context: JSContext, buffer: Array<UInt16>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size) * 2
+    init(context: JSContext, buffer: Array<UInt16>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
-    init(context: JSContext, buffer: Array<UInt32>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size) * 4
+    init(context: JSContext, buffer: Array<UInt32>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
-    init(context: JSContext, buffer: Array<Int32>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size) * 4
+    init(context: JSContext, buffer: Array<Int32>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
-    init(context: JSContext, buffer: Array<Float32>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size) * 4
+    init(context: JSContext, buffer: Array<Float32>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
-    init(context: JSContext, buffer: Array<Int64>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size) * 8
+    init(context: JSContext, buffer: Array<Int64>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
-    init(context: JSContext, buffer: Array<UInt64>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size) * 8
+    init(context: JSContext, buffer: Array<UInt64>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
-    init(context: JSContext, buffer: Array<Float64>) {
-        super(context, createArrayBuffer(context, buffer), JSType.OBJECT)
-        byteLength_ = Int32(buffer.size) * 8
+    init(context: JSContext, buffer: Array<Float64>, byteLength: Int32) {
+        super(context, createArrayBuffer(context, buffer, byteLength), JSType.OBJECT)
+        byteLength_ = byteLength
         buffer_ = None
     }
 
@@ -253,6 +253,7 @@ public class JSArrayBuffer <: JSHeapObject {
         since: "22",
         throwexception: true
     ]
+    @OverflowWrapping
     public func toUInt16Array(): Array<UInt16> {
         let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 2) != 0) {
@@ -280,6 +281,7 @@ public class JSArrayBuffer <: JSHeapObject {
         since: "22",
         throwexception: true
     ]
+    @OverflowWrapping
     public func toInt16Array(): Array<Int16> {
         let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 2) != 0) {
@@ -307,6 +309,7 @@ public class JSArrayBuffer <: JSHeapObject {
         since: "22",
         throwexception: true
     ]
+    @OverflowWrapping
     public func toInt32Array(): Array<Int32> {
         let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 4) != 0) {
@@ -334,6 +337,7 @@ public class JSArrayBuffer <: JSHeapObject {
         since: "22",
         throwexception: true
     ]
+    @OverflowWrapping
     public func toUInt32Array(): Array<UInt32> {
         let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 4) != 0) {
@@ -361,6 +365,7 @@ public class JSArrayBuffer <: JSHeapObject {
         since: "22",
         throwexception: true
     ]
+    @OverflowWrapping
     public func toFloat32Array(): Array<Float32> {
         let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 4) != 0) {
@@ -388,6 +393,7 @@ public class JSArrayBuffer <: JSHeapObject {
         since: "22",
         throwexception: true
     ]
+    @OverflowWrapping
     public func toUInt64Array(): Array<UInt64> {
         let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 8) != 0) {
@@ -415,6 +421,7 @@ public class JSArrayBuffer <: JSHeapObject {
         since: "22",
         throwexception: true
     ]
+    @OverflowWrapping
     public func toInt64Array(): Array<Int64> {
         let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 8) != 0) {
@@ -442,6 +449,7 @@ public class JSArrayBuffer <: JSHeapObject {
         since: "22",
         throwexception: true
     ]
+    @OverflowWrapping
     public func toFloat64Array(): Array<Float64> {
         let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 8) != 0) {
@@ -726,8 +734,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<UInt64>): JSValue_ {
-        let length = Int32(buffer.size) * 8
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<UInt64>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
@@ -745,8 +754,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<Int64>): JSValue_ {
-        let length = Int32(buffer.size) * 8
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<Int64>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
@@ -764,8 +774,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<Float64>): JSValue_ {
-        let length = Int32(buffer.size) * 8
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<Float64>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
@@ -783,8 +794,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<Float32>): JSValue_ {
-        let length = Int32(buffer.size) * 4
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<Float32>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
@@ -802,8 +814,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<Int32>): JSValue_ {
-        let length = Int32(buffer.size) * 4
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<Int32>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
@@ -822,8 +835,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<UInt32>): JSValue_ {
-        let length = Int32(buffer.size) * 4
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<UInt32>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
@@ -841,8 +855,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<Int16>): JSValue_ {
-        let length = Int32(buffer.size) * 2
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<Int16>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
@@ -860,8 +875,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<UInt16>): JSValue_ {
-        let length = Int32(buffer.size) * 2
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<UInt16>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
@@ -879,8 +895,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<Int8>): JSValue_ {
-        let length = Int32(buffer.size)
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<Int8>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
@@ -898,8 +915,9 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * @throws { BusinessException } 34300002 - Bad C call memcpy_s.
      */
-    static func createArrayBuffer(context: JSContext, buffer: Array<Byte>): JSValue_ {
-        let length = Int32(buffer.size)
+    @OverflowWrapping
+    static func createArrayBuffer(context: JSContext, buffer: Array<Byte>, byteLength: Int32): JSValue_ {
+        let length = byteLength
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
             context.checkJSException() // in case of ArkTS OOM
