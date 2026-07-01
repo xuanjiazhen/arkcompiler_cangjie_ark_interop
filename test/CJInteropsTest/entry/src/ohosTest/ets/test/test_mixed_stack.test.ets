@@ -17,8 +17,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import * as lib from "libentry.so"
 
 class BusinessError extends Error {
-  code: number;
-  constructor(code: number, message: string) {
+  code: string;
+  constructor(code: string, message: string) {
     super(message)
     this.code = code
     this.name = "BusinessError"
@@ -62,7 +62,7 @@ export default function TestMixedStack() {
         lib.test_mixedStack_nestedCall_propagateArkTsError_success((callback)=> {
           try {
             callback(() => {
-              throw new BusinessError(123456, "This is a BusinessError")
+              throw new BusinessError("123456", "This is a BusinessError")
             })
           } catch (e) {
             error = e as Error
@@ -78,7 +78,7 @@ export default function TestMixedStack() {
         const code = oError.code
         expect(name.startsWith('BusinessError')).assertTrue()
         expect(message).assertEqual('This is a BusinessError')
-        expect(code).assertEqual(123456)
+        expect(code).assertEqual("123456")
         const stack = oError.stack!.split("\n")
         for (const line of stack) {
           if (line) {
