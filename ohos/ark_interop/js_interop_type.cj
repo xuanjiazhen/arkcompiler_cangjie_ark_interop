@@ -22,6 +22,10 @@ package ohos.ark_interop
 ]
 sealed interface JSInteropByte {}
 
+internal func int32ToJSValue(context: JSContext, value: Int32): JSValue {
+    context.number(value).toJSValue()
+}
+
 /**
  * Byte extended JSInteropByte interface.
  */
@@ -114,7 +118,7 @@ extend Int8 <: JSInteropType<Int8> {
         throwexception: true
     ]
     public func toJSValue(context: JSContext): JSValue {
-        return context.number(Int32(this)).toJSValue()
+        return int32ToJSValue(context, Int32(this))
     }
 
     /**
@@ -173,7 +177,7 @@ extend Int16 <: JSInteropType<Int16> {
         throwexception: true
     ]
     public func toJSValue(context: JSContext): JSValue {
-        return context.number(Int32(this)).toJSValue()
+        return int32ToJSValue(context, Int32(this))
     }
 
     /**
@@ -354,7 +358,7 @@ extend UInt8 <: JSInteropType<UInt8> {
         throwexception: true
     ]
     public func toJSValue(context: JSContext): JSValue {
-        return context.number(Int32(this)).toJSValue()
+        return int32ToJSValue(context, Int32(this))
     }
 
     /**
@@ -413,7 +417,7 @@ extend UInt16 <: JSInteropType<UInt16> {
         throwexception: true
     ]
     public func toJSValue(context: JSContext): JSValue {
-        return context.number(Int32(this)).toJSValue()
+        return int32ToJSValue(context, Int32(this))
     }
 
     /**
