@@ -573,7 +573,7 @@ public class JSContext {
         JSPromiseCapability(this)
     }
 
-    func throwJSError(exception: Exception): Unit {
+    private func throwJSErrorImpl(exception: Throwable): Unit {
         let stack = exception.getStackTrace()
         let stackTexts = Array<String>(stack.size) {
             index =>
@@ -590,21 +590,12 @@ public class JSContext {
         unsafe { ARKTS_Throw(env, jstr) }
     }
 
+    func throwJSError(exception: Exception): Unit {
+        throwJSErrorImpl(exception)
+    }
+
     func throwJSError(exception: Error): Unit {
-        let stack = exception.getStackTrace()
-        let stackTexts = Array<String>(stack.size) {
-            index =>
-            let frame = stack[index]
-            let packageDelimiter = if (frame.declaringClass.isEmpty()) {
-                ""
-            } else {
-                "."
-            }
-            "\t at ${frame.declaringClass}${packageDelimiter}${frame.methodName}(${frame.fileName}:${frame.lineNumber})"
-        }
-        let message = "${exception}\n${String.join(stackTexts, delimiter: "\n")}"
-        let jstr = JSString.createString(this, message)
-        unsafe { ARKTS_Throw(env, jstr) }
+        throwJSErrorImpl(exception)
     }
 
     /**
