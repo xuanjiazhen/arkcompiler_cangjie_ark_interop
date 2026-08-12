@@ -68,6 +68,7 @@ ohos_cangjie_shared_library("ohos.ark_interop") {
     "ark_interop/jsobject.cj",
     "ark_interop/jsstring.cj",
     "ark_interop/slab.cj",
+    "ark_interop/system_object_interop_type.cj",
     "ark_interop/utf16_string.cj",
     "ark_interop/js_map.cj",
     "ark_interop/js_module_helper.cj",
