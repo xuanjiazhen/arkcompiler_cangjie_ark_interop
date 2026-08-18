@@ -22,6 +22,7 @@
   "license": "",
   "dependencies": {
     "libentry.so": "file:./src/main/cangjie/types/libentry",
+    "libentry.macro_test.so": "file:./src/main/cangjie/types/libentry_macro_test",
     "libentry.pure.so": "file:./src/main/cangjie/types/libentry.pure",
     "libentry_c.so": "file:./src/main/cpp/types/libentry",
     "localhar": "file:../localhar",
