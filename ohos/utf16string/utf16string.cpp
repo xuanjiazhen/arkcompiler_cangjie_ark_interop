@@ -280,7 +280,7 @@ Utf16StringHandle Utf16String::CreateLatin1(const char *src, uint32_t length, bo
     }
     auto data = static_cast<uint8_t*>(str) + sizeof(Utf16String);
     auto result = new (str)Utf16String(true, false, length, data, isConstObJ);
-    __builtin_memcpy(data, src, length);
+    std::copy_n(src, length, data);
     return result;
 }
 
@@ -300,7 +300,7 @@ Utf16StringHandle Utf16String::CreateUtf16(const char16_t *src, uint32_t length,
         }
         auto data = reinterpret_cast<char16_t*>(static_cast<char*>(str) + sizeof(Utf16String));
         auto result = new (str)Utf16String(true, false, length, data, isConstObJ);
-        __builtin_memcpy(data, src, length * RESIZE_FACTOR_2);
+        std::copy_n(src, length, data);
 
         return result;
     }
@@ -951,6 +951,9 @@ bool Utf16String::RawEndsWith(Utf16StringHandle subject, uint32_t ending) const
     if (length_ < ending) {
         return false;
     }
+    if (subject->length_ > ending) {
+        return false;
+    }
     return RawStartsWith(subject, ending - subject->length_);
 }
 
@@ -967,8 +970,18 @@ Utf16StringHandle Utf16String::Append(Utf16StringHandle subject) const
         return target;
     }
     auto isLatin1 = isLatin1_ && subject->isLatin1_;
-    auto length = length_ + subject->length_;
-    auto src = malloc(AlignedSize(sizeof(Utf16String) + length * (isLatin1 ? 1 : 2)));
+    int64_t length = length_;
+    length += subject->length_;
+    if (!isLatin1) {
+        length <<= 1;
+    }
+    if (length > std::numeric_limits<uint32_t>::max()) {
+        return nullptr;
+    }
+    if (length + sizeof(Utf16String) > std::numeric_limits<size_t>::max()) {
+        return nullptr;
+    }
+    auto src = malloc(AlignedSize(sizeof(Utf16String) + length));
     if (!src) {
         return nullptr;
     }
