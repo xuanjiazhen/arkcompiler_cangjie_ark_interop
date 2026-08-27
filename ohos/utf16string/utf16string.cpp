@@ -951,6 +951,9 @@ bool Utf16String::RawEndsWith(Utf16StringHandle subject, uint32_t ending) const
     if (length_ < ending) {
         return false;
     }
+    if (subject->length_ > ending) {
+        return false;
+    }
     return RawStartsWith(subject, ending - subject->length_);
 }
 
