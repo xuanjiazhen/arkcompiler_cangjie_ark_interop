@@ -29,11 +29,7 @@ const BOOLEAN_ARRAY_SIGNATURE = "Z"
 const DOUBLE_ARRAY_SIGNATURE = "D"
 const INT_ARRAY_SIGNATURE = "I"
 const STRING_ARRAY_SIGNATURE = "T"
-
-enum BracketKinds {
-    | Braces
-    | Square
-}
+const WANTPARAMS_ARRAY_SIGNATURE = "W"
 
 func getJsonType(ob: JsonValue): String {
     return match (ob.kind()) {
@@ -53,6 +49,7 @@ func getJsonArrayType(jsonValue: JsonValue): String {
         case JsonKind.JsInt => INT_ARRAY_SIGNATURE
         case JsonKind.JsFloat => DOUBLE_ARRAY_SIGNATURE
         case JsonKind.JsString => STRING_ARRAY_SIGNATURE
+        case JsonKind.JsObject => WANTPARAMS_ARRAY_SIGNATURE
         case _ => throw IllegalArgumentException("The type is not supported yet.")
     }
     return arrType
@@ -79,7 +76,12 @@ func checkandGetJsonValue(arrayType: String, jsonValue: JsonValue): String {
                 Float64(intValue).toString()
             }
         case (DOUBLE_ARRAY_SIGNATURE, v: JsonFloat) => v.toString()
-        case (STRING_ARRAY_SIGNATURE, v: JsonString) => v.getValue().toString()
+        case (STRING_ARRAY_SIGNATURE, v: JsonString) =>
+            let strValue = v.getValue().toString()
+            escapeLegacyJsonString(strValue)
+        case (WANTPARAMS_ARRAY_SIGNATURE, v: JsonObject) =>
+            validateWArrayJsonValue(v)
+            wantParamsToString(jsonObjectWrapper(v))
         case (_, _) => throw IllegalArgumentException("The type is not supported yet.")
     }
 }
@@ -99,27 +101,129 @@ func arrayToJsonValue(arr: JsonArray): JsonValue {
     return JsonObject(HashMap<String, JsonValue>([(VALUE_TYPE_ARRAY, JsonString(str.toString()))]))
 }
 
-func trimQuotation(s: String): String {
-    return s[1..s.size - 1]
+// Split array content into exactly `declaredSize` elements, mirroring the
+// native Array::ParseElement / ScanElement: for elements 0..declaredSize-2
+// scan to the next top-level comma; the last element takes the residual tail
+// (so it may legitimately contain commas). When useBraceDepth is true (W
+// arrays), quoted regions are tracked so that braces/commas inside a string
+// value do not confuse the scan (a backslash-escaped '"' does not toggle the
+// string state); when false (primitive arrays), a simple comma scan is used.
+// Returns an empty array if the content has too few top-level commas to
+// satisfy the declared size.
+func splitByDeclaredSize(content: String, declaredSize: Int64, useBraceDepth: Bool): Array<String> {
+    let result = ArrayList<String>()
+    if (declaredSize <= 0) {
+        return result.toArray()
+    }
+    var start: Int64 = 0
+    var i: Int64 = 0
+    while (i < declaredSize - 1) {
+        var commaPos: Int64 = -1
+        var j = start
+        var braceDepth: Int64 = 0
+        var inString = false
+        while (j < content.size) {
+            let c = content[j]
+            if (useBraceDepth) {
+                if (inString) {
+                    if (c == b'\\') {
+                        if (j + 1 < content.size) {
+                            j++ // skip the escaped char (e.g. '\"' must not toggle inString)
+                        }
+                    } else if (c == b'"') {
+                        inString = false
+                    }
+                } else if (c == b'"') {
+                    inString = true
+                } else if (c == b'{') {
+                    braceDepth++
+                } else if (c == b'}') {
+                    if (braceDepth > 0) {
+                        braceDepth--
+                    }
+                } else if (c == b',' && braceDepth == 0) {
+                    commaPos = j
+                    break
+                }
+            } else {
+                if (c == b',') {
+                    commaPos = j
+                    break
+                }
+            }
+            j++
+        }
+        if (commaPos < 0) {
+            return ArrayList<String>().toArray()
+        }
+        result.add(content[start..commaPos])
+        start = commaPos + 1
+        i++
+    }
+    result.add(content[start..content.size])
+    return result.toArray()
 }
 
-func addQuotation(s: String): String {
-    return "\"" + s + "\""
+// Parse the declared element count encoded between the signature and the
+// opening '{'. Returns -1 when the digits are absent or non-numeric.
+func parseArrayDeclaredSize(s: String, leftBraceIdx: Int64): Int64 {
+    var size: Int64 = 0
+    var i: Int64 = 1
+    while (i < leftBraceIdx) {
+        let c = s[i]
+        if (c < b'0' || c > b'9') {
+            return -1
+        }
+        size = size * 10 + Int64(UInt32(c)) - 48
+        i++
+    }
+    return size
 }
 
 func parseStringToJsonArray(s: String): JsonArray {
+    if (s.size == 0) {
+        return JsonArray()
+    }
     let arrType = s[0]
-    let arrString = s[3..s.size - 1].split(",") // for example: "T3{X,X,X}", value start from index 3
+    var leftBraceIdx: Int64 = -1
+    for (i in 0..s.size) {
+        if (s[i] == b'{') {
+            leftBraceIdx = i
+            break
+        }
+    }
+    if (leftBraceIdx < 0 || s[s.size - 1] != b'}') {
+        return JsonArray()
+    }
+    let content = s[leftBraceIdx + 1..s.size - 1]
+    let declaredSize = parseArrayDeclaredSize(s, leftBraceIdx)
+    if (declaredSize < 0) {
+        return JsonArray()
+    }
+    // Match the native Array::ParseElement: scan to the next top-level comma
+    // for elements 0..declaredSize-2, and take the residual tail for the last
+    // element (so the last element may legitimately contain commas). W arrays
+    // use brace-depth + string-state scanning; primitive arrays use a plain
+    // comma scan.
+    let arrString = splitByDeclaredSize(content, declaredSize, arrType == b'W')
+    if (arrString.size != declaredSize) {
+        return JsonArray()
+    }
     match (arrType) {
-        // BOOLEAN_ARRAY_SIGNATURE 
+        // BOOLEAN_ARRAY_SIGNATURE
         case b'Z' => return JsonArray(Array<JsonValue>(arrString.size, {i => JsonValue.fromStr(arrString[i]).asBool()}))
         // DOUBLE_ARRAY_SIGNATURE
         case b'D' => return JsonArray(Array<JsonValue>(arrString.size, {i => JsonValue.fromStr(arrString[i]).asFloat()}))
         // INT_ARRAY_SIGNATURE
         case b'I' => return JsonArray(Array<JsonValue>(arrString.size, {i => JsonValue.fromStr(arrString[i]).asInt()}))
-        // STRING_ARRAY_SIGNATURE
-        case b'T' => return JsonArray(
-            Array<JsonValue>(arrString.size, {i => JsonValue.fromStr(addQuotation(arrString[i])).asString()}))
+        // STRING_ARRAY_SIGNATURE: elements arrive already unescaped (the wire
+        // level parseQuotedRaw applied one unescape layer); do not unescape
+        // again here.
+        case b'T' => return JsonArray(Array<JsonValue>(arrString.size, {i => JsonString(arrString[i])}))
+        // WANTPARAMS_ARRAY_SIGNATURE: each element is a nested escaped
+        // WantParams string; parse it with the recursive parser.
+        case b'W' => return JsonArray(
+            Array<JsonValue>(arrString.size, {i => jsonStringUnWrapper(arrString[i])}))
         case _ => return JsonArray()
     }
 }
@@ -154,112 +258,390 @@ protected func jsonObjectWrapper(jsObj: JsonObject): JsonObject {
     return JsonObject(newMap)
 }
 
-func escapeUnescapedQuotes(s: String): String {
+// Escape a value (or key) for the legacy WantParams wire format, mirroring the
+// escaping the previous JsonObject.toString() based serializer applied (see
+// write_buffer.replaceEscapeChar): '"' -> '\"', '\' -> '\\', '&' -> '\u0026',
+// 0x7f -> '\u007f' and every byte < 0x20 (including NUL) -> '\b'/'\f'/'\n'/
+// '\r'/'\t'/'\u00xx'. This keeps the historical success path: values that used
+// to be escaped on the wire and parsed back keep round-tripping instead of
+// being rejected. The matching unescape lives in
+// LegacyWantParamsParser.parseQuotedRaw, so the wire stays readable by the
+// legacy native FindNextQuote machinery exactly as before.
+func escapeLegacyJsonString(s: String): String {
+    let hex: Array<Byte> = "0123456789abcdef".toArray()
     let bytes = ArrayList<Byte>()
-    var i = 0
-    while (i < s.size) {
-        if (s[i] == b'\\') {
-            bytes.add(s[i])
-            i++
-            if (i < s.size) {
-                bytes.add(s[i])
-                i++
-            }
+    for (i in 0..s.size) {
+        let b = s[i]
+        if (b == 0X7f) {
+            bytes.add(b'\\')
+            bytes.add(b'u')
+            bytes.add(b'0')
+            bytes.add(b'0')
+            bytes.add(b'7')
+            bytes.add(b'f')
             continue
         }
-        if (s[i] == b'"') {
-            bytes.add(b'\\')
-            bytes.add(b'"')
-        } else {
-            bytes.add(s[i])
+        if ((b >= 32) && (b != b'\"') && (b != b'\\') && (b != b'&')) {
+            bytes.add(b)
+            continue
         }
-        i++
+        match (b) {
+            case b'\b' => bytes.add(b'\\'); bytes.add(b'b')
+            case b'\f' => bytes.add(b'\\'); bytes.add(b'f')
+            case b'\n' => bytes.add(b'\\'); bytes.add(b'n')
+            case b'\r' => bytes.add(b'\\'); bytes.add(b'r')
+            case b'\t' => bytes.add(b'\\'); bytes.add(b't')
+            case b'\\' => bytes.add(b'\\'); bytes.add(b'\\')
+            case b'\"' => bytes.add(b'\\'); bytes.add(b'\"')
+            case _ =>
+                bytes.add(b'\\')
+                bytes.add(b'u')
+                bytes.add(b'0')
+                bytes.add(b'0')
+                bytes.add(hex[Int64(b) >> 4])
+                bytes.add(hex[Int64(b) & 0xF])
+        }
     }
     return unsafe { String.fromUtf8Unchecked(bytes.toArray()) }
 }
 
-func addSlashesInString(jsString: String, brakinds: BracketKinds): String {
-    let quoString = match (brakinds) {
-        case Braces => "\"9\":\"{"
-        case Square => "\"9\":\"["
+func hexDigitValue(h: Byte): Int64 {
+    if (h >= b'0' && h <= b'9') {
+        return Int64(h) - 48
     }
-    let leftBraByte = match (brakinds) {
-        case Braces => b'{'
-        case Square => b'['
+    if (h >= b'a' && h <= b'f') {
+        return Int64(h) - 87
     }
-    let rightBraByte = match (brakinds) {
-        case Braces => b'}'
-        case Square => b']'
+    if (h >= b'A' && h <= b'F') {
+        return Int64(h) - 55
     }
-    let count = jsString.count(quoString)
-    if (count == 0) {
-        return jsString
+    return -1
+}
+
+func appendUtf8(out: ArrayList<Byte>, code: Int64): Unit {
+    if (code < 0x80) {
+        out.add(UInt8(code))
+    } else if (code < 0x800) {
+        out.add(UInt8(0xC0 | (code >> 6)))
+        out.add(UInt8(0x80 | (code & 0x3F)))
+    } else {
+        out.add(UInt8(0xE0 | (code >> 12)))
+        out.add(UInt8(0x80 | ((code >> 6) & 0x3F)))
+        out.add(UInt8(0x80 | (code & 0x3F)))
     }
-    let arrayNew = Array<String>(count, repeat: "")
-    let arrayOld = Array<String>(count, repeat: "")
-    var index = 0
-    for (c in 0..count) {
-        let start = jsString.indexOf(quoString, index)
-        index = (start ?? 0) + quoString.size
-        var leftBra = 0
-        for (i in index..jsString.size) {
-            if (jsString[i] == rightBraByte) {
-                if (leftBra != 0) {
-                    leftBra--
-                    continue
+}
+
+// Reject '{'/'}' inside string values that appear within a W-array
+// (object-array) element. findMatchingBrace and the native ScanElement count
+// braces without string-state awareness, so a '{'/'}' inside a string value
+// inflates/deflates the depth and corrupts element splitting. Top-level string
+// values (typeId 9) are unaffected (native FindNextQuote ignores braces);
+// quotes and control bytes inside W-array string values are escaped by
+// escapeLegacyJsonString and unescaped during parsing, so they do NOT need
+// rejection here.
+func validateWArrayJsonValue(v: JsonValue): Unit {
+    match (v) {
+        case s: JsonString =>
+            let strValue = s.getValue()
+            for (i in 0..strValue.size) {
+                let c = strValue[i]
+                if (c == b'{' || c == b'}') {
+                    throw IllegalArgumentException("Invalid parameter value for the legacy WantParams wire format.")
                 }
-                let old = jsString[index..i]
-                let new = escapeUnescapedQuotes(old)
-                arrayNew[c] = new
-                arrayOld[c] = old
-                break
             }
-            if (jsString[i] == leftBraByte) {
-                leftBra++
+        case o: JsonObject =>
+            for ((_, child) in o.getFields()) {
+                validateWArrayJsonValue(child)
             }
+        case a: JsonArray =>
+            for (i in 0..a.size()) {
+                validateWArrayJsonValue(a[i])
+            }
+        case _ => ()
+    }
+}
+
+// Serialize the type-tagged JsonObject produced by jsonObjectWrapper into the
+// legacy parameters string expected by the native ParseWantParamsWithBrackets,
+// keeping the historical escaping behavior: keys and values are escaped with
+// escapeLegacyJsonString (so embedded '"', '\', '&', control bytes and even
+// NUL round-trip exactly as they did through the old JsonObject.toString()
+// based serializer); only array (type 102) payloads are written raw because
+// they carry the structural quotes/braces of their element wire format.
+protected func wantParamsToString(jsObj: JsonObject): String {
+    let map = jsObj.getFields()
+    let str = StringBuilder("{")
+    var first = true
+    for ((k, v) in map) {
+        let valueMap = (v as JsonObject).getOrThrow().getFields()
+        for ((typeId, value) in valueMap) {
+            if (!first) {
+                str.append(",")
+            }
+            first = false
+            str.append("\"")
+            str.append(escapeLegacyJsonString(k))
+            str.append("\":{\"")
+            str.append(typeId)
+            str.append("\":")
+            if (typeId == VALUE_TYPE_WANTPARAMS) {
+                let jo = (value as JsonObject).getOrThrow()
+                str.append(wantParamsToString(jo))
+            } else if (typeId == VALUE_TYPE_ARRAY) {
+                // array payload carries structural quotes; written raw
+                str.append("\"")
+                str.append((value as JsonString).getOrThrow().getValue())
+                str.append("\"")
+            } else {
+                // string / primitive value: escaped, matching the historical
+                // JsonObject.toString() wire, so existing values keep working.
+                let rawValue = (value as JsonString).getOrThrow().getValue()
+                str.append("\"")
+                str.append(escapeLegacyJsonString(rawValue))
+                str.append("\"")
+            }
+            str.append("}")
         }
     }
-    var new = ""
-    var temp = jsString
-    for (c in 0..count) {
-        new = temp.replace(arrayOld[c], arrayNew[c])
-        temp = new
+    str.append("}")
+    return str.toString()
+}
+
+// Mirrors the native ParseWantParamsWithBrackets: quoted tokens are located
+// with FindNextQuote and nested WantParams / array payloads by brace matching.
+// Unlike the native side, the Cangjie parser understands the JSON escapes
+// emitted by escapeLegacyJsonString, so values that used to be escaped and
+// round-tripped (embedded quotes, backslashes, '&', control bytes, even NUL
+// as '\u0000') keep parsing back to their original content. splitByDeclaredSize
+// tracks quoted regions so that braces/commas inside a string value do not
+// confuse element splitting; findMatchingBrace deliberately does NOT track
+// strings (matching native FindMatchingBrackets), because the array value is
+// itself a quoted string whose content carries structural quotes. A value
+// containing '{'/'}' inside a W-array element is still rejected upfront by
+// validateWArrayJsonValue, a documented constraint of the legacy wire format.
+class LegacyWantParamsParser {
+    let src: String
+    var pos: Int64 = 0
+    init(s: String) { src = s }
+
+    // Return the index of the '}' matching the '{' at `start` (-1 if none).
+    // Mirrors the native FindMatchingBrackets: brace counting only, no string
+    // state. String-state tracking is intentionally NOT applied here because the
+    // array value is itself a quoted string whose content carries structural
+    // quotes (from nested object serialization); toggling on those inner quotes
+    // would hide the very braces we need to count. The native parser has the
+    // same limitation for braces appearing inside a string value within an
+    // object-array element, which is a documented constraint of the legacy
+    // wire format.
+    func findMatchingBrace(start: Int64): Int64 {
+        var depth: Int64 = 0
+        var i = start
+        while (i < src.size) {
+            if (src[i] == b'{') {
+                depth++
+            } else if (src[i] == b'}') {
+                depth--
+                if (depth == 0) {
+                    return i
+                }
+            }
+            i++
+        }
+        return -1
     }
-    return new
+
+    func skipTo(c: Byte): Unit {
+        while (pos < src.size && src[pos] != c) {
+            pos++
+        }
+    }
+
+    // Read the quoted token starting at the current '"' and return its
+    // content with JSON escapes decoded ('\"', '\\', '\b', '\f', '\n', '\r',
+    // '\t', '\uXXXX'), so the escapes emitted by escapeLegacyJsonString are
+    // restored to the original bytes. A backslash followed by anything else is
+    // carried through verbatim (raw backslashes from native-produced wires are
+    // data, not escapes). Bounds are guarded so a misaligned stream cannot run
+    // off the end.
+    func parseQuotedRaw(): String {
+        if (pos >= src.size || src[pos] != b'"') {
+            return ""
+        }
+        pos++ // skip opening "
+        let out = ArrayList<Byte>()
+        while (pos < src.size) {
+            let c = src[pos]
+            if (c == b'"') {
+                pos++ // skip closing "
+                break
+            }
+            if (c != b'\\') {
+                out.add(c)
+                pos++
+                continue
+            }
+            pos++ // skip the backslash
+            if (pos >= src.size) {
+                break
+            }
+            let e = src[pos]
+            match (e) {
+                case b'"' => out.add(b'"')
+                case b'\\' => out.add(b'\\')
+                case b'/' => out.add(b'/')
+                case b'b' => out.add(b'\b')
+                case b'f' => out.add(b'\f')
+                case b'n' => out.add(b'\n')
+                case b'r' => out.add(b'\r')
+                case b't' => out.add(b'\t')
+                case b'u' =>
+                    if (pos + 4 < src.size) {
+                        var code: Int64 = 0
+                        var ok = true
+                        for (j in 1..=4) {
+                            let digit = hexDigitValue(src[pos + j])
+                            if (digit < 0) {
+                                ok = false
+                                break
+                            }
+                            code = code * 16 + digit
+                        }
+                        if (ok) {
+                            pos += 4
+                            appendUtf8(out, code)
+                        } else {
+                            // malformed \u escape: keep it verbatim
+                            out.add(b'\\')
+                            out.add(b'u')
+                            for (j in 1..=4) {
+                                if (pos + j < src.size) {
+                                    out.add(src[pos + j])
+                                }
+                            }
+                            pos += 4
+                        }
+                    } else {
+                        out.add(b'\\')
+                        out.add(b'u')
+                    }
+                case _ => out.add(b'\\'); out.add(e) // unknown escape: keep it verbatim
+            }
+            pos++
+        }
+        return unsafe { String.fromUtf8Unchecked(out.toArray()) }
+    }
+
+    // Parse a WantParams object {...} into an unwrapped JsonObject.
+    func parseObject(): JsonObject {
+        skipTo(b'{')
+        if (pos >= src.size) {
+            return JsonObject()
+        }
+        pos++ // skip '{'
+        let result = HashMap<String, JsonValue>()
+        while (pos < src.size) {
+            while (pos < src.size && src[pos] != b'"' && src[pos] != b'}') {
+                pos++
+            }
+            if (pos >= src.size || src[pos] == b'}') {
+                if (pos < src.size) {
+                    pos++ // skip '}'
+                }
+                break
+            }
+            let key = parseQuotedRaw()
+            skipTo(b'{') // skip ':' to the typeId object '{'
+            let typeIdObjStart = pos
+            if (pos < src.size) {
+                pos++ // skip typeId object '{'
+            }
+            let typeId = parseQuotedRaw()
+            // skip ':' to the value start ('"' or '{')
+            while (pos < src.size && src[pos] != b'"' && src[pos] != b'{') {
+                pos++
+            }
+            let value = parseValue(typeId, typeIdObjStart)
+            // after the value, move to the typeId object '}'
+            while (pos < src.size && src[pos] != b'}') {
+                pos++
+            }
+            if (pos < src.size) {
+                pos++ // skip typeId object '}'
+            }
+            match (value) {
+                case Some(v) => result.add(key, v)
+                case None => () // unsupported type: skip (mirrors baseline warn+skip)
+            }
+        }
+        return JsonObject(result)
+    }
+
+    func parseValue(typeId: String, typeIdObjStart: Int64): ?JsonValue {
+        if (typeId == VALUE_TYPE_WANTPARAMS) {
+            // nested object {nested}
+            return Some(parseObject())
+        }
+        // value is "..."
+        if (typeId == VALUE_TYPE_ARRAY && pos + 1 < src.size &&
+            src[pos + 1] == b'W') {
+            // W (object-array) payloads carry structural quotes/braces, so
+            // locate their extent by matching the typeId braces (brace counting
+            // only, matching native FindMatchingBrackets). Primitive and
+            // T/I/D/Z array payloads carry no embedded structural quotes
+            // (element quotes are escaped), so a plain quote scan is enough.
+            let valueOpenQuote = pos
+            let typeObjClose = findMatchingBrace(typeIdObjStart)
+            if (typeObjClose < 0 || typeObjClose <= valueOpenQuote) {
+                pos = if (typeObjClose < 0) { src.size } else { typeObjClose }
+                return None
+            }
+            let raw = src[valueOpenQuote + 1..typeObjClose - 1]
+            pos = typeObjClose
+            return buildValue(typeId, raw)
+        }
+        // primitive / T/I/D/Z array: scan to closing "
+        let raw = parseQuotedRaw()
+        return buildValue(typeId, raw)
+    }
+
+    func buildValue(typeId: String, raw: String): ?JsonValue {
+        if (typeId == VALUE_TYPE_STRING) {
+            return Some(JsonString(raw))
+        }
+        if (typeId == VALUE_TYPE_ARRAY) {
+            return Some(parseStringToJsonArray(raw))
+        }
+        if (typeId == VALUE_TYPE_BOOLEAN) {
+            try {
+                return Some(JsonValue.fromStr(raw).asBool())
+            } catch (e: Exception) {
+                return Some(JsonBool(false))
+            }
+        }
+        if (typeId == VALUE_TYPE_INT) {
+            try {
+                return Some(JsonValue.fromStr(raw).asInt())
+            } catch (e: Exception) {
+                return Some(JsonInt(0))
+            }
+        }
+        if (typeId == VALUE_TYPE_DOUBLE) {
+            try {
+                return Some(JsonValue.fromStr(raw).asFloat())
+            } catch (e: Exception) {
+                return Some(JsonFloat(0.0))
+            }
+        }
+        return None // unsupported type: skip (mirrors baseline warn+skip)
+    }
 }
 
 protected func jsonStringUnWrapper(jsString: String): JsonObject {
     if (jsString == "") {
         return JsonObject()
     }
-    let stringSlashesB = addSlashesInString(jsString, Braces)
-    let stringSlashesS = addSlashesInString(stringSlashesB, Square)
-    let jsObj = JsonValue.fromStr(stringSlashesS).asObject()
-    let map = jsObj.getFields()
-    let newMap = HashMap<String, JsonValue>()
-
-    for ((k, v) in map) {
-        let valueMap = v.asObject().getFields()
-        for ((jsType, value) in valueMap) {
-            match (jsType) {
-                // VALUE_TYPE_BOOLEAN
-                case "1" => newMap.add(k, JsonValue.fromStr(trimQuotation(value.toString())).asBool())
-                // VALUE_TYPE_INT
-                case "5" => newMap.add(k, JsonValue.fromStr(trimQuotation(value.toString())).asInt())
-                // VALUE_TYPE_DOUBLE
-                case "8" => newMap.add(k, JsonValue.fromStr(trimQuotation(value.toString())).asFloat())
-                // VALUE_TYPE_STRING
-                case "9" => newMap.add(k, JsonValue.fromStr(value.toString()).asString())
-                // VALUE_TYPE_WANTPARAMS
-                case "101" => newMap.add(k, jsonStringUnWrapper(value.toString()))
-                // VALUE_TYPE_ARRAY
-                case "102" => newMap.add(k, parseStringToJsonArray(trimQuotation(value.toString())))
-                case _ =>
-                    continue
-            }
-        }
-    }
-    return JsonObject(newMap)
+    let parser = LegacyWantParamsParser(jsString)
+    return parser.parseObject()
 }
 
 /**
