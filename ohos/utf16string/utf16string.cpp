@@ -951,6 +951,9 @@ bool Utf16String::RawEndsWith(Utf16StringHandle subject, uint32_t ending) const
     if (length_ < ending) {
         return false;
     }
+    if (subject->length_ > ending) {
+        return false;
+    }
     return RawStartsWith(subject, ending - subject->length_);
 }
 
@@ -967,13 +970,23 @@ Utf16StringHandle Utf16String::Append(Utf16StringHandle subject) const
         return target;
     }
     auto isLatin1 = isLatin1_ && subject->isLatin1_;
-    auto length = length_ + subject->length_;
-    auto src = malloc(AlignedSize(sizeof(Utf16String) + length * (isLatin1 ? 1 : 2)));
+    uint64_t byteLength = length_;
+    byteLength += subject->length_;
+    if (!isLatin1) {
+        byteLength <<= 1;
+    }
+    if (byteLength > std::numeric_limits<uint32_t>::max()) {
+        return nullptr;
+    }
+    if (byteLength + sizeof(Utf16String) > std::numeric_limits<size_t>::max()) {
+        return nullptr;
+    }
+    auto src = malloc(AlignedSize(sizeof(Utf16String) + byteLength));
     if (!src) {
         return nullptr;
     }
     auto data = static_cast<char*>(src) + sizeof(Utf16String);
-    auto result = new (src)Utf16String(isLatin1, false, length, data);
+    auto result = new (src)Utf16String(isLatin1, false, length_ + subject->length_, data);
     if (isLatin1) {
         std::copy_n(Latin1Data(), length_, data);
         std::copy_n(subject->Latin1Data(), subject->length_, data + length_);
