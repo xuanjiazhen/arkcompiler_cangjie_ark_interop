@@ -17,6 +17,8 @@
 
 #include "helper.h"
 #include "utf16string_dfx.h"
+#include <securec.h>
+
 #define SHIFT_BITS_3 3
 #define SHIFT_BITS_6 6
 #define SHIFT_BITS_10 10
@@ -280,8 +282,13 @@ Utf16StringHandle Utf16String::CreateLatin1(const char *src, uint32_t length, bo
     }
     auto data = static_cast<uint8_t*>(str) + sizeof(Utf16String);
     auto result = new (str)Utf16String(true, false, length, data, isConstObJ);
-    __builtin_memcpy(data, src, length);
-    return result;
+    auto status = memcpy_s(data, length, src, length);
+    if (status == 0) {
+        return result;
+    } else {
+        free(str);
+        return nullptr;
+    }
 }
 
 Utf16StringHandle Utf16String::CreateUtf16(const char16_t *src, uint32_t length, bool isConst, bool isConstObJ)
@@ -294,15 +301,28 @@ Utf16StringHandle Utf16String::CreateUtf16(const char16_t *src, uint32_t length,
         auto result = new (str)Utf16String(false, true, length, src, isConstObJ);
         return result;
     } else {
-        auto str = malloc(AlignedSize(sizeof(Utf16String) + (length * 2)));
+        uint64_t copyLength = length;
+        copyLength <<= 1;
+        if (copyLength > std::numeric_limits<uint32_t>::max()) {
+            return nullptr;
+        }
+        if (copyLength + sizeof(Utf16String) > std::numeric_limits<size_t>::max()) {
+            return nullptr;
+        }
+        auto str = malloc(AlignedSize(sizeof(Utf16String) + copyLength));
         if (!str) {
             return nullptr;
         }
         auto data = reinterpret_cast<char16_t*>(static_cast<char*>(str) + sizeof(Utf16String));
         auto result = new (str)Utf16String(true, false, length, data, isConstObJ);
-        __builtin_memcpy(data, src, length * RESIZE_FACTOR_2);
 
-        return result;
+        auto status = memcpy_s(data, copyLength, src, copyLength);
+        if (status == 0) {
+            return result;
+        } else {
+            free(str);
+            return nullptr;
+        }
     }
 }
 
@@ -364,8 +384,12 @@ std::string Utf16String::ToString() const
 uint32_t Utf16String::WriteToUtf8(char *dst) const
 {
     if (isLatin1_) {
-        __builtin_memcpy(dst, src_, length_);
-        return length_;
+        auto status = memcpy_s(dst, length_, src_, length_);
+        if (status == 0) {
+            return length_;
+        } else {
+            return 0;
+        }
     }
     return Utf16ToUtf8(dst, Utf16Data(), length_);
 }
@@ -951,6 +975,9 @@ bool Utf16String::RawEndsWith(Utf16StringHandle subject, uint32_t ending) const
     if (length_ < ending) {
         return false;
     }
+    if (subject->length_ > ending) {
+        return false;
+    }
     return RawStartsWith(subject, ending - subject->length_);
 }
 
@@ -967,13 +994,23 @@ Utf16StringHandle Utf16String::Append(Utf16StringHandle subject) const
         return target;
     }
     auto isLatin1 = isLatin1_ && subject->isLatin1_;
-    auto length = length_ + subject->length_;
-    auto src = malloc(AlignedSize(sizeof(Utf16String) + length * (isLatin1 ? 1 : 2)));
+    uint64_t byteLength = length_;
+    byteLength += subject->length_;
+    if (!isLatin1) {
+        byteLength <<= 1;
+    }
+    if (byteLength > std::numeric_limits<uint32_t>::max()) {
+        return nullptr;
+    }
+    if (byteLength + sizeof(Utf16String) > std::numeric_limits<size_t>::max()) {
+        return nullptr;
+    }
+    auto src = malloc(AlignedSize(sizeof(Utf16String) + byteLength));
     if (!src) {
         return nullptr;
     }
     auto data = static_cast<char*>(src) + sizeof(Utf16String);
-    auto result = new (src)Utf16String(isLatin1, false, length, data);
+    auto result = new (src)Utf16String(isLatin1, false, length_ + subject->length_, data);
     if (isLatin1) {
         std::copy_n(Latin1Data(), length_, data);
         std::copy_n(subject->Latin1Data(), subject->length_, data + length_);
