@@ -25,7 +25,12 @@
                 "napi",
                 "hiviewdfx_cangjie_wrapper",
                 "arkui_cangjie_wrapper",
-                "bounds_checking_function"
+                "bounds_checking_function",
+                "ets_runtime",
+                "eventhandler",
+                "hilog",
+                "libuv",
+                "c_utils"
             ]
         },
         "build": {
@@ -81,7 +86,9 @@
                     "name": "//arkcompiler/cangjie_ark_interop:copy_cangjie_ark_interop_libs_kit"
                 }
             ],
-            "test": []
+            "test": [
+                "//arkcompiler/cangjie_ark_interop/test/unittest/ark_interop:ark_interop_native_unittest"
+            ]
         }
     }
 }
