@@ -158,3 +158,10 @@ group("cj_app_build_support") {
     ":ohos.ark_interop_macro(${_host_toolchain})"
   ]
 }
+
+group("ark_interop_test") {
+  testonly = true
+  deps = [
+    "../test/unittest/ark_interop:ark_interop_native_unittest"
+  ]
+}
