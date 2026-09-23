@@ -104,7 +104,7 @@ extend String <: JSKeyable {
 @!APILevel[
     since: "22"
 ]
-public class JSString <: JSHeapObject & ToString & JSKeyable {
+public class JSString <: JSHeapObject & JSKeyable {
     @OverflowWrapping
     static func createString(context: JSContext, source: String): JSValue_ {
         if (source.size > Int64(Int32.Max)) {

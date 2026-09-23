@@ -69,7 +69,7 @@ foreign {
 @!APILevel[
     since: "22"
 ]
-public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKeyable & JSInteropType<Utf16String> {
+public class Utf16String <: Equatable<Utf16String> & Hashable & JSKeyable & JSInteropType<Utf16String> {
     private let handle_: Utf16StringHandle
     var header_ = Utf16StringHeader()
     var headerInited_ = false
