@@ -109,7 +109,7 @@ protected struct Slab<T> {
     }
 }
 
-protected struct SlabMT<T> {
+protected class SlabMT<T> {
     var slab_ = Slab<T>()
     let mutex_: Mutex
 
@@ -117,13 +117,13 @@ protected struct SlabMT<T> {
         mutex_ = Mutex()
     }
 
-    protected mut func append(data: T): Int64 {
+    protected func append(data: T): Int64 {
         synchronized(mutex_) {
             slab_.append(data)
         }
     }
 
-    protected mut func remove(id: Int64): ?T {
+    protected func remove(id: Int64): ?T {
         synchronized(mutex_) {
             slab_.remove(id)
         }
