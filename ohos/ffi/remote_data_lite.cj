@@ -19,7 +19,6 @@ protected package ohos.ffi
 
 import std.collection.HashMap
 
-foreign func FfiOHOSFFIFFIDataExist(id: Int64): Bool
 
 foreign func FfiOHOSFFIFFIDataRelease(id: Int64): Unit
 
